@@ -5,17 +5,11 @@
  */
 package di.uniba.map.b.adventure;
 
-import di.uniba.map.b.adventure.games.FireHouseGame;
 import di.uniba.map.b.adventure.parser.Parser;
-import di.uniba.map.b.adventure.parser.ParserOutput;
-import di.uniba.map.b.adventure.type.CommandType;
 import swing.FrameStart;
-import swing.JFrameApp;
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.Set;
-import javax.swing.JFrame;
 
 /**
  * ATTENZIONE: l'Engine è molto spartano, in realtà demanda la logica alla
@@ -29,7 +23,7 @@ public class Engine {
     private final GameDescription game;
 
     private Parser parser;
-
+    
     public Engine(GameDescription game) {
         this.game = game;
         try {
@@ -83,7 +77,6 @@ public class Engine {
     public Parser getParser(){
         return parser;
     }
-
     
     /**
      * @param args the command line arguments
