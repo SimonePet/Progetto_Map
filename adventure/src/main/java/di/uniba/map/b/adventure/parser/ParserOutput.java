@@ -5,8 +5,8 @@
  */
 package di.uniba.map.b.adventure.parser;
 
-import di.uniba.map.b.adventure.type.AdvObject;
-import di.uniba.map.b.adventure.type.Command;
+import di.uniba.map.b.adventure.type.Oggetto;
+import di.uniba.map.b.adventure.type.Comando;
 
 /**
  *
@@ -14,44 +14,44 @@ import di.uniba.map.b.adventure.type.Command;
  */
 public class ParserOutput {
 
-    private Command command;
+    private Comando command;
 
-    private AdvObject object;
-    
-    private AdvObject invObject;
+    private Oggetto object;
 
-    public ParserOutput(Command command, AdvObject object) {
+    private Oggetto invObject;
+
+    public ParserOutput(Comando command, Oggetto object) {
         this.command = command;
         this.object = object;
     }
 
-    public ParserOutput(Command command, AdvObject object, AdvObject invObejct) {
+    public ParserOutput(Comando command, Oggetto object, Oggetto invObejct) {
         this.command = command;
         this.object = object;
         this.invObject = invObejct;
     }
 
-    public Command getCommand() {
+    public Comando getCommand() {
         return command;
     }
 
-    public void setCommand(Command command) {
+    public void setCommand(Comando command) {
         this.command = command;
     }
 
-    public AdvObject getObject() {
+    public Oggetto getObject() {
         return object;
     }
 
-    public void setObject(AdvObject object) {
+    public void setObject(Oggetto object) {
         this.object = object;
     }
 
-    public AdvObject getInvObject() {
+    public Oggetto getInvObject() {
         return invObject;
     }
 
-    public void setInvObject(AdvObject invObject) {
+    public void setInvObject(Oggetto invObject) {
         this.invObject = invObject;
     }
 

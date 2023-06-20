@@ -9,7 +9,7 @@ import di.uniba.map.b.adventure.GameDescription;
 import di.uniba.map.b.adventure.games.FireHouseGame;
 import di.uniba.map.b.adventure.parser.Parser;
 import di.uniba.map.b.adventure.parser.ParserOutput;
-import di.uniba.map.b.adventure.type.CommandType;
+import di.uniba.map.b.adventure.type.TipoComando;
 import di.uniba.map.b.adventure.type.ThreadTime;
 import javax.swing.JEditorPane;
 import javax.swing.text.BadLocationException;
@@ -164,7 +164,7 @@ public class JFrameApp extends javax.swing.JFrame {
         ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
         if (p == null || p.getCommand() == null) {        
                 doc.insertString(doc.getLength(), "Non capisco quello che mi vuoi dire.\n", attributes);
-        } else if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
+        } else if (p.getCommand() != null && p.getCommand().getType() == TipoComando.FINE) {
             doc.insertString(doc.getLength(), "Addio.\n", attributes);
             //setta il textField non editabile
             
@@ -203,8 +203,8 @@ public class JFrameApp extends javax.swing.JFrame {
                
         try{
             doc.insertString(doc.getLength(), "* Adventure v. 0.3 - 2021-2022 *\n", attributes);
-            doc.insertString(doc.getLength(), game.getCurrentRoom().getName()+"\n", attributes);
-            doc.insertString(doc.getLength(), game.getCurrentRoom().getDescription()+"\n", attributes);           
+            doc.insertString(doc.getLength(), game.getCurrentRoom().getNomeStanza()+"\n", attributes);
+            doc.insertString(doc.getLength(), game.getCurrentRoom().getDescrizioneStanza()+"\n", attributes);
             //avvia Thread          
             this.thread = new Thread(new ThreadTime(this));
             thread.start();                        

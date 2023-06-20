@@ -8,7 +8,7 @@ package di.uniba.map.b.adventure;
 import di.uniba.map.b.adventure.games.FireHouseGame;
 import di.uniba.map.b.adventure.parser.Parser;
 import di.uniba.map.b.adventure.parser.ParserOutput;
-import di.uniba.map.b.adventure.type.CommandType;
+import di.uniba.map.b.adventure.type.TipoComando;
 import swing.FrameStart;
 import swing.JFrameApp;
 import java.io.File;
@@ -38,7 +38,7 @@ public class Engine {
             System.err.println(ex);
         }
         try {
-            Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
+            Set<String> stopwords = Utils.loadFileListInSet(new File("./adventure/resources/stopwords"));
             parser = new Parser(stopwords);
         } catch (IOException ex) {
             System.err.println(ex);
@@ -71,26 +71,26 @@ public class Engine {
             }
         }*/   
     }
-    
+
     public String getCurrentRoomName(){
-        return game.getCurrentRoom().getName();
+        return game.getCurrentRoom().getNomeStanza();
     }
-    
+
     public GameDescription getGame(){
         return game;
     }
-    
+
     public Parser getParser(){
         return parser;
     }
 
-    
+
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*Engine engine = new Engine(new FireHouseGame());
-        engine.execute();*/
+        Engine engine = new Engine(new FireHouseGame());
+        engine.execute();
         FrameStart.main();
     }
 
