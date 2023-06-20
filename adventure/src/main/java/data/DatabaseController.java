@@ -5,6 +5,7 @@
 package data;
 
 import di.uniba.map.b.adventure.Engine;
+import java.sql.*;
 
 /**
  *  CLASSE CHE IMPLEMENTA LA CLASSE ASTRATTA DATABASE
@@ -24,14 +25,22 @@ public class DatabaseController extends Database{
     
     
     @Override
-    public boolean create_table_match() {
-        //utilizza l'attributo ereditato CREATE_TABLE_MATCH
+    public boolean creaTabellaPartita() {
+        try {
+            Connection conn = super.connect();
+            Statement stm = conn.createStatement();
+            //crea tabella solo se non esiste
+            stm.executeUpdate(CREATE_TABLE_MATCH);
+            stm.close();
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
         return false;
     }
     
     /* salva nuova partita alla tabella */   
     @Override
-    public boolean saveMatch(String username, boolean terminata, int numSecondi, int num_mosse) {
+    public boolean salvaPartita(String username, boolean terminata, int numSecondi, int numMinuti, int num_mosse) {
         if(terminata){
             //calcola punteggio con formula legata a tempo e numero mosse
             //inserimento completo con punteggio   
@@ -43,7 +52,7 @@ public class DatabaseController extends Database{
     
     /* recupera punteggio della partita */
     @Override
-    public int fetchScore(int id) {
+    public int getPunteggio(int id) {
         return 0;
     }
     
