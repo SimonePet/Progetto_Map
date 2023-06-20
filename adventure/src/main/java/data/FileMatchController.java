@@ -6,40 +6,113 @@ package data;
 
 import di.uniba.map.b.adventure.Engine;
 
+import java.io.Serializable;
+import java.io.File;
+import java.io.ObjectOutputStream;
+import java.io.IOException;
+import java.io.FileOutputStream;
+import java.io.FileInputStream;
+import java.io.ObjectInputStream;
+
+
 /**
- *  CLASSE PER LA GESTIONE DEL FILE CONTENENTE GLI ENGINE (partite)
- * 
- *  AGGIUNGERE PARTITA AL FILE "match.txt"
- *  RIMUOVERE PARTITA DAL FILE "match.txt"
- *  RECUPERARE PARTITA DAL FILE "match.txt"
- *  RINOMINARE PARTITA NEL NILE "match.txt"
- *  
+ *  Classe per la gestione dei file per memorizzare gli engine (partite).
  */
-public class FileMatchController extends FileController{
-    
-    public FileMatchController(String nameFile){
-        //file su cui aggiungere/rimuovere partite
-        super.nameFile = nameFile;
-        super.file = super.getFile();
+public class FileMatchController extends FileController implements Serializable {
+    /**
+     * Costruttore della Classe FileController.
+     * @param nomeFileCorrente nome del file.
+     * @param directoryCorrente percorso della cartella del file.
+     * @param fileCorrente file corrente.
+     */
+    public FileMatchController(final String nomeFileCorrente, final String directoryCorrente, final File fileCorrente) {
+        super();
+        this.file = fileCorrente;
+        this.nameFile = nomeFileCorrente;
+        this.directory = directoryCorrente;
     }
-    
-    /* aggiunge l'oggetto Engine(partita) alla fine del file */
-    public boolean addMatch(){
-        //
-        return false;      
+    /**
+     *
+     * @param engine engine di una partita.
+     * @return Vero se salva l'engine sul file, Falso altrimenti.
+     */
+    public boolean addMatch(final Engine engine) {
+        try {
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
+            out.writeObject(engine);
+            out.close();
+        } catch (IOException e) {
+            System.out.println("Ciao sono un errore.");
+        }
+        return false;
     }
-    
-    
-    public boolean removeMatch(){
-        //
-        return false;        
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws IOException
+     */
+    public File removeMatch(final int id) throws IOException {
+        File outputFile = new File(nameFile);
+        Engine en;
+        FileInputStream fileInput = new FileInputStream(this.file);
+        ObjectInputStream objectInput = new ObjectInputStream(fileInput);
+        FileOutputStream fileOutput = new FileOutputStream(outputFile);
+        ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
+        try {
+            while (true) {
+                en = (Engine) objectInput.readObject();
+                if (en.getIdEngine() != id) {
+                    objectOutput.writeObject(en);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                objectInput.close();
+                fileInput.close();
+                objectOutput.close();
+                fileOutput.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return outputFile;
     }
-    
-    /* per recuperare la partita leggere da file mediante l'id dell'Engine recuperato dal DB
-    */
-    public Engine getMatch(String nameMatch){
-        //
-        return null;  
+
+    /**
+     *
+     * @param id
+     * @return
+     * @throws IOException
+     */
+    public Engine getMatch(final int id) throws IOException {
+        Engine en;
+        FileInputStream fileIn = new FileInputStream(file);
+        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+        try {
+            while (true) {
+                en = (Engine) objectIn.readObject();
+                if (en.getIdEngine() == id) {
+                    return en;
+                }
+            }
+        } catch (IOException e) {
+            System.out.println("Ciaoe sono un errore.");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                objectIn.close();
+                fileIn.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return null;
     }
-    
 }

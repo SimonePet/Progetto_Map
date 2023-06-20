@@ -18,7 +18,7 @@ import java.util.Set;
 import javax.swing.JFrame;
 
 /**
- * ATTENZIONE: l'Engine è molto spartano, in realtà demanda la logica alla
+ * ATTENZIONE: l'Engine è molto spartanoo, in realtà demanda la logica alla
  * classe che implementa GameDescription e si occupa di gestire I/O sul
  * terminale.
  *
@@ -27,8 +27,8 @@ import javax.swing.JFrame;
 public class Engine {
     
     private final GameDescription game;
-
     private Parser parser;
+    private int idEngine;
 
     public Engine(GameDescription game) {
         this.game = game;
@@ -38,7 +38,7 @@ public class Engine {
             System.err.println(ex);
         }
         try {
-            Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
+            Set<String> stopwords = Utils.loadFileListInSet(new File("./adventure/resources/stopwords"));
             parser = new Parser(stopwords);
         } catch (IOException ex) {
             System.err.println(ex);
@@ -74,6 +74,10 @@ public class Engine {
 
     public String getCurrentRoomName(){
         return game.getCurrentRoom().getNomeStanza();
+    }
+
+    public int getIdEngine() {
+        return idEngine;
     }
 
     public GameDescription getGame(){
