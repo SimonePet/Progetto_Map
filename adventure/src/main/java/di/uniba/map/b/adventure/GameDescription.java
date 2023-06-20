@@ -22,13 +22,9 @@ public abstract class GameDescription {
 
     private String nameGame;
     
-    private String username;
-    
     private boolean finish;
     
     private int numSeconds;
-    
-    private int numMinutes;
     
     private int numMoves;
     
@@ -40,43 +36,6 @@ public abstract class GameDescription {
 
     private Room currentRoom;
 
-    
-    
-    public int getNumMoves(){
-        return numMoves;
-    }
-    
-    public void setNumMoves(int moves){
-        this.numMoves = moves;
-    }
-    
-    public int getNumMinutes(){
-        return numMinutes;
-    }
-    
-    public void setNumMinutes(int min){
-        this.numMinutes = min;
-    }
-    
-    public int getNumSeconds(){
-        return numSeconds;
-    }
-    
-    public void setNumSeconds(int sec){
-        this.numSeconds = sec;
-    }
-    
-    public boolean isFinished(){
-        return finish;
-    }
-    
-    public void setUsername(String username){
-        this.username = username;
-    }
-    
-    public String getUsername(){
-        return username;
-    }
     
     public void setNameGame(String name){
         this.nameGame = name;

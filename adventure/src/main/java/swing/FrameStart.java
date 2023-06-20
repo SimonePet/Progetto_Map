@@ -4,6 +4,13 @@
  */
 package swing;
 
+import di.uniba.map.b.adventure.Engine;
+import di.uniba.map.b.adventure.GameDescription;
+import di.uniba.map.b.adventure.games.FireHouseGame;
+import di.uniba.map.b.adventure.type.ThreadTime;
+import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
+
 /**
  *
  * @author Giannantonio
@@ -28,9 +35,8 @@ public class FrameStart extends javax.swing.JFrame {
 
         newMatch = new javax.swing.JButton();
         loadMatch = new javax.swing.JButton();
-        usernameField = new javax.swing.JTextField();
-        jUsernameLabel = new javax.swing.JLabel();
-        LabelErrorName = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -48,7 +54,7 @@ public class FrameStart extends javax.swing.JFrame {
             }
         });
 
-        jUsernameLabel.setText("USERNAME");
+        jLabel1.setText("USERNAME");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -62,45 +68,34 @@ public class FrameStart extends javax.swing.JFrame {
                             .addComponent(loadMatch)
                             .addComponent(newMatch)))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
                         .addGap(110, 110, 110)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(6, 6, 6)
-                                .addComponent(LabelErrorName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(141, 141, 141)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(129, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(49, Short.MAX_VALUE)
-                .addComponent(jUsernameLabel)
+                .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(7, 7, 7)
-                .addComponent(LabelErrorName, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(newMatch)
                 .addGap(18, 18, 18)
                 .addComponent(loadMatch)
-                .addGap(32, 32, 32))
+                .addGap(49, 49, 49))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void newMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMatchActionPerformed
-        String username = usernameField.getText();
-        if(!username.equalsIgnoreCase("")){
-            JFrameApp frame = new JFrameApp();
-            frame.main(username);
-            LabelErrorName.setText("");
-        }else{
-            LabelErrorName.setText("Username mancante!");
-        }
+        // TODO add your handling code here:
+        JFrameApp frame = new JFrameApp();
+        frame.main();
     }//GEN-LAST:event_newMatchActionPerformed
 
     private void loadMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadMatchActionPerformed
@@ -110,6 +105,7 @@ public class FrameStart extends javax.swing.JFrame {
     }//GEN-LAST:event_loadMatchActionPerformed
 
     /**
+     * @param args the command line arguments
      */
     public static void main() {
         /* Set the Nimbus look and feel */
@@ -145,10 +141,9 @@ public class FrameStart extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel LabelErrorName;
-    private javax.swing.JLabel jUsernameLabel;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JButton loadMatch;
     private javax.swing.JButton newMatch;
-    private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 }
