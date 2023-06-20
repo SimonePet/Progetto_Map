@@ -5,6 +5,7 @@
 package data;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  *
@@ -18,23 +19,42 @@ import java.io.File;
 public class FileController implements FileInterface{
     //nome del file da creare
     protected String nameFile;
+    protected String directory;
     protected File file;
+
+    public FileController(String nome, String dir){
+        this.nameFile=nome;
+        this.directory=dir;
+    }
+
+    public FileController(){
+    }
     
     @Override
-    public boolean create() { 
-        //
-        return false;       
+    public boolean create() {
+        try{
+            this.file = new File(directory+nameFile);
+            if (file.createNewFile()) {
+                System.out.println("File creato con successo." );
+            } else {
+                System.out.println("File esistente.");
+            }
+            return true;
+        } catch(IOException e){
+            System.out.println("Ciao sono un errore");
+        }
+        return false;
     }
     
     public void setNameFile(String name){
-        //
+        this.nameFile=name;
     }
     
     public String getNameFile(){
         return nameFile;
     }
     
-    public File getFile(){      
-        return null;
+    public File getFile(){
+        return file;
     }
 }

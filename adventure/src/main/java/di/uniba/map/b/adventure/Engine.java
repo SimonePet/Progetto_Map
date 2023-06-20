@@ -30,6 +30,8 @@ public class Engine {
 
     private Parser parser;
 
+    private int ID;
+
     public Engine(GameDescription game) {
         this.game = game;
         try {
@@ -84,6 +86,9 @@ public class Engine {
         return parser;
     }
 
+    public int getID() {
+        return ID;
+    }
 
     /**
      * @param args the command line arguments
