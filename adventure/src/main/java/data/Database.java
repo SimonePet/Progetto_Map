@@ -5,17 +5,24 @@
 package data;
 
 import di.uniba.map.b.adventure.Engine;
-
+import java.beans.Statement;
+import java.sql.*;
 /**
  *  CLASSE ASTRATTA 
  * 
  *  SET/GET di username e password
  */
 public abstract class Database {
-    protected static final String CREATE_TABLE_MATCH = "CREATE TABLE IF NOT EXISTS match (Id INT PRIMARY KEY AUTOINCREMENT, nome VARCHAR(1024) username VARCHAR(1024), punteggio INT DEFAULT 0, tempo TIME DEFAULT NULL, TERMINATA boolean DEFAULT FALSE, num_mosse INT DEFAULT 0)";
+    protected static final String CREATE_TABLE_MATCH = "CREATE TABLE IF NOT EXISTS match (Id INT PRIMARY KEY, nome VARCHAR(1024), username VARCHAR(1024), punteggio INT DEFAULT 0, numMinuti int DEFAULT 0, numSecondi int DEFAULT 0, TERMINATA boolean DEFAULT FALSE, num_mosse INT DEFAULT 0)";
     private String username;
     private String password;
-       
+    
+    public Connection connect() throws SQLException{
+        Connection conn = DriverManager.getConnection("jdbc:h2:/home/user/test/db");
+        return conn;
+    }
+
+    
     public void setUsername(String username){
         this.username = username;
     }
@@ -33,11 +40,11 @@ public abstract class Database {
     }
     
     /* controlla se esiste una tabella con nome partita, se esiste non crearla, altrimenti crea tabella partita*/
-    public abstract boolean create_table_match();
+    public abstract boolean creaTabellaPartita();
     
     /* salva nuova partita nella tabella */
-    public abstract boolean saveMatch(String username, boolean terminata, int numSecondi, int num_mosse);
+    public abstract boolean salvaPartita(String username, boolean terminata, int numSecondi, int numMinuti, int num_mosse);
     
     /* recupera punteggio partita */
-    public abstract int fetchScore(int id);
+    public abstract int getPunteggio(int id);
 }

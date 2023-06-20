@@ -20,21 +20,54 @@ import java.util.List;
  */
 public abstract class GameDescription {
 
-    private String nameGame;
     
+    private int numMinutes;
+    private String username;
+    private String nameGame;   
     private boolean finish;
-    
     private int numSeconds;
-    
     private int numMoves;
-    
     private final List<Room> rooms = new ArrayList<>();
-
     private final List<Command> commands = new ArrayList<>();
-
     private final List<AdvObject> inventory = new ArrayList<>();
-
     private Room currentRoom;
+
+    
+    public int getNumMoves(){
+        return numMoves;
+    }
+
+    public void setNumMoves(int moves){
+        this.numMoves = moves;
+    }
+
+    public int getNumMinutes(){
+        return numMinutes;
+    }
+
+    public void setNumMinutes(int min){
+        this.numMinutes = min;
+    }
+
+    public int getNumSeconds(){
+        return numSeconds;
+    }
+
+    public void setNumSeconds(int sec){
+        this.numSeconds = sec;
+    }
+
+    public boolean isFinished(){
+        return finish;
+    }
+
+    public void setUsername(String username){
+        this.username = username;
+    }
+
+    public String getUsername(){
+        return username;
+    }
 
     
     public void setNameGame(String name){
