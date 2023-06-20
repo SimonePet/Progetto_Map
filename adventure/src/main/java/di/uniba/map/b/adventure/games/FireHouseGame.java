@@ -124,46 +124,46 @@ public class FireHouseGame extends GameDescription {
             //move
             boolean noroom = false;
             boolean move = false;
-            if (p.getCommand().getType() == TipoComando.NORD) {
+            if (p.getCommand().getTipoComando() == TipoComando.NORD) {
                 if (getCurrentRoom().getNord() != null) {
                     setCurrentRoom(getCurrentRoom().getNord());
                     move = true;
                 } else {
                     noroom = true;
                 }
-            } else if (p.getCommand().getType() == TipoComando.SUD) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.SUD) {
                 if (getCurrentRoom().getSud() != null) {
                     setCurrentRoom(getCurrentRoom().getSud());
                     move = true;
                 } else {
                     noroom = true;
                 }
-            } else if (p.getCommand().getType() == TipoComando.EST) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.EST) {
                 if (getCurrentRoom().getEst() != null) {
                     setCurrentRoom(getCurrentRoom().getEst());
                     move = true;
                 } else {
                     noroom = true;
                 }
-            } else if (p.getCommand().getType() == TipoComando.OVEST) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.OVEST) {
                 if (getCurrentRoom().getOvest() != null) {
                     setCurrentRoom(getCurrentRoom().getOvest());
                     move = true;
                 } else {
                     noroom = true;
                 }
-            } else if (p.getCommand().getType() == TipoComando.INVENTARIO) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.INVENTARIO) {
                 out.println("Nel tuo inventario ci sono:");
                 for (Oggetto o : getInventory()) {
                     out.println(o.getNomeOggetto() + ": " + o.getDescrizioneOggetto());
                 }
-            } else if (p.getCommand().getType() == TipoComando.OSSERVA) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.OSSERVA) {
                 if (getCurrentRoom().getLook() != null) {
                     out.println(getCurrentRoom().getLook());
                 } else {
                     out.println("Non c'è niente di interessante qui.");
                 }
-            } else if (p.getCommand().getType() == TipoComando.RACCOGLI) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.RACCOGLI) {
                 if (p.getObject() != null) {
                     if (p.getObject().isRaccogglibile()) {
                         getInventory().add(p.getObject());
@@ -175,7 +175,7 @@ public class FireHouseGame extends GameDescription {
                 } else {
                     out.println("Non c'è niente da raccogliere qui.");
                 }
-            } else if (p.getCommand().getType() == TipoComando.APRI) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.APRI) {
                 /*ATTENZIONE: quando un oggetto contenitore viene aperto, tutti gli oggetti contenuti
                  * vengongo inseriti nella stanza o nell'inventario a seconda di dove si trova l'oggetto contenitore.
                  * Potrebbe non esssere la soluzione ottimale.
@@ -233,16 +233,16 @@ public class FireHouseGame extends GameDescription {
                         }
                     }
                 }
-            } else if (p.getCommand().getType() == TipoComando.PREMI) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.PREMI) {
                 //ricerca oggetti pushabili
-                if (p.getObject() != null && p.getObject().IsPremibile()) {
+                if (p.getObject() != null && p.getObject().isPremibile()) {
                     out.println("Hai premuto: " + p.getObject().getNomeOggetto());
-                    if (p.getObject().getId() == 3) {
+                    if (p.getObject().getIdOggetto() == 3) {
                         end(out);
                     }
-                } else if (p.getInvObject() != null && p.getInvObject().IsPremibile()) {
+                } else if (p.getInvObject() != null && p.getInvObject().isPremibile()) {
                     out.println("Hai premuto: " + p.getInvObject().getNomeOggetto());
-                    if (p.getInvObject().getId() == 3) {
+                    if (p.getInvObject().getIdOggetto() == 3) {
                         end(out);
                     }
                 } else {
@@ -269,42 +269,42 @@ public class FireHouseGame extends GameDescription {
             //move
             boolean noroom = false;
             boolean move = false;
-            if (p.getCommand().getType() == TipoComando.NORD) {
+            if (p.getCommand().getTipoComando() == TipoComando.NORD) {
                 if (getCurrentRoom().getNord() != null) {
                     setCurrentRoom(getCurrentRoom().getNord());
                     move = true;
                 } else {
                     noroom = true;
                 }
-            } else if (p.getCommand().getType() == TipoComando.SUD) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.SUD) {
                 if (getCurrentRoom().getSud() != null) {
                     setCurrentRoom(getCurrentRoom().getSud());
                     move = true;
                 } else {
                     noroom = true;
                 }
-            } else if (p.getCommand().getType() == TipoComando.EST) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.EST) {
                 if (getCurrentRoom().getEst() != null) {
                     setCurrentRoom(getCurrentRoom().getEst());
                     move = true;
                 } else {
                     noroom = true;
                 }
-            } else if (p.getCommand().getType() == TipoComando.OVEST) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.OVEST) {
                 if (getCurrentRoom().getOvest() != null) {
                     setCurrentRoom(getCurrentRoom().getOvest());
                     move = true;
                 } else {
                     noroom = true;
                 }
-            } else if (p.getCommand().getType() == TipoComando.INVENTARIO) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.INVENTARIO) {
                 frame.writeTextOnEditor("Nel tuo inventario ci sono:\n");
                 out.println("Nel tuo inventario ci sono:");
                 for (Oggetto o : getInventory()) {
                     out.println(o.getNomeOggetto() + ": " + o.getDescrizioneOggetto());
                     frame.writeTextOnEditor(o.getNomeOggetto() + ": " + o.getDescrizioneOggetto()+"\n");
                 }
-            } else if (p.getCommand().getType() == TipoComando.OSSERVA) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.OSSERVA) {
                 if (getCurrentRoom().getLook() != null) {
                     frame.writeTextOnEditor(getCurrentRoom().getLook()+"\n");
                     out.println(getCurrentRoom().getLook());
@@ -312,7 +312,7 @@ public class FireHouseGame extends GameDescription {
                     frame.writeTextOnEditor("Non c'è niente di interessante qui.\n");
                     out.println("Non c'è niente di interessante qui.");
                 }
-            } else if (p.getCommand().getType() == TipoComando.RACCOGLI) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.RACCOGLI) {
                 if (p.getObject() != null) {
                     if (p.getObject().isRaccogglibile()) {
                         getInventory().add(p.getObject());
@@ -327,7 +327,7 @@ public class FireHouseGame extends GameDescription {
                     out.println("Non c'è niente da raccogliere qui.");
                     frame.writeTextOnEditor("Non c'è niente da raccogliere qui.\n");
                 }
-            } else if (p.getCommand().getType() == TipoComando.APRI) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.APRI) {
                 /*ATTENZIONE: quando un oggetto contenitore viene aperto, tutti gli oggetti contenuti
                  * vengongo inseriti nella stanza o nell'inventario a seconda di dove si trova l'oggetto contenitore.
                  * Potrebbe non esssere la soluzione ottimale.
@@ -397,18 +397,18 @@ public class FireHouseGame extends GameDescription {
                         }
                     }
                 }
-            } else if (p.getCommand().getType() == TipoComando.PREMI) {
+            } else if (p.getCommand().getTipoComando() == TipoComando.PREMI) {
                 //ricerca oggetti pushabili
-                if (p.getObject() != null && p.getObject().IsPremibile()) {
+                if (p.getObject() != null && p.getObject().isPremibile()) {
                     out.println("Hai premuto: " + p.getObject().getNomeOggetto());
                     frame.writeTextOnEditor("Hai premuto: " + p.getObject().getNomeOggetto()+"\n");
-                    if (p.getObject().getId() == 3) {
+                    if (p.getObject().getIdOggetto() == 3) {
                         end(out);
                     }
-                } else if (p.getInvObject() != null && p.getInvObject().IsPremibile()) {
+                } else if (p.getInvObject() != null && p.getInvObject().isPremibile()) {
                     out.println("Hai premuto: " + p.getInvObject().getNomeOggetto());
                     frame.writeTextOnEditor("Hai premuto: " + p.getInvObject().getNomeOggetto()+"\n");
-                    if (p.getInvObject().getId() == 3) {
+                    if (p.getInvObject().getIdOggetto() == 3) {
                         end(out);
                     }
                 } else {

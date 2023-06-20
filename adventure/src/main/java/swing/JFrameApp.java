@@ -22,10 +22,7 @@ import javax.swing.text.SimpleAttributeSet;
  */
 public class JFrameApp extends javax.swing.JFrame {
 
-    /**
-     * Creates new form JFrameApp
-     * @param username
-     */
+
     public JFrameApp() {
         initComponents();        
     }
@@ -166,7 +163,7 @@ public class JFrameApp extends javax.swing.JFrame {
             game.setNumMoves(game.getNumMoves()+1);
             if (p == null || p.getCommand() == null) {        
                     doc.insertString(doc.getLength(), "Non capisco quello che mi vuoi dire.\n", attributes);
-            } else if (p.getCommand() != null && p.getCommand().getType() == TipoComando.FINE) {
+            } else if (p.getCommand() != null && p.getCommand().getTipoComando() == TipoComando.FINE) {
                 doc.insertString(doc.getLength(), "Addio.\n", attributes);
                 //setta il textField non editabile
 

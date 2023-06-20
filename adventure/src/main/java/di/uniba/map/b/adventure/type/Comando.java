@@ -11,71 +11,108 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
- *
- * @author pierpaolo
+ * Classe per la gestione dei comandi.
  */
 public class Comando {
-
+    private static final int HASH_1 = 3;
+    private static final int HASH_2 = 97;
+    //Verificare che
     private final TipoComando tipoComando;
-
     private final String nomeComando;
-
     private Set<String> aliasComando;
 
-    public Comando(TipoComando type, String name) {
-        this.tipoComando = type;
-        this.nomeComando = name;
+    /**
+     * Costruttore della classe Comando.
+     * @param tipoCom tipologia comando.
+     * @param nomeCom nome comando.
+     */
+    public Comando(final TipoComando tipoCom, final String nomeCom) {
+        this.tipoComando = tipoCom;
+        this.nomeComando = nomeCom;
     }
 
-    public Comando(TipoComando type, String name, Set<String> alias) {
-        this.tipoComando = type;
-        this.nomeComando = name;
-        this.aliasComando = alias;
+    /**
+     * Costruttore della classe Comando.
+     * @param tipoCom tipologia comando.
+     * @param nomeCom nome comando.
+     * @param aliasCom alias comando.
+     */
+    public Comando(final TipoComando tipoCom, final String nomeCom, final Set<String> aliasCom) {
+        this.tipoComando = tipoCom;
+        this.nomeComando = nomeCom;
+        this.aliasComando = aliasCom;
     }
 
-    public String getName() {
+    /**
+     * Metodo get che restituisce il nome del comando.
+     * @return nome del comando.
+     */
+    public String getNomeComando() {
         return this.nomeComando;
     }
 
-    public Set<String> getAlias() {
+    /**
+     * Metodo che restituisce l'alias del comando.
+     * @return alias del comando.
+     */
+    public Set<String> getAliasComando() {
         return this.aliasComando;
     }
 
-    public void setAlias(Set<String> alias) {
-        this.aliasComando = alias;
+    /**
+     * Metodo set per impostare un insieme di alias di un comando.
+     * @param aliasCom set di alias di comandi.
+     */
+    public void setAliasComando(final Set<String> aliasCom) {
+        this.aliasComando = aliasCom;
     }
 
-    public void setAlias(String[] alias) {
+    /**
+     * Metodo set per impostare un vettore alias di un comando.
+     * @param alias vettori di alias.
+     */
+    public void setAlias(final String[] alias) {
         this.aliasComando = new HashSet<>(Arrays.asList(alias));
     }
 
-    public TipoComando getType() {
+    /**
+     * Metodo get che restituisce il tipo di comando.
+     * @return tipologia del comando.
+     */
+    public TipoComando getTipoComando() {
         return this.tipoComando;
     }
 
+    /**
+     * Metodo che calcola un id univoco al comando.
+     * @return id univoco.
+     */
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.tipoComando);
+        int hash = HASH_1;
+        hash = HASH_2 * hash + Objects.hashCode(this.tipoComando);
         return hash;
     }
 
+    /**
+     * @param oggetto oggetto da confrontare
+     * @return Vero se l'oggetto passato come parametro e' uguale a quello sul quale e chiamato il metodo.
+     */
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
+    public boolean equals(final Object oggetto) {
+        if (this == oggetto) {
             return true;
         }
-        if (obj == null) {
+        if (oggetto == null) {
             return false;
         }
-        if (getClass() != obj.getClass()) {
+        if (getClass() != oggetto.getClass()) {
             return false;
         }
-        final Comando other = (Comando) obj;
+        final Comando other = (Comando) oggetto;
         if (this.tipoComando != other.tipoComando) {
             return false;
         }
         return true;
     }
-
 }

@@ -9,26 +9,39 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author pierpaolo
+ * Classe per la gestione dell'inventario.
  */
 public class Inventario {
+    private List<Oggetto> listaOggetti = new ArrayList<>();
 
-    private List<Oggetto> list = new ArrayList<>();
-
+    /**
+     * Metodo get che restituisce la lista degli oggetti nell'inventario.
+     * @return lista di oggetti dell'inventario.
+     */
     public List<Oggetto> getList() {
-        return list;
+        return this.listaOggetti;
     }
 
-    public void setList(List<Oggetto> list) {
-        this.list = list;
+    /**
+     * Metodo set per impostare la lista di oggetti nell'inventario.
+     * @param listaOggettiCorr lista oggetti.
+     */
+    public void setList(final List<Oggetto> listaOggettiCorr) {
+        this.listaOggetti = listaOggettiCorr;
     }
 
-    public void add(Oggetto o) {
-        list.add(o);
+    /**
+     * Metodo per aggiungere un oggetto nell'inventario.
+     * @param oggetto oggetto da aggiungere.
+     */
+    public void aggiungi(final Oggetto oggetto) {
+        listaOggetti.add(oggetto);
     }
-
-    public void remove(Oggetto o) {
-        list.remove(o);
+    /**
+     * Metodo per rimuovere un oggetto nell'inventario.
+     * @param oggetto oggetto da rimuovere.
+     */
+    public void rimuovi(final Oggetto oggetto) {
+        listaOggetti.remove(oggetto);
     }
 }
