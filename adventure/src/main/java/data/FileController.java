@@ -5,36 +5,71 @@
 package data;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
- *
- * CLASSE PER LA GESTIONE DEI FILE
- * 
- * CREA FILE
-
- * RESTITUZIONE DI UN FILE CON UN DETERMINATO NOME
- * 
+ * Classe per la gestione dei file.
  */
-public class FileController implements FileInterface{
+public class FileController implements FileInterface {
     //nome del file da creare
+    //verificare se sono private!!!
     protected String nameFile;
+    protected String directory;
     protected File file;
-    
+    /**
+     * Costruttore della Classe FileController.
+     * @param nomeFileCorrente nome del file.
+     * @param directoryCorrente percorso della cartella del file
+     */
+    public FileController(final String nomeFileCorrente, final String directoryCorrente) {
+        this.nameFile = nomeFileCorrente;
+        this.directory = directoryCorrente;
+    }
+
+    /**
+     * Costruttore della Classe FileController.
+     */
+    public FileController() {
+    }
+
+    /**
+     * Metodo booleano che crea il file: Restituisce vero se lo crea.
+     * Falso altrimenti.
+     */
     @Override
-    public boolean create() { 
-        //
-        return false;       
+    public boolean create() {
+        try {
+            this.file = new File(directory + nameFile);
+            if (file.createNewFile()) {
+                System.out.println("File creato con successo.");
+            } else {
+                System.out.println("File esistente.");
+            }
+            return true;
+        } catch (IOException e) {
+            System.out.println("Ciao sono un errore");
+        }
+        return false;
     }
-    
-    public void setNameFile(String name){
-        //
+
+    /**
+     * Metodo set che imposta il nome del file.
+     */
+    public void setNameFile(final String name) {
+        this.nameFile = name;
     }
-    
-    public String getNameFile(){
+
+    /**
+     * Metodo get che restituisce il nome del file.
+     */
+    public String getNameFile() {
         return nameFile;
     }
-    
-    public File getFile(){      
-        return null;
+
+    /**
+     * Metodo get che restituisce il file.
+     */
+    public File getFile() {
+        return file;
     }
 }
