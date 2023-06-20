@@ -13,9 +13,9 @@ import java.util.Set;
  *
  * @author pierpaolo
  */
-public class AdvObjectContainer extends AdvObject {
+public class AdvObjectContainer extends Oggetto {
 
-    private List<AdvObject> list = new ArrayList<>();
+    private List<Oggetto> list = new ArrayList<>();
 
     public AdvObjectContainer(int id) {
         super(id);
@@ -33,19 +33,19 @@ public class AdvObjectContainer extends AdvObject {
         super(id, name, description, alias);
     }
 
-    public List<AdvObject> getList() {
+    public List<Oggetto> getList() {
         return list;
     }
 
-    public void setList(List<AdvObject> list) {
+    public void setList(List<Oggetto> list) {
         this.list = list;
     }
 
-    public void add(AdvObject o) {
+    public void add(Oggetto o) {
         list.add(o);
     }
 
-    public void remove(AdvObject o) {
+    public void remove(Oggetto o) {
         list.remove(o);
     }
 

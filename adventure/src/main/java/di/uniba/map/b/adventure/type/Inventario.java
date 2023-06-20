@@ -12,23 +12,23 @@ import java.util.List;
  *
  * @author pierpaolo
  */
-public class Inventory {
+public class Inventario {
 
-    private List<AdvObject> list = new ArrayList<>();
+    private List<Oggetto> list = new ArrayList<>();
 
-    public List<AdvObject> getList() {
+    public List<Oggetto> getList() {
         return list;
     }
 
-    public void setList(List<AdvObject> list) {
+    public void setList(List<Oggetto> list) {
         this.list = list;
     }
 
-    public void add(AdvObject o) {
+    public void add(Oggetto o) {
         list.add(o);
     }
 
-    public void remove(AdvObject o) {
+    public void remove(Oggetto o) {
         list.remove(o);
     }
 }

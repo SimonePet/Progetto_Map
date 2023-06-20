@@ -6,9 +6,9 @@
 package di.uniba.map.b.adventure;
 
 import di.uniba.map.b.adventure.parser.ParserOutput;
-import di.uniba.map.b.adventure.type.AdvObject;
-import di.uniba.map.b.adventure.type.Command;
-import di.uniba.map.b.adventure.type.Room;
+import di.uniba.map.b.adventure.type.Oggetto;
+import di.uniba.map.b.adventure.type.Comando;
+import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
 import java.io.PrintStream;
 import java.util.ArrayList;
@@ -27,10 +27,10 @@ public abstract class GameDescription {
     private boolean finish;
     private int numSeconds;
     private int numMoves;
-    private final List<Room> rooms = new ArrayList<>();
-    private final List<Command> commands = new ArrayList<>();
-    private final List<AdvObject> inventory = new ArrayList<>();
-    private Room currentRoom;
+    private final List<Stanza> rooms = new ArrayList<>();
+    private final List<Comando> commands = new ArrayList<>();
+    private final List<Oggetto> inventory = new ArrayList<>();
+    private Stanza currentRoom;
 
     
     public int getNumMoves(){
@@ -78,23 +78,23 @@ public abstract class GameDescription {
         return nameGame;
     }
     
-    public List<Room> getRooms() {
+    public List<Stanza> getRooms() {
         return rooms;
     }
 
-    public List<Command> getCommands() {
+    public List<Comando> getCommands() {
         return commands;
     }
 
-    public Room getCurrentRoom() {
+    public Stanza getCurrentRoom() {
         return currentRoom;
     }
 
-    public void setCurrentRoom(Room currentRoom) {
+    public void setCurrentRoom(Stanza currentRoom) {
         this.currentRoom = currentRoom;
     }
 
-    public List<AdvObject> getInventory() {
+    public List<Oggetto> getInventory() {
         return inventory;
     }
 

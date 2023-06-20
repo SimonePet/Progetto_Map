@@ -6,8 +6,9 @@
 package di.uniba.map.b.adventure.parser;
 
 import di.uniba.map.b.adventure.Utils;
-import di.uniba.map.b.adventure.type.AdvObject;
-import di.uniba.map.b.adventure.type.Command;
+import di.uniba.map.b.adventure.type.Oggetto;
+import di.uniba.map.b.adventure.type.Comando;
+
 import java.util.List;
 import java.util.Set;
 
@@ -23,7 +24,7 @@ public class Parser {
         this.stopwords = stopwords;
     }
 
-    private int checkForCommand(String token, List<Command> commands) {
+    private int checkForCommand(String token, List<Comando> commands) {
         for (int i = 0; i < commands.size(); i++) {
             if (commands.get(i).getName().equals(token) || commands.get(i).getAlias().contains(token)) {
                 return i;
@@ -32,20 +33,20 @@ public class Parser {
         return -1;
     }
 
-    private int checkForObject(String token, List<AdvObject> obejcts) {
+    private int checkForObject(String token, List<Oggetto> obejcts) {
         for (int i = 0; i < obejcts.size(); i++) {
-            if (obejcts.get(i).getName().equals(token) || obejcts.get(i).getAlias().contains(token)) {
+            if (obejcts.get(i).getNomeOggetto().equals(token) || obejcts.get(i).getAliasOggetto().contains(token)) {
                 return i;
             }
         }
         return -1;
     }
 
-    /* ATTENZIONE: il parser è implementato in modo abbastanza independete dalla lingua, ma riconosce solo 
-    * frasi semplici del tipo <azione> <oggetto> <oggetto>. Eventuali articoli o preposizioni vengono semplicemente
-    * rimossi.
+    /* ATTENZIONE: il parser è implementato in modo abbastanza independete dalla lingua, ma riconosce solo
+     * frasi semplici del tipo <azione> <oggetto> <oggetto>. Eventuali articoli o preposizioni vengono semplicemente
+     * rimossi.
      */
-    public ParserOutput parse(String command, List<Command> commands, List<AdvObject> objects, List<AdvObject> inventory) {
+    public ParserOutput parse(String command, List<Comando> commands, List<Oggetto> objects, List<Oggetto> inventory) {
         List<String> tokens = Utils.parseString(command, stopwords);
         if (!tokens.isEmpty()) {
             int ic = checkForCommand(tokens.get(0), commands);
