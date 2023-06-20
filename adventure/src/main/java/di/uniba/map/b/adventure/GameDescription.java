@@ -21,12 +21,12 @@ import java.util.List;
 public abstract class GameDescription {
 
     
-    private int numMinutes;
     private String username;
     private String nameGame;   
-    private boolean finish;
-    private int numSeconds;
-    private int numMoves;
+    private boolean finish=false;
+    private int numMinutes=0;
+    private int numSeconds=0;
+    private int numMoves=0;
     private final List<Stanza> rooms = new ArrayList<>();
     private final List<Comando> commands = new ArrayList<>();
     private final List<Oggetto> inventory = new ArrayList<>();
