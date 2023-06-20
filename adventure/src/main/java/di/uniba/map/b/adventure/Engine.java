@@ -18,7 +18,7 @@ import java.util.Set;
 import javax.swing.JFrame;
 
 /**
- * ATTENZIONE: l'Engine è molto spartano, in realtà demanda la logica alla
+ * ATTENZIONE: l'Engine è molto spartanoo, in realtà demanda la logica alla
  * classe che implementa GameDescription e si occupa di gestire I/O sul
  * terminale.
  *
