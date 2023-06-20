@@ -24,7 +24,6 @@ public class JFrameApp extends javax.swing.JFrame {
 
     /**
      * Creates new form JFrameApp
-     * @param username
      */
     public JFrameApp() {
         initComponents();        
@@ -186,8 +185,6 @@ public class JFrameApp extends javax.swing.JFrame {
         //uccidi thread
         thread.interrupt();
         System.out.println("Thread interrotto");
-        JDialogAbbandona d = new JDialogAbbandona(this,true, engine);
-        d.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
@@ -195,9 +192,8 @@ public class JFrameApp extends javax.swing.JFrame {
         editor.setText("");
         Engine e = new Engine(new FireHouseGame());
         this.engine = e;
-        e.getGame().setUsername(username);
-        
         GameDescription game = engine.getGame();
+        String s = game.getCurrentRoom().getName();
         SimpleAttributeSet attributes = new SimpleAttributeSet();
         Document doc = editor.getDocument();
                
@@ -231,15 +227,11 @@ public class JFrameApp extends javax.swing.JFrame {
         return editor;
     }
     
-    public Engine getEngine(){
-        return engine;
-    }
-    
     
     /**
      * @param args the command line arguments
      */
-    public void main(String user) {
+    public void main() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -266,7 +258,6 @@ public class JFrameApp extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new JFrameApp().setVisible(true);
-                username = user;
             }
         });
     }
@@ -285,6 +276,5 @@ public class JFrameApp extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     private Engine engine;
     private Thread thread;
-    private String username;
 }
 
