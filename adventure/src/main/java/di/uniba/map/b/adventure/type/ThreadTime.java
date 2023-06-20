@@ -50,7 +50,8 @@ public class ThreadTime implements Runnable{
             try {
                 Thread.sleep(1000);
             }catch(InterruptedException ex){
-                System.out.println("Ciao");
+                System.out.println("Thread interrotto");
+                return;
             }
         }
     }

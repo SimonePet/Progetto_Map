@@ -5,6 +5,7 @@
 package data;
 
 import di.uniba.map.b.adventure.Engine;
+import di.uniba.map.b.adventure.GameDescription;
 import java.beans.Statement;
 import java.sql.*;
 /**
@@ -13,7 +14,8 @@ import java.sql.*;
  *  SET/GET di username e password
  */
 public abstract class Database {
-    protected static final String CREATE_TABLE_MATCH = "CREATE TABLE IF NOT EXISTS match (Id INT PRIMARY KEY, nome VARCHAR(1024), username VARCHAR(1024), punteggio INT DEFAULT 0, numMinuti int DEFAULT 0, numSecondi int DEFAULT 0, TERMINATA boolean DEFAULT FALSE, num_mosse INT DEFAULT 0)";
+    protected static final String CREA_TABELLA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (Id INT PRIMARY KEY AUTO_INCREMENT, username VARCHAR(1024), punteggio INT DEFAULT 0, numMinuti int DEFAULT 0, numSecondi int DEFAULT 0, TERMINATA boolean DEFAULT FALSE, num_mosse INT DEFAULT 0)";
+    protected static final String INSERISCI_PARTITA = "INSERT INTO partita (username,punteggio,numMinuti,numSecondi,TERMINATA,num_mosse) VALUES(?,?,?,?,?,?)";
     private String username;
     private String password;
     
@@ -43,7 +45,7 @@ public abstract class Database {
     public abstract boolean creaTabellaPartita();
     
     /* salva nuova partita nella tabella */
-    public abstract boolean salvaPartita(String username, boolean terminata, int numSecondi, int numMinuti, int num_mosse);
+    public abstract boolean salvaPartita(String username, boolean terminata, int numSecondi, int numMinuti, int num_mosse, GameDescription game);
     
     /* recupera punteggio partita */
     public abstract int getPunteggio(int id);

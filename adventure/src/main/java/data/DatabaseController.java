@@ -4,7 +4,7 @@
  */
 package data;
 
-import di.uniba.map.b.adventure.Engine;
+import di.uniba.map.b.adventure.GameDescription;
 import java.sql.*;
 
 /**
@@ -18,36 +18,63 @@ import java.sql.*;
  */
 public class DatabaseController extends Database{
     
-    public DatabaseController(String username, String password){
+    private Connection conn;
+    
+    public DatabaseController(String username, String password) throws SQLException{
         super.setUsername(username);
         super.setPassword(password);
+        Connection connessione = super.connect();
+        this.conn = connessione;
     }
-    
-    
+       
     @Override
     public boolean creaTabellaPartita() {
         try {
-            Connection conn = super.connect();
             Statement stm = conn.createStatement();
             //crea tabella solo se non esiste
-            stm.executeUpdate(CREATE_TABLE_MATCH);
+            stm.executeUpdate(CREA_TABELLA_PARTITA);
             stm.close();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        return false;
+        return true;
     }
     
     /* salva nuova partita alla tabella */   
     @Override
-    public boolean salvaPartita(String username, boolean terminata, int numSecondi, int numMinuti, int num_mosse) {
-        if(terminata){
-            //calcola punteggio con formula legata a tempo e numero mosse
-            //inserimento completo con punteggio   
-        }else{
-            //inserimento senza punteggio  
+    public boolean salvaPartita(String username, boolean finish, int numSeconds, int numMin, int numMoves, GameDescription game) {
+        //calcola punteggio con formula 
+        int punteggio = 100;
+        int penalizzazioneMosse = 1*game.getNumMoves();
+        int penalizzazioneMin = 5*game.getNumMinutes();
+        int bonusPartitaVinta = 15;
+        punteggio = punteggio - penalizzazioneMosse - penalizzazioneMin;
+        
+        if (game.isFinished()){
+            punteggio += bonusPartitaVinta;
         }
-        return false;
+        if(punteggio>100){
+            punteggio = 100;
+        }else if(punteggio<0){
+            punteggio = 0;
+        }           
+        try {
+            //inserimento completo con punteggio
+            PreparedStatement pstm = conn.prepareStatement(INSERISCI_PARTITA);
+            pstm.setString(1, game.getUsername());
+            pstm.setInt(2,punteggio);
+            pstm.setInt(3, game.getNumMinutes());
+            pstm.setInt(4, game.getNumSeconds());
+            pstm.setBoolean(5, finish);
+            pstm.setInt(6, game.getNumMoves());
+            pstm.executeUpdate();
+            pstm.close();
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+        
+        System.out.println("PARTITA SALVATA");
+        return true;
     }
     
     /* recupera punteggio della partita */

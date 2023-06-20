@@ -6,6 +6,10 @@ package swing;
 
 import data.DatabaseController;
 import di.uniba.map.b.adventure.Engine;
+import di.uniba.map.b.adventure.GameDescription;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -88,17 +92,23 @@ public class JDialogAbbandona extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void YesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YesButtonActionPerformed
-        DatabaseController db = new DatabaseController("sa","");
-        //crea la tabella match solo se non esiste
-        db.creaTabellaPartita();
-        //salva partita su DB
-        String username = engine.getGame().getUsername();
-        boolean b = engine.getGame().isFinished();
-        int numSeconds = engine.getGame().getNumSeconds();
-        int numMinutes = engine.getGame().getNumMinutes();
-        int numMoves = engine.getGame().getNumMoves();
-        db.salvaPartita(username, b, numSeconds, numMinutes, numMoves);
-        this.dispose();
+        DatabaseController db;
+        try {
+            db = new DatabaseController("sa","");
+            //crea la tabella match solo se non esiste
+            db.creaTabellaPartita();
+            //salva partita su DB
+            String username = engine.getGame().getUsername();
+            boolean b = engine.getGame().isFinished();
+            int numSeconds = engine.getGame().getNumSeconds();
+            int numMinutes = engine.getGame().getNumMinutes();
+            int numMoves = engine.getGame().getNumMoves();
+            GameDescription game = engine.getGame();
+            db.salvaPartita(username, b, numSeconds, numMinutes, numMoves, game);
+            this.dispose();
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
     }//GEN-LAST:event_YesButtonActionPerformed
 
     /**

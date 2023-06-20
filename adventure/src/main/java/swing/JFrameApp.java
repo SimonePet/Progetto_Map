@@ -161,17 +161,19 @@ public class JFrameApp extends javax.swing.JFrame {
         GameDescription game = engine.getGame();
         Parser parser = engine.getParser();
         try{
-        ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
-        if (p == null || p.getCommand() == null) {        
-                doc.insertString(doc.getLength(), "Non capisco quello che mi vuoi dire.\n", attributes);
-        } else if (p.getCommand() != null && p.getCommand().getType() == TipoComando.FINE) {
-            doc.insertString(doc.getLength(), "Addio.\n", attributes);
-            //setta il textField non editabile
-            
-        }else{
-            game.nextMove(p, System.out, this);
-            System.out.println();
-        }
+            ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
+            int numMosse = game.getNumMoves();
+            game.setNumMoves(game.getNumMoves()+1);
+            if (p == null || p.getCommand() == null) {        
+                    doc.insertString(doc.getLength(), "Non capisco quello che mi vuoi dire.\n", attributes);
+            } else if (p.getCommand() != null && p.getCommand().getType() == TipoComando.FINE) {
+                doc.insertString(doc.getLength(), "Addio.\n", attributes);
+                //setta il textField non editabile
+
+            }else{
+                game.nextMove(p, System.out, this);
+                System.out.println();
+            }
         }catch(BadLocationException e){
             System.out.println(e.getMessage());
         }
