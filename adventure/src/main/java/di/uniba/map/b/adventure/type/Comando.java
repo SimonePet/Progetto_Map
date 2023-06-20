@@ -14,49 +14,49 @@ import java.util.Set;
  *
  * @author pierpaolo
  */
-public class Command {
+public class Comando {
 
-    private final CommandType type;
+    private final TipoComando tipoComando;
 
-    private final String name;
+    private final String nomeComando;
 
-    private Set<String> alias;
+    private Set<String> aliasComando;
 
-    public Command(CommandType type, String name) {
-        this.type = type;
-        this.name = name;
+    public Comando(TipoComando type, String name) {
+        this.tipoComando = type;
+        this.nomeComando = name;
     }
 
-    public Command(CommandType type, String name, Set<String> alias) {
-        this.type = type;
-        this.name = name;
-        this.alias = alias;
+    public Comando(TipoComando type, String name, Set<String> alias) {
+        this.tipoComando = type;
+        this.nomeComando = name;
+        this.aliasComando = alias;
     }
 
     public String getName() {
-        return name;
+        return this.nomeComando;
     }
 
     public Set<String> getAlias() {
-        return alias;
+        return this.aliasComando;
     }
 
     public void setAlias(Set<String> alias) {
-        this.alias = alias;
+        this.aliasComando = alias;
     }
 
     public void setAlias(String[] alias) {
-        this.alias = new HashSet<>(Arrays.asList(alias));
+        this.aliasComando = new HashSet<>(Arrays.asList(alias));
     }
 
-    public CommandType getType() {
-        return type;
+    public TipoComando getType() {
+        return this.tipoComando;
     }
 
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 97 * hash + Objects.hashCode(this.type);
+        hash = 97 * hash + Objects.hashCode(this.tipoComando);
         return hash;
     }
 
@@ -71,8 +71,8 @@ public class Command {
         if (getClass() != obj.getClass()) {
             return false;
         }
-        final Command other = (Command) obj;
-        if (this.type != other.type) {
+        final Comando other = (Comando) obj;
+        if (this.tipoComando != other.tipoComando) {
             return false;
         }
         return true;
