@@ -86,13 +86,7 @@ public class DatabaseController extends Database{
             pstm.setInt(1, id);
             ResultSet rs = pstm.executeQuery();
             while(rs.next()){
-                System.out.println("\nid:"+rs.getInt(1));
-                System.out.println("\nnome partita:"+rs.getString(2));
-                System.out.println("\nusername:"+rs.getString(3));
                 System.out.println("\npunteggio:"+rs.getInt(4));
-                System.out.println("\nDurata partita: "+rs.getInt(5)+"minuti e "+rs.getInt(6)+" secondi");
-                System.out.println("\nTerminata:"+rs.getBoolean(7));
-                System.out.println("\nNumero mosse:"+rs.getInt(8));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
