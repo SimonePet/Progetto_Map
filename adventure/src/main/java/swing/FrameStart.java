@@ -95,8 +95,8 @@ public class FrameStart extends javax.swing.JFrame {
     private void newMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMatchActionPerformed
         String username = usernameField.getText();
         if(!username.equalsIgnoreCase("")){
-            JFrameApp frame = new JFrameApp();
-            frame.main(username);
+            JFrameApp frame = new JFrameApp(username);
+            frame.main();
             LabelErrorName.setText("");
         }else{
             LabelErrorName.setText("Username mancante!");

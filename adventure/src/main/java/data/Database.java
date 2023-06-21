@@ -14,8 +14,11 @@ import java.sql.*;
  *  SET/GET di username e password
  */
 public abstract class Database {
-    protected static final String CREA_TABELLA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (Id INT PRIMARY KEY AUTO_INCREMENT, username VARCHAR(1024), punteggio INT DEFAULT 0, numMinuti int DEFAULT 0, numSecondi int DEFAULT 0, TERMINATA boolean DEFAULT FALSE, num_mosse INT DEFAULT 0)";
-    protected static final String INSERISCI_PARTITA = "INSERT INTO partita (username,punteggio,numMinuti,numSecondi,TERMINATA,num_mosse) VALUES(?,?,?,?,?,?)";
+    protected static final String CREA_TABELLA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (Id INT PRIMARY KEY AUTO_INCREMENT, nomePartita VARCHAR(1024) UNIQUE, username VARCHAR(1024), punteggio INT DEFAULT 0, numMinuti int DEFAULT 0, numSecondi int DEFAULT 0, terminata boolean DEFAULT FALSE, numMosse INT DEFAULT 0)";
+    protected static final String INSERISCI_PARTITA = "INSERT INTO partita (nomePartita,username,punteggio,numMinuti,numSecondi,terminata,numMosse) VALUES(?,?,?,?,?,?,?)";
+    protected static final String RECUPERA_PUNTEGGIO_CON_ID = "SELECT id,nomePartita, username,punteggio,numMinuti,numSecondi,terminata,numMosse FROM partita WHERE id=?";
+    protected static final String RECUPERA_PUNTEGGIO_CON_NOME_PARTITA = "SELECT id,nomePartita, username,punteggio,numMinuti,numSecondi,terminata,numMosse FROM partita WHERE nomePartita=?";
+    protected static final String STAMPA_PARTITE = "SELECT id,nomePartita, username,punteggio,numMinuti,numSecondi,terminata,numMosse FROM partita";
     private String username;
     private String password;
     
@@ -45,8 +48,13 @@ public abstract class Database {
     public abstract boolean creaTabellaPartita();
     
     /* salva nuova partita nella tabella */
-    public abstract boolean salvaPartita(String username, boolean terminata, int numSecondi, int numMinuti, int num_mosse, GameDescription game);
+    public abstract boolean salvaPartita(String nomePartita, String username, boolean terminata, int numSecondi, int numMinuti, int num_mosse, GameDescription game);
     
-    /* recupera punteggio partita */
+    /* recupera punteggio partita con id*/
     public abstract int getPunteggio(int id);
+    
+    /* recupera punteggio partita con il nome della partita */
+    public abstract int getPunteggio(String nomePartita);
+      
+    
 }
