@@ -20,9 +20,8 @@ import java.util.List;
  */
 public abstract class GameDescription {
 
-    
-    private String username;
-    private String nameGame;   
+    private String nomePartita;
+    private String username;  
     private boolean finish=false;
     private int numMinutes=0;
     private int numSeconds=0;
@@ -32,6 +31,14 @@ public abstract class GameDescription {
     private final List<Oggetto> inventory = new ArrayList<>();
     private Stanza currentRoom;
 
+    
+    public String getNomePartita(){
+        return nomePartita;
+    }
+    
+    public void setNomePartita(String nomePartita){
+        this.nomePartita = nomePartita;
+    }
     
     public int getNumMoves(){
         return numMoves;
@@ -67,15 +74,6 @@ public abstract class GameDescription {
 
     public String getUsername(){
         return username;
-    }
-
-    
-    public void setNameGame(String name){
-        this.nameGame = name;
-    }
-    
-    public String getNameGame(){
-        return nameGame;
     }
     
     public List<Stanza> getRooms() {

@@ -23,7 +23,8 @@ import javax.swing.text.SimpleAttributeSet;
 public class JFrameApp extends javax.swing.JFrame {
 
 
-    public JFrameApp() {
+    public JFrameApp(String username) {
+        this.username = username;
         initComponents();        
     }
 
@@ -221,7 +222,7 @@ public class JFrameApp extends javax.swing.JFrame {
         Document doc = editor.getDocument();
         try{
             doc.insertString(doc.getLength(),s, attributes);              
-        }catch(Exception ex){
+        }catch(BadLocationException ex){
             System.err.println("errore");
         }
     }
@@ -236,9 +237,10 @@ public class JFrameApp extends javax.swing.JFrame {
     
     
     /**
+     * @param user
      * @param args the command line arguments
      */
-    public void main(String user) {
+    public void main() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -263,9 +265,9 @@ public class JFrameApp extends javax.swing.JFrame {
         //</editor-fold>
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
             public void run() {
-                new JFrameApp().setVisible(true);
-                username = user;
+                new JFrameApp(username).setVisible(true);
             }
         });
     }

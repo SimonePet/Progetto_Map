@@ -39,6 +39,9 @@ public class JDialogAbbandona extends javax.swing.JDialog {
         jLabel1 = new javax.swing.JLabel();
         YesButton = new javax.swing.JButton();
         NoButton = new javax.swing.JButton();
+        jNomePartita = new javax.swing.JTextField();
+        labelNomePartita = new javax.swing.JLabel();
+        jLabelErrore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -55,6 +58,14 @@ public class JDialogAbbandona extends javax.swing.JDialog {
 
         NoButton.setText("NO");
 
+        jNomePartita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jNomePartitaActionPerformed(evt);
+            }
+        });
+
+        labelNomePartita.setText("Nome partita:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -62,54 +73,79 @@ public class JDialogAbbandona extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(82, 82, 82)
+                        .addComponent(labelNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(69, 69, 69)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(YesButton)
+                                    .addGap(43, 43, 43)
+                                    .addComponent(NoButton))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jLabelErrore, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jNomePartita, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 120, Short.MAX_VALUE)))))
+                    .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(59, 59, 59)
-                        .addComponent(YesButton)
-                        .addGap(56, 56, 56)
-                        .addComponent(NoButton))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(100, 100, 100)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(87, Short.MAX_VALUE))
+                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(22, 22, 22)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(21, 21, 21)
                 .addComponent(jLabel1)
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(YesButton)
                     .addComponent(NoButton))
-                .addContainerGap(53, Short.MAX_VALUE))
+                .addGap(36, 36, 36)
+                .addComponent(labelNomePartita)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabelErrore, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void YesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YesButtonActionPerformed
-        DatabaseController db;
-        try {
-            db = new DatabaseController("sa","");
-            //crea la tabella match solo se non esiste
-            db.creaTabellaPartita();
-            //salva partita su DB
-            String username = engine.getGame().getUsername();
-            boolean b = engine.getGame().isFinished();
-            int numSeconds = engine.getGame().getNumSeconds();
-            int numMinutes = engine.getGame().getNumMinutes();
-            int numMoves = engine.getGame().getNumMoves();
-            GameDescription game = engine.getGame();
-            db.salvaPartita(username, b, numSeconds, numMinutes, numMoves, game);
-            this.dispose();
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
+        //recupera nome partita
+        String nomePartita = jNomePartita.getText();      
+        if(nomePartita.equalsIgnoreCase("")){
+            jLabelErrore.setText("inserire nome partita!!");
+        }else{
+            engine.getGame().setNomePartita(nomePartita);
+            DatabaseController db;
+            try {
+                db = new DatabaseController("sa","");
+                //crea la tabella match solo se non esiste
+                db.creaTabellaPartita();
+                //salva partita su DB
+                String username = engine.getGame().getUsername();
+                boolean b = engine.getGame().isFinished();
+                int numSeconds = engine.getGame().getNumSeconds();
+                int numMinutes = engine.getGame().getNumMinutes();
+                int numMoves = engine.getGame().getNumMoves();
+                GameDescription game = engine.getGame();
+                db.salvaPartita(nomePartita, username, b, numSeconds, numMinutes, numMoves, game);
+                db.stampaPartite();
+                this.dispose();
+            } catch (SQLException ex) {
+                System.err.println(ex.getMessage());
+            }
         }
     }//GEN-LAST:event_YesButtonActionPerformed
+
+    private void jNomePartitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomePartitaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jNomePartitaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,7 +193,10 @@ public class JDialogAbbandona extends javax.swing.JDialog {
     private javax.swing.JButton NoButton;
     private javax.swing.JButton YesButton;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabelErrore;
+    private javax.swing.JTextField jNomePartita;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel labelNomePartita;
     // End of variables declaration//GEN-END:variables
     private static Engine engine;
 }
