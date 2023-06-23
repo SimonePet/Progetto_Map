@@ -399,21 +399,22 @@ public class GiocoNaufragioIsola extends GameDescription {
     public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame) {
         boolean noroom = false;
         boolean move = false;
+        
         //frame.writeTextOnEditor("\n"+getCurrentRoom().getNomeStanza()+"\n");
-        frame.writeTextOnEditor("\n\n");
+        frame.scrviSuEditor("\n\n");
         if (p.getCommand() == null) {
-            frame.writeTextOnEditor("Non ho capito cosa devo fare! Prova con un altro comando.\n");
+            frame.scrviSuEditor("Non ho capito cosa devo fare! Prova con un altro comando.\n");
         } else {
             TipoComando comandoRiconosciuto = p.getCommand().getTipoComando();
             //move
             switch (comandoRiconosciuto) {
                 case NORD:
                     //frame.writeTextOnEditor("\n=====NORD=====\n");
-                    frame.writeTextOnEditor(getCurrentRoom().getMessaggioNord());
-                    frame.writeTextOnEditor("\n");
+                    frame.scrviSuEditor(getCurrentRoom().getMessaggioNord());
+                    frame.scrviSuEditor("\n");
                     if (getCurrentRoom().getNord() != null && getCurrentRoom().getNord().getVisibile()) {
                         setCurrentRoom(getCurrentRoom().getNord());
-                        frame.writeTextOnEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                        frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
                         move = true;
                     } else {
                         noroom = true;
@@ -421,11 +422,11 @@ public class GiocoNaufragioIsola extends GameDescription {
                     break;
                 case SUD:
                     //frame.writeTextOnEditor("\n=====SUD=====\n");
-                    frame.writeTextOnEditor(getCurrentRoom().getMessaggioSud());
-                    frame.writeTextOnEditor("\n");
+                    frame.scrviSuEditor(getCurrentRoom().getMessaggioSud());
+                    frame.scrviSuEditor("\n");
                     if (getCurrentRoom().getSud() != null && getCurrentRoom().getSud().getVisibile()) {
                         setCurrentRoom(getCurrentRoom().getSud());
-                        frame.writeTextOnEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                        frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
                         move = true;
                     } else {
                         noroom = true;
@@ -433,11 +434,11 @@ public class GiocoNaufragioIsola extends GameDescription {
                     break;
                 case EST:
                     //frame.writeTextOnEditor("\n=====EST=====\n");
-                    frame.writeTextOnEditor(getCurrentRoom().getMessaggioEst());
-                    frame.writeTextOnEditor("\n");
+                    frame.scrviSuEditor(getCurrentRoom().getMessaggioEst());
+                    frame.scrviSuEditor("\n");
                     if (getCurrentRoom().getEst() != null && getCurrentRoom().getEst().getVisibile()) {
                         setCurrentRoom(getCurrentRoom().getEst());
-                        frame.writeTextOnEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                        frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
                         move = true;
                     } else {
                         noroom = true;
@@ -445,27 +446,27 @@ public class GiocoNaufragioIsola extends GameDescription {
                     break;
                 case OVEST:
                     //frame.writeTextOnEditor("\n=====OVEST=====\n");
-                    frame.writeTextOnEditor(getCurrentRoom().getMessaggioOvest());
-                    frame.writeTextOnEditor("\n");
+                    frame.scrviSuEditor(getCurrentRoom().getMessaggioOvest());
+                    frame.scrviSuEditor("\n");
                     if (getCurrentRoom().getOvest() != null && getCurrentRoom().getOvest().getVisibile()) {
                         setCurrentRoom(getCurrentRoom().getOvest());
-                        frame.writeTextOnEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                        frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
                         move = true;
                     } else {
                         noroom = true;
                     }
                     break;
                 case OSSERVA:
-                    frame.writeTextOnEditor(getCurrentRoom().getOsserva());
+                    frame.scrviSuEditor(getCurrentRoom().getOsserva());
                     break;
                 case INVENTARIO:
                     if (!getInventory().isEmpty()) {
-                        frame.writeTextOnEditor("Nel tuo inventario ci sono:\n");
+                        frame.scrviSuEditor("Nel tuo inventario ci sono:\n");
                         for (Oggetto oggettoInv : getInventory()) {
-                            frame.writeTextOnEditor(oggettoInv.getNomeOggetto() + ": " + oggettoInv.getDescrizioneOggetto() + "\n");
+                            frame.scrviSuEditor(oggettoInv.getNomeOggetto() + ": " + oggettoInv.getDescrizioneOggetto() + "\n");
                         }
                     }else {
-                        frame.writeTextOnEditor("Il tuo inventario e' vuoto.");
+                        frame.scrviSuEditor("Il tuo inventario e' vuoto.");
                     }
                     break;
                 case RACCOGLI:
@@ -473,12 +474,12 @@ public class GiocoNaufragioIsola extends GameDescription {
                         if (p.getObject().isRaccogglibile()) {
                             getInventory().add(p.getObject());
                             getCurrentRoom().getObjects().remove(p.getObject());
-                            frame.writeTextOnEditor("Hai raccolto: " + p.getObject().getNomeOggetto());
+                            frame.scrviSuEditor("Hai raccolto: " + p.getObject().getNomeOggetto());
                         } else {
-                            frame.writeTextOnEditor("Non puoi raccogliere questo oggetto.");
+                            frame.scrviSuEditor("Non puoi raccogliere questo oggetto.");
                         }
                     } else {
-                        frame.writeTextOnEditor("Non c'è niente da raccogliere qui.");
+                        frame.scrviSuEditor("Non c'è niente da raccogliere qui.");
                     }
                     break;
                 case LASCIA:
@@ -488,19 +489,17 @@ public class GiocoNaufragioIsola extends GameDescription {
                         if(getInventory().contains(p.getInvObject())){
                             getInventory().remove(p.getInvObject());
                             getCurrentRoom().getObjects().add(p.getInvObject());
-                            frame.writeTextOnEditor("Hai lasciato: " + p.getInvObject().getNomeOggetto());
+                            frame.scrviSuEditor("Hai lasciato: " + p.getInvObject().getNomeOggetto());
                         }else{
-                            frame.writeTextOnEditor("Non possiedi questo oggetto.");
+                            frame.scrviSuEditor("Non possiedi questo oggetto.");
                         }
                     } else {
-                        frame.writeTextOnEditor("Non capisco di che oggetto parli.");
+                        frame.scrviSuEditor("Non capisco di che oggetto parli.");
                     }
             }
         }
+        frame.scriviSuLabelStanza(frame.getEngine().getGame().getCurrentRoom().getNomeStanza());
     }
-
-
-
 
             /*
             } else if (p.getCommand().getTipoComando() == TipoComando.OSSERVA) {
