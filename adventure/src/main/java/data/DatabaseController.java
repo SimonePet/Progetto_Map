@@ -129,5 +129,16 @@ public class DatabaseController extends Database{
         } 
     }
     
+    public ResultSet getPartite() throws SQLException{
+        try{
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(STAMPA_PARTITE);   
+            return rs;
+        }catch(SQLException ex){       
+            System.err.println(ex.getMessage());
+        }
+        return null;
+    }
+    
     
 }

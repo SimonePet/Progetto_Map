@@ -57,6 +57,11 @@ public class JDialogAbbandona extends javax.swing.JDialog {
         });
 
         NoButton.setText("NO");
+        NoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                NoButtonActionPerformed(evt);
+            }
+        });
 
         jNomePartita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -146,6 +151,11 @@ public class JDialogAbbandona extends javax.swing.JDialog {
     private void jNomePartitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomePartitaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jNomePartitaActionPerformed
+
+    private void NoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoButtonActionPerformed
+        // TODO add your handling code here:
+        this.dispose();
+    }//GEN-LAST:event_NoButtonActionPerformed
 
     /**
      * @param args the command line arguments

@@ -26,11 +26,30 @@ public abstract class GameDescription {
     private int numMinutes=0;
     private int numSeconds=0;
     private int numMoves=0;
+    private int punteggio=100;
     private final List<Stanza> rooms = new ArrayList<>();
     private final List<Comando> commands = new ArrayList<>();
     private final List<Oggetto> inventory = new ArrayList<>();
     private Stanza currentRoom;
-
+    
+    public void setPunteggio(){
+        int penalizzazioneMosse = 1*this.getNumMoves();
+        int penalizzazioneMin = 5*this.getNumMinutes();
+        int bonusPartitaVinta = 15;
+        this.punteggio = this.punteggio - penalizzazioneMosse - penalizzazioneMin;
+        if (this.isFinished()){
+            punteggio += bonusPartitaVinta;
+        }
+        if(punteggio>100){
+            this.punteggio = 100;
+        }else if(punteggio<0){
+            this.punteggio = 0;
+        } 
+    }
+    
+    public int getPunteggio(){
+        return punteggio;
+    }
     
     public String getNomePartita(){
         return nomePartita;

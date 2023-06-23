@@ -11,6 +11,7 @@ import di.uniba.map.b.adventure.parser.Parser;
 import di.uniba.map.b.adventure.parser.ParserOutput;
 import di.uniba.map.b.adventure.type.TipoComando;
 import di.uniba.map.b.adventure.type.ThreadTime;
+import javax.swing.JDialog;
 import javax.swing.JEditorPane;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
@@ -47,6 +48,10 @@ public class JFrameApp extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         timeLabel = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        labelNumMosse = new javax.swing.JLabel();
+        lblStanzaCorrente = new javax.swing.JLabel();
+        jPanel2 = new javax.swing.JPanel();
+        jButton1 = new javax.swing.JButton();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -95,7 +100,37 @@ public class JFrameApp extends javax.swing.JFrame {
 
         jLabel2.setText("Numero mosse:");
 
-        jLabel3.setText("Tempo");
+        jLabel3.setText("Tempo:");
+
+        lblStanzaCorrente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblStanzaCorrente.setForeground(javax.swing.UIManager.getDefaults().getColor("PropSheet.selectedSetBackground"));
+        lblStanzaCorrente.setToolTipText("");
+        lblStanzaCorrente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblStanzaCorrente.setOpaque(true);
+
+        jButton1.setText("VISUALIZZA STATISTICHE PERSONALI");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jButton1)
+                .addContainerGap())
+        );
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -110,27 +145,40 @@ public class JFrameApp extends javax.swing.JFrame {
                         .addComponent(buttSumbit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14))
                     .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(labelNumMosse, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(152, 152, 152)
+                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 524, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(77, 77, 77)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(53, 53, 53))))
+                            .addComponent(lblStanzaCorrente, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addGap(28, 28, 28))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(timeLabel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(labelNumMosse, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(timeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel2))
+                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(lblStanzaCorrente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel1)
@@ -141,7 +189,7 @@ public class JFrameApp extends javax.swing.JFrame {
                 .addGap(27, 27, 27))
         );
 
-        getContentPane().add(jPanel1, java.awt.BorderLayout.PAGE_END);
+        getContentPane().add(jPanel1, java.awt.BorderLayout.CENTER);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -162,6 +210,7 @@ public class JFrameApp extends javax.swing.JFrame {
             ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
             int numMosse = game.getNumMoves();
             game.setNumMoves(game.getNumMoves()+1);
+            labelNumMosse.setText(""+game.getNumMoves());
             if (p == null || p.getCommand() == null) {        
                     doc.insertString(doc.getLength(), "\nNon capisco quello che mi vuoi dire.\n", attributes);
             } else if (p.getCommand() != null && p.getCommand().getTipoComando() == TipoComando.FINE) {
@@ -192,9 +241,12 @@ public class JFrameApp extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        lblStanzaCorrente.setOpaque(true);
         editor.setText("");
         Engine e = new Engine(new GiocoNaufragioIsola());
         this.engine = e;
+        String stanzaCorrente = engine.getGame().getCurrentRoom().getNomeStanza();
+        lblStanzaCorrente.setText(stanzaCorrente);
         e.getGame().setUsername(username);
         
         GameDescription game = engine.getGame();
@@ -213,11 +265,17 @@ public class JFrameApp extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowOpened
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        JDialogStats d = new JDialogStats(this,true,engine.getGame().getUsername());
+        d.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     public void writeOnLabelTime(String time){
         timeLabel.setText(time);
     }
     
-    public void writeTextOnEditor(String s){
+    public void scrviSuEditor(String s){
         SimpleAttributeSet attributes = new SimpleAttributeSet();
         Document doc = editor.getDocument();
         try{
@@ -225,6 +283,12 @@ public class JFrameApp extends javax.swing.JFrame {
         }catch(BadLocationException ex){
             System.err.println("errore");
         }
+    }
+    
+    public void scriviSuLabelStanza(String stanzaCorrente){
+        SimpleAttributeSet attributes = new SimpleAttributeSet();
+        Document doc = editor.getDocument();
+        lblStanzaCorrente.setText(stanzaCorrente);
     }
     
     public JEditorPane getEditor(){
@@ -272,12 +336,16 @@ public class JFrameApp extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttSumbit;
     private javax.swing.JEditorPane editor;
+    private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel labelNumMosse;
+    private javax.swing.JLabel lblStanzaCorrente;
     private javax.swing.JTextField textField;
     private javax.swing.JLabel timeLabel;
     // End of variables declaration//GEN-END:variables
