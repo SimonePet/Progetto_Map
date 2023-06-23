@@ -13,23 +13,23 @@ import java.util.Set;
  *
  * @author pierpaolo
  */
-public class AdvObjectContainer extends Oggetto {
+public class OggettoContenitore extends Oggetto {
 
     private List<Oggetto> list = new ArrayList<>();
 
-    public AdvObjectContainer(int id) {
+    public OggettoContenitore(int id) {
         super(id);
     }
 
-    public AdvObjectContainer(int id, String name) {
+    public OggettoContenitore(int id, String name) {
         super(id, name);
     }
 
-    public AdvObjectContainer(int id, String name, String description) {
+    public OggettoContenitore(int id, String name, String description) {
         super(id, name, description);
     }
 
-    public AdvObjectContainer(int id, String name, String description, Set<String> alias) {
+    public OggettoContenitore(int id, String name, String description, Set<String> alias) {
         super(id, name, description, alias);
     }
 

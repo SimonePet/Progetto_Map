@@ -6,7 +6,7 @@ package swing;
 
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
-import di.uniba.map.b.adventure.games.FireHouseGame;
+import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import di.uniba.map.b.adventure.parser.Parser;
 import di.uniba.map.b.adventure.parser.ParserOutput;
 import di.uniba.map.b.adventure.type.TipoComando;
@@ -193,7 +193,7 @@ public class JFrameApp extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         editor.setText("");
-        Engine e = new Engine(new FireHouseGame());
+        Engine e = new Engine(new GiocoNaufragioIsola());
         this.engine = e;
         e.getGame().setUsername(username);
         
@@ -203,8 +203,8 @@ public class JFrameApp extends javax.swing.JFrame {
                
         try{
             doc.insertString(doc.getLength(), "* Adventure v. 0.3 - 2021-2022 *\n", attributes);
-            doc.insertString(doc.getLength(), game.getCurrentRoom().getNomeStanza()+"\n", attributes);
-            doc.insertString(doc.getLength(), game.getCurrentRoom().getDescrizioneStanza()+"\n", attributes);
+            //doc.insertString(doc.getLength(), game.getCurrentRoom().getNomeStanza()+"\n", attributes);
+            doc.insertString(doc.getLength(), game.getCurrentRoom().getDescrizioneLungaStanza()+"\n", attributes);
             //avvia Thread          
             this.thread = new Thread(new ThreadTime(this));
             thread.start();                        
@@ -236,10 +236,7 @@ public class JFrameApp extends javax.swing.JFrame {
     }
     
     
-    /**
-     * @param user
-     * @param args the command line arguments
-     */
+
     public void main() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

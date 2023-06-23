@@ -98,8 +98,6 @@ public abstract class GameDescription {
 
     public abstract void init() throws Exception;
 
-    public abstract void nextMove(ParserOutput p, PrintStream out);
-    
     public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame);
 
 }

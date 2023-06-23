@@ -18,9 +18,11 @@ public class Stanza {
 
     private String nomeStanza;
 
-    private String descrizioneStanza;
+    private String descrizioneLungaStanza;
 
-    private String look;
+    private String descrizioneCortaStanza;
+
+    private String osserva;
 
     private boolean visibile = true;
 
@@ -31,6 +33,12 @@ public class Stanza {
     private Stanza est = null;
 
     private Stanza ovest = null;
+
+    private String messaggioNord = null;
+    private String messaggioSud = null;
+    private String messaggioEst = null;
+    private String messaggioOvest = null;
+
     
     private final List<Oggetto> objects=new ArrayList<>();
 
@@ -38,10 +46,9 @@ public class Stanza {
         this.idStanza = id;
     }
 
-    public Stanza(int id, String nome, String descrizione) {
+    public Stanza(int id, String nome) {
         this.idStanza = id;
         this.nomeStanza = nome;
-        this.descrizioneStanza = descrizione;
     }
 
     public String getNomeStanza() {
@@ -52,19 +59,19 @@ public class Stanza {
         this.nomeStanza = nome;
     }
 
-    public String getDescrizioneStanza() {
-        return this.descrizioneStanza;
+    public String getDescrizioneLungaStanza() {
+        return this.descrizioneLungaStanza;
     }
 
     public void setDescription(String descrizione) {
-        this.descrizioneStanza = descrizione;
+        this.descrizioneLungaStanza = descrizione;
     }
 
-    public boolean Visibile() {
+    public boolean getVisibile() {
         return this.visibile;
     }
 
-    public void setVisible(boolean visibile) {
+    public void setVisibile(boolean visibile) {
         this.visibile = visibile;
     }
 
@@ -72,7 +79,7 @@ public class Stanza {
         return this.sud;
     }
 
-    public void setSouth(Stanza sud) {
+    public void setSud(Stanza sud) {
         this.sud = sud;
     }
 
@@ -80,7 +87,7 @@ public class Stanza {
         return this.nord;
     }
 
-    public void setNorth(Stanza nord) {
+    public void setNord(Stanza nord) {
         this.nord = nord;
     }
 
@@ -88,7 +95,7 @@ public class Stanza {
         return this.est;
     }
 
-    public void setEast(Stanza est) {
+    public void setEst(Stanza est) {
         this.est = est;
     }
 
@@ -96,9 +103,51 @@ public class Stanza {
         return this.ovest;
     }
 
-    public void setOvest(Stanza west) {
+    public void setOvest(Stanza ovest) {
         this.ovest = ovest;
     }
+
+    public void setDescrizioneCortaStanza(String descrizioneCortaStanzaCorr) {
+        this.descrizioneCortaStanza = descrizioneCortaStanzaCorr;
+    }
+
+    public void setDescrizioneCompletaStanza(String descrizioneLungaStanzaCorr) {
+        this.descrizioneLungaStanza = descrizioneLungaStanzaCorr;
+    }
+
+    public String getMessaggioNord() {
+        return this.messaggioNord;
+    }
+
+    public String getMessaggioSud() {
+        return this.messaggioSud;
+    }
+
+    public String getMessaggioEst() {
+        return this.messaggioEst;
+    }
+
+    public String getMessaggioOvest() {
+        return this.messaggioOvest;
+    }
+
+    public void setMessaggioNord(String messaggio) {
+        this.messaggioNord = messaggio;
+    }
+
+    public void setMessaggioSud(String messaggio) {
+        this.messaggioSud = messaggio;
+    }
+
+    public void setMessaggioEst(String messaggio) {
+        this.messaggioEst = messaggio;
+    }
+
+    public void setMessaggioOvest(String messaggio) {
+        this.messaggioOvest = messaggio;
+    }
+
+
 
     public List<Oggetto> getObjects() {
         return objects;
@@ -129,12 +178,12 @@ public class Stanza {
         return true;
     }
 
-    public String getLook() {
-        return look;
+    public String getOsserva() {
+        return osserva;
     }
 
-    public void setLook(String look) {
-        this.look = look;
+    public void setOsserva(String osserva) {
+        this.osserva = osserva;
     }
 
 }

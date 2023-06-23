@@ -1,4 +1,4 @@
-package di.uniba.map.b.adventure.messaggio;
+package di.uniba.map.b.adventure.messaggi;
 
 /**
  * Stringhe relative a messaggi dela costa.
@@ -11,41 +11,45 @@ public final class MessaggioCosta {
      */
     private MessaggioCosta() {
     }
-    private static final String COSTA_DESCR_CORTA = "Ti trovi su una costa rocciosa e frastagliata.";
-    private static final String COSTA_DESCR_COMPLETA = "La camminata sembra non avere fine e il tuo corpo è stanco"
+    private static final String NOME = "Costa";
+    private static final String DESCRIZIONE_CORTA = "Ti trovi su una costa rocciosa e frastagliata.";
+    private static final String DESCRIZIONE_COMPLETA = "La camminata sembra non avere fine e il tuo corpo è stanco"
             + "e dolorante. Dopo aver camminato sulla morbida sabbia, ti ritrovi ad affrontare una costa rocciosa e "
             + "frastagliata.";
-    private static final String COSTA_OSSERVA = "Roccia, pietre, sassolini! Ma non solo... sembra esserci la carcassa"
+    private static final String OSSERVA = "Roccia, pietre, sassolini! Ma non solo... sembra esserci la carcassa"
             + "di una imbarcazione.";
-    private static final String COSTA_TORNATO = "Sei tornato sulla costa rocciosa e frastagliata.";
-    private static final String COSTA_NO_NORD = "Provi a scalare la montagna, ma tu sei un uomo di mare potresti mai "
+    private static final String RITORNATO = "Sei tornato sulla costa rocciosa e frastagliata.";
+    private static final String NO_NORD = "Provi a scalare la montagna, ma tu sei un uomo di mare potresti mai "
             + "diventare improvvisamente un alpino.";
-    private static final String COSTA_SUD = "";
-    private static final String COSTA_NO_EST = "Una vasta distesa di onde...";
-    private static final String COSTA_OVEST = "";
+    private static final String SUD = "Ti sei spostato a sud della costa.";
+    private static final String NO_EST = "Una vasta distesa di onde...";
+    private static final String OVEST = "Ti sei spostato ad ovest della costa.";
 
-    public static String getCostaDescrCorta() {
-        return MessaggioCosta.COSTA_DESCR_CORTA;
+    public static String getDescrizioneCorta() {
+        return MessaggioCosta.DESCRIZIONE_CORTA;
     }
-    public static String getCostaDescrCompleta() {
-        return MessaggioCosta.COSTA_DESCR_COMPLETA;
+    public static String getDescrizioneCompleta() {
+        return MessaggioCosta.DESCRIZIONE_COMPLETA;
     }
-    public static String getCostaOsserva() {
-        return MessaggioCosta.COSTA_OSSERVA;
+    public static String getOsserva() {
+        return MessaggioCosta.OSSERVA;
     }
-    public static String getCostaTornato() {
-        return MessaggioCosta.COSTA_TORNATO;
+    public static String getRitornato() {
+        return MessaggioCosta.RITORNATO;
     }
-    public static String getCostaNoNord() {
-        return MessaggioCosta.COSTA_NO_NORD;
+    public static String getNoNord() {
+        return MessaggioCosta.NO_NORD;
     }
-    public static String getCostaSud() {
-        return MessaggioCosta.COSTA_SUD;
+    public static String getSud() {
+        return MessaggioCosta.SUD;
     }
-    public static String getCostaNoEst() {
-        return MessaggioCosta.COSTA_NO_EST;
+    public static String getNoEst() {
+        return MessaggioCosta.NO_EST;
     }
-    public static String getCostaOvest() {
-        return MessaggioCosta.COSTA_OVEST;
+    public static String getOvest() {
+        return MessaggioCosta.OVEST;
+    }
+    public static String getNome() {
+        return NOME;
     }
 }
