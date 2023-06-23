@@ -13,10 +13,10 @@ public final class MessaggioCosta {
     }
     private static final String NOME = "Costa";
     private static final String DESCRIZIONE_CORTA = "Ti trovi su una costa rocciosa e frastagliata.";
-    private static final String DESCRIZIONE_COMPLETA = "La camminata sembra non avere fine e il tuo corpo è stanco"
+    private static final String DESCRIZIONE_COMPLETA = "La camminata sembra non avere fine e il tuo corpo è stanco "
             + "e dolorante.\nDopo aver camminato sulla morbida sabbia, ti ritrovi ad affrontare una costa rocciosa e "
             + "frastagliata.";
-    private static final String OSSERVA = "Roccia, pietre, sassolini! Ma non solo... sembra esserci la carcassa"
+    private static final String OSSERVA = "Roccia, pietre, sassolini! Ma non solo... sembra esserci la carcassa "
             + "di una imbarcazione.";
     private static final String RITORNATO = "Sei tornato sulla costa rocciosa e frastagliata.";
     private static final String NO_NORD = "Provi a scalare la montagna, ma tu sei un uomo di mare potresti mai "

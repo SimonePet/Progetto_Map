@@ -103,6 +103,11 @@ public class GiocoNaufragioIsola extends GameDescription {
         lascia.setAlias(new String[]{"togli", "butta", "abbandona","posa"});
         getCommands().add(lascia);
 
+        //Comando per narrare
+        Comando narra = new Comando(TipoComando.NARRA, "narra");
+        narra.setAlias(new String[]{"racconta", "narrami", "raccontami"});
+        getCommands().add(narra);
+
 
         //Istanziazione stanza approdo
         Stanza approdo = new Stanza(0, MessaggioApprodo.getNome());
@@ -113,7 +118,9 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio di osserva
         approdo.setOsserva(MessaggioApprodo.getOsserva());
         //Imposto la visibilita della stanza
-        approdo.setVisibile(true);
+        approdo.setRaggiungibile(true);
+        //Imposto la stanza iniziale come visitata
+        approdo.setVisitata(true);
         //Imposto il messaggio per Nord
         approdo.setMessaggioNord(MessaggioApprodo.getNord());
         //Imposto il messaggio per Sud
@@ -135,7 +142,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio di osserva
         costa.setOsserva(MessaggioCosta.getOsserva());
         //Imposto la visibilita della stanza
-        costa.setVisibile(true);
+        costa.setRaggiungibile(true);
         //Imposto il messaggio per Nord
         costa.setMessaggioNord(MessaggioCosta.getNoNord());
         //Imposto il messaggio per Sud
@@ -156,7 +163,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio di osserva
         bosco.setOsserva(MessaggioBosco.getOsserva());
         //Imposto la visibilita della stanza
-        bosco.setVisibile(true);
+        bosco.setRaggiungibile(true);
         //Imposto il messaggio per Nord
         bosco.setMessaggioNord(MessaggioBosco.getNord());
         //Imposto il messaggio per Sud
@@ -177,7 +184,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio di osserva
         covo.setOsserva(MessaggioCovo.getOsserva());
         //Imposto la visibilita della stanza
-        covo.setVisibile(true);
+        covo.setRaggiungibile(true);
         //Imposto il messaggio per Nord
         covo.setMessaggioNord(MessaggioCovo.getNoNord());
         //Imposto il messaggio per Sud
@@ -198,7 +205,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio di osserva
         edificioDentro.setOsserva(MessaggioEdificioDentro.getOsserva());
         //Imposto la visibilita della stanza
-        edificioDentro.setVisibile(true);
+        edificioDentro.setRaggiungibile(true);
         //Imposto il messaggio per Nord
         edificioDentro.setMessaggioNord(MessaggioEdificioDentro.getNoNord());
         //Imposto il messaggio per Sud
@@ -219,7 +226,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio di osserva
         edificioFuori.setOsserva(MessaggioEdificioFuori.getOsserva());
         //Imposto la visibilita della stanza
-        edificioFuori.setVisibile(true);
+        edificioFuori.setRaggiungibile(true);
         //Imposto il messaggio per Nord
         edificioFuori.setMessaggioNord(MessaggioEdificioFuori.getNoNord());
         //Imposto il messaggio per Sud
@@ -260,8 +267,6 @@ public class GiocoNaufragioIsola extends GameDescription {
         sentiero.setDescrizioneCompletaStanza(MessaggioSentiero.getDescrizioneCompleta());
         //Imposto il messaggio di osserva
         sentiero.setOsserva(MessaggioSentiero.getOsserva());
-        //Imposto la visibilita della stanza
-        sentiero.setVisibile(true);
         //Imposto il messaggio per Nord
         sentiero.setMessaggioNord(MessaggioSentiero.getNord());
         //Imposto il messaggio per Sud
@@ -357,6 +362,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         Oggetto lastra = new Oggetto(5, "lastra di pietra", "Una lastra incisa.");
         lastra.setAlias(new String[]{"pietra", "lastre", "pietre", "lastra pietra"});
         grotta.getObjects().add(lastra);
+        lastra.setVisibile(false);
 
         //Lampada
         Oggetto lampada = new Oggetto(6, "lampada", "Una vecchia lampada ad olio.");
@@ -382,13 +388,22 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Corde
         Oggetto corda = new Oggetto(10, "corda", "Corda...");
         corda.setAlias(new String[]{"corde"});
-        corda.setAlias(new String[]{});
         covo.getObjects().add(corda);
 
         //Fucile
         Oggetto fucile = new Oggetto(11, "fucile", "Un fucile...");
         fucile.setAlias(new String[]{"arma"});
         covo.getObjects().add(fucile);
+
+        //Nave
+        Oggetto barca = new Oggetto(12, "barca", "Il relitto della tua imbarcazione...");
+        barca.setAlias(new String[]{"barchetta","nave","relitto"});
+        costa.getObjects().add(barca);
+
+        //Nave
+        Oggetto cartello = new Oggetto(12, "cartello", "Un incomprensibile cartello in legno...");
+        cartello.setAlias(new String[]{"insegna","scritta"});
+        sentiero.getObjects().add(cartello);
 
         setCurrentRoom(approdo);
     }
@@ -412,9 +427,13 @@ public class GiocoNaufragioIsola extends GameDescription {
                     //frame.writeTextOnEditor("\n=====NORD=====\n");
                     frame.scrviSuEditor(getCurrentRoom().getMessaggioNord());
                     frame.scrviSuEditor("\n");
-                    if (getCurrentRoom().getNord() != null && getCurrentRoom().getNord().getVisibile()) {
+                    if (getCurrentRoom().getNord() != null && getCurrentRoom().getNord().getRaggiungibile()) {
                         setCurrentRoom(getCurrentRoom().getNord());
-                        frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                        if(getCurrentRoom().getVisitata())
+                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneCortaStanza());
+                        else
+                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                        getCurrentRoom().setVisitata(true);
                         move = true;
                     } else {
                         noroom = true;
@@ -424,9 +443,13 @@ public class GiocoNaufragioIsola extends GameDescription {
                     //frame.writeTextOnEditor("\n=====SUD=====\n");
                     frame.scrviSuEditor(getCurrentRoom().getMessaggioSud());
                     frame.scrviSuEditor("\n");
-                    if (getCurrentRoom().getSud() != null && getCurrentRoom().getSud().getVisibile()) {
-                        setCurrentRoom(getCurrentRoom().getSud());
-                        frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                    if (getCurrentRoom().getSud() != null && getCurrentRoom().getSud().getRaggiungibile()) {
+                        setCurrentRoom(getCurrentRoom().getSud());;
+                        if(getCurrentRoom().getVisitata())
+                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneCortaStanza());
+                        else
+                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                        getCurrentRoom().setVisitata(true);
                         move = true;
                     } else {
                         noroom = true;
@@ -436,9 +459,14 @@ public class GiocoNaufragioIsola extends GameDescription {
                     //frame.writeTextOnEditor("\n=====EST=====\n");
                     frame.scrviSuEditor(getCurrentRoom().getMessaggioEst());
                     frame.scrviSuEditor("\n");
-                    if (getCurrentRoom().getEst() != null && getCurrentRoom().getEst().getVisibile()) {
+                    if (getCurrentRoom().getEst() != null && getCurrentRoom().getEst().getRaggiungibile()) {
                         setCurrentRoom(getCurrentRoom().getEst());
-                        frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                        getCurrentRoom().setVisitata(true);
+                        if(getCurrentRoom().getVisitata())
+                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneCortaStanza());
+                        else
+                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                        getCurrentRoom().setVisitata(true);
                         move = true;
                     } else {
                         noroom = true;
@@ -448,9 +476,13 @@ public class GiocoNaufragioIsola extends GameDescription {
                     //frame.writeTextOnEditor("\n=====OVEST=====\n");
                     frame.scrviSuEditor(getCurrentRoom().getMessaggioOvest());
                     frame.scrviSuEditor("\n");
-                    if (getCurrentRoom().getOvest() != null && getCurrentRoom().getOvest().getVisibile()) {
+                    if (getCurrentRoom().getOvest() != null && getCurrentRoom().getOvest().getRaggiungibile()) {
                         setCurrentRoom(getCurrentRoom().getOvest());
-                        frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                        if(getCurrentRoom().getVisitata())
+                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneCortaStanza());
+                        else
+                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                        getCurrentRoom().setVisitata(true);
                         move = true;
                     } else {
                         noroom = true;
@@ -470,21 +502,29 @@ public class GiocoNaufragioIsola extends GameDescription {
                     }
                     break;
                 case RACCOGLI:
-                    if (p.getObject() != null) {
-                        if (p.getObject().isRaccogglibile()) {
-                            getInventory().add(p.getObject());
-                            getCurrentRoom().getObjects().remove(p.getObject());
-                            frame.scrviSuEditor("Hai raccolto: " + p.getObject().getNomeOggetto());
+                    if(getCurrentRoom().getVisibile()) {
+                        if (p.getObject() != null) {
+                            if (p.getObject().isRaccogglibile()) {
+                                getInventory().add(p.getObject());
+                                getCurrentRoom().getObjects().remove(p.getObject());
+                                frame.scrviSuEditor("Hai raccolto: " + p.getObject().getNomeOggetto());
+                            } else {
+                                frame.scrviSuEditor("Non puoi raccogliere questo oggetto.");
+                            }
                         } else {
-                            frame.scrviSuEditor("Non puoi raccogliere questo oggetto.");
+                            if(p.getInvObject()!=null){
+                                frame.scrviSuEditor("Hai gia raccolto questo oggetto. E' presente nel tuo inventario.");
+                            }else{
+                                frame.scrviSuEditor("L'oggetto che vuoi raccogliere non c'è.");
+                            }
                         }
                     } else {
-                        frame.scrviSuEditor("Non c'è niente da raccogliere qui.");
+                        frame.scrviSuEditor("Non c'è luce. Non vedo nulla da raccogliere.");
                     }
                     break;
                 case LASCIA:
-                    System.out.println("PIPPO"+p.getInvObject().getNomeOggetto());
                     if (p.getInvObject() != null){
+                        System.out.println("p.getInvObject() restituisce: "+p.getInvObject().getNomeOggetto());
                         //Se possiedo l'oggetto
                         if(getInventory().contains(p.getInvObject())){
                             getInventory().remove(p.getInvObject());
@@ -494,8 +534,11 @@ public class GiocoNaufragioIsola extends GameDescription {
                             frame.scrviSuEditor("Non possiedi questo oggetto.");
                         }
                     } else {
-                        frame.scrviSuEditor("Non capisco di che oggetto parli.");
+                        frame.scrviSuEditor("Questo oggetto non è presente nell' inventario.");
                     }
+                    break;
+                case NARRA:
+                    frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
             }
         }
         frame.scriviSuLabelStanza(frame.getEngine().getGame().getCurrentRoom().getNomeStanza());
