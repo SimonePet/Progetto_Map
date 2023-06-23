@@ -43,19 +43,19 @@ public class GiocoNaufragioIsola extends GameDescription {
     public void init() throws Exception {
         //Comandi per spostarsi nella mappa
         Comando nord = new Comando(TipoComando.NORD, "nord");
-        nord.setAlias(new String[]{"n", "N", "Nord", "NORD"});
+        nord.setAlias(new String[]{"Nord", "NORD"});
         getCommands().add(nord);
 
         Comando sud = new Comando(TipoComando.SUD, "sud");
-        sud.setAlias(new String[]{"s", "S", "Sud", "SUD"});
+        sud.setAlias(new String[]{"Sud", "SUD"});
         getCommands().add(sud);
 
         Comando est = new Comando(TipoComando.EST, "est");
-        est.setAlias(new String[]{"e", "E", "Est", "EST"});
+        est.setAlias(new String[]{"Est", "EST"});
         getCommands().add(est);
 
         Comando ovest = new Comando(TipoComando.OVEST, "ovest");
-        ovest.setAlias(new String[]{"o", "O", "Ovest", "OVEST"});
+        ovest.setAlias(new String[]{"Ovest", "OVEST"});
         getCommands().add(ovest);
 
         //Comando per inventario
@@ -85,18 +85,23 @@ public class GiocoNaufragioIsola extends GameDescription {
 
         //Comando per accendere
         Comando accendi = new Comando(TipoComando.ACCENDI, "accendi");
-        premi.setAlias(new String[]{"illumina"});
-        getCommands().add(premi);
+        accendi.setAlias(new String[]{"illumina"});
+        getCommands().add(accendi);
 
         //Comando per utilizzare
         Comando utilizza = new Comando(TipoComando.UTILIZZA, "utilizza");
-        premi.setAlias(new String[]{"usa"});
-        getCommands().add(premi);
+        utilizza.setAlias(new String[]{"usa"});
+        getCommands().add(utilizza);
 
         //Comando per terminare
         Comando end = new Comando(TipoComando.FINE, "end");
         end.setAlias(new String[]{"end", "fine", "esci", "muori", "ammazzati", "ucciditi", "suicidati", "exit"});
         getCommands().add(end);
+
+        //Comando per lasciare
+        Comando lascia = new Comando(TipoComando.LASCIA, "lascia");
+        lascia.setAlias(new String[]{"togli", "butta", "abbandona","posa"});
+        getCommands().add(lascia);
 
 
         //Istanziazione stanza approdo
@@ -323,6 +328,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Istanziazione oggetto radio
         Oggetto radio = new Oggetto(0, "radio", "E' una vecchia radio a pile..."
                 + "chissa se funzionera'...");
+        radio.setAlias(new String[]{});
         costa.getObjects().add(radio);
 
         //Istanziazione oggetto batteria
@@ -331,8 +337,8 @@ public class GiocoNaufragioIsola extends GameDescription {
         edificioDentro.getObjects().add(batteria);
 
         //Cartina correnti marine
-        Oggetto cartina = new Oggetto(2, "cartina correnti marine", "Una antica cartina delle correnti.");
-        cartina.setAlias(new String[]{"cartine", "carta", "mappa", "mappe"});
+        Oggetto cartina = new Oggetto(2, "mappa", "Una antica cartina delle correnti.");
+        cartina.setAlias(new String[]{"cartine", "carta", "cartina", "mappe","carte"});
         costa.getObjects().add(cartina);
 
         //Oggetto contenitore telecomando: contiene pile
@@ -360,26 +366,29 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Libro Cifrario
         Oggetto cifrario = new Oggetto(7, "cifrario", "Un libricino che spiega come decifrare"
                 + "delle strane scritture.");
-        cifrario.setAlias(new String[]{"libro"});
+        cifrario.setAlias(new String[]{"libro","libri","cifrari"});
         costa.getObjects().add(cifrario);
 
         //Vela
         Oggetto vela = new Oggetto(8, "vela", "Una vela...");
-        costa.getObjects().add(vela);
+        vela.setAlias(new String[]{});
+        covo.getObjects().add(vela);
 
         //Accetta
         Oggetto accetta = new Oggetto(9, "accetta", "Un' accetta...");
-        costa.getObjects().add(accetta);
+        accetta.setAlias(new String[]{});
+        covo.getObjects().add(accetta);
 
         //Corde
         Oggetto corda = new Oggetto(10, "corda", "Corda...");
-        cifrario.setAlias(new String[]{"corde"});
-        costa.getObjects().add(corda);
+        corda.setAlias(new String[]{"corde"});
+        corda.setAlias(new String[]{});
+        covo.getObjects().add(corda);
 
         //Fucile
         Oggetto fucile = new Oggetto(11, "fucile", "Un fucile...");
-        cifrario.setAlias(new String[]{"arma"});
-        costa.getObjects().add(fucile);
+        fucile.setAlias(new String[]{"arma"});
+        covo.getObjects().add(fucile);
 
         setCurrentRoom(approdo);
     }
@@ -391,17 +400,15 @@ public class GiocoNaufragioIsola extends GameDescription {
         boolean noroom = false;
         boolean move = false;
         //frame.writeTextOnEditor("\n"+getCurrentRoom().getNomeStanza()+"\n");
-
+        frame.writeTextOnEditor("\n\n");
         if (p.getCommand() == null) {
-            out.println("Non ho capito cosa devo fare! Prova con un altro comando.");
             frame.writeTextOnEditor("Non ho capito cosa devo fare! Prova con un altro comando.\n");
         } else {
             TipoComando comandoRiconosciuto = p.getCommand().getTipoComando();
-
             //move
             switch (comandoRiconosciuto) {
-                case NORD :
-                    frame.writeTextOnEditor("\n=====NORD=====\n");
+                case NORD:
+                    //frame.writeTextOnEditor("\n=====NORD=====\n");
                     frame.writeTextOnEditor(getCurrentRoom().getMessaggioNord());
                     frame.writeTextOnEditor("\n");
                     if (getCurrentRoom().getNord() != null && getCurrentRoom().getNord().getVisibile()) {
@@ -412,8 +419,8 @@ public class GiocoNaufragioIsola extends GameDescription {
                         noroom = true;
                     }
                     break;
-                case SUD :
-                    frame.writeTextOnEditor("\n=====SUD=====\n");
+                case SUD:
+                    //frame.writeTextOnEditor("\n=====SUD=====\n");
                     frame.writeTextOnEditor(getCurrentRoom().getMessaggioSud());
                     frame.writeTextOnEditor("\n");
                     if (getCurrentRoom().getSud() != null && getCurrentRoom().getSud().getVisibile()) {
@@ -424,8 +431,8 @@ public class GiocoNaufragioIsola extends GameDescription {
                         noroom = true;
                     }
                     break;
-                case EST :
-                    frame.writeTextOnEditor("\n=====EST=====\n");
+                case EST:
+                    //frame.writeTextOnEditor("\n=====EST=====\n");
                     frame.writeTextOnEditor(getCurrentRoom().getMessaggioEst());
                     frame.writeTextOnEditor("\n");
                     if (getCurrentRoom().getEst() != null && getCurrentRoom().getEst().getVisibile()) {
@@ -436,8 +443,8 @@ public class GiocoNaufragioIsola extends GameDescription {
                         noroom = true;
                     }
                     break;
-                case OVEST :
-                    frame.writeTextOnEditor("\n=====OVEST=====\n");
+                case OVEST:
+                    //frame.writeTextOnEditor("\n=====OVEST=====\n");
                     frame.writeTextOnEditor(getCurrentRoom().getMessaggioOvest());
                     frame.writeTextOnEditor("\n");
                     if (getCurrentRoom().getOvest() != null && getCurrentRoom().getOvest().getVisibile()) {
@@ -448,48 +455,54 @@ public class GiocoNaufragioIsola extends GameDescription {
                         noroom = true;
                     }
                     break;
+                case OSSERVA:
+                    frame.writeTextOnEditor(getCurrentRoom().getOsserva());
+                    break;
+                case INVENTARIO:
+                    if (!getInventory().isEmpty()) {
+                        frame.writeTextOnEditor("Nel tuo inventario ci sono:\n");
+                        for (Oggetto oggettoInv : getInventory()) {
+                            frame.writeTextOnEditor(oggettoInv.getNomeOggetto() + ": " + oggettoInv.getDescrizioneOggetto() + "\n");
+                        }
+                    }else {
+                        frame.writeTextOnEditor("Il tuo inventario e' vuoto.");
+                    }
+                    break;
+                case RACCOGLI:
+                    if (p.getObject() != null) {
+                        if (p.getObject().isRaccogglibile()) {
+                            getInventory().add(p.getObject());
+                            getCurrentRoom().getObjects().remove(p.getObject());
+                            frame.writeTextOnEditor("Hai raccolto: " + p.getObject().getNomeOggetto());
+                        } else {
+                            frame.writeTextOnEditor("Non puoi raccogliere questo oggetto.");
+                        }
+                    } else {
+                        frame.writeTextOnEditor("Non c'è niente da raccogliere qui.");
+                    }
+                    break;
+                case LASCIA:
+                    System.out.println("PIPPO"+p.getInvObject().getNomeOggetto());
+                    if (p.getInvObject() != null){
+                        //Se possiedo l'oggetto
+                        if(getInventory().contains(p.getInvObject())){
+                            getInventory().remove(p.getInvObject());
+                            getCurrentRoom().getObjects().add(p.getInvObject());
+                            frame.writeTextOnEditor("Hai lasciato: " + p.getInvObject().getNomeOggetto());
+                        }else{
+                            frame.writeTextOnEditor("Non possiedi questo oggetto.");
+                        }
+                    } else {
+                        frame.writeTextOnEditor("Non capisco di che oggetto parli.");
+                    }
             }
+        }
+    }
 
 
 
-            /**
-            boolean noroom = false;
-            boolean move = false;
-            if (comandoRiconosciuto == TipoComando.NORD) {
-                if (getCurrentRoom().getNord() != null) {
-                    setCurrentRoom(getCurrentRoom().getNord());
-                    move = true;
-                } else {
-                    noroom = true;
-                }
-            } else if (p.getCommand().getTipoComando() == TipoComando.SUD) {
-                if (getCurrentRoom().getSud() != null) {
-                    setCurrentRoom(getCurrentRoom().getSud());
-                    move = true;
-                } else {
-                    noroom = true;
-                }
-            } else if (p.getCommand().getTipoComando() == TipoComando.EST) {
-                if (getCurrentRoom().getEst() != null) {
-                    setCurrentRoom(getCurrentRoom().getEst());
-                    move = true;
-                } else {
-                    noroom = true;
-                }
-            } else if (p.getCommand().getTipoComando() == TipoComando.OVEST) {
-                if (getCurrentRoom().getOvest() != null) {
-                    setCurrentRoom(getCurrentRoom().getOvest());
-                    move = true;
-                } else {
-                    noroom = true;
-                }
-            } else if (p.getCommand().getTipoComando() == TipoComando.INVENTARIO) {
-                frame.writeTextOnEditor("Nel tuo inventario ci sono:\n");
-                out.println("Nel tuo inventario ci sono:");
-                for (Oggetto o : getInventory()) {
-                    out.println(o.getNomeOggetto() + ": " + o.getDescrizioneOggetto());
-                    frame.writeTextOnEditor(o.getNomeOggetto() + ": " + o.getDescrizioneOggetto()+"\n");
-                }
+
+            /*
             } else if (p.getCommand().getTipoComando() == TipoComando.OSSERVA) {
                 if (getCurrentRoom().getOsserva() != null) {
                     frame.writeTextOnEditor(getCurrentRoom().getOsserva()+"\n");
@@ -499,20 +512,7 @@ public class GiocoNaufragioIsola extends GameDescription {
                     out.println("Non c'è niente di interessante qui.");
                 }
             } else if (p.getCommand().getTipoComando() == TipoComando.RACCOGLI) {
-                if (p.getObject() != null) {
-                    if (p.getObject().isRaccogglibile()) {
-                        getInventory().add(p.getObject());
-                        getCurrentRoom().getObjects().remove(p.getObject());
-                        out.println("Hai raccolto: " + p.getObject().getDescrizioneOggetto());
-                        frame.writeTextOnEditor("Hai raccolto: " + p.getObject().getDescrizioneOggetto()+"\n");
-                    } else {
-                        out.println("Non puoi raccogliere questo oggetto.");
-                        frame.writeTextOnEditor("Non puoi raccogliere questo oggetto.\n");
-                    }
-                } else {
-                    out.println("Non c'è niente da raccogliere qui.");
-                    frame.writeTextOnEditor("Non c'è niente da raccogliere qui.\n");
-                }
+
             } else if (p.getCommand().getTipoComando() == TipoComando.APRI) {
                 ATTENZIONE: quando un oggetto contenitore viene aperto, tutti gli oggetti contenuti
                  * vengongo inseriti nella stanza o nell'inventario a seconda di dove si trova l'oggetto contenitore.
@@ -612,11 +612,10 @@ public class GiocoNaufragioIsola extends GameDescription {
                 frame.writeTextOnEditor("================================================\n");
                 out.println(getCurrentRoom().getDescrizioneLungaStanza());
                 frame.writeTextOnEditor(getCurrentRoom().getDescrizioneLungaStanza()+"\n");
+           }
+    */
 
-            }
-             */
-        }
-    }
+
 
     private void end(PrintStream out) {
         out.println("Premi il pulsante del giocattolo e in seguito ad una forte esplosione la tua casa prende fuoco...\ntu e tuoi famigliari cercate invano di salvarvi e venite avvolti dalle fiamme...\nè stata una morte CALOROSA...addio!");

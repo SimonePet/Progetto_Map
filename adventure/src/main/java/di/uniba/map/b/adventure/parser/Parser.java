@@ -36,7 +36,7 @@ public class Parser {
     private int checkForObject(String token, List<Oggetto> obejcts) {
         for (int i = 0; i < obejcts.size(); i++) {
             if (obejcts.get(i).getNomeOggetto().equals(token) || obejcts.get(i).getAliasOggetto().contains(token)) {
-                return i;
+                    return i;
             }
         }
         return -1;
@@ -46,36 +46,42 @@ public class Parser {
      * frasi semplici del tipo <azione> <oggetto> <oggetto>. Eventuali articoli o preposizioni vengono semplicemente
      * rimossi.
      */
-    public ParserOutput parse(String command, List<Comando> commands, List<Oggetto> objects, List<Oggetto> inventory) {
-        List<String> tokens = Utils.parseString(command, stopwords);
+    public ParserOutput parse(String comando, List<Comando> comandiAccettati, List<Oggetto> oggettiStanzaCorrente, List<Oggetto> inventario) {
+         List<String>tokens = Utils.parseString(comando, stopwords);
+        //verifico che il token non è vuoto
         if (!tokens.isEmpty()) {
-            int ic = checkForCommand(tokens.get(0), commands);
-            if (ic > -1) {
+            //Restituisco l'indice del comando, -1 se non lo ha trovato
+            int indiceComando = checkForCommand(tokens.get(0), comandiAccettati);
+            if (indiceComando > -1) {
+                //Se la dimensione del token è maggiore di 1 vuol dire che ad un comando segue un'altra parola (ogg o stanza)
                 if (tokens.size() > 1) {
-                    int io = checkForObject(tokens.get(1), objects);
-                    int ioinv = -1;
-                    if (io < 0 && tokens.size() > 2) {
-                        io = checkForObject(tokens.get(2), objects);
+                    //Restituisco l'indice dell'oggetto, -1 se non lo ha trovato
+                    int indiceOggetto = checkForObject(tokens.get(1), oggettiStanzaCorrente);
+                    int indiceOggettoInv = -1;
+                    // Se l'ggetto non esiste, ma ho piu di sue parole, verifico
+                    if (indiceOggetto < 0 && tokens.size() > 2) {
+                        indiceOggetto = checkForObject(tokens.get(2), oggettiStanzaCorrente);
                     }
-                    if (io < 0) {
-                        ioinv = checkForObject(tokens.get(1), inventory);
-                        if (ioinv < 0 && tokens.size() > 2) {
-                            ioinv = checkForObject(tokens.get(2), inventory);
+                    if (indiceOggetto < 0) {
+                        indiceOggettoInv = checkForObject(tokens.get(1), inventario);
+                        if (indiceOggettoInv < 0 && tokens.size() > 2) {
+                            indiceOggettoInv = checkForObject(tokens.get(2), inventario);
                         }
                     }
-                    if (io > -1 && ioinv > -1) {
-                        return new ParserOutput(commands.get(ic), objects.get(io), inventory.get(ioinv));
-                    } else if (io > -1) {
-                        return new ParserOutput(commands.get(ic), objects.get(io), null);
-                    } else if (ioinv > -1) {
-                        return new ParserOutput(commands.get(ic), null, inventory.get(ioinv));
+                    if (indiceOggetto > -1 && indiceOggettoInv > -1) {
+                        return new ParserOutput(comandiAccettati.get(indiceComando), oggettiStanzaCorrente.get(indiceOggetto), inventario.get(indiceOggettoInv));
+                    } else if (indiceOggetto > -1) {
+                        return new ParserOutput(comandiAccettati.get(indiceComando), oggettiStanzaCorrente.get(indiceOggetto), null);
+                    } else if (indiceOggettoInv > -1) {
+                        return new ParserOutput(comandiAccettati.get(indiceComando), null, inventario.get(indiceOggettoInv));
                     } else {
-                        return new ParserOutput(commands.get(ic), null, null);
+                        return new ParserOutput(comandiAccettati.get(indiceComando), null, null);
                     }
                 } else {
-                    return new ParserOutput(commands.get(ic), null);
+                    return new ParserOutput(comandiAccettati.get(indiceComando), null);
                 }
             } else {
+                //Comando non riconosciuto
                 return new ParserOutput(null, null);
             }
         } else {
