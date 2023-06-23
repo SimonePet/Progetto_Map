@@ -13,14 +13,12 @@ public final class MessaggioApprodo {
     }
     private static final String NOME = "Approdo";
     private static final String DESCRIZIONE_COMPLETA = "Lentamente riapri gli occhi e ti ritrovi spiaggiato su una costa "
-            + "sconosciuta, il mare agitato che si infrange sulle rocce circostanti è l'unico suono che senti."
-            + "Ricordi solo la tempesta, l'acqua che invadeva la tua barca e il vento che urlava intorno a te."
-            + "La paur" +
-            "a ti attanaglia, ma devi farti forza e trovare un modo per fuggire."
+            + "sconosciuta, il mare agitato che si infrange sulle rocce circostanti è l'unico suono che senti.\n"
+            + "Ricordi solo la tempesta, l'acqua che invadeva la tua barca e il vento che urlava intorno a te.\n"
+            + "La paura ti attanaglia, ma devi farti forza e trovare un modo per fuggire.\n"
             + "Questo è il tuo alter ego che ti parla e ti accompagnerà durante tutta la tua avventura";
     private static final String DESCRIZIONE_CORTA = "Ti trovi sulla costa nella quale ti sei risvegliato!";
-    private static final String OSSERVA = "Sulla sabbia c'e' una bussola.";
-    private static final String APPRODO_OSSERVA_FINE = "Sulla sabbia c'e' solo sabbia.";
+    private static final String OSSERVA = "Sulla sabbia c'e' solo sabbia.";
     private static final String RITORNATO = "Sei tornato sulla costa nella quale ti sei risvegliato!";
     private static final String NORD = "Ti sei spostato a nord dell'approdo.";
     private static final String OVEST = "Ti sei spostato a ovest dell'approdo.";
@@ -35,9 +33,6 @@ public final class MessaggioApprodo {
     }
     public static String getOsserva() {
         return MessaggioApprodo.OSSERVA;
-    }
-    public static String getApprodoOsservaFine() {
-        return MessaggioApprodo.APPRODO_OSSERVA_FINE;
     }
     public static String getRitornato() {
         return MessaggioApprodo.RITORNATO;

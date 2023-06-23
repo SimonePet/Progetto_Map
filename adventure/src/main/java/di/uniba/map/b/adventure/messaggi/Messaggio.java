@@ -18,7 +18,6 @@ public final class Messaggio {
     private static final String HELP = "Per muoverti all'interno della mappa digita: Nord/Sud/Est/Ovest\n"
             + "Per osservare un luogo/oggetto digita: osserva [nome luogo/nome oggetto]\n"
             + "Per raccogliere/lasciare un oggetto digita: raccogli/lascia [nome oggetto]\n"
-            + "Per tornare nel luogo precedente digita: indietro\n"
             + "Per visualizzare inventario digita: inventario/inv\n"
             + "Per alcuni verbi sono accettati anche dei sinonimi\n"
             + "Durante il gioco potrebbero essere necessarie delle azioni su degli oggetti. Per esempio: \n"
