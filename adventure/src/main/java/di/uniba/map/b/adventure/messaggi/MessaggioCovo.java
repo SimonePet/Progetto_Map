@@ -1,4 +1,4 @@
-package di.uniba.map.b.adventure.messaggio;
+package di.uniba.map.b.adventure.messaggi;
 
 /**
  * Stringhe relative a messaggi del covo.
@@ -11,39 +11,42 @@ public final class MessaggioCovo {
      */
     private MessaggioCovo() {
     }
-    private static final String COVO_DESCR_CORTA = "Ti trovi nel covo militare.";
-    private static final String COVO_DESCR_COMPLETA = "Improvvisamente si apre una botola dando accesso al covo "
+    private static final String NOME = "Covo";
+    private static final String DESCRIZIONE_CORTA = "Ti trovi nel covo militare.";
+    private static final String DESCRIZIONE_COMPLETA = "Improvvisamente si apre una botola dando accesso al covo "
             + "militare descritto dai militari.";
-    private static final String COVO_DESCR_OSSERVA = "All’interno del covo trovi: una vela, un’accetta e delle corde.";
-    private static final String COVO_TORNATO = "Sei tornato nel covo.";
-    private static final String COVO_NO_NORD = "Hai sbloccato un superpotere: puoi oltrepassare i muri...";
-    private static final String COVO_SUD = "";
-    private static final String COVO_NO_EST = "Non c'e' nulla da vedere qui...";
-    private static final String COVO_NO_OVEST = "Sono circondato da muri!";
-
-    public static String getCovoDescrCorta() {
-        return MessaggioCovo.COVO_DESCR_CORTA;
+    private static final String OSSERVA = "All’interno del covo trovi: una vela, un’accetta e delle corde.";
+    private static final String RITORNATO = "Sei tornato nel covo.";
+    private static final String NO_NORD = "Hai sbloccato un superpotere: puoi oltrepassare i muri...";
+    private static final String SUD = "Ti sei spostato a sud del covo.";
+    private static final String NO_EST = "Non c'e' nulla da vedere qui...";
+    private static final String NO_OVEST = "Sono circondato da muri!";
+    public static String getDescrizioneCorta() {
+        return MessaggioCovo.DESCRIZIONE_CORTA;
     }
-    public static String getCovoDescrCompleta() {
-        return MessaggioCovo.COVO_DESCR_COMPLETA;
+    public static String getDescrizioneCompleta () {
+        return MessaggioCovo.DESCRIZIONE_COMPLETA;
     }
-    public static String getCovoDescrOsserva() {
-        return MessaggioCovo.COVO_DESCR_OSSERVA;
+    public static String getOsserva() {
+        return MessaggioCovo.OSSERVA;
     }
-    public static String getCovoTornato() {
-        return MessaggioCovo.COVO_TORNATO;
+    public static String getRitornato() {
+        return MessaggioCovo.RITORNATO;
     }
-    public static String getCovoNoNord() {
-        return MessaggioCovo.COVO_NO_NORD;
+    public static String getNoNord() {
+        return MessaggioCovo.NO_NORD;
     }
-    public static String getCovoSud() {
-        return MessaggioCovo.COVO_SUD;
+    public static String getSud() {
+        return MessaggioCovo.SUD;
     }
-    public static String getCovoNoEst() {
-        return MessaggioCovo.COVO_NO_EST;
+    public static String getNoEst() {
+        return MessaggioCovo.NO_EST;
     }
-    public static String getCovoNoOvest() {
-        return MessaggioCovo.COVO_NO_OVEST;
+    public static String getNoOvest() {
+        return MessaggioCovo.NO_OVEST;
+    }
+    public static String getNome() {
+        return NOME;
     }
 }
 

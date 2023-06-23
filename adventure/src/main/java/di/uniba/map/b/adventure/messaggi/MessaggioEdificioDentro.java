@@ -1,4 +1,4 @@
-package di.uniba.map.b.adventure.messaggio;
+package di.uniba.map.b.adventure.messaggi;
 
 /**
  * Stringhe relative a messaggi dell'edificio abbandonato (interno).
@@ -11,41 +11,46 @@ public final class MessaggioEdificioDentro {
      */
     private MessaggioEdificioDentro() {
     }
-    private static final String EDIFICIO_INTERNO_DESCR_CORTA = "Ti trovi all'interno di un vecchio edificio "
+    private static final String NOME = "Interno edificio";
+    private static final String DESCRIZIONE_CORTA = "Ti trovi all'interno di un vecchio edificio "
             + "abbandonato.";
-    private static final String EDIFICIO_INTERNO_DESCR_COMPLETA = "Sei riuscito ad entrare... sembra essere un "
+    private static final String DESCRIZIONE_COMPLETA = "Sei riuscito ad entrare... sembra essere un "
             + "normalissimo antico riparo.";
-    private static final String EDIFICIO_INTERNO_OSSERVA = "L’interno sembra assomigliare ad una normale casa, "
+    private static final String OSSERVA = "L’interno sembra assomigliare ad una normale casa, "
             + "c’è un armadio, una tv, un divano...";
-    private static final String EDIFICIO_INTERNO_TORNATO = "Sei tornato all'interno dell'edificio";
-    private static final String EDIFICIO_INTERNO_NO_NORD = "Sembra una botola... nulla di interessante.";
-    private static final String EDIFICIO_INTERNO_SUD = "";
-    private static final String EDIFICIO_INTERNO_NO_EST = "C'e' una finestra, nulla di che...";
-    private static final String EDIFICIO_INTERNO_NO_OVEST = "Che botta! Hai urtato contro il muro";
+    private static final String RITORNATO = "Sei tornato all'interno dell'edificio";
+    private static final String NO_NORD = "Sembra una botola... nulla di interessante.";
+    private static final String NORD = "Ti sei spostato a nord dell'edificio.";
+    private static final String SUD = "Ti sei spostato a sud dell'edificio";
+    private static final String NO_OVEST = "Che botta! Hai urtato contro il muro";
+    private static final String NO_EST = "Sei un trimone.";
 
-    public static String getEdificioInternoDescrCorta() {
-        return MessaggioEdificioDentro.EDIFICIO_INTERNO_DESCR_CORTA;
+    public static String getDescrizioneCorta() {
+        return MessaggioEdificioDentro.DESCRIZIONE_CORTA;
     }
 
-    public static String getEdificioInternoDescrCompleta() {
-        return MessaggioEdificioDentro.EDIFICIO_INTERNO_DESCR_COMPLETA;
+    public static String getDescrizioneCompleta() {
+        return MessaggioEdificioDentro.DESCRIZIONE_COMPLETA;
     }
-    public static String getEdificioInternoOsserva() {
-        return MessaggioEdificioDentro.EDIFICIO_INTERNO_OSSERVA;
+    public static String getOsserva() {
+        return MessaggioEdificioDentro.OSSERVA;
     }
-    public static String getEdificioInternoTornato() {
-        return MessaggioEdificioDentro.EDIFICIO_INTERNO_TORNATO;
+    public static String getRitornato() {
+        return MessaggioEdificioDentro.RITORNATO;
     }
-    public static String getEdificioInternoNoNord() {
-        return MessaggioEdificioDentro.EDIFICIO_INTERNO_NO_NORD;
+    public static String getNoNord() {
+        return MessaggioEdificioDentro.NO_NORD;
     }
-    public static String getEdificioInternoSud() {
-        return MessaggioEdificioDentro.EDIFICIO_INTERNO_SUD;
+    public static String getSud() {
+        return MessaggioEdificioDentro.SUD;
     }
-    public static String getEdificioInternoNoEst() {
-        return MessaggioEdificioDentro.EDIFICIO_INTERNO_NO_EST;
+    public static String getNoEst() {
+        return MessaggioEdificioDentro.NO_EST;
     }
-    public static String getEdificioInternoNoOvest() {
-        return MessaggioEdificioDentro.EDIFICIO_INTERNO_NO_OVEST;
+    public static String getNoOvest() {
+        return MessaggioEdificioDentro.NO_OVEST;
+    }
+    public static String getNome() {
+        return NOME;
     }
 }

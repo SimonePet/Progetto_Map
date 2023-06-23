@@ -5,17 +5,13 @@
  */
 package di.uniba.map.b.adventure;
 
-import di.uniba.map.b.adventure.games.FireHouseGame;
+import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import di.uniba.map.b.adventure.parser.Parser;
-import di.uniba.map.b.adventure.parser.ParserOutput;
-import di.uniba.map.b.adventure.type.TipoComando;
 import swing.FrameStart;
-import swing.JFrameApp;
+
 import java.io.File;
 import java.io.IOException;
-import java.util.Scanner;
 import java.util.Set;
-import javax.swing.JFrame;
 
 /**
  * ATTENZIONE: l'Engine è molto spartanoo, in realtà demanda la logica alla
@@ -38,7 +34,7 @@ public class Engine {
             System.err.println(ex);
         }
         try {
-            Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
+            Set<String> stopwords = Utils.loadFileListInSet(new File("./adventure/resources/stopwords"));
             parser = new Parser(stopwords);
         } catch (IOException ex) {
             System.err.println(ex);
@@ -93,8 +89,9 @@ public class Engine {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Engine engine = new Engine(new FireHouseGame());
-        engine.execute();
+        //Non dovrebbe servire in quanto la partita viene caricata ed inizializzata in JFrameApp
+        //Engine engine = new Engine(new GiocoNaufragioIsola());
+        //engine.execute();
         FrameStart.main();
     }
 
