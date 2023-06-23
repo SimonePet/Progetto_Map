@@ -5,7 +5,6 @@
  */
 package di.uniba.map.b.adventure;
 
-import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import di.uniba.map.b.adventure.parser.Parser;
 import swing.FrameStart;
 
@@ -34,7 +33,7 @@ public class Engine {
             System.err.println(ex);
         }
         try {
-            Set<String> stopwords = Utils.loadFileListInSet(new File("./adventure/resources/stopwords"));
+            Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
             parser = new Parser(stopwords);
         } catch (IOException ex) {
             System.err.println(ex);
