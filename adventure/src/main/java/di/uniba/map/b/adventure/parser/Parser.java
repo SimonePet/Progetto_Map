@@ -35,6 +35,7 @@ public class Parser {
 
     private int checkForObject(String token, List<Oggetto> obejcts) {
         for (int i = 0; i < obejcts.size(); i++) {
+            System.out.println("Oggetto esaminato: "+ obejcts.get(i).getNomeOggetto());
             if (obejcts.get(i).getNomeOggetto().equals(token) || obejcts.get(i).getAliasOggetto().contains(token)) {
                     return i;
             }

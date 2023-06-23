@@ -23,9 +23,9 @@ public class Stanza {
     private String descrizioneCortaStanza;
 
     private String osserva;
-
+    private boolean raggiungibile = true;
     private boolean visibile = true;
-
+    private boolean visitata = false;
     private Stanza sud = null;
 
     private Stanza nord = null;
@@ -63,16 +63,20 @@ public class Stanza {
         return this.descrizioneLungaStanza;
     }
 
+    public String getDescrizioneCortaStanza() {
+        return this.descrizioneCortaStanza;
+    }
+
     public void setDescription(String descrizione) {
         this.descrizioneLungaStanza = descrizione;
     }
 
-    public boolean getVisibile() {
-        return this.visibile;
+    public boolean getRaggiungibile() {
+        return this.raggiungibile;
     }
 
-    public void setVisibile(boolean visibile) {
-        this.visibile = visibile;
+    public void setRaggiungibile(boolean raggiungibile) {
+        this.raggiungibile = raggiungibile;
     }
 
     public Stanza getSud() {
@@ -147,7 +151,12 @@ public class Stanza {
         this.messaggioOvest = messaggio;
     }
 
-
+    public boolean getVisitata() {
+        return this.visitata;
+    }
+    public void setVisitata(boolean visitata) {
+        this.visitata = visitata;
+    }
 
     public List<Oggetto> getObjects() {
         return objects;
@@ -186,4 +195,10 @@ public class Stanza {
         this.osserva = osserva;
     }
 
+    public void setVisibile(boolean visibile) {
+        this.visibile = visibile;
+    }
+    public boolean getVisibile(){
+        return this.visibile;
+    }
 }

@@ -24,6 +24,7 @@ public class Oggetto {
     private boolean premibile = false;
     private boolean aperto = false;
     private boolean premuto = false;
+    private boolean visibile = false;
 
     /**
      * Costruttore classe Oggetto.
@@ -242,5 +243,13 @@ public class Oggetto {
             return false;
         }
         return true;
+    }
+
+    public boolean getVisibile() {
+        return this.visibile;
+    }
+
+    public void setVisibile(boolean visibile) {
+        this.visibile = visibile;
     }
 }
