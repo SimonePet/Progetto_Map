@@ -163,7 +163,7 @@ public class JFrameApp extends javax.swing.JFrame {
             int numMosse = game.getNumMoves();
             game.setNumMoves(game.getNumMoves()+1);
             if (p == null || p.getCommand() == null) {        
-                    doc.insertString(doc.getLength(), "Non capisco quello che mi vuoi dire.\n", attributes);
+                    doc.insertString(doc.getLength(), "\nNon capisco quello che mi vuoi dire.\n", attributes);
             } else if (p.getCommand() != null && p.getCommand().getTipoComando() == TipoComando.FINE) {
                 doc.insertString(doc.getLength(), "Addio.\n", attributes);
                 //setta il textField non editabile
