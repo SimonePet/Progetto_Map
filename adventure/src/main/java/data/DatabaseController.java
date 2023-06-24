@@ -129,7 +129,9 @@ public class DatabaseController extends Database{
         } 
     }
     
-    public ResultSet getPartite() throws SQLException{
+
+    @Override
+    public ResultSet getPartite(){
         try{
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(STAMPA_PARTITE);   
@@ -140,5 +142,16 @@ public class DatabaseController extends Database{
         return null;
     }
     
-    
+    @Override
+    public ResultSet getPartiteUtente(String username){
+        try{
+            PreparedStatement pstm = conn.prepareStatement(STAMPA_PARTITE_UTENTE);
+            pstm.setString(1, username);
+            ResultSet rs = pstm.executeQuery();   
+            return rs;
+        }catch(SQLException ex){       
+            System.err.println(ex.getMessage());
+        }
+        return null;    
+    }
 }
