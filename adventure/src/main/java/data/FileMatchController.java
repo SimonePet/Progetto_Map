@@ -4,15 +4,15 @@
  */
 package data;
 
-import di.uniba.map.b.adventure.Engine;
+
+import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 
 import java.io.Serializable;
-import java.io.File;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
-import java.io.FileOutputStream;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
+import java.nio.file.Files;
 
 
 /**
@@ -23,26 +23,25 @@ public class FileMatchController extends FileController implements Serializable 
      * Costruttore della Classe FileController.
      * @param nomeFileCorrente nome del file.
      * @param directoryCorrente percorso della cartella del file.
-     * @param fileCorrente file corrente.
      */
-    public FileMatchController(final String nomeFileCorrente, final String directoryCorrente, final File fileCorrente) {
-        super();
-        this.file = fileCorrente;
-        this.nameFile = nomeFileCorrente;
-        this.directory = directoryCorrente;
+    public FileMatchController(final String nomeFileCorrente, final String directoryCorrente) {
+        super(nomeFileCorrente,directoryCorrente);
+        boolean creato = super.create() ;
+        System.out.println(creato);
     }
     /**
      *
      * @param engine engine di una partita.
      * @return Vero se salva l'engine sul file, Falso altrimenti.
      */
-    public boolean addMatch(final Engine engine) {
+    public boolean addMatch(final GiocoNaufragioIsola GNI) {
         try {
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(file));
-            out.writeObject(engine);
+            ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(file.toPath()));
+            out.writeObject(GNI);
             out.close();
+            return true;
         } catch (IOException e) {
-            System.out.println("Ciao sono un errore.");
+            System.out.println(e);
         }
         return false;
     }
@@ -53,7 +52,7 @@ public class FileMatchController extends FileController implements Serializable 
      * @return
      * @throws IOException
      */
-    public File removeMatch(final int id) throws IOException {
+   /* public File removeMatch(final int id) throws IOException {
         File outputFile = new File(nameFile);
         Engine en;
         FileInputStream fileInput = new FileInputStream(this.file);
@@ -83,26 +82,26 @@ public class FileMatchController extends FileController implements Serializable 
         }
         return outputFile;
     }
-
+    */
     /**
      *
      * @param id
      * @return
      * @throws IOException
      */
-    public Engine getMatch(final int id) throws IOException {
-        Engine en;
+    public GiocoNaufragioIsola getMatch(final String nomePart) throws IOException {
+        GiocoNaufragioIsola GNI;
         FileInputStream fileIn = new FileInputStream(file);
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);
         try {
             while (true) {
-                en = (Engine) objectIn.readObject();
-                if (en.getIdEngine() == id) {
-                    return en;
+                GNI = (GiocoNaufragioIsola) objectIn.readObject();
+                if (GNI.getNomePartita().equalsIgnoreCase(nomePart)) {
+                    return GNI;
                 }
             }
         } catch (IOException e) {
-            System.out.println("Ciaoe sono un errore.");
+            System.out.println(e);
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         } finally {

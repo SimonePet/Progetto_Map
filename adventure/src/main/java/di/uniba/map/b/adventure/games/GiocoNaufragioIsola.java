@@ -5,6 +5,7 @@
  */
 package di.uniba.map.b.adventure.games;
 
+import data.FileMatchController;
 import di.uniba.map.b.adventure.messaggi.MessaggioApprodo;
 import di.uniba.map.b.adventure.messaggi.MessaggioBosco;
 import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
@@ -22,7 +23,10 @@ import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.TipoComando;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
+
+import java.io.IOException;
 import java.io.PrintStream;
+import java.io.Serializable;
 
 /**
  * ATTENZIONE: La descrizione del gioco è fatta in modo che qualsiasi gioco
@@ -38,7 +42,7 @@ import java.io.PrintStream;
  *
  * @author pierpaolo
  */
-public class GiocoNaufragioIsola extends GameDescription {
+public class GiocoNaufragioIsola extends GameDescription{
     @Override
     public void init() throws Exception {
         //Comandi per spostarsi nella mappa
@@ -107,6 +111,11 @@ public class GiocoNaufragioIsola extends GameDescription {
         Comando narra = new Comando(TipoComando.NARRA, "narra");
         narra.setAlias(new String[]{"racconta", "narrami", "raccontami"});
         getCommands().add(narra);
+
+        //Comando per salvare la partita in corso
+        Comando salva = new Comando(TipoComando.SALVA, "salva");
+        salva.setAlias(new String[]{});
+        getCommands().add(salva);
 
 
         //Istanziazione stanza approdo
@@ -539,6 +548,32 @@ public class GiocoNaufragioIsola extends GameDescription {
                     break;
                 case NARRA:
                     frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                    break;
+                case SALVA:
+                    //creazione del FMC
+                    FileMatchController FMC = new FileMatchController("/salvataggioPartita","./Progetto_Map/adventure/resources");
+                    //settaggio nome partita ed aggiunta al file
+                    this.setNomePartita("Partita di prova 1");
+                    boolean b = FMC.addMatch(this);
+                    if(b){
+                        frame.scrviSuEditor("La partita e' stata salvata con successo.\n\n");
+                    }
+                    else{
+                        frame.scrviSuEditor("La partita non e' stata salvata con successo.\n\n");
+                    }
+                    //Prova di ricarca dell'oggetto appena caricato in base al nome della partita
+                    try {
+                        GiocoNaufragioIsola pippo = FMC.getMatch("Partita di prova 1");
+                        if(pippo!=null){
+                            frame.scrviSuEditor("Partita caricata con successo");
+                        }
+                        else{
+                            frame.scrviSuEditor("Partita non trovata");
+                        }
+                    } catch (IOException e) {
+                        throw new RuntimeException(e);
+                    }
+                    break;
             }
         }
         frame.scriviSuLabelStanza(frame.getEngine().getGame().getCurrentRoom().getNomeStanza());

@@ -47,7 +47,7 @@ public class FileController implements FileInterface {
             }
             return true;
         } catch (IOException e) {
-            System.out.println("Ciao sono un errore");
+            System.out.println(e);
         }
         return false;
     }
