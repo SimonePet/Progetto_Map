@@ -19,6 +19,7 @@ public abstract class Database {
     protected static final String RECUPERA_PUNTEGGIO_CON_ID = "SELECT punteggio, FROM partita WHERE id=?";
     protected static final String RECUPERA_PUNTEGGIO_CON_NOME_PARTITA = "SELECT punteggio FROM partita WHERE nomePartita=?";
     protected static final String STAMPA_PARTITE = "SELECT id,nomePartita, username,punteggio,numMinuti,numSecondi,terminata,numMosse FROM partita";
+    protected static final String STAMPA_PARTITE_UTENTE = "SELECT id,nomePartita,username,punteggio,numMinuti,numSecondi,terminata,numMosse FROM partita WHERE username=?";
     private String username;
     private String password;
     
@@ -55,6 +56,12 @@ public abstract class Database {
     
     /* recupera punteggio partita con il nome della partita */
     public abstract int getPunteggio(String nomePartita);
+    
+    public abstract void stampaPartite();
+
+    public abstract ResultSet getPartite();
+
+    public abstract ResultSet getPartiteUtente(String username);
       
     
 }
