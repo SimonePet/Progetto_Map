@@ -32,9 +32,9 @@ public class Engine {
             System.err.println(ex);
         }
         try {
-            String basePath = new File("").getAbsolutePath();
-            String relativePath = "Progetto_Map/adventure/resources/stopwords";
-            String fullPath = basePath + File.separator + relativePath;
+            String percorsoAssoluto = new File("").getAbsolutePath();
+            String percorsoRelativo = "adventure/resources/stopwords";
+            String fullPath = percorsoAssoluto + File.separator + percorsoRelativo;
             Set<String> stopwords = Utils.loadFileListInSet(new File(fullPath));
             parser = new Parser(stopwords);
         } catch (IOException ex) {
