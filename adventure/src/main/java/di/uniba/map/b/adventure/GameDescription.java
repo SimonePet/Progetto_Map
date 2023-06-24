@@ -5,6 +5,7 @@
  */
 package di.uniba.map.b.adventure;
 
+import java.io.Serializable;
 import di.uniba.map.b.adventure.parser.ParserOutput;
 import di.uniba.map.b.adventure.type.Oggetto;
 import di.uniba.map.b.adventure.type.Comando;
@@ -18,7 +19,7 @@ import java.util.List;
  *
  * @author pierpaolo
  */
-public abstract class GameDescription {
+public abstract class GameDescription implements Serializable{
 
     private String nomePartita;
     private String username;  

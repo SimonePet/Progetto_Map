@@ -5,6 +5,7 @@
  */
 package di.uniba.map.b.adventure.type;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Set;
@@ -12,7 +13,7 @@ import java.util.Set;
 /**
  * Classe che serve per rappresentare un oggetto nel gioco.
  */
-public class Oggetto {
+public class Oggetto implements Serializable {
     private static final int HASH_1 = 7;
     private static final int HASH_2 = 37;
     private final int idOggetto;

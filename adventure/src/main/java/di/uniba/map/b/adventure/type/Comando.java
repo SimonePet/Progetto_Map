@@ -5,6 +5,7 @@
  */
 package di.uniba.map.b.adventure.type;
 
+import java.io.Serializable;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
@@ -13,7 +14,7 @@ import java.util.Set;
 /**
  * Classe per la gestione dei comandi.
  */
-public class Comando {
+public class Comando implements Serializable {
     private static final int HASH_1 = 3;
     private static final int HASH_2 = 97;
     //Verificare che
