@@ -11,6 +11,8 @@ import di.uniba.map.b.adventure.parser.Parser;
 import di.uniba.map.b.adventure.parser.ParserOutput;
 import di.uniba.map.b.adventure.type.TipoComando;
 import di.uniba.map.b.adventure.type.ThreadTime;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.JDialog;
 import javax.swing.JEditorPane;
 import javax.swing.text.BadLocationException;
@@ -86,6 +88,11 @@ public class JFrameApp extends javax.swing.JFrame {
         textField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldActionPerformed(evt);
+            }
+        });
+        textField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                textFieldKeyPressed(evt);
             }
         });
 
@@ -270,6 +277,14 @@ public class JFrameApp extends javax.swing.JFrame {
         JDialogStats d = new JDialogStats(this,true,engine.getGame().getUsername());
         d.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void textFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            ActionEvent e = new ActionEvent(this,1,"");
+            buttSumbitActionPerformed(e);
+        }
+    }//GEN-LAST:event_textFieldKeyPressed
 
     public void writeOnLabelTime(String time){
         timeLabel.setText(time);
