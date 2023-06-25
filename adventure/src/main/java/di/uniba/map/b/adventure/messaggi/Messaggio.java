@@ -25,14 +25,23 @@ public final class Messaggio {
             + "Se sei in difficolta' digita: aiuto [nome stanza]";
     private static final String SEI_TORNATO = "Sei tornato ";
     private static final String TI_TROVI = "Ti trovi ";
-    private static final String HAI_RACCOLTO = "Hai raccolto ";
-    private static final String HAI_LASCIATO = "Hai lasciato ";
+    private static final String HAI_RACCOLTO = "Hai raccolto: ";
+    private static final String HAI_LASCIATO = "Hai lasciato: ";
     private static final String INVENTARIO_PIENO = "Inventario pieno!";
+    private static final String INVENTARIO_VUOTO = "Il tuo inventario e' vuoto.";
+    private static final String NO_RACCOGLI = "Non puoi raccogliere questo oggetto.";
+    private static final String GIA_RACCOLTO = "Hai gia raccolto questo oggetto. E' presente nel tuo inventario.";
     private static final String NORD = "Nord";
     private static final String SUD = "Sud";
     private static final String EST = "Est";
     private static final String OVEST = "Ovest";
     private static final String TI_SEI_SPOSTATO_A = "Ti sei spostato a ";
+    private static final String INVENTARIO = "Nel tuo inventario ci sono:";
+    private static final String INVIO ="/n";
+    private static final String NON_VEDO_OGGETTI = "Non c'è luce. Non vedo nulla da raccogliere.";
+    private static final String OGGETTO_NON_PRESENTE = "L'oggetto che vuoi raccogliere non c'è.";
+    private static final String OGGETTO_NON_POSSEDUTO = "Non possiedi questo oggetto.";
+    private static final String OGGETTO_NON_INVENTARIO = "Questo oggetto non è presente nell' inventario.";
     public static String getHelp() {
        return Messaggio.HELP;
    }
@@ -66,4 +75,13 @@ public final class Messaggio {
     public static String getTiSeiSpostatoA() {
         return Messaggio.TI_SEI_SPOSTATO_A;
     }
+    public static String getInventario(){return Messaggio.INVENTARIO;}
+    public static String getInvio(){return Messaggio.INVIO;}
+    public static String getInvVuoto(){return Messaggio.INVENTARIO_VUOTO;}
+    public static String getNoRaccogli(){return Messaggio.NO_RACCOGLI;}
+    public static String getGiaRaccolto(){return Messaggio.GIA_RACCOLTO;}
+    public static String getNonVedoOggetti(){return Messaggio.NON_VEDO_OGGETTI;}
+    public static String getOggettoNonPresente(){return Messaggio.OGGETTO_NON_PRESENTE;}
+    public static String getOggettoNonPosseduto(){return Messaggio.OGGETTO_NON_POSSEDUTO;}
+    public static String getOggettoNonInventario(){return Messaggio.OGGETTO_NON_INVENTARIO;}
 }

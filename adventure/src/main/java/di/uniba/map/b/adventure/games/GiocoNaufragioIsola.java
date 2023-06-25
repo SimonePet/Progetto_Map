@@ -28,6 +28,7 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.Serializable;
+import java.util.concurrent.Callable;
 
 /**
  * ATTENZIONE: La descrizione del gioco è fatta in modo che qualsiasi gioco
@@ -411,7 +412,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         costa.getObjects().add(barca);
 
         //Nave
-        Oggetto cartello = new Oggetto(12, "cartello", "Un incomprensibile cartello in legno...");
+        Oggetto cartello = new Oggetto(13, "cartello", "Un incomprensibile cartello in legno...");
         cartello.setAlias(new String[]{"insegna","scritta"});
         sentiero.getObjects().add(cartello);
 
@@ -443,118 +444,28 @@ public class GiocoNaufragioIsola extends GameDescription{
             //move
             switch (comandoRiconosciuto) {
                 case NORD:
-                    //frame.writeTextOnEditor("\n=====NORD=====\n");
-                    frame.scrviSuEditor(getCurrentRoom().getMessaggioNord());
-                    frame.scrviSuEditor("\n");
-                    if (getCurrentRoom().getNord() != null && getCurrentRoom().getNord().getRaggiungibile()) {
-                        setCurrentRoom(getCurrentRoom().getNord());
-                        if(getCurrentRoom().getVisitata())
-                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneCortaStanza());
-                        else
-                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
-                        getCurrentRoom().setVisitata(true);
-                        move = true;
-                    } else {
-                        noroom = true;
-                    }
+                    ControlGioco.ComandoNord(this,frame);
                     break;
                 case SUD:
-                    //frame.writeTextOnEditor("\n=====SUD=====\n");
-                    frame.scrviSuEditor(getCurrentRoom().getMessaggioSud());
-                    frame.scrviSuEditor("\n");
-                    if (getCurrentRoom().getSud() != null && getCurrentRoom().getSud().getRaggiungibile()) {
-                        setCurrentRoom(getCurrentRoom().getSud());;
-                        if(getCurrentRoom().getVisitata())
-                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneCortaStanza());
-                        else
-                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
-                        getCurrentRoom().setVisitata(true);
-                        move = true;
-                    } else {
-                        noroom = true;
-                    }
+                    ControlGioco.ComandoSud(this,frame);
                     break;
                 case EST:
-                    //frame.writeTextOnEditor("\n=====EST=====\n");
-                    frame.scrviSuEditor(getCurrentRoom().getMessaggioEst());
-                    frame.scrviSuEditor("\n");
-                    if (getCurrentRoom().getEst() != null && getCurrentRoom().getEst().getRaggiungibile()) {
-                        setCurrentRoom(getCurrentRoom().getEst());
-                        getCurrentRoom().setVisitata(true);
-                        if(getCurrentRoom().getVisitata())
-                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneCortaStanza());
-                        else
-                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
-                        getCurrentRoom().setVisitata(true);
-                        move = true;
-                    } else {
-                        noroom = true;
-                    }
+                    ControlGioco.ComandoEst(this,frame);
                     break;
                 case OVEST:
-                    //frame.writeTextOnEditor("\n=====OVEST=====\n");
-                    frame.scrviSuEditor(getCurrentRoom().getMessaggioOvest());
-                    frame.scrviSuEditor("\n");
-                    if (getCurrentRoom().getOvest() != null && getCurrentRoom().getOvest().getRaggiungibile()) {
-                        setCurrentRoom(getCurrentRoom().getOvest());
-                        if(getCurrentRoom().getVisitata())
-                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneCortaStanza());
-                        else
-                            frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
-                        getCurrentRoom().setVisitata(true);
-                        move = true;
-                    } else {
-                        noroom = true;
-                    }
+                    ControlGioco.ComandoOvest(this,frame);
                     break;
                 case OSSERVA:
                     frame.scrviSuEditor(getCurrentRoom().getOsserva());
                     break;
                 case INVENTARIO:
-                    if (!getInventory().isEmpty()) {
-                        frame.scrviSuEditor("Nel tuo inventario ci sono:\n");
-                        for (Oggetto oggettoInv : getInventory()) {
-                            frame.scrviSuEditor(oggettoInv.getNomeOggetto() + ": " + oggettoInv.getDescrizioneOggetto() + "\n");
-                        }
-                    }else {
-                        frame.scrviSuEditor("Il tuo inventario e' vuoto.");
-                    }
+                    ControlGioco.ComandoInventario(this,frame);
                     break;
                 case RACCOGLI:
-                    if(getCurrentRoom().getVisibile()) {
-                        if (p.getObject() != null) {
-                            if (p.getObject().isRaccogglibile()) {
-                                getInventory().add(p.getObject());
-                                getCurrentRoom().getObjects().remove(p.getObject());
-                                frame.scrviSuEditor("Hai raccolto: " + p.getObject().getNomeOggetto());
-                            } else {
-                                frame.scrviSuEditor("Non puoi raccogliere questo oggetto.");
-                            }
-                        } else {
-                            if(p.getInvObject()!=null){
-                                frame.scrviSuEditor("Hai gia raccolto questo oggetto. E' presente nel tuo inventario.");
-                            }else{
-                                frame.scrviSuEditor("L'oggetto che vuoi raccogliere non c'è.");
-                            }
-                        }
-                    } else {
-                        frame.scrviSuEditor("Non c'è luce. Non vedo nulla da raccogliere.");
-                    }
+                    ControlGioco.ComandoRaccogli(this,frame,p.getObject(),p.getInvObject());
                     break;
                 case LASCIA:
-                    if (p.getInvObject() != null){
-                        System.out.println("p.getInvObject() restituisce: "+p.getInvObject().getNomeOggetto());
-                        //Se possiedo l'oggetto
-                        if(getInventory().contains(p.getInvObject())){
-                            getInventory().remove(p.getInvObject());
-                            getCurrentRoom().getObjects().add(p.getInvObject());
-                            frame.scrviSuEditor("Hai lasciato: " + p.getInvObject().getNomeOggetto());
-                        }else{
-                            frame.scrviSuEditor("Non possiedi questo oggetto.");
-                        }
-                    } else {
-                        frame.scrviSuEditor("Questo oggetto non è presente nell' inventario.");
-                    }
+                    ControlGioco.ComandoLascia(this,frame,p.getInvObject());
                     break;
                 case NARRA:
                     frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
@@ -592,7 +503,7 @@ public class GiocoNaufragioIsola extends GameDescription{
                     if(p.getInvObject() != null){
                         if(p.getInvObject().getNomeOggetto().equals("lampada")){
                             System.out.println("Verifico se inventario contiene: "+getOggettiGioco().get(4).getNomeOggetto());
-                            if(getInventory().contains(getOggettiGioco().get(5))){
+                            if(getInventory().contains(getOggettiGioco().get(4))){
                                 System.out.println("SONO MORTO Possiedo: "+getOggettiGioco().get(4).getNomeOggetto());
                                 frame.scrviSuEditor("Hai utilizzato l'acciarino e la lampada si è accesa.");
                                 getRooms().get(6).setVisibile(true);

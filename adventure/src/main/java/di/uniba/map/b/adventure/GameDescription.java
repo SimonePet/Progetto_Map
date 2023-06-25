@@ -120,6 +120,7 @@ public abstract class GameDescription implements Serializable{
     public List<Oggetto> getOggettiGioco() {
         return oggettiGioco;
     }
+
     public abstract void init() throws Exception;
 
     public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame);
