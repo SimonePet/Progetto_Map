@@ -93,13 +93,19 @@ public class ControlGioco {
             //Verifico che l'oggetto nel luogo corrente esiste.
             if (ogg != null) {
                 //Verifico che l'oggetto può essere raccolto
-                if (ogg.isRaccogglibile()) {
-                    GNI.getInventory().add(ogg);
-                    GNI.getCurrentRoom().getObjects().remove(ogg);
-                    frame.scrviSuEditor(Messaggio.getHaiRaccolto() + ogg.getNomeOggetto());
+                System.out.println("L'oggetto "+ ogg.getNomeOggetto() + " e raccoglibile: "+ ogg.isRaccogglibile());
+                System.out.println("\nL'oggetto "+ ogg.getNomeOggetto() + " e visibile: "+ ogg.isVisibile());
+                if(ogg.isVisibile()){
+                    if (ogg.isRaccogglibile()) {
+                        GNI.getInventory().add(ogg);
+                        GNI.getCurrentRoom().getObjects().remove(ogg);
+                        frame.scrviSuEditor(Messaggio.getHaiRaccolto() + ogg.getNomeOggetto());
+                    } else {
+                        //Se sono qui signigica che l'oggetto esiste ma non può essere raccolto
+                        frame.scrviSuEditor(Messaggio.getNoRaccogli());
+                    }
                 } else {
-                    //Se sono qui signigica che l'oggetto esiste ma non può essere raccolto
-                    frame.scrviSuEditor(Messaggio.getNoRaccogli());
+                    frame.scrviSuEditor(Messaggio.getOggettoNonPresente());
                 }
             } else {
                 if(oggInv!=null){
@@ -130,7 +136,4 @@ public class ControlGioco {
             frame.scrviSuEditor(Messaggio.getOggettoNonInventario());
         }
     }
-
-
-
 }
