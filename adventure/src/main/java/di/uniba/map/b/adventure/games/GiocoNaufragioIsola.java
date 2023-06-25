@@ -24,6 +24,7 @@ import di.uniba.map.b.adventure.type.TipoComando;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
 
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.Serializable;
@@ -371,7 +372,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         Oggetto lastra = new Oggetto(5, "lastra di pietra", "Una lastra incisa.");
         lastra.setAlias(new String[]{"pietra", "lastre", "pietre", "lastra pietra"});
         grotta.getObjects().add(lastra);
-        lastra.setVisibile(false);
+        lastra.setRaccogglibile(false);
 
         //Lampada
         Oggetto lampada = new Oggetto(6, "lampada", "Una vecchia lampada ad olio.");
@@ -415,6 +416,15 @@ public class GiocoNaufragioIsola extends GameDescription{
         sentiero.getObjects().add(cartello);
 
         setCurrentRoom(approdo);
+
+        //Aggiungo tutti gli oggetti alla lista degli oggetti in game description
+        getOggettiGioco().add(radio);
+        getOggettiGioco().add(batteria);
+        getOggettiGioco().add(cartina);
+        getOggettiGioco().add(telecomando);
+        getOggettiGioco().add(acciarino);
+        getOggettiGioco().add(lastra);
+        getOggettiGioco().add(lampada);
     }
 
 
@@ -550,8 +560,12 @@ public class GiocoNaufragioIsola extends GameDescription{
                     frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
                     break;
                 case SALVA:
+                    String workingDirectory = System.getProperty("user.dir");
+                    String relativePath = "adventure/resources";
+                    String fullPath = workingDirectory + File.separator + relativePath;
+                    FileMatchController FMC = new FileMatchController("/salvataggioPartita", fullPath);
                     //creazione del FMC
-                    FileMatchController FMC = new FileMatchController("/salvataggioPartita","./Progetto_Map/adventure/resources");
+                    //FileMatchController FMC = new FileMatchController("/salvataggioPartita","./Progetto_Map/adventure/resources");
                     //settaggio nome partita ed aggiunta al file
                     this.setNomePartita("Partita di prova 1");
                     boolean b = FMC.addMatch(this);
@@ -574,6 +588,39 @@ public class GiocoNaufragioIsola extends GameDescription{
                         throw new RuntimeException(e);
                     }
                     break;
+                case ACCENDI:
+                    if(p.getInvObject() != null){
+                        if(p.getInvObject().getNomeOggetto().equals("lampada")){
+                            System.out.println("Verifico se inventario contiene: "+getOggettiGioco().get(4).getNomeOggetto());
+                            if(getInventory().contains(getOggettiGioco().get(5))){
+                                System.out.println("SONO MORTO Possiedo: "+getOggettiGioco().get(4).getNomeOggetto());
+                                frame.scrviSuEditor("Hai utilizzato l'acciarino e la lampada si è accesa.");
+                                getRooms().get(6).setVisibile(true);
+                            } else {
+                                frame.scrviSuEditor("Non riesci ad accendere la lampada...servirebbe qualcosa...");
+                            }
+                        } else {
+                            frame.scrviSuEditor("Non puoi accendere questo oggetto.");
+                        }
+                    } else {
+                        frame.scrviSuEditor("Questo oggetto non è presente nell' inventario.");
+                    }
+                    /*
+                case APRI:
+                    if(p.getInvObject()!=null){
+                            //mettere id del telecomando
+                            if(p.getInvObject().equals(getOggettiGioco().get(1))){
+
+                        }
+                    } else {
+                        if(p.getObject()!=null){
+
+                        } else {
+                            frame.scrviSuEditor("Nulla da aprire.");
+                        }
+                    }
+
+                     */
             }
         }
         frame.scriviSuLabelStanza(frame.getEngine().getGame().getCurrentRoom().getNomeStanza());
