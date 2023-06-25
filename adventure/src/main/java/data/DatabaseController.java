@@ -154,5 +154,32 @@ public class DatabaseController extends Database{
         return null;    
     }
     
+    @Override
+    public double getPunteggioMedio(){
+        double punteggioMedio = 0;
+        try{
+            Statement stm = conn.createStatement();
+            ResultSet rs = stm.executeQuery(STAMPA_PUNTEGGIO_MEDIO);   
+            rs.next();
+            punteggioMedio = rs.getDouble(1);
+        }catch(SQLException ex){       
+            System.err.println(ex.getMessage());
+        }
+        return punteggioMedio;
+    }
     
+    @Override
+    public double getPunteggioMedioUtente(String username){
+        double punteggioMedio = 0;
+        try{
+            PreparedStatement pstm = conn.prepareStatement(STAMPA_PUNTEGGIO_MEDIO_UTENTE);
+            pstm.setString(1, username);
+            ResultSet rs = pstm.executeQuery();   
+            rs.next();
+            punteggioMedio = rs.getDouble(1);
+        }catch(SQLException ex){       
+            System.err.println(ex.getMessage());
+        }     
+        return punteggioMedio;
+    }  
 }
