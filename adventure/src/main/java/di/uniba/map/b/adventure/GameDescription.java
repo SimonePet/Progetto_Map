@@ -31,6 +31,7 @@ public abstract class GameDescription implements Serializable{
     private final List<Stanza> rooms = new ArrayList<>();
     private final List<Comando> commands = new ArrayList<>();
     private final List<Oggetto> inventory = new ArrayList<>();
+    private final List<Oggetto> oggettiGioco = new ArrayList<>();
     private Stanza currentRoom;
     
     public void setPunteggio(){
@@ -116,6 +117,9 @@ public abstract class GameDescription implements Serializable{
         return inventory;
     }
 
+    public List<Oggetto> getOggettiGioco() {
+        return oggettiGioco;
+    }
     public abstract void init() throws Exception;
 
     public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame);

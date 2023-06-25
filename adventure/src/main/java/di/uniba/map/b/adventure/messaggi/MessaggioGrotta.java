@@ -14,7 +14,7 @@ public final class MessaggioGrotta {
     private static final String NOME = "Grotta";
     private static final String DESCRIZIONE_CORTA = "Ti trovi in una grotta buia, non si vede assolutamente nulla";
     private static final String DESCRIZIONE_COMPLETA = "Sei davanti una grotta, nonchè una cavità buia e silenziosa."
-            + "Le pareti sembrano essere irregolari, mentre il terreno si presenta irregolare e scivoloso."
+            + "Le pareti sembrano essere irregolari, mentre il terreno si presenta irregolare e scivoloso.\n"
             + "La luce è scarsa e servirebbe qualcosa per esplorarla.";
     private static final String OSSERVA_BUIO = "Incredibilmente ti senti un pipistrello e riesci a osservare "
             + "la grotta senza luce. Ah no stai solo immaginando. Non riesci a vedere nulla...";
