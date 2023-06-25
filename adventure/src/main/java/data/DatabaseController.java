@@ -181,5 +181,23 @@ public class DatabaseController extends Database{
             System.err.println(ex.getMessage());
         }     
         return punteggioMedio;
-    }  
+    }
+    
+    @Override
+    public boolean partitaEsistente(String nomePartita){
+        boolean partitaEsistente = false;
+        try{
+            PreparedStatement pstm = conn.prepareStatement(STAMPA_PARTITA_SPECIFICA);
+            pstm.setString(1, nomePartita);
+            ResultSet rs = pstm.executeQuery();   
+            if(rs.next()){
+                partitaEsistente = true;
+            }
+            
+        }catch(SQLException ex){       
+            System.err.println(ex.getMessage());
+        }
+        return partitaEsistente;
+    }
+    
 }

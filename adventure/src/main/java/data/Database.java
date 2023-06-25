@@ -22,6 +22,7 @@ public abstract class Database {
     protected static final String STAMPA_PARTITE_UTENTE = "SELECT id,nomePartita,username,punteggio,numMinuti,numSecondi,terminata,numMosse FROM partita WHERE username=?";
     protected static final String STAMPA_PUNTEGGIO_MEDIO = "SELECT avg(punteggio) FROM partita";
     protected static final String STAMPA_PUNTEGGIO_MEDIO_UTENTE = "SELECT avg(punteggio) FROM partita WHERE username=?";
+    protected static final String STAMPA_PARTITA_SPECIFICA = "SELECT nomePartita FROM partita WHERE nomePartita=?";
     private String username;
     private String password;
     
@@ -68,5 +69,7 @@ public abstract class Database {
     public abstract double getPunteggioMedio();
     
     public abstract double getPunteggioMedioUtente(String username);
+    
+    public abstract boolean partitaEsistente(String nomePartita);
     
 }

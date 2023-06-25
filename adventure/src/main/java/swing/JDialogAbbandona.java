@@ -113,7 +113,7 @@ public class JDialogAbbandona extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelErrore, javax.swing.GroupLayout.DEFAULT_SIZE, 16, Short.MAX_VALUE)
+                .addComponent(jLabelErrore, javax.swing.GroupLayout.DEFAULT_SIZE, 67, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -121,15 +121,20 @@ public class JDialogAbbandona extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void YesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YesButtonActionPerformed
-        //recupera nome partita
-        String nomePartita = jNomePartita.getText();      
-        if(nomePartita.equalsIgnoreCase("")){
-            jLabelErrore.setText("inserire nome partita!!");
-        }else{
-            engine.getGame().setNomePartita(nomePartita);
-            DatabaseController db;
-            try {
-                db = new DatabaseController("sa","");
+        DatabaseController db;
+        boolean partitaEsistente = false;
+        //recupera nome partita 
+        String nomePartita = jNomePartita.getText();   
+        try {
+            db = new DatabaseController("sa","");
+            //controlla esistenza partita
+            partitaEsistente = db.partitaEsistente(nomePartita); 
+            if(nomePartita.equalsIgnoreCase("")){
+                jLabelErrore.setText("inserire nome partita!!");
+            }else if(partitaEsistente){
+                jLabelErrore.setText("nome partita già esistente");
+            }else{
+                engine.getGame().setNomePartita(nomePartita);
                 //crea la tabella match solo se non esiste
                 db.creaTabellaPartita();
                 //salva partita su DB
@@ -142,9 +147,9 @@ public class JDialogAbbandona extends javax.swing.JDialog {
                 db.salvaPartita(nomePartita, username, b, numSeconds, numMinutes, numMoves, game);
                 db.stampaPartite();
                 this.dispose();
-            } catch (SQLException ex) {
-                System.err.println(ex.getMessage());
             }
+        }catch(SQLException e){
+            System.err.println(e.getMessage());
         }
     }//GEN-LAST:event_YesButtonActionPerformed
 
