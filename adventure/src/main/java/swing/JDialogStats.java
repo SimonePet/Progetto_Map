@@ -9,6 +9,7 @@ import di.uniba.map.b.adventure.type.ThreadTime;
 import java.awt.Window;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.DecimalFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
@@ -43,10 +44,13 @@ public class JDialogStats extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        lblSaluto = new javax.swing.JLabel();
         jbtnPartite = new javax.swing.JButton();
+        lblSaluto = new javax.swing.JLabel();
+        jbtnPartiteUtente = new javax.swing.JButton();
         scrollPanel = new javax.swing.JScrollPane();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtPunteggioMedio = new javax.swing.JTextPane();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -55,21 +59,25 @@ public class JDialogStats extends javax.swing.JDialog {
             }
         });
 
-        jButton1.setText("VISUALIZZA TUTTE LE PARTITE");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-
-        lblSaluto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-
-        jbtnPartite.setText("VISUALIZZA TUTTE LE TUE PARTITE");
+        jbtnPartite.setText("VISUALIZZA TUTTE LE PARTITE");
         jbtnPartite.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jbtnPartiteActionPerformed(evt);
             }
         });
+
+        lblSaluto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+
+        jbtnPartiteUtente.setText("VISUALIZZA TUTTE LE TUE PARTITE");
+        jbtnPartiteUtente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPartiteUtenteActionPerformed(evt);
+            }
+        });
+
+        jScrollPane1.setViewportView(txtPunteggioMedio);
+
+        jLabel1.setText("Punteggio medio:");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -81,12 +89,18 @@ public class JDialogStats extends javax.swing.JDialog {
                         .addContainerGap()
                         .addComponent(lblSaluto, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(243, 243, 243)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(231, 231, 231)
-                        .addComponent(jbtnPartite)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(231, 231, 231)
+                                .addComponent(jbtnPartiteUtente))
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(243, 243, 243)
+                                .addComponent(jbtnPartite)))
+                        .addGap(58, 58, 58)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(72, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 39, Short.MAX_VALUE)
                 .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -97,11 +111,21 @@ public class JDialogStats extends javax.swing.JDialog {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(lblSaluto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jButton1)
-                .addGap(18, 18, 18)
-                .addComponent(jbtnPartite)
-                .addGap(18, 18, 18)
-                .addComponent(scrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jbtnPartite)
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(4, 4, 4)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jbtnPartiteUtente)
+                        .addGap(18, 18, 18)
+                        .addComponent(scrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 394, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -129,7 +153,7 @@ public class JDialogStats extends javax.swing.JDialog {
         lblSaluto.setText("CIAO "+username.toUpperCase());
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void jbtnPartiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPartiteActionPerformed
         // TODO add your handling code here:
         try {
             // TODO add your handling code here:
@@ -150,18 +174,17 @@ public class JDialogStats extends javax.swing.JDialog {
             }
             JTable tabella = new JTable(dati, nomiColonne);
             tabella.setBounds(100, 120, 600, 500);
-
-
-            // adding it to JScrollPane
+            // aggiunge tabella allo ScrollPane
             scrollPanel.getViewport().add(tabella);
-
-
+            double punteggioMedio = db.getPunteggioMedio();
+            String punteggio = df.format(punteggioMedio);
+            txtPunteggioMedio.setText(""+punteggio);
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jbtnPartiteActionPerformed
 
-    private void jbtnPartiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPartiteActionPerformed
+    private void jbtnPartiteUtenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPartiteUtenteActionPerformed
         try {
             // TODO add your handling code here:
             DatabaseController db = new DatabaseController("sa","");
@@ -181,16 +204,15 @@ public class JDialogStats extends javax.swing.JDialog {
             }
             JTable tabella = new JTable(dati, nomiColonne);
             tabella.setBounds(100, 120, 600, 500);
-
-
-            // adding it to JScrollPane
             scrollPanel.getViewport().add(tabella);
-
+            double punteggioMedio = db.getPunteggioMedioUtente(username);
+            String punteggio = df.format(punteggioMedio);
+            txtPunteggioMedio.setText(""+punteggio);
 
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }      
-    }//GEN-LAST:event_jbtnPartiteActionPerformed
+    }//GEN-LAST:event_jbtnPartiteUtenteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,11 +257,16 @@ public class JDialogStats extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbtnPartite;
+    private javax.swing.JButton jbtnPartiteUtente;
     private javax.swing.JLabel lblSaluto;
     private javax.swing.JScrollPane scrollPanel;
+    private javax.swing.JTextPane txtPunteggioMedio;
     // End of variables declaration//GEN-END:variables
     static String username;
+    static DecimalFormat df = new DecimalFormat("0.00");
+
 }
