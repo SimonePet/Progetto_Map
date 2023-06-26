@@ -4,6 +4,15 @@
  */
 package swing;
 
+import data.FileMatchController;
+import di.uniba.map.b.adventure.GameDescription;
+import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
+import java.io.IOException;
+import static java.nio.file.Files.list;
+import java.util.List;
+import java.util.ListIterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
@@ -37,6 +46,11 @@ public class JDialogMatch extends JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jLabel1.setText("Quale partita vuoi riprendere?");
 
@@ -86,6 +100,20 @@ public class JDialogMatch extends JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        FileMatchController f = new FileMatchController("salvataggioPartita","resources");
+        try {
+            List<GameDescription> partite = f.getMatch();
+            ListIterator<GameDescription> lit = partite.listIterator();
+            
+            while (lit.hasNext()) {
+                System.out.println(lit.next().getNomePartita());
+            }
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }//GEN-LAST:event_formWindowOpened
 
 
     public static void main() {
