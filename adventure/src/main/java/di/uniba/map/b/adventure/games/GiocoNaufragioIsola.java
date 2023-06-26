@@ -501,7 +501,7 @@ public class GiocoNaufragioIsola extends GameDescription{
                     break;
                 case OSSERVA:
                     frame.scrviSuEditor(getCurrentRoom().getOsserva());
-                    ContolGioco.ComandoOsserva(this,frame,p.getObject(),p.getInvObject());
+                    //ContolGioco.ComandoOsserva(this,frame,p.getObject(),p.getInvObject());
                     break;
                 case INVENTARIO:
                     ControlGioco.ComandoInventario(this,frame);

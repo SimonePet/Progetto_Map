@@ -27,7 +27,7 @@ public abstract class Database {
     private String password;
     
     public Connection connect() throws SQLException{
-        Connection conn = DriverManager.getConnection("jdbc:h2:/home/user/test/db");
+        Connection conn = DriverManager.getConnection("jdbc:h2:./resources/db");
         return conn;
     }
 

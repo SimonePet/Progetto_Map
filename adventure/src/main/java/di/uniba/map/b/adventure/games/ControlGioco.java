@@ -137,9 +137,4 @@ public class ControlGioco {
             frame.scrviSuEditor(Messaggio.getOggettoNonInventario());
         }
     }
-
-    public static void Comando
-
-
-
 }
