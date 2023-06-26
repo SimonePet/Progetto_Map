@@ -1,0 +1,6 @@
+2023-06-26 16:35:47 jdbc[3]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PARTITA" not found (this database is empty); SQL statement:
+SELECT id,nomePartita, username,punteggio,numMinuti,numSecondi,terminata,numMosse FROM partita [42104-214]
+2023-06-26 16:36:06 jdbc[4]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PARTITA" not found (this database is empty); SQL statement:
+SELECT nomePartita FROM partita WHERE nomePartita=? [42104-214]
