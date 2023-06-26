@@ -37,7 +37,7 @@ public final class Messaggio {
     private static final String OVEST = "Ovest";
     private static final String TI_SEI_SPOSTATO_A = "Ti sei spostato a ";
     private static final String INVENTARIO = "Nel tuo inventario ci sono:";
-    private static final String INVIO ="/n";
+    private static final String INVIO ="\n";
     private static final String NON_VEDO_OGGETTI = "Non c'è luce. Non vedo nulla da raccogliere.";
     private static final String OGGETTO_NON_PRESENTE = "L'oggetto che vuoi raccogliere non c'è.";
     private static final String OGGETTO_NON_POSSEDUTO = "Non possiedi questo oggetto.";

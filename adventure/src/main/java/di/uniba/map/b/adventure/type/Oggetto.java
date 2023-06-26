@@ -132,7 +132,7 @@ public class Oggetto implements Serializable {
      * @param raccogglibileCorr variabile booleana che indica se l'oggetto può essere raccolto.
      */
     public void setRaccogglibile(final boolean raccogglibileCorr) {
-        this.raccogglibile = raccogglibile;
+        this.raccogglibile = raccogglibileCorr;
     }
 
     /**
@@ -246,11 +246,11 @@ public class Oggetto implements Serializable {
         return true;
     }
 
-    public boolean getVisibile() {
+    public boolean isVisibile() {
         return this.visibile;
     }
 
-    public void setVisibile(boolean visibile) {
-        this.visibile = visibile;
+    public void setVisibile(boolean visibileCorr) {
+        this.visibile = visibileCorr;
     }
 }
