@@ -6,6 +6,7 @@ package data;
 
 
 import di.uniba.map.b.adventure.GameDescription;
+import java.io.File;
 import java.io.Serializable;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
@@ -38,10 +39,14 @@ public class FileMatchController extends FileController implements Serializable 
      * @return Vero se salva l'engine sul file, Falso altrimenti.
      * @throws java.io.IOException
      */
-    public boolean addMatch(final GameDescription game) throws IOException, ClassNotFoundException {
-        try {
-            
-            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./"+directory+"/"+nameFile,true)) {
+    public boolean addMatch(final GameDescription game) throws IOException, ClassNotFoundException {       
+        try {   
+            // prendiamo percorso relativo ed eliminiamo la sottostringa /adventure e tutti i caratteri successivi(tramite il .*) //
+            String percorsoRelFile = System.getProperty("user.dir").replaceAll(File.separator+"adventure"+".*","");
+            String percorsoAss = File.separator+directory+File.separator+nameFile;
+            String percorso = percorsoRelFile+percorsoAss;
+
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(percorso,true)) {
                 @Override
                 protected void writeStreamHeader() throws IOException {
                     reset();

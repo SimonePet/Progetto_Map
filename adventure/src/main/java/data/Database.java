@@ -7,6 +7,7 @@ package data;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
 import java.beans.Statement;
+import java.io.File;
 import java.sql.*;
 /**
  *  CLASSE ASTRATTA 
@@ -27,7 +28,11 @@ public abstract class Database {
     private String password;
     
     public Connection connect() throws SQLException{
-        Connection conn = DriverManager.getConnection("jdbc:h2:./resources/db");
+        String percorsoRelDb = System.getProperty("user.dir");
+        percorsoRelDb = percorsoRelDb.replaceAll("adventure" + ".*", "");
+        String percorsoAssDb = "resources"+File.separator+"db";
+        String percorsoDb = percorsoRelDb+percorsoAssDb;
+        Connection conn = DriverManager.getConnection("jdbc:h2:"+percorsoDb);
         return conn;
     }
 
