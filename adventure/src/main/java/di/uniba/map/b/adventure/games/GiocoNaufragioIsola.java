@@ -345,6 +345,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         Oggetto radio = new Oggetto(0, "radio", "E' una vecchia radio a pile..."
                 + "chissa se funzionera'...");
         radio.setAlias(new String[]{});
+        radio.setVisibile(true);
         costa.getObjects().add(radio);
 
         //Istanziazione oggetto batteria
@@ -355,66 +356,99 @@ public class GiocoNaufragioIsola extends GameDescription{
         //Cartina correnti marine
         Oggetto cartina = new Oggetto(2, "mappa", "Una antica cartina delle correnti.");
         cartina.setAlias(new String[]{"cartine", "carta", "cartina", "mappe","carte"});
+        cartina.setVisibile(true);
         costa.getObjects().add(cartina);
 
         //Oggetto contenitore telecomando: contiene pile
         OggettoContenitore telecomando = new OggettoContenitore(3, "telecomando", "Un semplice telecomando.");
         telecomando.setAlias(new String[]{"telecomandi"});
         telecomando.setApribile(true);
-        telecomando.setRaccogglibile(false);
+        telecomando.setRaccogglibile(true);
         telecomando.setAperto(false);
+        telecomando.setVisibile(true);
+        edificioDentro.getObjects().add(telecomando);
 
         //Acciarino
         Oggetto acciarino = new Oggetto(4, "acciarino", "Un acciarino, potresti riscaldarti o darti fuoco.");
         acciarino.setAlias(new String[]{"accendino"});
+        acciarino.setVisibile(true);
         costa.getObjects().add(acciarino);
 
         //Lastra
         Oggetto lastra = new Oggetto(5, "lastra di pietra", "Una lastra incisa.");
         lastra.setAlias(new String[]{"pietra", "lastre", "pietre", "lastra pietra"});
-        grotta.getObjects().add(lastra);
+        lastra.setVisibile(false);
         lastra.setRaccogglibile(false);
+        grotta.getObjects().add(lastra);
 
         //Lampada
         Oggetto lampada = new Oggetto(6, "lampada", "Una vecchia lampada ad olio.");
         lampada.setAlias(new String[]{"lampade", "lampadario", "lampadina", "lampadine", "luce", "luci"});
+        lampada.setVisibile(true);
         bosco.getObjects().add(lampada);
 
         //Libro Cifrario
         Oggetto cifrario = new Oggetto(7, "cifrario", "Un libricino che spiega come decifrare"
                 + "delle strane scritture.");
         cifrario.setAlias(new String[]{"libro","libri","cifrari"});
+        cifrario.setVisibile(true);
         costa.getObjects().add(cifrario);
 
         //Vela
         Oggetto vela = new Oggetto(8, "vela", "Una vela...");
         vela.setAlias(new String[]{});
+        vela.setVisibile(true);
         covo.getObjects().add(vela);
 
         //Accetta
         Oggetto accetta = new Oggetto(9, "accetta", "Un' accetta...");
         accetta.setAlias(new String[]{});
+        accetta.setVisibile(true);
         covo.getObjects().add(accetta);
 
         //Corde
         Oggetto corda = new Oggetto(10, "corda", "Corda...");
         corda.setAlias(new String[]{"corde"});
+        corda.setVisibile(true);
         covo.getObjects().add(corda);
 
         //Fucile
         Oggetto fucile = new Oggetto(11, "fucile", "Un fucile...");
         fucile.setAlias(new String[]{"arma"});
+        fucile.setVisibile(true);
         covo.getObjects().add(fucile);
 
         //Nave
         Oggetto barca = new Oggetto(12, "barca", "Il relitto della tua imbarcazione...");
         barca.setAlias(new String[]{"barchetta","nave","relitto"});
+        barca.setVisibile(true);
         costa.getObjects().add(barca);
 
-        //Nave
+        //cartello
         Oggetto cartello = new Oggetto(13, "cartello", "Un incomprensibile cartello in legno...");
         cartello.setAlias(new String[]{"insegna","scritta"});
         sentiero.getObjects().add(cartello);
+        cartello.setVisibile(true);
+        cartello.setRaccogglibile(false);
+
+        //Armadio
+        Oggetto armadio = new Oggetto(14, "armadio", "Un grande armadio in legno...");
+        armadio.setAlias(new String[]{});
+        armadio.setRaccogglibile(false);
+        armadio.setVisibile(true);
+        edificioDentro.getObjects().add(armadio);
+
+        Oggetto tv = new Oggetto(15, "tv", "Una televisione un po' datata chissa se si accende...");
+        tv.setAlias(new String[]{"televisione","tivvu","televisore"});
+        tv.setRaccogglibile(false);
+        tv.setVisibile(true);
+        edificioDentro.getObjects().add(tv);
+
+        Oggetto divano = new Oggetto(16, "divano", "Un bel divano in pelle.");
+        divano.setAlias(new String[]{"poltrona", "sofa", "televisore"});
+        divano.setRaccogglibile(false);
+        divano.setVisibile(true);
+        edificioDentro.getObjects().add(divano);
 
         setCurrentRoom(approdo);
 
@@ -426,6 +460,16 @@ public class GiocoNaufragioIsola extends GameDescription{
         getOggettiGioco().add(acciarino);
         getOggettiGioco().add(lastra);
         getOggettiGioco().add(lampada);
+        getOggettiGioco().add(cifrario);
+        getOggettiGioco().add(vela);
+        getOggettiGioco().add(accetta);
+        getOggettiGioco().add(corda);
+        getOggettiGioco().add(fucile);
+        getOggettiGioco().add(barca);
+        getOggettiGioco().add(cartello);
+        getOggettiGioco().add(armadio);
+        getOggettiGioco().add(tv);
+        getOggettiGioco().add(divano);
     }
 
 
@@ -457,6 +501,7 @@ public class GiocoNaufragioIsola extends GameDescription{
                     break;
                 case OSSERVA:
                     frame.scrviSuEditor(getCurrentRoom().getOsserva());
+                    ContolGioco.ComandoOsserva(this,frame,p.getObject(),p.getInvObject());
                     break;
                 case INVENTARIO:
                     ControlGioco.ComandoInventario(this,frame);
@@ -475,38 +520,13 @@ public class GiocoNaufragioIsola extends GameDescription{
                     String relativePath = "adventure/resources";
                     String fullPath = workingDirectory + File.separator + relativePath;
                     FileMatchController FMC = new FileMatchController("/salvataggioPartita", fullPath);
-                    //creazione del FMC
-                    //FileMatchController FMC = new FileMatchController("/salvataggioPartita","./Progetto_Map/adventure/resources");
-                    //settaggio nome partita ed aggiunta al file
-                    /*
-                    this.setNomePartita("Partita di prova 1");
-                    boolean b = FMC.addMatch(this);
-                    if(b){
-                        frame.scrviSuEditor("La partita e' stata salvata con successo.\n\n");
-                    }
-                    else{
-                        frame.scrviSuEditor("La partita non e' stata salvata con successo.\n\n");
-                    }
-                    //Prova di ricarca dell'oggetto appena caricato in base al nome della partita
-                    try {
-                        GiocoNaufragioIsola pippo = FMC.getMatch("Partita di prova 1");
-                        if(pippo!=null){
-                            frame.scrviSuEditor("Partita caricata con successo");
-                        }
-                        else{
-                            frame.scrviSuEditor("Partita non trovata");
-                        }
-                    } catch (IOException e) {
-                        throw new RuntimeException(e);
-                    }
-                    */
                     break;
                 case ACCENDI:
                     if(p.getInvObject() != null){
                         if(p.getInvObject().getNomeOggetto().equals("lampada")){
-                            System.out.println("Verifico se inventario contiene: "+getOggettiGioco().get(4).getNomeOggetto());
-                            if(getInventory().contains(getOggettiGioco().get(4))){
-                                System.out.println("SONO MORTO Possiedo: "+getOggettiGioco().get(4).getNomeOggetto());
+                            System.out.println("Verifico se inventario contiene: "+getOggettoGioco("acciarino").getNomeOggetto());
+                            if(getInventory().contains(getOggettoGioco("acciarino"))){
+                                System.out.println("SONO MORTO Possiedo: "+getOggettoGioco("acciarino").getNomeOggetto());
                                 frame.scrviSuEditor("Hai utilizzato l'acciarino e la lampada si è accesa.");
                                 getRooms().get(6).setVisibile(true);
                             } else {
@@ -518,22 +538,19 @@ public class GiocoNaufragioIsola extends GameDescription{
                     } else {
                         frame.scrviSuEditor("Questo oggetto non è presente nell' inventario.");
                     }
-                    /*
+                    break;
                 case APRI:
                     if(p.getInvObject()!=null){
-                            //mettere id del telecomando
-                            if(p.getInvObject().equals(getOggettiGioco().get(1))){
-
-                        }
-                    } else {
-                        if(p.getObject()!=null){
-
+                        if(p.getInvObject().equals(getOggettoGioco("telecomando"))){
+                            frame.scrviSuEditor("Apri il telecomando e cade a terra... solo pezzi di plastica, tasti in gomma e due batterie.");
+                            getOggettoGioco("batteria").setVisibile(true);
                         } else {
                             frame.scrviSuEditor("Nulla da aprire.");
+                            frame.scrviSuEditor("Non puoi aprire questo oggetto");
                         }
                     }
-
-                     */
+                    frame.scrviSuEditor("Questo oggetto non e presente nel tuo inventario");
+                    break;
             }
         }
         frame.scriviSuLabelStanza(frame.getEngine().getGame().getCurrentRoom().getNomeStanza());

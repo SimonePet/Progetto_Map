@@ -13,6 +13,7 @@ import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
 import java.io.PrintStream;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -119,6 +120,18 @@ public abstract class GameDescription implements Serializable{
 
     public List<Oggetto> getOggettiGioco() {
         return oggettiGioco;
+    }
+    //Provare ad usare lambda expression
+    public Oggetto getOggettoGioco(String nome){
+        Oggetto prossimo = null;
+        Iterator<Oggetto> iteratore = oggettiGioco.iterator();
+        while (iteratore.hasNext()) {
+            prossimo =iteratore.next();
+            if(prossimo.getNomeOggetto().equalsIgnoreCase(nome)){
+                return prossimo;
+            }
+        }
+        return prossimo;
     }
 
     public abstract void init() throws Exception;
