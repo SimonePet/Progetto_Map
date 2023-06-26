@@ -8,6 +8,7 @@ import data.DatabaseController;
 import data.FileMatchController;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
+import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -152,11 +153,11 @@ public class JDialogAbbandona extends javax.swing.JDialog {
                 //salva partita su file
                 FileMatchController f = new FileMatchController("salvataggioPartita","resources");
                 try {
-                    boolean pippo = f.addMatch(engine.getGame());
+                    f.addMatch((GiocoNaufragioIsola) engine.getGame());
                 } catch (IOException ex) {
-                    Logger.getLogger(JDialogAbbandona.class.getName()).log(Level.SEVERE, null, ex);
+                    System.err.println(ex.getMessage());
                 } catch (ClassNotFoundException e) {
-                    throw new RuntimeException(e);
+                    System.err.println(e.getMessage());
                 }
                 System.out.println("PARTITA SALVATA SU FILE\n");
                 this.dispose();

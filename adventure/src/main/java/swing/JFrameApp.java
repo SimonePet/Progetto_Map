@@ -242,6 +242,7 @@ public class JFrameApp extends javax.swing.JFrame {
         //uccidi thread
         thread.interrupt();
         System.out.println("Thread interrotto");
+        partitaCaricata = false;
         JDialogAbbandona d = new JDialogAbbandona(this,true, engine);
         d.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
@@ -250,12 +251,14 @@ public class JFrameApp extends javax.swing.JFrame {
         // TODO add your handling code here:
         lblStanzaCorrente.setOpaque(true);
         editor.setText("");
-        Engine e = new Engine(new GiocoNaufragioIsola());
-        this.engine = e;
+        if(!partitaCaricata){
+            Engine e = new Engine(new GiocoNaufragioIsola(),false);
+            engine = e;
+        }
         String stanzaCorrente = engine.getGame().getCurrentRoom().getNomeStanza();
         lblStanzaCorrente.setText(stanzaCorrente);
-        e.getGame().setUsername(username);
-        
+        engine.getGame().setUsername(username);
+        labelNumMosse.setText(""+engine.getGame().getNumMoves());
         GameDescription game = engine.getGame();
         SimpleAttributeSet attributes = new SimpleAttributeSet();
         Document doc = editor.getDocument();
@@ -314,6 +317,12 @@ public class JFrameApp extends javax.swing.JFrame {
         return engine;
     }
     
+    public static void setEngine(GiocoNaufragioIsola partita){
+        partitaCaricata=true;
+        Engine e = new Engine(partita, true);
+        engine = e;
+        System.out.println(e.getCurrentRoomName());
+    } 
     
 
     public void main() {
@@ -364,7 +373,8 @@ public class JFrameApp extends javax.swing.JFrame {
     private javax.swing.JTextField textField;
     private javax.swing.JLabel timeLabel;
     // End of variables declaration//GEN-END:variables
-    private Engine engine;
+    private static Engine engine;
+    private static boolean partitaCaricata=false;
     private Thread thread;
     private String username;
 }

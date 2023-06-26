@@ -30,7 +30,7 @@ public abstract class Database {
     public Connection connect() throws SQLException{
         String percorsoRelDb = System.getProperty("user.dir");
         percorsoRelDb = percorsoRelDb.replaceAll("adventure" + ".*", "");
-        String percorsoAssDb = "resources"+File.separator+"db";
+        String percorsoAssDb = "adventure"+File.separator+"resources"+File.separator+"db";
         String percorsoDb = percorsoRelDb+percorsoAssDb;
         Connection conn = DriverManager.getConnection("jdbc:h2:"+percorsoDb);
         return conn;
