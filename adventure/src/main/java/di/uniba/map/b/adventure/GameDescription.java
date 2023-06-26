@@ -21,7 +21,7 @@ import java.util.List;
  * @author pierpaolo
  */
 public abstract class GameDescription implements Serializable{
-
+    
     private String nomePartita;
     private String username;  
     private boolean finish=false;

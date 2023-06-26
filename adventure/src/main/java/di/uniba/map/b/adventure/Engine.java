@@ -24,12 +24,14 @@ public class Engine {
     private final GameDescription game;
     private Parser parser;
 
-    public Engine(GameDescription game) {
+    public Engine(GameDescription game, boolean partitaCaricata) {
         this.game = game;
-        try {
-            this.game.init();
-        }catch (Exception ex) {
-            System.err.println(ex);
+        if(!partitaCaricata){
+            try {
+                this.game.init();
+            }catch (Exception ex) {
+                System.err.println(ex);
+            }            
         }
         try {
             Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
@@ -43,6 +45,7 @@ public class Engine {
             System.err.println(ex);
         }
     }
+   
 
     public void execute() {
         /*
@@ -82,7 +85,7 @@ public class Engine {
     public Parser getParser(){
         return parser;
     }
-
+    
 
     /**
      * @param args the command line arguments

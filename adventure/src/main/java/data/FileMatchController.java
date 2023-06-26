@@ -6,6 +6,7 @@ package data;
 
 
 import di.uniba.map.b.adventure.GameDescription;
+import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import java.io.File;
 import java.io.Serializable;
 import java.io.ObjectOutputStream;
@@ -38,14 +39,15 @@ public class FileMatchController extends FileController implements Serializable 
      * @param game
      * @return Vero se salva l'engine sul file, Falso altrimenti.
      * @throws java.io.IOException
+     * @throws java.lang.ClassNotFoundException
      */
-    public boolean addMatch(final GameDescription game) throws IOException, ClassNotFoundException {       
+    public boolean addMatch(final GiocoNaufragioIsola game) throws IOException, ClassNotFoundException {       
         try {   
             // prendiamo percorso relativo ed eliminiamo la sottostringa /adventure e tutti i caratteri successivi(tramite il .*) //
-            String percorsoRelFile = System.getProperty("user.dir").replaceAll(File.separator+"adventure"+".*","");
-            String percorsoAss = File.separator+directory+File.separator+nameFile;
+            String percorsoRelFile = System.getProperty("user.dir").replaceAll("adventure"+".*","");
+            String percorsoAss = "adventure"+File.separator+directory+File.separator+nameFile;
             String percorso = percorsoRelFile+percorsoAss;
-
+            
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(percorso,true)) {
                 @Override
                 protected void writeStreamHeader() throws IOException {
@@ -106,15 +108,18 @@ public class FileMatchController extends FileController implements Serializable 
      * @return
      * @throws IOException
      */
-    public GameDescription getMatch(final String nomePart) throws IOException, ClassNotFoundException {
-        GameDescription game;
+    public GiocoNaufragioIsola getMatch(final String nomePart) throws IOException, ClassNotFoundException {
+        GiocoNaufragioIsola game;
         /*
         FileInputStream fileIn = new FileInputStream(file);
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);*/
-        ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream("./"+directory+"/"+nameFile));
+        String percorsoRelFile = System.getProperty("user.dir").replaceAll("adventure"+".*","");
+        String percorsoAss = "adventure"+File.separator+directory+File.separator+nameFile;
+        String percorso = percorsoRelFile+percorsoAss;
+        ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(percorso));
         try {
             while (true) {
-                game = (GameDescription) objectIn.readObject();
+                game = (GiocoNaufragioIsola) objectIn.readObject();
                 if (game.getNomePartita().equalsIgnoreCase(nomePart)) {
                     return game;
                 }
@@ -134,16 +139,16 @@ public class FileMatchController extends FileController implements Serializable 
         return null;
     }
     
-    public List<GameDescription>  getMatch() throws FileNotFoundException, IOException{
-        List<GameDescription> lista = new ArrayList<>();
-        GameDescription game;
+    public List<GiocoNaufragioIsola>  getMatch() throws FileNotFoundException, IOException{
+        List<GiocoNaufragioIsola> lista = new ArrayList<>();
+        GiocoNaufragioIsola game;
         
         FileInputStream fileIn = new FileInputStream(file);
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 
         try {
             while (true) {
-                game = (GameDescription) objectIn.readObject();
+                game = (GiocoNaufragioIsola) objectIn.readObject();
                 lista.add(game);
             }
         } catch (IOException e) {
