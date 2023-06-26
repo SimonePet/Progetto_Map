@@ -478,6 +478,7 @@ public class GiocoNaufragioIsola extends GameDescription{
                     //creazione del FMC
                     //FileMatchController FMC = new FileMatchController("/salvataggioPartita","./Progetto_Map/adventure/resources");
                     //settaggio nome partita ed aggiunta al file
+                    /*
                     this.setNomePartita("Partita di prova 1");
                     boolean b = FMC.addMatch(this);
                     if(b){
@@ -498,6 +499,7 @@ public class GiocoNaufragioIsola extends GameDescription{
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
+                    */
                     break;
                 case ACCENDI:
                     if(p.getInvObject() != null){

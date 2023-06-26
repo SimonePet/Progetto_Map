@@ -5,8 +5,10 @@
 package swing;
 
 import data.DatabaseController;
+import data.FileMatchController;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -145,7 +147,16 @@ public class JDialogAbbandona extends javax.swing.JDialog {
                 int numMoves = engine.getGame().getNumMoves();
                 GameDescription game = engine.getGame();
                 db.salvaPartita(nomePartita, username, b, numSeconds, numMinutes, numMoves, game);
+                System.out.println("PARTITA SALVATA SU DB\n");
                 db.stampaPartite();
+                //salva partita su file
+                FileMatchController f = new FileMatchController("salvataggioPartita","resources");
+                try {
+                    f.addMatch(engine.getGame());
+                } catch (IOException ex) {
+                    Logger.getLogger(JDialogAbbandona.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                System.out.println("PARTITA SALVATA SU FILE\n");
                 this.dispose();
             }
         }catch(SQLException e){

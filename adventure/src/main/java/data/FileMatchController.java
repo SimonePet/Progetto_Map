@@ -5,14 +5,17 @@
 package data;
 
 
-import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
-
+import di.uniba.map.b.adventure.GameDescription;
 import java.io.Serializable;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.nio.file.Files;
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -31,13 +34,22 @@ public class FileMatchController extends FileController implements Serializable 
     }
     /**
      *
-     * @param engine engine di una partita.
+     * @param game
      * @return Vero se salva l'engine sul file, Falso altrimenti.
+     * @throws java.io.IOException
      */
-    public boolean addMatch(final GiocoNaufragioIsola GNI) {
+    public boolean addMatch(final GameDescription game) throws IOException, ClassNotFoundException {
         try {
-            ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(file.toPath()));
-            out.writeObject(GNI);
+            
+            ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("./"+directory+"/"+nameFile,true)) {
+                @Override
+                protected void writeStreamHeader() throws IOException {
+                    reset();
+                }
+            };
+            
+            //ObjectOutputStream out = new ObjectOutputStream(Files.newOutputStream(file.toPath()));
+            out.writeObject(game);
             out.close();
             return true;
         } catch (IOException e) {
@@ -89,15 +101,17 @@ public class FileMatchController extends FileController implements Serializable 
      * @return
      * @throws IOException
      */
-    public GiocoNaufragioIsola getMatch(final String nomePart) throws IOException {
-        GiocoNaufragioIsola GNI;
+    public GameDescription getMatch(final String nomePart) throws IOException, ClassNotFoundException {
+        GameDescription game;
+        /*
         FileInputStream fileIn = new FileInputStream(file);
-        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+        ObjectInputStream objectIn = new ObjectInputStream(fileIn);*/
+        ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream("./"+directory+"/"+nameFile));
         try {
             while (true) {
-                GNI = (GiocoNaufragioIsola) objectIn.readObject();
-                if (GNI.getNomePartita().equalsIgnoreCase(nomePart)) {
-                    return GNI;
+                game = (GameDescription) objectIn.readObject();
+                if (game.getNomePartita().equalsIgnoreCase(nomePart)) {
+                    return game;
                 }
             }
         } catch (IOException e) {
@@ -107,11 +121,38 @@ public class FileMatchController extends FileController implements Serializable 
         } finally {
             try {
                 objectIn.close();
-                fileIn.close();
+                //fileIn.close();
             } catch (IOException e) {
                 e.printStackTrace();
             }
         }
         return null;
+    }
+    
+    public List<GameDescription>  getMatch() throws FileNotFoundException, IOException{
+        List<GameDescription> lista = new ArrayList<>();
+        GameDescription game;
+        
+        FileInputStream fileIn = new FileInputStream(file);
+        ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+
+        try {
+            while (true) {
+                game = (GameDescription) objectIn.readObject();
+                lista.add(game);
+            }
+        } catch (IOException e) {
+            System.out.println(e);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                objectIn.close();
+                //fileIn.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+        return lista;
     }
 }
