@@ -27,12 +27,17 @@ public abstract class Database {
     private String username;
     private String password;
     
-    public Connection connect() throws SQLException{
-        String percorsoRelDb = System.getProperty("user.dir");
-        percorsoRelDb = percorsoRelDb.replaceAll("adventure" + ".*", "");
-        String percorsoAssDb = "adventure"+File.separator+"resources"+File.separator+"db";
-        String percorsoDb = percorsoRelDb+percorsoAssDb;
-        Connection conn = DriverManager.getConnection("jdbc:h2:"+percorsoDb);
+    public Connection connect() throws SQLException {
+        String percorsoDb = "";
+        File projectDir = new File(System.getProperty("user.dir"));
+        if(projectDir.getName().equalsIgnoreCase("adventure")){
+            File dbDir = new File(projectDir, "/resources/db");
+            percorsoDb = dbDir.getAbsolutePath();
+        }else{
+            File dbDir = new File(projectDir, "/adventure/resources/db");
+            percorsoDb = dbDir.getAbsolutePath();
+        }
+        Connection conn = DriverManager.getConnection("jdbc:h2:" + percorsoDb);
         return conn;
     }
 
