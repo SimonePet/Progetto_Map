@@ -119,6 +119,11 @@ public class GiocoNaufragioIsola extends GameDescription{
         salva.setAlias(new String[]{});
         getCommands().add(salva);
 
+        //Comando per leggere il cifrario
+        Comando leggere = new Comando(TipoComando.LEGGI, "leggi");
+        leggere.setAlias(new String[]{"leggere"});
+        getCommands().add(leggere);
+
 
         //Istanziazione stanza approdo
         Stanza approdo = new Stanza(0, MessaggioApprodo.getNome());
@@ -260,13 +265,13 @@ public class GiocoNaufragioIsola extends GameDescription{
         //Imposto la visibilita della stanza
         grotta.setVisibile(false);
         //Imposto il messaggio per Nord
-        grotta.setMessaggioNord(MessaggioGrotta.getNoNordLuce());
+        grotta.setMessaggioNord(MessaggioGrotta.getNoNordBuio());
         //Imposto il messaggio per Sud
-        grotta.setMessaggioSud(MessaggioGrotta.getNoSudLuce());
+        grotta.setMessaggioSud(MessaggioGrotta.getNoSudBuio());
         //Imposto il messaggio per Est
         grotta.setMessaggioEst(MessaggioGrotta.getEst());
         //Imposto il messaggio per Ovest
-        grotta.setMessaggioOvest(MessaggioGrotta.getNoOvestLuce());
+        grotta.setMessaggioOvest(MessaggioGrotta.getNoOvestBuio());
         //Aggiungo la stanza
         getRooms().add(grotta);
 
@@ -427,9 +432,9 @@ public class GiocoNaufragioIsola extends GameDescription{
         //cartello
         Oggetto cartello = new Oggetto(13, "cartello", "Un incomprensibile cartello in legno...");
         cartello.setAlias(new String[]{"insegna","scritta"});
-        sentiero.getObjects().add(cartello);
         cartello.setVisibile(true);
         cartello.setRaccogglibile(false);
+        sentiero.getObjects().add(cartello);
 
         //Armadio
         Oggetto armadio = new Oggetto(14, "armadio", "Un grande armadio in legno...");
@@ -500,8 +505,7 @@ public class GiocoNaufragioIsola extends GameDescription{
                     ControlGioco.ComandoOvest(this,frame);
                     break;
                 case OSSERVA:
-                    frame.scrviSuEditor(getCurrentRoom().getOsserva());
-                    ContolGioco.ComandoOsserva(this,frame,p.getObject(),p.getInvObject());
+                    ControlGioco.ComandoOsserva(this,frame,p.getObject(),p.getInvObject());
                     break;
                 case INVENTARIO:
                     ControlGioco.ComandoInventario(this,frame);
@@ -515,6 +519,9 @@ public class GiocoNaufragioIsola extends GameDescription{
                 case NARRA:
                     frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
                     break;
+                case LEGGI:
+                    ControlGioco.ComandoLeggi(frame,p.getInvObject());
+                    break;
                 case SALVA:
                     String workingDirectory = System.getProperty("user.dir");
                     String relativePath = "adventure/resources";
@@ -522,22 +529,7 @@ public class GiocoNaufragioIsola extends GameDescription{
                     FileMatchController FMC = new FileMatchController("/salvataggioPartita", fullPath);
                     break;
                 case ACCENDI:
-                    if(p.getInvObject() != null){
-                        if(p.getInvObject().getNomeOggetto().equals("lampada")){
-                            System.out.println("Verifico se inventario contiene: "+getOggettoGioco("acciarino").getNomeOggetto());
-                            if(getInventory().contains(getOggettoGioco("acciarino"))){
-                                System.out.println("SONO MORTO Possiedo: "+getOggettoGioco("acciarino").getNomeOggetto());
-                                frame.scrviSuEditor("Hai utilizzato l'acciarino e la lampada si è accesa.");
-                                getRooms().get(6).setVisibile(true);
-                            } else {
-                                frame.scrviSuEditor("Non riesci ad accendere la lampada...servirebbe qualcosa...");
-                            }
-                        } else {
-                            frame.scrviSuEditor("Non puoi accendere questo oggetto.");
-                        }
-                    } else {
-                        frame.scrviSuEditor("Questo oggetto non è presente nell' inventario.");
-                    }
+                    ControlGioco.ComandoAccendi(this,frame,p.getInvObject());
                     break;
                 case APRI:
                     if(p.getInvObject()!=null){

@@ -7,6 +7,7 @@ package data;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
 import java.beans.Statement;
+import java.io.File;
 import java.sql.*;
 /**
  *  CLASSE ASTRATTA 
@@ -25,9 +26,19 @@ public abstract class Database {
     protected static final String STAMPA_PARTITA_SPECIFICA = "SELECT nomePartita FROM partita WHERE nomePartita=?";
     private String username;
     private String password;
-    
+
     public Connection connect() throws SQLException{
-        Connection conn = DriverManager.getConnection("jdbc:h2:/home/user/test/db");
+        String percorsoDb = "";
+        File projectDir = new File(System.getProperty("user.dir"));
+        if(projectDir.getName().equalsIgnoreCase("adventure")){
+            File dbDir = new File(projectDir, "/resources/db");
+            percorsoDb = dbDir.getAbsolutePath();
+        }else{
+            File dbDir = new File(projectDir, "/adventure/resources/db");
+            percorsoDb = dbDir.getAbsolutePath();
+        }
+
+        Connection conn = DriverManager.getConnection("jdbc:h2:" + percorsoDb);
         return conn;
     }
 

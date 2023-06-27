@@ -24,6 +24,21 @@ public final class MessaggioCosta {
     private static final String SUD = "Ti sei spostato a sud della costa.";
     private static final String NO_EST = "Una vasta distesa di onde...";
     private static final String OVEST = "Ti sei spostato ad ovest della costa.";
+    private static final String CIFRARIO ="-----------------------------------------------------------------------------------------\n"+
+            "|\t01: A\t|\t14: B\t|\n"+
+            "|\t02: C\t|\t15: D\t|\n"+
+            "|\t03: E\t|\t16: F\t|\n"+
+            "|\t04: G\t|\t17: H\t|\n"+
+            "|\t05: I\t|\t18: J\t|\n"+
+            "|\t06: K\t|\t19: L\t|\n"+
+            "|\t07: M\t|\t20: N\t|\n"+
+            "|\t08: O\t|\t21: P\t|\n"+
+            "|\t09: Q\t|\t22: R\t|\n"+
+            "|\t10: S\t|\t23: T\t|\n"+
+            "|\t11: U\t|\t24: V\t|\n"+
+            "|\t12: W\t|\t25: X\t|\n"+
+            "|\t13: Y\t|\t26: Z\t|\n"+
+            "-----------------------------------------------------------------------------------------\n";
 
     public static String getDescrizioneCorta() {
         return MessaggioCosta.DESCRIZIONE_CORTA;
@@ -51,5 +66,9 @@ public final class MessaggioCosta {
     }
     public static String getNome() {
         return NOME;
+    }
+
+    public static String getDescCifrario() {
+        return CIFRARIO;
     }
 }

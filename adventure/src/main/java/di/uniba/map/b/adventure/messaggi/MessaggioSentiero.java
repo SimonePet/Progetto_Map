@@ -23,6 +23,8 @@ public final class MessaggioSentiero {
     private static final String EST = "Ti sei spostato a est del sentiero.";
     private static final String NO_OVEST = "Un enorme precipizio, meglio evitare.";
 
+
+
     public static String getDescrizioneCorta() {
         return MessaggioSentiero.DESCRIZIONE_CORTA;
     }
@@ -50,4 +52,5 @@ public final class MessaggioSentiero {
     public static String getNome() {
         return NOME;
     }
+
 }
