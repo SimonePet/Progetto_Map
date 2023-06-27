@@ -26,6 +26,7 @@ public class Oggetto implements Serializable {
     private boolean aperto = false;
     private boolean premuto = false;
     private boolean visibile = false;
+    private boolean lasciato=false;
 
     /**
      * Costruttore classe Oggetto.
@@ -252,5 +253,13 @@ public class Oggetto implements Serializable {
 
     public void setVisibile(boolean visibileCorr) {
         this.visibile = visibileCorr;
+    }
+
+    public boolean isLasciato() {
+        return lasciato;
+    }
+
+    public void setLasciato(boolean lasciato) {
+        this.lasciato = lasciato;
     }
 }
