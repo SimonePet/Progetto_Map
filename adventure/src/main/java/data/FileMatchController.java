@@ -44,9 +44,20 @@ public class FileMatchController extends FileController implements Serializable 
     public boolean addMatch(final GiocoNaufragioIsola game) throws IOException, ClassNotFoundException {       
         try {   
             // prendiamo percorso relativo ed eliminiamo la sottostringa /adventure e tutti i caratteri successivi(tramite il .*) //
+            /*
             String percorsoRelFile = System.getProperty("user.dir").replaceAll("adventure"+".*","");
             String percorsoAss = "adventure"+File.separator+directory+File.separator+nameFile;
             String percorso = percorsoRelFile+percorsoAss;
+            */
+            String percorso="";
+            File projectDir = new File(System.getProperty("user.dir"));
+            if(projectDir.getName().equalsIgnoreCase("adventure")){
+                File fileDir = new File(projectDir, "/resources/salvataggioPartita");
+                percorso = fileDir.getAbsolutePath();
+            }else{
+                File fileDir = new File(projectDir, "/adventure/resources/salvataggioPartita");
+                percorso = fileDir.getAbsolutePath();
+            }       
             
             ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(percorso,true)) {
                 @Override
