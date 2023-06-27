@@ -4,7 +4,10 @@ import di.uniba.map.b.adventure.messaggi.Messaggio;
 import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
 import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
 import di.uniba.map.b.adventure.type.Oggetto;
+import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
+
+import java.util.Iterator;
 
 
 public class ControlGioco {
@@ -127,6 +130,20 @@ public class ControlGioco {
     public static void ComandoOsserva(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto ogg,Oggetto oggInv){
         if(ogg == null && oggInv == null){
             frame.scrviSuEditor(GNI.getCurrentRoom().getOsserva());
+            Oggetto prossimo=null;
+            boolean trovato=false;
+            Iterator<Oggetto> iteratore = GNI.getCurrentRoom().getObjects().iterator();
+            while (iteratore.hasNext()) {
+                prossimo =iteratore.next();
+
+                if(prossimo.isLasciato()){
+                    if(!trovato){
+                        frame.scrviSuEditor("\nIn questa stanza hai lasciato:\n");
+                    }
+                    frame.scrviSuEditor("-"+prossimo.getNomeOggetto()+";\n");
+                    trovato=true;
+                }
+            }
         } else if (ogg !=null && oggInv == null) {
             frame.scrviSuEditor(ogg.getDescrizioneOggetto());
         } else if (ogg == null) {
@@ -139,10 +156,10 @@ public class ControlGioco {
 
     public static void ComandoLascia(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto oggInv){
         if (oggInv != null){
-            System.out.println("p.getInvObject() restituisce: "+oggInv.getNomeOggetto());
             //Se possiedo l'oggetto
             if(GNI.getInventory().contains(oggInv)){
                 GNI.getInventory().remove(oggInv);
+                oggInv.setLasciato(true);
                 GNI.getCurrentRoom().getObjects().add(oggInv);
                 frame.scrviSuEditor(Messaggio.getHaiLasciato() + oggInv.getNomeOggetto());
             }else{
