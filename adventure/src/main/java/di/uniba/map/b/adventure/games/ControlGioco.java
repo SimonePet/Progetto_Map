@@ -1,6 +1,8 @@
 package di.uniba.map.b.adventure.games;
 
 import di.uniba.map.b.adventure.messaggi.Messaggio;
+import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
+import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
 import di.uniba.map.b.adventure.type.Oggetto;
 import swing.JFrameApp;
 
@@ -122,6 +124,19 @@ public class ControlGioco {
         }
     }
 
+    public static void ComandoOsserva(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto ogg,Oggetto oggInv){
+        if(ogg == null && oggInv == null){
+            frame.scrviSuEditor(GNI.getCurrentRoom().getOsserva());
+        } else if (ogg !=null && oggInv == null) {
+            frame.scrviSuEditor(ogg.getDescrizioneOggetto());
+        } else if (ogg == null) {
+            frame.scrviSuEditor(oggInv.getDescrizioneOggetto());
+        }
+        else{
+            frame.scrviSuEditor("Non capisco.");
+        }
+    }
+
     public static void ComandoLascia(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto oggInv){
         if (oggInv != null){
             System.out.println("p.getInvObject() restituisce: "+oggInv.getNomeOggetto());
@@ -135,6 +150,41 @@ public class ControlGioco {
             }
         } else {
             frame.scrviSuEditor(Messaggio.getOggettoNonInventario());
+        }
+    }
+
+    public static void ComandoAccendi(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto oggInv){
+        if(oggInv != null){
+            if(oggInv.getNomeOggetto().equals("lampada")){
+                if(GNI.getInventory().contains(GNI.getOggettoGioco("acciarino"))){
+                    frame.scrviSuEditor("Hai utilizzato l'acciarino e la lampada si è accesa.");
+                    GNI.getStanza("grotta").setVisibile(true);
+                    GNI.getStanza("grotta").setOsserva(MessaggioGrotta.getOsservaLuce());
+                    GNI.getStanza("grotta").setMessaggioNord(MessaggioGrotta.getNoNordLuce());
+                    GNI.getStanza("grotta").setMessaggioSud(MessaggioGrotta.getNoSudLuce());
+                    GNI.getStanza("grotta").setMessaggioOvest(MessaggioGrotta.getNoOvestLuce());
+                    GNI.getStanza("grotta").setOsserva(MessaggioGrotta.getOsservaLuce());
+
+                } else {
+                    frame.scrviSuEditor("Non riesci ad accendere la lampada...servirebbe qualcosa...");
+                }
+            } else {
+                frame.scrviSuEditor("Non puoi accendere questo oggetto.");
+            }
+        } else {
+            frame.scrviSuEditor("Questo oggetto non è presente nell' inventario.");
+        }
+    }
+
+    public static void ComandoLeggi(final JFrameApp frame,Oggetto oggInv){
+        if(oggInv != null){
+            if(oggInv.getNomeOggetto().equals("cifrario")){
+                frame.scrviSuEditor(MessaggioCosta.getDescCifrario());
+            } else {
+                frame.scrviSuEditor("Non puoi leggere questo oggetto.");
+            }
+        } else {
+            frame.scrviSuEditor("Questo oggetto non è presente nell' inventario.");
         }
     }
 }

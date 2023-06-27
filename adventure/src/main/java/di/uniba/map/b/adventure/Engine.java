@@ -34,8 +34,8 @@ public class Engine {
             }            
         }
         try {
-            Set<String> stopwords = Utils.loadFileListInSet(new File("./resources/stopwords"));
-            /*
+            Set<String> stopwords = Utils.loadFileListInSet(new File("./Progetto_Map/adventure/resources/stopwords"));
+/*
             String percorsoAssoluto = new File("").getAbsolutePath();
             String percorsoRelativo = "adventure/resources/stopwords";
             String fullPath = percorsoAssoluto + File.separator + percorsoRelativo;

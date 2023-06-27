@@ -134,6 +134,19 @@ public abstract class GameDescription implements Serializable{
         return prossimo;
     }
 
+    public Stanza getStanza(String nome){
+        Stanza prossimo = null;
+        Iterator<Stanza> iteratore = rooms.iterator();
+        while (iteratore.hasNext()) {
+            prossimo =iteratore.next();
+            if(prossimo.getNomeStanza().equalsIgnoreCase(nome)){
+                return prossimo;
+            }
+        }
+        return prossimo;
+    }
+
+
     public abstract void init() throws Exception;
 
     public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame);
