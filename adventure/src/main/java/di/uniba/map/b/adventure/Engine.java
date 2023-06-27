@@ -37,7 +37,12 @@ public class Engine {
             //Set<String> stopwords = Utils.loadFileListInSet(new File(".resources/stopwords"));
 
             String percorsoAssoluto = new File("").getAbsolutePath();
-            String percorsoRelativo = "adventure/resources/stopwords";
+            String percorsoRelativo="";
+            if(percorsoAssoluto.contains("adventure")){
+                percorsoRelativo = "/resources/stopwords";    
+            }else{
+                percorsoRelativo = "adventure/resources/stopwords";
+            }
             String fullPath = percorsoAssoluto + File.separator + percorsoRelativo;
             Set<String> stopwords = Utils.loadFileListInSet(new File(fullPath));
             parser = new Parser(stopwords);
