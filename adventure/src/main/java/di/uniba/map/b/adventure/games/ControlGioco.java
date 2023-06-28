@@ -222,4 +222,44 @@ public class ControlGioco {
             frame.scrviSuEditor("Questo oggetto non è presente.");
         }
     }
+
+    public static void ComandoTaglia(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto ogg){
+        if(ogg != null){
+            if(ogg.getNomeOggetto().equals("albero")){
+                if(GNI.getInventory().contains(GNI.getOggettoGioco("accetta"))){
+                    frame.scrviSuEditor("Hai utilizzato l'accetta ed hai ottenuto la legna.");
+                    GNI.getInventory().add(GNI.getOggettoGioco("legno"));
+
+                } else {
+                    frame.scrviSuEditor("Non riesci ad abbattere l'albero ti servirebbe qualcosa di affilato...");
+                }
+            } else {
+                frame.scrviSuEditor("Non e possibile tagliare questo oggetto.");
+            }
+        } else {
+            frame.scrviSuEditor("Questo oggetto non è presente.");
+        }
+    }
+
+
+    public static void ComandoCostruisci(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto ogg){
+        if(ogg != null){
+            if(ogg.getNomeOggetto().equals("zattera")){
+                if(GNI.getInventory().contains(GNI.getOggettoGioco("vela")) &&
+                        GNI.getInventory().contains(GNI.getOggettoGioco("corda")) &&
+                        GNI.getInventory().contains(GNI.getOggettoGioco("legno"))){
+                    frame.scrviSuEditor("Hai utilizzato il legno,le corde e la vela per costruire la zattera.\n\n");
+                    frame.scrviSuEditor("==========HAI VINTO==========\n\n");
+                    frame.scrviSuEditor("Complimenti sei riuscito a vincere questo gioco molto difficile.");
+
+                } else {
+                    frame.scrviSuEditor("Non hai ancora tutti gli oggetti a disposizione.");
+                }
+            } else {
+                frame.scrviSuEditor("Non e possibile costruire questo oggetto.");
+            }
+        } else {
+            frame.scrviSuEditor("Questo oggetto non è presente.");
+        }
+    }
 }
