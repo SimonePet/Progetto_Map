@@ -20,7 +20,7 @@ public final class MessaggioGrotta {
             + "la grotta senza luce. Ah no stai solo immaginando. Non riesci a vedere nulla...";
     private static final String OSSERVA_LUCE = "Grazie alla lampada ad olio riesci a esplorare la grotta"
             + " evitando di imbatterti in possibili pericoli. Procedendo all’interno della grotta durante"
-            + " l’esplorazione noti dei graffiti disegnati su una delle pareti.";
+            + " l’esplorazione noti una lastra di pietra con su delle incisioni.";
     private static final String RITORNATO = "Sei tornato nella grotta.";
     private static final String NO_NORD_BUIO = "Potreti inciampare nel buio.";
     private static final String NO_SUD_BUIO = "E' cosi buio che non leggi neanche la bussola.";
