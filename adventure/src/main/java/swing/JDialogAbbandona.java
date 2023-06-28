@@ -158,8 +158,7 @@ public class JDialogAbbandona extends javax.swing.JDialog {
                     System.err.println(ex.getMessage());
                 } catch (ClassNotFoundException e) {
                     System.err.println(e.getMessage());
-                }
-                System.out.println("PARTITA SALVATA SU FILE\n");
+                }               
                 this.dispose();
             }
         }catch(SQLException e){

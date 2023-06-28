@@ -13,7 +13,7 @@ import java.io.IOException;
 public class FileController implements FileInterface {
     //nome del file da creare
     //verificare se sono private!!!
-    protected String nameFile;
+    protected String nomeFile;
     protected String directory;
     protected File file;
     /**
@@ -22,7 +22,7 @@ public class FileController implements FileInterface {
      * @param directoryCorrente percorso della cartella del file
      */
     public FileController(final String nomeFileCorrente, final String directoryCorrente) {
-        this.nameFile = nomeFileCorrente;
+        this.nomeFile = nomeFileCorrente;
         this.directory = directoryCorrente;
     }
 
@@ -38,8 +38,18 @@ public class FileController implements FileInterface {
      */
     @Override
     public boolean create() {
-        try {
-            this.file = new File("./Progetto_Map/adventure/"+directory+"/"+nameFile);
+        try {          
+            File progettoDir = new File(System.getProperty("user.dir"));
+            
+            String path="";
+            if(progettoDir.getName().contains("adventure")){
+                path = File.separator+directory+File.separator+nomeFile;
+            }else if(!progettoDir.getName().contains("Progetto_Map")){
+                path = File.separator+"Progetto_Map"+File.separator+"adventure"+File.separator+directory+File.separator+nomeFile;        
+            }else if(progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")){
+                path = File.separator+"adventure"+File.separator+directory+File.separator+nomeFile;
+            }
+            this.file = new File(progettoDir+path);
             if (file.createNewFile()) {
                 System.out.println("File creato con successo.");
             } else {
@@ -47,7 +57,6 @@ public class FileController implements FileInterface {
             }
             return true;
         } catch (IOException e) {
-            System.out.println("PIPPO");
             System.out.println(e);
 
         }
@@ -57,15 +66,15 @@ public class FileController implements FileInterface {
     /**
      * Metodo set che imposta il nome del file.
      */
-    public void setNameFile(final String name) {
-        this.nameFile = name;
+    public void setNomeFile(final String name) {
+        this.nomeFile = name;
     }
 
     /**
      * Metodo get che restituisce il nome del file.
      */
-    public String getNameFile() {
-        return nameFile;
+    public String getNomeFile() {
+        return nomeFile;
     }
 
     /**

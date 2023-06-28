@@ -173,9 +173,13 @@ public class JDialogStats extends javax.swing.JDialog {
                 i++;
             }
             JTable tabella = new JTable(dati, nomiColonne);
-            tabella.setBounds(100, 120, 600, 500);
+            tabella.setFillsViewportHeight(true);
+
             // aggiunge tabella allo ScrollPane
+            scrollPanel.setViewportView(tabella);
             scrollPanel.getViewport().add(tabella);
+            scrollPanel.revalidate();
+            scrollPanel.repaint();        
             double punteggioMedio = db.getPunteggioMedio();
             String punteggio = df.format(punteggioMedio);
             txtPunteggioMedio.setText(""+punteggio);
@@ -203,8 +207,12 @@ public class JDialogStats extends javax.swing.JDialog {
                 i++;
             }
             JTable tabella = new JTable(dati, nomiColonne);
-            tabella.setBounds(100, 120, 600, 500);
+            tabella.setFillsViewportHeight(true);
+
+            scrollPanel.setViewportView(tabella);
             scrollPanel.getViewport().add(tabella);
+            scrollPanel.revalidate();
+            scrollPanel.repaint();
             double punteggioMedio = db.getPunteggioMedioUtente(username);
             String punteggio = df.format(punteggioMedio);
             txtPunteggioMedio.setText(""+punteggio);

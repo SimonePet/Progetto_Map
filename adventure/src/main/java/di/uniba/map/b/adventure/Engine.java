@@ -36,16 +36,19 @@ public class Engine {
         }
         try {
             //Set<String> stopwords = Utils.loadFileListInSet(new File(".resources/stopwords"));
-
-            String percorsoAssoluto = new File("").getAbsolutePath();
-            String percorsoRelativo="";
-            if(percorsoAssoluto.contains("adventure")){
-                percorsoRelativo = "/resources/stopwords";    
-            }else{
-                percorsoRelativo = "/Progetto_Map/adventure/resources/stopwords";
+            
+            File progettoDir = new File(System.getProperty("user.dir"));
+            String percorso="";
+            if(progettoDir.getName().contains("adventure")){
+                percorso = File.separator+"resources"+File.separator+"stopwords";
+            }else if(!progettoDir.getName().contains("Progetto_Map")){
+                percorso = File.separator+"Progetto_Map"+File.separator+"adventure"+File.separator+"resources"+File.separator+"stopwords";        
+            }else if(progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")){
+                percorso = File.separator+"adventure"+File.separator+"resources"+File.separator+"stopwords";
             }
-            String fullPath = percorsoAssoluto + File.separator + percorsoRelativo;
-            Set<String> stopwords = Utils.loadFileListInSet(new File(fullPath));
+           
+            String percorsoCompleto = progettoDir+percorso;
+            Set<String> stopwords = Utils.loadFileListInSet(new File(percorsoCompleto));
             parser = new Parser(stopwords);
         } catch (IOException ex) {
             System.err.println(ex);

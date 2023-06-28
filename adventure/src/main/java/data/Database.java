@@ -28,15 +28,18 @@ public abstract class Database {
     private String password;
     
     public Connection connect() throws SQLException {
-        String percorsoDb = "";
-        File projectDir = new File(System.getProperty("user.dir"));
-        if(projectDir.getName().equalsIgnoreCase("adventure")){
-            File dbDir = new File(projectDir, "/resources/db");
-            percorsoDb = dbDir.getAbsolutePath();
-        }else{
-            File dbDir = new File(projectDir, "/adventure/resources/db");
-            percorsoDb = dbDir.getAbsolutePath();
-        }
+        String percorsoDb="";
+        File progettoDir = new File(System.getProperty("user.dir"));
+        if(progettoDir.getName().contains("adventure")){
+            File fileDir = new File(progettoDir, File.separator+"resources"+File.separator+"db");
+                percorsoDb = fileDir.getAbsolutePath();
+            }else if(!progettoDir.getName().contains("Progetto_Map")){
+                File fileDir = new File(progettoDir, File.separator+"Progetto_Map"+File.separator+"adventure"+File.separator+"resources"+File.separator+"db");
+                percorsoDb = fileDir.getAbsolutePath();
+            }else if(progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")){
+                File fileDir = new File(progettoDir, File.separator+"adventure"+File.separator+"resources"+File.separator+"db");
+                percorsoDb = fileDir.getAbsolutePath();              
+            }
         Connection conn = DriverManager.getConnection("jdbc:h2:" + percorsoDb);
         return conn;
     }
