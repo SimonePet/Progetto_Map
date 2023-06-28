@@ -22,6 +22,17 @@ public final class MessaggioSentiero {
     private static final String SUD = "Ti sei spostato a sud del sentiero.";
     private static final String EST = "Ti sei spostato a est del sentiero.";
     private static final String NO_OVEST = "Un enorme precipizio, meglio evitare.";
+    private static final String CARTELLO = "------------------------------------------------------------------\n"+
+                                           "|\t<----  3.0km\t\t|\n"+
+                                           "|\t14-08-10-02-08 \t|\n"+
+                                           "------------------------------------------------------------------\n"+
+                                           "|\t---->  8.0km\t\t|\n"+
+                                           "|                     03-15-05-16-05-02-05-08\t|\n"+
+                                           "------------------------------------------------------------------\n"+
+                                           "                                          ||             \n"+
+                                           "                                          ||             \n"+
+                                           "                                          ||             \n";
+
 
     public static String getDescrizioneCorta() {
         return MessaggioSentiero.DESCRIZIONE_CORTA;
@@ -49,5 +60,9 @@ public final class MessaggioSentiero {
     }
     public static String getNome() {
         return NOME;
+    }
+
+    public static String getCARTELLO() {
+        return CARTELLO;
     }
 }

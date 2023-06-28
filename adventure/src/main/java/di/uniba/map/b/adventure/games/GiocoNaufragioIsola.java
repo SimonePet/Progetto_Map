@@ -415,7 +415,6 @@ public class GiocoNaufragioIsola extends GameDescription{
     public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame) {
         boolean noroom = false;
         boolean move = false;
-        
         //frame.writeTextOnEditor("\n"+getCurrentRoom().getNomeStanza()+"\n");
         frame.scrviSuEditor("\n\n");
         if (p.getCommand() == null) {
@@ -474,6 +473,10 @@ public class GiocoNaufragioIsola extends GameDescription{
                     break;
                 case LEGGI:
                     ControlGioco.ComandoLeggi(frame,p.getInvObject(), p.getObject());
+                    break;
+                case FINE:
+                    frame.scrviSuEditor("Non sei stato in grado di vincere?? Forse non sei un buon giocatore.");
+                    System.exit(0);
                     break;
             }
 

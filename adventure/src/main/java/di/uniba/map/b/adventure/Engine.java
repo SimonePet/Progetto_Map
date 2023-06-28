@@ -5,6 +5,7 @@
  */
 package di.uniba.map.b.adventure;
 
+import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
 import di.uniba.map.b.adventure.parser.Parser;
 import swing.FrameStart;
 
@@ -41,7 +42,7 @@ public class Engine {
             if(percorsoAssoluto.contains("adventure")){
                 percorsoRelativo = "/resources/stopwords";    
             }else{
-                percorsoRelativo = "adventure/resources/stopwords";
+                percorsoRelativo = "/Progetto_Map/adventure/resources/stopwords";
             }
             String fullPath = percorsoAssoluto + File.separator + percorsoRelativo;
             Set<String> stopwords = Utils.loadFileListInSet(new File(fullPath));
