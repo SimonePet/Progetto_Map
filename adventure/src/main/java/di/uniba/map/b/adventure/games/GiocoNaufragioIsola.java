@@ -305,10 +305,11 @@ public class GiocoNaufragioIsola extends GameDescription{
         costa.getObjects().add(acciarino);
 
         //Lastra
-        Oggetto lastra = new Oggetto(5, "lastra di pietra", "Una lastra incisa.");
-        lastra.setAlias(new String[]{"pietra", "lastre", "pietre", "lastra pietra"});
+        Oggetto lastra = new Oggetto(5, "lastra", "Una lastra incisa.");
+        lastra.setAlias(new String[]{"pietra", "lastre", "pietre", "lastra pietra","lastra"});
         lastra.setVisibile(false);
         lastra.setRaccogglibile(false);
+        lastra.setDescrizioneRaccogli("Ma cosa pensi di essere....Il cambione di bodybuilding.");
         grotta.getObjects().add(lastra);
 
         //Lampada
@@ -352,32 +353,38 @@ public class GiocoNaufragioIsola extends GameDescription{
         Oggetto barca = new Oggetto(12, "barca", "Il relitto della tua imbarcazione...");
         barca.setAlias(new String[]{"barchetta","nave","relitto"});
         barca.setVisibile(true);
+        barca.setRaccogglibile(false);
+        barca.setDescrizioneRaccogli("Pensi veramnete di poter raccogliere una barca????");
         costa.getObjects().add(barca);
 
         //cartello
         Oggetto cartello = new Oggetto(13, "cartello", "Un incomprensibile cartello in legno...");
         cartello.setAlias(new String[]{"insegna","scritta"});
-        sentiero.getObjects().add(cartello);
+        cartello.setDescrizioneRaccogli("Dove pensi di portare questo cartello potra' servire a qualcun altro.");
         cartello.setVisibile(true);
         cartello.setRaccogglibile(false);
+        sentiero.getObjects().add(cartello);
 
         //Armadio
         Oggetto armadio = new Oggetto(14, "armadio", "Un grande armadio in legno...");
         armadio.setAlias(new String[]{});
         armadio.setRaccogglibile(false);
         armadio.setVisibile(true);
+        armadio.setDescrizioneRaccogli("Ammenoche tu non abbia idea di ristrutturare casa l'armadio non puoi raccoglierlo.");
         edificioDentro.getObjects().add(armadio);
 
         Oggetto tv = new Oggetto(15, "tv", "Una televisione un po' datata chissa se si accende...");
         tv.setAlias(new String[]{"televisione","tivvu","televisore"});
         tv.setRaccogglibile(false);
         tv.setVisibile(true);
+        tv.setDescrizioneRaccogli("Ma ti sei trasformato in un ladro per caso.");
         edificioDentro.getObjects().add(tv);
 
         Oggetto divano = new Oggetto(16, "divano", "Un bel divano in pelle.");
         divano.setAlias(new String[]{"poltrona", "sofa", "televisore"});
         divano.setRaccogglibile(false);
         divano.setVisibile(true);
+        divano.setDescrizioneRaccogli("ma pensi di avere un inventario cosi capiente???");
         edificioDentro.getObjects().add(divano);
 
         setCurrentRoom(approdo);
@@ -466,7 +473,7 @@ public class GiocoNaufragioIsola extends GameDescription{
                     frame.scrviSuEditor("Questo oggetto non e presente nel tuo inventario");
                     break;
                 case LEGGI:
-                    ControlGioco.ComandoLeggi(frame,p.getInvObject());
+                    ControlGioco.ComandoLeggi(frame,p.getInvObject(), p.getObject());
                     break;
             }
 

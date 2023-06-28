@@ -107,7 +107,7 @@ public class ControlGioco {
                         frame.scrviSuEditor(Messaggio.getHaiRaccolto() + ogg.getNomeOggetto());
                     } else {
                         //Se sono qui signigica che l'oggetto esiste ma non può essere raccolto
-                        frame.scrviSuEditor(Messaggio.getNoRaccogli());
+                        frame.scrviSuEditor(ogg.getDescrizioneRaccogli());
                     }
                 } else {
                     //Se sono qui signigica che l'oggetto esiste ma non può essere raccolto
@@ -175,6 +175,7 @@ public class ControlGioco {
             if(oggInv.getNomeOggetto().equals("lampada")){
                 if(GNI.getInventory().contains(GNI.getOggettoGioco("acciarino"))){
                     frame.scrviSuEditor("Hai utilizzato l'acciarino e la lampada si è accesa.");
+                    GNI.getOggettoGioco("lastra").setVisibile(true);
                     GNI.getStanza("grotta").setVisibile(true);
                     GNI.getStanza("grotta").setOsserva(MessaggioGrotta.getOsservaLuce());
                     GNI.getStanza("grotta").setMessaggioNord(MessaggioGrotta.getNoNordLuce());
@@ -193,15 +194,26 @@ public class ControlGioco {
         }
     }
 
-    public static void ComandoLeggi(final JFrameApp frame,Oggetto oggInv){
-        if(oggInv != null){
-            if(oggInv.getNomeOggetto().equals("cifrario")){
-                frame.scrviSuEditor(MessaggioCosta.getDescCifrario());
-            } else {
-                frame.scrviSuEditor("Non puoi leggere questo oggetto.");
+    public static void ComandoLeggi(final JFrameApp frame,Oggetto oggInv,Oggetto ogg){
+        if(oggInv != null || ogg != null){
+            if(oggInv!=null){
+                if(oggInv.getNomeOggetto().equals("cifrario")) {
+                    frame.scrviSuEditor(MessaggioCosta.getDescCifrario());
+                }
+                else{
+                    frame.scrviSuEditor("Non puoi leggere questo oggetto.");
+                }
+            }
+            else {
+                if (ogg.getNomeOggetto().equals("lastra")) {
+                    frame.scrviSuEditor(MessaggioGrotta.getDescLastra());
+                }
+                else {
+                    frame.scrviSuEditor("Non puoi leggere questo oggetto.");
+                }
             }
         } else {
-            frame.scrviSuEditor("Questo oggetto non è presente nell' inventario.");
+            frame.scrviSuEditor("Questo oggetto non è presente.");
         }
     }
 }

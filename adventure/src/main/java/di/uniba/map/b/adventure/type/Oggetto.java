@@ -19,6 +19,7 @@ public class Oggetto implements Serializable {
     private final int idOggetto;
     private String nomeOggetto;
     private String descrizioneOggetto;
+    private String descrizioneRaccogli=null;
     private Set<String> aliasOggetto;
     private boolean apribile = false;
     private boolean raccogglibile = true;
@@ -261,5 +262,13 @@ public class Oggetto implements Serializable {
 
     public void setLasciato(boolean lasciato) {
         this.lasciato = lasciato;
+    }
+
+    public void setDescrizioneRaccogli(String descrizioneRaccogli){
+        this.descrizioneRaccogli=descrizioneRaccogli;
+    }
+
+    public String getDescrizioneRaccogli(){
+        return this.descrizioneRaccogli;
     }
 }

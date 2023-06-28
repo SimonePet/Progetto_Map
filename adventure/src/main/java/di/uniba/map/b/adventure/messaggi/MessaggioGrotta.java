@@ -29,6 +29,11 @@ public final class MessaggioGrotta {
     private static final String NO_NORD_LUCE = "Nulla da vedere...";
     private static final String NO_SUD_LUCE = "Hai battuto la testa al muro... alza la testa quando cammini...";
     private static final String NO_OVEST_LUCE = "Guarda! Il paese dei pinguini volanti! ( non c'e nulla)";
+    private static final String DESCRIZIONE_LEGGI="-----------------------\n"+
+            "|        XXV          |\n"+
+            "------------------";
+
+
 
     public static String getDescrizioneCorta() {
         return MessaggioGrotta.DESCRIZIONE_CORTA;
@@ -69,4 +74,5 @@ public final class MessaggioGrotta {
     public static String getGrottaNome() {
         return NOME;
     }
+    public static String getDescLastra(){return MessaggioGrotta.DESCRIZIONE_LEGGI;}
 }
