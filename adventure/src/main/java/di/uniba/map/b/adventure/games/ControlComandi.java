@@ -3,6 +3,8 @@ package di.uniba.map.b.adventure.games;
 import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.TipoComando;
 
+import java.util.concurrent.Callable;
+
 public class ControlComandi {
 
     public ControlComandi(){
@@ -25,7 +27,8 @@ public class ControlComandi {
         ControlComandi.initNarra(GNI);
         ControlComandi.initSalva(GNI);
         ControlComandi.initLeggere(GNI);
-
+        ControlComandi.initTaglia(GNI);
+        ControlComandi.initCostruisci(GNI);
     }
 
     private static void initNord(GiocoNaufragioIsola GNI){
@@ -123,5 +126,17 @@ public class ControlComandi {
         Comando leggere = new Comando(TipoComando.LEGGI, "leggi");
         leggere.setAlias(new String[]{"leggere"});
         GNI.getCommands().add(leggere);
+    }
+
+    private static void initTaglia(GiocoNaufragioIsola GNI){
+        Comando Taglia = new Comando(TipoComando.TAGLIA,"taglia");
+        Taglia.setAlias(new String[]{"abbatti"});
+        GNI.getCommands().add(Taglia);
+    }
+
+    private static void initCostruisci(GiocoNaufragioIsola GNI){
+        Comando Costruisci = new Comando(TipoComando.COSTRUISCI,"costruisci");
+        Costruisci.setAlias(new String[]{"crea","assembla"});
+        GNI.getCommands().add(Costruisci);
     }
 }

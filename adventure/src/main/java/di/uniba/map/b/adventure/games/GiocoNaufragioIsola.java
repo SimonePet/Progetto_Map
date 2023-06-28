@@ -146,7 +146,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         //Imposto il messaggio di osserva
         edificioDentro.setOsserva(MessaggioEdificioDentro.getOsserva());
         //Imposto la visibilita della stanza
-        edificioDentro.setRaggiungibile(false);
+        edificioDentro.setRaggiungibile(true);
         //Imposto il messaggio per Nord
         edificioDentro.setMessaggioNord(MessaggioEdificioDentro.getNoNord());
         //Imposto il messaggio per Sud
@@ -333,7 +333,7 @@ public class GiocoNaufragioIsola extends GameDescription{
 
         //Accetta
         Oggetto accetta = new Oggetto(9, "accetta", "Un' accetta...");
-        accetta.setAlias(new String[]{});
+        accetta.setAlias(new String[]{"ascia"});
         accetta.setVisibile(true);
         covo.getObjects().add(accetta);
 
@@ -387,6 +387,25 @@ public class GiocoNaufragioIsola extends GameDescription{
         divano.setDescrizioneRaccogli("ma pensi di avere un inventario cosi capiente???");
         edificioDentro.getObjects().add(divano);
 
+        Oggetto albero = new Oggetto(17, "albero", "Un albero presente nel bosco.");
+        albero.setAlias(new String[]{});
+        albero.setRaccogglibile(false);
+        albero.setVisibile(true);
+        albero.setDescrizioneRaccogli("E mai possibile che stai cercando di raccogliere un albero.");
+        bosco.getObjects().add(albero);
+
+        Oggetto legno = new Oggetto(18, "legno", "Delle assi di legno.Sarebbero molto utili per costruire una zattera.");
+        legno.setAlias(new String[]{"legname"});
+        legno.setRaccogglibile(true);
+        legno.setVisibile(false);
+        bosco.getObjects().add(legno);
+
+        Oggetto zattera = new Oggetto(19, "zattera", "Ecco cio' che ti salverà da questa brutta avventura.");
+        zattera.setAlias(new String[]{});
+        zattera.setVisibile(false);
+        zattera.setRaccogglibile(false);
+        approdo.getObjects().add(zattera);
+
         setCurrentRoom(approdo);
 
         //Aggiungo tutti gli oggetti alla lista degli oggetti in game description
@@ -407,6 +426,9 @@ public class GiocoNaufragioIsola extends GameDescription{
         getOggettiGioco().add(armadio);
         getOggettiGioco().add(tv);
         getOggettiGioco().add(divano);
+        getOggettiGioco().add(albero);
+        getOggettiGioco().add(legno);
+        getOggettiGioco().add(zattera);
     }
 
 
@@ -477,6 +499,12 @@ public class GiocoNaufragioIsola extends GameDescription{
                 case FINE:
                     frame.scrviSuEditor("Non sei stato in grado di vincere?? Forse non sei un buon giocatore.");
                     System.exit(0);
+                    break;
+                case TAGLIA:
+                    ControlGioco.ComandoTaglia(this,frame,p.getObject());
+                    break;
+                case COSTRUISCI:
+                    ControlGioco.ComandoCostruisci(this,frame,p.getObject());
                     break;
             }
 
