@@ -5,12 +5,14 @@
  */
 package di.uniba.map.b.adventure;
 
+import data.DatabaseController;
 import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
 import di.uniba.map.b.adventure.parser.Parser;
 import swing.FrameStart;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Set;
 
 /**
@@ -99,10 +101,13 @@ public class Engine {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
         //Non dovrebbe servire in quanto la partita viene caricata ed inizializzata in JFrameApp
         //Engine engine = new Engine(new GiocoNaufragioIsola());
         //engine.execute();
+        DatabaseController db;
+        db = new DatabaseController("sa","");
+        db.creaTabellaPartita();
         FrameStart.main();
     }
 
