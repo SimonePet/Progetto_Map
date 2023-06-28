@@ -3,6 +3,7 @@ package di.uniba.map.b.adventure.games;
 import di.uniba.map.b.adventure.messaggi.Messaggio;
 import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
 import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
+import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
 import di.uniba.map.b.adventure.type.Oggetto;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
@@ -145,7 +146,12 @@ public class ControlGioco {
                 }
             }
         } else if (ogg !=null && oggInv == null) {
-            frame.scrviSuEditor(ogg.getDescrizioneOggetto());
+            if(ogg.getNomeOggetto().equalsIgnoreCase("cartello")){
+                frame.scrviSuEditor(MessaggioSentiero.getCARTELLO());
+            }
+            else {
+                frame.scrviSuEditor(ogg.getDescrizioneOggetto());
+            }
         } else if (ogg == null) {
             frame.scrviSuEditor(oggInv.getDescrizioneOggetto());
         }
