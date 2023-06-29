@@ -4,8 +4,26 @@
  */
 package data;
 
+import static data.Database.CREA_TABELLA_PARTITA;
+import static data.Database.INSERISCI_PARTITA;
+import static data.Database.RECUPERA_PUNTEGGIO_CON_ID;
+import static data.Database.RECUPERA_PUNTEGGIO_CON_NOME_PARTITA;
+import static data.Database.STAMPA_PARTITA_SPECIFICA;
+import static data.Database.STAMPA_PARTITE;
+import static data.Database.STAMPA_PARTITE_UTENTE;
+import static data.Database.STAMPA_PUNTEGGIO_MEDIO;
+import static data.Database.STAMPA_PUNTEGGIO_MEDIO_UTENTE;
 import di.uniba.map.b.adventure.GameDescription;
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 /**
  *  CLASSE CHE ESTENDE LA CLASSE ASTRATTA DATABASE
@@ -198,6 +216,57 @@ public class DatabaseController extends Database{
             System.err.println(ex.getMessage());
         }
         return partitaEsistente;
+    }
+    
+    
+    /* prende tutte le partite dal DB, crea oggetto Partita, lo aggiunge alla lista e la restituisce*/
+    @Override
+    public List<Partita> ottieniListaPartite(){
+        List<Partita> partite = new ArrayList<>();
+        ResultSet rs = this.getPartite();
+        try {
+            while(rs.next()){
+                int id = rs.getInt(1);
+                String nome = rs.getString(2);
+                String nomeUtente = rs.getString(3);
+                int punteggio = rs.getInt(4);
+                int numMinuti = rs.getInt(5);
+                int numSecondi = rs.getInt(6);
+                boolean terminata = rs.getBoolean(7);
+                int numMosse = rs.getInt(8);
+                Partita partita = new Partita(id,nome,nomeUtente,punteggio,numMinuti,numSecondi,terminata,numMosse);
+                partite.add(partita);
+            }
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }    
+        return partite;      
+    }
+    
+    /* prende in input la lista delle partite, le raggruppa per nome_utente e punteggio, 
+       prende il punteggio massimo per ogni utente e restituisce un HashMap con nomeUtente e punteggio massimo
+    */ 
+    @Override
+    public List<Map.Entry<String, Integer>> ottieniClassificaUtenti(List<Partita> partite){
+        Map<String, Integer> punteggioMassimoPerNomeUtente = partite.stream()
+        .collect(Collectors.groupingBy(Partita::getNomeUtente,
+                Collectors.mapping(Partita::getPunteggio, Collectors.maxBy(Integer::compare))))
+        .entrySet()
+        .stream()
+        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().orElse(0)));
+
+       
+        // Stampa della HashMap risultante
+        punteggioMassimoPerNomeUtente.forEach((nomeUtente, punteggio) ->
+                System.out.println("Nome Utente: " + nomeUtente + ", Punteggio Massimo: " + punteggio));
+        
+        //lista di coppie chiave-valore
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(punteggioMassimoPerNomeUtente.entrySet());
+
+        // Ordina la lista di Map.Entry in base al valore
+        Collections.sort(entryList, Map.Entry.comparingByValue(Comparator.reverseOrder()));
+            
+        return entryList;
     }
     
 }
