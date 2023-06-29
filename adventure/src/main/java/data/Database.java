@@ -9,6 +9,9 @@ import di.uniba.map.b.adventure.GameDescription;
 import java.beans.Statement;
 import java.io.File;
 import java.sql.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 /**
  *  CLASSE ASTRATTA 
  * 
@@ -30,7 +33,10 @@ public abstract class Database {
     public Connection connect() throws SQLException {
         String percorsoDb="";
         File progettoDir = new File(System.getProperty("user.dir"));
-        if(progettoDir.getName().contains("adventure")){
+        
+        
+        
+        if(progettoDir.getName().equalsIgnoreCase("adventure")){
             File fileDir = new File(progettoDir, File.separator+"resources"+File.separator+"db");
                 percorsoDb = fileDir.getAbsolutePath();
             }else if(!progettoDir.getName().contains("Progetto_Map")){
@@ -85,4 +91,7 @@ public abstract class Database {
     
     public abstract boolean partitaEsistente(String nomePartita);
     
+    public abstract List<Partita> ottieniListaPartite();
+    
+    public abstract List<Map.Entry<String, Integer>> ottieniClassificaUtenti(List<Partita> partite);
 }
