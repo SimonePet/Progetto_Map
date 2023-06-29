@@ -135,7 +135,8 @@ public class FrameStart extends javax.swing.JFrame {
     }//GEN-LAST:event_loadMatchActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        JDialogClassificaUtenti d = new JDialogClassificaUtenti(this, true);
+        d.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
