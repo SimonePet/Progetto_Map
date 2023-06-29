@@ -21,9 +21,9 @@ import java.util.List;
  * @author pierpaolo
  */
 public abstract class GameDescription implements Serializable{
-    
+
     private String nomePartita;
-    private String username;  
+    private String username;
     private boolean finish=false;
     private int numMinutes=0;
     private int numSeconds=0;
@@ -34,7 +34,7 @@ public abstract class GameDescription implements Serializable{
     private final List<Oggetto> inventory = new ArrayList<>();
     private final List<Oggetto> oggettiGioco = new ArrayList<>();
     private Stanza currentRoom;
-    
+
     public void setPunteggio(){
         int penalizzazioneMosse = 1*this.getNumMoves();
         int penalizzazioneMin = 5*this.getNumMinutes();
@@ -47,21 +47,21 @@ public abstract class GameDescription implements Serializable{
             this.punteggio = 100;
         }else if(punteggio<0){
             this.punteggio = 0;
-        } 
+        }
     }
-    
+
     public int getPunteggio(){
         return punteggio;
     }
-    
+
     public String getNomePartita(){
         return nomePartita;
     }
-    
+
     public void setNomePartita(String nomePartita){
         this.nomePartita = nomePartita;
     }
-    
+
     public int getNumMoves(){
         return numMoves;
     }
@@ -97,7 +97,7 @@ public abstract class GameDescription implements Serializable{
     public String getUsername(){
         return username;
     }
-    
+
     public List<Stanza> getRooms() {
         return rooms;
     }
@@ -140,6 +140,18 @@ public abstract class GameDescription implements Serializable{
         while (iteratore.hasNext()) {
             prossimo =iteratore.next();
             if(prossimo.getNomeStanza().equalsIgnoreCase(nome)){
+                return prossimo;
+            }
+        }
+        return prossimo;
+    }
+
+    public Comando getComando(String nome){
+        Comando prossimo = null;
+        Iterator<Comando> iteratore = commands.iterator();
+        while (iteratore.hasNext()) {
+            prossimo =iteratore.next();
+            if(prossimo.getNomeComando().equalsIgnoreCase(nome)){
                 return prossimo;
             }
         }

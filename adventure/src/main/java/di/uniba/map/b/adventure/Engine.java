@@ -5,14 +5,12 @@
  */
 package di.uniba.map.b.adventure;
 
-import data.DatabaseController;
 import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
 import di.uniba.map.b.adventure.parser.Parser;
 import swing.FrameStart;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.Set;
 
 /**
@@ -23,7 +21,7 @@ import java.util.Set;
  * @author pierpaolo
  */
 public class Engine {
-    
+
     private final GameDescription game;
     private Parser parser;
 
@@ -34,29 +32,26 @@ public class Engine {
                 this.game.init();
             }catch (Exception ex) {
                 System.err.println(ex);
-            }            
+            }
         }
         try {
             //Set<String> stopwords = Utils.loadFileListInSet(new File(".resources/stopwords"));
-            
-            File progettoDir = new File(System.getProperty("user.dir"));
-            String percorso="";
-            if(progettoDir.getName().contains("adventure")){
-                percorso = File.separator+"resources"+File.separator+"stopwords";
-            }else if(!progettoDir.getName().contains("Progetto_Map")){
-                percorso = File.separator+"Progetto_Map"+File.separator+"adventure"+File.separator+"resources"+File.separator+"stopwords";        
-            }else if(progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")){
-                percorso = File.separator+"adventure"+File.separator+"resources"+File.separator+"stopwords";
+
+            String percorsoAssoluto = new File("").getAbsolutePath();
+            String percorsoRelativo="";
+            if(percorsoAssoluto.contains("adventure")){
+                percorsoRelativo = "/resources/stopwords";
+            }else{
+                percorsoRelativo = "/adventure/resources/stopwords";
             }
-           
-            String percorsoCompleto = progettoDir+percorso;
-            Set<String> stopwords = Utils.loadFileListInSet(new File(percorsoCompleto));
+            String fullPath = percorsoAssoluto + File.separator + percorsoRelativo;
+            Set<String> stopwords = Utils.loadFileListInSet(new File(fullPath));
             parser = new Parser(stopwords);
         } catch (IOException ex) {
             System.err.println(ex);
         }
     }
-   
+
 
     public void execute() {
         /*
@@ -67,9 +62,9 @@ public class Engine {
         System.out.println();
         System.out.println(game.getCurrentRoom().getDescription());
         System.out.println();
-        
+
         Scanner scanner = new Scanner(System.in);
-        
+
         while (scanner.hasNextLine()) {
             String command = scanner.nextLine();
             ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
@@ -82,7 +77,7 @@ public class Engine {
                 game.nextMove(p, System.out);
                 System.out.println();
             }
-        }*/   
+        }*/
     }
 
     public String getCurrentRoomName(){
@@ -96,18 +91,15 @@ public class Engine {
     public Parser getParser(){
         return parser;
     }
-    
+
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) throws SQLException {
+    public static void main(String[] args) {
         //Non dovrebbe servire in quanto la partita viene caricata ed inizializzata in JFrameApp
         //Engine engine = new Engine(new GiocoNaufragioIsola());
         //engine.execute();
-        DatabaseController db;
-        db = new DatabaseController("sa","");
-        db.creaTabellaPartita();
         FrameStart.main();
     }
 
