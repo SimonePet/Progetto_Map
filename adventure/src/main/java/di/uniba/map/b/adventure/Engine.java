@@ -6,6 +6,7 @@
 package di.uniba.map.b.adventure;
 
 import data.DatabaseController;
+import data.FileController;
 import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
 import di.uniba.map.b.adventure.parser.Parser;
 import swing.FrameStart;
@@ -108,6 +109,8 @@ public class Engine {
         DatabaseController db;
         db = new DatabaseController("sa","");
         db.creaTabellaPartita();
+        FileController file = new FileController("salvataggioPartita","resources");
+        file.create();
         FrameStart.main();
     }
 
