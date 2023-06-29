@@ -21,6 +21,7 @@ public class Oggetto implements Serializable {
     private String descrizioneOggetto;
     private String descrizioneRaccogli=null;
     private Set<String> aliasOggetto;
+    private Set<Comando> comandiConsentiti;
     private boolean apribile = false;
     private boolean raccogglibile = true;
     private boolean premibile = false;
@@ -270,5 +271,13 @@ public class Oggetto implements Serializable {
 
     public String getDescrizioneRaccogli(){
         return this.descrizioneRaccogli;
+    }
+
+    public Set<Comando> getComandiConsentiti() {
+        return this.comandiConsentiti;
+    }
+
+    public void setComandiConsentiti(Set<Comando> comandiConsentiti) {
+        this.comandiConsentiti = comandiConsentiti;
     }
 }

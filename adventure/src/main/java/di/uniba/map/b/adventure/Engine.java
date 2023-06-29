@@ -42,7 +42,7 @@ public class Engine {
             if(percorsoAssoluto.contains("adventure")){
                 percorsoRelativo = "/resources/stopwords";    
             }else{
-                percorsoRelativo = "/Progetto_Map/adventure/resources/stopwords";
+                percorsoRelativo = "/adventure/resources/stopwords";
             }
             String fullPath = percorsoAssoluto + File.separator + percorsoRelativo;
             Set<String> stopwords = Utils.loadFileListInSet(new File(fullPath));

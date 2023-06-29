@@ -39,7 +39,7 @@ public class FileController implements FileInterface {
     @Override
     public boolean create() {
         try {
-            this.file = new File("./Progetto_Map/adventure/"+directory+"/"+nameFile);
+            this.file = new File("./adventure/"+directory+"/"+nameFile);
             if (file.createNewFile()) {
                 System.out.println("File creato con successo.");
             } else {

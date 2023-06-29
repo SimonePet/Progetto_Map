@@ -4,11 +4,14 @@ import di.uniba.map.b.adventure.messaggi.Messaggio;
 import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
 import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
 import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
+import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.Oggetto;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
 
+import java.util.HashSet;
 import java.util.Iterator;
+import java.util.Set;
 
 
 public class ControlGioco {
@@ -261,5 +264,30 @@ public class ControlGioco {
         } else {
             frame.scrviSuEditor("Questo oggetto non è presente.");
         }
+    }
+
+    public static void ComandoAiuto(GiocoNaufragioIsola GNI, final JFrameApp frame){
+        Set<Comando> set1 = new HashSet<>();
+        set1.add(GNI.getComando("nord"));
+        set1.add(GNI.getComando("sud"));
+        set1.add(GNI.getComando("est"));
+        set1.add(GNI.getComando("ovest"));
+        set1.add(GNI.getComando("inventario"));
+        set1.add(GNI.getComando("osserva"));
+        set1.add(GNI.getComando("raccogli"));
+        set1.add(GNI.getComando("narra"));
+        set1.add(GNI.getComando("salva"));
+        Oggetto prossimo =null;
+        Iterator<Oggetto> iteratore =GNI.getInventory().iterator();
+        while(iteratore.hasNext()){
+            prossimo =iteratore.next();
+            set1.addAll(prossimo.getComandiConsentiti());
+        }
+        Iterator<Comando> iteratore1 =set1.iterator();
+        frame.scrviSuEditor("Ecco a te tutta la lista dei comandi disponibili:\n");
+        while(iteratore1.hasNext()){
+            frame.scrviSuEditor(iteratore1.next().getDescrizione()+"\n");
+        }
+
     }
 }

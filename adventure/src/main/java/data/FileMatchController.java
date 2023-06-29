@@ -55,7 +55,7 @@ public class FileMatchController extends FileController implements Serializable 
                 File fileDir = new File(projectDir, "/resources/salvataggioPartita");
                 percorso = fileDir.getAbsolutePath();
             }else{
-                File fileDir = new File(projectDir, "/Progetto_Map/adventure/resources/salvataggioPartita");
+                File fileDir = new File(projectDir, "/adventure/resources/salvataggioPartita");
                 percorso = fileDir.getAbsolutePath();
             }       
             

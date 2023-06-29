@@ -146,6 +146,18 @@ public abstract class GameDescription implements Serializable{
         return prossimo;
     }
 
+    public Comando getComando(String nome){
+        Comando prossimo = null;
+        Iterator<Comando> iteratore = commands.iterator();
+        while (iteratore.hasNext()) {
+            prossimo =iteratore.next();
+            if(prossimo.getNomeComando().equalsIgnoreCase(nome)){
+                return prossimo;
+            }
+        }
+        return prossimo;
+    }
+
 
     public abstract void init() throws Exception;
 
