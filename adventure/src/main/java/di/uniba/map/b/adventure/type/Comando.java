@@ -21,6 +21,7 @@ public class Comando implements Serializable {
     private final TipoComando tipoComando;
     private final String nomeComando;
     private Set<String> aliasComando;
+    private String descrizione = null;
 
     /**
      * Costruttore della classe Comando.
@@ -115,5 +116,13 @@ public class Comando implements Serializable {
             return false;
         }
         return true;
+    }
+
+    public String getDescrizione() {
+        return descrizione;
+    }
+
+    public void setDescrizione(String descrizione) {
+        this.descrizione = descrizione;
     }
 }

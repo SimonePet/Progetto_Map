@@ -28,6 +28,9 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.Set;
 import java.util.concurrent.Callable;
 
 /**
@@ -270,23 +273,40 @@ public class GiocoNaufragioIsola extends GameDescription{
         sentiero.setOvest(null);
 
         // TODO Creare classi per i messaggi e le stringhe degli oggetti
-
+        Set<Comando> set = new HashSet<>();
+        Set<Comando> set1 = new HashSet<>();
+        Set<Comando> set2 = new HashSet<>();
+        Set<Comando> set4 = new HashSet<>();
+        Set<Comando> set5 = new HashSet<>();
+        Set<Comando> set6 = new HashSet<>();
+        Set<Comando> set7 = new HashSet<>();
+        Set<Comando> set8 = new HashSet<>();
+        Set<Comando> set9 = new HashSet<>();
+        Set<Comando> set10 = new HashSet<>();
+        Set<Comando> set11 = new HashSet<>();
+        Set<Comando> set3 = new HashSet<>();
         //Istanziazione oggetto radio
         Oggetto radio = new Oggetto(0, "radio", "E' una vecchia radio a pile..."
                 + "chissa se funzionera'...");
         radio.setAlias(new String[]{});
         radio.setVisibile(true);
+        set.add(this.getComando("utilizza"));
+        set.add(this.getComando("lascia"));
+        radio.setComandiConsentiti(set);
         costa.getObjects().add(radio);
 
         //Istanziazione oggetto batteria
         Oggetto batteria = new Oggetto(1, "batteria", "Un pacco di batterie, chissà se sono cariche.");
         batteria.setAlias(new String[]{"batterie", "pile", "pila"});
+        batteria.setComandiConsentiti(set);
         edificioDentro.getObjects().add(batteria);
 
         //Cartina correnti marine
         Oggetto cartina = new Oggetto(2, "mappa", "Una antica cartina delle correnti.");
         cartina.setAlias(new String[]{"cartine", "carta", "cartina", "mappe","carte"});
         cartina.setVisibile(true);
+        set1.add(this.getComando("lascia"));
+        cartina.setComandiConsentiti(set1);
         costa.getObjects().add(cartina);
 
         //Oggetto contenitore telecomando: contiene pile
@@ -296,12 +316,18 @@ public class GiocoNaufragioIsola extends GameDescription{
         telecomando.setRaccogglibile(true);
         telecomando.setAperto(false);
         telecomando.setVisibile(true);
+        set2.add(this.getComando("apri"));
+        set2.add(this.getComando("lascia"));
+        telecomando.setComandiConsentiti(set2);
         edificioDentro.getObjects().add(telecomando);
 
         //Acciarino
         Oggetto acciarino = new Oggetto(4, "acciarino", "Un acciarino, potresti riscaldarti o darti fuoco.");
         acciarino.setAlias(new String[]{"accendino"});
         acciarino.setVisibile(true);
+        set3.add(this.getComando("accendi"));
+        set3.add(this.getComando("lascia"));
+        acciarino.setComandiConsentiti(set3);
         costa.getObjects().add(acciarino);
 
         //Lastra
@@ -310,12 +336,15 @@ public class GiocoNaufragioIsola extends GameDescription{
         lastra.setVisibile(false);
         lastra.setRaccogglibile(false);
         lastra.setDescrizioneRaccogli("Ma cosa pensi di essere....Il cambione di bodybuilding.");
+        set4.add(this.getComando("leggi"));
+        lastra.setComandiConsentiti(set4);
         grotta.getObjects().add(lastra);
 
         //Lampada
         Oggetto lampada = new Oggetto(6, "lampada", "Una vecchia lampada ad olio.");
         lampada.setAlias(new String[]{"lampade", "lampadario", "lampadina", "lampadine", "luce", "luci"});
         lampada.setVisibile(true);
+        lampada.setComandiConsentiti(set3);
         bosco.getObjects().add(lampada);
 
         //Libro Cifrario
@@ -323,30 +352,42 @@ public class GiocoNaufragioIsola extends GameDescription{
                 + "delle strane scritture.");
         cifrario.setAlias(new String[]{"libro","libri","cifrari"});
         cifrario.setVisibile(true);
+        batteria.setComandiConsentiti(set);
+        set5.add(this.getComando("leggi"));
+        set5.add(this.getComando("lascia"));
+        cifrario.setComandiConsentiti(set5);
         costa.getObjects().add(cifrario);
 
         //Vela
         Oggetto vela = new Oggetto(8, "vela", "Una vela...");
         vela.setAlias(new String[]{});
         vela.setVisibile(true);
+        set6.add(this.getComando("costruisci"));
+        set6.add(this.getComando("lascia"));
+        vela.setComandiConsentiti(set6);
         covo.getObjects().add(vela);
 
         //Accetta
         Oggetto accetta = new Oggetto(9, "accetta", "Un' accetta...");
         accetta.setAlias(new String[]{"ascia"});
         accetta.setVisibile(true);
+        set7.add(this.getComando("taglia"));
+        set7.add(this.getComando("lascia"));
+        accetta.setComandiConsentiti(set7);
         covo.getObjects().add(accetta);
 
         //Corde
         Oggetto corda = new Oggetto(10, "corda", "Corda...");
         corda.setAlias(new String[]{"corde"});
         corda.setVisibile(true);
+        corda.setComandiConsentiti(set6);
         covo.getObjects().add(corda);
 
         //Fucile
         Oggetto fucile = new Oggetto(11, "fucile", "Un fucile...");
         fucile.setAlias(new String[]{"arma"});
         fucile.setVisibile(true);
+        fucile.setComandiConsentiti(set1);
         covo.getObjects().add(fucile);
 
         //Nave
@@ -355,6 +396,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         barca.setVisibile(true);
         barca.setRaccogglibile(false);
         barca.setDescrizioneRaccogli("Pensi veramnete di poter raccogliere una barca????");
+        barca.setComandiConsentiti(set11);
         costa.getObjects().add(barca);
 
         //cartello
@@ -363,6 +405,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         cartello.setDescrizioneRaccogli("Dove pensi di portare questo cartello potra' servire a qualcun altro.");
         cartello.setVisibile(true);
         cartello.setRaccogglibile(false);
+        cartello.setComandiConsentiti(set11);
         sentiero.getObjects().add(cartello);
 
         //Armadio
@@ -371,6 +414,8 @@ public class GiocoNaufragioIsola extends GameDescription{
         armadio.setRaccogglibile(false);
         armadio.setVisibile(true);
         armadio.setDescrizioneRaccogli("Ammenoche tu non abbia idea di ristrutturare casa l'armadio non puoi raccoglierlo.");
+        set8.add(this.getComando("premi"));
+        armadio.setComandiConsentiti(set8);
         edificioDentro.getObjects().add(armadio);
 
         Oggetto tv = new Oggetto(15, "tv", "Una televisione un po' datata chissa se si accende...");
@@ -378,6 +423,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         tv.setRaccogglibile(false);
         tv.setVisibile(true);
         tv.setDescrizioneRaccogli("Ma ti sei trasformato in un ladro per caso.");
+        tv.setComandiConsentiti(set11);
         edificioDentro.getObjects().add(tv);
 
         Oggetto divano = new Oggetto(16, "divano", "Un bel divano in pelle.");
@@ -385,6 +431,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         divano.setRaccogglibile(false);
         divano.setVisibile(true);
         divano.setDescrizioneRaccogli("ma pensi di avere un inventario cosi capiente???");
+        divano.setComandiConsentiti(set11);
         edificioDentro.getObjects().add(divano);
 
         Oggetto albero = new Oggetto(17, "albero", "Un albero presente nel bosco.");
@@ -392,18 +439,23 @@ public class GiocoNaufragioIsola extends GameDescription{
         albero.setRaccogglibile(false);
         albero.setVisibile(true);
         albero.setDescrizioneRaccogli("E mai possibile che stai cercando di raccogliere un albero.");
+        set9.add(this.getComando("taglia"));
+        albero.setComandiConsentiti(set9);
         bosco.getObjects().add(albero);
 
         Oggetto legno = new Oggetto(18, "legno", "Delle assi di legno.Sarebbero molto utili per costruire una zattera.");
         legno.setAlias(new String[]{"legname"});
         legno.setRaccogglibile(true);
-        legno.setVisibile(false);
+        legno.setVisibile(false);;
+        set10.add(this.getComando("costruisci"));
+        legno.setComandiConsentiti(set10);
         bosco.getObjects().add(legno);
 
         Oggetto zattera = new Oggetto(19, "zattera", "Ecco cio' che ti salverà da questa brutta avventura.");
         zattera.setAlias(new String[]{});
         zattera.setVisibile(false);
         zattera.setRaccogglibile(false);
+        zattera.setComandiConsentiti(set11);
         approdo.getObjects().add(zattera);
 
         setCurrentRoom(approdo);
@@ -505,6 +557,9 @@ public class GiocoNaufragioIsola extends GameDescription{
                     break;
                 case COSTRUISCI:
                     ControlGioco.ComandoCostruisci(this,frame,p.getObject());
+                    break;
+                case AIUTO:
+                    ControlGioco.ComandoAiuto(this,frame);
                     break;
             }
 
