@@ -10,7 +10,7 @@ public class Suono {
     private static Optional<SourceDataLine> lineOptional = Optional.empty();
     private static ReentrantLock lock = new ReentrantLock();
 
-    public static void riproduciTraccia(String trackName, boolean loop) {
+    public static void riproduciTraccia(String percorsoRel, boolean loop) {
         if (isPlaying) {
             stopRiproduzione();
         }
@@ -20,8 +20,8 @@ public class Suono {
         Thread audioThread = new Thread(() -> {
             try {
                 String estensione = ".wav";
-                String percorso = System.getProperty("user.dir") + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "stanze" + File.separator + trackName + estensione;
-
+                String percorso = percorsoRel + estensione;
+                System.out.println(percorso);
                 File audioFile = new File(percorso);
                 AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
                 AudioFormat audioFormat = audioInputStream.getFormat();
