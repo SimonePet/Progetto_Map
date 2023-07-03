@@ -11,7 +11,7 @@ public final class MessaggioEdificioDentro {
      */
     private MessaggioEdificioDentro() {
     }
-    private static final String NOME = "Interno edificio";
+    private static final String NOME = "Edificio interno";
     private static final String DESCRIZIONE_CORTA = "Ti trovi all'interno di un vecchio edificio "
             + "abbandonato.";
     private static final String DESCRIZIONE_COMPLETA = "Sei riuscito ad entrare... sembra essere un "

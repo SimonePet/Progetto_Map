@@ -13,13 +13,17 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.ForkJoinPool;
 
 /**
  *
  * @author pierpaolo
  */
 public class Utils {
-
+    public static String percorsoAssoluto = calcolaPercorsoAssoluto();
+    public static String estensioneWav= ".wav";
+    public static String percorsoSuoniStanze = "adventure"+File.separator +"resources"+File.separator+"suoni"+File.separator+"stanze" + File.separator;
+    public static String percorsoSuoniOggetti = "adventure"+File.separator +"resources"+File.separator+"suoni"+File.separator+"oggetti" + File.separator;
     public static Set<String> loadFileListInSet(File file) throws IOException {
         Set<String> set = new HashSet<>();
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -39,6 +43,19 @@ public class Utils {
             }
         }
         return tokens;
+    }
+
+    private static String calcolaPercorsoAssoluto(){
+        String percorsoAss = System.getProperty("user.dir");
+        String sostituzione = "Progetto_Map";
+        int indiceInizio = percorsoAss.indexOf("Progetto_Map");
+        if (indiceInizio != -1) {
+            percorsoAss = percorsoAss.substring(0, indiceInizio) + sostituzione;
+            System.out.println("Nuovo testo: " + percorsoAss);
+        } else {
+            System.out.println("Sottostringa non trovata");
+        }
+        return percorsoAss;
     }
 
 }

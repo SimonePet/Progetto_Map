@@ -1,6 +1,8 @@
 package di.uniba.map.b.adventure.games;
 
+import data.PercorsoFileSystem;
 import data.Suono;
+import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.messaggi.Messaggio;
 import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
 import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
@@ -10,6 +12,7 @@ import di.uniba.map.b.adventure.type.Oggetto;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
 
+import javax.swing.text.Utilities;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -25,8 +28,9 @@ public class ControlGioco {
         frame.scrviSuEditor(GNI.getCurrentRoom().getMessaggioNord());
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getNord() != null && GNI.getCurrentRoom().getNord().getRaggiungibile()) {
+            //System.out.println(Utils.percorsoAssoluto);
             GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
-            Suono.riproduciTraccia(GNI.getCurrentRoom().getNomeStanza(),true);
+            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
             if(GNI.getCurrentRoom().getVisitata())
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
             else
@@ -43,7 +47,7 @@ public class ControlGioco {
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getSud() != null && GNI.getCurrentRoom().getSud().getRaggiungibile()) {
             GNI.setCurrentRoom(GNI.getCurrentRoom().getSud());;
-            Suono.riproduciTraccia(GNI.getCurrentRoom().getNomeStanza(),true);
+            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
             if(GNI.getCurrentRoom().getVisitata())
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
             else
@@ -60,7 +64,7 @@ public class ControlGioco {
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getEst() != null && GNI.getCurrentRoom().getEst().getRaggiungibile()) {
             GNI.setCurrentRoom(GNI.getCurrentRoom().getEst());
-            Suono.riproduciTraccia(GNI.getCurrentRoom().getNomeStanza(),true);
+            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
             GNI.getCurrentRoom().setVisitata(true);
             if(GNI.getCurrentRoom().getVisitata())
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
@@ -78,7 +82,7 @@ public class ControlGioco {
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getOvest() != null && GNI.getCurrentRoom().getOvest().getRaggiungibile()) {
             GNI.setCurrentRoom(GNI.getCurrentRoom().getOvest());
-            Suono.riproduciTraccia(GNI.getCurrentRoom().getNomeStanza(),true);
+            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
             if(GNI.getCurrentRoom().getVisitata())
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
             else
@@ -111,6 +115,7 @@ public class ControlGioco {
                 System.out.println("\nL'oggetto "+ ogg.getNomeOggetto() + " e visibile: "+ ogg.isVisibile());
                 if(ogg.isVisibile()){
                     if (ogg.isRaccogglibile()) {
+                        Suono.riproduciTraccia(ogg.getNomeOggetto(),false);
                         GNI.getInventory().add(ogg);
                         GNI.getCurrentRoom().getObjects().remove(ogg);
                         frame.scrviSuEditor(Messaggio.getHaiRaccolto() + ogg.getNomeOggetto());

@@ -436,7 +436,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         bosco.getObjects().add(albero);
 
         Oggetto legno = new Oggetto(18, "legno", MessaggioOggetti.getDescrizioneLegno());
-        legno.setAlias(new String[]{"legname"});
+        legno.setAlias(new String[]{"legname","legna"});
         legno.setRaccogglibile(true);
         legno.setVisibile(false);;
         set10.add(this.getComando("costruisci"));
