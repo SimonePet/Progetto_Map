@@ -132,7 +132,7 @@ public class FileMatchController extends FileController implements Serializable 
         FileInputStream fileIn = new FileInputStream(file);
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);*/
         String percorsoRelFile = System.getProperty("user.dir").replaceAll("adventure"+".*","");
-        String percorsoAss = "adventure"+File.separator+directory+File.separator+nomeFile;
+        String percorsoAss = File.separator+"adventure"+File.separator+directory+File.separator+nomeFile;
         String percorso = percorsoRelFile+percorsoAss;
         ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(percorso));
         try {

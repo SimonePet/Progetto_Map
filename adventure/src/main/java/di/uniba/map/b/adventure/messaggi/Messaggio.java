@@ -42,6 +42,18 @@ public final class Messaggio {
     private static final String OGGETTO_NON_PRESENTE = "L'oggetto che vuoi raccogliere non c'è.";
     private static final String OGGETTO_NON_POSSEDUTO = "Non possiedi questo oggetto.";
     private static final String OGGETTO_NON_INVENTARIO = "Questo oggetto non è presente nell' inventario.";
+    private static final String ACCENDI_LAMPADA = "Hai utilizzato l'acciarino e la lampada si è accesa.";
+    private static final String NO_ACCENDI_LAMPADA = "Non riesci ad accendere la lampada...servirebbe qualcosa...";
+    private static final String NO_ACCENDI = "Non puoi accendere questo oggetto.";
+    private static final String NO_LEGGI = "Non puoi leggere questo oggetto.";
+    private static final String NO_PRESENTE = "Questo oggetto non è presente.";
+    private static final String TAGLIA_LEGNA = "Hai utilizzato l'accetta ed hai ottenuto la legna.";
+    private static final String NO_TAGLIA_LEGNA = "Non riesci ad abbattere l'albero ti servirebbe qualcosa di affilato...";
+    private static final String NO_TAGLIA = "Non puoi tagliare questo oggetto.";
+    private static final String LISTA_COMANDI = "Ecco a te tutta la lista dei comandi disponibili:";
+    private static final String OGGETTI_LASCIATI = "In questa stanza hai lasciato:";
+
+
     public static String getHelp() {
        return Messaggio.HELP;
    }
@@ -84,4 +96,35 @@ public final class Messaggio {
     public static String getOggettoNonPresente(){return Messaggio.OGGETTO_NON_PRESENTE;}
     public static String getOggettoNonPosseduto(){return Messaggio.OGGETTO_NON_POSSEDUTO;}
     public static String getOggettoNonInventario(){return Messaggio.OGGETTO_NON_INVENTARIO;}
+
+    public static String getAccendiLampada() {
+        return Messaggio.ACCENDI_LAMPADA;
+    }
+    public static String getNoAccendiLampada(){
+        return Messaggio.NO_ACCENDI_LAMPADA;
+    }
+    public static String getNoAccendi() {
+        return Messaggio.NO_ACCENDI;
+    }
+    public static String getNoLeggi() {
+        return Messaggio.NO_LEGGI;
+    }
+    public static String getNoPresente() {
+        return Messaggio.NO_PRESENTE;
+    }
+    public static String getTagliaLegna() {
+        return Messaggio.TAGLIA_LEGNA;
+    }
+    public static String getNoTagliaLegna() {
+        return Messaggio.NO_TAGLIA_LEGNA;
+    }
+    public static String getNoTaglia() {
+        return Messaggio.NO_TAGLIA;
+    }
+    public static String getListaComandi() {
+        return Messaggio.LISTA_COMANDI;
+    }
+    public static String getOggettiLasciati() {
+        return Messaggio.OGGETTI_LASCIATI;
+    }
 }
