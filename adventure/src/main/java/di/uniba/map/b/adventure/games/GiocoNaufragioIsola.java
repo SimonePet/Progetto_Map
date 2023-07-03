@@ -6,6 +6,7 @@
 package di.uniba.map.b.adventure.games;
 
 import data.FileMatchController;
+import data.Suono;
 import di.uniba.map.b.adventure.messaggi.*;
 
 import di.uniba.map.b.adventure.GameDescription;
@@ -450,6 +451,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         approdo.getObjects().add(zattera);
 
         setCurrentRoom(approdo);
+        //Suono.stopRiproduzione(getCurrentRoom().getNomeStanza());
 
         //Aggiungo tutti gli oggetti alla lista degli oggetti in game description
         getOggettiGioco().add(radio);

@@ -1,5 +1,6 @@
 package di.uniba.map.b.adventure.games;
 
+import data.Suono;
 import di.uniba.map.b.adventure.messaggi.Messaggio;
 import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
 import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
@@ -25,6 +26,7 @@ public class ControlGioco {
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getNord() != null && GNI.getCurrentRoom().getNord().getRaggiungibile()) {
             GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
+            Suono.riproduciTraccia(GNI.getCurrentRoom().getNomeStanza(),true);
             if(GNI.getCurrentRoom().getVisitata())
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
             else
@@ -41,6 +43,7 @@ public class ControlGioco {
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getSud() != null && GNI.getCurrentRoom().getSud().getRaggiungibile()) {
             GNI.setCurrentRoom(GNI.getCurrentRoom().getSud());;
+            Suono.riproduciTraccia(GNI.getCurrentRoom().getNomeStanza(),true);
             if(GNI.getCurrentRoom().getVisitata())
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
             else
@@ -57,6 +60,7 @@ public class ControlGioco {
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getEst() != null && GNI.getCurrentRoom().getEst().getRaggiungibile()) {
             GNI.setCurrentRoom(GNI.getCurrentRoom().getEst());
+            Suono.riproduciTraccia(GNI.getCurrentRoom().getNomeStanza(),true);
             GNI.getCurrentRoom().setVisitata(true);
             if(GNI.getCurrentRoom().getVisitata())
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
@@ -74,6 +78,7 @@ public class ControlGioco {
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getOvest() != null && GNI.getCurrentRoom().getOvest().getRaggiungibile()) {
             GNI.setCurrentRoom(GNI.getCurrentRoom().getOvest());
+            Suono.riproduciTraccia(GNI.getCurrentRoom().getNomeStanza(),true);
             if(GNI.getCurrentRoom().getVisitata())
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
             else
