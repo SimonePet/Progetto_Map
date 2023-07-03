@@ -142,7 +142,7 @@ public class ControlGioco {
 
                 if(prossimo.isLasciato()){
                     if(!trovato){
-                        frame.scrviSuEditor("\nIn questa stanza hai lasciato:\n");
+                        frame.scrviSuEditor("\n"+Messaggio.getOggettiLasciati()+"\n");
                     }
                     frame.scrviSuEditor("-"+prossimo.getNomeOggetto()+";\n");
                     trovato=true;
@@ -183,7 +183,7 @@ public class ControlGioco {
         if(oggInv != null){
             if(oggInv.getNomeOggetto().equals("lampada")){
                 if(GNI.getInventory().contains(GNI.getOggettoGioco("acciarino"))){
-                    frame.scrviSuEditor("Hai utilizzato l'acciarino e la lampada si è accesa.");
+                    frame.scrviSuEditor(Messaggio.getAccendiLampada());
                     GNI.getOggettoGioco("lastra").setVisibile(true);
                     GNI.getStanza("grotta").setVisibile(true);
                     GNI.getStanza("grotta").setOsserva(MessaggioGrotta.getOsservaLuce());
@@ -193,13 +193,13 @@ public class ControlGioco {
                     GNI.getStanza("grotta").setOsserva(MessaggioGrotta.getOsservaLuce());
 
                 } else {
-                    frame.scrviSuEditor("Non riesci ad accendere la lampada...servirebbe qualcosa...");
+                    frame.scrviSuEditor(Messaggio.getNoAccendiLampada());
                 }
             } else {
-                frame.scrviSuEditor("Non puoi accendere questo oggetto.");
+                frame.scrviSuEditor(Messaggio.getNoAccendi());
             }
         } else {
-            frame.scrviSuEditor("Questo oggetto non è presente nell' inventario.");
+            frame.scrviSuEditor(Messaggio.getOggettoNonInventario());
         }
     }
 
@@ -210,7 +210,7 @@ public class ControlGioco {
                     frame.scrviSuEditor(MessaggioCosta.getDescCifrario());
                 }
                 else{
-                    frame.scrviSuEditor("Non puoi leggere questo oggetto.");
+                    frame.scrviSuEditor(Messaggio.getNoLeggi());
                 }
             }
             else {
@@ -218,11 +218,11 @@ public class ControlGioco {
                     frame.scrviSuEditor(MessaggioGrotta.getDescLastra());
                 }
                 else {
-                    frame.scrviSuEditor("Non puoi leggere questo oggetto.");
+                    frame.scrviSuEditor(Messaggio.getNoLeggi());
                 }
             }
         } else {
-            frame.scrviSuEditor("Questo oggetto non è presente.");
+            frame.scrviSuEditor(Messaggio.getNoPresente());
         }
     }
 
@@ -230,17 +230,17 @@ public class ControlGioco {
         if(ogg != null){
             if(ogg.getNomeOggetto().equals("albero")){
                 if(GNI.getInventory().contains(GNI.getOggettoGioco("accetta"))){
-                    frame.scrviSuEditor("Hai utilizzato l'accetta ed hai ottenuto la legna.");
+                    frame.scrviSuEditor(Messaggio.getTagliaLegna());
                     GNI.getInventory().add(GNI.getOggettoGioco("legno"));
 
                 } else {
-                    frame.scrviSuEditor("Non riesci ad abbattere l'albero ti servirebbe qualcosa di affilato...");
+                    frame.scrviSuEditor(Messaggio.getNoTagliaLegna());
                 }
             } else {
-                frame.scrviSuEditor("Non e possibile tagliare questo oggetto.");
+                frame.scrviSuEditor(Messaggio.getNoTaglia());
             }
         } else {
-            frame.scrviSuEditor("Questo oggetto non è presente.");
+            frame.scrviSuEditor(Messaggio.getNoPresente());
         }
     }
 
@@ -262,7 +262,7 @@ public class ControlGioco {
                 frame.scrviSuEditor("Non e possibile costruire questo oggetto.");
             }
         } else {
-            frame.scrviSuEditor("Questo oggetto non è presente.");
+            frame.scrviSuEditor(Messaggio.getNoPresente());
         }
     }
 
@@ -284,10 +284,23 @@ public class ControlGioco {
             set1.addAll(prossimo.getComandiConsentiti());
         }
         Iterator<Comando> iteratore1 =set1.iterator();
-        frame.scrviSuEditor("Ecco a te tutta la lista dei comandi disponibili:\n");
+        frame.scrviSuEditor(Messaggio.getListaComandi()+"\n");
         while(iteratore1.hasNext()){
             frame.scrviSuEditor(iteratore1.next().getDescrizione()+"\n");
         }
 
+    }
+
+    public static void ComandoApri(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto InvOgg){
+        if(InvOgg!=null){
+            if(InvOgg.equals(GNI.getOggettoGioco("telecomando"))){
+                frame.scrviSuEditor("Apri il telecomando e cade a terra... solo pezzi di plastica, tasti in gomma e due batterie.");
+                GNI.getOggettoGioco("batteria").setVisibile(true);
+            } else {
+                frame.scrviSuEditor("Nulla da aprire.");
+                frame.scrviSuEditor("Non puoi aprire questo oggetto");
+            }
+        }
+        frame.scrviSuEditor(Messaggio.getOggettoNonInventario());
     }
 }
