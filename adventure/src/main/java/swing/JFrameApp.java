@@ -113,9 +113,15 @@ public class JFrameApp extends javax.swing.JFrame {
 
         jLabel1.setText("Comando");
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Numero mosse:");
 
+        timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Tempo:");
+
+        labelNumMosse.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
         lblStanzaCorrente.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         lblStanzaCorrente.setForeground(javax.swing.UIManager.getDefaults().getColor("PropSheet.selectedSetBackground"));
@@ -136,7 +142,7 @@ public class JFrameApp extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -160,14 +166,14 @@ public class JFrameApp extends javax.swing.JFrame {
                         .addComponent(buttSumbit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(labelNumMosse, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(labelNumMosse, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(152, 152, 152)
+                        .addGap(105, 105, 105)
                         .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addContainerGap())
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -182,16 +188,20 @@ public class JFrameApp extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 18, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(labelNumMosse, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(timeLabel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jLabel2))
-                            .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                            .addComponent(timeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(labelNumMosse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addGap(18, 18, 18)
                 .addComponent(lblStanzaCorrente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -296,7 +306,7 @@ public class JFrameApp extends javax.swing.JFrame {
         String stanzaCorrente = engine.getGame().getCurrentRoom().getNomeStanza();
         try{
             BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+stanzaCorrente+".png"));
-            Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
+            Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_FAST);
             ImageIcon imageIcon = new ImageIcon(dimg);
             jPanel1.setBackground(new Color(0,0,0,0));
             jPanel1.setOpaque(false);
@@ -320,9 +330,19 @@ public class JFrameApp extends javax.swing.JFrame {
             doc.insertString(doc.getLength(), "* Adventure v. 0.3 - 2021-2022 *\n", attributes);
             //doc.insertString(doc.getLength(), game.getCurrentRoom().getNomeStanza()+"\n", attributes);
             doc.insertString(doc.getLength(), partita.getCurrentRoom().getDescrizioneLungaStanza()+"\n", attributes);
-            //avvia Thread          
-            this.thread = new Thread(new ThreadTime(this));
-            thread.start();                        
+            //se è una partita nuova avvia thread per tempo con tempo iniziale a 0 minuti e 0 secondi
+            if(!partitaCaricata){
+                //avvia Thread          
+                this.thread = new Thread(new ThreadTime(this,0,0));
+                thread.start();
+            }else{
+                /* altrimenti se è una partita caricata fai ripartire il thread per il tempo
+                   dal tempo salvato della partita
+                */
+                timeLabel.setText(""+partita.getNumMinutes()+":"+""+partita.getNumSeconds());                
+                this.thread = new Thread(new ThreadTime(this, partita.getNumMinutes(), partita.getNumSeconds()));
+                thread.start();
+            }                        
         }catch(BadLocationException ex){
             System.err.println("errore");
         }
@@ -425,11 +445,11 @@ public class JFrameApp extends javax.swing.JFrame {
     private javax.swing.JLabel lblStanzaCorrente;
     private javax.swing.JTextField textField;
     private javax.swing.JLabel timeLabel;
-    private javax.swing.JLabel background;
     // End of variables declaration//GEN-END:variables
     private static Engine engine;
     private static boolean partitaCaricata=false;
     private Thread thread;
     private String username;
+    private JLabel background;
 }
 
