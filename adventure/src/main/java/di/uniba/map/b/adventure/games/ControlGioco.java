@@ -11,7 +11,6 @@ import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.Oggetto;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import javax.swing.text.Utilities;
@@ -32,35 +31,41 @@ public class ControlGioco {
     private static Set<Comando> comandi = new HashSet<>();
 
     public static void ComandoNord(GiocoNaufragioIsola GNI, final JFrameApp frame,final JPanel panel,JLabel background){
-        frame.scrviSuEditor(GNI.getCurrentRoom().getMessaggioNord());
-        frame.scrviSuEditor("\n");
-        if (GNI.getCurrentRoom().getNord() != null && GNI.getCurrentRoom().getNord().getRaggiungibile()) {
-            //System.out.println(Utils.percorsoAssoluto);
-            GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
-            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
-            if(GNI.getCurrentRoom().getVisitata())
-                frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
-            else
-                frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneLungaStanza());
-            GNI.getCurrentRoom().setVisitata(true);
-            try{
-                BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+GNI.getCurrentRoom().getNomeStanza()+".png"));
-                Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon imageIcon = new ImageIcon(dimg);
-                panel.remove(background);
-                background.setIcon(imageIcon);
-                panel.add(background);
-                background.setLayout(new FlowLayout());
-                panel.revalidate();
-                panel.repaint();
-            }catch (Exception e){
-                System.out.println("Errore nell'aggiunta dell'immagine");
-            }
+            frame.scrviSuEditor(GNI.getCurrentRoom().getMessaggioNord());
+            frame.scrviSuEditor("\n");
+
+            if (GNI.getCurrentRoom().getNord() != null) {
+                if(!GNI.getCurrentRoom().getNord().getRaggiungibile() && GNI.getCurrentRoom().getNomeStanza().equalsIgnoreCase("Edificio esterno")){
+                    Utils.generaFinestraPorta(frame, GNI);
+                }else{
+                    GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
+                }
+                //System.out.println(Utils.percorsoAssoluto);
+
+                Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
+                if(GNI.getCurrentRoom().getVisitata())
+                    frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
+                else
+                    frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneLungaStanza());
+                GNI.getCurrentRoom().setVisitata(true);
+                try{
+                    BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+GNI.getCurrentRoom().getNomeStanza()+".png"));
+                    Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
+                    ImageIcon imageIcon = new ImageIcon(dimg);
+                    panel.remove(background);
+                    background.setIcon(imageIcon);
+                    panel.add(background);
+                    background.setLayout(new FlowLayout());
+                    panel.revalidate();
+                    panel.repaint();
+                }catch (Exception e){
+                    System.out.println("Errore nell'aggiunta dell'immagine");
+                }
 
             //move = true;
-        } else {
-            boolean noroom = true;
-        }
+            } else {
+                boolean noroom = true;
+            }
     }
 
     public static void ComandoSud(GiocoNaufragioIsola GNI, final JFrameApp frame,final JPanel panel,JLabel background){

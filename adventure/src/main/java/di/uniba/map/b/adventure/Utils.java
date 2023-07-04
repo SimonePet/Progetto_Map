@@ -5,6 +5,7 @@
  */
 package di.uniba.map.b.adventure;
 
+import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import di.uniba.map.b.adventure.type.Comando;
 
 import java.io.BufferedReader;
@@ -15,6 +16,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import swing.JDialogPorta;
+import swing.JFrameApp;
 
 /**
  *
@@ -23,6 +26,7 @@ import java.util.Set;
 public class Utils {
     public static String percorsoAssoluto = calcolaPercorsoAssoluto();
     public static String estensioneWav= ".wav";
+    public static String percorsoImmaginiIcone = "adventure"+File.separator +"resources"+File.separator+"immagini"+File.separator+"icone" + File.separator;
     public static String percorsoSuoniStanze = "adventure"+File.separator +"resources"+File.separator+"suoni"+File.separator+"stanze" + File.separator;
     public static String percorsoSuoniOggetti = "adventure"+File.separator +"resources"+File.separator+"suoni"+File.separator+"oggetti" + File.separator;
     public static String percorsoImmaginiStanze = "adventure"+File.separator +"resources"+File.separator+"immagini"+File.separator+"stanze" + File.separator;
@@ -59,5 +63,9 @@ public class Utils {
         }
         return percorsoAss;
     }
-
+    
+    public static void generaFinestraPorta(JFrameApp frame, GiocoNaufragioIsola GNI){
+        JDialogPorta d = new JDialogPorta(frame,true, GNI);
+        d.setVisible(true);
+    }
 }

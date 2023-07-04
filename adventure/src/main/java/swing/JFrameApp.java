@@ -256,6 +256,10 @@ public class JFrameApp extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+"icona.png");
+        this.setIconImage(icon.getImage());
+        this.setResizable(false);
+        jPanel1.setSize(650,550);
         jLabel1.setOpaque(false);
         jLabel1.setBackground(new Color(255,255,255,150));
         jLabel2.setOpaque(false);
@@ -273,7 +277,8 @@ public class JFrameApp extends javax.swing.JFrame {
         jPanel2.setOpaque(false);
         jPanel2.setBackground(new Color(255,255,255,150));
         jScrollPane1.setOpaque(false);
-        jScrollPane1.getViewport().setOpaque(false);
+        //jScrollPane1.getViewport().setOpaque(false);
+        jScrollPane1.setBackground(new Color(255,255,255,100));
         editor.setOpaque(false);
         editor.setBackground(new Color(255,255,255,100));
         try{
