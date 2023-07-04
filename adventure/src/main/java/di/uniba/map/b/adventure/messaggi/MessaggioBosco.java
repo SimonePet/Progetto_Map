@@ -14,10 +14,10 @@ public final class MessaggioBosco {
     private static final String NOME = "Bosco";
     private static final String DESCRIZIONE_CORTA = "Ti trovi in un bosco fitto e cupo.";
     private static final String DESCRIZIONE_COMPLETA = "Sospinto dalla curiosità, ti addentri in un piccolo bosco, "
-            + "un luogo dove il tempo sembra essersi fermato e la natura regna sovrana. Tuttavia, ci sono segni che "
+            + "un luogo dove il tempo sembra essersi fermato e la natura\nregna sovrana. Tuttavia, ci sono segni che "
             + "qualcuno sia passato di lì, ma chi e perché?";
     private static final String OSSERVA = "Avevi ragione! Qualcuno ci e' passato da qui prima di te, a terra"
-            + "nel cespuglio c'e una di quelle vecchie lampade ad olio di cui ti parlava tuo nonno Geppetto.";
+            + "nel cespuglio c'e una di quelle vecchie lampade\nad olio di cui ti parlava tuo nonno Geppetto.";
     private static final String RITORNATO = "Sei tornato nel bosco.";
     private static final String NORD = "Ti sei spostato al nord del bosco.";
     private static final String NO_SUD = "Ci sono degli scogli appuntiti e poi l'oceano...";

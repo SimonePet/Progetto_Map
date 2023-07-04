@@ -315,6 +315,8 @@ public class JFrameApp extends javax.swing.JFrame {
             background = new JLabel(imageIcon);
             jPanel1.add(background);
             background.setLayout(new FlowLayout());
+            jPanel1.revalidate();
+            jPanel1.repaint();
         }catch(IOException e){
             System.out.println(e.getMessage());
         }

@@ -14,7 +14,7 @@ public final class MessaggioEdificioFuori {
     private static final String NOME = "Edificio esterno";
     private static final String DESCRIZIONE_CORTA = "Ti trovi fuori un vecchio edificio abbandonato.";
     private static final String DESCRIZIONE_COMPLETA = "Tra gli alberi, noti un'ombra oscura che si staglia "
-            + "contro il cielo del crepuscolo. Avvicinandoti, scopri che si tratta di un vecchio edificio abbandonato, "
+            + "contro il cielo del crepuscolo.\nAvvicinandoti, scopri che si tratta di un vecchio edificio abbandonato, "
             + "un tempo maestoso e possente, ora fatiscente e coperto di piante rampicanti che sembrano aver preso il "
             + "sopravvento.";
     private static final String OSSERVA = "Intorno all’edificio sembra non esserci nulla se "
@@ -25,7 +25,7 @@ public final class MessaggioEdificioFuori {
     private static final String SUD = "Ti sei spostato a sud del'edificio abbandonato";
     private static final String NO_EST = "Montagne invalicabili...";
     private static final String NO_OVEST = "Ti imbatti in un ripido precipizio, sembra essere "
-            + "alto una decina di metri, a meno che tu abbia bevuto 10 redBull non credo tu possa volare.";
+            + "alto una decina di metri, a meno che tu abbia bevuto 10 redBull\nnon credo tu possa volare.";
 
     public static String getDescrizioneCorta() {
         return MessaggioEdificioFuori.DESCRIZIONE_CORTA;

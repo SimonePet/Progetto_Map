@@ -68,4 +68,12 @@ public class Utils {
         JDialogPorta d = new JDialogPorta(frame,true, GNI);
         d.setVisible(true);
     }
+
+    public static String sostituisciPrimoCarattereMaiuscolo(String input) {
+        if (input == null || input.isEmpty()) {
+            return input; // Restituisci l'input originale se la stringa è nulla o vuota
+        }
+        char primoCarattere = Character.toUpperCase(input.charAt(0));
+        return primoCarattere + input.substring(1);
+    }
 }
