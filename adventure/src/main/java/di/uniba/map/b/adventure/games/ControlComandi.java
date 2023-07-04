@@ -20,7 +20,7 @@ public class ControlComandi {
         ControlComandi.initOsserva(GNI);
         ControlComandi.initRaccogli(GNI);
         ControlComandi.initApri(GNI);
-        ControlComandi.initPremi(GNI);
+        ControlComandi.initSposta(GNI);
         ControlComandi.initUtilizza(GNI);
         ControlComandi.initEnd(GNI);
         ControlComandi.initLascia(GNI);
@@ -90,11 +90,11 @@ public class ControlComandi {
         GNI.getCommands().add(apri);
     }
 
-    private static void initPremi(GiocoNaufragioIsola GNI){
-        Comando premi = new Comando(TipoComando.PREMI, "premi");
-        premi.setAlias(new String[]{"spingi", "attiva"});
-        premi.setDescrizione("Premi [oggetto] : Comando che non so ancora cosa faccia;");
-        GNI.getCommands().add(premi);
+    private static void initSposta(GiocoNaufragioIsola GNI){
+        Comando sposta = new Comando(TipoComando.SPOSTA, "sposta");
+        sposta.setAlias(new String[]{"spingi", "attiva"});
+        sposta.setDescrizione("Premi [oggetto] : Comando che non so ancora cosa faccia;");
+        GNI.getCommands().add(sposta);
     }
 
     private static void initAcced(GiocoNaufragioIsola GNI){

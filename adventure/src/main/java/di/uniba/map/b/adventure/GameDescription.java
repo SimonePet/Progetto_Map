@@ -11,6 +11,8 @@ import di.uniba.map.b.adventure.type.Oggetto;
 import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
+
+import javax.swing.*;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -161,6 +163,6 @@ public abstract class GameDescription implements Serializable{
 
     public abstract void init() throws Exception;
 
-    public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame);
+    public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame, JPanel panel);
 
 }
