@@ -11,10 +11,15 @@ import di.uniba.map.b.adventure.parser.Parser;
 import di.uniba.map.b.adventure.parser.ParserOutput;
 import di.uniba.map.b.adventure.type.TipoComando;
 import di.uniba.map.b.adventure.type.ThreadTime;
+
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import javax.swing.JDialog;
-import javax.swing.JEditorPane;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
@@ -225,7 +230,7 @@ public class JFrameApp extends javax.swing.JFrame {
                 //setta il textField non editabile
 
             }else{
-                game.nextMove(p, System.out, this);
+                game.nextMove(p, System.out, this,jPanel1);
                 System.out.println();
             }
         }catch(BadLocationException e){
@@ -249,6 +254,40 @@ public class JFrameApp extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        jLabel1.setOpaque(false);
+        jLabel1.setBackground(new Color(255,255,255,150));
+        jLabel2.setOpaque(false);
+        jLabel2.setBackground(new Color(255,255,255,150));
+        jLabel3.setOpaque(false);
+        jLabel3.setBackground(new Color(255,255,255,150));
+        labelNumMosse.setOpaque(false);
+        labelNumMosse.setBackground(new Color(255,255,255,150));
+        timeLabel.setOpaque(false);
+        timeLabel.setBackground(new Color(255,255,255,0));
+        lblStanzaCorrente.setOpaque(false);
+        lblStanzaCorrente.setBackground(new Color(255,255,255,0));
+        jButton1.setOpaque(false);
+        jButton1.setBackground(new Color(255,255,255,150));
+        jPanel2.setOpaque(false);
+        jPanel2.setBackground(new Color(255,255,255,150));
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.getViewport().setOpaque(false);
+        editor.setOpaque(false);
+        editor.setBackground(new Color(255,255,255,100));
+        try{
+            BufferedImage img = ImageIO.read(new File("C:/Users/Simone/Desktop/bosco.png"));
+            Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon imageIcon = new ImageIcon(dimg);
+            jPanel1.setBackground(new Color(0,0,0,0));
+            jPanel1.setOpaque(false);
+            jPanel1.setBorder(BorderFactory.createEmptyBorder());
+            jPanel1.setLayout(new BorderLayout());
+            JLabel background = new JLabel(imageIcon);
+            jPanel1.add(background);
+            background.setLayout(new FlowLayout());
+        }catch(IOException e){
+            System.out.println(e.getMessage());
+        }
         lblStanzaCorrente.setOpaque(true);
         editor.setText("");
         if(!partitaCaricata){

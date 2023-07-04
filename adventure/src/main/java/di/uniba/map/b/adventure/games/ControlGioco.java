@@ -12,7 +12,12 @@ import di.uniba.map.b.adventure.type.Oggetto;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
 
+import javax.imageio.ImageIO;
+import javax.swing.*;
 import javax.swing.text.Utilities;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -24,10 +29,10 @@ public class ControlGioco {
 
     }
 
-    public static void ComandoNord(GiocoNaufragioIsola GNI, final JFrameApp frame){
+    public static void ComandoNord(GiocoNaufragioIsola GNI, final JFrameApp frame,final JPanel panel){
         frame.scrviSuEditor(GNI.getCurrentRoom().getMessaggioNord());
         frame.scrviSuEditor("\n");
-        if (GNI.getCurrentRoom().getNord() != null && GNI.getCurrentRoom().getNord().getRaggiungibile()) {
+        if (GNI.getCurrentRoom().getNord() != null) {
             //System.out.println(Utils.percorsoAssoluto);
             GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
             Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
@@ -36,6 +41,15 @@ public class ControlGioco {
             else
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneLungaStanza());
             GNI.getCurrentRoom().setVisitata(true);
+
+            /*
+            BufferedImage img = ImageIO.read(new File("C:/Users/Simone/Desktop/"+GNI.getCurrentRoom().getNomeStanza()+".png"));
+            Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon imageIcon = new ImageIcon(dimg);
+            JLabel background = new JLabel(imageIcon);
+            panel.add(background);
+            background.setLayout(new FlowLayout());
+            */
             //move = true;
         } else {
             boolean noroom = true;

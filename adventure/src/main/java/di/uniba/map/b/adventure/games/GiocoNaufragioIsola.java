@@ -18,6 +18,7 @@ import di.uniba.map.b.adventure.type.TipoComando;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
 
+import javax.swing.*;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
@@ -406,7 +407,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         armadio.setRaccogglibile(false);
         armadio.setVisibile(true);
         armadio.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliArmadio());
-        set8.add(this.getComando("premi"));
+        set8.add(this.getComando("sposta"));
         armadio.setComandiConsentiti(set8);
         edificioDentro.getObjects().add(armadio);
 
@@ -479,7 +480,7 @@ public class GiocoNaufragioIsola extends GameDescription{
 
     /* nextMove per scrivere su editor del frame */
     @Override
-    public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame) {
+    public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame,final JPanel panel) {
         boolean noroom = false;
         boolean move = false;
         //frame.writeTextOnEditor("\n"+getCurrentRoom().getNomeStanza()+"\n");
@@ -491,7 +492,7 @@ public class GiocoNaufragioIsola extends GameDescription{
             //move
             switch (comandoRiconosciuto) {
                 case NORD:
-                    ControlGioco.ComandoNord(this,frame);
+                    ControlGioco.ComandoNord(this,frame,panel);
                     break;
                 case SUD:
                     ControlGioco.ComandoSud(this,frame);
