@@ -13,9 +13,12 @@ public final class MessaggioGrotta {
     }
     private static final String NOME = "Grotta";
     private static final String DESCRIZIONE_CORTA = "Ti trovi in una grotta buia, non si vede assolutamente nulla";
+    private static final String DESCRIZIONE_CORTA_LUCE = "Sei tornato nella grotta,adesso illuminata grazie alla torcia.";
     private static final String DESCRIZIONE_COMPLETA = "Sei davanti una grotta, nonchè una cavità buia e silenziosa."
             + "Le pareti sembrano essere irregolari, mentre il terreno si presenta irregolare e scivoloso.\n"
             + "La luce è scarsa e servirebbe qualcosa per esplorarla.";
+    private static final String DESCRIZIONE_COMPLETA_LUCE = "Sei davanti una grotta, nonchè una cavità buia e silenziosa."
+            + "Le pareti sembrano essere irregolari, mentre il terreno si presenta irregolare e scivoloso.\n";
     private static final String OSSERVA_BUIO = "Incredibilmente ti senti un pipistrello e riesci a osservare "
             + "la grotta senza luce. Ah no stai solo immaginando. Non riesci a vedere nulla...";
     private static final String OSSERVA_LUCE = "Grazie alla lampada ad olio riesci a esplorare la grotta"
@@ -75,4 +78,6 @@ public final class MessaggioGrotta {
         return NOME;
     }
     public static String getDescLastra(){return MessaggioGrotta.DESCRIZIONE_LEGGI;}
+    public static String getDescCortaLuce(){return MessaggioGrotta.DESCRIZIONE_CORTA_LUCE;}
+    public static String getDescCompletaLuce(){return MessaggioGrotta.DESCRIZIONE_COMPLETA_LUCE;}
 }

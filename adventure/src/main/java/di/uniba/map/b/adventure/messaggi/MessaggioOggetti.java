@@ -32,7 +32,7 @@ public final class MessaggioOggetti {
     private static final String RACCOGLI_ARMADIO = "Ammenoche tu non abbia idea di ristrutturare casa l'armadio non puoi raccoglierlo.";
     private static final String DESCRIZIONE_TV = "Una televisione un po' datata chissa se si accende...";
     private static final String RACCOGLI_TV = "Ma ti sei trasformato in un ladro per caso.";
-    private static final String DESCRIZIONE_DIVANO = "Un bel divano in pelle.";
+    private static final String DESCRIZIONE_DIVANO = "Un bel divano in pelle,sembra esserci un telecomando.";
     private static final String RACCOGLI_DIVANO = "ma pensi di avere un inventario cosi capiente???";
     private static final String DESCRIZIONE_ALBERO = "Un albero presente nel bosco.";
     private static final String RACCOGLI_ALBERO = "E' mai possibile che stai cercando di raccogliere un albero.";
