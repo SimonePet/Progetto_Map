@@ -1,17 +1,33 @@
 package data;
 
-import javax.sound.sampled.*;
+
+import javax.sound.sampled.AudioFormat;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.DataLine;
+import javax.sound.sampled.SourceDataLine;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import java.io.File;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ *
+ */
 public class Suono {
     private static volatile boolean suonoAttivo = false;
     private static Optional<SourceDataLine> lineOptional = Optional.empty();
     //private static ReentrantLock lock = new ReentrantLock();
     private static Thread thread;
-    
-    public static void riproduciTraccia(String percorsoRel, boolean loop) {
+    private static final int BYTETRACCIA = 4096;
+
+    /**
+     *
+     * @param percorsoRel
+     * @param loop
+     */
+    public static void riproduciTraccia(final String percorsoRel, final boolean loop) {
         if (suonoAttivo) {
             stopRiproduzione();
         }
@@ -33,7 +49,7 @@ public class Suono {
                 lineOptional = Optional.of(line);
                 suonoAttivo = true;
 
-                byte[] buffer = new byte[4096];
+                byte[] buffer = new byte[BYTETRACCIA];
                 int bytesRead;
 
                 do {
@@ -58,12 +74,14 @@ public class Suono {
                 }
             }
         });
-        
         audioThread.start();
         System.out.println("Avviato nuovo thread");
         thread = audioThread;
     }
 
+    /**
+     *
+     */
     public static void stopRiproduzione() {
         //lock.lock();
         thread.interrupt();
