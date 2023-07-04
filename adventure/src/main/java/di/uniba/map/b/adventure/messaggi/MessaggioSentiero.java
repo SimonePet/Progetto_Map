@@ -16,22 +16,22 @@ public final class MessaggioSentiero {
     private static final String DESCRIZIONE_COMPLETA = "Ti imbatti in un sentiero, troppo strano... sembra che "
             + "qualche essere umano lo abbia creato.";
     private static final String OSSERVA = "Tra un albero ed un altro noti un cartello di legno, del resto "
-            + "rimani affascinato da una enorme ferula, sembra di essere sulla Murgia.";
+            + "rimani affascinato da una enorme ferula, sembra\ndi essere sulla Murgia.";
     private static final String RITORNATO = "Sei tornato nel sentiero.";
     private static final String NORD = "Ti sei spostato a nord del sentiero.";
     private static final String SUD = "Ti sei spostato a sud del sentiero.";
     private static final String EST = "Ti sei spostato a est del sentiero.";
     private static final String NO_OVEST = "Un enorme precipizio, meglio evitare.";
     private static final String CARTELLO = "------------------------------------------------------------------\n"+
-                                           "|\t<----  3.0km\t\t|\n"+
-                                           "|\t14-08-10-02-08 \t|\n"+
+                                           "|                     SUD --->   3.0km   <---                   |\n"+
+                                           "|                        14-08-10-02-08                           |\n"+
                                            "------------------------------------------------------------------\n"+
-                                           "|\t---->  8.0km\t\t|\n"+
-                                           "|                     03-15-05-16-05-02-05-08\t|\n"+
+                                           "|                    NORD --->   8.0km   <---                 |\n"+
+                                           "|                   03-15-05-16-05-02-05-08                |\n"+
                                            "------------------------------------------------------------------\n"+
-                                           "                                          ||             \n"+
-                                           "                                          ||             \n"+
-                                           "                                          ||             \n";
+                                           "                                       ||             \n"+
+                                           "                                       ||             \n"+
+                                           "                                       ||             \n";
 
 
     public static String getDescrizioneCorta() {

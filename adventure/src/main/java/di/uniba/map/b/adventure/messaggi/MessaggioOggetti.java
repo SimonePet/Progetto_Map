@@ -18,13 +18,12 @@ public final class MessaggioOggetti {
     private static final String DESCRIZIONE_LASTRA = "Una lastra incisa.";
     private static final String RACCOGLI_LASTRA = "Ma cosa pensi di essere....Il campione di bodybuilding.";
     private static final String DESCRIZIONE_LAMPADA = "Una lampada a petrolio, potrebbe essere utile per illuminare qualcosa.";
-    private static final String DESCRIZIONE_CIFRARIO = "Un libricino che spiega come decifrare"
-            + "delle strane scritture.";
+    private static final String DESCRIZIONE_CIFRARIO = "Un libricino che spiega come decifrare delle strane scritture.";
     private static final String DESCRIZIONE_VELA = "Una vela...";
     private static final String DESCRIZIONE_ACCETTA = "Un accetta, potrebbe essere utile per tagliare qualcosa.";
     private static final String DESCRIZIONE_CORDA = "Una corda, potrebbe essere utile per legare qualcosa.";
     private static final String DESCRIZIONE_FUCILE = "Un fucile, potrebbe essere utile per sparare a qualcosa.";
-    private static final String DESCRIZIONE_BARCA = "Il relitto della tua imbarcazione...";
+    private static final String DESCRIZIONE_BARCA = "Si tratta del relitto della tua imbarcazione... al suo interno uno stupido acciarino, una mappa, una radio ed un\nmisterioso libro del quale non ne conoscevi l'esistenza.";
     private static final String RACCOGLI_BARCA = "Pensi veramnete di poter raccogliere una barca????";
     private static final String DESCRIZIONE_CARTELLO = "Un incomprensibile cartello in legno...";
     private static final String RACCOGLI_CARTELLO = "Dove pensi di portare questo cartello potra' servire a qualcun altro.";
@@ -32,8 +31,8 @@ public final class MessaggioOggetti {
     private static final String RACCOGLI_ARMADIO = "Ammenoche tu non abbia idea di ristrutturare casa l'armadio non puoi raccoglierlo.";
     private static final String DESCRIZIONE_TV = "Una televisione un po' datata chissa se si accende...";
     private static final String RACCOGLI_TV = "Ma ti sei trasformato in un ladro per caso.";
-    private static final String DESCRIZIONE_DIVANO = "Un bel divano in pelle,sembra esserci un telecomando.";
-    private static final String RACCOGLI_DIVANO = "ma pensi di avere un inventario cosi capiente???";
+    private static final String DESCRIZIONE_DIVANO = "Un bel divano in pelle, sembra esserci un telecomando.";
+    private static final String RACCOGLI_DIVANO = "Ma pensi di avere un inventario cosi capiente???";
     private static final String DESCRIZIONE_ALBERO = "Un albero presente nel bosco.";
     private static final String RACCOGLI_ALBERO = "E' mai possibile che stai cercando di raccogliere un albero.";
     private static final String DESCRIZIONE_LEGNO = "Delle assi di legno.Sarebbero molto utili per costruire una zattera.";

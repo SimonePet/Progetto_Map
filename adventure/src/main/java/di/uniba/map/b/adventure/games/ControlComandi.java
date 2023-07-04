@@ -35,28 +35,28 @@ public class ControlComandi {
     private static void initNord(GiocoNaufragioIsola GNI){
         Comando nord = new Comando(TipoComando.NORD, "nord");
         nord.setAlias(new String[]{"Nord", "NORD"});
-        nord.setDescrizione("Nord :\t Comando che ti perfette di spostarti a nord rispetto alla tua posizione;");
+        nord.setDescrizione("Nord :\t Comando che ti permette di spostarti a nord rispetto alla tua posizione;");
         GNI.getCommands().add(nord);
     }
 
     private static void initSud(GiocoNaufragioIsola GNI){
         Comando sud = new Comando(TipoComando.SUD, "sud");
         sud.setAlias(new String[]{"Sud", "SUD"});
-        sud.setDescrizione("Sud :\t Comando che ti perfette di spostarti a sud rispetto alla tua posizione;");
+        sud.setDescrizione("Sud :\t Comando che ti permette di spostarti a sud rispetto alla tua posizione;");
         GNI.getCommands().add(sud);
     }
 
     private static void initEst(GiocoNaufragioIsola GNI){
         Comando est = new Comando(TipoComando.EST, "est");
         est.setAlias(new String[]{"Est", "EST"});
-        est.setDescrizione("Est :\t Comando che ti perfette di spostarti a est rispetto alla tua posizione;");
+        est.setDescrizione("Est :\t Comando che ti permette di spostarti a est rispetto alla tua posizione;");
         GNI.getCommands().add(est);
     }
 
     private static void initOvest(GiocoNaufragioIsola GNI){
         Comando ovest = new Comando(TipoComando.OVEST, "ovest");
         ovest.setAlias(new String[]{"Ovest", "OVEST"});
-        ovest.setDescrizione("Ovest :\t Comando che ti perfette di spostarti a ovest rispetto alla tua posizione;");
+        ovest.setDescrizione("Ovest :\t Comando che ti permette di spostarti a ovest rispetto alla tua posizione;");
         GNI.getCommands().add(ovest);
     }
 

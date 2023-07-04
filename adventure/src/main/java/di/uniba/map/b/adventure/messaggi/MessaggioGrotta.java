@@ -14,15 +14,15 @@ public final class MessaggioGrotta {
     private static final String NOME = "Grotta";
     private static final String DESCRIZIONE_CORTA = "Ti trovi in una grotta buia, non si vede assolutamente nulla";
     private static final String DESCRIZIONE_CORTA_LUCE = "Sei tornato nella grotta,adesso illuminata grazie alla torcia.";
-    private static final String DESCRIZIONE_COMPLETA = "Sei davanti una grotta, nonchè una cavità buia e silenziosa."
+    private static final String DESCRIZIONE_COMPLETA = "Sei davanti una grotta, nonchè una cavità buia e silenziosa.\n"
             + "Le pareti sembrano essere irregolari, mentre il terreno si presenta irregolare e scivoloso.\n"
             + "La luce è scarsa e servirebbe qualcosa per esplorarla.";
     private static final String DESCRIZIONE_COMPLETA_LUCE = "Sei davanti una grotta, nonchè una cavità buia e silenziosa."
             + "Le pareti sembrano essere irregolari, mentre il terreno si presenta irregolare e scivoloso.\n";
     private static final String OSSERVA_BUIO = "Incredibilmente ti senti un pipistrello e riesci a osservare "
-            + "la grotta senza luce. Ah no stai solo immaginando. Non riesci a vedere nulla...";
+            + "la grotta senza luce.\nAh no stai solo immaginando. Non riesci a vedere nulla...";
     private static final String OSSERVA_LUCE = "Grazie alla lampada ad olio riesci a esplorare la grotta"
-            + " evitando di imbatterti in possibili pericoli. Procedendo all’interno della grotta durante"
+            + " evitando di imbatterti in possibili pericoli.\nProcedendo all’interno della grotta durante"
             + " l’esplorazione noti una lastra di pietra con su delle incisioni.";
     private static final String RITORNATO = "Sei tornato nella grotta.";
     private static final String NO_NORD_BUIO = "Potreti inciampare nel buio.";
@@ -31,10 +31,10 @@ public final class MessaggioGrotta {
     private static final String NO_OVEST_BUIO = "La grotta e' buia meglio non muoversi.";
     private static final String NO_NORD_LUCE = "Nulla da vedere...";
     private static final String NO_SUD_LUCE = "Hai battuto la testa al muro... alza la testa quando cammini...";
-    private static final String NO_OVEST_LUCE = "Guarda! Il paese dei pinguini volanti! ( non c'e nulla)";
-    private static final String DESCRIZIONE_LEGGI="-----------------------\n"+
-            "|        XXV          |\n"+
-            "------------------";
+    private static final String NO_OVEST_LUCE = "Guarda! Il paese dei pinguini volanti! (non c'e nulla)";
+    private static final String DESCRIZIONE_LEGGI=      "|-----------------------|\n"+
+                                                        "|     --> XXV <--     |\n"+
+                                                        "|-----------------------|";
 
 
 

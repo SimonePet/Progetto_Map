@@ -326,7 +326,7 @@ public class GiocoNaufragioIsola extends GameDescription{
 
         //Lastra
         Oggetto lastra = new Oggetto(5, "lastra", MessaggioOggetti.getDescrizioneLastra());
-        lastra.setAlias(new String[]{"pietra", "lastre", "pietre", "lastra pietra","lastra"});
+        lastra.setAlias(new String[]{"pietra", "lastre", "pietre", "lastra pietra","incisioni","incisione"});
         lastra.setVisibile(false);
         lastra.setRaccogglibile(false);
         lastra.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliLastra());
@@ -385,7 +385,7 @@ public class GiocoNaufragioIsola extends GameDescription{
 
         //Nave
         Oggetto barca = new Oggetto(12, "barca", MessaggioOggetti.getDescrizioneBarca());
-        barca.setAlias(new String[]{"barchetta","nave","relitto"});
+        barca.setAlias(new String[]{"barchetta","nave","relitto","carcassa","imbarcazione"});
         barca.setVisibile(true);
         barca.setRaccogglibile(false);
         barca.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliBarca());
@@ -428,7 +428,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         edificioDentro.getObjects().add(divano);
 
         Oggetto albero = new Oggetto(17, "albero", MessaggioOggetti.getDescrizioneAlbero());
-        albero.setAlias(new String[]{});
+        albero.setAlias(new String[]{"alberi","legna","tronco","rami","legname"});
         albero.setRaccogglibile(false);
         albero.setVisibile(true);
         albero.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliAlbero());

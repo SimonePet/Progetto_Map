@@ -13,7 +13,7 @@ public final class MessaggioApprodo {
     }
     private static final String NOME = "Approdo";
     private static final String DESCRIZIONE_COMPLETA = "Lentamente riapri gli occhi e ti ritrovi spiaggiato su una costa "
-            + "sconosciuta, il mare agitato che si infrange sulle rocce circostanti è l'unico suono che senti.\n"
+            + "sconosciuta, il mare agitato che si infrange sulle rocce\ncircostanti è l'unico suono che senti.\n"
             + "Ricordi solo la tempesta, l'acqua che invadeva la tua barca e il vento che urlava intorno a te.\n"
             + "La paura ti attanaglia, ma devi farti forza e trovare un modo per fuggire.\n"
             + "Questo è il tuo alter ego che ti parla e ti accompagnerà durante tutta la tua avventura";

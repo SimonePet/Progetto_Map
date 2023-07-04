@@ -161,7 +161,7 @@ public class ControlGioco {
         if (!GNI.getInventory().isEmpty()) {
             frame.scrviSuEditor(Messaggio.getInventario() + Messaggio.getInvio());
             for (Oggetto oggettoInv : GNI.getInventory()) {
-                frame.scrviSuEditor(oggettoInv.getNomeOggetto() + ": " + oggettoInv.getDescrizioneOggetto() + Messaggio.getInvio());
+                frame.scrviSuEditor(Utils.sostituisciPrimoCarattereMaiuscolo(oggettoInv.getNomeOggetto()) + ":\t" + oggettoInv.getDescrizioneOggetto() + Messaggio.getInvio());
             }
         }else {
             frame.scrviSuEditor(Messaggio.getInvVuoto());

@@ -4,6 +4,8 @@
  */
 package swing;
 
+import data.PercorsoFileSystem;
+import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import di.uniba.map.b.adventure.messaggi.MessaggioEdificioFuori;
 import di.uniba.map.b.adventure.type.Stanza;
@@ -150,7 +152,11 @@ public class JDialogPorta extends javax.swing.JDialog {
         jButton10.setText("CONFERMA");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton10ActionPerformed(evt);
+                try {
+                    jButton10ActionPerformed(evt);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
             }
         });
 
@@ -267,14 +273,16 @@ public class JDialogPorta extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         txtCodice.setEditable(false);
         String path = System.getProperty("user.dir");
-        ImageIcon icon = new ImageIcon(path+File.separator+"resources"+File.separator+"immagini"+File.separator+"stanze"+File.separator+"porta.png");
+        System.out.println();
+        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze) +"porta.png");
         lblImmagine.setIcon(icon);
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_jButton10ActionPerformed
         String codice = txtCodice.getText();
         if(codice.equalsIgnoreCase("2538")){
             lblErrore.setText("CODICE CORRETTO");
+            Thread.sleep(2000);
             GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
             Stanza edificioDentro = GNI.getCurrentRoom();
             edificioDentro.setRaggiungibile(true);
