@@ -12,10 +12,13 @@ import swing.JFrameApp;
  * @author Giannantonio
  */
 public class ThreadTime implements Runnable{
+    private int numMinuti;
+    private int numSecondi;
+    private JFrameApp frame;
     
-    JFrameApp frame;
-    
-    public ThreadTime(JFrameApp frame){
+    public ThreadTime(JFrameApp frame, int numMinutiIniziali, int numSecondiIniziali){
+        this.numMinuti = numMinutiIniziali;
+        this.numSecondi = numSecondiIniziali;
         this.frame = frame;
     }
     
@@ -23,29 +26,26 @@ public class ThreadTime implements Runnable{
     public void run() {
         Engine e = frame.getEngine();
 
-        int ore=-1,min=0,sec=0;
+        int ore=-1;
         for(int i=0;i<10000;i++){
             if(i%3600==0) {
                 ore++;
-                min = 0;
-                sec = 0;
-                e.getGame().setNumSeconds(sec);
-                e.getGame().setNumMinutes(min);
+                e.getGame().setNumSeconds(numSecondi);
+                e.getGame().setNumMinutes(numMinuti);
             }
             else{
                 if (i % 60 == 0) {
-                    min++;
-                    sec = 0;
-                    e.getGame().setNumSeconds(sec);
-                    e.getGame().setNumMinutes(min);
+                    this.numMinuti++;
+                    this.numSecondi = 0;
+                    e.getGame().setNumSeconds(numSecondi);
+                    e.getGame().setNumMinutes(numMinuti);
                 }
                 else {
-                    sec++;
-                    e.getGame().setNumSeconds(sec);
-
+                    this.numSecondi++;
+                    e.getGame().setNumSeconds(numSecondi);
                 }
             }
-            printTime(ore+":"+min+":"+sec);
+            printTime(ore+":"+this.numMinuti+":"+this.numSecondi);
             //System.out.println(ore+":"+min+":"+sec);
             try {
                 Thread.sleep(1000);

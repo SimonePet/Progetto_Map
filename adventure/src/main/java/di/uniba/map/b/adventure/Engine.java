@@ -5,7 +5,6 @@
  */
 package di.uniba.map.b.adventure;
 
-import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
 import di.uniba.map.b.adventure.parser.Parser;
 import swing.FrameStart;
 
