@@ -31,7 +31,7 @@ public class ControlGioco {
 
     private static Set<Comando> comandi = new HashSet<>();
 
-    public static void ComandoNord(GiocoNaufragioIsola GNI, final JFrameApp frame,final JPanel panel){
+    public static void ComandoNord(GiocoNaufragioIsola GNI, final JFrameApp frame,final JPanel panel,JLabel background){
         frame.scrviSuEditor(GNI.getCurrentRoom().getMessaggioNord());
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getNord() != null && GNI.getCurrentRoom().getNord().getRaggiungibile()) {
@@ -43,22 +43,27 @@ public class ControlGioco {
             else
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneLungaStanza());
             GNI.getCurrentRoom().setVisitata(true);
+            try{
+                BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+GNI.getCurrentRoom().getNomeStanza()+".png"));
+                Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(dimg);
+                panel.remove(background);
+                background.setIcon(imageIcon);
+                panel.add(background);
+                background.setLayout(new FlowLayout());
+                panel.revalidate();
+                panel.repaint();
+            }catch (Exception e){
+                System.out.println("Errore nell'aggiunta dell'immagine");
+            }
 
-            /*
-            BufferedImage img = ImageIO.read(new File("C:/Users/Simone/Desktop/"+GNI.getCurrentRoom().getNomeStanza()+".png"));
-            Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon imageIcon = new ImageIcon(dimg);
-            JLabel background = new JLabel(imageIcon);
-            panel.add(background);
-            background.setLayout(new FlowLayout());
-            */
             //move = true;
         } else {
             boolean noroom = true;
         }
     }
 
-    public static void ComandoSud(GiocoNaufragioIsola GNI, final JFrameApp frame){
+    public static void ComandoSud(GiocoNaufragioIsola GNI, final JFrameApp frame,final JPanel panel,JLabel background){
         frame.scrviSuEditor(GNI.getCurrentRoom().getMessaggioSud());
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getSud() != null && GNI.getCurrentRoom().getSud().getRaggiungibile()) {
@@ -69,13 +74,26 @@ public class ControlGioco {
             else
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneLungaStanza());
             GNI.getCurrentRoom().setVisitata(true);
+            try{
+                BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+GNI.getCurrentRoom().getNomeStanza()+".png"));
+                Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(dimg);
+                panel.remove(background);
+                background.setIcon(imageIcon);
+                panel.add(background);
+                background.setLayout(new FlowLayout());
+                panel.revalidate();
+                panel.repaint();
+            }catch (Exception e){
+                System.out.println("Errore nell'aggiunta dell'immagine");
+            }
             //move = true;
         } else {
             boolean noroom = true;
         }
     }
 
-    public static void ComandoEst(GiocoNaufragioIsola GNI, final JFrameApp frame){
+    public static void ComandoEst(GiocoNaufragioIsola GNI, final JFrameApp frame,final JPanel panel,JLabel background){
         frame.scrviSuEditor(GNI.getCurrentRoom().getMessaggioEst());
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getEst() != null && GNI.getCurrentRoom().getEst().getRaggiungibile()) {
@@ -87,13 +105,26 @@ public class ControlGioco {
             else
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneLungaStanza());
             GNI.getCurrentRoom().setVisitata(true);
+            try{
+                BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+GNI.getCurrentRoom().getNomeStanza()+".png"));
+                Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(dimg);
+                panel.remove(background);
+                background.setIcon(imageIcon);
+                panel.add(background);
+                background.setLayout(new FlowLayout());
+                panel.revalidate();
+                panel.repaint();
+            }catch (Exception e){
+                System.out.println("Errore nell'aggiunta dell'immagine");
+            }
             //move = true;
         } else {
             boolean noroom = true;
         }
     }
 
-    public static void ComandoOvest(GiocoNaufragioIsola GNI, final JFrameApp frame){
+    public static void ComandoOvest(GiocoNaufragioIsola GNI, final JFrameApp frame,final JPanel panel,JLabel background){
         frame.scrviSuEditor(GNI.getCurrentRoom().getMessaggioOvest());
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getOvest() != null && GNI.getCurrentRoom().getOvest().getRaggiungibile()) {
@@ -104,6 +135,19 @@ public class ControlGioco {
             else
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneLungaStanza());
             GNI.getCurrentRoom().setVisitata(true);
+            try{
+                BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+GNI.getCurrentRoom().getNomeStanza()+".png"));
+                Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(dimg);
+                panel.remove(background);
+                background.setIcon(imageIcon);
+                panel.add(background);
+                background.setLayout(new FlowLayout());
+                panel.revalidate();
+                panel.repaint();
+            }catch (Exception e){
+                System.out.println("Errore nell'aggiunta dell'immagine");
+            }
             //move = true;
         } else {
             boolean noroom = true;

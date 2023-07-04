@@ -4,8 +4,10 @@
  */
 package swing;
 
+import data.PercorsoFileSystem;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
+import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import di.uniba.map.b.adventure.parser.Parser;
 import di.uniba.map.b.adventure.parser.ParserOutput;
@@ -230,7 +232,7 @@ public class JFrameApp extends javax.swing.JFrame {
                 //setta il textField non editabile
 
             }else{
-                game.nextMove(p, System.out, this,jPanel1);
+                game.nextMove(p, System.out, this,jPanel1,background);
                 System.out.println();
             }
         }catch(BadLocationException e){
@@ -275,14 +277,14 @@ public class JFrameApp extends javax.swing.JFrame {
         editor.setOpaque(false);
         editor.setBackground(new Color(255,255,255,100));
         try{
-            BufferedImage img = ImageIO.read(new File("C:/Users/Simone/Desktop/bosco.png"));
+            BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+"approdo.png"));
             Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
             jPanel1.setBackground(new Color(0,0,0,0));
             jPanel1.setOpaque(false);
             jPanel1.setBorder(BorderFactory.createEmptyBorder());
             jPanel1.setLayout(new BorderLayout());
-            JLabel background = new JLabel(imageIcon);
+            background = new JLabel(imageIcon);
             jPanel1.add(background);
             background.setLayout(new FlowLayout());
         }catch(IOException e){
@@ -411,6 +413,7 @@ public class JFrameApp extends javax.swing.JFrame {
     private javax.swing.JLabel lblStanzaCorrente;
     private javax.swing.JTextField textField;
     private javax.swing.JLabel timeLabel;
+    private javax.swing.JLabel background;
     // End of variables declaration//GEN-END:variables
     private static Engine engine;
     private static boolean partitaCaricata=false;

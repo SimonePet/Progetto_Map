@@ -163,6 +163,6 @@ public abstract class GameDescription implements Serializable{
 
     public abstract void init() throws Exception;
 
-    public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame, JPanel panel);
+    public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame, JPanel panel,JLabel label);
 
 }
