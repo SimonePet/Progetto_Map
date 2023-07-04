@@ -4,21 +4,23 @@
  */
 package data;
 
-import di.uniba.map.b.adventure.Engine;
+
 import di.uniba.map.b.adventure.GameDescription;
-import java.beans.Statement;
 import java.io.File;
-import java.sql.*;
-import java.util.HashMap;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
 /**
- *  CLASSE ASTRATTA 
- * 
- *  SET/GET di username e password
+ *  CLASSE ASTRATTA.
+ *
+ *  SET/GET di username e password.
  */
 public abstract class Database {
-    protected static final String CREA_TABELLA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (Id INT PRIMARY KEY AUTO_INCREMENT, nomePartita VARCHAR(1024) UNIQUE, username VARCHAR(1024), punteggio INT DEFAULT 0, numMinuti int DEFAULT 0, numSecondi int DEFAULT 0, terminata boolean DEFAULT FALSE, numMosse INT DEFAULT 0)";
+    protected static final String CREA_TABELLA_PARTITA = "CREATE TABLE IF NOT EXISTS partita (Id INT PRIMARY KEY AUTO_INCREMENT, nomePartita VARCHAR(1024) UNIQUE, username VARCHAR(1024), punteggio INT DEFAULT 0, numMinuti int DEFAULT 0, numSecondi "
+            + "int DEFAULT 0, terminata boolean DEFAULT FALSE, numMosse INT DEFAULT 0)";
     protected static final String INSERISCI_PARTITA = "INSERT INTO partita (nomePartita,username,punteggio,numMinuti,numSecondi,terminata,numMosse) VALUES(?,?,?,?,?,?,?)";
     protected static final String RECUPERA_PUNTEGGIO_CON_ID = "SELECT punteggio, FROM partita WHERE id=?";
     protected static final String RECUPERA_PUNTEGGIO_CON_NOME_PARTITA = "SELECT punteggio FROM partita WHERE nomePartita=?";
@@ -29,69 +31,130 @@ public abstract class Database {
     protected static final String STAMPA_PARTITA_SPECIFICA = "SELECT nomePartita FROM partita WHERE nomePartita=?";
     private String username;
     private String password;
-    
+    /**
+     *
+     * @return
+     * @throws SQLException
+     */
     public Connection connect() throws SQLException {
-        String percorsoDb="";
+        String percorsoDb = "";
         File progettoDir = new File(System.getProperty("user.dir"));
-        
-        
-        
-        if(progettoDir.getName().equalsIgnoreCase("adventure")){
-            File fileDir = new File(progettoDir, File.separator+"resources"+File.separator+"db");
+        if (progettoDir.getName().equalsIgnoreCase("adventure")) {
+            File fileDir = new File(progettoDir, File.separator + "resources" + File.separator + "db");
                 percorsoDb = fileDir.getAbsolutePath();
-            }else if(!progettoDir.getName().contains("Progetto_Map")){
-                File fileDir = new File(progettoDir, File.separator+"Progetto_Map"+File.separator+"adventure"+File.separator+"resources"+File.separator+"db");
+            } else if (!progettoDir.getName().contains("Progetto_Map")) {
+                File fileDir = new File(progettoDir, File.separator + "Progetto_Map" + File.separator + "adventure" + File.separator + "resources" + File.separator + "db");
                 percorsoDb = fileDir.getAbsolutePath();
-            }else if(progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")){
-                File fileDir = new File(progettoDir, File.separator+"adventure"+File.separator+"resources"+File.separator+"db");
-                percorsoDb = fileDir.getAbsolutePath();              
+            } else if (progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")) {
+                File fileDir = new File(progettoDir, File.separator + "adventure" + File.separator + "resources" + File.separator + "db");
+                percorsoDb = fileDir.getAbsolutePath();
             }
         Connection conn = DriverManager.getConnection("jdbc:h2:" + percorsoDb);
         return conn;
     }
 
-    
-    public void setUsername(String username){
-        this.username = username;
+    /**
+     *
+     * @param usernameCorrente
+     */
+    public void setUsername(final String usernameCorrente) {
+        this.username = usernameCorrente;
     }
-    
-    public void setPassword(String password){
-        this.password = password;
+    /**
+     *
+     * @param passwordCorrente
+     */
+    public void setPassword(final String passwordCorrente) {
+        this.password = passwordCorrente;
     }
-    
-    public String getUsername(){
+    /**
+     *
+     * @return
+     */
+    public String getUsername() {
         return username;
     }
-    
-    public String getPassword(){
+    /**
+     *
+     * @return
+     */
+    public String getPassword() {
         return password;
     }
-    
     /* controlla se esiste una tabella con nome partita, se esiste non crearla, altrimenti crea tabella partita*/
+    /**
+     *
+     * @return
+     */
     public abstract boolean creaTabellaPartita();
-    
     /* salva nuova partita nella tabella */
-    public abstract boolean salvaPartita(String nomePartita, String username, boolean terminata, int numSecondi, int numMinuti, int num_mosse, GameDescription game);
-    
+    /**
+     *
+     * @param nomePartita
+     * @param usernameCorr
+     * @param terminata
+     * @param numSecondi
+     * @param numMinuti
+     * @param numMosse
+     * @param game
+     * @return
+     */
+    public abstract boolean salvaPartita(String nomePartita, String usernameCorr, boolean terminata, int numSecondi, int numMinuti, int numMosse, GameDescription game);
     /* recupera punteggio partita con id*/
+    /**
+     *
+     * @param id
+     * @return
+     */
     public abstract int getPunteggio(int id);
-    
     /* recupera punteggio partita con il nome della partita */
+    /**
+     *
+     * @param nomePartita
+     * @return
+     */
     public abstract int getPunteggio(String nomePartita);
-    
+    /**
+     *
+     */
     public abstract void stampaPartite();
-
+    /**
+     *
+     * @return
+     */
     public abstract ResultSet getPartite();
-
-    public abstract ResultSet getPartiteUtente(String username);
-    
+    /**
+     *
+     * @param usernameCorr
+     * @return
+     */
+    public abstract ResultSet getPartiteUtente(String usernameCorr);
+    /**
+     *
+     * @return
+     */
     public abstract double getPunteggioMedio();
-    
-    public abstract double getPunteggioMedioUtente(String username);
-    
+    /**
+     *
+     * @param usernameCorr
+     * @return
+     */
+    public abstract double getPunteggioMedioUtente(String usernameCorr);
+    /**
+     *
+     * @param nomePartita
+     * @return
+     */
     public abstract boolean partitaEsistente(String nomePartita);
-    
+    /**
+     *
+     * @return
+     */
     public abstract List<Partita> ottieniListaPartite();
-    
+    /**
+     *
+     * @param partite
+     * @return
+     */
     public abstract List<Map.Entry<String, Integer>> ottieniClassificaUtenti(List<Partita> partite);
 }

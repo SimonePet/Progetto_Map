@@ -4,8 +4,6 @@
  */
 package data;
 
-
-import di.uniba.map.b.adventure.GameDescription;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import java.io.File;
 import java.io.Serializable;
@@ -30,8 +28,8 @@ public class FileMatchController extends FileController implements Serializable 
      * @param directoryCorrente percorso della cartella del file.
      */
     public FileMatchController(final String nomeFileCorrente, final String directoryCorrente) {
-        super(nomeFileCorrente,directoryCorrente);
-        boolean creato = super.create() ;
+        super(nomeFileCorrente, directoryCorrente);
+        boolean creato = super.create();
         System.out.println(creato);
     }
     /**
@@ -41,38 +39,37 @@ public class FileMatchController extends FileController implements Serializable 
      * @throws java.io.IOException
      * @throws java.lang.ClassNotFoundException
      */
-    public boolean addMatch(final GiocoNaufragioIsola game) throws IOException, ClassNotFoundException {       
-        try {   
+    public boolean addMatch(final GiocoNaufragioIsola game) throws IOException, ClassNotFoundException {
+        try {
             // prendiamo percorso relativo ed eliminiamo la sottostringa /adventure e tutti i caratteri successivi(tramite il .*) //
             /*
             String percorsoRelFile = System.getProperty("user.dir").replaceAll("adventure"+".*","");
             String percorsoAss = "adventure"+File.separator+directory+File.separator+nomeFile;
             String percorso = percorsoRelFile+percorsoAss;
             */
-            String percorso="";
+            String percorso = "";
             File progettoDir = new File(System.getProperty("user.dir"));
-            if(progettoDir.getName().contains("adventure")){
-                File fileDir = new File(progettoDir, File.separator+directory+File.separator+"salvataggioPartita");
+            if (progettoDir.getName().contains("adventure")) {
+                File fileDir = new File(progettoDir, File.separator + directory + File.separator + "salvataggioPartita");
                 percorso = fileDir.getAbsolutePath();
-            }else if(!progettoDir.getName().contains("Progetto_Map")){
-                File fileDir = new File(progettoDir, File.separator+"Progetto_Map"+File.separator+"adventure"+File.separator+directory+File.separator+"salvataggioPartita");
+            } else if (!progettoDir.getName().contains("Progetto_Map")) {
+                File fileDir = new File(progettoDir, File.separator + "Progetto_Map" + File.separator + "adventure" + File.separator + directory + File.separator + "salvataggioPartita");
                 percorso = fileDir.getAbsolutePath();
-            }else if(progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")){
-                File fileDir = new File(progettoDir, File.separator+"adventure"+File.separator+directory+File.separator+"salvataggioPartita");
-                percorso = fileDir.getAbsolutePath();              
+            } else if (progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")) {
+                File fileDir = new File(progettoDir, File.separator + "adventure" + File.separator + directory + File.separator + "salvataggioPartita");
+                percorso = fileDir.getAbsolutePath();
             }
-            ObjectOutputStream out=null;
-            if(file.exists() && file.length()==0){
+            ObjectOutputStream out = null;
+            if (file.exists() && file.length() == 0) {
                 out = new ObjectOutputStream(Files.newOutputStream(file.toPath()));
-            }else{           
-                out = new ObjectOutputStream(new FileOutputStream(percorso,true)) {
+            } else {
+                out = new ObjectOutputStream(new FileOutputStream(percorso, true)) {
                     @Override
                     protected void writeStreamHeader() throws IOException {
                         reset();
                     }
                 };
             }
-            
             out.writeObject(game);
             out.close();
             System.out.println("PARTITA SALVATA SU FILE\n");
@@ -83,12 +80,6 @@ public class FileMatchController extends FileController implements Serializable 
         return false;
     }
 
-    /**
-     *
-     * @param id
-     * @return
-     * @throws IOException
-     */
    /* public File removeMatch(final int id) throws IOException {
         File outputFile = new File(nomeFile);
         Engine en;
@@ -120,20 +111,22 @@ public class FileMatchController extends FileController implements Serializable 
         return outputFile;
     }
     */
+
     /**
      *
-     * @param id
+     * @param nomePart
      * @return
      * @throws IOException
+     * @throws ClassNotFoundException
      */
     public GiocoNaufragioIsola getMatch(final String nomePart) throws IOException, ClassNotFoundException {
         GiocoNaufragioIsola game;
         /*
         FileInputStream fileIn = new FileInputStream(file);
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);*/
-        String percorsoRelFile = System.getProperty("user.dir").replaceAll("adventure"+".*","");
-        String percorsoAss = File.separator+"adventure"+File.separator+directory+File.separator+nomeFile;
-        String percorso = percorsoRelFile+percorsoAss;
+        String percorsoRelFile = System.getProperty("user.dir").replaceAll("adventure" + ".*", "");
+        String percorsoAss = File.separator + "adventure" + File.separator + directory + File.separator + nomeFile;
+        String percorso = percorsoRelFile + percorsoAss;
         ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(percorso));
         try {
             while (true) {
@@ -156,11 +149,16 @@ public class FileMatchController extends FileController implements Serializable 
         }
         return null;
     }
-    
-    public List<GiocoNaufragioIsola>  getMatch() throws FileNotFoundException, IOException{
+
+    /**
+     *
+     * @return
+     * @throws FileNotFoundException
+     * @throws IOException
+     */
+    public List<GiocoNaufragioIsola>  getMatch() throws FileNotFoundException, IOException {
         List<GiocoNaufragioIsola> lista = new ArrayList<>();
         GiocoNaufragioIsola game;
-        
         FileInputStream fileIn = new FileInputStream(file);
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);
 

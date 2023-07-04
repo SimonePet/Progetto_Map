@@ -38,18 +38,17 @@ public class FileController implements FileInterface {
      */
     @Override
     public boolean create() {
-        try {          
+        try {
             File progettoDir = new File(System.getProperty("user.dir"));
-            
-            String path="";
-            if(progettoDir.getName().contains("adventure")){
-                path = File.separator+directory+File.separator+nomeFile;
-            }else if(!progettoDir.getName().contains("Progetto_Map")){
-                path = File.separator+"Progetto_Map"+File.separator+"adventure"+File.separator+directory+File.separator+nomeFile;        
-            }else if(progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")){
-                path = File.separator+"adventure"+File.separator+directory+File.separator+nomeFile;
+            String path = "";
+            if (progettoDir.getName().contains("adventure")) {
+                path = File.separator + directory + File.separator + nomeFile;
+            } else if (!progettoDir.getName().contains("Progetto_Map")) {
+                path = File.separator + "Progetto_Map" + File.separator + "adventure" + File.separator + directory + File.separator + nomeFile;
+            } else if (progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")) {
+                path = File.separator + "adventure" + File.separator + directory + File.separator + nomeFile;
             }
-            this.file = new File(progettoDir+path);
+            this.file = new File(progettoDir + path);
             if (file.createNewFile()) {
                 System.out.println("File creato con successo.");
             } else {
@@ -62,7 +61,6 @@ public class FileController implements FileInterface {
         }
         return false;
     }
-
     /**
      * Metodo set che imposta il nome del file.
      */

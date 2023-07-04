@@ -17,8 +17,11 @@ public class Partita {
     private int numSecondi;
     private boolean terminata;
     private int numMosse;
-      
-    public Partita(){
+
+    /**
+     *
+     */
+    public Partita() {
         this.id = 0;
         this.nome = "";
         this.numSecondi = 0;
@@ -27,81 +30,137 @@ public class Partita {
         this.punteggio = 0;
         this.terminata = false;
     }
-    
-    public Partita(int id, String nome, String nomeUtente, int punteggio, int numMinuti, int numSecondi, boolean terminata, int numMosse){
-        this.id = id;
-        this.nome = nome;
-        this.numSecondi = numSecondi;
-        this.numMinuti = numMinuti;
-        this.nomeUtente = nomeUtente;
-        this.numMosse = numMosse;
-        this.punteggio = punteggio;
-        this.terminata = terminata;
+    /**
+     *
+     * @param idCorr
+     * @param nomeCorr
+     * @param nomeUtenteCorr
+     * @param punteggioCorr
+     * @param numMinutiCorr
+     * @param numSecondiCorr
+     * @param terminataCprr
+     * @param numMosseCorr
+     */
+    public Partita(final int idCorr, final String nomeCorr, final String nomeUtenteCorr, final int punteggioCorr, final int numMinutiCorr, final int numSecondiCorr, final boolean terminataCprr, final int numMosseCorr) {
+        this.id = idCorr;
+        this.nome = nomeCorr;
+        this.numSecondi = numSecondiCorr;
+        this.numMinuti = numMinutiCorr;
+        this.nomeUtente = nomeUtenteCorr;
+        this.numMosse = numMosseCorr;
+        this.punteggio = punteggioCorr;
+        this.terminata = terminataCprr;
     }
-    
-    
-    public void setId(int id){
-        this.id = id;
+    /**
+     *
+     */
+    public void setId(final int idCorr) {
+        this.id = idCorr;
     }
-    
-    public int getId(){
+    /**
+     *
+     * @return
+     */
+    public int getId() {
         return this.id;
     }
-    
-    public void setNome(String nome){
-        this.nome = nome;
+    /**
+     *
+     * @param nomeCorr
+     */
+    public void setNome(final String nomeCorr) {
+        this.nome = nomeCorr;
     }
-    
-    public void setNumSecondi(int numSecondi){
-        this.numSecondi = numSecondi;
+    /**
+     *
+     * @param numSecondiCorr
+     */
+    public void setNumSecondi(final int numSecondiCorr) {
+        this.numSecondi = numSecondiCorr;
     }
-    
-    public void setNumMinuti(int numMinuti){
-        this.numMinuti = numMinuti;
+    /**
+     *
+     * @param numMinutiCorr
+     */
+    public void setNumMinuti(final int numMinutiCorr) {
+        this.numMinuti = numMinutiCorr;
     }
-    
-    public void setNuomeUtente(String nomeUtente){
-        this.nomeUtente = nomeUtente;
+    /**
+     *
+     * @param nomeUtenteCorr
+     */
+    public void setNuomeUtente(final String nomeUtenteCorr) {
+        this.nomeUtente = nomeUtenteCorr;
     }
-    
-    public void setNumMosse(int numMosse){
-        this.numMosse = numMosse;
+    /**
+     *
+     * @param numMosseCorr
+     */
+    public void setNumMosse(final int numMosseCorr) {
+        this.numMosse = numMosseCorr;
     }
-    
-    public void setPunteggio(int punteggio){
-        this.punteggio = punteggio;
+
+    /**
+     *
+     * @param punteggioCorr
+     */
+    public void setPunteggio(final int punteggioCorr) {
+        this.punteggio = punteggioCorr;
     }
-    
-    public String getNome(){
+    /**
+     *
+     * @return
+     */
+    public String getNome() {
         return this.nome;
     }
-    
-    public int getNumSecondi(){
+    /**
+     *
+     * @return
+     */
+    public int getNumSecondi() {
         return this.numSecondi;
     }
-    
-    public int getNumMinuti(){
+    /**
+     *
+     * @return
+     */
+    public int getNumMinuti() {
         return this.numMinuti;
     }
-        
-    public String getNomeUtente(){
+    /**
+     *
+     * @return
+     */
+    public String getNomeUtente() {
         return this.nomeUtente;
     }
-    
-    public int getNumMosse(){
+    /**
+     *
+     * @return
+     */
+    public int getNumMosse() {
         return this.numMosse;
     }
-    
-    public int getPunteggio(){
+    /**
+     *
+     * @return
+     */
+    public int getPunteggio() {
         return this.punteggio;
     }
-        
-    public void setTerminata(boolean b){
+    /**
+     *
+     * @param b
+     */
+    public void setTerminata(final boolean b) {
         this.terminata = b;
     }
-    
-    public boolean terminata(){
+    /**
+     *
+     * @return
+     */
+    public boolean terminata() {
         return this.terminata;
     }
-        
 }
