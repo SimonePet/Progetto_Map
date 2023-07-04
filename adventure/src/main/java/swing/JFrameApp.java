@@ -287,8 +287,15 @@ public class JFrameApp extends javax.swing.JFrame {
         jScrollPane1.setBackground(c);
         //jScrollPane1.setBackground(new Color(255,255,255));
         editor.setOpaque(false);
+        lblStanzaCorrente.setOpaque(true);
+        editor.setText("");
+        if(!partitaCaricata){
+            Engine e = new Engine(new GiocoNaufragioIsola(),false);
+            engine = e;
+        }
+        String stanzaCorrente = engine.getGame().getCurrentRoom().getNomeStanza();
         try{
-            BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+"approdo.png"));
+            BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+stanzaCorrente+".png"));
             Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
             jPanel1.setBackground(new Color(0,0,0,0));
@@ -301,13 +308,6 @@ public class JFrameApp extends javax.swing.JFrame {
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
-        lblStanzaCorrente.setOpaque(true);
-        editor.setText("");
-        if(!partitaCaricata){
-            Engine e = new Engine(new GiocoNaufragioIsola(),false);
-            engine = e;
-        }
-        String stanzaCorrente = engine.getGame().getCurrentRoom().getNomeStanza();
         lblStanzaCorrente.setText(stanzaCorrente);
         engine.getGame().setUsername(username);
         labelNumMosse.setText(""+engine.getGame().getNumMoves());
