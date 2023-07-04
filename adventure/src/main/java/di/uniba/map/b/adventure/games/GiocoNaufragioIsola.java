@@ -144,7 +144,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         //Imposto il messaggio di osserva
         edificioDentro.setOsserva(MessaggioEdificioDentro.getOsserva());
         //Imposto la visibilita della stanza
-        edificioDentro.setRaggiungibile(true);
+        edificioDentro.setRaggiungibile(false);
         //Imposto il messaggio per Nord
         edificioDentro.setMessaggioNord(MessaggioEdificioDentro.getNoNord());
         //Imposto il messaggio per Sud

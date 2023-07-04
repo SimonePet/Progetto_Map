@@ -53,4 +53,5 @@ public final class MessaggioEdificioDentro {
     public static String getNome() {
         return NOME;
     }
+    
 }

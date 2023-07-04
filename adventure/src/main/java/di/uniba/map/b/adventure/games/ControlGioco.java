@@ -21,6 +21,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import swing.JDialogPorta;
 
 
 public class ControlGioco {
@@ -33,6 +34,11 @@ public class ControlGioco {
         frame.scrviSuEditor(GNI.getCurrentRoom().getMessaggioNord());
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getNord() != null) {
+            if(!GNI.getCurrentRoom().getNord().getRaggiungibile()){
+                if(GNI.getCurrentRoom().getNomeStanza().equalsIgnoreCase("Edificio esterno")){
+                    Utils.generaFinestraPorta(frame, GNI);
+                } 
+            }
             //System.out.println(Utils.percorsoAssoluto);
             GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
             Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);

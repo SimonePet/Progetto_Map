@@ -5,6 +5,7 @@
  */
 package di.uniba.map.b.adventure;
 
+import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +14,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ForkJoinPool;
+import swing.JDialogPorta;
+import swing.JFrameApp;
 
 /**
  *
@@ -57,5 +59,11 @@ public class Utils {
         }
         return percorsoAss;
     }
+    
+    public static void generaFinestraPorta(JFrameApp frame, GiocoNaufragioIsola GNI){
+        JDialogPorta d = new JDialogPorta(frame,true, GNI);
+        d.setVisible(true);
+    }
+    
 
 }
