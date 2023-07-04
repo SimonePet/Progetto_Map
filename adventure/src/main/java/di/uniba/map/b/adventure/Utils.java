@@ -25,6 +25,7 @@ public class Utils {
     public static String estensioneWav= ".wav";
     public static String percorsoSuoniStanze = "adventure"+File.separator +"resources"+File.separator+"suoni"+File.separator+"stanze" + File.separator;
     public static String percorsoSuoniOggetti = "adventure"+File.separator +"resources"+File.separator+"suoni"+File.separator+"oggetti" + File.separator;
+    public static String percorsoImmaginiStanze = "adventure"+File.separator +"resources"+File.separator+"immagini"+File.separator+"stanze" + File.separator;
     public static Set<String> loadFileListInSet(File file) throws IOException {
         Set<String> set = new HashSet<>();
         BufferedReader reader = new BufferedReader(new FileReader(file));

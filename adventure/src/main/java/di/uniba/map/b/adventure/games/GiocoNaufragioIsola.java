@@ -480,7 +480,7 @@ public class GiocoNaufragioIsola extends GameDescription{
 
     /* nextMove per scrivere su editor del frame */
     @Override
-    public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame,final JPanel panel) {
+    public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame,final JPanel panel,JLabel label) {
         boolean noroom = false;
         boolean move = false;
         //frame.writeTextOnEditor("\n"+getCurrentRoom().getNomeStanza()+"\n");
@@ -492,16 +492,16 @@ public class GiocoNaufragioIsola extends GameDescription{
             //move
             switch (comandoRiconosciuto) {
                 case NORD:
-                    ControlGioco.ComandoNord(this,frame,panel);
+                    ControlGioco.ComandoNord(this,frame,panel,label);
                     break;
                 case SUD:
-                    ControlGioco.ComandoSud(this,frame);
+                    ControlGioco.ComandoSud(this,frame,panel,label);
                     break;
                 case EST:
-                    ControlGioco.ComandoEst(this,frame);
+                    ControlGioco.ComandoEst(this,frame,panel,label);
                     break;
                 case OVEST:
-                    ControlGioco.ComandoOvest(this,frame);
+                    ControlGioco.ComandoOvest(this,frame,panel,label);
                     break;
                 case OSSERVA: ;
                     ControlGioco.ComandoOsserva(this,frame,p.getObject(),p.getInvObject());
