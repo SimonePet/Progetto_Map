@@ -276,11 +276,11 @@ public class JDialogPorta extends javax.swing.JDialog {
         if(codice.equalsIgnoreCase("2538")){
             lblErrore.setText("CODICE CORRETTO");
             GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
-            Stanza edificioDentro = GNI.getCurrentRoom().getNord();
+            Stanza edificioDentro = GNI.getCurrentRoom();
             edificioDentro.setRaggiungibile(true);
             edificioDentro.setVisitata(true);
             edificioDentro.setVisibile(true);
-            GNI.getStanza("edificio fuori").setMessaggioNord(MessaggioEdificioFuori.getNord());
+            GNI.getStanza("edificio esterno").setMessaggioNord(MessaggioEdificioFuori.getNord());
             this.dispose();
         }else{
             lblErrore.setText("CODICE ERRATO");

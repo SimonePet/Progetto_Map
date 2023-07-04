@@ -277,10 +277,12 @@ public class JFrameApp extends javax.swing.JFrame {
         jPanel2.setOpaque(false);
         jPanel2.setBackground(new Color(255,255,255,150));
         jScrollPane1.setOpaque(false);
-        //jScrollPane1.getViewport().setOpaque(false);
-        jScrollPane1.setBackground(new Color(255,255,255,100));
+        jScrollPane1.getViewport().setOpaque(false);
+        Color c = new Color(255,255,255,150);
+        editor.setBackground(c);
+        jScrollPane1.setBackground(c);
+        //jScrollPane1.setBackground(new Color(255,255,255));
         editor.setOpaque(false);
-        editor.setBackground(new Color(255,255,255,100));
         try{
             BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+"approdo.png"));
             Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
