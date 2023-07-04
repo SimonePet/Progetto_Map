@@ -5,6 +5,7 @@
 package swing;
 
 import data.PercorsoFileSystem;
+import data.Suono;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
 import di.uniba.map.b.adventure.Utils;
@@ -246,8 +247,10 @@ public class JFrameApp extends javax.swing.JFrame {
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
         // TODO add your handling code here:
-        //uccidi thread
+        //uccidi thread tempo
         thread.interrupt();
+        //uccidi thread suono stanza
+        Suono.stopRiproduzione();
         System.out.println("Thread interrotto");
         partitaCaricata = false;
         JDialogAbbandona d = new JDialogAbbandona(this,true, engine);
@@ -256,6 +259,7 @@ public class JFrameApp extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+"icona.png");
         this.setIconImage(icon.getImage());
         this.setResizable(false);
@@ -307,14 +311,15 @@ public class JFrameApp extends javax.swing.JFrame {
         lblStanzaCorrente.setText(stanzaCorrente);
         engine.getGame().setUsername(username);
         labelNumMosse.setText(""+engine.getGame().getNumMoves());
-        GameDescription game = engine.getGame();
+        GameDescription partita = engine.getGame();
+        Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + partita.getCurrentRoom().getNomeStanza(),true);
         SimpleAttributeSet attributes = new SimpleAttributeSet();
         Document doc = editor.getDocument();
                
         try{
             doc.insertString(doc.getLength(), "* Adventure v. 0.3 - 2021-2022 *\n", attributes);
             //doc.insertString(doc.getLength(), game.getCurrentRoom().getNomeStanza()+"\n", attributes);
-            doc.insertString(doc.getLength(), game.getCurrentRoom().getDescrizioneLungaStanza()+"\n", attributes);
+            doc.insertString(doc.getLength(), partita.getCurrentRoom().getDescrizioneLungaStanza()+"\n", attributes);
             //avvia Thread          
             this.thread = new Thread(new ThreadTime(this));
             thread.start();                        

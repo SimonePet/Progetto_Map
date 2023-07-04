@@ -2,21 +2,21 @@ package data;
 
 import javax.sound.sampled.*;
 import java.io.File;
+import java.io.IOException;
 import java.util.Optional;
-import java.util.concurrent.locks.ReentrantLock;
 
 public class Suono {
-    private static volatile boolean isPlaying = false;
+    private static volatile boolean suonoAttivo = false;
     private static Optional<SourceDataLine> lineOptional = Optional.empty();
-    private static ReentrantLock lock = new ReentrantLock();
-
+    //private static ReentrantLock lock = new ReentrantLock();
+    private static Thread thread;
+    
     public static void riproduciTraccia(String percorsoRel, boolean loop) {
-        if (isPlaying) {
+        if (suonoAttivo) {
             stopRiproduzione();
         }
 
-        lock.lock();
-
+        //lock.lock();
         Thread audioThread = new Thread(() -> {
             try {
                 String estensione = ".wav";
@@ -31,7 +31,7 @@ public class Suono {
                 line.open(audioFormat);
                 line.start();
                 lineOptional = Optional.of(line);
-                isPlaying = true;
+                suonoAttivo = true;
 
                 byte[] buffer = new byte[4096];
                 int bytesRead;
@@ -42,38 +42,38 @@ public class Suono {
                     }
                     audioInputStream.close();
                     audioInputStream = AudioSystem.getAudioInputStream(audioFile);
-                } while (loop && isPlaying);
+                } while (loop && suonoAttivo);
 
                 line.drain();
-            } catch (Exception e) {
-                e.printStackTrace();
+            } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
+                System.err.println(e.getMessage());
             } finally {
                 if (lineOptional.isPresent()) {
                     SourceDataLine line = lineOptional.get();
                     line.stop();
                     line.close();
                     lineOptional = Optional.empty();
-                    isPlaying = false;
-                    lock.unlock();
+                    suonoAttivo = false;
+                    //lock.unlock();
                 }
             }
         });
-
+        
         audioThread.start();
+        System.out.println("Avviato nuovo thread");
+        thread = audioThread;
     }
 
     public static void stopRiproduzione() {
-        lock.lock();
-        try {
-            if (isPlaying && lineOptional.isPresent()) {
-                SourceDataLine line = lineOptional.get();
-                line.stop();
-                line.close();
-                lineOptional = Optional.empty();
-                isPlaying = false;
-            }
-        } finally {
-            lock.unlock();
+        //lock.lock();
+        thread.interrupt();
+        System.out.println("Thread ucciso");
+        if (suonoAttivo && lineOptional.isPresent()) {
+            SourceDataLine line = lineOptional.get();
+            line.stop();
+            line.close();
+            lineOptional = Optional.empty();
+            suonoAttivo = false;
         }
     }
 }
