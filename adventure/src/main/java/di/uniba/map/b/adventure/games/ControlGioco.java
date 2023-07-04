@@ -29,10 +29,12 @@ public class ControlGioco {
 
     }
 
+    private static Set<Comando> comandi = new HashSet<>();
+
     public static void ComandoNord(GiocoNaufragioIsola GNI, final JFrameApp frame,final JPanel panel){
         frame.scrviSuEditor(GNI.getCurrentRoom().getMessaggioNord());
         frame.scrviSuEditor("\n");
-        if (GNI.getCurrentRoom().getNord() != null) {
+        if (GNI.getCurrentRoom().getNord() != null && GNI.getCurrentRoom().getNord().getRaggiungibile()) {
             //System.out.println(Utils.percorsoAssoluto);
             GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
             Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
@@ -210,6 +212,8 @@ public class ControlGioco {
                     frame.scrviSuEditor(Messaggio.getAccendiLampada());
                     GNI.getOggettoGioco("lastra").setVisibile(true);
                     GNI.getStanza("grotta").setVisibile(true);
+                    GNI.getStanza("grotta").setDescrizioneCortaStanza(MessaggioGrotta.getDescCortaLuce());
+                    GNI.getStanza("grotta").setDescrizioneCompletaStanza(MessaggioGrotta.getDescCompletaLuce());
                     GNI.getStanza("grotta").setOsserva(MessaggioGrotta.getOsservaLuce());
                     GNI.getStanza("grotta").setMessaggioNord(MessaggioGrotta.getNoNordLuce());
                     GNI.getStanza("grotta").setMessaggioSud(MessaggioGrotta.getNoSudLuce());
@@ -291,28 +295,33 @@ public class ControlGioco {
     }
 
     public static void ComandoAiuto(GiocoNaufragioIsola GNI, final JFrameApp frame){
-        Set<Comando> set1 = new HashSet<>();
-        set1.add(GNI.getComando("nord"));
-        set1.add(GNI.getComando("sud"));
-        set1.add(GNI.getComando("est"));
-        set1.add(GNI.getComando("ovest"));
-        set1.add(GNI.getComando("inventario"));
-        set1.add(GNI.getComando("osserva"));
-        set1.add(GNI.getComando("raccogli"));
-        set1.add(GNI.getComando("narra"));
-        set1.add(GNI.getComando("salva"));
+        setComandi(GNI);
         Oggetto prossimo =null;
         Iterator<Oggetto> iteratore =GNI.getInventory().iterator();
         while(iteratore.hasNext()){
             prossimo =iteratore.next();
-            set1.addAll(prossimo.getComandiConsentiti());
+            comandi.addAll(prossimo.getComandiConsentiti());
         }
-        Iterator<Comando> iteratore1 =set1.iterator();
+        Iterator<Comando> iteratore1 =comandi.iterator();
         frame.scrviSuEditor(Messaggio.getListaComandi()+"\n");
         while(iteratore1.hasNext()){
             frame.scrviSuEditor(iteratore1.next().getDescrizione()+"\n");
         }
 
+    }
+
+    public static void setComandi(GiocoNaufragioIsola GNI){
+        if(comandi.isEmpty()){
+            comandi.add(GNI.getComando("nord"));
+            comandi.add(GNI.getComando("sud"));
+            comandi.add(GNI.getComando("est"));
+            comandi.add(GNI.getComando("ovest"));
+            comandi.add(GNI.getComando("inventario"));
+            comandi.add(GNI.getComando("osserva"));
+            comandi.add(GNI.getComando("raccogli"));
+            comandi.add(GNI.getComando("narra"));
+            comandi.add(GNI.getComando("salva"));
+        }
     }
 
     public static void ComandoApri(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto InvOgg){
@@ -325,6 +334,22 @@ public class ControlGioco {
                 frame.scrviSuEditor("Non puoi aprire questo oggetto");
             }
         }
-        frame.scrviSuEditor(Messaggio.getOggettoNonInventario());
+        else {
+            frame.scrviSuEditor(Messaggio.getOggettoNonInventario());
+        }
+    }
+
+    public static void ComandoSposta(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto Ogg){
+        if(Ogg!=null){
+            if(Ogg.equals(GNI.getOggettoGioco("armadio"))){
+                frame.scrviSuEditor("Spostando l'ardmadio hai scoperto un passaggio segreto ad un vecchio covo militare.");
+                GNI.getStanza("covo").setRaggiungibile(true);
+            } else {
+                frame.scrviSuEditor("Non puoi spostare questo oggetto.");
+            }
+        }
+        else {
+            frame.scrviSuEditor(Messaggio.getNoPresente());
+        }
     }
 }

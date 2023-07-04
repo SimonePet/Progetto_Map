@@ -92,7 +92,7 @@ public class ControlComandi {
 
     private static void initSposta(GiocoNaufragioIsola GNI){
         Comando sposta = new Comando(TipoComando.SPOSTA, "sposta");
-        sposta.setAlias(new String[]{"spingi", "attiva"});
+        sposta.setAlias(new String[]{"spingi", "tira", "muovi"});
         sposta.setDescrizione("Premi [oggetto] : Comando che non so ancora cosa faccia;");
         GNI.getCommands().add(sposta);
     }

@@ -5,6 +5,8 @@
  */
 package di.uniba.map.b.adventure;
 
+import di.uniba.map.b.adventure.type.Comando;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
@@ -13,7 +15,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-import java.util.concurrent.ForkJoinPool;
 
 /**
  *

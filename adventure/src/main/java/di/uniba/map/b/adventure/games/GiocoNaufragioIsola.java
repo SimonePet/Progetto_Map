@@ -123,7 +123,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         //Imposto il messaggio di osserva
         covo.setOsserva(MessaggioCovo.getOsserva());
         //Imposto la visibilita della stanza
-        covo.setRaggiungibile(true);
+        covo.setRaggiungibile(false);
         //Imposto il messaggio per Nord
         covo.setMessaggioNord(MessaggioCovo.getNoNord());
         //Imposto il messaggio per Sud
@@ -420,7 +420,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         edificioDentro.getObjects().add(tv);
 
         Oggetto divano = new Oggetto(16, "divano", MessaggioOggetti.getDescrizioneDivano());
-        divano.setAlias(new String[]{"poltrona", "sofa", "televisore"});
+        divano.setAlias(new String[]{"poltrona", "sofa"});
         divano.setRaccogglibile(false);
         divano.setVisibile(true);
         divano.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliDivano());
@@ -542,6 +542,9 @@ public class GiocoNaufragioIsola extends GameDescription{
                     break;
                 case COSTRUISCI:
                     ControlGioco.ComandoCostruisci(this,frame,p.getObject());
+                    break;
+                case SPOSTA:
+                    ControlGioco.ComandoSposta(this,frame,p.getObject());
                     break;
                 case AIUTO:
                     ControlGioco.ComandoAiuto(this,frame);
