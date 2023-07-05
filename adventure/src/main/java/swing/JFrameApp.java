@@ -306,7 +306,7 @@ public class JFrameApp extends javax.swing.JFrame {
         String stanzaCorrente = engine.getGame().getCurrentRoom().getNomeStanza();
         try{
             BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+stanzaCorrente+".png"));
-            Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_FAST);
+            Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
             jPanel1.setBackground(new Color(0,0,0,0));
             jPanel1.setOpaque(false);

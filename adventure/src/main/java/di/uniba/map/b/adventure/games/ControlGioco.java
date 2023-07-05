@@ -18,6 +18,7 @@ import java.io.File;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import swing.JDialogRadio;
 
 
 public class ControlGioco {
@@ -36,11 +37,14 @@ public class ControlGioco {
                 if(!GNI.getCurrentRoom().getNord().getRaggiungibile() && GNI.getCurrentRoom().getNomeStanza().equalsIgnoreCase("Edificio esterno")){
                     Utils.generaFinestraPorta(frame, GNI);
                 }else{
-                    GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
+                    if(GNI.getCurrentRoom().getNord().getRaggiungibile()){
+                       GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
+                       Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
+                    }
                 }
                 //System.out.println(Utils.percorsoAssoluto);
 
-                Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
+                
                 if(GNI.getCurrentRoom().getVisitata())
                     frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
                 else
@@ -254,7 +258,7 @@ public class ControlGioco {
 
     public static void ComandoAccendi(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto oggInv){
         if(oggInv != null){
-            if(oggInv.getNomeOggetto().equals("lampada")){
+            if(oggInv.getNomeOggetto().equalsIgnoreCase("lampada")){
                 if(GNI.getInventory().contains(GNI.getOggettoGioco("acciarino"))){
                     frame.scrviSuEditor(Messaggio.getAccendiLampada());
                     GNI.getOggettoGioco("lastra").setVisibile(true);
@@ -267,10 +271,18 @@ public class ControlGioco {
                     GNI.getStanza("grotta").setMessaggioOvest(MessaggioGrotta.getNoOvestLuce());
                     GNI.getStanza("grotta").setOsserva(MessaggioGrotta.getOsservaLuce());
 
-                } else {
+                } else if(oggInv.getNomeOggetto().equals("lampada")){
                     frame.scrviSuEditor(Messaggio.getNoAccendiLampada());
                 }
-            } else {
+            }else if(oggInv.getNomeOggetto().equalsIgnoreCase("radio")){
+                if(GNI.getInventory().contains(GNI.getOggettoGioco("batteria"))){
+                    JDialogRadio d = new JDialogRadio(frame, true);
+                    d.setVisible(true);
+                    
+                }else if(oggInv.getNomeOggetto().equals("radio")){
+                    frame.scrviSuEditor("Impossibile accendere radio. Ti mancano le batterie");
+                }
+            }else{
                 frame.scrviSuEditor(Messaggio.getNoAccendi());
             }
         } else {

@@ -5,6 +5,7 @@
 package swing;
 
 import data.PercorsoFileSystem;
+import data.Suono;
 import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import di.uniba.map.b.adventure.messaggi.MessaggioEdificioFuori;
@@ -152,11 +153,7 @@ public class JDialogPorta extends javax.swing.JDialog {
         jButton10.setText("CONFERMA");
         jButton10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                try {
-                    jButton10ActionPerformed(evt);
-                } catch (InterruptedException e) {
-                    throw new RuntimeException(e);
-                }
+                jButton10ActionPerformed(evt);
             }
         });
 
@@ -249,11 +246,12 @@ public class JDialogPorta extends javax.swing.JDialog {
                     .addComponent(jButton6)
                     .addComponent(btnCancella))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton7)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton8)
-                    .addComponent(jButton9)
-                    .addComponent(jButton10))
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton7)
+                        .addComponent(jButton9)
+                        .addComponent(jButton10)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(18, Short.MAX_VALUE))
@@ -273,17 +271,16 @@ public class JDialogPorta extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         txtCodice.setEditable(false);
         String path = System.getProperty("user.dir");
-        System.out.println();
-        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze) +"porta.png");
+        ImageIcon icon = new ImageIcon(path+File.separator+"resources"+File.separator+"immagini"+File.separator+"stanze"+File.separator+"porta.png");
         lblImmagine.setIcon(icon);
     }//GEN-LAST:event_formWindowOpened
 
-    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) throws InterruptedException {//GEN-FIRST:event_jButton10ActionPerformed
+    private void jButton10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton10ActionPerformed
         String codice = txtCodice.getText();
         if(codice.equalsIgnoreCase("2538")){
             lblErrore.setText("CODICE CORRETTO");
-            Thread.sleep(2000);
             GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
+            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
             Stanza edificioDentro = GNI.getCurrentRoom();
             edificioDentro.setRaggiungibile(true);
             edificioDentro.setVisitata(true);

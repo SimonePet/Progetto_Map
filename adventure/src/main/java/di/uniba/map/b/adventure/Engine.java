@@ -35,7 +35,6 @@ public class Engine {
         }
         try {
             //Set<String> stopwords = Utils.loadFileListInSet(new File(".resources/stopwords"));
-
             String percorsoAssoluto = new File("").getAbsolutePath();
             String percorsoRelativo="";
             if(percorsoAssoluto.contains("adventure")){
