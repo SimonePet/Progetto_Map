@@ -12,7 +12,8 @@ import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
 
-import javax.swing.*;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,8 +23,7 @@ import java.util.List;
  *
  * @author pierpaolo
  */
-public abstract class GameDescription implements Serializable{
-
+public abstract class GameDescription implements Serializable {
     private String nomePartita;
     private String username;
     private boolean finish=false;
@@ -163,6 +163,6 @@ public abstract class GameDescription implements Serializable{
 
     public abstract void init() throws Exception;
 
-    public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame, JPanel panel,JLabel label);
+    public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame, JPanel panel, JLabel label);
 
 }

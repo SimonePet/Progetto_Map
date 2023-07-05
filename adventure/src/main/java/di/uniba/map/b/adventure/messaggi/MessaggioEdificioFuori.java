@@ -15,7 +15,7 @@ public final class MessaggioEdificioFuori {
     private static final String DESCRIZIONE_CORTA = "Ti trovi fuori un vecchio edificio abbandonato.";
     private static final String DESCRIZIONE_COMPLETA = "Tra gli alberi, noti un'ombra oscura che si staglia "
             + "contro il cielo del crepuscolo.\nAvvicinandoti, scopri che si tratta di un vecchio edificio abbandonato, "
-            + "un tempo maestoso e possente, ora fatiscente e coperto di piante rampicanti che sembrano aver preso il "
+            + "un tempo maestoso e possente, ora fatiscente\ne coperto di piante rampicanti che sembrano aver preso il "
             + "sopravvento.";
     private static final String OSSERVA = "Intorno all’edificio sembra non esserci nulla se "
             + "non un binocolo. Si osserva della luce uscire da una finestra.";

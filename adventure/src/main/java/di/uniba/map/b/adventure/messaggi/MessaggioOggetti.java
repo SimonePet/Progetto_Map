@@ -1,5 +1,8 @@
 package di.uniba.map.b.adventure.messaggi;
 
+/**
+ *
+ */
 public final class MessaggioOggetti {
     /**
      * Costruttore privato della classe Messaggio. Serve ad impedirne l'istanziazione.

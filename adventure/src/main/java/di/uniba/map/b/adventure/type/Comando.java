@@ -122,7 +122,7 @@ public class Comando implements Serializable {
         return descrizione;
     }
 
-    public void setDescrizione(String descrizione) {
+    public void setDescrizione(final String descrizione) {
         this.descrizione = descrizione;
     }
 }

@@ -22,16 +22,16 @@ public final class MessaggioSentiero {
     private static final String SUD = "Ti sei spostato a sud del sentiero.";
     private static final String EST = "Ti sei spostato a est del sentiero.";
     private static final String NO_OVEST = "Un enorme precipizio, meglio evitare.";
-    private static final String CARTELLO = "------------------------------------------------------------------\n"+
-                                           "|                     SUD --->   3.0km   <---                   |\n"+
-                                           "|                        14-08-10-02-08                           |\n"+
-                                           "------------------------------------------------------------------\n"+
-                                           "|                    NORD --->   8.0km   <---                 |\n"+
-                                           "|                   03-15-05-16-05-02-05-08                |\n"+
-                                           "------------------------------------------------------------------\n"+
-                                           "                                       ||             \n"+
-                                           "                                       ||             \n"+
-                                           "                                       ||             \n";
+    private static final String CARTELLO = "------------------------------------------------------------------\n"
+                                           + "|                     SUD --->   3.0km   <---                   |\n"
+                                           + "|                        14-08-10-02-08                           |\n"
+                                           + "------------------------------------------------------------------\n"
+                                           + "|                    NORD --->   8.0km   <---                 |\n"
+                                           + "|                   03-15-05-16-05-02-05-08                |\n"
+                                           + "------------------------------------------------------------------\n"
+                                           + "                                       ||             \n"
+                                           + "                                       ||             \n"
+                                           + "                                       ||             \n";
 
 
     public static String getDescrizioneCorta() {

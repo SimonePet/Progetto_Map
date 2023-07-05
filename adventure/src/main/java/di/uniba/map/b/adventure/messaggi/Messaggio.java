@@ -37,7 +37,7 @@ public final class Messaggio {
     private static final String OVEST = "Ovest";
     private static final String TI_SEI_SPOSTATO_A = "Ti sei spostato a ";
     private static final String INVENTARIO = "Nel tuo inventario ci sono:";
-    private static final String INVIO ="\n";
+    private static final String INVIO = "\n";
     private static final String NON_VEDO_OGGETTI = "Non c'è luce. Non vedo nulla da raccogliere.";
     private static final String OGGETTO_NON_PRESENTE = "L'oggetto che vuoi raccogliere non c'è.";
     private static final String OGGETTO_NON_POSSEDUTO = "Non possiedi questo oggetto.";
@@ -87,20 +87,37 @@ public final class Messaggio {
     public static String getTiSeiSpostatoA() {
         return Messaggio.TI_SEI_SPOSTATO_A;
     }
-    public static String getInventario(){return Messaggio.INVENTARIO;}
-    public static String getInvio(){return Messaggio.INVIO;}
-    public static String getInvVuoto(){return Messaggio.INVENTARIO_VUOTO;}
-    public static String getNoRaccogli(){return Messaggio.NO_RACCOGLI;}
-    public static String getGiaRaccolto(){return Messaggio.GIA_RACCOLTO;}
-    public static String getNonVedoOggetti(){return Messaggio.NON_VEDO_OGGETTI;}
-    public static String getOggettoNonPresente(){return Messaggio.OGGETTO_NON_PRESENTE;}
-    public static String getOggettoNonPosseduto(){return Messaggio.OGGETTO_NON_POSSEDUTO;}
-    public static String getOggettoNonInventario(){return Messaggio.OGGETTO_NON_INVENTARIO;}
-
+    public static String getInventario() {
+        return Messaggio.INVENTARIO;
+    }
+    public static String getInvio() {
+        return Messaggio.INVIO;
+    }
+    public static String getInvVuoto() {
+        return Messaggio.INVENTARIO_VUOTO;
+    }
+    public static String getNoRaccogli() {
+        return Messaggio.NO_RACCOGLI;
+    }
+    public static String getGiaRaccolto() {
+        return Messaggio.GIA_RACCOLTO;
+    }
+    public static String getNonVedoOggetti() {
+        return Messaggio.NON_VEDO_OGGETTI;
+    }
+    public static String getOggettoNonPresente() {
+        return Messaggio.OGGETTO_NON_PRESENTE;
+    }
+    public static String getOggettoNonPosseduto() {
+        return Messaggio.OGGETTO_NON_POSSEDUTO;
+    }
+    public static String getOggettoNonInventario() {
+        return Messaggio.OGGETTO_NON_INVENTARIO;
+    }
     public static String getAccendiLampada() {
         return Messaggio.ACCENDI_LAMPADA;
     }
-    public static String getNoAccendiLampada(){
+    public static String getNoAccendiLampada() {
         return Messaggio.NO_ACCENDI_LAMPADA;
     }
     public static String getNoAccendi() {
