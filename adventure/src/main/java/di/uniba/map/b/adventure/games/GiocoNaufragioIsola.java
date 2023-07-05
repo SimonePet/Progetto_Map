@@ -32,12 +32,15 @@ import swing.JFrameApp;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.io.File;
+import java.io.IOException;
 
 import java.io.PrintStream;
 
 import java.util.HashSet;
 
 import java.util.Set;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 
 /**
@@ -547,8 +550,15 @@ public class GiocoNaufragioIsola extends GameDescription {
                     FileMatchController fmc = new FileMatchController("/salvataggioPartita", fullPath);
                     break;
                 case ACCENDI:
-                    ControlGioco.ComandoAccendi(this, frame, p.getInvObject());
+                {
+                    try {
+                        ControlGioco.ComandoAccendi(this, frame, p.getInvObject());
+                    } catch (IOException | InterruptedException ex) {
+                        Logger.getLogger(GiocoNaufragioIsola.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                }
                     break;
+
                 case APRI:
                     ControlGioco.ComandoApri(this, frame, p.getInvObject());
                     break;

@@ -15,6 +15,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
@@ -242,7 +243,7 @@ public class ControlGioco {
         }
     }
 
-    public static void ComandoAccendi(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto oggInv){
+    public static void ComandoAccendi(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto oggInv) throws IOException, InterruptedException{
         if(oggInv != null){
             if(oggInv.getNomeOggetto().equalsIgnoreCase("lampada")){
                 if(GNI.getInventory().contains(GNI.getOggettoGioco("acciarino"))){
@@ -262,9 +263,9 @@ public class ControlGioco {
                 }
             }else if(oggInv.getNomeOggetto().equalsIgnoreCase("radio")){
                 if(GNI.getInventory().contains(GNI.getOggettoGioco("batteria"))){
-                    JDialogRadio d = new JDialogRadio(frame, true);
-                    d.setVisible(true);
-                    
+                    String nomeUtente = GNI.getUsername();
+                    JDialogRadio d = new JDialogRadio(frame, true, nomeUtente);
+                    d.setVisible(true);                 
                 }else if(oggInv.getNomeOggetto().equals("radio")){
                     frame.scrviSuEditor("Impossibile accendere radio. Ti mancano le batterie");
                 }
