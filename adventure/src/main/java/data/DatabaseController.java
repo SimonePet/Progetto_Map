@@ -57,8 +57,8 @@ public class DatabaseController extends Database {
     public boolean salvaPartita(final String nomePartita, final String username, final boolean finish, final int numSeconds, final int numMin, final int numMoves, final GameDescription game) {
         //calcola punteggio con formula
         int punteggio = 100;
-        int penalizzazioneMosse = 1 * game.getNumMoves();
-        int penalizzazioneMin = 5 * game.getNumMinutes();
+        int penalizzazioneMosse = 1 * game.getNumMosse();
+        int penalizzazioneMin = 5 * game.getNumMinuti();
         int bonusPartitaVinta = 15;
         punteggio = punteggio - penalizzazioneMosse - penalizzazioneMin;
         if (game.isFinished()) {
@@ -75,10 +75,10 @@ public class DatabaseController extends Database {
             pstm.setString(1, game.getNomePartita());
             pstm.setString(2, game.getUsername());
             pstm.setInt(3, punteggio);
-            pstm.setInt(4, game.getNumMinutes());
-            pstm.setInt(5, game.getNumSeconds());
+            pstm.setInt(4, game.getNumMinuti());
+            pstm.setInt(5, game.getNumSecondi());
             pstm.setBoolean(6, finish);
-            pstm.setInt(7, game.getNumMoves());
+            pstm.setInt(7, game.getNumMosse());
             pstm.executeUpdate();
             System.out.println("PARTITA SALVATA");
             pstm.close();

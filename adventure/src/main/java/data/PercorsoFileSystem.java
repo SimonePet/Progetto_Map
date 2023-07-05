@@ -20,6 +20,6 @@ public class PercorsoFileSystem {
      * @return percorso del file
      */
     public static String trovaPercorso(final String percorso) {
-        return Utils.percorsoAssoluto + File.separator + percorso;
+        return Utils.PERCORSO_ASSOLUTO + File.separator + percorso;
     }
 }

@@ -257,9 +257,9 @@ public class JDialogPorta extends javax.swing.JDialog {
         String codice = txtCodice.getText();
         if(codice.equalsIgnoreCase("2538")){
             lblErrore.setText("CODICE CORRETTO");
-            GNI.setCurrentRoom(GNI.getCurrentRoom().getNord());
-            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
-            Stanza edificioDentro = GNI.getCurrentRoom();
+            GNI.setStanzaCorrente(GNI.getStanzaCorrente().getNord());
+            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_SUONI_STANZE) + GNI.getStanzaCorrente().getNomeStanza(),true);
+            Stanza edificioDentro = GNI.getStanzaCorrente();
             edificioDentro.setRaggiungibile(true);
             edificioDentro.setVisitata(true);
             edificioDentro.setVisibile(true);

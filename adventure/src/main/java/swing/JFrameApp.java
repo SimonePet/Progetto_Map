@@ -232,10 +232,10 @@ public class JFrameApp extends javax.swing.JFrame {
         GameDescription game = engine.getGame();
         Parser parser = engine.getParser();
         try{
-            ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
-            int numMosse = game.getNumMoves();
-            game.setNumMoves(game.getNumMoves()+1);
-            labelNumMosse.setText(""+game.getNumMoves());
+            ParserOutput p = parser.parse(command, game.getComandi(), game.getStanzaCorrente().getObjects(), game.getInventario());
+            int numMosse = game.getNumMosse();
+            game.setNumMosse(game.getNumMosse()+1);
+            labelNumMosse.setText(""+game.getNumMosse());
             if (p == null || p.getCommand() == null) {        
                     doc.insertString(doc.getLength(), "\nNon capisco quello che mi vuoi dire.\n", attributes);
             } else if (p.getCommand() != null && p.getCommand().getTipoComando() == TipoComando.FINE) {
@@ -270,7 +270,7 @@ public class JFrameApp extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+"icona.png");
+        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_STANZE)+"icona.png");
         this.setIconImage(icon.getImage());
         this.setResizable(false);
         jPanel1.setSize(650,550);
@@ -303,9 +303,9 @@ public class JFrameApp extends javax.swing.JFrame {
             Engine e = new Engine(new GiocoNaufragioIsola(),false);
             engine = e;
         }
-        String stanzaCorrente = engine.getGame().getCurrentRoom().getNomeStanza();
+        String stanzaCorrente = engine.getGame().getStanzaCorrente().getNomeStanza();
         try{
-            BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.percorsoImmaginiStanze)+stanzaCorrente+".png"));
+            BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_STANZE)+stanzaCorrente+".png"));
             Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
             jPanel1.setBackground(new Color(0,0,0,0));
@@ -322,16 +322,16 @@ public class JFrameApp extends javax.swing.JFrame {
         }
         lblStanzaCorrente.setText(stanzaCorrente);
         engine.getGame().setUsername(username);
-        labelNumMosse.setText(""+engine.getGame().getNumMoves());
+        labelNumMosse.setText(""+engine.getGame().getNumMosse());
         GameDescription partita = engine.getGame();
-        Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + partita.getCurrentRoom().getNomeStanza(),true);
+        Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_SUONI_STANZE) + partita.getStanzaCorrente().getNomeStanza(),true);
         SimpleAttributeSet attributes = new SimpleAttributeSet();
         Document doc = editor.getDocument();
                
         try{
             doc.insertString(doc.getLength(), "* Adventure v. 0.3 - 2021-2022 *\n", attributes);
             //doc.insertString(doc.getLength(), game.getCurrentRoom().getNomeStanza()+"\n", attributes);
-            doc.insertString(doc.getLength(), partita.getCurrentRoom().getDescrizioneLungaStanza()+"\n", attributes);
+            doc.insertString(doc.getLength(), partita.getStanzaCorrente().getDescrizioneLungaStanza()+"\n", attributes);
             //se è una partita nuova avvia thread per tempo con tempo iniziale a 0 minuti e 0 secondi
             if(!partitaCaricata){
                 //avvia Thread          
@@ -341,8 +341,8 @@ public class JFrameApp extends javax.swing.JFrame {
                 /* altrimenti se è una partita caricata fai ripartire il thread per il tempo
                    dal tempo salvato della partita
                 */
-                timeLabel.setText(""+partita.getNumMinutes()+":"+""+partita.getNumSeconds());                
-                this.thread = new Thread(new ThreadTime(this, partita.getNumMinutes(), partita.getNumSeconds()));
+                timeLabel.setText(""+partita.getNumMinuti()+":"+""+partita.getNumSecondi());
+                this.thread = new Thread(new ThreadTime(this, partita.getNumMinuti(), partita.getNumSecondi()));
                 thread.start();
             }                        
         }catch(BadLocationException ex){

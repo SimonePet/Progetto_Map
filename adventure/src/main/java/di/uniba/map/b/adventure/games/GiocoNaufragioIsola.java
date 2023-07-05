@@ -18,7 +18,6 @@ import di.uniba.map.b.adventure.messaggi.MessaggioOggetti;
 import di.uniba.map.b.adventure.messaggi.MessaggioApprodo;
 
 
-
 import di.uniba.map.b.adventure.GameDescription;
 import di.uniba.map.b.adventure.parser.ParserOutput;
 import di.uniba.map.b.adventure.type.Oggetto;
@@ -48,7 +47,7 @@ import java.util.logging.Logger;
  * debba estendere la classe GameDescription. L'Engine è fatto in modo che possa
  * eseguire qualsiasi gioco che estende GameDescription, in questo modo si
  * possono creare più gioci utilizzando lo stesso Engine.
- *
+ * <p>
  * Diverse migliorie possono essere applicate: - la descrizione del gioco
  * potrebbe essere caricate da file o da DBMS in modo da non modificare il
  * codice sorgente - l'utilizzo di file e DBMS non è semplice poiché all'interno
@@ -87,7 +86,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio per Ovest
         approdo.setMessaggioOvest(MessaggioApprodo.getOvest());
         //Aggiungo la stanza
-        getRooms().add(approdo);
+        getStanze().add(approdo);
 
         // TODO Aggiungere i messaggi di output
         //Istanziazione stanza costa
@@ -109,7 +108,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio per Ovest
         costa.setMessaggioOvest(MessaggioCosta.getOvest());
         //Aggiungo la stanza
-        getRooms().add(costa);
+        getStanze().add(costa);
 
         //Istanziazione stanza bosco
         Stanza bosco = new Stanza(2, MessaggioBosco.getNome());
@@ -130,7 +129,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio per Ovest
         bosco.setMessaggioOvest(MessaggioBosco.getOvest());
         //Aggiungo la stanza
-        getRooms().add(bosco);
+        getStanze().add(bosco);
 
         //Istanziazione stanza covo
         Stanza covo = new Stanza(3, MessaggioCovo.getNome());
@@ -151,7 +150,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio per Ovest
         covo.setMessaggioOvest(MessaggioCovo.getNoOvest());
         //Aggiungo la stanza
-        getRooms().add(covo);
+        getStanze().add(covo);
 
         //Istanziazione stanza edificioDentro
         Stanza edificioDentro = new Stanza(4, MessaggioEdificioDentro.getNome());
@@ -172,7 +171,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio per Ovest
         edificioDentro.setMessaggioOvest(MessaggioEdificioDentro.getNoOvest());
         //Aggiungo la stanza
-        getRooms().add(edificioDentro);
+        getStanze().add(edificioDentro);
 
         //Istanziazione stanza edificioFuori
         Stanza edificioFuori = new Stanza(5, MessaggioEdificioFuori.getNome());
@@ -193,7 +192,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio per Ovest
         edificioFuori.setMessaggioOvest(MessaggioEdificioFuori.getNoOvest());
         //Aggiungo la stanza
-        getRooms().add(edificioFuori);
+        getStanze().add(edificioFuori);
 
         //Istanziazione stanza grotta
         Stanza grotta = new Stanza(6, MessaggioGrotta.getGrottaNome());
@@ -214,7 +213,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio per Ovest
         grotta.setMessaggioOvest(MessaggioGrotta.getNoOvestLuce());
         //Aggiungo la stanza
-        getRooms().add(grotta);
+        getStanze().add(grotta);
 
         //Istanziazione stanza sentiero
         Stanza sentiero = new Stanza(7, MessaggioSentiero.getNome());
@@ -233,7 +232,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         //Imposto il messaggio per Ovest
         sentiero.setMessaggioOvest(MessaggioSentiero.getNoOvest());
         //Aggiungo la stanza
-        getRooms().add(sentiero);
+        getStanze().add(sentiero);
 
         //Imposto la mappa
 
@@ -469,7 +468,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         zattera.setComandiConsentiti(set11);
         approdo.getObjects().add(zattera);
 
-        setCurrentRoom(approdo);
+        setStanzaCorrente(approdo);
         //Suono.stopRiproduzione(getCurrentRoom().getNomeStanza());
 
         //Aggiungo tutti gli oggetti alla lista degli oggetti in game description
@@ -499,7 +498,6 @@ public class GiocoNaufragioIsola extends GameDescription {
     /* nextMove per scrivere su editor del frame */
 
     /**
-     *
      * @param p
      * @param out
      * @param frame
@@ -517,31 +515,31 @@ public class GiocoNaufragioIsola extends GameDescription {
             //move
             switch (comandoRiconosciuto) {
                 case NORD:
-                    ControlGioco.ComandoNord(this, frame, panel, label);
+                    ControlGioco.comandoNord(this, frame, panel, label);
                     break;
                 case SUD:
-                    ControlGioco.ComandoSud(this, frame, panel, label);
+                    ControlGioco.comandoSud(this, frame, panel, label);
                     break;
                 case EST:
-                    ControlGioco.ComandoEst(this, frame, panel, label);
+                    ControlGioco.comandoEst(this, frame, panel, label);
                     break;
                 case OVEST:
-                    ControlGioco.ComandoOvest(this, frame, panel, label);
+                    ControlGioco.comandoOvest(this, frame, panel, label);
                     break;
                 case OSSERVA:
-                    ControlGioco.ComandoOsserva(this, frame, p.getObject(), p.getInvObject());
+                    ControlGioco.comandoOsserva(this, frame, p.getObject(), p.getInvObject());
                     break;
                 case INVENTARIO:
-                    ControlGioco.ComandoInventario(this, frame);
+                    ControlGioco.comandoInventario(this, frame);
                     break;
                 case RACCOGLI:
-                    ControlGioco.ComandoRaccogli(this, frame, p.getObject(), p.getInvObject());
+                    ControlGioco.comandoRaccogli(this, frame, p.getObject(), p.getInvObject());
                     break;
                 case LASCIA:
-                    ControlGioco.ComandoLascia(this, frame, p.getInvObject());
+                    ControlGioco.comandoLascia(this, frame, p.getInvObject());
                     break;
                 case NARRA:
-                    frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
+                    frame.scrviSuEditor(getStanzaCorrente().getDescrizioneLungaStanza());
                     break;
                 case SALVA:
                     String workingDirectory = System.getProperty("user.dir");
@@ -549,42 +547,41 @@ public class GiocoNaufragioIsola extends GameDescription {
                     String fullPath = workingDirectory + File.separator + relativePath;
                     FileMatchController fmc = new FileMatchController("/salvataggioPartita", fullPath);
                     break;
-                case ACCENDI:
-                {
+                case ACCENDI: {
                     try {
-                        ControlGioco.ComandoAccendi(this, frame, p.getInvObject());
+                        ControlGioco.comandoAccendi(this, frame, p.getInvObject());
                     } catch (IOException | InterruptedException ex) {
                         Logger.getLogger(GiocoNaufragioIsola.class.getName()).log(Level.SEVERE, null, ex);
                     }
                 }
-                    break;
+                break;
 
                 case APRI:
-                    ControlGioco.ComandoApri(this, frame, p.getInvObject());
+                    ControlGioco.comandoApri(this, frame, p.getInvObject());
                     break;
                 case LEGGI:
-                    ControlGioco.ComandoLeggi(frame, p.getInvObject(), p.getObject());
+                    ControlGioco.comandoLeggi(frame, p.getInvObject(), p.getObject());
                     break;
                 case FINE:
                     frame.scrviSuEditor("Non sei stato in grado di vincere?? Forse non sei un buon giocatore.");
                     System.exit(0);
                     break;
                 case TAGLIA:
-                    ControlGioco.ComandoTaglia(this, frame, p.getObject());
+                    ControlGioco.comandoTaglia(this, frame, p.getObject());
                     break;
                 case COSTRUISCI:
-                    ControlGioco.ComandoCostruisci(this, frame, p.getObject());
+                    ControlGioco.comandoCostruisci(this, frame, p.getObject());
                     break;
                 case SPOSTA:
-                    ControlGioco.ComandoSposta(this, frame, p.getObject());
+                    ControlGioco.comandoSposta(this, frame, p.getObject());
                     break;
                 case AIUTO:
-                    ControlGioco.ComandoAiuto(this, frame);
+                    ControlGioco.comandoAiuto(this, frame);
                     break;
             }
 
         }
-        frame.scriviSuLabelStanza(frame.getEngine().getGame().getCurrentRoom().getNomeStanza());
+        frame.scriviSuLabelStanza(frame.getEngine().getGame().getStanzaCorrente().getNomeStanza());
     }
 
             /*

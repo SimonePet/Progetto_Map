@@ -6,6 +6,7 @@
 package di.uniba.map.b.adventure;
 
 import java.io.Serializable;
+
 import di.uniba.map.b.adventure.parser.ParserOutput;
 import di.uniba.map.b.adventure.type.Oggetto;
 import di.uniba.map.b.adventure.type.Comando;
@@ -20,140 +21,140 @@ import java.util.Iterator;
 import java.util.List;
 
 /**
- *
  * @author pierpaolo
  */
 public abstract class GameDescription implements Serializable {
     private String nomePartita;
     private String username;
-    private boolean finish=false;
-    private int numMinutes=0;
-    private int numSeconds=0;
-    private int numMoves=0;
-    private int punteggio=100;
-    private final List<Stanza> rooms = new ArrayList<>();
-    private final List<Comando> commands = new ArrayList<>();
-    private final List<Oggetto> inventory = new ArrayList<>();
+    private boolean finish = false;
+    private int numMinuti = 0;
+    private int numSecondi = 0;
+    private int numMosse = 0;
+    private int punteggio = 100;
+    private final List<Stanza> stanze = new ArrayList<>();
+    private final List<Comando> comandi = new ArrayList<>();
+    private final List<Oggetto> inventario = new ArrayList<>();
     private final List<Oggetto> oggettiGioco = new ArrayList<>();
-    private Stanza currentRoom;
+    private Stanza stanzaCorrente;
 
-    public void setPunteggio(){
-        int penalizzazioneMosse = 1*this.getNumMoves();
-        int penalizzazioneMin = 5*this.getNumMinutes();
+    public void setPunteggio() {
+        int penalizzazioneMosse = 1 * this.getNumMosse();
+        int penalizzazioneMin = 5 * this.getNumMinuti();
         int bonusPartitaVinta = 15;
         this.punteggio = this.punteggio - penalizzazioneMosse - penalizzazioneMin;
-        if (this.isFinished()){
+        if (this.isFinished()) {
             punteggio += bonusPartitaVinta;
         }
-        if(punteggio>100){
+        if (punteggio > 100) {
             this.punteggio = 100;
-        }else if(punteggio<0){
+        } else if (punteggio < 0) {
             this.punteggio = 0;
         }
     }
 
-    public int getPunteggio(){
+    public int getPunteggio() {
         return punteggio;
     }
 
-    public String getNomePartita(){
+    public String getNomePartita() {
         return nomePartita;
     }
 
-    public void setNomePartita(String nomePartita){
-        this.nomePartita = nomePartita;
+    public void setNomePartita(final String nomePartitaCorr) {
+        this.nomePartita = nomePartitaCorr;
     }
 
-    public int getNumMoves(){
-        return numMoves;
+    public int getNumMosse() {
+        return numMosse;
     }
 
-    public void setNumMoves(int moves){
-        this.numMoves = moves;
+    public void setNumMosse(final int movesCorr) {
+        this.numMosse = movesCorr;
     }
 
-    public int getNumMinutes(){
-        return numMinutes;
+    public int getNumMinuti() {
+        return numMinuti;
     }
 
-    public void setNumMinutes(int min){
-        this.numMinutes = min;
+    public void setNumMinuti(final int minCorr) {
+        this.numMinuti = minCorr;
     }
 
-    public int getNumSeconds(){
-        return numSeconds;
+    public int getNumSecondi() {
+        return numSecondi;
     }
 
-    public void setNumSeconds(int sec){
-        this.numSeconds = sec;
+    public void setNumSecondi(final int secCor) {
+        this.numSecondi = secCor;
     }
 
-    public boolean isFinished(){
+    public boolean isFinished() {
         return finish;
     }
 
-    public void setUsername(String username){
-        this.username = username;
+    public void setUsername(final String usernameCorr) {
+        this.username = usernameCorr;
     }
 
-    public String getUsername(){
+    public String getUsername() {
         return username;
     }
 
-    public List<Stanza> getRooms() {
-        return rooms;
+    public List<Stanza> getStanze() {
+        return stanze;
     }
 
-    public List<Comando> getCommands() {
-        return commands;
+    public List<Comando> getComandi() {
+        return comandi;
     }
 
-    public Stanza getCurrentRoom() {
-        return currentRoom;
+    public Stanza getStanzaCorrente() {
+        return stanzaCorrente;
     }
 
-    public void setCurrentRoom(Stanza currentRoom) {
-        this.currentRoom = currentRoom;
+    public void setStanzaCorrente(final Stanza currentRoomCorr) {
+        this.stanzaCorrente = currentRoomCorr;
     }
 
-    public List<Oggetto> getInventory() {
-        return inventory;
+    public List<Oggetto> getInventario() {
+        return inventario;
     }
 
     public List<Oggetto> getOggettiGioco() {
         return oggettiGioco;
     }
+
     //Provare ad usare lambda expression
-    public Oggetto getOggettoGioco(String nome){
+    public Oggetto getOggettoGioco(final String nome) {
         Oggetto prossimo = null;
         Iterator<Oggetto> iteratore = oggettiGioco.iterator();
         while (iteratore.hasNext()) {
-            prossimo =iteratore.next();
-            if(prossimo.getNomeOggetto().equalsIgnoreCase(nome)){
+            prossimo = iteratore.next();
+            if (prossimo.getNomeOggetto().equalsIgnoreCase(nome)) {
                 return prossimo;
             }
         }
         return prossimo;
     }
 
-    public Stanza getStanza(String nome){
+    public Stanza getStanza(final String nome) {
         Stanza prossimo = null;
-        Iterator<Stanza> iteratore = rooms.iterator();
+        Iterator<Stanza> iteratore = stanze.iterator();
         while (iteratore.hasNext()) {
-            prossimo =iteratore.next();
-            if(prossimo.getNomeStanza().equalsIgnoreCase(nome)){
+            prossimo = iteratore.next();
+            if (prossimo.getNomeStanza().equalsIgnoreCase(nome)) {
                 return prossimo;
             }
         }
         return prossimo;
     }
 
-    public Comando getComando(String nome){
+    public Comando getComando(final String nome) {
         Comando prossimo = null;
-        Iterator<Comando> iteratore = commands.iterator();
+        Iterator<Comando> iteratore = comandi.iterator();
         while (iteratore.hasNext()) {
-            prossimo =iteratore.next();
-            if(prossimo.getNomeComando().equalsIgnoreCase(nome)){
+            prossimo = iteratore.next();
+            if (prossimo.getNomeComando().equalsIgnoreCase(nome)) {
                 return prossimo;
             }
         }
