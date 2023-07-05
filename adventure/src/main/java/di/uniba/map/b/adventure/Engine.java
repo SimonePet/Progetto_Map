@@ -24,22 +24,27 @@ public class Engine {
     private final GameDescription game;
     private Parser parser;
 
-    public Engine(GameDescription game, boolean partitaCaricata) {
-        this.game = game;
-        if(!partitaCaricata){
+    /**
+     *
+     * @param gameCorr
+     * @param partitaCaricata
+     */
+    public Engine(final GameDescription gameCorr, final boolean partitaCaricata) {
+        this.game = gameCorr;
+        if (!partitaCaricata) {
             try {
                 this.game.init();
-            }catch (Exception ex) {
+            } catch (Exception ex) {
                 System.err.println(ex);
             }
         }
         try {
             //Set<String> stopwords = Utils.loadFileListInSet(new File(".resources/stopwords"));
             String percorsoAssoluto = new File("").getAbsolutePath();
-            String percorsoRelativo="";
-            if(percorsoAssoluto.contains("adventure")){
+            String percorsoRelativo = "";
+            if (percorsoAssoluto.contains("adventure")) {
                 percorsoRelativo = "/resources/stopwords";
-            }else{
+            } else {
                 percorsoRelativo = "/adventure/resources/stopwords";
             }
             String fullPath = percorsoAssoluto + File.separator + percorsoRelativo;
@@ -50,7 +55,9 @@ public class Engine {
         }
     }
 
-
+    /**
+     *
+     */
     public void execute() {
         /*
         System.out.println("================================");
@@ -78,15 +85,27 @@ public class Engine {
         }*/
     }
 
-    public String getCurrentRoomName(){
+    /**
+     *
+     * @return
+     */
+    public String getCurrentRoomName() {
         return game.getCurrentRoom().getNomeStanza();
     }
 
-    public GameDescription getGame(){
+    /**
+     *
+     * @return
+     */
+    public GameDescription getGame() {
         return game;
     }
 
-    public Parser getParser(){
+    /**
+     *
+     * @return
+     */
+    public Parser getParser() {
         return parser;
     }
 
@@ -94,11 +113,10 @@ public class Engine {
     /**
      * @param args the command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
         //Non dovrebbe servire in quanto la partita viene caricata ed inizializzata in JFrameApp
         //Engine engine = new Engine(new GiocoNaufragioIsola());
         //engine.execute();
         FrameStart.main();
     }
-
 }

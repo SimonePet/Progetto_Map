@@ -63,10 +63,6 @@ public class ControlGioco {
                 }catch (Exception e){
                     System.out.println("Errore nell'aggiunta dell'immagine");
                 }
-
-            //move = true;
-            } else {
-                boolean noroom = true;
             }
     }
 
@@ -74,7 +70,7 @@ public class ControlGioco {
         frame.scrviSuEditor(GNI.getCurrentRoom().getMessaggioSud());
         frame.scrviSuEditor("\n");
         if (GNI.getCurrentRoom().getSud() != null && GNI.getCurrentRoom().getSud().getRaggiungibile()) {
-            GNI.setCurrentRoom(GNI.getCurrentRoom().getSud());;
+            GNI.setCurrentRoom(GNI.getCurrentRoom().getSud());
             Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.percorsoSuoniStanze) + GNI.getCurrentRoom().getNomeStanza(),true);
             if(GNI.getCurrentRoom().getVisitata())
                 frame.scrviSuEditor(GNI.getCurrentRoom().getDescrizioneCortaStanza());
@@ -94,9 +90,6 @@ public class ControlGioco {
             }catch (Exception e){
                 System.out.println("Errore nell'aggiunta dell'immagine");
             }
-            //move = true;
-        } else {
-            boolean noroom = true;
         }
     }
 
@@ -125,9 +118,6 @@ public class ControlGioco {
             }catch (Exception e){
                 System.out.println("Errore nell'aggiunta dell'immagine");
             }
-            //move = true;
-        } else {
-            boolean noroom = true;
         }
     }
 
@@ -155,9 +145,6 @@ public class ControlGioco {
             }catch (Exception e){
                 System.out.println("Errore nell'aggiunta dell'immagine");
             }
-            //move = true;
-        } else {
-            boolean noroom = true;
         }
     }
 
@@ -211,18 +198,17 @@ public class ControlGioco {
     public static void ComandoOsserva(GiocoNaufragioIsola GNI, final JFrameApp frame,Oggetto ogg,Oggetto oggInv){
         if(ogg == null && oggInv == null){
             frame.scrviSuEditor(GNI.getCurrentRoom().getOsserva());
-            Oggetto prossimo=null;
+            Oggetto prossimo;
             boolean trovato=false;
-            Iterator<Oggetto> iteratore = GNI.getCurrentRoom().getObjects().iterator();
-            while (iteratore.hasNext()) {
-                prossimo =iteratore.next();
+            for (Oggetto oggetto : GNI.getCurrentRoom().getObjects()) {
+                prossimo = oggetto;
 
-                if(prossimo.isLasciato()){
-                    if(!trovato){
-                        frame.scrviSuEditor("\n"+Messaggio.getOggettiLasciati()+"\n");
+                if (prossimo.isLasciato()) {
+                    if (!trovato) {
+                        frame.scrviSuEditor("\n" + Messaggio.getOggettiLasciati() + "\n");
                     }
-                    frame.scrviSuEditor("-"+prossimo.getNomeOggetto()+";\n");
-                    trovato=true;
+                    frame.scrviSuEditor("-" + prossimo.getNomeOggetto() + ";\n");
+                    trovato = true;
                 }
             }
         } else if (ogg !=null && oggInv == null) {
@@ -355,10 +341,9 @@ public class ControlGioco {
 
     public static void ComandoAiuto(GiocoNaufragioIsola GNI, final JFrameApp frame){
         setComandi(GNI);
-        Oggetto prossimo =null;
-        Iterator<Oggetto> iteratore =GNI.getInventory().iterator();
-        while(iteratore.hasNext()){
-            prossimo =iteratore.next();
+        Oggetto prossimo;
+        for (Oggetto oggetto : GNI.getInventory()) {
+            prossimo = oggetto;
             comandi.addAll(prossimo.getComandiConsentiti());
         }
         Iterator<Comando> iteratore1 =comandi.iterator();

@@ -24,7 +24,7 @@ public final class MessaggioCovo {
     public static String getDescrizioneCorta() {
         return MessaggioCovo.DESCRIZIONE_CORTA;
     }
-    public static String getDescrizioneCompleta () {
+    public static String getDescrizioneCompleta() {
         return MessaggioCovo.DESCRIZIONE_COMPLETA;
     }
     public static String getOsserva() {

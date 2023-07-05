@@ -6,8 +6,18 @@
 package di.uniba.map.b.adventure.games;
 
 import data.FileMatchController;
-import data.Suono;
-import di.uniba.map.b.adventure.messaggi.*;
+//Import dei messaggi
+import di.uniba.map.b.adventure.messaggi.MessaggioCovo;
+import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
+import di.uniba.map.b.adventure.messaggi.MessaggioEdificioDentro;
+import di.uniba.map.b.adventure.messaggi.MessaggioEdificioFuori;
+import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
+import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
+import di.uniba.map.b.adventure.messaggi.MessaggioBosco;
+import di.uniba.map.b.adventure.messaggi.MessaggioOggetti;
+import di.uniba.map.b.adventure.messaggi.MessaggioApprodo;
+
+
 
 import di.uniba.map.b.adventure.GameDescription;
 import di.uniba.map.b.adventure.parser.ParserOutput;
@@ -18,15 +28,17 @@ import di.uniba.map.b.adventure.type.TipoComando;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
 
-import javax.swing.*;
+
+import javax.swing.JPanel;
+import javax.swing.JLabel;
 import java.io.File;
-import java.io.IOException;
+
 import java.io.PrintStream;
-import java.io.Serializable;
+
 import java.util.HashSet;
-import java.util.Iterator;
+
 import java.util.Set;
-import java.util.concurrent.Callable;
+
 
 /**
  * ATTENZIONE: La descrizione del gioco è fatta in modo che qualsiasi gioco
@@ -42,9 +54,12 @@ import java.util.concurrent.Callable;
  *
  * @author pierpaolo
  */
-public class GiocoNaufragioIsola extends GameDescription{
+public class GiocoNaufragioIsola extends GameDescription {
+    /**
+     *
+     */
     @Override
-    public void init() throws Exception {
+    public void init() {
         //Comandi per spostarsi nella mappa
         ControlComandi.initComandi(this);
 
@@ -297,7 +312,7 @@ public class GiocoNaufragioIsola extends GameDescription{
 
         //Cartina correnti marine
         Oggetto cartina = new Oggetto(2, "mappa", MessaggioOggetti.getDescrizioneMappa());
-        cartina.setAlias(new String[]{"cartine", "carta", "cartina", "mappe","carte"});
+        cartina.setAlias(new String[]{"cartine", "carta", "cartina", "mappe", "carte"});
         cartina.setVisibile(true);
         set1.add(this.getComando("lascia"));
         cartina.setComandiConsentiti(set1);
@@ -326,7 +341,7 @@ public class GiocoNaufragioIsola extends GameDescription{
 
         //Lastra
         Oggetto lastra = new Oggetto(5, "lastra", MessaggioOggetti.getDescrizioneLastra());
-        lastra.setAlias(new String[]{"pietra", "lastre", "pietre", "lastra pietra","incisioni","incisione"});
+        lastra.setAlias(new String[]{"pietra", "lastre", "pietre", "lastra pietra", "incisioni", "incisione"});
         lastra.setVisibile(false);
         lastra.setRaccogglibile(false);
         lastra.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliLastra());
@@ -343,7 +358,7 @@ public class GiocoNaufragioIsola extends GameDescription{
 
         //Libro Cifrario
         Oggetto cifrario = new Oggetto(7, "cifrario", MessaggioOggetti.getDescrizioneCifrario());
-        cifrario.setAlias(new String[]{"libro","libri","cifrari"});
+        cifrario.setAlias(new String[]{"libro", "libri", "cifrari"});
         cifrario.setVisibile(true);
         batteria.setComandiConsentiti(set);
         set5.add(this.getComando("leggi"));
@@ -370,7 +385,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         covo.getObjects().add(accetta);
 
         //Corde
-        Oggetto corda = new Oggetto(10, "corda",MessaggioOggetti.getDescrizioneCorda());
+        Oggetto corda = new Oggetto(10, "corda", MessaggioOggetti.getDescrizioneCorda());
         corda.setAlias(new String[]{"corde"});
         corda.setVisibile(true);
         corda.setComandiConsentiti(set6);
@@ -385,7 +400,7 @@ public class GiocoNaufragioIsola extends GameDescription{
 
         //Nave
         Oggetto barca = new Oggetto(12, "barca", MessaggioOggetti.getDescrizioneBarca());
-        barca.setAlias(new String[]{"barchetta","nave","relitto","carcassa","imbarcazione"});
+        barca.setAlias(new String[]{"barchetta", "nave", "relitto", "carcassa", "imbarcazione"});
         barca.setVisibile(true);
         barca.setRaccogglibile(false);
         barca.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliBarca());
@@ -394,7 +409,7 @@ public class GiocoNaufragioIsola extends GameDescription{
 
         //cartello
         Oggetto cartello = new Oggetto(13, "cartello", MessaggioOggetti.getDescrizioneCartello());
-        cartello.setAlias(new String[]{"insegna","scritta"});
+        cartello.setAlias(new String[]{"insegna", "scritta"});
         cartello.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliCartello());
         cartello.setVisibile(true);
         cartello.setRaccogglibile(false);
@@ -412,7 +427,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         edificioDentro.getObjects().add(armadio);
 
         Oggetto tv = new Oggetto(15, "tv", MessaggioOggetti.getDescrizioneTv());
-        tv.setAlias(new String[]{"televisione","tivvu","televisore"});
+        tv.setAlias(new String[]{"televisione", "tivvu", "televisore"});
         tv.setRaccogglibile(false);
         tv.setVisibile(true);
         tv.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliTv());
@@ -428,7 +443,7 @@ public class GiocoNaufragioIsola extends GameDescription{
         edificioDentro.getObjects().add(divano);
 
         Oggetto albero = new Oggetto(17, "albero", MessaggioOggetti.getDescrizioneAlbero());
-        albero.setAlias(new String[]{"alberi","legna","tronco","rami","legname"});
+        albero.setAlias(new String[]{"alberi", "legna", "tronco", "rami", "legname"});
         albero.setRaccogglibile(false);
         albero.setVisibile(true);
         albero.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliAlbero());
@@ -437,9 +452,9 @@ public class GiocoNaufragioIsola extends GameDescription{
         bosco.getObjects().add(albero);
 
         Oggetto legno = new Oggetto(18, "legno", MessaggioOggetti.getDescrizioneLegno());
-        legno.setAlias(new String[]{"legname","legna"});
+        legno.setAlias(new String[]{"legname", "legna"});
         legno.setRaccogglibile(true);
-        legno.setVisibile(false);;
+        legno.setVisibile(false);
         set10.add(this.getComando("costruisci"));
         legno.setComandiConsentiti(set10);
         bosco.getObjects().add(legno);
@@ -479,10 +494,17 @@ public class GiocoNaufragioIsola extends GameDescription{
 
 
     /* nextMove per scrivere su editor del frame */
+
+    /**
+     *
+     * @param p
+     * @param out
+     * @param frame
+     * @param panel
+     * @param label
+     */
     @Override
-    public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame,final JPanel panel,JLabel label) {
-        boolean noroom = false;
-        boolean move = false;
+    public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame, final JPanel panel, final JLabel label) {
         //frame.writeTextOnEditor("\n"+getCurrentRoom().getNomeStanza()+"\n");
         frame.scrviSuEditor("\n\n");
         if (p.getCommand() == null) {
@@ -492,28 +514,28 @@ public class GiocoNaufragioIsola extends GameDescription{
             //move
             switch (comandoRiconosciuto) {
                 case NORD:
-                    ControlGioco.ComandoNord(this,frame,panel,label);
+                    ControlGioco.ComandoNord(this, frame, panel, label);
                     break;
                 case SUD:
-                    ControlGioco.ComandoSud(this,frame,panel,label);
+                    ControlGioco.ComandoSud(this, frame, panel, label);
                     break;
                 case EST:
-                    ControlGioco.ComandoEst(this,frame,panel,label);
+                    ControlGioco.ComandoEst(this, frame, panel, label);
                     break;
                 case OVEST:
-                    ControlGioco.ComandoOvest(this,frame,panel,label);
+                    ControlGioco.ComandoOvest(this, frame, panel, label);
                     break;
-                case OSSERVA: ;
-                    ControlGioco.ComandoOsserva(this,frame,p.getObject(),p.getInvObject());
+                case OSSERVA:
+                    ControlGioco.ComandoOsserva(this, frame, p.getObject(), p.getInvObject());
                     break;
                 case INVENTARIO:
-                    ControlGioco.ComandoInventario(this,frame);
+                    ControlGioco.ComandoInventario(this, frame);
                     break;
                 case RACCOGLI:
-                    ControlGioco.ComandoRaccogli(this,frame,p.getObject(),p.getInvObject());
+                    ControlGioco.ComandoRaccogli(this, frame, p.getObject(), p.getInvObject());
                     break;
                 case LASCIA:
-                    ControlGioco.ComandoLascia(this,frame,p.getInvObject());
+                    ControlGioco.ComandoLascia(this, frame, p.getInvObject());
                     break;
                 case NARRA:
                     frame.scrviSuEditor(getCurrentRoom().getDescrizioneLungaStanza());
@@ -522,32 +544,32 @@ public class GiocoNaufragioIsola extends GameDescription{
                     String workingDirectory = System.getProperty("user.dir");
                     String relativePath = "adventure/resources";
                     String fullPath = workingDirectory + File.separator + relativePath;
-                    FileMatchController FMC = new FileMatchController("/salvataggioPartita", fullPath);
+                    FileMatchController fmc = new FileMatchController("/salvataggioPartita", fullPath);
                     break;
                 case ACCENDI:
-                    ControlGioco.ComandoAccendi(this,frame,p.getInvObject());
+                    ControlGioco.ComandoAccendi(this, frame, p.getInvObject());
                     break;
                 case APRI:
-                    ControlGioco.ComandoApri(this,frame,p.getInvObject());
+                    ControlGioco.ComandoApri(this, frame, p.getInvObject());
                     break;
                 case LEGGI:
-                    ControlGioco.ComandoLeggi(frame,p.getInvObject(), p.getObject());
+                    ControlGioco.ComandoLeggi(frame, p.getInvObject(), p.getObject());
                     break;
                 case FINE:
                     frame.scrviSuEditor("Non sei stato in grado di vincere?? Forse non sei un buon giocatore.");
                     System.exit(0);
                     break;
                 case TAGLIA:
-                    ControlGioco.ComandoTaglia(this,frame,p.getObject());
+                    ControlGioco.ComandoTaglia(this, frame, p.getObject());
                     break;
                 case COSTRUISCI:
-                    ControlGioco.ComandoCostruisci(this,frame,p.getObject());
+                    ControlGioco.ComandoCostruisci(this, frame, p.getObject());
                     break;
                 case SPOSTA:
-                    ControlGioco.ComandoSposta(this,frame,p.getObject());
+                    ControlGioco.ComandoSposta(this, frame, p.getObject());
                     break;
                 case AIUTO:
-                    ControlGioco.ComandoAiuto(this,frame);
+                    ControlGioco.ComandoAiuto(this, frame);
                     break;
             }
 
@@ -669,10 +691,10 @@ public class GiocoNaufragioIsola extends GameDescription{
     */
 
 
-
-    private void end(PrintStream out) {
+    /*
+    private void end(final PrintStream out) {
         out.println("Premi il pulsante del giocattolo e in seguito ad una forte esplosione la tua casa prende fuoco...\ntu e tuoi famigliari cercate invano di salvarvi e venite avvolti dalle fiamme...\nè stata una morte CALOROSA...addio!");
         System.exit(0);
     }
-
+    */
 }
