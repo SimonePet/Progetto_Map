@@ -90,7 +90,7 @@ public class Engine {
      * @return
      */
     public String getCurrentRoomName() {
-        return game.getCurrentRoom().getNomeStanza();
+        return game.getStanzaCorrente().getNomeStanza();
     }
 
     /**

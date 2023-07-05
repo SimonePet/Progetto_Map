@@ -41,35 +41,35 @@ public final class ControlComandi {
         Comando nord = new Comando(TipoComando.NORD, "nord");
         nord.setAlias(new String[]{"Nord", "NORD"});
         nord.setDescrizione("Nord :\t Comando che ti permette di spostarti a nord rispetto alla tua posizione;");
-        gni.getCommands().add(nord);
+        gni.getComandi().add(nord);
     }
 
     private static void initSud(final GiocoNaufragioIsola gni) {
         Comando sud = new Comando(TipoComando.SUD, "sud");
         sud.setAlias(new String[]{"Sud", "SUD"});
         sud.setDescrizione("Sud :\t Comando che ti permette di spostarti a sud rispetto alla tua posizione;");
-        gni.getCommands().add(sud);
+        gni.getComandi().add(sud);
     }
 
     private static void initEst(final GiocoNaufragioIsola gni) {
         Comando est = new Comando(TipoComando.EST, "est");
         est.setAlias(new String[]{"Est", "EST"});
         est.setDescrizione("Est :\t Comando che ti permette di spostarti a est rispetto alla tua posizione;");
-        gni.getCommands().add(est);
+        gni.getComandi().add(est);
     }
 
     private static void initOvest(final GiocoNaufragioIsola gni) {
         Comando ovest = new Comando(TipoComando.OVEST, "ovest");
         ovest.setAlias(new String[]{"Ovest", "OVEST"});
         ovest.setDescrizione("Ovest :\t Comando che ti permette di spostarti a ovest rispetto alla tua posizione;");
-        gni.getCommands().add(ovest);
+        gni.getComandi().add(ovest);
     }
 
     private static void initIventario(final GiocoNaufragioIsola gni) {
         Comando inventario = new Comando(TipoComando.INVENTARIO, "inventario");
         inventario.setAlias(new String[]{"inv"});
         inventario.setDescrizione("Inventario : Comando che ti permette di visualizzare gli oggetti nel tuo inventario;");
-        gni.getCommands().add(inventario);
+        gni.getComandi().add(inventario);
     }
 
     private static void initOsserva(final GiocoNaufragioIsola gni) {
@@ -77,14 +77,14 @@ public final class ControlComandi {
         osserva.setAlias(new String[]{"guarda", "vedi", "trova", "cerca", "descrivi"});
         osserva.setDescrizione("Osserva : Comando che senza parametri di restituisce la descrizione della stanza in cui ti trovi;\n"
                 + "Osserva [oggetto] : Comando che con parametri come gli oggetti del gioco ti restituisce la loro descrizione;");
-        gni.getCommands().add(osserva);
+        gni.getComandi().add(osserva);
     }
 
     private static void initRaccogli(final GiocoNaufragioIsola gni) {
         Comando raccogli = new Comando(TipoComando.RACCOGLI, "raccogli");
         raccogli.setAlias(new String[]{"prendi"});
         raccogli.setDescrizione("Raccogli [oggetto] : Comando che quando invocato su oiggetti validi li aggiunge al tuo inventario;");
-        gni.getCommands().add(raccogli);
+        gni.getComandi().add(raccogli);
 
     }
 
@@ -92,82 +92,82 @@ public final class ControlComandi {
         Comando apri = new Comando(TipoComando.APRI, "apri");
         apri.setAlias(new String[]{});
         apri.setDescrizione("Apri [oggetto_inventario] : ti permette di aprire oggetti che possono contenere altri oggetti;");
-        gni.getCommands().add(apri);
+        gni.getComandi().add(apri);
     }
 
     private static void initSposta(final GiocoNaufragioIsola gni) {
         Comando sposta = new Comando(TipoComando.SPOSTA, "sposta");
         sposta.setAlias(new String[]{"spingi", "tira", "muovi"});
         sposta.setDescrizione("Premi [oggetto] : Comando che non so ancora cosa faccia;");
-        gni.getCommands().add(sposta);
+        gni.getComandi().add(sposta);
     }
 
     private static void initAcced(final GiocoNaufragioIsola gni) {
         Comando accendi = new Comando(TipoComando.ACCENDI, "accendi");
         accendi.setAlias(new String[]{"illumina"});
         accendi.setDescrizione("Accendi [oggetto_inventario] : comando che ti permette di accendere degli oggetti del tuo inventario;");
-        gni.getCommands().add(accendi);
+        gni.getComandi().add(accendi);
     }
 
     private static void initUtilizza(final GiocoNaufragioIsola gni) {
         Comando utilizza = new Comando(TipoComando.UTILIZZA, "utilizza");
         utilizza.setAlias(new String[]{"usa"});
         utilizza.setDescrizione("Utilizza [oggetto] : Comando che non so ancora cosa faccia;");
-        gni.getCommands().add(utilizza);
+        gni.getComandi().add(utilizza);
     }
 
     private static void initEnd(final GiocoNaufragioIsola gni) {
         Comando end = new Comando(TipoComando.FINE, "end");
         end.setAlias(new String[]{"end", "fine", "esci", "muori", "ammazzati", "ucciditi", "suicidati", "exit"});
         end.setDescrizione("End : Comando che ti permette di abbandonare il gioco;");
-        gni.getCommands().add(end);
+        gni.getComandi().add(end);
     }
 
     private static void initLascia(final GiocoNaufragioIsola gni) {
         Comando lascia = new Comando(TipoComando.LASCIA, "lascia");
         lascia.setAlias(new String[]{"togli", "butta", "abbandona", "posa"});
         lascia.setDescrizione("Lascia [oggetto_inventario] : Comando che ti permette di lasciare degli oggetti del tuo inventario;");
-        gni.getCommands().add(lascia);
+        gni.getComandi().add(lascia);
     }
 
     private static void initNarra(final GiocoNaufragioIsola gni) {
         Comando narra = new Comando(TipoComando.NARRA, "narra");
         narra.setAlias(new String[]{"racconta", "narrami", "raccontami"});
         narra.setDescrizione("Narra : Comando che ti restituisce la descrizione lunga della stanza in cui ti trovi;");
-        gni.getCommands().add(narra);
+        gni.getComandi().add(narra);
     }
 
     private static void initSalva(final GiocoNaufragioIsola gni) {
         Comando salva = new Comando(TipoComando.SALVA, "salva");
         salva.setAlias(new String[]{});
         salva.setDescrizione("Salva : Comando che ti permette di salvare la partita in corso;");
-        gni.getCommands().add(salva);
+        gni.getComandi().add(salva);
     }
 
     private static void initLeggere(final GiocoNaufragioIsola gni) {
         Comando leggere = new Comando(TipoComando.LEGGI, "leggi");
         leggere.setAlias(new String[]{"leggere"});
         leggere.setDescrizione("Leggere [oggettto] : Comando che ti permette di leggere qualsiasi tipo di scritta;");
-        gni.getCommands().add(leggere);
+        gni.getComandi().add(leggere);
     }
 
     private static void initTaglia(final GiocoNaufragioIsola gni) {
         Comando taglia = new Comando(TipoComando.TAGLIA, "taglia");
         taglia.setAlias(new String[]{"abbatti"});
         taglia.setDescrizione("Taglia [oggetto] : Comando che ti permette di tagliare oggetti mediante oggetti del tuo inventario.");
-        gni.getCommands().add(taglia);
+        gni.getComandi().add(taglia);
     }
 
     private static void initCostruisci(final GiocoNaufragioIsola gni) {
         Comando costruisci = new Comando(TipoComando.COSTRUISCI, "costruisci");
         costruisci.setAlias(new String[]{"crea", "assembla"});
         costruisci.setDescrizione("Costruisci [oggetto] : Comando che ti permette di costruire qualcosa mediante gli oggetti nel tuo inventario;");
-        gni.getCommands().add(costruisci);
+        gni.getComandi().add(costruisci);
     }
 
     private static void initAiuto(final GiocoNaufragioIsola gni) {
         Comando aiuto = new Comando(TipoComando.AIUTO, "aiuto");
         aiuto.setAlias(new String[]{"help", "-h", "--help"});
-        gni.getCommands().add(aiuto);
+        gni.getComandi().add(aiuto);
     }
 }

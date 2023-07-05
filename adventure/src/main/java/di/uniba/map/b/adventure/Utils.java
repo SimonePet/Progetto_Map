@@ -6,7 +6,6 @@
 package di.uniba.map.b.adventure;
 
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
-import di.uniba.map.b.adventure.type.Comando;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -16,21 +15,24 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import swing.JDialogPorta;
 import swing.JFrameApp;
 
 /**
- *
  * @author pierpaolo
  */
-public class Utils {
-    public static String percorsoAssoluto = calcolaPercorsoAssoluto();
-    public static String estensioneWav= ".wav";
-    public static String percorsoImmaginiIcone = "adventure"+File.separator +"resources"+File.separator+"immagini"+File.separator+"icone" + File.separator;
-    public static String percorsoSuoniStanze = "adventure"+File.separator +"resources"+File.separator+"suoni"+File.separator+"stanze" + File.separator;
-    public static String percorsoSuoniOggetti = "adventure"+File.separator +"resources"+File.separator+"suoni"+File.separator+"oggetti" + File.separator;
-    public static String percorsoImmaginiStanze = "adventure"+File.separator +"resources"+File.separator+"immagini"+File.separator+"stanze" + File.separator;
-    public static Set<String> loadFileListInSet(File file) throws IOException {
+public final class Utils {
+    private Utils() {
+    }
+    public static final String PERCORSO_ASSOLUTO = calcolaPercorsoAssoluto();
+    public static final String ESTENSIONE_WAV = ".wav";
+    public static final String PERCORSO_IMMAGINI_ICONE = "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "icone" + File.separator;
+    public static final String PERCORSO_SUONI_STANZE = "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "stanze" + File.separator;
+    public static final String PERCORSO_SUONI_OGGETTI = "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "oggetti" + File.separator;
+    public static final String PERCORSO_IMMAGINI_STANZE = "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "stanze" + File.separator;
+
+    public static Set<String> loadFileListInSet(final File file) throws IOException {
         Set<String> set = new HashSet<>();
         BufferedReader reader = new BufferedReader(new FileReader(file));
         while (reader.ready()) {
@@ -40,7 +42,7 @@ public class Utils {
         return set;
     }
 
-    public static List<String> parseString(String string, Set<String> stopwords) {
+    public static List<String> parseString(final String string, final Set<String> stopwords) {
         List<String> tokens = new ArrayList<>();
         String[] split = string.toLowerCase().split("\\s+");
         for (String t : split) {
@@ -51,7 +53,7 @@ public class Utils {
         return tokens;
     }
 
-    private static String calcolaPercorsoAssoluto(){
+    private static String calcolaPercorsoAssoluto() {
         String percorsoAss = System.getProperty("user.dir");
         String sostituzione = "Progetto_Map";
         int indiceInizio = percorsoAss.indexOf("Progetto_Map");
@@ -63,13 +65,13 @@ public class Utils {
         }
         return percorsoAss;
     }
-    
-    public static void generaFinestraPorta(JFrameApp frame, GiocoNaufragioIsola GNI){
-        JDialogPorta d = new JDialogPorta(frame,true, GNI);
+
+    public static void generaFinestraPorta(final JFrameApp frame, final GiocoNaufragioIsola gni) {
+        JDialogPorta d = new JDialogPorta(frame, true, gni);
         d.setVisible(true);
     }
 
-    public static String sostituisciPrimoCarattereMaiuscolo(String input) {
+    public static String sostituisciPrimoCarattereMaiuscolo(final String input) {
         if (input == null || input.isEmpty()) {
             return input; // Restituisci l'input originale se la stringa è nulla o vuota
         }

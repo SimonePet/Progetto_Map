@@ -30,19 +30,19 @@ public class ThreadTime implements Runnable{
         for(int i=0;i<10000;i++){
             if(i%3600==0) {
                 ore++;
-                e.getGame().setNumSeconds(numSecondi);
-                e.getGame().setNumMinutes(numMinuti);
+                e.getGame().setNumSecondi(numSecondi);
+                e.getGame().setNumMinuti(numMinuti);
             }
             else{
                 if (i % 60 == 0) {
                     this.numMinuti++;
                     this.numSecondi = 0;
-                    e.getGame().setNumSeconds(numSecondi);
-                    e.getGame().setNumMinutes(numMinuti);
+                    e.getGame().setNumSecondi(numSecondi);
+                    e.getGame().setNumMinuti(numMinuti);
                 }
                 else {
                     this.numSecondi++;
-                    e.getGame().setNumSeconds(numSecondi);
+                    e.getGame().setNumSecondi(numSecondi);
                 }
             }
             printTime(ore+":"+this.numMinuti+":"+this.numSecondi);

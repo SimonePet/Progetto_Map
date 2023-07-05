@@ -11,8 +11,6 @@ import di.uniba.map.b.adventure.GameDescription;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -143,9 +141,9 @@ public class JDialogAbbandona extends javax.swing.JDialog {
                 //salva partita su DB
                 String username = engine.getGame().getUsername();
                 boolean b = engine.getGame().isFinished();
-                int numSeconds = engine.getGame().getNumSeconds();
-                int numMinutes = engine.getGame().getNumMinutes();
-                int numMoves = engine.getGame().getNumMoves();
+                int numSeconds = engine.getGame().getNumSecondi();
+                int numMinutes = engine.getGame().getNumMinuti();
+                int numMoves = engine.getGame().getNumMosse();
                 GameDescription game = engine.getGame();
                 db.salvaPartita(nomePartita, username, b, numSeconds, numMinutes, numMoves, game);
                 System.out.println("PARTITA SALVATA SU DB\n");
