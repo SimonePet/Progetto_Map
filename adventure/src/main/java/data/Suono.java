@@ -79,6 +79,54 @@ public class Suono {
         thread = audioThread;
     }
 
+    public static void riproduciTracciaa(final String percorsoRel, final boolean loop) {
+        //lock.lock();
+        Thread audioThread = new Thread(() -> {
+            try {
+                String estensione = ".wav";
+                String percorso = percorsoRel + estensione;
+                System.out.println(percorso);
+                File audioFile = new File(percorso);
+                AudioInputStream audioInputStream = AudioSystem.getAudioInputStream(audioFile);
+                AudioFormat audioFormat = audioInputStream.getFormat();
+                DataLine.Info info = new DataLine.Info(SourceDataLine.class, audioFormat);
+                SourceDataLine line = (SourceDataLine) AudioSystem.getLine(info);
+
+                line.open(audioFormat);
+                line.start();
+                lineOptional = Optional.of(line);
+                suonoAttivo = true;
+
+                byte[] buffer = new byte[BYTETRACCIA];
+                int bytesRead;
+
+                do {
+                    while ((bytesRead = audioInputStream.read(buffer)) != -1) {
+                        line.write(buffer, 0, bytesRead);
+                    }
+                    audioInputStream.close();
+                    audioInputStream = AudioSystem.getAudioInputStream(audioFile);
+                } while (loop && suonoAttivo);
+
+                line.drain();
+            } catch (IOException | LineUnavailableException | UnsupportedAudioFileException e) {
+                System.err.println(e.getMessage());
+            } finally {
+                if (lineOptional.isPresent()) {
+                    SourceDataLine line = lineOptional.get();
+                    line.stop();
+                    line.close();
+                    lineOptional = Optional.empty();
+                    suonoAttivo = false;
+                    //lock.unlock();
+                }
+            }
+        });
+        audioThread.start();
+        System.out.println("Avviato nuovo thread");
+        thread = audioThread;
+    }
+
     /**
      *
      */
