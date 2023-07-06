@@ -153,6 +153,7 @@ public class JDialogStats extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
+        this.setResizable(false);
         ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
         this.setIconImage(icon.getImage());
         lblSaluto.setText("CIAO "+username.toUpperCase());
