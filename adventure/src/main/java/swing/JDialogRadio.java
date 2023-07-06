@@ -4,10 +4,17 @@
  */
 package swing;
 
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.JTextArea;
+import javax.imageio.ImageIO;
+import javax.swing.*;
+
+import data.PercorsoFileSystem;
+import di.uniba.map.b.adventure.Utils;
 import socket.Client;
 import socket.Server;
 
@@ -185,7 +192,31 @@ public class JDialogRadio extends javax.swing.JDialog {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        Color c = new Color(255,255,255,150);
+        jScrollPane1.getViewport().setOpaque(false);
+        jTextArea1.setBackground(c);
+        jTextArea1.setOpaque(false);
+        jScrollPane1.setOpaque(false);
+        jScrollPane1.setBackground(c);
+        jPanel2.setOpaque(false);
+        jPanel2.setBackground(c);
+        jButton1.setBackground(c);
+        jButton1.setOpaque(false);
+        jButton2.setOpaque(false);
+        jPanel2.setBackground(c);
         try {
+                BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_CONVERSAZIONE+".png")));
+                Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon imageIcon = new ImageIcon(dimg);
+                jPanel1.setBackground(new Color(0,0,0,0));
+                jPanel1.setOpaque(false);
+                jPanel1.setBorder(BorderFactory.createEmptyBorder());
+                jPanel1.setLayout(new BorderLayout());
+                JLabel background = new JLabel(imageIcon);
+                jPanel1.add(background);
+                background.setLayout(new FlowLayout());
+                jPanel1.revalidate();
+                jPanel1.repaint();
             // avvia server socket
             avviaServer();
             // avvia connessione client socket al server socket
@@ -201,15 +232,10 @@ public class JDialogRadio extends javax.swing.JDialog {
             messaggio = jRadioButton1.getText();
         }else{
             messaggio = jRadioButton2.getText();
-        }       
-        try {
-            //invia messaggio al server socket
-            numDomanda++;
-            Client.inviaMessaggio(messaggio);
-            Server.elaboraMessaggio();
-        } catch (IOException ex) {
-            System.err.println(ex.getMessage());
         }
+        //invia messaggio al server socket
+        numDomanda++;
+        Client.inviaMessaggio(messaggio);
         setNuoveDomande();
     }//GEN-LAST:event_btnConfermaActionPerformed
 
@@ -235,14 +261,13 @@ public class JDialogRadio extends javax.swing.JDialog {
 
     public static void avviaServer() throws IOException{
         Server threadServer = new Server();
-        Server.setTextArea(jTextArea1);
         Thread t1 = new Thread(threadServer);
         t1.start();
         threadS= t1;
     }
     
     public static void avviaClient(){
-        Client client = new Client("localhost",1234);
+        Client client = new Client("localhost",1234,jTextArea1);
         Thread t2 = new Thread(client);
         t2.start();
         threadC = t2;
@@ -263,8 +288,9 @@ public class JDialogRadio extends javax.swing.JDialog {
             jRadioButton1.setText("Si era 2538");
             jRadioButton2.setText("Non lo ricordo adesso ma era presente");           
         }else if(numDomanda==5){
-            jRadioButton1.setText("");
-            jRadioButton2.setText("");  
+            jRadioButton1.setVisible(false);
+            jRadioButton2.setVisible(false);
+            btnConferma.setVisible(false);
         }
     }
      
@@ -324,7 +350,7 @@ public class JDialogRadio extends javax.swing.JDialog {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JScrollPane jScrollPane1;
-    private static javax.swing.JTextArea jTextArea1;
+    public static javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
     private static int numDomanda = 1; 
     private static String nomeUtente;

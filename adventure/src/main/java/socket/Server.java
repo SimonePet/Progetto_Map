@@ -11,94 +11,75 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 import javax.swing.JTextArea;
+
+import di.uniba.map.b.adventure.messaggi.MessaggiConversazione;
+
 /**
- *
  * @author Giannantonio
  */
-public class Server implements Runnable{
-    private static int port=1234;
+public class Server implements Runnable {
+    private static int port = 1234;
     private static ServerSocket serverSocket;
     private static PrintWriter writer;
     private static Socket clientSocket;
-    private static JTextArea textArea;
     private static String nomeUtente;
-    
+
     @Override
     public void run() {
         try {
             serverSocket = new ServerSocket(port);
             System.out.println("Server avviato. In attesa di connessioni...");
+            clientSocket = serverSocket.accept();
+            System.out.println("Nuova connessione accettata.");
             while (true) {
-                clientSocket = serverSocket.accept();
-                System.out.println("Nuova connessione accettata.");
+                elaboraMessaggio();
             }
         } catch (IOException e) {
             System.out.println("Errore durante l'avvio del server: " + e.getMessage());
         }
     }
-    
-    public static void elaboraMessaggio() throws IOException{
+
+    public static void elaboraMessaggio() throws IOException {
         String messaggioClient = leggiMessaggioClient();
-        if(messaggioClient.equalsIgnoreCase("Aiuto venitemi a salvare")){
-            inviaRispostaClient("Al momento siamo impegnati in altre missioni più urgenti. Teniamoci in contatto, tra 5/6 giorni forse passeremo. \nMa come ti chiami?");
-            scriviRispostaTextArea("Al momento siamo impegnati in altre missioni più urgenti.\nTeniamoci in contatto, tra 5/6 giorni forse passeremo. \nMa come ti chiami?\n");
-        }
-        else if(messaggioClient.equalsIgnoreCase("perfavore portatemi una birra")){
-            inviaRispostaClient("Sta arrivando un elicottero per risolvere questa questione di stato.\n" +
-            "\nMa come ti chiami?");
-            scriviRispostaTextArea("Sta arrivando un elicottero per risolvere questa questione di stato.\n" +
-            "\nMa come ti chiami?\n");
-        }else if(messaggioClient.contains("Mi chiamo")){
-            inviaRispostaClient("Potevi scegliere un nome migliore. Ma dove ti trovi?");
-            scriviRispostaTextArea("Potevi scegliere un nome migliore. Ma dove ti trovi?\n");
-        }
-        else if(messaggioClient.equalsIgnoreCase("Non ho accettato i diritti sulla privacy")){
-            inviaRispostaClient("Le inviamo subito un contratto in PDF, lo firmi e lo rispedisca. Ma dove ti trovi?\n");
-            scriviRispostaTextArea("Le inviamo subito un contratto in PDF, lo firmi e lo rispedisca. Ma dove ti trovi?\n");            
-        }
-        else if(messaggioClient.equalsIgnoreCase("Mi trovo su un'isola deserta")){
-            inviaRispostaClient("In bocca al lupo noi non possiamo aiutarti. \nMa per caso l'edificio chiedeva un codice?\n");
-            scriviRispostaTextArea("In bocca al lupo noi non possiamo aiutarti.\nMa per caso l'edificio chiedeva un codice? \n");              
-        }
-        else if(messaggioClient.equalsIgnoreCase("Mi trovo in vacanza")){
-            inviaRispostaClient("Beato te.\nMa per caso l'edificio chiedeva un codice? \n");
-            scriviRispostaTextArea("Beato te.\nMa per caso l'edificio chiedeva un codice? \n");             
-        }
-        else if(messaggioClient.equalsIgnoreCase("Si era 2538")){
-            inviaRispostaClient("Allora ti trovi in una vecchia sede militare. Hai presente l'armadio situato all'interno dell'edificio?\n"
-                    + "Bene, nasconde un vecchio covo militare. Basterà spostarlo per trovare tutto quello\n"
-                    + "di cui hai bisogno. Buona fortuna, spero di incontrarti vivo e non come un cadavere.");
-            scriviRispostaTextArea("Allora ti trovi in una vecchia sede militare. Hai presente l'armadio situato all'interno dell'edificio?\n"
-                    + "Bene, nasconde un vecchio covo militare. Basterà spostarlo per trovare tutto quello\n"
-                    + "di cui hai bisogno. Buona fortuna, spero di incontrarti vivo e non come un cadavere.");
-        }
-        else if(messaggioClient.equalsIgnoreCase("Non lo ricordo adesso ma era presente")){
-            inviaRispostaClient("Allora ti trovi in una vecchia sede militare. Hai presente l'armadio situato all'interno dell'edificio?\n"
-                    + "Bene, nasconde un vecchio covo militare. Basterà spostarlo per trovare tutto quello\n"
-                    + "di cui hai bisogno. Buona fortuna, spero di incontrarti vivo e non come un cadavere.");
-            scriviRispostaTextArea("Allora ti trovi in una vecchia sede militare. Hai presente l'armadio situato all'interno dell'edificio?\n"
-                    + "Bene, nasconde un vecchio covo militare. Basterà spostarlo per trovare tutto quello\n"
-                    + "di cui hai bisogno. Buona fortuna, spero di incontrarti vivo e non come un cadavere.");           
+        if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_1_OPZ_1)) {
+            inviaRispostaClient(MessaggiConversazione.MSG_RADIO_1_OPZ_1);
+            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_1_OPZ_1);
+        } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_1_OPZ_2)) {
+            inviaRispostaClient(MessaggiConversazione.MSG_RADIO_1_OPZ_2);
+            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_1_OPZ_2);
+        } else if (messaggioClient.contains(MessaggiConversazione.MI_CHIAMO)) {
+            inviaRispostaClient(MessaggiConversazione.MSG_RADIO_2_OPZ_1);
+            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_2_OPZ_1);
+        } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_2_OPZ_1)) {
+            inviaRispostaClient(MessaggiConversazione.MSG_RADIO_2_OPZ_2);
+            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_2_OPZ_2);
+        } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_3_OPZ_1)) {
+            inviaRispostaClient(MessaggiConversazione.MSG_RADIO_3_OPZ_1);
+            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_3_OPZ_1);
+        } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_3_OPZ_2)) {
+            inviaRispostaClient(MessaggiConversazione.MSG_RADIO_3_OPZ_2);
+            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_3_OPZ_2);
+        } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_4_OPZ_1)) {
+            inviaRispostaClient(MessaggiConversazione.RISPOSTA_FINALE);
+        } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_4_OPZ_2)) {
+            inviaRispostaClient(MessaggiConversazione.RISPOSTA_FINALE);
         }
     }
-        
-    public static String leggiMessaggioClient() throws IOException{
+
+    public static String leggiMessaggioClient() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         String messaggioClient = reader.readLine();
-        System.out.println("SERVER:"+" Messaggio ricevuto dal client: " + messaggioClient);       
+        System.out.println("SERVER:" + " Messaggio ricevuto dal client: " + messaggioClient);
         return messaggioClient;
     }
-    
-    public static void inviaRispostaClient(String messaggio) throws IOException{
+
+    public static void inviaRispostaClient(String messaggio) throws IOException {
         writer = new PrintWriter(clientSocket.getOutputStream(), true);
-        // Esempio di invio di una risposta al client           
+        // Esempio di invio di una risposta al client
+        System.out.println("PIPPO");
         writer.println(messaggio);
     }
-    
-    public static void scriviRispostaTextArea(String messaggio){
-        textArea.setText(textArea.getText()+ " "+messaggio);
-    }
-        
+
     public static void stop() {
         try {
             serverSocket.close();
@@ -106,14 +87,10 @@ public class Server implements Runnable{
             System.out.println("Errore durante la chiusura del server: " + e.getMessage());
         }
     }
-    
-    public static void setTextArea(JTextArea txtArea){
-        textArea = txtArea;
-    }
-    
-    public static void setNomeUtente(String username){
+
+    public static void setNomeUtente(String username) {
         nomeUtente = username;
     }
-    
+
 
 }

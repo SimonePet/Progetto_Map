@@ -31,7 +31,8 @@ public final class Utils {
     public static final String PERCORSO_SUONI_STANZE = "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "stanze" + File.separator;
     public static final String PERCORSO_SUONI_OGGETTI = "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "oggetti" + File.separator;
     public static final String PERCORSO_IMMAGINI_STANZE = "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "stanze" + File.separator;
-
+    public static final String PERCORSO_IMMAGINI_CONVERSAZIONE = "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "conversazione" + File.separator+"conversazione";
+    public static final String PERCORSO_SUONI_CONVERSAZIONE = "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "conversazione" + File.separator;
     public static Set<String> loadFileListInSet(final File file) throws IOException {
         Set<String> set = new HashSet<>();
         BufferedReader reader = new BufferedReader(new FileReader(file));

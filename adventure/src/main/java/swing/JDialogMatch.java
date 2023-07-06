@@ -116,6 +116,7 @@ public class JDialogMatch extends JDialog {
     }//GEN-LAST:event_tastoConfermaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+
         FileMatchController f = new FileMatchController("salvataggioPartita","resources");
         try {
             List<GiocoNaufragioIsola> partite = f.getMatch();
