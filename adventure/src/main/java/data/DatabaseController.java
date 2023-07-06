@@ -30,10 +30,16 @@ public class DatabaseController extends Database {
      * @param password
      * @throws SQLException
      */
-    public DatabaseController() throws SQLException {
-        Connection connessione = super.connect();
+    public DatabaseController(){
+        Connection connessione=null;
+        try {
+            connessione = super.connect();
+        } catch (SQLException ex) {
+            System.out.println("errore di connessione al DB");
+        }
         this.conn = connessione;
     }
+    
     
     @Override
     public boolean creaTabellaPartita() {
@@ -114,9 +120,14 @@ public class DatabaseController extends Database {
         return 0;
     }
 
-    /**
-     *
-     */
+    public void chiudiConnessione(){
+        try {
+            this.conn.close();
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
+    }
+    @Override
     public void stampaPartite() {
         try {
             Statement stm = conn.createStatement();

@@ -119,7 +119,7 @@ public class FileMatchController extends FileController implements Serializable 
                     objectIn.close();
                     //fileIn.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.err.println(e.getMessage());
                 }
             }
         }
