@@ -14,6 +14,8 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.FlowLayout;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -54,19 +56,28 @@ public class JDialogPorta extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        lblErrore = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jButton9 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         btnConferma = new javax.swing.JButton();
         btnCancella = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        panelErrore = new javax.swing.JPanel();
+        lblErrore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+        });
+
+        txtCodice.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtCodiceKeyPressed(evt);
+            }
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCodiceKeyReleased(evt);
             }
         });
 
@@ -112,12 +123,6 @@ public class JDialogPorta extends javax.swing.JDialog {
             }
         });
 
-        lblErrore.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblErrore.setForeground(new java.awt.Color(255, 0, 51));
-
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("PORTA EDIFICIO ABBANDONATO");
-
         jButton9.setText("9");
         jButton9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -132,7 +137,7 @@ public class JDialogPorta extends javax.swing.JDialog {
             }
         });
 
-        btnConferma.setBackground(new java.awt.Color(0, 153, 0));
+        btnConferma.setBackground(new java.awt.Color(153, 255, 153));
         btnConferma.setText("CONFERMA");
         btnConferma.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -140,7 +145,7 @@ public class JDialogPorta extends javax.swing.JDialog {
             }
         });
 
-        btnCancella.setBackground(new java.awt.Color(255, 0, 0));
+        btnCancella.setBackground(new java.awt.Color(255, 102, 102));
         btnCancella.setText("CANCELLA");
         btnCancella.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -155,15 +160,35 @@ public class JDialogPorta extends javax.swing.JDialog {
             }
         });
 
+        panelErrore.setBackground(new java.awt.Color(255, 102, 102));
+        panelErrore.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+
+        lblErrore.setBackground(new java.awt.Color(255, 255, 255));
+        lblErrore.setToolTipText("");
+
+        javax.swing.GroupLayout panelErroreLayout = new javax.swing.GroupLayout(panelErrore);
+        panelErrore.setLayout(panelErroreLayout);
+        panelErroreLayout.setHorizontalGroup(
+            panelErroreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelErroreLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lblErrore, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        panelErroreLayout.setVerticalGroup(
+            panelErroreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelErroreLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(16, 16, 16)
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 323, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(158, 158, 158)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,10 +198,7 @@ public class JDialogPorta extends javax.swing.JDialog {
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(txtCodice, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(35, 35, 35)
-                                .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 135, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCodice, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -193,18 +215,17 @@ public class JDialogPorta extends javax.swing.JDialog {
                         .addGap(113, 113, 113)
                         .addComponent(btnConferma)
                         .addGap(18, 18, 18)
-                        .addComponent(btnCancella)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(btnCancella))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(panelErrore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(147, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtCodice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(54, 54, 54)
+                .addComponent(txtCodice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
@@ -224,7 +245,9 @@ public class JDialogPorta extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnConferma)
                     .addComponent(btnCancella))
-                .addContainerGap(165, Short.MAX_VALUE))
+                .addGap(56, 56, 56)
+                .addComponent(panelErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -237,10 +260,7 @@ public class JDialogPorta extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -267,6 +287,7 @@ public class JDialogPorta extends javax.swing.JDialog {
             GNI.getStanza("edificio esterno").setMessaggioNord(MessaggioEdificioFuori.getNord());
             this.dispose();
         }else{
+            panelErrore.setVisible(true);
             lblErrore.setText("CODICE ERRATO");
         }
     }//GEN-LAST:event_btnConfermaActionPerformed
@@ -305,6 +326,7 @@ public class JDialogPorta extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try{
+            panelErrore.setVisible(false);
             String percorso;
             percorso = PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_STANZE)+"porta.png";
             BufferedImage img = ImageIO.read(new File(percorso));
@@ -324,6 +346,17 @@ public class JDialogPorta extends javax.swing.JDialog {
             System.out.println(e.getMessage());
         }        
     }//GEN-LAST:event_formWindowOpened
+
+    private void txtCodiceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodiceKeyReleased
+
+    }//GEN-LAST:event_txtCodiceKeyReleased
+
+    private void txtCodiceKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodiceKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            ActionEvent e = new ActionEvent(this,1,"");
+            btnConfermaActionPerformed(e);
+        }
+    }//GEN-LAST:event_txtCodiceKeyPressed
 
     /**
      * @param args the command line arguments
@@ -380,9 +413,9 @@ public class JDialogPorta extends javax.swing.JDialog {
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblErrore;
+    private javax.swing.JPanel panelErrore;
     private javax.swing.JTextField txtCodice;
     // End of variables declaration//GEN-END:variables
 }
