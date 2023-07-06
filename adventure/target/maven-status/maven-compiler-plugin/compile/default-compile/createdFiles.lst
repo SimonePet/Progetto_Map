@@ -18,6 +18,7 @@ swing\JFrameApp.class
 di\uniba\map\b\adventure\games\GiocoNaufragioIsola.class
 swing\JDialogRadio$6.class
 data\Database.class
+swing\JDialogAbbandona$5.class
 data\DatabaseController.class
 swing\JDialogPorta$2.class
 data\Partita.class
@@ -38,6 +39,7 @@ swing\JDialogMatch.class
 di\uniba\map\b\adventure\messaggi\MessaggioBosco.class
 di\uniba\map\b\adventure\type\Oggetto.class
 data\FileController.class
+swing\FrameStart$5.class
 swing\JDialogRadio$5.class
 di\uniba\map\b\adventure\type\ThreadTime.class
 di\uniba\map\b\adventure\type\Comando.class
@@ -57,8 +59,8 @@ swing\JDialogMatch$1.class
 di\uniba\map\b\adventure\parser\ParserOutput.class
 swing\FrameStart$2.class
 swing\JFrameApp$6.class
+data\Classifica.class
 swing\JDialogRadio$4.class
-swing\JDialogAbbandona$4$1.class
 socket\Server.class
 data\FileMatchController$1.class
 di\uniba\map\b\adventure\messaggi\MessaggioEdificioDentro.class
@@ -74,6 +76,7 @@ swing\JFrameApp$7.class
 swing\JDialogAbbandona$3.class
 swing\JDialogClassificaUtenti$2.class
 swing\JDialogPorta.class
+swing\JDialogAbbandona$5$1.class
 di\uniba\map\b\adventure\messaggi\MessaggioGrotta.class
 swing\JDialogStats$4$1.class
 di\uniba\map\b\adventure\parser\Parser.class

@@ -35,6 +35,7 @@ public final class ControlComandi {
         ControlComandi.initTaglia(gni);
         ControlComandi.initCostruisci(gni);
         ControlComandi.initAiuto(gni);
+        ControlComandi.initLocalizzazione(gni);
     }
 
     private static void initNord(final GiocoNaufragioIsola gni) {
@@ -169,5 +170,12 @@ public final class ControlComandi {
         Comando aiuto = new Comando(TipoComando.AIUTO, "aiuto");
         aiuto.setAlias(new String[]{"help", "-h", "--help"});
         gni.getComandi().add(aiuto);
+    }
+    
+    private static void initLocalizzazione(final GiocoNaufragioIsola gni) {
+        Comando localizzazione = new Comando(TipoComando.LOCALIZZAZIONE, "localizzazione");
+        localizzazione.setAlias(new String[]{"localizzazione", "posizione", "dove","ubicazione","posizione"});
+        localizzazione.setDescrizione("Localizzazione : Comando che ti restituisce la posizione corrente all'interno della mappa.");
+        gni.getComandi().add(localizzazione);
     }
 }

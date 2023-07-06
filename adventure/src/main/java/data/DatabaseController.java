@@ -11,11 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import java.sql.ResultSet;
 
 /**
@@ -34,12 +30,11 @@ public class DatabaseController extends Database {
      * @param password
      * @throws SQLException
      */
-    public DatabaseController(final String username, final String password) throws SQLException {
-        super.setUsername(username);
-        super.setPassword(password);
+    public DatabaseController() throws SQLException {
         Connection connessione = super.connect();
         this.conn = connessione;
     }
+    
     @Override
     public boolean creaTabellaPartita() {
         try {
@@ -231,21 +226,4 @@ public class DatabaseController extends Database {
     /* prende in input la lista delle partite, le raggruppa per nome_utente e punteggio,
        prende il punteggio massimo per ogni utente e restituisce un HashMap con nomeUtente e punteggio massimo
     */
-    @Override
-    public List<Map.Entry<String, Integer>> ottieniClassificaUtenti(final List<Partita> partite) {
-        Map<String, Integer> punteggioMassimoPerNomeUtente = partite.stream()
-        .collect(Collectors.groupingBy(Partita::getNomeUtente,
-                Collectors.mapping(Partita::getPunteggio, Collectors.maxBy(Integer::compare))))
-        .entrySet()
-        .stream()
-        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().orElse(0)));
-        // Stampa della HashMap risultante
-        punteggioMassimoPerNomeUtente.forEach((nomeUtente, punteggio) ->
-                System.out.println("Nome Utente: " + nomeUtente + ", Punteggio Massimo: " + punteggio));
-        //lista di coppie chiave-valore
-        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(punteggioMassimoPerNomeUtente.entrySet());
-        // Ordina la lista di Map.Entry in base al valore
-        Collections.sort(entryList, Map.Entry.comparingByValue(Comparator.reverseOrder()));
-        return entryList;
-    }
 }

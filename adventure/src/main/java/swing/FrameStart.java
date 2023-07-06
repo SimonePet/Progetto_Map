@@ -4,6 +4,10 @@
  */
 package swing;
 
+import data.PercorsoFileSystem;
+import di.uniba.map.b.adventure.Utils;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author Giannantonio
@@ -35,6 +39,11 @@ public class FrameStart extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jUsernameLabel.setText("USERNAME");
 
@@ -138,6 +147,11 @@ public class FrameStart extends javax.swing.JFrame {
         JDialogClassificaUtenti d = new JDialogClassificaUtenti(this, true);
         d.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      */

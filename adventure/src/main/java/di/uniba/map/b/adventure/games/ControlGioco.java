@@ -455,6 +455,7 @@ public final class ControlGioco {
             comandi.add(gni.getComando("raccogli"));
             comandi.add(gni.getComando("narra"));
             comandi.add(gni.getComando("salva"));
+            comandi.add(gni.getComando("localizzazione"));
         }
     }
 
@@ -494,6 +495,49 @@ public final class ControlGioco {
             }
         } else {
             frame.scrviSuEditor(Messaggio.getNoPresente());
+        }
+    }
+    public static void comandoLocalizzazione(final GiocoNaufragioIsola gni, final JFrameApp frame) {
+        frame.scrviSuEditor("La tua posizione e': " + gni.getStanzaCorrente().getNomeStanza());
+        frame.scrviSuEditor(Messaggio.getInvio());
+        if(gni.getStanzaCorrente().getNord()==null){
+            frame.scrviSuEditor("Nord : Inaccessibile.");
+        }
+        else if(gni.getStanzaCorrente().getNord().getVisitata()){
+            frame.scrviSuEditor("Nord : stanza " + gni.getStanzaCorrente().getNord().getNomeStanza());
+        }
+        else{
+            frame.scrviSuEditor("Nord : stanza sconosciuta.");
+        }
+        frame.scrviSuEditor(Messaggio.getInvio());
+        if(gni.getStanzaCorrente().getSud()==null){
+            frame.scrviSuEditor("Sud : Inaccessibile.");
+        }
+        else if(gni.getStanzaCorrente().getSud().getVisitata()){
+            frame.scrviSuEditor("Sud : la stanza " + gni.getStanzaCorrente().getSud().getNomeStanza());
+        }
+        else{
+            frame.scrviSuEditor("Sud : stanza sconosciuta.");
+        }
+        frame.scrviSuEditor(Messaggio.getInvio());
+        if(gni.getStanzaCorrente().getEst()==null){
+            frame.scrviSuEditor("Est : Inaccessibile.");
+        }
+        else if(gni.getStanzaCorrente().getEst().getVisitata()){
+            frame.scrviSuEditor("Est : la stanza " + gni.getStanzaCorrente().getEst().getNomeStanza());
+        }
+        else{
+            frame.scrviSuEditor("Est : stanza sconosciuta.");
+        }
+        frame.scrviSuEditor(Messaggio.getInvio());
+        if(gni.getStanzaCorrente().getOvest()==null){
+            frame.scrviSuEditor("Ovest : Inaccessibile.");
+        }
+        else if(gni.getStanzaCorrente().getOvest().getVisitata()){
+            frame.scrviSuEditor("Ovest : la stanza " + gni.getStanzaCorrente().getOvest().getNomeStanza());
+        }
+        else{
+            frame.scrviSuEditor("Ovest : stanza sconosciuta.");
         }
     }
 }

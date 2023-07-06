@@ -6,11 +6,14 @@ package swing;
 
 import data.DatabaseController;
 import data.FileMatchController;
+import data.PercorsoFileSystem;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
+import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import java.io.IOException;
 import java.sql.SQLException;
+import javax.swing.ImageIcon;
 
 /**
  *
@@ -45,6 +48,11 @@ public class JDialogAbbandona extends javax.swing.JDialog {
         jLabelErrore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
+            }
+        });
 
         jPanel1.setLayout(new java.awt.BorderLayout());
 
@@ -127,7 +135,7 @@ public class JDialogAbbandona extends javax.swing.JDialog {
         //recupera nome partita 
         String nomePartita = jNomePartita.getText();   
         try {
-            db = new DatabaseController("sa","");
+            db = new DatabaseController();
             //controlla esistenza partita
             partitaEsistente = db.partitaEsistente(nomePartita); 
             if(nomePartita.equalsIgnoreCase("")){
@@ -172,6 +180,11 @@ public class JDialogAbbandona extends javax.swing.JDialog {
         // TODO add your handling code here:
         this.dispose();
     }//GEN-LAST:event_NoButtonActionPerformed
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
+        this.setIconImage(icon.getImage());
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * @param args the command line arguments
