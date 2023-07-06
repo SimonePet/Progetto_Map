@@ -50,18 +50,18 @@ public class JFrameApp extends javax.swing.JFrame {
 
         jDialog1 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        editor = new javax.swing.JEditorPane();
         textField = new javax.swing.JTextField();
         buttSumbit = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        lblComando = new javax.swing.JLabel();
+        lblNumMosse = new javax.swing.JLabel();
         timeLabel = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        lblTempo = new javax.swing.JLabel();
         labelNumMosse = new javax.swing.JLabel();
         lblStanzaCorrente = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        panelStat = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        scrollPanel = new javax.swing.JScrollPane();
+        textArea = new javax.swing.JTextArea();
 
         javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
         jDialog1.getContentPane().setLayout(jDialog1Layout);
@@ -90,9 +90,6 @@ public class JFrameApp extends javax.swing.JFrame {
             }
         });
 
-        editor.setEditable(false);
-        jScrollPane1.setViewportView(editor);
-
         textField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 textFieldActionPerformed(evt);
@@ -111,15 +108,15 @@ public class JFrameApp extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Comando");
+        lblComando.setText("Comando");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel2.setText("Numero mosse:");
+        lblNumMosse.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblNumMosse.setText("Numero mosse:");
 
         timeLabel.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel3.setText("Tempo:");
+        lblTempo.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblTempo.setText("Tempo:");
 
         labelNumMosse.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
 
@@ -136,22 +133,26 @@ public class JFrameApp extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout panelStatLayout = new javax.swing.GroupLayout(panelStat);
+        panelStat.setLayout(panelStatLayout);
+        panelStatLayout.setHorizontalGroup(
+            panelStatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelStatLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 201, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 207, Short.MAX_VALUE)
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        panelStatLayout.setVerticalGroup(
+            panelStatLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelStatLayout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton1)
                 .addContainerGap())
         );
+
+        textArea.setColumns(20);
+        textArea.setRows(5);
+        scrollPanel.setViewportView(textArea);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -166,22 +167,21 @@ public class JFrameApp extends javax.swing.JFrame {
                         .addComponent(buttSumbit, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(14, 14, 14))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(lblNumMosse)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(labelNumMosse, javax.swing.GroupLayout.PREFERRED_SIZE, 62, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(63, 63, 63)
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lblTempo, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(timeLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(105, 105, 105)
-                        .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(panelStat, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblStanzaCorrente, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                        .addGap(28, 28, 28))))
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(lblStanzaCorrente, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 193, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(lblComando, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(scrollPanel, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 638, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -189,25 +189,25 @@ public class JFrameApp extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 18, Short.MAX_VALUE))
+                        .addComponent(panelStat, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(19, 19, 19)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(timeLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(lblTempo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
+                            .addComponent(lblNumMosse, javax.swing.GroupLayout.DEFAULT_SIZE, 34, Short.MAX_VALUE)
                             .addComponent(labelNumMosse, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGap(18, 18, 18)
                 .addComponent(lblStanzaCorrente, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 350, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 385, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lblComando)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(textField)
                     .addComponent(buttSumbit))
@@ -228,7 +228,7 @@ public class JFrameApp extends javax.swing.JFrame {
         String command = textField.getText();
         textField.setText("");
         SimpleAttributeSet attributes = new SimpleAttributeSet();
-        Document doc = editor.getDocument();
+        Document doc = textArea.getDocument();
         GameDescription game = engine.getGame();
         Parser parser = engine.getParser();
         try{
@@ -269,36 +269,35 @@ public class JFrameApp extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
-        jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
         this.setIconImage(icon.getImage());
         this.setResizable(false);
+        Color c = new Color(255, 255, 255, 150);
+        textArea.setBackground(c);
+        textArea.setOpaque(false);
+        scrollPanel.setOpaque(false);
+        scrollPanel.getViewport().setOpaque(false);
+        scrollPanel.setBackground(new Color(255,255,255,150));
         jPanel1.setSize(this.getWidth(),this.getHeight());
-        jLabel1.setOpaque(false);
-        jLabel1.setBackground(new Color(255,255,255,150));
-        jLabel2.setOpaque(false);
-        jLabel2.setBackground(new Color(255,255,255,150));
-        jLabel3.setOpaque(false);
-        jLabel3.setBackground(new Color(255,255,255,150));
+        lblComando.setOpaque(false);
+        lblComando.setBackground(new Color(255,255,255,150));
+        lblNumMosse.setOpaque(false);
+        lblNumMosse.setBackground(new Color(255,255,255,150));
+        lblTempo.setOpaque(false);
+        lblTempo.setBackground(new Color(255,255,255,150));
         labelNumMosse.setOpaque(false);
         labelNumMosse.setBackground(new Color(255,255,255,150));
         timeLabel.setOpaque(false);
-        timeLabel.setBackground(new Color(255,255,255,0));
+        timeLabel.setBackground(new Color(255,255,255,150));
         lblStanzaCorrente.setOpaque(false);
         lblStanzaCorrente.setBackground(new Color(255,255,255,0));
         jButton1.setOpaque(false);
         jButton1.setBackground(new Color(255,255,255,150));
-        jPanel2.setOpaque(false);
-        jPanel2.setBackground(new Color(255,255,255,150));
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.getViewport().setOpaque(false);
-        Color c = new Color(255,255,255,150);
-        editor.setBackground(c);
-        jScrollPane1.setBackground(c);
-        //jScrollPane1.setBackground(new Color(255,255,255));
-        editor.setOpaque(false);
+        panelStat.setOpaque(false);
+        panelStat.setBackground(new Color(255,255,255,150));
         lblStanzaCorrente.setOpaque(true);
-        editor.setText("");
+        textArea.setText("");
         if(!partitaCaricata){
             Engine e = new Engine(new GiocoNaufragioIsola(),false);
             engine = e;
@@ -326,7 +325,7 @@ public class JFrameApp extends javax.swing.JFrame {
         GameDescription partita = engine.getGame();
         Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_SUONI_STANZE) + partita.getStanzaCorrente().getNomeStanza(),true);
         SimpleAttributeSet attributes = new SimpleAttributeSet();
-        Document doc = editor.getDocument();
+        Document doc = textArea.getDocument();
                
         try{
             doc.insertString(doc.getLength(), "* Adventure v. 0.3 - 2021-2022 *\n", attributes);
@@ -370,7 +369,7 @@ public class JFrameApp extends javax.swing.JFrame {
     
     public void scrviSuEditor(String s){
         SimpleAttributeSet attributes = new SimpleAttributeSet();
-        Document doc = editor.getDocument();
+        Document doc = textArea.getDocument();
         try{
             doc.insertString(doc.getLength(),s, attributes);              
         }catch(BadLocationException ex){
@@ -380,12 +379,12 @@ public class JFrameApp extends javax.swing.JFrame {
     
     public void scriviSuLabelStanza(String stanzaCorrente){
         SimpleAttributeSet attributes = new SimpleAttributeSet();
-        Document doc = editor.getDocument();
+        Document doc = textArea.getDocument();
         lblStanzaCorrente.setText(stanzaCorrente);
     }
     
-    public JEditorPane getEditor(){
-        return editor;
+    public JTextArea getTextArea(){
+        return textArea;
     }
     
     public Engine getEngine(){
@@ -434,17 +433,17 @@ public class JFrameApp extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttSumbit;
-    private javax.swing.JEditorPane editor;
     private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelNumMosse;
+    private javax.swing.JLabel lblComando;
+    private javax.swing.JLabel lblNumMosse;
     private javax.swing.JLabel lblStanzaCorrente;
+    private javax.swing.JLabel lblTempo;
+    private javax.swing.JPanel panelStat;
+    private javax.swing.JScrollPane scrollPanel;
+    private javax.swing.JTextArea textArea;
     private javax.swing.JTextField textField;
     private javax.swing.JLabel timeLabel;
     // End of variables declaration//GEN-END:variables
