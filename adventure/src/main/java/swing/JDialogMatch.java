@@ -32,9 +32,12 @@ public class JDialogMatch extends JDialog {
     /**
      * Creates new form JDialogMatch
      * @param parent
+     * @param modal
+     * @param frame
      */
-    public JDialogMatch(JFrame parent, boolean modal) {
+    public JDialogMatch(JFrame parent, boolean modal, FrameStart frame) {
         super(parent, modal);
+        this.frameStart = frame;
         initComponents();
     }
 
@@ -130,7 +133,7 @@ public class JDialogMatch extends JDialog {
             GiocoNaufragioIsola partita = f.getMatch(nomePartitaSelezionata);
             String username = partita.getUsername();
             JFrameApp.setEngine(partita);
-            JFrameApp frame = new JFrameApp(username);
+            JFrameApp frame = new JFrameApp(username, frameStart);
             frame.main();
         } catch (IOException | ClassNotFoundException ex) {
             System.err.println(ex.getMessage());
@@ -167,7 +170,7 @@ public class JDialogMatch extends JDialog {
     }//GEN-LAST:event_jComboBox1KeyPressed
 
 
-    public static void main() {
+    public void main() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -194,7 +197,7 @@ public class JDialogMatch extends JDialog {
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDialogMatch dialog = new JDialogMatch(new javax.swing.JFrame(), true);
+                JDialogMatch dialog = new JDialogMatch(new javax.swing.JFrame(), true, frameStart);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -213,4 +216,5 @@ public class JDialogMatch extends JDialog {
     private javax.swing.JButton tastoConferma;
     // End of variables declaration//GEN-END:variables
     private ComboBoxModel[] models = new ComboBoxModel[3];
+    private FrameStart frameStart;
 }

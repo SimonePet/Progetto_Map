@@ -34,11 +34,17 @@ import javax.swing.text.SimpleAttributeSet;
 public class JFrameApp extends javax.swing.JFrame {
 
 
-    public JFrameApp(String username) {
+    public JFrameApp(String username, FrameStart frame) {
         this.username = username;
+        this.frameStart = frame;
         initComponents();        
     }
-
+    /*
+    public JFrameApp(String username) {
+        numJframeApp++;
+        this.username = username;
+        initComponents();        
+    }*/
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -250,18 +256,18 @@ public class JFrameApp extends javax.swing.JFrame {
     }//GEN-LAST:event_jPanel1PropertyChange
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
-        // TODO add your handling code here:
-        //uccidi thread tempo
+       //uccidi thread tempo
         thread.interrupt();
         //uccidi thread suono stanza
         Suono.stopRiproduzione();
+        frameStart.setEnabled(true);     
         partitaCaricata = false;
         JDialogAbbandona d = new JDialogAbbandona(this,true, engine);
         d.setVisible(true);
     }//GEN-LAST:event_formWindowClosed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+        frameStart.setEnabled(false);
         scrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
         this.setIconImage(icon.getImage());
@@ -419,7 +425,7 @@ public class JFrameApp extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new JFrameApp(username).setVisible(true);
+                new JFrameApp(username,frameStart).setVisible(true);
             }
         });
     }
@@ -445,5 +451,5 @@ public class JFrameApp extends javax.swing.JFrame {
     private Thread thread;
     private String username;
     private JLabel background;
+    private FrameStart frameStart;
 }
-
