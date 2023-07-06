@@ -134,41 +134,35 @@ public class JDialogAbbandona extends javax.swing.JDialog {
         boolean partitaEsistente = false;
         //recupera nome partita 
         String nomePartita = jNomePartita.getText();   
-        try {
-            db = new DatabaseController();
-            //controlla esistenza partita
-            partitaEsistente = db.partitaEsistente(nomePartita); 
-            if(nomePartita.equalsIgnoreCase("")){
-                jLabelErrore.setText("inserire nome partita!!");
-            }else if(partitaEsistente){
-                jLabelErrore.setText("nome partita già esistente");
-            }else{
-                engine.getGame().setNomePartita(nomePartita);
-                //crea la tabella match solo se non esiste
-                db.creaTabellaPartita();
-                //salva partita su DB
-                String username = engine.getGame().getUsername();
-                boolean b = engine.getGame().isFinished();
-                int numSeconds = engine.getGame().getNumSecondi();
-                int numMinutes = engine.getGame().getNumMinuti();
-                int numMoves = engine.getGame().getNumMosse();
-                GameDescription game = engine.getGame();
-                db.salvaPartita(nomePartita, username, b, numSeconds, numMinutes, numMoves, game);
-                System.out.println("PARTITA SALVATA SU DB\n");
-                db.stampaPartite();
-                //salva partita su file
-                FileMatchController f = new FileMatchController("salvataggioPartita","resources");
-                try {
-                    f.addMatch((GiocoNaufragioIsola) engine.getGame());
-                } catch (IOException ex) {
-                    System.err.println(ex.getMessage());
-                } catch (ClassNotFoundException e) {
-                    System.err.println(e.getMessage());
-                }               
-                this.dispose();
+        db = new DatabaseController();
+        //controlla esistenza partita
+        partitaEsistente = db.partitaEsistente(nomePartita);
+        if(nomePartita.equalsIgnoreCase("")){
+            jLabelErrore.setText("inserire nome partita!!");
+        }else if(partitaEsistente){
+            jLabelErrore.setText("nome partita già esistente");
+        }else{
+            engine.getGame().setNomePartita(nomePartita);
+            //crea la tabella match solo se non esiste
+            db.creaTabellaPartita();
+            //salva partita su DB
+            String username = engine.getGame().getUsername();
+            boolean b = engine.getGame().isFinished();
+            int numSeconds = engine.getGame().getNumSecondi();
+            int numMinutes = engine.getGame().getNumMinuti();
+            int numMoves = engine.getGame().getNumMosse();
+            GameDescription game = engine.getGame();
+            db.salvaPartita(nomePartita, username, b, numSeconds, numMinutes, numMoves, game);
+            db.stampaPartite();
+            //salva partita su file
+            FileMatchController f = new FileMatchController("salvataggioPartita.txt","resources");
+            try {
+                f.addMatch((GiocoNaufragioIsola) engine.getGame());
+            } catch (IOException | ClassNotFoundException ex) {
+                System.err.println(ex.getMessage());
             }
-        }catch(SQLException e){
-            System.err.println(e.getMessage());
+            db.chiudiConnessione();
+            this.dispose();
         }
     }//GEN-LAST:event_YesButtonActionPerformed
 

@@ -189,6 +189,7 @@ public class JDialogStats extends javax.swing.JDialog {
             double punteggioMedio = db.getPunteggioMedio();
             String punteggio = df.format(punteggioMedio);
             txtPunteggioMedio.setText(""+punteggio);
+            db.chiudiConnessione();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -222,7 +223,7 @@ public class JDialogStats extends javax.swing.JDialog {
             double punteggioMedio = db.getPunteggioMedioUtente(username);
             String punteggio = df.format(punteggioMedio);
             txtPunteggioMedio.setText(""+punteggio);
-
+            db.chiudiConnessione();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }      

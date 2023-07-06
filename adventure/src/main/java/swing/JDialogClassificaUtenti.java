@@ -46,6 +46,9 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -82,38 +85,34 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
         Map<String,Integer> map = new HashMap<>();
         String[] nomiColonne = { "Utente", "massimo punteggio" };
         String [][] dati = new String[200][200];
-        try {
-            db = new DatabaseController();
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
-        }
+        db = new DatabaseController();
         int i = 0;
-        try {
-            db = new DatabaseController();
-            List<Partita> partite = db.ottieniListaPartite();
-            List<Map.Entry<String,Integer>> listaCoppie;
-            Classifica c = new Classifica(partite);
-            listaCoppie = c.ottieniClassificaUtenti();
-            for (Map.Entry<String, Integer> entry : listaCoppie) {
-                String nomeUtente = entry.getKey();
-                Integer punteggioMax = entry.getValue();
-                dati[i][0] = nomeUtente;
-                dati[i][1] = ""+punteggioMax;
-                i++;
-            }
-
-            JTable tabella = new JTable(dati, nomiColonne);
-            tabella.setFillsViewportHeight(true);
-            //aggiunge tabella allo ScrollPane
-            jScrollPane.setViewportView(tabella);
-            jScrollPane.getViewport().add(tabella);
-            jScrollPane.revalidate();
-            jScrollPane.repaint();   
-        } catch (SQLException ex) {
-            System.err.println(ex.getMessage());
+        db = new DatabaseController();
+        List<Partita> partite = db.ottieniListaPartite();
+        List<Map.Entry<String,Integer>> listaCoppie;
+        Classifica c = new Classifica(partite);
+        listaCoppie = c.ottieniClassificaUtenti();
+        for (Map.Entry<String, Integer> entry : listaCoppie) {
+            String nomeUtente = entry.getKey();
+            Integer punteggioMax = entry.getValue();
+            dati[i][0] = nomeUtente;
+            dati[i][1] = ""+punteggioMax;
+            i++;
         }
+        JTable tabella = new JTable(dati, nomiColonne);
+        tabella.setFillsViewportHeight(true);
+        //aggiunge tabella allo ScrollPane
+        jScrollPane.setViewportView(tabella);
+        jScrollPane.getViewport().add(tabella);
+        jScrollPane.revalidate();
+        jScrollPane.repaint();
+        db.chiudiConnessione();
         
     }//GEN-LAST:event_formWindowOpened
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_formWindowClosed
 
     /**
      * @param args the command line arguments

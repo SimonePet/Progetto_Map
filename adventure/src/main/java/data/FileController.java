@@ -16,6 +16,7 @@ public class FileController implements FileInterface {
     protected String nomeFile;
     protected String directory;
     protected File file;
+    protected final String percorso;
     /**
      * Costruttore della Classe FileController.
      * @param nomeFileCorrente nome del file.
@@ -24,42 +25,28 @@ public class FileController implements FileInterface {
     public FileController(final String nomeFileCorrente, final String directoryCorrente) {
         this.nomeFile = nomeFileCorrente;
         this.directory = directoryCorrente;
+        this.percorso = calcolaPercorsoFile();
+        this.setFile();
     }
-
-    /**
-     * Costruttore della Classe FileController.
-     */
-    public FileController() {
-    }
-
+    
     /**
      * Metodo booleano che crea il file: Restituisce vero se lo crea.
      * Falso altrimenti.
      */
     @Override
     public boolean create() {
+        this.setFile();
+        System.out.println("Percorso file: "+percorso);
         try {
-            File progettoDir = new File(System.getProperty("user.dir"));
-            String path = "";
-            if (progettoDir.getName().contains("adventure")) {
-                path = File.separator + directory + File.separator + nomeFile;
-            } else if (!progettoDir.getName().contains("Progetto_Map")) {
-                path = File.separator + "Progetto_Map" + File.separator + "adventure" + File.separator + directory + File.separator + nomeFile;
-            } else if (progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")) {
-                path = File.separator + "adventure" + File.separator + directory + File.separator + nomeFile;
-            }
-            this.file = new File(progettoDir + path);
             if (file.createNewFile()) {
-                System.out.println("File creato con successo.");
+                System.out.println("File "+nomeFile+" creato con successo.");
             } else {
-                System.out.println("File esistente.");
+                System.out.println("File "+nomeFile+" esistente.");
             }
-            return true;
-        } catch (IOException e) {
-            System.out.println(e);
-
+        } catch (IOException ex) {
+            System.err.println(ex.getMessage());
         }
-        return false;
+        return true;
     }
     /**
      * Metodo set che imposta il nome del file.
@@ -80,5 +67,16 @@ public class FileController implements FileInterface {
      */
     public File getFile() {
         return file;
+    }
+    
+    public void setFile(){
+        this.file = new File(percorso);
+    }
+    
+    public String calcolaPercorsoFile(){
+        String percorso;
+        String percorsoFile="adventure"+File.separator+this.directory+File.separator+this.nomeFile;
+        percorso = PercorsoFileSystem.trovaPercorso(percorsoFile);   
+        return percorso;
     }
 }
