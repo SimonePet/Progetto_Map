@@ -406,7 +406,7 @@ public final class ControlGioco {
                     frame.scrviSuEditor("Hai utilizzato il legno,le corde e la vela per costruire la zattera.\n\n");
                     frame.scrviSuEditor("==========HAI VINTO==========\n\n");
                     frame.scrviSuEditor("Complimenti sei riuscito a vincere questo gioco molto difficile.");
-
+                    gni.setFinita(true);
                 } else {
                     frame.scrviSuEditor("Non hai ancora tutti gli oggetti a disposizione.");
                 }

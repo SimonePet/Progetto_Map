@@ -55,14 +55,14 @@ public class DatabaseController extends Database {
     }
     /* salva nuova partita alla tabella */
     @Override
-    public boolean salvaPartita(final String nomePartita, final String username, final boolean finish, final int numSeconds, final int numMin, final int numMoves, final GameDescription game) {
+    public boolean salvaPartita(final String nomePartita, final String nomeUtente, final boolean finita, final int numSecondi, final int numMin, final int numMosse, final GameDescription partita) {
         //calcola punteggio con formula
         int punteggio = 100;
-        int penalizzazioneMosse = 1 * game.getNumMosse();
-        int penalizzazioneMin = 5 * game.getNumMinuti();
-        int bonusPartitaVinta = 15;
+        int penalizzazioneMosse = 1 * partita.getNumMosse();
+        int penalizzazioneMin = 5 * partita.getNumMinuti();
+        int bonusPartitaVinta = 100;
         punteggio = punteggio - penalizzazioneMosse - penalizzazioneMin;
-        if (game.isFinished()) {
+        if (partita.getFinita()) {
             punteggio += bonusPartitaVinta;
         }
         if (punteggio > 100) {
@@ -73,13 +73,13 @@ public class DatabaseController extends Database {
         try {
             //inserimento completo con punteggio
             PreparedStatement pstm = conn.prepareStatement(INSERISCI_PARTITA);
-            pstm.setString(1, game.getNomePartita());
-            pstm.setString(2, game.getUsername());
+            pstm.setString(1, partita.getNomePartita());
+            pstm.setString(2, partita.getUsername());
             pstm.setInt(3, punteggio);
-            pstm.setInt(4, game.getNumMinuti());
-            pstm.setInt(5, game.getNumSecondi());
-            pstm.setBoolean(6, finish);
-            pstm.setInt(7, game.getNumMosse());
+            pstm.setInt(4, partita.getNumMinuti());
+            pstm.setInt(5, partita.getNumSecondi());
+            pstm.setBoolean(6, finita);
+            pstm.setInt(7, partita.getNumMosse());
             pstm.executeUpdate();
             System.out.println("PARTITA SALVATA SU DB");
             pstm.close();

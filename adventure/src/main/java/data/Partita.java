@@ -39,24 +39,24 @@ public class Partita {
     }
     /**
      *
-     * @param idCorr
-     * @param nomeCorr
-     * @param nomeUtenteCorr
-     * @param punteggioCorr
-     * @param numMinutiCorr
-     * @param numSecondiCorr
+     * @param id
+     * @param nome
+     * @param nomeUtente
+     * @param punteggio
+     * @param numMinuti
+     * @param numSecondi
      * @param terminataCprr
-     * @param numMosseCorr
+     * @param numMosse
      */
-    public Partita(final int idCorr, final String nomeCorr, final String nomeUtenteCorr, final int punteggioCorr, final int numMinutiCorr, final int numSecondiCorr, final boolean terminataCprr, final int numMosseCorr) {
-        this.id = idCorr;
-        this.nome = nomeCorr;
-        this.numSecondi = numSecondiCorr;
-        this.numMinuti = numMinutiCorr;
-        this.nomeUtente = nomeUtenteCorr;
-        this.numMosse = numMosseCorr;
-        this.punteggio = punteggioCorr;
-        this.terminata = terminataCprr;
+    public Partita(final int id, final String nome, final String nomeUtente, final int punteggio, final int numMinuti, final int numSecondi, final boolean terminata, final int numMosse) {
+        this.id = id;
+        this.nome = nome;
+        this.numSecondi = numSecondi;
+        this.numMinuti = numMinuti;
+        this.nomeUtente = nomeUtente;
+        this.numMosse = numMosse;
+        this.punteggio = punteggio;
+        this.terminata = terminata;
     }
     /**
      *

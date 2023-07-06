@@ -26,7 +26,7 @@ import java.util.List;
 public abstract class GameDescription implements Serializable {
     private String nomePartita;
     private String username;
-    private boolean finish = false;
+    private boolean finita = false;
     private int numMinuti = 0;
     private int numSecondi = 0;
     private int numMosse = 0;
@@ -42,7 +42,7 @@ public abstract class GameDescription implements Serializable {
         int penalizzazioneMin = 5 * this.getNumMinuti();
         int bonusPartitaVinta = 15;
         this.punteggio = this.punteggio - penalizzazioneMosse - penalizzazioneMin;
-        if (this.isFinished()) {
+        if (this.getFinita()) {
             punteggio += bonusPartitaVinta;
         }
         if (punteggio > 100) {
@@ -86,10 +86,6 @@ public abstract class GameDescription implements Serializable {
 
     public void setNumSecondi(final int secCor) {
         this.numSecondi = secCor;
-    }
-
-    public boolean isFinished() {
-        return finish;
     }
 
     public void setUsername(final String usernameCorr) {
@@ -161,7 +157,14 @@ public abstract class GameDescription implements Serializable {
         return prossimo;
     }
 
-
+    public void setFinita(boolean b){
+        finita = b;
+    }
+    
+    public boolean getFinita(){
+        return finita;
+    }
+    
     public abstract void init() throws Exception;
 
     public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame, JPanel panel, JLabel label);
