@@ -43,22 +43,16 @@ public class Server implements Runnable {
         String messaggioClient = leggiMessaggioClient();
         if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_1_OPZ_1)) {
             inviaRispostaClient(MessaggiConversazione.MSG_RADIO_1_OPZ_1);
-            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_1_OPZ_1);
         } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_1_OPZ_2)) {
             inviaRispostaClient(MessaggiConversazione.MSG_RADIO_1_OPZ_2);
-            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_1_OPZ_2);
         } else if (messaggioClient.contains(MessaggiConversazione.MI_CHIAMO)) {
             inviaRispostaClient(MessaggiConversazione.MSG_RADIO_2_OPZ_1);
-            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_2_OPZ_1);
         } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_2_OPZ_1)) {
             inviaRispostaClient(MessaggiConversazione.MSG_RADIO_2_OPZ_2);
-            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_2_OPZ_2);
         } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_3_OPZ_1)) {
             inviaRispostaClient(MessaggiConversazione.MSG_RADIO_3_OPZ_1);
-            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_3_OPZ_1);
         } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_3_OPZ_2)) {
             inviaRispostaClient(MessaggiConversazione.MSG_RADIO_3_OPZ_2);
-            //scriviRispostaTextArea(MessaggiConversazione.MSG_RADIO_3_OPZ_2);
         } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_4_OPZ_1)) {
             inviaRispostaClient(MessaggiConversazione.RISPOSTA_FINALE);
         } else if (messaggioClient.equalsIgnoreCase(MessaggiConversazione.MSG_UTENTE_4_OPZ_2)) {

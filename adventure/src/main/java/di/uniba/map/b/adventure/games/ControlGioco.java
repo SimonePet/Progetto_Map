@@ -323,7 +323,6 @@ public final class ControlGioco {
                     gni.getStanza("grotta").setMessaggioSud(MessaggioGrotta.getNoSudLuce());
                     gni.getStanza("grotta").setMessaggioOvest(MessaggioGrotta.getNoOvestLuce());
                     gni.getStanza("grotta").setOsserva(MessaggioGrotta.getOsservaLuce());
-
                 } else if (oggInv.getNomeOggetto().equals("lampada")) {
                     frame.scrviSuEditor(Messaggio.getNoAccendiLampada());
                 }
@@ -332,6 +331,7 @@ public final class ControlGioco {
                     String nomeUtente = gni.getUsername();
                     JDialogRadio d = new JDialogRadio(frame, true, nomeUtente);
                     d.setVisible(true);
+                    Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_SUONI_STANZE) + gni.getStanzaCorrente().getNomeStanza(), true);
                 } else if (oggInv.getNomeOggetto().equals("radio")) {
                     frame.scrviSuEditor("Impossibile accendere radio. Ti mancano le batterie");
                 }
