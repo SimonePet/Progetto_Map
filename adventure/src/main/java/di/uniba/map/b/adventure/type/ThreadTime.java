@@ -25,16 +25,15 @@ public class ThreadTime implements Runnable{
     @Override
     public void run() {
         Engine e = frame.getEngine();
-
-        int ore=-1;
-        for(int i=0;i<10000;i++){
-            if(i%3600==0) {
+        int ore=0;
+        for(int i=this.numSecondi;i!=-1;i++){
+            if(i%3600==0 && i!=0) {
                 ore++;
                 e.getGame().setNumSecondi(numSecondi);
                 e.getGame().setNumMinuti(numMinuti);
             }
             else{
-                if (i % 60 == 0) {
+                if (i % 60 == 0 && i!=0) {
                     this.numMinuti++;
                     this.numSecondi = 0;
                     e.getGame().setNumSecondi(numSecondi);
@@ -48,7 +47,7 @@ public class ThreadTime implements Runnable{
             printTime(ore+":"+this.numMinuti+":"+this.numSecondi);
             //System.out.println(ore+":"+min+":"+sec);
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             }catch(InterruptedException ex){
                 System.out.println("Thread interrotto");
                 return;
