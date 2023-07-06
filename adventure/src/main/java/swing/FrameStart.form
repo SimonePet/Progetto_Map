@@ -52,7 +52,7 @@
                   <EmptySpace min="-2" pref="77" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jUsernameLabel" min="-2" pref="106" max="-2" attributes="0"/>
-                      <Component id="newMatch" min="-2" max="-2" attributes="0"/>
+                      <Component id="nuovaPartita" min="-2" max="-2" attributes="0"/>
                       <Component id="usernameField" min="-2" pref="161" max="-2" attributes="0"/>
                       <Component id="LabelErrorName" alignment="0" min="-2" pref="155" max="-2" attributes="0"/>
                       <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
@@ -74,7 +74,7 @@
                   <EmptySpace min="-2" pref="5" max="-2" attributes="0"/>
                   <Component id="LabelErrorName" min="-2" pref="22" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="newMatch" min="-2" max="-2" attributes="0"/>
+                  <Component id="nuovaPartita" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="loadMatch" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -91,13 +91,16 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="usernameField">
+          <Events>
+            <EventHandler event="keyPressed" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="usernameFieldKeyPressed"/>
+          </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="newMatch">
+        <Component class="javax.swing.JButton" name="nuovaPartita">
           <Properties>
             <Property name="text" type="java.lang.String" value="NUOVA PARTITA"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newMatchActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="nuovaPartitaActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JButton" name="loadMatch">

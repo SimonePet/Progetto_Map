@@ -6,6 +6,8 @@ package swing;
 
 import data.PercorsoFileSystem;
 import di.uniba.map.b.adventure.Utils;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 /**
@@ -33,7 +35,7 @@ public class FrameStart extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jUsernameLabel = new javax.swing.JLabel();
         usernameField = new javax.swing.JTextField();
-        newMatch = new javax.swing.JButton();
+        nuovaPartita = new javax.swing.JButton();
         loadMatch = new javax.swing.JButton();
         LabelErrorName = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
@@ -47,10 +49,16 @@ public class FrameStart extends javax.swing.JFrame {
 
         jUsernameLabel.setText("USERNAME");
 
-        newMatch.setText("NUOVA PARTITA");
-        newMatch.addActionListener(new java.awt.event.ActionListener() {
+        usernameField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                usernameFieldKeyPressed(evt);
+            }
+        });
+
+        nuovaPartita.setText("NUOVA PARTITA");
+        nuovaPartita.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newMatchActionPerformed(evt);
+                nuovaPartitaActionPerformed(evt);
             }
         });
 
@@ -76,7 +84,7 @@ public class FrameStart extends javax.swing.JFrame {
                 .addGap(77, 77, 77)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jUsernameLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(newMatch)
+                    .addComponent(nuovaPartita)
                     .addComponent(usernameField, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(LabelErrorName, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -94,7 +102,7 @@ public class FrameStart extends javax.swing.JFrame {
                 .addGap(5, 5, 5)
                 .addComponent(LabelErrorName, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(newMatch)
+                .addComponent(nuovaPartita)
                 .addGap(18, 18, 18)
                 .addComponent(loadMatch)
                 .addGap(18, 18, 18)
@@ -121,7 +129,7 @@ public class FrameStart extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMatchActionPerformed
+    private void nuovaPartitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuovaPartitaActionPerformed
         String username = usernameField.getText();
         if(!username.equalsIgnoreCase("")){
             JFrameApp frame = new JFrameApp(username);
@@ -130,7 +138,7 @@ public class FrameStart extends javax.swing.JFrame {
         }else{
             LabelErrorName.setText("Username mancante!");
         }
-    }//GEN-LAST:event_newMatchActionPerformed
+    }//GEN-LAST:event_nuovaPartitaActionPerformed
 
     private void loadMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadMatchActionPerformed
         // TODO add your handling code here:
@@ -148,6 +156,13 @@ public class FrameStart extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
         this.setIconImage(icon.getImage());
     }//GEN-LAST:event_formWindowOpened
+
+    private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            ActionEvent e = new ActionEvent(this,1,"");
+            nuovaPartitaActionPerformed(e);
+        }       
+    }//GEN-LAST:event_usernameFieldKeyPressed
 
     /**
      */
@@ -190,7 +205,7 @@ public class FrameStart extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel jUsernameLabel;
     private javax.swing.JButton loadMatch;
-    private javax.swing.JButton newMatch;
+    private javax.swing.JButton nuovaPartita;
     private javax.swing.JTextField usernameField;
     // End of variables declaration//GEN-END:variables
 }

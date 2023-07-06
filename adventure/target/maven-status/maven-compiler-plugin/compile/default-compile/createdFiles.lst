@@ -88,6 +88,7 @@ di\uniba\map\b\adventure\messaggi\MessaggioOggetti.class
 swing\JDialogMatch$1.class
 di\uniba\map\b\adventure\parser\ParserOutput.class
 data\Classifica.class
+swing\FrameStart$6.class
 socket\Server.class
 swing\JDialogPorta$11.class
 di\uniba\map\b\adventure\type\Stanza.class
