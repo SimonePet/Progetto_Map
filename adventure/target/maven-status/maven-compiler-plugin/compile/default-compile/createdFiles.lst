@@ -29,6 +29,7 @@ swing\JDialogRadio.class
 swing\JDialogAbbandona$1.class
 data\FileInterface.class
 swing\JDialogStats$3.class
+swing\JDialogPorta$14.class
 swing\FrameStart$2.class
 swing\JFrameApp$6.class
 swing\JDialogRadio$4.class
@@ -39,7 +40,6 @@ swing\FrameStart$3.class
 swing\FrameStart.class
 di\uniba\map\b\adventure\messaggi\MessaggioEdificioFuori.class
 swing\JDialogStats$4.class
-swing\JDialogPorta$13$1.class
 swing\JDialogRadio$3.class
 swing\JFrameApp$7.class
 swing\JDialogAbbandona$3.class
@@ -71,6 +71,7 @@ swing\JDialogStats$2.class
 di\uniba\map\b\adventure\messaggi\MessaggioApprodo.class
 swing\JDialogClassificaUtenti.class
 swing\JDialogMatch$2.class
+swing\JDialogPorta$14$1.class
 swing\JFrameApp$5.class
 di\uniba\map\b\adventure\type\Oggetto.class
 swing\JDialogPorta$10.class
