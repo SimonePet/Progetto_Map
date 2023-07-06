@@ -23,17 +23,20 @@ public class Classifica {
     }
     
     public List<Map.Entry<String, Integer>> ottieniClassificaUtenti() {
-        Map<String, Integer> punteggioMassimoPerNomeUtente = partite.stream()
+    Map<String, Integer> punteggioMassimoperUtente = 
+        partite.stream()
+        .filter(Partita::terminata) // filtra solo le partite con attributo "finita" a true
         .collect(Collectors.groupingBy(Partita::getNomeUtente,
-                Collectors.mapping(Partita::getPunteggio, Collectors.maxBy(Integer::compare))))
+            Collectors.mapping(Partita::getPunteggio, Collectors.maxBy(Integer::compare))))
         .entrySet()
         .stream()
         .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().orElse(0)));
+
         // Stampa della HashMap risultante
-        punteggioMassimoPerNomeUtente.forEach((nomeUtente, punteggio) ->
+        punteggioMassimoperUtente.forEach((nomeUtente, punteggio) ->
                 System.out.println("Nome Utente: " + nomeUtente + ", Punteggio Massimo: " + punteggio));
         //lista di coppie chiave-valore
-        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(punteggioMassimoPerNomeUtente.entrySet());
+        List<Map.Entry<String, Integer>> entryList = new ArrayList<>(punteggioMassimoperUtente.entrySet());
         // Ordina la lista di Map.Entry in base al valore
         Collections.sort(entryList, Map.Entry.comparingByValue(Comparator.reverseOrder()));
         return entryList;

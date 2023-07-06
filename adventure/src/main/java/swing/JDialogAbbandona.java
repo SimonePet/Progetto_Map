@@ -14,7 +14,6 @@ import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import java.io.IOException;
-import java.sql.SQLException;
 import javax.swing.ImageIcon;
 
 /**
@@ -154,12 +153,12 @@ public class JDialogAbbandona extends javax.swing.JDialog {
             db.creaTabellaPartita();
             //salva partita su DB
             String username = engine.getGame().getUsername();
-            boolean b = engine.getGame().isFinished();
-            int numSeconds = engine.getGame().getNumSecondi();
-            int numMinutes = engine.getGame().getNumMinuti();
-            int numMoves = engine.getGame().getNumMosse();
-            GameDescription game = engine.getGame();
-            db.salvaPartita(nomePartita, username, b, numSeconds, numMinutes, numMoves, game);
+            boolean b = engine.getGame().getFinita();
+            int numSecondi = engine.getGame().getNumSecondi();
+            int numMinuti = engine.getGame().getNumMinuti();
+            int numMosse = engine.getGame().getNumMosse();
+            GameDescription partita = engine.getGame();
+            db.salvaPartita(nomePartita, username, b, numSecondi, numMinuti, numMosse, partita);
             db.stampaPartite();
             //salva partita su file
             FileMatchController f = new FileMatchController("salvataggioPartita.txt","resources");
