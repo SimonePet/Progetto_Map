@@ -7,7 +7,6 @@ swing\JDialogClassificaUtenti$1.class
 di\uniba\map\b\adventure\messaggi\MessaggioCosta.class
 di\uniba\map\b\adventure\GameDescription.class
 di\uniba\map\b\adventure\games\GiocoNaufragioIsola$1.class
-swing\JDialogMatch$3$1.class
 di\uniba\map\b\adventure\games\GiocoNaufragioIsola.class
 data\Database.class
 data\DatabaseController.class
@@ -48,6 +47,7 @@ swing\JDialogPorta$6.class
 di\uniba\map\b\adventure\messaggi\MessaggioGrotta.class
 di\uniba\map\b\adventure\parser\Parser.class
 di\uniba\map\b\adventure\type\Inventario.class
+swing\JDialogMatch$4.class
 di\uniba\map\b\adventure\games\ControlGioco.class
 di\uniba\map\b\adventure\messaggi\Messaggio.class
 di\uniba\map\b\adventure\Utils.class
@@ -74,6 +74,7 @@ swing\JDialogMatch$2.class
 swing\JDialogPorta$14$1.class
 swing\JFrameApp$5.class
 di\uniba\map\b\adventure\type\Oggetto.class
+swing\JDialogAbbandona$6$1.class
 swing\JDialogPorta$10.class
 data\FileController.class
 swing\FrameStart$5.class
@@ -91,12 +92,13 @@ data\Classifica.class
 swing\FrameStart$6.class
 socket\Server.class
 swing\JDialogPorta$11.class
+swing\JDialogMatch$4$1.class
 di\uniba\map\b\adventure\type\Stanza.class
 swing\JDialogPorta$9.class
 swing\JDialogRadio$1.class
+swing\JDialogAbbandona$6.class
 di\uniba\map\b\adventure\messaggi\MessaggioCovo.class
 swing\JDialogPorta.class
-swing\JDialogAbbandona$5$1.class
 swing\JDialogStats$4$1.class
 di\uniba\map\b\adventure\messaggi\MessaggiConversazione.class
 swing\JDialogStats$1.class

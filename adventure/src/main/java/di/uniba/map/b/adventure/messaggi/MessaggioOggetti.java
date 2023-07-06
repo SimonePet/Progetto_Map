@@ -13,9 +13,9 @@ public final class MessaggioOggetti {
     private static final String DESCRZIONE_RADIO = "E' una vecchia radio a pile..."
             + "chissa se funzionera'...";
     private static final String DESCRIZIONE_PILE = "Sono delle pile stilo, non sembrano"
-            + "essere scariche...";
+            + " essere scariche...";
     private static final String DESCRIZIONE_MAPPA = "E' una mappa del luogo, sembra essere"
-            + "disegnata a mano...";
+            + " disegnata a mano...";
     private static final String DESCRIZIONE_TELECOMANDO = "Un semplice telecomando.";
     private static final String DESCRIZIONE_ACCIARINO = "Un acciarino, potresti riscaldarti o darti fuoco.";
     private static final String DESCRIZIONE_LASTRA = "Una lastra incisa.";

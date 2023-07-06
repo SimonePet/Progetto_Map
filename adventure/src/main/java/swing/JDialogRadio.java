@@ -15,6 +15,8 @@ import javax.swing.*;
 
 import data.PercorsoFileSystem;
 import di.uniba.map.b.adventure.Utils;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import socket.Client;
 import socket.Server;
 
@@ -56,6 +58,9 @@ public class JDialogRadio extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -73,6 +78,9 @@ public class JDialogRadio extends javax.swing.JDialog {
             }
         });
         jRadioButton1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jRadioButton1KeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jRadioButton1KeyReleased(evt);
             }
@@ -86,6 +94,9 @@ public class JDialogRadio extends javax.swing.JDialog {
             }
         });
         jRadioButton2.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jRadioButton2KeyPressed(evt);
+            }
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 jRadioButton2KeyReleased(evt);
             }
@@ -253,12 +264,33 @@ public class JDialogRadio extends javax.swing.JDialog {
     }//GEN-LAST:event_jRadioButton2ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        numDomanda=1;
+        Server.stop();
         threadS.interrupt();
         System.out.println("Thread Server interrotto");
         threadC.interrupt();
         System.out.println("Thread Client interrotto");
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jRadioButton1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jRadioButton1KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            ActionEvent e = new ActionEvent(this,1,"");
+            btnConfermaActionPerformed(e);
+        }
+    }//GEN-LAST:event_jRadioButton1KeyPressed
+
+    private void jRadioButton2KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jRadioButton2KeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            ActionEvent e = new ActionEvent(this,1,"");
+            btnConfermaActionPerformed(e);
+        }
+    }//GEN-LAST:event_jRadioButton2KeyPressed
+
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+        numDomanda=1;
+        Server.stop();
+    }//GEN-LAST:event_formWindowClosed
 
     public static void avviaServer() throws IOException{
         Server threadServer = new Server();

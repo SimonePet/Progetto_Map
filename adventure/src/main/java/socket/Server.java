@@ -23,10 +23,12 @@ public class Server implements Runnable {
     private static PrintWriter writer;
     private static Socket clientSocket;
     private static String nomeUtente;
-
+    private static boolean attivo=false;
+    
     @Override
     public void run() {
         try {
+            attivo=true;
             serverSocket = new ServerSocket(port);
             System.out.println("Server avviato. In attesa di connessioni...");
             clientSocket = serverSocket.accept();
@@ -76,7 +78,9 @@ public class Server implements Runnable {
 
     public static void stop() {
         try {
-            serverSocket.close();
+            if(attivo){
+                serverSocket.close();
+            }
         } catch (IOException e) {
             System.out.println("Errore durante la chiusura del server: " + e.getMessage());
         }
