@@ -41,9 +41,24 @@ public class FrameStart extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setResizable(false);
+        addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                formMouseEntered(evt);
+            }
+        });
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
+            }
+        });
+
+        jPanel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jPanel1MouseEntered(evt);
             }
         });
 
@@ -132,7 +147,7 @@ public class FrameStart extends javax.swing.JFrame {
     private void nuovaPartitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuovaPartitaActionPerformed
         String username = usernameField.getText();
         if(!username.equalsIgnoreCase("")){
-            JFrameApp frame = new JFrameApp(username);
+            JFrameApp frame = new JFrameApp(username, this);
             frame.main();
             LabelErrorName.setText("");
         }else{
@@ -141,8 +156,7 @@ public class FrameStart extends javax.swing.JFrame {
     }//GEN-LAST:event_nuovaPartitaActionPerformed
 
     private void loadMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadMatchActionPerformed
-        // TODO add your handling code here:
-        JDialogMatch d = new JDialogMatch(this,true);
+        JDialogMatch d = new JDialogMatch(this,true, this);
         d.setVisible(true);
     }//GEN-LAST:event_loadMatchActionPerformed
 
@@ -163,6 +177,18 @@ public class FrameStart extends javax.swing.JFrame {
             nuovaPartitaActionPerformed(e);
         }       
     }//GEN-LAST:event_usernameFieldKeyPressed
+
+    private void formMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_formMouseEntered
+
+    }//GEN-LAST:event_formMouseEntered
+
+    private void jPanel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jPanel1MouseEntered
+
+    }//GEN-LAST:event_jPanel1MouseEntered
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        System.exit(0);
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      */

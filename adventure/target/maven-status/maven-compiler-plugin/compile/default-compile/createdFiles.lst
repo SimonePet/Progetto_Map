@@ -7,6 +7,7 @@ swing\JDialogClassificaUtenti$1.class
 di\uniba\map\b\adventure\messaggi\MessaggioCosta.class
 di\uniba\map\b\adventure\GameDescription.class
 di\uniba\map\b\adventure\games\GiocoNaufragioIsola$1.class
+swing\FrameStart$7.class
 di\uniba\map\b\adventure\games\GiocoNaufragioIsola.class
 data\Database.class
 data\DatabaseController.class
@@ -79,6 +80,7 @@ swing\JDialogPorta$10.class
 data\FileController.class
 swing\FrameStart$5.class
 di\uniba\map\b\adventure\type\Comando.class
+swing\FrameStart$8.class
 di\uniba\map\b\adventure\type\TipoComando.class
 swing\JDialogPorta$3.class
 data\FileMatchController.class
