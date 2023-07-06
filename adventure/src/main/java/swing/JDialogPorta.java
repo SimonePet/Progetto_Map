@@ -305,7 +305,9 @@ public class JDialogPorta extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try{
-            BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_STANZE)+"porta.png"));
+            String percorso;
+            percorso = PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_STANZE)+"porta.png";
+            BufferedImage img = ImageIO.read(new File(percorso));
             Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
             jPanel1.setBackground(new Color(0,0,0,0));
