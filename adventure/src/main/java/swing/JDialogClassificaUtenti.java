@@ -4,6 +4,7 @@
  */
 package swing;
 
+import data.Classifica;
 import data.DatabaseController;
 import data.Partita;
 import java.sql.SQLException;
@@ -75,12 +76,18 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
         Map<String,Integer> map = new HashMap<>();
         String[] nomiColonne = { "Utente", "massimo punteggio" };
         String [][] dati = new String[200][200];
+        try {
+            db = new DatabaseController("sa","");
+        } catch (SQLException ex) {
+            System.err.println(ex.getMessage());
+        }
         int i = 0;
         try {
             db = new DatabaseController("sa","");
             List<Partita> partite = db.ottieniListaPartite();
             List<Map.Entry<String,Integer>> listaCoppie;
-            listaCoppie = db.ottieniClassificaUtenti(partite);
+            Classifica c = new Classifica(partite);
+            listaCoppie = c.ottieniClassificaUtenti();
             for (Map.Entry<String, Integer> entry : listaCoppie) {
                 String nomeUtente = entry.getKey();
                 Integer punteggioMax = entry.getValue();

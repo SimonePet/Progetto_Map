@@ -156,5 +156,4 @@ public abstract class Database {
      * @param partite
      * @return
      */
-    public abstract List<Map.Entry<String, Integer>> ottieniClassificaUtenti(List<Partita> partite);
 }
