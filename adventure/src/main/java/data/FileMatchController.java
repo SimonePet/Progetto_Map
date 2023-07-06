@@ -29,8 +29,6 @@ public class FileMatchController extends FileController implements Serializable 
      */
     public FileMatchController(final String nomeFileCorrente, final String directoryCorrente) {
         super(nomeFileCorrente, directoryCorrente);
-        boolean creato = super.create();
-        System.out.println(creato);
     }
     /**
      *
@@ -41,29 +39,11 @@ public class FileMatchController extends FileController implements Serializable 
      */
     public boolean addMatch(final GiocoNaufragioIsola game) throws IOException, ClassNotFoundException {
         try {
-            // prendiamo percorso relativo ed eliminiamo la sottostringa /adventure e tutti i caratteri successivi(tramite il .*) //
-            /*
-            String percorsoRelFile = System.getProperty("user.dir").replaceAll("adventure"+".*","");
-            String percorsoAss = "adventure"+File.separator+directory+File.separator+nomeFile;
-            String percorso = percorsoRelFile+percorsoAss;
-            */
-            String percorso = "";
-            File progettoDir = new File(System.getProperty("user.dir"));
-            if (progettoDir.getName().contains("adventure")) {
-                File fileDir = new File(progettoDir, File.separator + directory + File.separator + "salvataggioPartita");
-                percorso = fileDir.getAbsolutePath();
-            } else if (!progettoDir.getName().contains("Progetto_Map")) {
-                File fileDir = new File(progettoDir, File.separator + "Progetto_Map" + File.separator + "adventure" + File.separator + directory + File.separator + "salvataggioPartita");
-                percorso = fileDir.getAbsolutePath();
-            } else if (progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")) {
-                File fileDir = new File(progettoDir, File.separator + "adventure" + File.separator + directory + File.separator + "salvataggioPartita");
-                percorso = fileDir.getAbsolutePath();
-            }
             ObjectOutputStream out = null;
             if (file.exists() && file.length() == 0) {
                 out = new ObjectOutputStream(Files.newOutputStream(file.toPath()));
             } else {
-                out = new ObjectOutputStream(new FileOutputStream(percorso, true)) {
+                out = new ObjectOutputStream(new FileOutputStream(this.percorso, true)) {
                     @Override
                     protected void writeStreamHeader() throws IOException {
                         reset();
@@ -121,30 +101,26 @@ public class FileMatchController extends FileController implements Serializable 
      */
     public GiocoNaufragioIsola getMatch(final String nomePart) throws IOException, ClassNotFoundException {
         GiocoNaufragioIsola game;
-        /*
-        FileInputStream fileIn = new FileInputStream(file);
-        ObjectInputStream objectIn = new ObjectInputStream(fileIn);*/
-        String percorsoRelFile = System.getProperty("user.dir").replaceAll("adventure" + ".*", "");
-        String percorsoAss = File.separator + "adventure" + File.separator + directory + File.separator + nomeFile;
-        String percorso = percorsoRelFile + percorsoAss;
-        ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(percorso));
-        try {
-            while (true) {
-                game = (GiocoNaufragioIsola) objectIn.readObject();
-                if (game.getNomePartita().equalsIgnoreCase(nomePart)) {
-                    return game;
-                }
-            }
-        } catch (IOException e) {
-            System.out.println(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } finally {
+        ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(this.percorso));
+        if(this.file.exists()){
             try {
-                objectIn.close();
-                //fileIn.close();
+                while (true) {
+                    game = (GiocoNaufragioIsola) objectIn.readObject();
+                    if (game.getNomePartita().equalsIgnoreCase(nomePart)) {
+                        return game;
+                    }
+                }
             } catch (IOException e) {
-                e.printStackTrace();
+                System.out.println(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            } finally {
+                try {
+                    objectIn.close();
+                    //fileIn.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         }
         return null;
@@ -161,23 +137,25 @@ public class FileMatchController extends FileController implements Serializable 
         GiocoNaufragioIsola game;
         FileInputStream fileIn = new FileInputStream(file);
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-
-        try {
-            while (true) {
-                game = (GiocoNaufragioIsola) objectIn.readObject();
-                lista.add(game);
-            }
-        } catch (IOException e) {
-            System.out.println(e);
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } finally {
+        
+        if(file.exists() && file.length()>0){
             try {
-                objectIn.close();
-                //fileIn.close();
+                while (true) {
+                    game = (GiocoNaufragioIsola) objectIn.readObject();
+                    lista.add(game);
+                }
             } catch (IOException e) {
-                e.printStackTrace();
-            }
+                System.out.println(e);
+            } catch (ClassNotFoundException e) {
+                throw new RuntimeException(e);
+            } finally {
+                try {
+                    objectIn.close();
+                    //fileIn.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }        
         }
         return lista;
     }

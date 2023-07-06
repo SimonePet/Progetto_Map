@@ -6,6 +6,7 @@ package data;
 
 
 import di.uniba.map.b.adventure.GameDescription;
+import di.uniba.map.b.adventure.Utils;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -37,19 +38,12 @@ public abstract class Database {
      * @throws SQLException
      */
     public Connection connect() throws SQLException {
-        String percorsoDb = "";
-        File progettoDir = new File(System.getProperty("user.dir"));
-        if (progettoDir.getName().equalsIgnoreCase("adventure")) {
-            File fileDir = new File(progettoDir, File.separator + "resources" + File.separator + "db");
-                percorsoDb = fileDir.getAbsolutePath();
-            } else if (!progettoDir.getName().contains("Progetto_Map")) {
-                File fileDir = new File(progettoDir, File.separator + "Progetto_Map" + File.separator + "adventure" + File.separator + "resources" + File.separator + "db");
-                percorsoDb = fileDir.getAbsolutePath();
-            } else if (progettoDir.getName().contains("Progetto_Map") && !progettoDir.getName().contains("adventure")) {
-                File fileDir = new File(progettoDir, File.separator + "adventure" + File.separator + "resources" + File.separator + "db");
-                percorsoDb = fileDir.getAbsolutePath();
-            }
-        Connection conn = DriverManager.getConnection("jdbc:h2:" + percorsoDb);
+        String percorsoDb = "adventure"+File.separator+"resources"+File.separator+"db";
+        String percorso = PercorsoFileSystem.trovaPercorso(percorsoDb);
+        System.out.println("PERCORSO DB: "+percorso);
+        
+        Connection conn = DriverManager.getConnection("jdbc:h2:" + percorso);
+        System.out.println("connessione al DB effettuata correttamente");
         return conn;
     }
 

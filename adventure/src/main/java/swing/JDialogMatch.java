@@ -105,7 +105,7 @@ public class JDialogMatch extends JDialog {
     private void tastoConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tastoConfermaActionPerformed
         String nomePartitaSelezionata = (String)jComboBox1.getSelectedItem();
         System.out.println(nomePartitaSelezionata);
-        FileMatchController f = new FileMatchController("salvataggioPartita","resources");
+        FileMatchController f = new FileMatchController("salvataggioPartita.txt","resources");
         try {
             GiocoNaufragioIsola partita = f.getMatch(nomePartitaSelezionata);
             String username = partita.getUsername();
@@ -121,7 +121,7 @@ public class JDialogMatch extends JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
         this.setIconImage(icon.getImage());
-        FileMatchController f = new FileMatchController("salvataggioPartita","resources");
+        FileMatchController f = new FileMatchController("salvataggioPartita.txt","resources");
         try {
             List<GiocoNaufragioIsola> partite = f.getMatch();
             ListIterator<GiocoNaufragioIsola> lit = partite.listIterator();

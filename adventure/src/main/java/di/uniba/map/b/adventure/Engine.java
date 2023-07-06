@@ -5,11 +5,15 @@
  */
 package di.uniba.map.b.adventure;
 
+import data.DatabaseController;
+import data.FileController;
+import data.PercorsoFileSystem;
 import di.uniba.map.b.adventure.parser.Parser;
 import swing.FrameStart;
 
 import java.io.File;
 import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Set;
 
 /**
@@ -39,16 +43,11 @@ public class Engine {
             }
         }
         try {
-            //Set<String> stopwords = Utils.loadFileListInSet(new File(".resources/stopwords"));
-            String percorsoAssoluto = new File("").getAbsolutePath();
-            String percorsoRelativo = "";
-            if (percorsoAssoluto.contains("adventure")) {
-                percorsoRelativo = "/resources/stopwords";
-            } else {
-                percorsoRelativo = "/adventure/resources/stopwords";
-            }
-            String fullPath = percorsoAssoluto + File.separator + percorsoRelativo;
-            Set<String> stopwords = Utils.loadFileListInSet(new File(fullPath));
+            String percorso="";
+            String percorsoStopWords = "adventure"+File.separator+"resources"+File.separator+"stopwords";
+            percorso = PercorsoFileSystem.trovaPercorso(percorsoStopWords);
+            System.out.println("Percorso stopwords: "+percorso);
+            Set<String> stopwords = Utils.loadFileListInSet(new File(percorso));
             parser = new Parser(stopwords);
         } catch (IOException ex) {
             System.err.println(ex);
@@ -113,10 +112,14 @@ public class Engine {
     /**
      * @param args the command line arguments
      */
-    public static void main(final String[] args) {
+    public static void main(final String[] args) throws SQLException {
         //Non dovrebbe servire in quanto la partita viene caricata ed inizializzata in JFrameApp
         //Engine engine = new Engine(new GiocoNaufragioIsola());
         //engine.execute();
+        DatabaseController db = new DatabaseController();
+        db.creaTabellaPartita();
+        FileController f = new FileController("salvataggioPartita.txt","resources");
+        f.create();
         FrameStart.main();
     }
 }

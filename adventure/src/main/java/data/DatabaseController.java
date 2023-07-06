@@ -75,10 +75,10 @@ public class DatabaseController extends Database {
             pstm.setBoolean(6, finish);
             pstm.setInt(7, game.getNumMosse());
             pstm.executeUpdate();
-            System.out.println("PARTITA SALVATA");
+            System.out.println("PARTITA SALVATA SU DB");
             pstm.close();
         } catch (SQLException ex) {
-            System.out.println("PARTITA NON SALVATA");
+            System.out.println("PARTITA NON SALVATA SU DB");
             System.err.println(ex.getMessage());
         }
         return true;

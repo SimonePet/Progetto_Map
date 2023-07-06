@@ -57,8 +57,6 @@ public final class ControlGioco {
                 }
             }
             //System.out.println(Utils.percorsoAssoluto);
-
-
             if (gni.getStanzaCorrente().getVisitata()) {
                 frame.scrviSuEditor(gni.getStanzaCorrente().getDescrizioneCortaStanza());
             } else {
