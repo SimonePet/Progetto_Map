@@ -192,6 +192,8 @@ public class JDialogRadio extends javax.swing.JDialog {
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
+        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
+        this.setIconImage(icon.getImage());
         Color c = new Color(255,255,255,150);
         jScrollPane1.getViewport().setOpaque(false);
         jTextArea1.setBackground(c);

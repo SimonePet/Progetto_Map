@@ -47,7 +47,7 @@ public class ThreadTime implements Runnable{
             printTime(ore+":"+this.numMinuti+":"+this.numSecondi);
             //System.out.println(ore+":"+min+":"+sec);
             try {
-                Thread.sleep(100);
+                Thread.sleep(1000);
             }catch(InterruptedException ex){
                 System.out.println("Thread interrotto");
                 return;

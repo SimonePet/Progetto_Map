@@ -11,11 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 import java.sql.ResultSet;
 
 /**
@@ -34,12 +30,11 @@ public class DatabaseController extends Database {
      * @param password
      * @throws SQLException
      */
-    public DatabaseController(final String username, final String password) throws SQLException {
-        super.setUsername(username);
-        super.setPassword(password);
+    public DatabaseController() throws SQLException {
         Connection connessione = super.connect();
         this.conn = connessione;
     }
+    
     @Override
     public boolean creaTabellaPartita() {
         try {

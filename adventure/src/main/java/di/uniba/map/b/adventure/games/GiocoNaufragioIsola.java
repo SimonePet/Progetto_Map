@@ -547,6 +547,9 @@ public class GiocoNaufragioIsola extends GameDescription {
                     String fullPath = workingDirectory + File.separator + relativePath;
                     FileMatchController fmc = new FileMatchController("/salvataggioPartita", fullPath);
                     break;
+                case LOCALIZZAZIONE:
+                    ControlGioco.comandoLocalizzazione(this, frame);
+                    break;
                 case ACCENDI: {
                     try {
                         ControlGioco.comandoAccendi(this, frame, p.getInvObject());

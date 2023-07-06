@@ -5,7 +5,9 @@
 package swing;
 
 import data.FileMatchController;
+import data.PercorsoFileSystem;
 import di.uniba.map.b.adventure.GameDescription;
+import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import java.io.IOException;
 import static java.nio.file.Files.list;
@@ -15,6 +17,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ComboBoxModel;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
 
@@ -116,7 +119,8 @@ public class JDialogMatch extends JDialog {
     }//GEN-LAST:event_tastoConfermaActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-
+        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
+        this.setIconImage(icon.getImage());
         FileMatchController f = new FileMatchController("salvataggioPartita","resources");
         try {
             List<GiocoNaufragioIsola> partite = f.getMatch();
