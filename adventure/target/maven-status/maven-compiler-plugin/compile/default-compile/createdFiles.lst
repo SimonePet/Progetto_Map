@@ -77,6 +77,7 @@ swing\JDialogPorta.class
 di\uniba\map\b\adventure\messaggi\MessaggioGrotta.class
 swing\JDialogStats$4$1.class
 di\uniba\map\b\adventure\parser\Parser.class
+di\uniba\map\b\adventure\messaggi\MessaggiConversazione.class
 di\uniba\map\b\adventure\type\Inventario.class
 swing\JDialogStats$1.class
 di\uniba\map\b\adventure\games\ControlGioco.class
