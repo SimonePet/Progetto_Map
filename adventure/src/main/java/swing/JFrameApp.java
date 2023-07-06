@@ -270,10 +270,10 @@ public class JFrameApp extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         jScrollPane1.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_STANZE)+"icona.png");
+        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
         this.setIconImage(icon.getImage());
         this.setResizable(false);
-        jPanel1.setSize(650,550);
+        jPanel1.setSize(this.getWidth(),this.getHeight());
         jLabel1.setOpaque(false);
         jLabel1.setBackground(new Color(255,255,255,150));
         jLabel2.setOpaque(false);
