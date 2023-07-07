@@ -93,7 +93,7 @@ public abstract class Database {
      * @param game
      * @return
      */
-    public abstract boolean salvaPartita(String nomePartita, String usernameCorr, boolean terminata, int numSecondi, int numMinuti, int numMosse, GameDescription game);
+    public abstract boolean salvaPartita(GameDescription game);
     /* recupera punteggio partita con id*/
     /**
      *
