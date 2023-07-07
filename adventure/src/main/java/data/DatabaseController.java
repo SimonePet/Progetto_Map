@@ -55,7 +55,7 @@ public class DatabaseController extends Database {
     }
     /* salva nuova partita alla tabella */
     @Override
-    public boolean salvaPartita(final String nomePartita, final String nomeUtente, final boolean finita, final int numSecondi, final int numMin, final int numMosse, final GameDescription partita) {
+    public boolean salvaPartita(final GameDescription partita) {
         //calcola punteggio con formula
         int punteggio = 100;
         int penalizzazioneMosse = 1 * partita.getNumMosse();
@@ -78,10 +78,9 @@ public class DatabaseController extends Database {
             pstm.setInt(3, punteggio);
             pstm.setInt(4, partita.getNumMinuti());
             pstm.setInt(5, partita.getNumSecondi());
-            pstm.setBoolean(6, finita);
+            pstm.setBoolean(6, partita.getFinita());
             pstm.setInt(7, partita.getNumMosse());
             pstm.executeUpdate();
-            System.out.println("PARTITA SALVATA SU DB");
             pstm.close();
         } catch (SQLException ex) {
             System.out.println("PARTITA NON SALVATA SU DB");

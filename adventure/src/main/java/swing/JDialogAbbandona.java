@@ -5,8 +5,10 @@
 package swing;
 
 import data.DatabaseController;
+import data.EsistenzaPartita;
 import data.FileMatchController;
 import data.PercorsoFileSystem;
+import data.SalvaPartita;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
 import di.uniba.map.b.adventure.Utils;
@@ -138,11 +140,15 @@ public class JDialogAbbandona extends javax.swing.JDialog {
     private void YesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YesButtonActionPerformed
         DatabaseController db;
         boolean partitaEsistente = false;
+        boolean partitaSalvata = false;
         //recupera nome partita 
         String nomePartita = jNomePartita.getText();   
         db = new DatabaseController();
-        //controlla esistenza partita
-        partitaEsistente = db.partitaEsistente(nomePartita);
+        /* controlla esistenza partita conespressione lambda che fornisce 
+        l'implementazione dell metodo test dell'interfaccia funzionale EsistenzaPartita */       
+        EsistenzaPartita esistenzaPartita = (nome) -> db.partitaEsistente(nome);
+        partitaEsistente = esistenzaPartita.test(nomePartita);   
+        
         if(nomePartita.equalsIgnoreCase("")){
             jLabelErrore.setText("inserire nome partita!!");
         }else if(partitaEsistente){
@@ -152,13 +158,14 @@ public class JDialogAbbandona extends javax.swing.JDialog {
             //crea la tabella match solo se non esiste
             db.creaTabellaPartita();
             //salva partita su DB
-            String username = engine.getGame().getUsername();
-            boolean b = engine.getGame().getFinita();
-            int numSecondi = engine.getGame().getNumSecondi();
-            int numMinuti = engine.getGame().getNumMinuti();
-            int numMosse = engine.getGame().getNumMosse();
             GameDescription partita = engine.getGame();
-            db.salvaPartita(nomePartita, username, b, numSecondi, numMinuti, numMosse, partita);
+            // salva partita utilizzando interfaccia funzionale SalvaPartita
+            // l'espressione lambda fornisce l'implementazione del metodo dell'interfaccia funzionale
+            SalvaPartita salvaPartita = (p) -> db.salvaPartita(p);
+            partitaSalvata = salvaPartita.esegui(partita);
+            if(partitaSalvata){
+                System.out.println("Partita salvata su DB");
+            }
             db.stampaPartite();
             //salva partita su file
             FileMatchController f = new FileMatchController("salvataggioPartita.txt","resources");

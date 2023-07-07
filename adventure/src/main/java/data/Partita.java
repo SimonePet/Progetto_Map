@@ -4,13 +4,6 @@
  */
 package data;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
-
 /**
  *
  * @author Giannantonio
@@ -61,8 +54,8 @@ public class Partita {
     /**
      *
      */
-    public void setId(final int idCorr) {
-        this.id = idCorr;
+    public void setId(final int id) {
+        this.id = id;
     }
     /**
      *
@@ -73,46 +66,46 @@ public class Partita {
     }
     /**
      *
-     * @param nomeCorr
+     * @param nome
      */
-    public void setNome(final String nomeCorr) {
-        this.nome = nomeCorr;
+    public void setNome(final String nome) {
+        this.nome = nome;
     }
     /**
      *
-     * @param numSecondiCorr
+     * @param numSecondi
      */
-    public void setNumSecondi(final int numSecondiCorr) {
-        this.numSecondi = numSecondiCorr;
+    public void setNumSecondi(final int numSecondi) {
+        this.numSecondi = numSecondi;
     }
     /**
      *
-     * @param numMinutiCorr
+     * @param numMinuti
      */
-    public void setNumMinuti(final int numMinutiCorr) {
-        this.numMinuti = numMinutiCorr;
+    public void setNumMinuti(final int numMinuti) {
+        this.numMinuti = numMinuti;
     }
     /**
      *
-     * @param nomeUtenteCorr
+     * @param nomeUtente
      */
-    public void setNuomeUtente(final String nomeUtenteCorr) {
-        this.nomeUtente = nomeUtenteCorr;
+    public void setNuomeUtente(final String nomeUtente) {
+        this.nomeUtente = nomeUtente;
     }
     /**
      *
-     * @param numMosseCorr
+     * @param numMosse
      */
-    public void setNumMosse(final int numMosseCorr) {
-        this.numMosse = numMosseCorr;
+    public void setNumMosse(final int numMosse) {
+        this.numMosse = numMosse;
     }
 
     /**
      *
-     * @param punteggioCorr
+     * @param punteggio
      */
-    public void setPunteggio(final int punteggioCorr) {
-        this.punteggio = punteggioCorr;
+    public void setPunteggio(final int punteggio) {
+        this.punteggio = punteggio;
     }
     /**
      *

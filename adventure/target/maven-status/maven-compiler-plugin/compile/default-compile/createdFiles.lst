@@ -76,6 +76,7 @@ swing\JDialogPorta$14$1.class
 swing\JFrameApp$5.class
 di\uniba\map\b\adventure\type\Oggetto.class
 swing\JDialogAbbandona$6$1.class
+data\SalvaPartita.class
 swing\JDialogPorta$10.class
 data\FileController.class
 swing\FrameStart$5.class
@@ -100,6 +101,7 @@ swing\JDialogPorta$9.class
 swing\JDialogRadio$1.class
 swing\JDialogAbbandona$6.class
 di\uniba\map\b\adventure\messaggi\MessaggioCovo.class
+data\EsistenzaPartita.class
 swing\JDialogPorta.class
 swing\JDialogStats$4$1.class
 di\uniba\map\b\adventure\messaggi\MessaggiConversazione.class
