@@ -4,7 +4,6 @@
  */
 package swing;
 
-import data.PercorsoFileSystem;
 import di.uniba.map.b.adventure.Utils;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -167,7 +166,7 @@ public class FrameStart extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setResizable(false);
-        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
+        ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE+"iconaGioco.png");
         this.setIconImage(icon.getImage());
     }//GEN-LAST:event_formWindowOpened
 

@@ -7,7 +7,6 @@ package swing;
 import data.DatabaseController;
 import data.EsistenzaPartita;
 import data.FileMatchController;
-import data.PercorsoFileSystem;
 import data.SalvaPartita;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
@@ -190,7 +189,7 @@ public class JDialogAbbandona extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setResizable(false);
-        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
+        ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE +"iconaGioco.png");
         this.setIconImage(icon.getImage());
     }//GEN-LAST:event_formWindowOpened
 

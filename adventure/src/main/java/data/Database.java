@@ -38,11 +38,7 @@ public abstract class Database {
      * @throws SQLException
      */
     public Connection connect() throws SQLException {
-        String percorsoDb = "adventure"+File.separator+"resources"+File.separator+"db";
-        String percorso = PercorsoFileSystem.trovaPercorso(percorsoDb);
-        System.out.println("PERCORSO DB: "+percorso);
-        
-        Connection conn = DriverManager.getConnection("jdbc:h2:" + percorso);
+        Connection conn = DriverManager.getConnection("jdbc:h2:" + Utils.PERCORSO_DATABASE);
         System.out.println("connessione al DB effettuata correttamente");
         return conn;
     }
@@ -82,14 +78,9 @@ public abstract class Database {
      */
     public abstract boolean creaTabellaPartita();
     /* salva nuova partita nella tabella */
+
     /**
      *
-     * @param nomePartita
-     * @param usernameCorr
-     * @param terminata
-     * @param numSecondi
-     * @param numMinuti
-     * @param numMosse
      * @param game
      * @return
      */

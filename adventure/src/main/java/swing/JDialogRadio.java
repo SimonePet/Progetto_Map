@@ -13,7 +13,6 @@ import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.*;
 
-import data.PercorsoFileSystem;
 import di.uniba.map.b.adventure.Utils;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -202,7 +201,7 @@ public class JDialogRadio extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setResizable(false);
-        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
+        ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
         Color c = new Color(255,255,255,150);
         jScrollPane1.getViewport().setOpaque(false);
@@ -217,7 +216,7 @@ public class JDialogRadio extends javax.swing.JDialog {
         jButton2.setOpaque(false);
         jPanel2.setBackground(c);
         try {
-                BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_CONVERSAZIONE+".png")));
+                BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_CONVERSAZIONE + ".png"));
                 Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
                 ImageIcon imageIcon = new ImageIcon(dimg);
                 jPanel1.setBackground(new Color(0,0,0,0));

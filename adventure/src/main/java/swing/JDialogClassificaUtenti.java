@@ -7,14 +7,11 @@ package swing;
 import data.Classifica;
 import data.DatabaseController;
 import data.Partita;
-import data.PercorsoFileSystem;
 import di.uniba.map.b.adventure.Utils;
-import java.sql.SQLException;
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 
@@ -91,7 +88,7 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setResizable(false);
-        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
+        ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE +"iconaGioco.png");
         this.setIconImage(icon.getImage());
         DatabaseController db;
         Map<String,Integer> map = new HashMap<>();

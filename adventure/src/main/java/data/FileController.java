@@ -4,6 +4,8 @@
  */
 package data;
 
+import di.uniba.map.b.adventure.Utils;
+
 import java.io.File;
 import java.io.IOException;
 
@@ -25,7 +27,7 @@ public class FileController implements FileInterface {
     public FileController(final String nomeFileCorrente, final String directoryCorrente) {
         this.nomeFile = nomeFileCorrente;
         this.directory = directoryCorrente;
-        this.percorso = calcolaPercorsoFile();
+        this.percorso = Utils.PERCORSO_FILES;
         this.setFile();
     }
     
@@ -72,11 +74,5 @@ public class FileController implements FileInterface {
     public void setFile(){
         this.file = new File(percorso);
     }
-    
-    public String calcolaPercorsoFile(){
-        String percorso;
-        String percorsoFile="adventure"+File.separator+this.directory+File.separator+this.nomeFile;
-        percorso = PercorsoFileSystem.trovaPercorso(percorsoFile);   
-        return percorso;
-    }
+
 }

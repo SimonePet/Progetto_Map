@@ -11,11 +11,9 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import javax.swing.JTextArea;
 
-import data.PercorsoFileSystem;
 import data.Suono;
 import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.messaggi.MessaggiConversazione;
-import swing.JDialogRadio;
 
 /**
  *
@@ -62,7 +60,7 @@ public class Client implements Runnable{
         try {
             String response = reader.readLine();
             String nomeTraccia = ottieniStringaDopo(response,"::");
-            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_SUONI_CONVERSAZIONE) + nomeTraccia, false);
+            Suono.riproduciTraccia(Utils.PERCORSO_SUONI_CONVERSAZIONE + nomeTraccia, false);
             response = troncaStringa(response,"::");
             response = correggiStringa(response);
             System.out.println("Risposta dal server: " + response);

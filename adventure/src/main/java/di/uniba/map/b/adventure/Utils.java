@@ -28,12 +28,15 @@ public final class Utils {
     }
     public static final String PERCORSO_ASSOLUTO = calcolaPercorsoAssoluto();
     public static final String ESTENSIONE_WAV = ".wav";
-    public static final String PERCORSO_IMMAGINI_ICONE = "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "icone" + File.separator;
-    public static final String PERCORSO_SUONI_STANZE = "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "stanze" + File.separator;
-    public static final String PERCORSO_SUONI_OGGETTI = "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "oggetti" + File.separator;
-    public static final String PERCORSO_IMMAGINI_STANZE = "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "stanze" + File.separator;
-    public static final String PERCORSO_IMMAGINI_CONVERSAZIONE = "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "conversazione" + File.separator+"conversazione";
-    public static final String PERCORSO_SUONI_CONVERSAZIONE = "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "conversazione" + File.separator;
+    public static final String PERCORSO_IMMAGINI_ICONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "icone" + File.separator;
+    public static final String PERCORSO_SUONI_STANZE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "stanze" + File.separator;
+    public static final String PERCORSO_SUONI_OGGETTI = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "oggetti" + File.separator;
+    public static final String PERCORSO_IMMAGINI_STANZE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "stanze" + File.separator;
+    public static final String PERCORSO_IMMAGINI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "conversazione" + File.separator+"conversazione";
+    public static final String PERCORSO_SUONI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "conversazione" + File.separator;
+    public static final String PERCORSO_DATABASE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "db";
+    public static final String PERCORSO_FILES = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources"+ File.separator;
+    public static final String PERCORSO_STOPWORDS = "adventure" + File.separator + "resources" + File.separator + "stopwords";
     public static Set<String> loadFileListInSet(final File file) throws IOException {
         Set<String> set = new HashSet<>();
         BufferedReader reader = new BufferedReader(new FileReader(file));
