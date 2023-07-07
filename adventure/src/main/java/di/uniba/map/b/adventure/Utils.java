@@ -36,7 +36,8 @@ public final class Utils {
     public static final String PERCORSO_SUONI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "conversazione" + File.separator;
     public static final String PERCORSO_DATABASE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "db";
     public static final String PERCORSO_FILES = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources"+ File.separator;
-    public static final String PERCORSO_STOPWORDS = "adventure" + File.separator + "resources" + File.separator + "stopwords";
+    public static final String PERCORSO_STOPWORDS =PERCORSO_ASSOLUTO + File.separator +"adventure" + File.separator + "resources" + File.separator + "stopwords";
+    public static final String PERCORSO_SUONO_FINALE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "finale" + File.separator;
     public static Set<String> loadFileListInSet(final File file) throws IOException {
         Set<String> set = new HashSet<>();
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -66,8 +67,10 @@ public final class Utils {
             percorsoAss = percorsoAss.substring(0, indiceInizio) + sostituzione;
             System.out.println("Nuovo testo: " + percorsoAss);
         } else {
+            percorsoAss= percorsoAss + File.separator + sostituzione;
             System.out.println("Sottostringa non trovata");
         }
+        System.out.println("Ciao sono il percorso assoluto: " + percorsoAss);
         return percorsoAss;
     }
 

@@ -238,9 +238,12 @@ public class JFrameApp extends javax.swing.JFrame {
             if (p == null || p.getCommand() == null) {        
                     doc.insertString(doc.getLength(), "\nNon capisco quello che mi vuoi dire.\n", attributes);
             } else if (p.getCommand() != null && p.getCommand().getTipoComando() == TipoComando.FINE) {
-                doc.insertString(doc.getLength(), "Addio.\n", attributes);
+                doc.insertString(doc.getLength(), "\nAddio.\n"+"Non sei stato in grado di vincere?? Forse non sei un buon giocatore.", attributes);
                 //setta il textField non editabile
-
+                Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "sconfitta", true);
+                buttSumbit.setVisible(false);
+                textField.setVisible(false);
+                lblComando.setVisible(false);
             }else{
                 game.nextMove(p, System.out, this,jPanel1,background);
                 System.out.println();

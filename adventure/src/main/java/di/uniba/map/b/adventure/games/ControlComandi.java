@@ -36,6 +36,7 @@ public final class ControlComandi {
         ControlComandi.initCostruisci(gni);
         ControlComandi.initAiuto(gni);
         ControlComandi.initLocalizzazione(gni);
+        ControlComandi.initFine(gni);
     }
 
     private static void initNord(final GiocoNaufragioIsola gni) {
@@ -177,5 +178,12 @@ public final class ControlComandi {
         localizzazione.setAlias(new String[]{"localizzazione", "posizione", "dove","ubicazione","posizione"});
         localizzazione.setDescrizione("Localizzazione : Comando che ti restituisce la posizione corrente all'interno della mappa.");
         gni.getComandi().add(localizzazione);
+    }
+
+    private static void initFine(final GiocoNaufragioIsola gni) {
+        Comando fine = new Comando(TipoComando.FINE, "fine");
+        fine.setAlias(new String[]{"fine", "esci", "muori", "ammazzati", "ucciditi", "suicidati", "exit", "addio"});
+        fine.setDescrizione("Fine : Comando che ti permette di abbandonare il gioco.");
+        gni.getComandi().add(fine);
     }
 }
