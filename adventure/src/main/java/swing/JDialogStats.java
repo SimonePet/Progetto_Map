@@ -5,22 +5,13 @@
 package swing;
 
 import data.DatabaseController;
-import data.PercorsoFileSystem;
 import di.uniba.map.b.adventure.Utils;
-import di.uniba.map.b.adventure.type.ThreadTime;
-import java.awt.Window;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.text.DecimalFormat;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.ImageIcon;
-import javax.swing.JDialog;
 import javax.swing.JTable;
-import javax.swing.SwingUtilities;
-import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-import javax.swing.text.SimpleAttributeSet;
 
 /**
  *
@@ -154,7 +145,7 @@ public class JDialogStats extends javax.swing.JDialog {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         // TODO add your handling code here:
         this.setResizable(false);
-        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
+        ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
         lblSaluto.setText("CIAO "+username.toUpperCase());
     }//GEN-LAST:event_formWindowOpened

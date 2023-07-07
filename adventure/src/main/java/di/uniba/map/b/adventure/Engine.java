@@ -7,7 +7,6 @@ package di.uniba.map.b.adventure;
 
 import data.DatabaseController;
 import data.FileController;
-import data.PercorsoFileSystem;
 import di.uniba.map.b.adventure.parser.Parser;
 import swing.FrameStart;
 
@@ -43,9 +42,7 @@ public class Engine {
             }
         }
         try {
-            String percorso="";
-            String percorsoStopWords = "adventure"+File.separator+"resources"+File.separator+"stopwords";
-            percorso = PercorsoFileSystem.trovaPercorso(percorsoStopWords);
+            String percorso=Utils.PERCORSO_STOPWORDS;
             System.out.println("Percorso stopwords: "+percorso);
             Set<String> stopwords = Utils.loadFileListInSet(new File(percorso));
             parser = new Parser(stopwords);

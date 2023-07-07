@@ -1,6 +1,5 @@
 package di.uniba.map.b.adventure.games;
 
-import data.PercorsoFileSystem;
 import data.Suono;
 import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.messaggi.Messaggio;
@@ -53,7 +52,7 @@ public final class ControlGioco {
             } else {
                 if (gni.getStanzaCorrente().getNord().getRaggiungibile()) {
                     gni.setStanzaCorrente(gni.getStanzaCorrente().getNord());
-                    Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_SUONI_STANZE) + gni.getStanzaCorrente().getNomeStanza(), true);
+                    Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + gni.getStanzaCorrente().getNomeStanza(), true);
                 }
             }
             //System.out.println(Utils.percorsoAssoluto);
@@ -64,7 +63,7 @@ public final class ControlGioco {
             }
             gni.getStanzaCorrente().setVisitata(true);
             try {
-                BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_STANZE) + gni.getStanzaCorrente().getNomeStanza() + ".png"));
+                BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_STANZE + gni.getStanzaCorrente().getNomeStanza() + ".png"));
                 Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
                 ImageIcon imageIcon = new ImageIcon(dimg);
                 panel.remove(background);
@@ -91,7 +90,7 @@ public final class ControlGioco {
         frame.scrviSuEditor("\n");
         if (gni.getStanzaCorrente().getSud() != null && gni.getStanzaCorrente().getSud().getRaggiungibile()) {
             gni.setStanzaCorrente(gni.getStanzaCorrente().getSud());
-            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_SUONI_STANZE) + gni.getStanzaCorrente().getNomeStanza(), true);
+            Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + gni.getStanzaCorrente().getNomeStanza(), true);
             if (gni.getStanzaCorrente().getVisitata()) {
                 frame.scrviSuEditor(gni.getStanzaCorrente().getDescrizioneCortaStanza());
             } else {
@@ -99,7 +98,7 @@ public final class ControlGioco {
             }
             gni.getStanzaCorrente().setVisitata(true);
             try {
-                BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_STANZE) + gni.getStanzaCorrente().getNomeStanza() + ".png"));
+                BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_STANZE + gni.getStanzaCorrente().getNomeStanza() + ".png"));
                 Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
                 ImageIcon imageIcon = new ImageIcon(dimg);
                 panel.remove(background);
@@ -125,7 +124,7 @@ public final class ControlGioco {
         frame.scrviSuEditor("\n");
         if (gni.getStanzaCorrente().getEst() != null && gni.getStanzaCorrente().getEst().getRaggiungibile()) {
             gni.setStanzaCorrente(gni.getStanzaCorrente().getEst());
-            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_SUONI_STANZE) + gni.getStanzaCorrente().getNomeStanza(), true);
+            Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + gni.getStanzaCorrente().getNomeStanza(), true);
             gni.getStanzaCorrente().setVisitata(true);
             if (gni.getStanzaCorrente().getVisitata()) {
                 frame.scrviSuEditor(gni.getStanzaCorrente().getDescrizioneCortaStanza());
@@ -134,7 +133,7 @@ public final class ControlGioco {
             }
             gni.getStanzaCorrente().setVisitata(true);
             try {
-                BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_STANZE) + gni.getStanzaCorrente().getNomeStanza() + ".png"));
+                BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_STANZE + gni.getStanzaCorrente().getNomeStanza() + ".png"));
                 Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
                 ImageIcon imageIcon = new ImageIcon(dimg);
                 panel.remove(background);
@@ -160,7 +159,7 @@ public final class ControlGioco {
         frame.scrviSuEditor("\n");
         if (gni.getStanzaCorrente().getOvest() != null && gni.getStanzaCorrente().getOvest().getRaggiungibile()) {
             gni.setStanzaCorrente(gni.getStanzaCorrente().getOvest());
-            Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_SUONI_STANZE) + gni.getStanzaCorrente().getNomeStanza(), true);
+            Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + gni.getStanzaCorrente().getNomeStanza(), true);
             if (gni.getStanzaCorrente().getVisitata()) {
                 frame.scrviSuEditor(gni.getStanzaCorrente().getDescrizioneCortaStanza());
 
@@ -169,7 +168,7 @@ public final class ControlGioco {
             }
             gni.getStanzaCorrente().setVisitata(true);
             try {
-                BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_STANZE) + gni.getStanzaCorrente().getNomeStanza() + ".png"));
+                BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_STANZE + gni.getStanzaCorrente().getNomeStanza() + ".png"));
                 Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
                 ImageIcon imageIcon = new ImageIcon(dimg);
                 panel.remove(background);
@@ -329,7 +328,7 @@ public final class ControlGioco {
                     String nomeUtente = gni.getUsername();
                     JDialogRadio d = new JDialogRadio(frame, true, nomeUtente);
                     d.setVisible(true);
-                    Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_SUONI_STANZE) + gni.getStanzaCorrente().getNomeStanza(), true);
+                    Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + gni.getStanzaCorrente().getNomeStanza(), true);
                 } else if (oggInv.getNomeOggetto().equals("radio")) {
                     frame.scrviSuEditor("Impossibile accendere radio. Ti mancano le batterie");
                 }

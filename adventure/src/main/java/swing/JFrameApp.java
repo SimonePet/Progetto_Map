@@ -4,7 +4,6 @@
  */
 package swing;
 
-import data.PercorsoFileSystem;
 import data.Suono;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
@@ -269,7 +268,7 @@ public class JFrameApp extends javax.swing.JFrame {
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         frameStart.setEnabled(false);
         scrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-        ImageIcon icon = new ImageIcon(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_ICONE)+"iconaGioco.png");
+        ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
         this.setResizable(false);
         Color c = new Color(255, 255, 255, 150);
@@ -303,7 +302,7 @@ public class JFrameApp extends javax.swing.JFrame {
         }
         String stanzaCorrente = engine.getGame().getStanzaCorrente().getNomeStanza();
         try{
-            BufferedImage img = ImageIO.read(new File(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_IMMAGINI_STANZE)+stanzaCorrente+".png"));
+            BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_STANZE + stanzaCorrente+".png"));
             Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
             jPanel1.setBackground(new Color(0,0,0,0));
@@ -322,7 +321,7 @@ public class JFrameApp extends javax.swing.JFrame {
         engine.getGame().setUsername(username);
         labelNumMosse.setText(""+engine.getGame().getNumMosse());
         GameDescription partita = engine.getGame();
-        Suono.riproduciTraccia(PercorsoFileSystem.trovaPercorso(Utils.PERCORSO_SUONI_STANZE) + partita.getStanzaCorrente().getNomeStanza(),true);
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + partita.getStanzaCorrente().getNomeStanza(),true);
         SimpleAttributeSet attributes = new SimpleAttributeSet();
         Document doc = textArea.getDocument();
                
