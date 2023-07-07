@@ -145,7 +145,7 @@ public class DatabaseController extends Database {
             System.err.println(ex.getMessage());
         }
     }
-    @Override
+    
     public ResultSet getPartite() {
         try {
             Statement stm = conn.createStatement();
@@ -156,7 +156,7 @@ public class DatabaseController extends Database {
         }
         return null;
     }
-    @Override
+    
     public ResultSet getPartiteUtente(final String username) {
         try {
             PreparedStatement pstm = conn.prepareStatement(STAMPA_PARTITE_UTENTE);
@@ -168,7 +168,6 @@ public class DatabaseController extends Database {
         }
         return null;
     }
-    @Override
     public double getPunteggioMedio() {
         double punteggioMedio = 0;
         try {
@@ -181,7 +180,7 @@ public class DatabaseController extends Database {
         }
         return punteggioMedio;
     }
-    @Override
+    
     public double getPunteggioMedioUtente(final String username) {
         double punteggioMedio = 0;
         try {
@@ -195,7 +194,7 @@ public class DatabaseController extends Database {
         }
         return punteggioMedio;
     }
-    @Override
+    
     public boolean partitaEsistente(final String nomePartita) {
         boolean partitaEsistente = false;
         try {
@@ -211,7 +210,7 @@ public class DatabaseController extends Database {
         return partitaEsistente;
     }
     /* prende tutte le partite dal DB, crea oggetto Partita, lo aggiunge alla lista e la restituisce*/
-    @Override
+    
     public List<Partita> ottieniListaPartite() {
         List<Partita> partite = new ArrayList<>();
         ResultSet rs = this.getPartite();
