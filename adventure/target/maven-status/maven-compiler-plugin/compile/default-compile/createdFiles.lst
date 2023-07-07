@@ -52,8 +52,8 @@ swing\JDialogMatch$4.class
 di\uniba\map\b\adventure\games\ControlGioco.class
 di\uniba\map\b\adventure\messaggi\Messaggio.class
 di\uniba\map\b\adventure\Utils.class
-data\PercorsoFileSystem.class
 di\uniba\map\b\adventure\messaggi\MessaggioSentiero.class
+data\Immagini.class
 di\uniba\map\b\adventure\games\ControlComandi.class
 di\uniba\map\b\adventure\type\OggettoContenitore.class
 swing\JDialogAbbandona$2.class

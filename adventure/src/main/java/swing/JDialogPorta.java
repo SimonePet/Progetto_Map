@@ -24,7 +24,6 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
-import static data.Suono.riproduciTracciaa;
 
 /**
  * @author Giannantonio
@@ -271,13 +270,13 @@ public class JDialogPorta extends javax.swing.JDialog {
 
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         txtCodice.setText(txtCodice.getText() + "7");
-        riproduciTracciaa(Utils.PERCORSO_SUONI_STANZE + "bip", false);
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
 
     }//GEN-LAST:event_jButton8ActionPerformed
 
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         txtCodice.setText(txtCodice.getText() + "9");
-        riproduciTracciaa(Utils.PERCORSO_SUONI_STANZE + "bip", false);
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
     }//GEN-LAST:event_jButton9ActionPerformed
 
     private void btnConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfermaActionPerformed
@@ -304,37 +303,37 @@ public class JDialogPorta extends javax.swing.JDialog {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         txtCodice.setText(txtCodice.getText() + "1");
-        riproduciTracciaa(Utils.PERCORSO_SUONI_STANZE + "bip", false);
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         txtCodice.setText(txtCodice.getText() + "2");
-        riproduciTracciaa(Utils.PERCORSO_SUONI_STANZE + "bip", false);
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         txtCodice.setText(txtCodice.getText() + "3");
-        riproduciTracciaa(Utils.PERCORSO_SUONI_STANZE + "bip", false);
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         txtCodice.setText(txtCodice.getText() + "4");
-        riproduciTracciaa(Utils.PERCORSO_SUONI_STANZE + "bip", false);
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         txtCodice.setText(txtCodice.getText() + "5");
-        riproduciTracciaa(Utils.PERCORSO_SUONI_STANZE + "bip", false);
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
     }//GEN-LAST:event_jButton5ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         txtCodice.setText(txtCodice.getText() + "6");
-        riproduciTracciaa(Utils.PERCORSO_SUONI_STANZE + "bip", false);
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         txtCodice.setText(txtCodice.getText() + "8");
-        riproduciTracciaa(Utils.PERCORSO_SUONI_STANZE + "bip", false);
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
     }//GEN-LAST:event_jButton7ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened

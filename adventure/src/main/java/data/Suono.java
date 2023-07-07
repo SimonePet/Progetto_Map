@@ -78,7 +78,7 @@ public class Suono {
         System.out.println("Avviato nuovo thread");
         thread = audioThread;
     }
-
+/*
     public static void riproduciTracciaa(final String percorsoRel, final boolean loop) {
         //lock.lock();
         Thread audioThread = new Thread(() -> {
@@ -126,7 +126,7 @@ public class Suono {
         System.out.println("Avviato nuovo thread");
         thread = audioThread;
     }
-
+*/
     /**
      *
      */
