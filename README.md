@@ -49,7 +49,7 @@ Ovviamente questo non è l'unico utilizzo di ereditarietà all'interno del caso 
 
 #### Polimorfismo
 E' stato fatto utilizzo del polimorfismo. Con questo termine si intende la possibilità di associare a una operazione diverse realizzazioni. 
-Per esempio si è fatto uso del polimorfismo per overloading che consente a una classe di fornire implementazioni diverse dello stesso metodo, in base a tipo o numero dei parametri passati. Un esempio di utilizzo lampante di polimorfismo per overloading nel caso di studio è osservabile nell'implementazione del metodo getPunteggio della classe DatabaseController dove il metodo restituisce il punteggio di una partita sia passando il nome della partita (parametro di tipo String), sia passando l'id della partita (parametro di tipo int).
+Per esempio si è fatto uso del polimorfismo ad hoc, ottenuto quando un metodo lavora su tipi differenti e potrebbe comportarsi in maniera totalmente differente per ciascuno di essi. Un esempio di utilizzo lampante di polimorfismo per overloading (che rientra nel polimorfismo ad hoc) nel caso di studio è osservabile nell'implementazione del metodo getPunteggio della classe DatabaseController dove il metodo restituisce il punteggio di una partita sia passando il nome della partita (parametro di tipo String), sia passando l'id della partita (parametro di tipo int). La classe DatabaseController ha due diverse implementazioni del metodo getPunteggio in base al tipo del parametro ricevuto.
 
 ---
 ### Collection<a name="collection"></a>
@@ -66,12 +66,14 @@ Le liste vengono utilizzate all'interno del caso di studio nelle seguenti situaz
 * La classe Inventario ha come attributo una lista di elementi di tipo Oggetto utilizzata dai metodi della classe per aggiungere e rimuovere elementi nell'inventario
 * La classe Stanza ha come attributo una lista di elementi di tipo Oggetto
 * La classe OggettoContenitore ha come attributo una lista di elementi di tipo Oggetto contenente gli oggetti contenuti dal contenitore
+* Il metodo parseString della classe Utils utilizza una lista di token, nonchè una lista di elementi di tipo String
 #### Set
-* stopwords 
-* comandi ControlGioco
-* aliasComando classe Comando
+* Set 'stopwords' utilizzato per contenere tutte le stopwords recuperate dal file senza contenere duplicati 
+* La classe ControlGioco utilizza un set 'comandi', nonchè un set di elementi di tipo Comando
+* La classe Oggetto utilizza un set 'aliasOggetto' per contenere tutti i possibili alias del nome di un oggetto e un set 'comandiConsentiti' per contenere tutti i comandi consentiti su un determinato oggetto
+* La classe Comando utilizza un set 'aliasComando' per contenere tutti gli alias del nome di un comando
 #### Map
-
+* 
 
 
 ---
