@@ -467,6 +467,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         zattera.setRaccogglibile(false);
         zattera.setComandiConsentiti(set11);
         approdo.getObjects().add(zattera);
+        costa.getObjects().add(zattera);
 
         setStanzaCorrente(approdo);
         //Suono.stopRiproduzione(getCurrentRoom().getNomeStanza());
@@ -564,10 +565,6 @@ public class GiocoNaufragioIsola extends GameDescription {
                     break;
                 case LEGGI:
                     ControlGioco.comandoLeggi(frame, p.getInvObject(), p.getObject());
-                    break;
-                case FINE:
-                    frame.scrviSuEditor("Non sei stato in grado di vincere?? Forse non sei un buon giocatore.");
-                    System.exit(0);
                     break;
                 case TAGLIA:
                     ControlGioco.comandoTaglia(this, frame, p.getObject());

@@ -1,11 +1,9 @@
 package di.uniba.map.b.adventure.games;
 
+import data.Immagini;
 import data.Suono;
 import di.uniba.map.b.adventure.Utils;
-import di.uniba.map.b.adventure.messaggi.Messaggio;
-import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
-import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
-import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
+import di.uniba.map.b.adventure.messaggi.*;
 import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.Oggetto;
 import swing.JFrameApp;
@@ -62,19 +60,7 @@ public final class ControlGioco {
                 frame.scrviSuEditor(gni.getStanzaCorrente().getDescrizioneLungaStanza());
             }
             gni.getStanzaCorrente().setVisitata(true);
-            try {
-                BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_STANZE + gni.getStanzaCorrente().getNomeStanza() + ".png"));
-                Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon imageIcon = new ImageIcon(dimg);
-                panel.remove(background);
-                background.setIcon(imageIcon);
-                panel.add(background);
-                background.setLayout(new FlowLayout());
-                panel.revalidate();
-                panel.repaint();
-            } catch (Exception e) {
-                System.out.println("Errore nell'aggiunta dell'immagine");
-            }
+            Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_STANZE,gni.getStanzaCorrente().getNomeStanza(),panel,background);
         }
     }
 
@@ -97,19 +83,7 @@ public final class ControlGioco {
                 frame.scrviSuEditor(gni.getStanzaCorrente().getDescrizioneLungaStanza());
             }
             gni.getStanzaCorrente().setVisitata(true);
-            try {
-                BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_STANZE + gni.getStanzaCorrente().getNomeStanza() + ".png"));
-                Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon imageIcon = new ImageIcon(dimg);
-                panel.remove(background);
-                background.setIcon(imageIcon);
-                panel.add(background);
-                background.setLayout(new FlowLayout());
-                panel.revalidate();
-                panel.repaint();
-            } catch (Exception e) {
-                System.out.println("Errore nell'aggiunta dell'immagine");
-            }
+            Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_STANZE,gni.getStanzaCorrente().getNomeStanza(),panel,background);
         }
     }
 
@@ -132,19 +106,7 @@ public final class ControlGioco {
                 frame.scrviSuEditor(gni.getStanzaCorrente().getDescrizioneLungaStanza());
             }
             gni.getStanzaCorrente().setVisitata(true);
-            try {
-                BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_STANZE + gni.getStanzaCorrente().getNomeStanza() + ".png"));
-                Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon imageIcon = new ImageIcon(dimg);
-                panel.remove(background);
-                background.setIcon(imageIcon);
-                panel.add(background);
-                background.setLayout(new FlowLayout());
-                panel.revalidate();
-                panel.repaint();
-            } catch (Exception e) {
-                System.out.println("Errore nell'aggiunta dell'immagine");
-            }
+            Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_STANZE,gni.getStanzaCorrente().getNomeStanza(),panel,background);
         }
     }
 
@@ -167,19 +129,7 @@ public final class ControlGioco {
                 frame.scrviSuEditor(gni.getStanzaCorrente().getDescrizioneLungaStanza());
             }
             gni.getStanzaCorrente().setVisitata(true);
-            try {
-                BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_STANZE + gni.getStanzaCorrente().getNomeStanza() + ".png"));
-                Image dimg = img.getScaledInstance(panel.getWidth(), panel.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon imageIcon = new ImageIcon(dimg);
-                panel.remove(background);
-                background.setIcon(imageIcon);
-                panel.add(background);
-                background.setLayout(new FlowLayout());
-                panel.revalidate();
-                panel.repaint();
-            } catch (Exception e) {
-                System.out.println("Errore nell'aggiunta dell'immagine");
-            }
+            Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_STANZE,gni.getStanzaCorrente().getNomeStanza(),panel,background);
         }
     }
 
@@ -329,6 +279,7 @@ public final class ControlGioco {
                     JDialogRadio d = new JDialogRadio(frame, true, nomeUtente);
                     d.setVisible(true);
                     Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + gni.getStanzaCorrente().getNomeStanza(), true);
+                    comandi.add(gni.getComando("sposta"));
                 } else if (oggInv.getNomeOggetto().equals("radio")) {
                     frame.scrviSuEditor("Impossibile accendere radio. Ti mancano le batterie");
                 }
@@ -402,10 +353,18 @@ public final class ControlGioco {
                 if (gni.getInventario().contains(gni.getOggettoGioco("vela"))
                         && gni.getInventario().contains(gni.getOggettoGioco("corda"))
                         && gni.getInventario().contains(gni.getOggettoGioco("legno"))) {
-                    frame.scrviSuEditor("Hai utilizzato il legno,le corde e la vela per costruire la zattera.\n\n");
-                    frame.scrviSuEditor("==========HAI VINTO==========\n\n");
-                    frame.scrviSuEditor("Complimenti sei riuscito a vincere questo gioco molto difficile.");
-                    gni.setFinita(true);
+                    if(gni.getStanzaCorrente().getNomeStanza().equalsIgnoreCase(MessaggioApprodo.getNome()) ||
+                            gni.getStanzaCorrente().getNomeStanza().equalsIgnoreCase(MessaggioCosta.getNome())) {
+                        frame.scrviSuEditor("Hai utilizzato il legno,le corde e la vela per costruire la zattera.\n\n");
+                        frame.scrviSuEditor("===============HAI VINTO===============\n\n");
+                        frame.scrviSuEditor("Complimenti sei riuscito a vincere questo gioco molto difficile.");
+                        Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "vittoria", true);
+
+                        gni.setFinita(true);
+                    }
+                    else{
+                        frame.scrviSuEditor("Ma pensi veramente di poter costruire un zattera qui.");
+                    }
                 } else {
                     frame.scrviSuEditor("Non hai ancora tutti gli oggetti a disposizione.");
                 }
