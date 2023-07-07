@@ -103,42 +103,5 @@ public abstract class Database {
      *
      */
     public abstract void stampaPartite();
-    /**
-     *
-     * @return
-     */
-    public abstract ResultSet getPartite();
-    /**
-     *
-     * @param usernameCorr
-     * @return
-     */
-    public abstract ResultSet getPartiteUtente(String usernameCorr);
-    /**
-     *
-     * @return
-     */
-    public abstract double getPunteggioMedio();
-    /**
-     *
-     * @param usernameCorr
-     * @return
-     */
-    public abstract double getPunteggioMedioUtente(String usernameCorr);
-    /**
-     *
-     * @param nomePartita
-     * @return
-     */
-    public abstract boolean partitaEsistente(String nomePartita);
-    /**
-     *
-     * @return
-     */
-    public abstract List<Partita> ottieniListaPartite();
-    /**
-     *
-     * @param partite
-     * @return
-     */
+
 }
