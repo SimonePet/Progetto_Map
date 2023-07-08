@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package di.uniba.map.b.adventure.type;
+package thread;
 
 import di.uniba.map.b.adventure.Engine;
 import swing.JFrameApp;
@@ -11,12 +11,12 @@ import swing.JFrameApp;
  *
  * @author Giannantonio
  */
-public class ThreadTime implements Runnable{
+public class ThreadTempo implements Runnable{
     private int numMinuti;
     private int numSecondi;
     private JFrameApp frame;
     
-    public ThreadTime(JFrameApp frame, int numMinutiIniziali, int numSecondiIniziali){
+    public ThreadTempo(JFrameApp frame, int numMinutiIniziali, int numSecondiIniziali){
         this.numMinuti = numMinutiIniziali;
         this.numSecondi = numSecondiIniziali;
         this.frame = frame;

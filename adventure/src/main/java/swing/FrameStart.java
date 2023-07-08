@@ -155,7 +155,7 @@ public class FrameStart extends javax.swing.JFrame {
     }//GEN-LAST:event_nuovaPartitaActionPerformed
 
     private void loadMatchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadMatchActionPerformed
-        JDialogMatch d = new JDialogMatch(this,true, this);
+        JDialogCaricaPartite d = new JDialogCaricaPartite(this,true, this);
         d.setVisible(true);
     }//GEN-LAST:event_loadMatchActionPerformed
 

@@ -22,7 +22,7 @@ import javax.swing.JFrame;
  *
  * @author Giannantonio
  */
-public class JDialogMatch extends JDialog {
+public class JDialogCaricaPartite extends JDialog {
 
     /**
      * Creates new form JDialogMatch
@@ -30,7 +30,7 @@ public class JDialogMatch extends JDialog {
      * @param modal
      * @param frame
      */
-    public JDialogMatch(JFrame parent, boolean modal, FrameStart frame) {
+    public JDialogCaricaPartite(JFrame parent, boolean modal, FrameStart frame) {
         super(parent, modal);
         this.frameStart = frame;
         initComponents();
@@ -189,20 +189,21 @@ public class JDialogMatch extends JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(JDialogMatch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogCaricaPartite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(JDialogMatch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogCaricaPartite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(JDialogMatch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogCaricaPartite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(JDialogMatch.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(JDialogCaricaPartite.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                JDialogMatch dialog = new JDialogMatch(new javax.swing.JFrame(), true, frameStart);
+                JDialogCaricaPartite dialog = new JDialogCaricaPartite(new javax.swing.JFrame(), true, frameStart);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

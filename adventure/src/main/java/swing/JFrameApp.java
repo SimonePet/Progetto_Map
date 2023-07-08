@@ -12,7 +12,7 @@ import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import di.uniba.map.b.adventure.parser.Parser;
 import di.uniba.map.b.adventure.parser.ParserOutput;
 import di.uniba.map.b.adventure.type.TipoComando;
-import di.uniba.map.b.adventure.type.ThreadTime;
+import thread.ThreadTempo;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
@@ -322,14 +322,14 @@ public class JFrameApp extends javax.swing.JFrame {
             //se è una partita nuova avvia thread per tempo con tempo iniziale a 0 minuti e 0 secondi
             if(!partitaCaricata){
                 //avvia Thread          
-                this.thread = new Thread(new ThreadTime(this,0,0));
+                this.thread = new Thread(new ThreadTempo(this,0,0));
                 thread.start();
             }else{
                 /* altrimenti se è una partita caricata fai ripartire il thread per il tempo
                    dal tempo salvato della partita
                 */
                 timeLabel.setText(""+partita.getNumMinuti()+":"+""+partita.getNumSecondi());
-                this.thread = new Thread(new ThreadTime(this, partita.getNumMinuti(), partita.getNumSecondi()));
+                this.thread = new Thread(new ThreadTempo(this, partita.getNumMinuti(), partita.getNumSecondi()));
                 thread.start();
             }                        
         }catch(BadLocationException ex){

@@ -16,8 +16,8 @@ import javax.swing.*;
 import di.uniba.map.b.adventure.Utils;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import socket.Client;
-import socket.Server;
+import thread.Client;
+import thread.Server;
 
 /**
  *
