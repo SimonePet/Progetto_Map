@@ -6,9 +6,9 @@ import di.uniba.map.b.adventure.type.TipoComando;
 /**
  *
  */
-public final class ControlComandi {
+public final class InizializzaComandi {
 
-    private ControlComandi() {
+    private InizializzaComandi() {
     }
 
     /**
@@ -16,28 +16,28 @@ public final class ControlComandi {
      * @param gni
      */
     public static void initComandi(final GiocoNaufragioIsola gni) {
-        ControlComandi.initNord(gni);
-        ControlComandi.initSud(gni);
-        ControlComandi.initEst(gni);
-        ControlComandi.initOvest(gni);
-        ControlComandi.initAcced(gni);
-        ControlComandi.initIventario(gni);
-        ControlComandi.initOsserva(gni);
-        ControlComandi.initRaccogli(gni);
-        ControlComandi.initApri(gni);
-        ControlComandi.initSposta(gni);
-        ControlComandi.initUtilizza(gni);
-        ControlComandi.initEnd(gni);
-        ControlComandi.initLascia(gni);
-        ControlComandi.initNarra(gni);
-        ControlComandi.initSalva(gni);
-        ControlComandi.initLeggere(gni);
-        ControlComandi.initTaglia(gni);
-        ControlComandi.initCostruisci(gni);
-        ControlComandi.initAiuto(gni);
-        ControlComandi.initLocalizzazione(gni);
-        ControlComandi.initFine(gni);
-        ControlComandi.initRipara(gni);
+        InizializzaComandi.initNord(gni);
+        InizializzaComandi.initSud(gni);
+        InizializzaComandi.initEst(gni);
+        InizializzaComandi.initOvest(gni);
+        InizializzaComandi.initAcced(gni);
+        InizializzaComandi.initIventario(gni);
+        InizializzaComandi.initOsserva(gni);
+        InizializzaComandi.initRaccogli(gni);
+        InizializzaComandi.initApri(gni);
+        InizializzaComandi.initSposta(gni);
+        InizializzaComandi.initUtilizza(gni);
+        InizializzaComandi.initEnd(gni);
+        InizializzaComandi.initLascia(gni);
+        InizializzaComandi.initNarra(gni);
+        InizializzaComandi.initSalva(gni);
+        InizializzaComandi.initLeggere(gni);
+        InizializzaComandi.initTaglia(gni);
+        InizializzaComandi.initCostruisci(gni);
+        InizializzaComandi.initAiuto(gni);
+        InizializzaComandi.initLocalizzazione(gni);
+        InizializzaComandi.initFine(gni);
+        InizializzaComandi.initRipara(gni);
     }
 
     private static void initNord(final GiocoNaufragioIsola gni) {

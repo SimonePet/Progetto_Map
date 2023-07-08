@@ -53,4 +53,7 @@ public final class MessaggioEdificioDentro {
     public static String getNome() {
         return NOME;
     }
+    public static String getNord() {
+        return NORD;
+    }
 }

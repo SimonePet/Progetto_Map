@@ -1,4 +1,4 @@
-package data;
+package multimediali;
 
 
 import javax.sound.sampled.AudioFormat;

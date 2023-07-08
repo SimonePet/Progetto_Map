@@ -4,7 +4,7 @@
  */
 package swing;
 
-import data.Suono;
+import multimediali.Suono;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
 import di.uniba.map.b.adventure.Utils;
@@ -269,6 +269,7 @@ public class JFrameApp extends javax.swing.JFrame {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         frameStart.setEnabled(false);
+        textArea.setEditable(false);
         scrollPanel.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
@@ -371,7 +372,7 @@ public class JFrameApp extends javax.swing.JFrame {
         SimpleAttributeSet attributes = new SimpleAttributeSet();
         Document doc = textArea.getDocument();
         try{
-            doc.insertString(doc.getLength(),s, attributes);              
+            doc.insertString(doc.getLength(),s, attributes);
         }catch(BadLocationException ex){
             System.err.println("errore");
         }

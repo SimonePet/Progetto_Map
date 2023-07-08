@@ -1,21 +1,15 @@
 package di.uniba.map.b.adventure.games;
 
-import data.Immagini;
-import data.Suono;
+import multimediali.Immagini;
+import multimediali.Suono;
 import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.messaggi.*;
 import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.Oggetto;
 import swing.JFrameApp;
 
-import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.FlowLayout;
-import java.awt.Image;
-import java.awt.image.BufferedImage;
-import java.io.File;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -165,7 +159,6 @@ public final class ControlGioco {
                 System.out.println("\nL'oggetto " + ogg.getNomeOggetto() + " e visibile: " + ogg.isVisibile());
                 if (ogg.isVisibile()) {
                     if (ogg.isRaccogglibile()) {
-                        Suono.riproduciTraccia(ogg.getNomeOggetto(), false);
                         gni.getInventario().add(ogg);
                         gni.getStanzaCorrente().getObjects().remove(ogg);
                         frame.scrviSuEditor(Messaggio.getHaiRaccolto() + ogg.getNomeOggetto());
@@ -445,6 +438,7 @@ public final class ControlGioco {
         if (ogg != null) {
             if (ogg.equals(gni.getOggettoGioco("armadio"))) {
                 frame.scrviSuEditor("Spostando l'ardmadio hai scoperto un passaggio segreto ad un vecchio covo militare.");
+                gni.getStanzaCorrente().setMessaggioNord(MessaggioEdificioDentro.getNord());
                 gni.getStanza("covo").setRaggiungibile(true);
             } else {
                 frame.scrviSuEditor("Non puoi spostare questo oggetto.");
