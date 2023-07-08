@@ -186,7 +186,7 @@ public class InizializzaStanze {
         //Imposto il messaggio di osserva
         grotta.setOsserva(MessaggioGrotta.getOsservaBuio());
         //Imposto la visibilita della stanza
-        grotta.setRaggiungibile(false);
+        grotta.setRaggiungibile(true);
         //Imposto il messaggio per Nord
         grotta.setMessaggioNord(MessaggioGrotta.getNoNordLuce());
         //Imposto il messaggio per Sud

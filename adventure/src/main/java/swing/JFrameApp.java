@@ -224,7 +224,6 @@ public class JFrameApp extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldActionPerformed
 
     private void buttSumbitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttSumbitActionPerformed
-        // TODO add your handling code here:
         String command = textField.getText();
         textField.setText("");
         SimpleAttributeSet attributes = new SimpleAttributeSet();
@@ -236,22 +235,12 @@ public class JFrameApp extends javax.swing.JFrame {
             int numMosse = game.getNumMosse();
             game.setNumMosse(game.getNumMosse()+1);
             labelNumMosse.setText(""+game.getNumMosse());
-            if (p == null || p.getCommand() == null) {        
-                    doc.insertString(doc.getLength(), "\nNon capisco quello che mi vuoi dire.\n", attributes);
-            } else if (p.getCommand() != null && p.getCommand().getTipoComando() == TipoComando.FINE) {
-                doc.insertString(doc.getLength(), "\nAddio.\n"+"Non sei stato in grado di vincere?? Forse non sei un buon giocatore.", attributes);
-                //setta il textField non editabile
-                Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "sconfitta", true);
-                this.finePartita();
-                game.setFinita(true);
-            }else{
-                game.nextMove(p, System.out, this,jPanel1,background);
-                System.out.println();
-            }
+            game.nextMove(p, System.out, this,jPanel1,background);
         }catch(BadLocationException e){
             System.out.println(e.getMessage());
         }
     }//GEN-LAST:event_buttSumbitActionPerformed
+
 
     private void jPanel1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jPanel1PropertyChange
         // TODO add your handling code here:
