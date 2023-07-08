@@ -11,7 +11,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import javax.swing.JTextArea;
 
-import data.Suono;
+import multimediali.Suono;
 import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.messaggi.MessaggiConversazione;
 

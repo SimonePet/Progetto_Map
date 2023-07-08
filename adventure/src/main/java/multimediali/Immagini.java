@@ -1,4 +1,4 @@
-package data;
+package multimediali;
 
 import di.uniba.map.b.adventure.Utils;
 

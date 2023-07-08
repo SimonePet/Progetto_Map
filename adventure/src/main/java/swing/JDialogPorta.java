@@ -4,7 +4,7 @@
  */
 package swing;
 
-import data.Suono;
+import multimediali.Suono;
 import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import di.uniba.map.b.adventure.messaggi.MessaggioEdificioFuori;
