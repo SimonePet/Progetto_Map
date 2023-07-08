@@ -26,6 +26,9 @@ import swing.JFrameApp;
 public final class Utils {
     private Utils() {
     }
+    
+    private static String directoryFile;
+    private static String nomeFile;
     public static final String PERCORSO_ASSOLUTO = calcolaPercorsoAssoluto();
     public static final String ESTENSIONE_WAV = ".wav";
     public static final String PERCORSO_IMMAGINI_ICONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "icone" + File.separator;
@@ -35,7 +38,7 @@ public final class Utils {
     public static final String PERCORSO_IMMAGINI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "conversazione" + File.separator+"conversazione";
     public static final String PERCORSO_SUONI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "conversazione" + File.separator;
     public static final String PERCORSO_DATABASE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "db";
-    public static final String PERCORSO_FILES = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources"+ File.separator+"salvataggioPartita";
+    public static String PERCORSO_FILES;
     public static final String PERCORSO_STOPWORDS =PERCORSO_ASSOLUTO + File.separator +"adventure" + File.separator + "resources" + File.separator + "stopwords";
     public static final String PERCORSO_SUONO_FINALE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "finale" + File.separator;
     public static Set<String> loadFileListInSet(final File file) throws IOException {
@@ -86,4 +89,10 @@ public final class Utils {
         char primoCarattere = Character.toUpperCase(input.charAt(0));
         return primoCarattere + input.substring(1);
     }
+    
+    
+    public static void calcolaPercorsoFile(String nome, String cartella){
+        PERCORSO_FILES = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + cartella + File.separator + nome;
+    }
+    
 }
