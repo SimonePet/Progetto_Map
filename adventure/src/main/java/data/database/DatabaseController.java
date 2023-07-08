@@ -7,7 +7,6 @@ package data.database;
 import data.Partita;
 import data.StampaListe;
 import di.uniba.map.b.adventure.GameDescription;
-
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -28,9 +27,6 @@ public class DatabaseController extends Database {
 
     /**
      *
-     * @param username
-     * @param password
-     * @throws SQLException
      */
     public DatabaseController(){
         Connection connessione=null;
@@ -46,10 +42,11 @@ public class DatabaseController extends Database {
     @Override
     public boolean creaTabellaPartita() {
         try {
-            Statement stm = conn.createStatement();
             //crea tabella solo se non esiste
-            stm.executeUpdate(CREA_TABELLA_PARTITA);
-            stm.close();
+            try (Statement stm = conn.createStatement()) {
+                //crea tabella solo se non esiste
+                stm.executeUpdate(CREA_TABELLA_PARTITA);
+            }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
@@ -73,17 +70,18 @@ public class DatabaseController extends Database {
             punteggio = 0;
         }
         try {
-            //inserimento completo con punteggio
-            PreparedStatement pstm = conn.prepareStatement(INSERISCI_PARTITA);
-            pstm.setString(1, partita.getNomePartita());
-            pstm.setString(2, partita.getUsername());
-            pstm.setInt(3, punteggio);
-            pstm.setInt(4, partita.getNumMinuti());
-            pstm.setInt(5, partita.getNumSecondi());
-            pstm.setBoolean(6, partita.getFinita());
-            pstm.setInt(7, partita.getNumMosse());
-            pstm.executeUpdate();
-            pstm.close();
+            try ( 
+                //inserimento completo con punteggio
+                PreparedStatement pstm = conn.prepareStatement(INSERISCI_PARTITA)) {
+                pstm.setString(1, partita.getNomePartita());
+                pstm.setString(2, partita.getUsername());
+                pstm.setInt(3, punteggio);
+                pstm.setInt(4, partita.getNumMinuti());
+                pstm.setInt(5, partita.getNumSecondi());
+                pstm.setBoolean(6, partita.getFinita());
+                pstm.setInt(7, partita.getNumMosse());
+                pstm.executeUpdate();
+            }
         } catch (SQLException ex) {
             System.out.println("PARTITA NON SALVATA SU DB");
             System.err.println(ex.getMessage());

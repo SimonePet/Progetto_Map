@@ -9,7 +9,6 @@ import data.database.DatabaseController;
 import data.FileController;
 import di.uniba.map.b.adventure.parser.Parser;
 import swing.FrameStart;
-
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
@@ -43,7 +42,6 @@ public class Engine {
         }
         try {
             String percorso=Utils.PERCORSO_STOPWORDS;
-            System.out.println("Percorso stopwords: "+percorso);
             Set<String> stopwords = Utils.loadFileListInSet(new File(percorso));
             parser = new Parser(stopwords);
         } catch (IOException ex) {
@@ -78,6 +76,7 @@ public class Engine {
 
     /**
      * @param args the command line arguments
+     * @throws java.sql.SQLException
      */
     public static void main(final String[] args) throws SQLException {
         DatabaseController db = new DatabaseController();

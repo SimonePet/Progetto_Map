@@ -29,9 +29,7 @@ public class Server implements Runnable {
         try {
             attivo=true;
             serverSocket = new ServerSocket(port);
-            System.out.println("Server avviato. In attesa di connessioni...");
             clientSocket = serverSocket.accept();
-            System.out.println("Nuova connessione accettata.");
             while (true) {
                 elaboraMessaggio();
             }
@@ -64,14 +62,12 @@ public class Server implements Runnable {
     public static String leggiMessaggioClient() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
         String messaggioClient = reader.readLine();
-        System.out.println("SERVER:" + " Messaggio ricevuto dal client: " + messaggioClient);
         return messaggioClient;
     }
 
     public static void inviaRispostaClient(String messaggio) throws IOException {
         writer = new PrintWriter(clientSocket.getOutputStream(), true);
         // Esempio di invio di una risposta al client
-        System.out.println("PIPPO");
         writer.println(messaggio);
     }
 

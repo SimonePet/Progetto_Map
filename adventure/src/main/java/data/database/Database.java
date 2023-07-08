@@ -7,13 +7,9 @@ package data.database;
 
 import di.uniba.map.b.adventure.GameDescription;
 import di.uniba.map.b.adventure.Utils;
-import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.List;
-import java.util.Map;
 /**
  *  CLASSE ASTRATTA.
  *
@@ -39,7 +35,6 @@ public abstract class Database {
      */
     public Connection connect() throws SQLException {
         Connection conn = DriverManager.getConnection("jdbc:h2:" + Utils.PERCORSO_DATABASE);
-        System.out.println("connessione al DB effettuata correttamente");
         return conn;
     }
 

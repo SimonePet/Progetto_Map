@@ -30,8 +30,8 @@ public class Client implements Runnable{
     public Client(String indirizzo, int portaServer,JTextArea textArea) {
         indirizzoServer = indirizzo;
         porta = portaServer;
-        this.textArea=textArea;
-        this.textArea.setEditable(false);
+        Client.textArea=textArea;
+        Client.textArea.setEditable(false);
     }
    
     /*  connessione al Socket Server */
@@ -39,7 +39,6 @@ public class Client implements Runnable{
     public void run() {
         try {
             socket = new Socket(indirizzoServer, porta);
-            System.out.println("Connessione al server stabilita.");
             writer = new PrintWriter(socket.getOutputStream(), true);
             reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             while(true){
@@ -52,7 +51,6 @@ public class Client implements Runnable{
     
     
     public static void inviaMessaggio(String messaggio){
-        System.out.println("CLIENT:"+messaggio +" inviato");
         writer.println(messaggio);
     }
     
@@ -63,7 +61,6 @@ public class Client implements Runnable{
             Suono.riproduciTraccia(Utils.PERCORSO_SUONI_CONVERSAZIONE + nomeTraccia, false);
             response = troncaStringa(response,"::");
             response = correggiStringa(response);
-            System.out.println("Risposta dal server: " + response);
             scriviRispostaTextArea(response);
         } catch (IOException e) {
             System.out.println("Errore durante la lettura della risposta dal server: " + e.getMessage());

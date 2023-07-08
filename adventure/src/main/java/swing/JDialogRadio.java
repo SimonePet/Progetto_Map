@@ -159,7 +159,7 @@ public class JDialogRadio extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jButton2)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -180,16 +180,11 @@ public class JDialogRadio extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 510, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 516, Short.MAX_VALUE)
         );
 
         pack();
@@ -266,9 +261,7 @@ public class JDialogRadio extends javax.swing.JDialog {
         numDomanda=1;
         Server.stop();
         threadS.interrupt();
-        System.out.println("Thread Server interrotto");
         threadC.interrupt();
-        System.out.println("Thread Client interrotto");
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -328,6 +321,7 @@ public class JDialogRadio extends javax.swing.JDialog {
      
     /**
      * @param args the command line arguments
+     * @throws java.io.IOException
      */
     public static void main(String args[]) throws IOException {
         /* Set the Nimbus look and feel */
@@ -353,22 +347,20 @@ public class JDialogRadio extends javax.swing.JDialog {
         }
         //</editor-fold>
         /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                JDialogRadio dialog = null;
-                try {
-                    dialog = new JDialogRadio(new javax.swing.JFrame(), true, nomeUtente);
-                } catch (IOException | InterruptedException ex) {
-                    Logger.getLogger(JDialogRadio.class.getName()).log(Level.SEVERE, null, ex);
-                }
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
+        java.awt.EventQueue.invokeLater(() -> {
+            JDialogRadio dialog = null;
+            try {
+                dialog = new JDialogRadio(new javax.swing.JFrame(), true, nomeUtente);
+            } catch (IOException | InterruptedException ex) {
+                Logger.getLogger(JDialogRadio.class.getName()).log(Level.SEVERE, null, ex);
             }
+            dialog.addWindowListener(new java.awt.event.WindowAdapter() {
+                @Override
+                public void windowClosing(java.awt.event.WindowEvent e) {
+                    System.exit(0);
+                }
+            });
+            dialog.setVisible(true);
         });
     }
 

@@ -11,9 +11,7 @@ import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import di.uniba.map.b.adventure.parser.Parser;
 import di.uniba.map.b.adventure.parser.ParserOutput;
-import di.uniba.map.b.adventure.type.TipoComando;
 import thread.ThreadTempo;
-
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
@@ -221,18 +219,16 @@ public class JFrameApp extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldActionPerformed
 
     private void buttSumbitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttSumbitActionPerformed
-        String command = textField.getText();
+        String comando = textField.getText();
         textField.setText("");
-        SimpleAttributeSet attributes = new SimpleAttributeSet();
         Document doc = textArea.getDocument();
-        GameDescription game = engine.getGame();
+        GameDescription partita = engine.getGame();
         Parser parser = engine.getParser();
         try{
-            ParserOutput p = parser.parse(command, game.getComandi(), game.getStanzaCorrente().getObjects(), game.getInventario(),game.getOggettiGioco());
-            int numMosse = game.getNumMosse();
-            game.setNumMosse(game.getNumMosse()+1);
-            labelNumMosse.setText(""+game.getNumMosse());
-            game.nextMove(p, System.out, this,jPanel1,background);
+            ParserOutput p = parser.parse(comando, partita.getComandi(), partita.getStanzaCorrente().getObjects(), partita.getInventario(),partita.getOggettiGioco());
+            partita.setNumMosse(partita.getNumMosse()+1);
+            labelNumMosse.setText(""+partita.getNumMosse());
+            partita.nextMove(p, System.out, this,jPanel1,background);
         }catch(BadLocationException e){
             System.out.println(e.getMessage());
         }
@@ -316,8 +312,8 @@ public class JFrameApp extends javax.swing.JFrame {
         Document doc = textArea.getDocument();
                
         try{
-            doc.insertString(doc.getLength(), "* Adventure v. 0.3 - 2021-2022 *\n", attributes);
-            //doc.insertString(doc.getLength(), game.getCurrentRoom().getNomeStanza()+"\n", attributes);
+            doc.insertString(doc.getLength(), "*FUGA DALL'ISOLA -v 1.0 2022-2023 *\n", attributes);
+            //doc.insertString(doc.getLength(), partita.getCurrentRoom().getNomeStanza()+"\n", attributes);
             doc.insertString(doc.getLength(), partita.getStanzaCorrente().getDescrizioneLungaStanza()+"\n", attributes);
             //se è una partita nuova avvia thread per tempo con tempo iniziale a 0 minuti e 0 secondi
             if(!partitaCaricata){
