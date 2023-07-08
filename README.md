@@ -50,6 +50,7 @@ Ovviamente questo non è l'unico utilizzo di ereditarietà all'interno del caso 
 #### Polimorfismo
 E' stato fatto utilizzo del polimorfismo. Con questo termine si intende la possibilità di associare a una operazione diverse realizzazioni. 
 Per esempio si è fatto uso del polimorfismo ad hoc, ottenuto quando un metodo lavora su tipi differenti e potrebbe comportarsi in maniera totalmente differente per ciascuno di essi. Un esempio di utilizzo lampante di polimorfismo per overloading (che rientra nel polimorfismo ad hoc) nel caso di studio è osservabile nell'implementazione del metodo getPunteggio della classe DatabaseController dove il metodo restituisce il punteggio di una partita sia passando il nome della partita (parametro di tipo String), sia passando l'id della partita (parametro di tipo int). La classe DatabaseController ha due diverse implementazioni del metodo getPunteggio in base al tipo del parametro ricevuto.
+Inoltre, si è fatto utilizzo del polimorfismo universale, la cui idea è quella di operare su un numero infinito di tipi. Infatti nel caso di studio è stata creata una classe generica StampaListe che opera su un tipo generico T, permette di stampare attraverso il metodo 'stampa' la lista ricevuta in input dal costruttore indipendentemente dal tipo degli elementi della lista.
 
 ---
 ### Collection<a name="collection"></a>
@@ -57,6 +58,7 @@ All'interno del caso di studio sono state utilizzate le seguenti collection:
 #### List
 Le liste vengono utilizzate all'interno del caso di studio nelle seguenti situazioni:
 * La classe Classifica ha come attributo una lista di elmenti di tipo Partita, la lista di partite viene utilizzata dal metodo 'ottieniClassificaUtenti' per filtrare le partite degli utenti e costruire il ranking degli utenti che hanno vinto almeno una partita con il punteggio massimo.
+* Il metodo ottieniClassificaUtenti restitutuisce una lista di elementi di tipo Map.Entry<String,Integer>, nonchè una lista di coppie <chiave,valore> dove la chiave è il nome dell'utente e il valore il punteggio massimo associato a quell'utente.
 * La classe DatabaseController ha un metodo 'ottieniListaPartite' che salva tutte le partite salvate su DB all'interno di una lista, per poi successivamente restituirla.
 * La classe GameDescription ha come attributi:
   - una lista di elementi di tipo Stanza
@@ -67,14 +69,15 @@ Le liste vengono utilizzate all'interno del caso di studio nelle seguenti situaz
 * La classe Stanza ha come attributo una lista di elementi di tipo Oggetto
 * La classe OggettoContenitore ha come attributo una lista di elementi di tipo Oggetto contenente gli oggetti contenuti dal contenitore
 * Il metodo parseString della classe Utils utilizza una lista di token, nonchè una lista di elementi di tipo String
+* la classe generica 'stampaListe' utilizza come attributo una lista di elementi di tipo generico.
 #### Set
 * Set 'stopwords' utilizzato per contenere tutte le stopwords recuperate dal file senza contenere duplicati 
 * La classe ControlGioco utilizza un set 'comandi', nonchè un set di elementi di tipo Comando
 * La classe Oggetto utilizza un set 'aliasOggetto' per contenere tutti i possibili alias del nome di un oggetto e un set 'comandiConsentiti' per contenere tutti i comandi consentiti su un determinato oggetto
 * La classe Comando utilizza un set 'aliasComando' per contenere tutti gli alias del nome di un comando
 #### Map
-* 
-
+* Il metodo ottieniClassificaUtenti della classe Classifica salva in una Map con chiave di tipo String e valore di tipo Integer tutti gli utenti che hanno vinto almeno una partita con il loro corrispettivo punteggio massimo, la chiave è il nome dell'utente, il valore il punteggio massimo.
+* Lista di elementi di tipo Map.Entry<String,Integer> per contenere le coppie chiave-valore(nome utente-punteggio massimo) per la stampa del ranking.
 
 ---
 ### Eccezioni<a name="eccezioni"></a>
