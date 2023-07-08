@@ -162,5 +162,16 @@ public class Partita {
      */
     public boolean terminata() {
         return this.terminata;
-    }    
+    }
+
+    public void stampaPartita(){
+        System.out.println("Id: "+this.id);
+        System.out.println("Nome partita: "+this.nome);
+        System.out.println("Numero minuti: "+this.numMinuti);
+        System.out.println("Numero secondi: "+this.numSecondi);
+        System.out.println("Numero mosse: "+this.numMosse);
+        System.out.println("Punteggio: "+this.punteggio);
+        System.out.println("Terminata: "+this.terminata);
+    }
+    
 }

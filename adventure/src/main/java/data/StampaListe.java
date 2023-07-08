@@ -10,6 +10,7 @@ import java.util.List;
 /**
  *
  * @author Giannantonio
+ * @param <T>
  */
 public class StampaListe<T> {
     private List<T> lista = new ArrayList<>();
@@ -18,10 +19,15 @@ public class StampaListe<T> {
         this.lista = lista;
     }
         
-    public void stampa(){
+    public void stampa(){       
         for(T elemento : lista){
-            System.out.println(elemento);
+            if(elemento.getClass()==Partita.class){
+                Partita p = (Partita) elemento;
+                p.stampaPartita();
+                System.out.println("-----------------------------------------------------------------------------");
+            }else{
+                System.out.println(elemento);
+            }
         }
-    }
-    
+    }  
 }

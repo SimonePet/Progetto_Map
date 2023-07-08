@@ -232,11 +232,10 @@ public class DatabaseController extends Database {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }   
-        //StampaListe<Partita> stampaListe = new StampaListe<>();
+        System.out.println("LISTA PARTITE:");
+        StampaListe<Partita> stampaLista = new StampaListe<>(partite);
+        stampaLista.stampa();
         
         return partite;
     }
-    /* prende in input la lista delle partite, le raggruppa per nome_utente e punteggio,
-       prende il punteggio massimo per ogni utente e restituisce un HashMap con nomeUtente e punteggio massimo
-    */
 }

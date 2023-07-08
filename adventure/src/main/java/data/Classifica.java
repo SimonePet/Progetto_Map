@@ -32,9 +32,6 @@ public class Classifica {
         .stream()
         .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().orElse(0)));
 
-        // Stampa della HashMap risultante
-        punteggioMassimoperUtente.forEach((nomeUtente, punteggio) ->
-                System.out.println("Nome Utente: " + nomeUtente + ", Punteggio Massimo: " + punteggio));
         //lista di coppie chiave-valore
         List<Map.Entry<String, Integer>> entryList = new ArrayList<>(punteggioMassimoperUtente.entrySet());
         // Ordina la lista di Map.Entry in base al valore
