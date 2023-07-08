@@ -466,8 +466,13 @@ public class GiocoNaufragioIsola extends GameDescription {
         zattera.setVisibile(false);
         zattera.setRaccogglibile(false);
         zattera.setComandiConsentiti(set11);
-        approdo.getObjects().add(zattera);
-        costa.getObjects().add(zattera);
+
+        Oggetto botola = new Oggetto(19, "botola", MessaggioOggetti.getDescrizioneBotola());
+        botola.setAlias(new String[]{"botole", "buco", "buchi"});
+        botola.setRaccogglibile(false);
+        botola.setComandiConsentiti(set11);
+        botola.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliBotola());
+        edificioDentro.getObjects().add(botola);
 
         setStanzaCorrente(approdo);
         //Suono.stopRiproduzione(getCurrentRoom().getNomeStanza());
@@ -493,6 +498,7 @@ public class GiocoNaufragioIsola extends GameDescription {
         getOggettiGioco().add(albero);
         getOggettiGioco().add(legno);
         getOggettiGioco().add(zattera);
+        getOggettiGioco().add(botola);
     }
 
 
@@ -570,13 +576,16 @@ public class GiocoNaufragioIsola extends GameDescription {
                     ControlGioco.comandoTaglia(this, frame, p.getObject());
                     break;
                 case COSTRUISCI:
-                    ControlGioco.comandoCostruisci(this, frame, p.getObject());
+                    ControlGioco.comandoCostruisci(this, frame, p.getGenericObject());
                     break;
                 case SPOSTA:
                     ControlGioco.comandoSposta(this, frame, p.getObject());
                     break;
                 case AIUTO:
                     ControlGioco.comandoAiuto(this, frame);
+                    break;
+                case RIPARA:
+                    ControlGioco.comandoRipara(this, frame, p.getObject());
                     break;
             }
 

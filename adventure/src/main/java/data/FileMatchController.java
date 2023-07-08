@@ -142,7 +142,9 @@ public class FileMatchController extends FileController implements Serializable 
             try {
                 while (true) {
                     game = (GiocoNaufragioIsola) objectIn.readObject();
-                    lista.add(game);
+                    if(!game.getFinita()){
+                        lista.add(game);
+                    }
                 }
             } catch (IOException e) {
                 System.out.println(e);

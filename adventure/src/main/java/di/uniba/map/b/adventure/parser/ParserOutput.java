@@ -20,6 +20,8 @@ public class ParserOutput {
 
     private Oggetto invObject;
 
+    private Oggetto genericObject;
+
     public ParserOutput(Comando command, Oggetto object) {
         this.command = command;
         this.object = object;
@@ -29,6 +31,13 @@ public class ParserOutput {
         this.command = command;
         this.object = object;
         this.invObject = invObejct;
+    }
+
+    public ParserOutput(Comando command, Oggetto object, Oggetto invObejct, Oggetto genericObject) {
+        this.command = command;
+        this.object = object;
+        this.invObject = invObejct;
+        this.genericObject = genericObject;
     }
 
     public Comando getCommand() {
@@ -53,6 +62,10 @@ public class ParserOutput {
 
     public void setInvObject(Oggetto invObject) {
         this.invObject = invObject;
+    }
+
+    public Oggetto getGenericObject() {
+        return genericObject;
     }
 
 }

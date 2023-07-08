@@ -37,6 +37,7 @@ public final class ControlComandi {
         ControlComandi.initAiuto(gni);
         ControlComandi.initLocalizzazione(gni);
         ControlComandi.initFine(gni);
+        ControlComandi.initRipara(gni);
     }
 
     private static void initNord(final GiocoNaufragioIsola gni) {
@@ -186,4 +187,12 @@ public final class ControlComandi {
         fine.setDescrizione("Fine : Comando che ti permette di abbandonare il gioco.");
         gni.getComandi().add(fine);
     }
+
+    private static void initRipara(final GiocoNaufragioIsola gni) {
+        Comando ripara = new Comando(TipoComando.RIPARA, "ripara");
+        ripara.setAlias(new String[]{"ripara", "aggiusta", "sistema"});
+        ripara.setDescrizione("Ripara [oggetto] : Comando che ti permette di riparare oggetti mediante oggetti del tuo inventario.");
+        gni.getComandi().add(ripara);
+    }
+
 }

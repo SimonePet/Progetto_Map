@@ -231,7 +231,7 @@ public class JFrameApp extends javax.swing.JFrame {
         GameDescription game = engine.getGame();
         Parser parser = engine.getParser();
         try{
-            ParserOutput p = parser.parse(command, game.getComandi(), game.getStanzaCorrente().getObjects(), game.getInventario());
+            ParserOutput p = parser.parse(command, game.getComandi(), game.getStanzaCorrente().getObjects(), game.getInventario(),game.getOggettiGioco());
             int numMosse = game.getNumMosse();
             game.setNumMosse(game.getNumMosse()+1);
             labelNumMosse.setText(""+game.getNumMosse());
@@ -241,9 +241,8 @@ public class JFrameApp extends javax.swing.JFrame {
                 doc.insertString(doc.getLength(), "\nAddio.\n"+"Non sei stato in grado di vincere?? Forse non sei un buon giocatore.", attributes);
                 //setta il textField non editabile
                 Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "sconfitta", true);
-                buttSumbit.setVisible(false);
-                textField.setVisible(false);
-                lblComando.setVisible(false);
+                this.finePartita();
+                game.setFinita(true);
             }else{
                 game.nextMove(p, System.out, this,jPanel1,background);
                 System.out.println();
@@ -397,7 +396,13 @@ public class JFrameApp extends javax.swing.JFrame {
         Engine e = new Engine(partita, true);
         engine = e;
         System.out.println(e.getCurrentRoomName());
-    } 
+    }
+
+    public void finePartita(){
+        buttSumbit.setVisible(false);
+        textField.setVisible(false);
+        lblComando.setVisible(false);
+    }
     
 
     public void main() {
