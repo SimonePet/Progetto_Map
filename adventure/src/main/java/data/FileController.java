@@ -27,6 +27,7 @@ public class FileController implements FileInterface {
     public FileController(final String nomeFileCorrente, final String directoryCorrente) {
         this.nomeFile = nomeFileCorrente;
         this.directory = directoryCorrente;
+        Utils.calcolaPercorsoFile(this.nomeFile, this.directory);
         this.percorso = Utils.PERCORSO_FILES;
         this.setFile();
     }
