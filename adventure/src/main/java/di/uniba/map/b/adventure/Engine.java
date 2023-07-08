@@ -5,7 +5,7 @@
  */
 package di.uniba.map.b.adventure;
 
-import data.DatabaseController;
+import data.database.DatabaseController;
 import data.FileController;
 import di.uniba.map.b.adventure.parser.Parser;
 import swing.FrameStart;

@@ -5,7 +5,7 @@
 package swing;
 
 import data.Classifica;
-import data.DatabaseController;
+import data.database.DatabaseController;
 import data.Partita;
 import di.uniba.map.b.adventure.Utils;
 

@@ -4,7 +4,7 @@
  */
 package swing;
 
-import data.DatabaseController;
+import data.database.DatabaseController;
 import di.uniba.map.b.adventure.Utils;
 
 import java.sql.ResultSet;

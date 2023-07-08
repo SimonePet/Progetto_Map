@@ -4,7 +4,7 @@
  */
 package swing;
 
-import data.DatabaseController;
+import data.database.DatabaseController;
 import data.EsistenzaPartita;
 import data.FileMatchController;
 import data.SalvaPartita;
