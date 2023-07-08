@@ -5,6 +5,7 @@
 package data.database;
 
 import data.Partita;
+import data.StampaListe;
 import di.uniba.map.b.adventure.GameDescription;
 
 import java.sql.Connection;
@@ -230,7 +231,9 @@ public class DatabaseController extends Database {
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
-        }
+        }   
+        //StampaListe<Partita> stampaListe = new StampaListe<>();
+        
         return partite;
     }
     /* prende in input la lista delle partite, le raggruppa per nome_utente e punteggio,
