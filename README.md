@@ -89,12 +89,12 @@ Sono state utilizzate molto frequentemente le eccezioni. Molti metodi nel progra
 Il programma offre la possibilità di salvare una partita una volta che essa è terminata. Il salvataggio delle partite avviene anche su file.
 Per la gestione dei file sono state usate le classi FileController, FileMatchController e l'interfaccia FileInterface.
 
--La classe FileController implementa l'interfaccia FileInterface, la quale contiene il solo metodo create(). 
+- La classe FileController implementa l'interfaccia FileInterface, la quale contiene il solo metodo create(). 
 La classe FileController si occupa di creare un nuovo file (se non è già esistente) e ha i seguenti attributi protected: nomeFile, directory, file e percorso. 
 directory rappresenta la cartella in cui verrà memorizzato il file all'interno del progetto, nomeFile come intuibile dal nome è il nome del file che verrà creato.
 Il percorso del file viene costruito dinamicamente da un metodo della classe Utils che riceve in input gli attributi nomeFile e directory.
 
--La classe FileMatchController estende la classe FileController ereditanto gli attributi/metodi public/protected e aggiungendo nuove funzionalità (metodi), nonchè l'aggiunta di una nuova partita all'interno del file, il recupero di una specifica partita salvata su file utilizzando il nome della partita (utile per il caricamento di una partita salvata), il recupero di tutte le partite salvate su file (utile per la costruzione dinamica della JComboBox dalla quale l'utente può scegliere quale partita continuare/caricare).
+- La classe FileMatchController estende la classe FileController ereditanto gli attributi/metodi public/protected e aggiungendo nuove funzionalità (metodi), nonchè l'aggiunta di una nuova partita all'interno del file, il recupero di una specifica partita salvata su file utilizzando il nome della partita (utile per il caricamento di una partita salvata), il recupero di tutte le partite salvate su file (utile per la costruzione dinamica della JComboBox dalla quale l'utente può scegliere quale partita continuare/caricare).
 
 ---
 ### JDBC<a name="jdbc"></a>
