@@ -26,8 +26,7 @@ public abstract class Database {
     protected static final String STAMPA_PUNTEGGIO_MEDIO = "SELECT avg(punteggio) FROM partita";
     protected static final String STAMPA_PUNTEGGIO_MEDIO_UTENTE = "SELECT avg(punteggio) FROM partita WHERE username=?";
     protected static final String STAMPA_PARTITA_SPECIFICA = "SELECT nomePartita FROM partita WHERE nomePartita=?";
-    private String username;
-    private String password;
+
     /**
      *
      * @return
@@ -38,34 +37,6 @@ public abstract class Database {
         return conn;
     }
 
-    /**
-     *
-     * @param usernameCorrente
-     */
-    public void setUsername(final String usernameCorrente) {
-        this.username = usernameCorrente;
-    }
-    /**
-     *
-     * @param passwordCorrente
-     */
-    public void setPassword(final String passwordCorrente) {
-        this.password = passwordCorrente;
-    }
-    /**
-     *
-     * @return
-     */
-    public String getUsername() {
-        return username;
-    }
-    /**
-     *
-     * @return
-     */
-    public String getPassword() {
-        return password;
-    }
     /* controlla se esiste una tabella con nome partita, se esiste non crearla, altrimenti crea tabella partita*/
     /**
      *
