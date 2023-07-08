@@ -13,9 +13,9 @@ public final class MessaggioCovo {
     }
     private static final String NOME = "Covo";
     private static final String DESCRIZIONE_CORTA = "Ti trovi nel covo militare.";
-    private static final String DESCRIZIONE_COMPLETA = "Improvvisamente si apre una botola dando accesso al covo "
+    private static final String DESCRIZIONE_COMPLETA = "Improvvisamente si apre un passaggio segreto dando accesso al covo "
             + "militare.";
-    private static final String OSSERVA = "All’interno del covo trovi: una vela, un’accetta e delle corde.";
+    private static final String OSSERVA = "All’interno del covo trovi: una vela,un fucile, un’accetta e delle corde.";
     private static final String RITORNATO = "Sei tornato nel covo.";
     private static final String NO_NORD = "Hai sbloccato un superpotere: puoi oltrepassare i muri...";
     private static final String SUD = "Ti sei spostato a sud del covo.";

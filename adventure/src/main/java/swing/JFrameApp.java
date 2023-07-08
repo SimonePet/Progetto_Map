@@ -403,6 +403,7 @@ public class JFrameApp extends javax.swing.JFrame {
         buttSumbit.setVisible(false);
         textField.setVisible(false);
         lblComando.setVisible(false);
+        thread.interrupt();
     }
     
 

@@ -162,7 +162,7 @@ public class InizializzaStanze {
         //Imposto il messaggio di osserva
         edificioFuori.setOsserva(MessaggioEdificioFuori.getOsserva());
         //Imposto la visibilita della stanza
-        edificioFuori.setRaggiungibile(false);
+        edificioFuori.setRaggiungibile(true);
         //Imposto il messaggio per Nord
         edificioFuori.setMessaggioNord(MessaggioEdificioFuori.getNoNord());
         //Imposto il messaggio per Sud

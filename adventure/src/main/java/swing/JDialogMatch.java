@@ -123,6 +123,9 @@ public class JDialogMatch extends JDialog {
     private void tastoConfermaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tastoConfermaActionPerformed
         String nomePartitaSelezionata = (String)jComboBox1.getSelectedItem();
         System.out.println(nomePartitaSelezionata);
+        if(nomePartitaSelezionata == null) {
+            return;
+        }
         FileMatchController f = new FileMatchController("salvataggioPartita.txt","resources");
         try {
             GiocoNaufragioIsola partita = f.getMatch(nomePartitaSelezionata);

@@ -53,36 +53,6 @@ public class Engine {
 
     /**
      *
-     */
-    public void execute() {
-        /*
-        System.out.println("================================");
-        System.out.println("* Adventure v. 0.3 - 2021-2022 *");
-        System.out.println("================================");
-        System.out.println(game.getCurrentRoom().getName());
-        System.out.println();
-        System.out.println(game.getCurrentRoom().getDescription());
-        System.out.println();
-
-        Scanner scanner = new Scanner(System.in);
-
-        while (scanner.hasNextLine()) {
-            String command = scanner.nextLine();
-            ParserOutput p = parser.parse(command, game.getCommands(), game.getCurrentRoom().getObjects(), game.getInventory());
-            if (p == null || p.getCommand() == null) {
-                System.out.println("Non capisco quello che mi vuoi dire.");
-            } else if (p.getCommand() != null && p.getCommand().getType() == CommandType.END) {
-                System.out.println("Addio!");
-                break;
-            } else {
-                game.nextMove(p, System.out);
-                System.out.println();
-            }
-        }*/
-    }
-
-    /**
-     *
      * @return
      */
     public String getCurrentRoomName() {
@@ -110,9 +80,6 @@ public class Engine {
      * @param args the command line arguments
      */
     public static void main(final String[] args) throws SQLException {
-        //Non dovrebbe servire in quanto la partita viene caricata ed inizializzata in JFrameApp
-        //Engine engine = new Engine(new GiocoNaufragioIsola());
-        //engine.execute();
         DatabaseController db = new DatabaseController();
         db.creaTabellaPartita();
         FileController f = new FileController("salvataggioPartita.txt","resources");
