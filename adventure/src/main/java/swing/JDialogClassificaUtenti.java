@@ -125,7 +125,6 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
         jScrollPane.revalidate();
         jScrollPane.repaint();
         db.chiudiConnessione();
-        
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
