@@ -47,7 +47,7 @@ public class Parser {
      * frasi semplici del tipo <azione> <oggetto> <oggetto>. Eventuali articoli o preposizioni vengono semplicemente
      * rimossi.
      */
-    public ParserOutput parse(String comando, List<Comando> comandiAccettati, List<Oggetto> oggettiStanzaCorrente, List<Oggetto> inventario) {
+    public ParserOutput parse(String comando, List<Comando> comandiAccettati, List<Oggetto> oggettiStanzaCorrente, List<Oggetto> inventario, List<Oggetto> oggettiGenerici) {
          List<String>tokens = Utils.parseString(comando, stopwords);
         //verifico che il token non è vuoto
         if (!tokens.isEmpty()) {
@@ -69,14 +69,23 @@ public class Parser {
                             indiceOggettoInv = checkForObject(tokens.get(2), inventario);
                         }
                     }
+                    int indiceOggettoGen = -1;
+                    if(indiceOggetto < 0 && indiceOggettoInv < 0){
+                        indiceOggettoGen = checkForObject(tokens.get(1), oggettiGenerici);
+                        if (indiceOggettoGen < 0 && tokens.size() > 2) {
+                            indiceOggettoGen = checkForObject(tokens.get(2), oggettiGenerici);
+                        }
+                    }
                     if (indiceOggetto > -1 && indiceOggettoInv > -1) {
                         return new ParserOutput(comandiAccettati.get(indiceComando), oggettiStanzaCorrente.get(indiceOggetto), inventario.get(indiceOggettoInv));
                     } else if (indiceOggetto > -1) {
-                        return new ParserOutput(comandiAccettati.get(indiceComando), oggettiStanzaCorrente.get(indiceOggetto), null);
+                        return new ParserOutput(comandiAccettati.get(indiceComando), oggettiStanzaCorrente.get(indiceOggetto), null,null);
                     } else if (indiceOggettoInv > -1) {
-                        return new ParserOutput(comandiAccettati.get(indiceComando), null, inventario.get(indiceOggettoInv));
+                        return new ParserOutput(comandiAccettati.get(indiceComando), null, inventario.get(indiceOggettoInv),null);
+                    } else if (indiceOggettoGen > -1) {
+                        return new ParserOutput(comandiAccettati.get(indiceComando), null, null,oggettiGenerici.get(indiceOggettoGen));
                     } else {
-                        return new ParserOutput(comandiAccettati.get(indiceComando), null, null);
+                        return new ParserOutput(comandiAccettati.get(indiceComando), null, null,null);
                     }
                 } else {
                     return new ParserOutput(comandiAccettati.get(indiceComando), null);

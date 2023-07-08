@@ -40,6 +40,8 @@ public final class MessaggioOggetti {
     private static final String RACCOGLI_ALBERO = "E' mai possibile che stai cercando di raccogliere un albero.";
     private static final String DESCRIZIONE_LEGNO = "Delle assi di legno.Sarebbero molto utili per costruire una zattera.";
     private static final String DESCRIZIONE_ZATTERA = "Ecco cio' che ti salverà da questa brutta avventura.";
+    private static final String DESCRIZIONE_BOTOLA = "Una botola, sembra che non venga aperta da molto tempo.";
+    private static final String RACCOGLI_BOTOLA = "Ma pensi di avere un inventario cosi capiente???";
 
 
     public static String getDescrzioneRadio() {
@@ -148,5 +150,13 @@ public final class MessaggioOggetti {
 
     public static String getDescrizioneZattera() {
         return MessaggioOggetti.DESCRIZIONE_ZATTERA;
+    }
+
+    public static String getDescrizioneBotola() {
+        return MessaggioOggetti.DESCRIZIONE_BOTOLA;
+    }
+
+    public static String getRaccogliBotola() {
+        return MessaggioOggetti.RACCOGLI_BOTOLA;
     }
 }

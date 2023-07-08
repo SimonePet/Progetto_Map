@@ -35,7 +35,7 @@ public final class Utils {
     public static final String PERCORSO_IMMAGINI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "conversazione" + File.separator+"conversazione";
     public static final String PERCORSO_SUONI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "conversazione" + File.separator;
     public static final String PERCORSO_DATABASE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "db";
-    public static final String PERCORSO_FILES = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources"+ File.separator;
+    public static final String PERCORSO_FILES = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources"+ File.separator+"salvataggioPartita";
     public static final String PERCORSO_STOPWORDS =PERCORSO_ASSOLUTO + File.separator +"adventure" + File.separator + "resources" + File.separator + "stopwords";
     public static final String PERCORSO_SUONO_FINALE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "finale" + File.separator;
     public static Set<String> loadFileListInSet(final File file) throws IOException {

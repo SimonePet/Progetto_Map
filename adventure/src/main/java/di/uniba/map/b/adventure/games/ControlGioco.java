@@ -359,7 +359,7 @@ public final class ControlGioco {
                         frame.scrviSuEditor("===============HAI VINTO===============\n\n");
                         frame.scrviSuEditor("Complimenti sei riuscito a vincere questo gioco molto difficile.");
                         Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "vittoria", true);
-
+                        frame.finePartita();
                         gni.setFinita(true);
                     }
                     else{
@@ -496,4 +496,19 @@ public final class ControlGioco {
             frame.scrviSuEditor("Ovest : stanza sconosciuta.");
         }
     }
+
+    public static void comandoRipara(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto ogg){
+        if(ogg!=null){
+            if(ogg.equals(gni.getOggettoGioco("barca"))){
+                frame.scrviSuEditor("Non avrebbe senso riparare la tua vecchia barca ,meglio costruirne una di fortuna.");
+            }
+            else{
+                frame.scrviSuEditor("Non puoi riparare questo oggetto.");
+            }
+        }
+        else{
+            frame.scrviSuEditor(Messaggio.getNoPresente());
+        }
+    }
+
 }
