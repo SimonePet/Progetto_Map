@@ -30,6 +30,7 @@ import swing.JFrameApp;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.text.BadLocationException;
 import java.io.File;
 import java.io.IOException;
 
@@ -144,83 +145,90 @@ public class GiocoNaufragioIsola extends GameDescription {
      * @param label
      */
     @Override
-    public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame, final JPanel panel, final JLabel label) {
+    public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame, final JPanel panel, final JLabel label) throws BadLocationException {
         //frame.writeTextOnEditor("\n"+getCurrentRoom().getNomeStanza()+"\n");
         frame.scrviSuEditor("\n\n");
-        if (p.getCommand() == null) {
-            frame.scrviSuEditor("Non ho capito cosa devo fare! Prova con un altro comando.\n");
+        if(p == null) {
+            frame.scrviSuEditor("Non capisco quello che mi vuoi dire.");
         } else {
-            TipoComando comandoRiconosciuto = p.getCommand().getTipoComando();
-            //move
-            switch (comandoRiconosciuto) {
-                case NORD:
-                    ControlGioco.comandoNord(this, frame, panel, label);
-                    break;
-                case SUD:
-                    ControlGioco.comandoSud(this, frame, panel, label);
-                    break;
-                case EST:
-                    ControlGioco.comandoEst(this, frame, panel, label);
-                    break;
-                case OVEST:
-                    ControlGioco.comandoOvest(this, frame, panel, label);
-                    break;
-                case OSSERVA:
-                    ControlGioco.comandoOsserva(this, frame, p.getObject(), p.getInvObject());
-                    break;
-                case INVENTARIO:
-                    ControlGioco.comandoInventario(this, frame);
-                    break;
-                case RACCOGLI:
-                    ControlGioco.comandoRaccogli(this, frame, p.getObject(), p.getInvObject());
-                    break;
-                case LASCIA:
-                    ControlGioco.comandoLascia(this, frame, p.getInvObject());
-                    break;
-                case NARRA:
-                    frame.scrviSuEditor(getStanzaCorrente().getDescrizioneLungaStanza());
-                    break;
-                case SALVA:
-                    String workingDirectory = System.getProperty("user.dir");
-                    String relativePath = "adventure/resources";
-                    String fullPath = workingDirectory + File.separator + relativePath;
-                    FileMatchController fmc = new FileMatchController("/salvataggioPartita", fullPath);
-                    break;
-                case LOCALIZZAZIONE:
-                    ControlGioco.comandoLocalizzazione(this, frame);
-                    break;
-                case ACCENDI: {
-                    try {
-                        ControlGioco.comandoAccendi(this, frame, p.getInvObject());
-                    } catch (IOException | InterruptedException ex) {
-                        Logger.getLogger(GiocoNaufragioIsola.class.getName()).log(Level.SEVERE, null, ex);
+            if (p.getCommand() == null) {
+                frame.scrviSuEditor("Non ho capito cosa devo fare! Prova con un altro comando.");
+            } else {
+                TipoComando comandoRiconosciuto = p.getCommand().getTipoComando();
+                //move
+                switch (comandoRiconosciuto) {
+                    case NORD:
+                        ControlGioco.comandoNord(this, frame, panel, label);
+                        break;
+                    case SUD:
+                        ControlGioco.comandoSud(this, frame, panel, label);
+                        break;
+                    case EST:
+                        ControlGioco.comandoEst(this, frame, panel, label);
+                        break;
+                    case OVEST:
+                        ControlGioco.comandoOvest(this, frame, panel, label);
+                        break;
+                    case OSSERVA:
+                        ControlGioco.comandoOsserva(this, frame, p.getObject(), p.getInvObject());
+                        break;
+                    case INVENTARIO:
+                        ControlGioco.comandoInventario(this, frame);
+                        break;
+                    case RACCOGLI:
+                        ControlGioco.comandoRaccogli(this, frame, p.getObject(), p.getInvObject());
+                        break;
+                    case LASCIA:
+                        ControlGioco.comandoLascia(this, frame, p.getInvObject());
+                        break;
+                    case NARRA:
+                        frame.scrviSuEditor(getStanzaCorrente().getDescrizioneLungaStanza());
+                        break;
+                    case SALVA:
+                        String workingDirectory = System.getProperty("user.dir");
+                        String relativePath = "adventure/resources";
+                        String fullPath = workingDirectory + File.separator + relativePath;
+                        FileMatchController fmc = new FileMatchController("/salvataggioPartita", fullPath);
+                        break;
+                    case LOCALIZZAZIONE:
+                        ControlGioco.comandoLocalizzazione(this, frame);
+                        break;
+                    case ACCENDI: {
+                        try {
+                            ControlGioco.comandoAccendi(this, frame, p.getInvObject());
+                        } catch (IOException | InterruptedException ex) {
+                            Logger.getLogger(GiocoNaufragioIsola.class.getName()).log(Level.SEVERE, null, ex);
+                        }
                     }
+                    break;
+                    case APRI:
+                        ControlGioco.comandoApri(this, frame, p.getInvObject());
+                        break;
+                    case LEGGI:
+                        ControlGioco.comandoLeggi(frame, p.getInvObject(), p.getObject());
+                        break;
+                    case TAGLIA:
+                        ControlGioco.comandoTaglia(this, frame, p.getObject());
+                        break;
+                    case COSTRUISCI:
+                        ControlGioco.comandoCostruisci(this, frame, p.getGenericObject());
+                        break;
+                    case SPOSTA:
+                        ControlGioco.comandoSposta(this, frame, p.getObject());
+                        break;
+                    case AIUTO:
+                        ControlGioco.comandoAiuto(this, frame);
+                        break;
+                    case RIPARA:
+                        ControlGioco.comandoRipara(this, frame, p.getObject());
+                        break;
+                    case FINE:
+                        ControlGioco.comandoFine(this,frame);
+                        break;
+                    case COMANDO_NON_RICONOSCIUTO :
+                        ControlGioco.comandoNonRiconosciuto(frame);
                 }
-                break;
-
-                case APRI:
-                    ControlGioco.comandoApri(this, frame, p.getInvObject());
-                    break;
-                case LEGGI:
-                    ControlGioco.comandoLeggi(frame, p.getInvObject(), p.getObject());
-                    break;
-                case TAGLIA:
-                    ControlGioco.comandoTaglia(this, frame, p.getObject());
-                    break;
-                case COSTRUISCI:
-                    ControlGioco.comandoCostruisci(this, frame, p.getGenericObject());
-                    break;
-                case SPOSTA:
-                    ControlGioco.comandoSposta(this, frame, p.getObject());
-                    break;
-                case AIUTO:
-                    ControlGioco.comandoAiuto(this, frame);
-                    break;
-                case RIPARA:
-                    ControlGioco.comandoRipara(this, frame, p.getObject());
-                    break;
             }
-
         }
         frame.scriviSuLabelStanza(frame.getEngine().getGame().getStanzaCorrente().getNomeStanza());
     }

@@ -15,6 +15,7 @@ import swing.JFrameApp;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.text.BadLocationException;
 import java.io.PrintStream;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -167,6 +168,6 @@ public abstract class GameDescription implements Serializable {
     
     public abstract void init() throws Exception;
 
-    public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame, JPanel panel, JLabel label);
+    public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame, JPanel panel, JLabel label) throws BadLocationException;
 
 }

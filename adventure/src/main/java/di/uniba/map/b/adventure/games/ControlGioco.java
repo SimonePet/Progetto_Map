@@ -1,5 +1,6 @@
 package di.uniba.map.b.adventure.games;
 
+import di.uniba.map.b.adventure.GameDescription;
 import multimediali.Immagini;
 import multimediali.Suono;
 import di.uniba.map.b.adventure.Utils;
@@ -10,6 +11,9 @@ import swing.JFrameApp;
 
 import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.text.BadLocationException;
+import javax.swing.text.Document;
+import javax.swing.text.SimpleAttributeSet;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -37,7 +41,6 @@ public final class ControlGioco {
      */
     public static void comandoNord(final GiocoNaufragioIsola gni, final JFrameApp frame, final JPanel panel, final JLabel background) {
         frame.scrviSuEditor(gni.getStanzaCorrente().getMessaggioNord());
-        frame.scrviSuEditor("\n");
         if (gni.getStanzaCorrente().getNord() != null) {
             if (!gni.getStanzaCorrente().getNord().getRaggiungibile() && gni.getStanzaCorrente().getNomeStanza().equalsIgnoreCase("Edificio esterno")) {
                 Utils.generaFinestraPorta(frame, gni);
@@ -67,7 +70,6 @@ public final class ControlGioco {
      */
     public static void comandoSud(final GiocoNaufragioIsola gni, final JFrameApp frame, final JPanel panel, final JLabel background) {
         frame.scrviSuEditor(gni.getStanzaCorrente().getMessaggioSud());
-        frame.scrviSuEditor("\n");
         if (gni.getStanzaCorrente().getSud() != null && gni.getStanzaCorrente().getSud().getRaggiungibile()) {
             gni.setStanzaCorrente(gni.getStanzaCorrente().getSud());
             Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + gni.getStanzaCorrente().getNomeStanza(), true);
@@ -89,7 +91,6 @@ public final class ControlGioco {
      */
     public static void comandoEst(final GiocoNaufragioIsola gni, final JFrameApp frame, final JPanel panel, final JLabel background) {
         frame.scrviSuEditor(gni.getStanzaCorrente().getMessaggioEst());
-        frame.scrviSuEditor("\n");
         if (gni.getStanzaCorrente().getEst() != null && gni.getStanzaCorrente().getEst().getRaggiungibile()) {
             gni.setStanzaCorrente(gni.getStanzaCorrente().getEst());
             Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + gni.getStanzaCorrente().getNomeStanza(), true);
@@ -112,13 +113,11 @@ public final class ControlGioco {
      */
     public static void comandoOvest(final GiocoNaufragioIsola gni, final JFrameApp frame, final JPanel panel, final JLabel background) {
         frame.scrviSuEditor(gni.getStanzaCorrente().getMessaggioOvest());
-        frame.scrviSuEditor("\n");
         if (gni.getStanzaCorrente().getOvest() != null && gni.getStanzaCorrente().getOvest().getRaggiungibile()) {
             gni.setStanzaCorrente(gni.getStanzaCorrente().getOvest());
             Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + gni.getStanzaCorrente().getNomeStanza(), true);
             if (gni.getStanzaCorrente().getVisitata()) {
                 frame.scrviSuEditor(gni.getStanzaCorrente().getDescrizioneCortaStanza());
-
             } else {
                 frame.scrviSuEditor(gni.getStanzaCorrente().getDescrizioneLungaStanza());
             }
@@ -505,4 +504,15 @@ public final class ControlGioco {
         }
     }
 
+    public static void comandoFine(final GiocoNaufragioIsola gni, final JFrameApp frame) throws BadLocationException {
+        frame.scrviSuEditor("Addio.\n"+"Non sei stato in grado di vincere?? Forse non sei un buon giocatore.");
+        //setta il textField non editabile
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "sconfitta", true);
+        frame.finePartita();
+        gni.setFinita(true);
+    }
+
+    public  static void comandoNonRiconosciuto(final JFrameApp frame) {
+        frame.scrviSuEditor("Non capisco quello che mi vuoi dire.\n");
+    }
 }
