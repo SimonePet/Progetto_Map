@@ -21,10 +21,13 @@ public class JDialogStats extends javax.swing.JDialog {
 
     /**
      * Creates new form JDialogStats
+     * @param parent
+     * @param modal
+     * @param username
      */
     public JDialogStats(java.awt.Frame parent, boolean modal,String username) {
         super(parent, modal);
-        this.username = username;
+        JDialogStats.username = username;
         initComponents();
     }
 
@@ -158,7 +161,7 @@ public class JDialogStats extends javax.swing.JDialog {
             ResultSet rs = db.getPartite();
             int i=0;
             String[] nomiColonne = { "Id", "Nome partita", "Nome utente","Punteggio","Durata","Terminata","Numero mosse" };
-            String [][] dati = new String[200][200];
+            String [][] dati = new String[RIGHE_TABELLA_PARTITE][COLONNE_TABELLA_PARTITE];
             while(rs.next()){
                 dati[i][0] = Integer.toString(rs.getInt(1));
                 dati[i][1] = rs.getString(2);
@@ -193,7 +196,7 @@ public class JDialogStats extends javax.swing.JDialog {
             ResultSet rs = db.getPartiteUtente(username);
             int i=0;
             String[] nomiColonne = { "Id", "Nome partita", "Nome utente","Punteggio","Durata","Terminata","Numero mosse" };
-            String [][] dati = new String[200][200];
+            String [][] dati = new String[RIGHE_TABELLA_PARTITE][COLONNE_TABELLA_PARTITE];
             while(rs.next()){
                 dati[i][0] = Integer.toString(rs.getInt(1));
                 dati[i][1] = rs.getString(2);
@@ -274,5 +277,7 @@ public class JDialogStats extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     static String username;
     static DecimalFormat df = new DecimalFormat("0.00");
+    static final int RIGHE_TABELLA_PARTITE = 50;
+    static final int COLONNE_TABELLA_PARTITE = 50;
 
 }

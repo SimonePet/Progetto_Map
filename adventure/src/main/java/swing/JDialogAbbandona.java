@@ -162,9 +162,6 @@ public class JDialogAbbandona extends javax.swing.JDialog {
             // l'espressione lambda fornisce l'implementazione del metodo dell'interfaccia funzionale
             SalvaPartita salvaPartita = (p) -> db.salvaPartita(p);
             partitaSalvata = salvaPartita.esegui(partita);
-            if(partitaSalvata){
-                System.out.println("Partita salvata su DB");
-            }
             db.stampaPartite();
             //salva partita su file
             FileMatchController f = new FileMatchController("salvataggioPartita.txt","resources");

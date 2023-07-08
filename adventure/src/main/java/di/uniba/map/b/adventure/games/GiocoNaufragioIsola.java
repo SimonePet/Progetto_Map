@@ -7,38 +7,18 @@ package di.uniba.map.b.adventure.games;
 
 import data.FileMatchController;
 //Import dei messaggi
-import di.uniba.map.b.adventure.messaggi.MessaggioCovo;
-import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
-import di.uniba.map.b.adventure.messaggi.MessaggioEdificioDentro;
-import di.uniba.map.b.adventure.messaggi.MessaggioEdificioFuori;
-import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
-import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
-import di.uniba.map.b.adventure.messaggi.MessaggioBosco;
-import di.uniba.map.b.adventure.messaggi.MessaggioOggetti;
-import di.uniba.map.b.adventure.messaggi.MessaggioApprodo;
-
 
 import di.uniba.map.b.adventure.GameDescription;
 import di.uniba.map.b.adventure.parser.ParserOutput;
-import di.uniba.map.b.adventure.type.Oggetto;
-import di.uniba.map.b.adventure.type.OggettoContenitore;
-import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.TipoComando;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
-
-
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.text.BadLocationException;
 import java.io.File;
 import java.io.IOException;
-
 import java.io.PrintStream;
-
-import java.util.HashSet;
-
-import java.util.Set;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

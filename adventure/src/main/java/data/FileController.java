@@ -33,13 +33,12 @@ public class FileController implements FileInterface {
     }
     
     /**
-     * Metodo booleano che crea il file: Restituisce vero se lo crea.
-     * Falso altrimenti.
+     * Metodo booleano che crea il file: Restituisce vero se lo crea.Falso altrimenti.
+     * @return
      */
     @Override
     public boolean create() {
         this.setFile();
-        System.out.println("Percorso file: "+percorso);
         try {
             if (file.createNewFile()) {
                 System.out.println("File "+nomeFile+" creato con successo.");
@@ -53,6 +52,7 @@ public class FileController implements FileInterface {
     }
     /**
      * Metodo set che imposta il nome del file.
+     * @param name
      */
     public void setNomeFile(final String name) {
         this.nomeFile = name;
@@ -60,6 +60,7 @@ public class FileController implements FileInterface {
 
     /**
      * Metodo get che restituisce il nome del file.
+     * @return 
      */
     public String getNomeFile() {
         return nomeFile;
@@ -67,12 +68,13 @@ public class FileController implements FileInterface {
 
     /**
      * Metodo get che restituisce il file.
+     * @return 
      */
     public File getFile() {
         return file;
     }
     
-    public void setFile(){
+    public final void setFile(){
         this.file = new File(percorso);
     }
 

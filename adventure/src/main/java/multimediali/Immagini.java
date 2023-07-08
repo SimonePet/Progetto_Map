@@ -1,12 +1,11 @@
 package multimediali;
 
-import di.uniba.map.b.adventure.Utils;
-
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 
 public class Immagini {
 
@@ -25,7 +24,7 @@ public class Immagini {
             background.setLayout(new FlowLayout());
             panel.revalidate();
             panel.repaint();
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.out.println("Errore nell'aggiunta dell'immagine");
         }
 

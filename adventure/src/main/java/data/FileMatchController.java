@@ -5,7 +5,6 @@
 package data;
 
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
-import java.io.File;
 import java.io.Serializable;
 import java.io.ObjectOutputStream;
 import java.io.IOException;
@@ -52,7 +51,6 @@ public class FileMatchController extends FileController implements Serializable 
             }
             out.writeObject(game);
             out.close();
-            System.out.println("PARTITA SALVATA SU FILE\n");
             return true;
         } catch (IOException e) {
             System.out.println(e);
@@ -153,9 +151,9 @@ public class FileMatchController extends FileController implements Serializable 
             } finally {
                 try {
                     objectIn.close();
-                    //fileIn.close();
+                    fileIn.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    System.err.println(e.getMessage());
                 }
             }        
         }

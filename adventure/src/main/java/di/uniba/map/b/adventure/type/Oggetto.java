@@ -243,10 +243,7 @@ public class Oggetto implements Serializable {
             return false;
         }
         final Oggetto other = (Oggetto) oggetto;
-        if (this.idOggetto != other.idOggetto) {
-            return false;
-        }
-        return true;
+        return this.idOggetto == other.idOggetto;
     }
 
     public boolean isVisibile() {

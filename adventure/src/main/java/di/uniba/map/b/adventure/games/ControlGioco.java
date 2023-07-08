@@ -1,6 +1,5 @@
 package di.uniba.map.b.adventure.games;
 
-import di.uniba.map.b.adventure.GameDescription;
 import multimediali.Immagini;
 import multimediali.Suono;
 import di.uniba.map.b.adventure.Utils;
@@ -8,12 +7,9 @@ import di.uniba.map.b.adventure.messaggi.*;
 import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.Oggetto;
 import swing.JFrameApp;
-
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.text.BadLocationException;
-import javax.swing.text.Document;
-import javax.swing.text.SimpleAttributeSet;
 import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -154,8 +150,6 @@ public final class ControlGioco {
             //Verifico che l'oggetto nel luogo corrente esiste.
             if (ogg != null) {
                 //Verifico che l'oggetto può essere raccolto
-                System.out.println("L'oggetto " + ogg.getNomeOggetto() + " e raccoglibile: " + ogg.isRaccogglibile());
-                System.out.println("\nL'oggetto " + ogg.getNomeOggetto() + " e visibile: " + ogg.isVisibile());
                 if (ogg.isVisibile()) {
                     if (ogg.isRaccogglibile()) {
                         gni.getInventario().add(ogg);

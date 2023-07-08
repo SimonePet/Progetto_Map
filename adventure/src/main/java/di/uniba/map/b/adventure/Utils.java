@@ -15,8 +15,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
-
-import swing.JDialogPorta;
 import swing.JDialogPorta;
 import swing.JFrameApp;
 
@@ -27,8 +25,6 @@ public final class Utils {
     private Utils() {
     }
     
-    private static String directoryFile;
-    private static String nomeFile;
     public static final String PERCORSO_ASSOLUTO = calcolaPercorsoAssoluto();
     public static final String ESTENSIONE_WAV = ".wav";
     public static final String PERCORSO_IMMAGINI_ICONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "icone" + File.separator;
@@ -68,12 +64,9 @@ public final class Utils {
         int indiceInizio = percorsoAss.indexOf("Progetto_Map");
         if (indiceInizio != -1) {
             percorsoAss = percorsoAss.substring(0, indiceInizio) + sostituzione;
-            System.out.println("Nuovo testo: " + percorsoAss);
         } else {
             percorsoAss= percorsoAss + File.separator + sostituzione;
-            System.out.println("Sottostringa non trovata");
         }
-        System.out.println("Ciao sono il percorso assoluto: " + percorsoAss);
         return percorsoAss;
     }
 
