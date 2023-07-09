@@ -75,7 +75,6 @@ public class Suono {
             }
         });
         audioThread.start();
-        System.out.println("Avviato nuovo thread");
         thread = audioThread;
     }
 
@@ -85,7 +84,6 @@ public class Suono {
     public static void stopRiproduzione() {
         //lock.lock();
         thread.interrupt();
-        System.out.println("Thread ucciso");
         if (suonoAttivo && lineOptional.isPresent()) {
             SourceDataLine line = lineOptional.get();
             line.stop();

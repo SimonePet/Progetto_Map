@@ -149,6 +149,9 @@ public class JFrameApp extends javax.swing.JFrame {
                 .addComponent(jButton1))
         );
 
+        scrollPanel.setHorizontalScrollBarPolicy(javax.swing.ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+        scrollPanel.setToolTipText("");
+
         textArea.setColumns(20);
         textArea.setRows(5);
         scrollPanel.setViewportView(textArea);
@@ -219,6 +222,8 @@ public class JFrameApp extends javax.swing.JFrame {
     }//GEN-LAST:event_textFieldActionPerformed
 
     private void buttSumbitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttSumbitActionPerformed
+        JScrollBar verticalScrollBar = scrollPanel.getVerticalScrollBar();
+        verticalScrollBar.setValue(verticalScrollBar.getMaximum());
         String comando = textField.getText();
         textField.setText("");
         Document doc = textArea.getDocument();

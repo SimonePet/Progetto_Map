@@ -213,6 +213,10 @@
           </SubComponents>
         </Container>
         <Container class="javax.swing.JScrollPane" name="scrollPanel">
+          <Properties>
+            <Property name="horizontalScrollBarPolicy" type="int" value="31"/>
+            <Property name="toolTipText" type="java.lang.String" value=""/>
+          </Properties>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
