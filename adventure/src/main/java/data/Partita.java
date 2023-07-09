@@ -172,6 +172,5 @@ public class Partita {
         System.out.println("Numero mosse: "+this.numMosse);
         System.out.println("Punteggio: "+this.punteggio);
         System.out.println("Terminata: "+this.terminata);
-    }
-    
+    }   
 }

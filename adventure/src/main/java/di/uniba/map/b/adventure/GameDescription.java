@@ -32,27 +32,38 @@ public abstract class GameDescription implements Serializable {
     private int numSecondi = 0;
     private int numMosse = 0;
     private int punteggio = 100;
+    private boolean abbandonata = false;
     private final List<Stanza> stanze = new ArrayList<>();
     private final List<Comando> comandi = new ArrayList<>();
     private final List<Oggetto> inventario = new ArrayList<>();
     private final List<Oggetto> oggettiGioco = new ArrayList<>();
     private Stanza stanzaCorrente;
 
-    public void setPunteggio() {
-        int penalizzazioneMosse = 1 * this.getNumMosse();
-        int penalizzazioneMin = 5 * this.getNumMinuti();
-        int bonusPartitaVinta = 15;
-        this.punteggio = this.punteggio - penalizzazioneMosse - penalizzazioneMin;
-        if (this.getFinita()) {
-            punteggio += bonusPartitaVinta;
+    public int calcoloPunteggio(int numMosse, int numMinuti, boolean terminata){
+        int punteggio = 100;
+        if(this.abbandonata){
+            punteggio = 0;
+        }else{
+            double penalizzazioneMosse = 0.25 * numMosse;
+            int penalizzazioneMin = numMinuti;
+            int bonusPartitaVinta = 50;
+            punteggio = punteggio - (int) penalizzazioneMosse - penalizzazioneMin;
+            if (terminata){
+                punteggio += bonusPartitaVinta;
+            }
+            if (punteggio > 100) {
+                punteggio = 100;
+            } else if (punteggio < 0) {
+                punteggio = 0;
+            }    
         }
-        if (punteggio > 100) {
-            this.punteggio = 100;
-        } else if (punteggio < 0) {
-            this.punteggio = 0;
-        }
+        return punteggio;
     }
-
+    
+    public void setAbbandonata(boolean b){
+        this.abbandonata = b;
+    }
+    
     public int getPunteggio() {
         return punteggio;
     }

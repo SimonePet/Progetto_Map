@@ -213,18 +213,18 @@ public class JDialogRadio extends javax.swing.JDialog {
         jButton2.setOpaque(false);
         jPanel2.setBackground(c);
         try {
-                BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_CONVERSAZIONE + ".png"));
-                Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
-                ImageIcon imageIcon = new ImageIcon(dimg);
-                jPanel1.setBackground(new Color(0,0,0,0));
-                jPanel1.setOpaque(false);
-                jPanel1.setBorder(BorderFactory.createEmptyBorder());
-                jPanel1.setLayout(new BorderLayout());
-                JLabel background = new JLabel(imageIcon);
-                jPanel1.add(background);
-                background.setLayout(new FlowLayout());
-                jPanel1.revalidate();
-                jPanel1.repaint();
+            BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_CONVERSAZIONE + ".png"));
+            Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon imageIcon = new ImageIcon(dimg);
+            jPanel1.setBackground(new Color(0,0,0,0));
+            jPanel1.setOpaque(false);
+            jPanel1.setBorder(BorderFactory.createEmptyBorder());
+            jPanel1.setLayout(new BorderLayout());
+            JLabel background = new JLabel(imageIcon);
+            jPanel1.add(background);
+            background.setLayout(new FlowLayout());
+            jPanel1.revalidate();
+            jPanel1.repaint();
             // avvia server socket
             avviaServer();
             // avvia connessione client socket al server socket

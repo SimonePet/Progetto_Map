@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 import swing.JDialogPorta;
+import swing.JDialogPunteggio;
 import swing.JFrameApp;
 
 /**
@@ -32,11 +33,13 @@ public final class Utils {
     public static final String PERCORSO_SUONI_OGGETTI = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "oggetti" + File.separator;
     public static final String PERCORSO_IMMAGINI_STANZE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "stanze" + File.separator;
     public static final String PERCORSO_IMMAGINI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "conversazione" + File.separator+"conversazione";
+    public static final String PERCORSO_IMMAGINI_EXTRA = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "extra" + File.separator;
     public static final String PERCORSO_SUONI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "conversazione" + File.separator;
     public static final String PERCORSO_DATABASE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "db";
     public static String PERCORSO_FILES;
     public static final String PERCORSO_STOPWORDS =PERCORSO_ASSOLUTO + File.separator +"adventure" + File.separator + "resources" + File.separator + "stopwords";
-    public static final String PERCORSO_SUONO_FINALE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "finale" + File.separator;
+    public static final String PERCORSO_SUONO_FINALE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "finale" + File.separator;    
+    
     public static Set<String> loadFileListInSet(final File file) throws IOException {
         Set<String> set = new HashSet<>();
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -72,6 +75,11 @@ public final class Utils {
 
     public static void generaFinestraPorta(final JFrameApp frame, final GiocoNaufragioIsola gni) {
         JDialogPorta d = new JDialogPorta(frame, true, gni);
+        d.setVisible(true);
+    }
+    
+    public static void generaFinestraPunteggio(final JFrameApp frame, GiocoNaufragioIsola gni){
+        JDialogPunteggio d = new JDialogPunteggio(frame, true, gni);
         d.setVisible(true);
     }
 
