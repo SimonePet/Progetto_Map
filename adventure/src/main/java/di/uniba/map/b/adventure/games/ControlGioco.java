@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Set;
+import swing.JDialogPunteggio;
 
 import swing.JDialogRadio;
 
@@ -389,7 +390,7 @@ public final class ControlGioco {
      * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
      * @param ogg    Oggetto da costruire presente nella stanza.
      */
-    public static void comandoCostruisci(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto ogg) {
+    public static void comandoCostruisci(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto ogg){
         if (ogg != null) {
             if (ogg.getNomeOggetto().equals("zattera")) {
                 if (gni.getInventario().contains(gni.getOggettoGioco("vela"))
@@ -401,6 +402,7 @@ public final class ControlGioco {
                         Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "vittoria", true);
                         frame.finePartita();
                         gni.setFinita(true);
+                        Utils.generaFinestraPunteggio(frame, gni);
                     } else {
                         frame.scrviSuEditor(Messaggio.getNoLuogoZattera());
                     }
@@ -593,6 +595,7 @@ public final class ControlGioco {
         // Setta il textField non editabile
         Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "sconfitta", true);
         frame.finePartita();
+        gni.setAbbandonata(true);
         gni.setFinita(true);
     }
 

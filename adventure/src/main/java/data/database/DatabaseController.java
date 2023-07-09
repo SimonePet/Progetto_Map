@@ -57,7 +57,7 @@ public class DatabaseController extends Database {
     public boolean salvaPartita(final GameDescription partita) {
         //calcola punteggio con formula
         int punteggio;
-        punteggio = Partita.calcoloPunteggio(partita.getNumMosse(),partita.getNumMinuti(),partita.getFinita());
+        punteggio = partita.calcoloPunteggio(partita.getNumMosse(),partita.getNumMinuti(),partita.getFinita());
         try {
             //inserimento completo con punteggio
             PreparedStatement pstm = conn.prepareStatement(INSERISCI_PARTITA);

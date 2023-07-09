@@ -16,6 +16,7 @@ di\uniba\map\b\adventure\Engine.class
 swing\FrameStart$1.class
 swing\JDialogPorta$4.class
 swing\JDialogRadio$8.class
+swing\JDialogPunteggio.class
 swing\JDialogAbbandona$4.class
 di\uniba\map\b\adventure\messaggi\MessaggioBosco.class
 swing\JDialogRadio$5.class
@@ -59,6 +60,7 @@ swing\JDialogPorta$5.class
 swing\JFrameApp.class
 swing\JDialogRadio$6.class
 swing\JDialogAbbandona$5.class
+swing\JDialogPunteggio$1.class
 swing\JDialogPorta$2.class
 data\Partita.class
 swing\JFrameApp$2.class
@@ -84,6 +86,7 @@ swing\FrameStart$8.class
 swing\JDialogCaricaPartite$4$1.class
 di\uniba\map\b\adventure\type\TipoComando.class
 swing\JDialogPorta$3.class
+swing\JDialogPunteggio$2.class
 data\FileMatchController.class
 swing\JDialogRadio$7.class
 swing\JFrameApp$3.class
@@ -99,6 +102,7 @@ swing\JDialogPorta$11.class
 di\uniba\map\b\adventure\games\InizializzaComandi.class
 di\uniba\map\b\adventure\type\Stanza.class
 swing\JDialogPorta$9.class
+swing\JDialogPunteggio$2$1.class
 swing\JDialogRadio$1.class
 swing\JDialogAbbandona$6.class
 di\uniba\map\b\adventure\messaggi\MessaggioCovo.class

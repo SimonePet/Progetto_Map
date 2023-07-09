@@ -172,23 +172,5 @@ public class Partita {
         System.out.println("Numero mosse: "+this.numMosse);
         System.out.println("Punteggio: "+this.punteggio);
         System.out.println("Terminata: "+this.terminata);
-    }
-    
-    public static int calcoloPunteggio(int numMosse, int numMinuti, boolean terminata){
-        int punteggio = 100;
-        double penalizzazioneMosse = 0.25 * numMosse;
-        int penalizzazioneMin = numMinuti;
-        int bonusPartitaVinta = 50;
-        punteggio = punteggio - (int) penalizzazioneMosse - penalizzazioneMin;
-        if (terminata){
-            punteggio += bonusPartitaVinta;
-        }
-        if (punteggio > 100) {
-            punteggio = 100;
-        } else if (punteggio < 0) {
-            punteggio = 0;
-        }
-        return punteggio;
-    }
-    
+    }   
 }

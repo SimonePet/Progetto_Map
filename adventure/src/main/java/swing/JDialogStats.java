@@ -277,7 +277,7 @@ public class JDialogStats extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     static String username;
     static DecimalFormat df = new DecimalFormat("0.00");
-    static final int RIGHE_TABELLA_PARTITE = 50;
-    static final int COLONNE_TABELLA_PARTITE = 50;
+    static final int RIGHE_TABELLA_PARTITE = 100;
+    static final int COLONNE_TABELLA_PARTITE = 100;
 
 }
