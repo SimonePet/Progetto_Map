@@ -137,6 +137,11 @@ Inoltre, i thread vengono utilizzati per la comunicazione Client-Server con i so
 
 ---
 ### Socket<a name="socket"></a>
+Quando l'utente accende la radio, l'applicazione apre una finestra per il dialogo via radio tra il giocatore disorientato nell'isola e i militari.
+Per la comunicazione tra l'utente e i militari abbiamo utilizzato una comunicazione Client-Server utilizzando i Socket.
+
+La classe Client all'interno del package thread implementa l'interfaccia Runnable e quando il thread del C
+
 
 ---
 ### Lambda expressions<a name="lambda-expressions"></a>
