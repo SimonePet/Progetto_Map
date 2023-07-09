@@ -188,6 +188,8 @@ public class InizializzaStanze {
         //Imposto la visibilita della stanza
         grotta.setRaggiungibile(true);
         //Imposto il messaggio per Nord
+        grotta.setVisibile(false);
+        //Imposto il messaggio per Nord
         grotta.setMessaggioNord(MessaggioGrotta.getNoNordLuce());
         //Imposto il messaggio per Sud
         grotta.setMessaggioSud(MessaggioGrotta.getNoSudLuce());

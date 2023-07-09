@@ -87,5 +87,25 @@ public final class Utils {
     public static void calcolaPercorsoFile(String nome, String cartella){
         PERCORSO_FILES = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + cartella + File.separator + nome;
     }
-    
+
+    public static String formattaStringa(String stringa, String sottostringa, int valoreMassimo) {
+        int indiceSottostringa = stringa.indexOf(sottostringa);
+        if (indiceSottostringa == -1) {
+            return stringa; // La sottostringa non è presente nella stringa originale
+        }
+
+        int lunghezzaSottostringa = sottostringa.length();
+        int spaziDaAggiungere = Math.min(valoreMassimo, lunghezzaSottostringa);
+
+        StringBuilder spaziBuilder = new StringBuilder();
+        for (int i = 0; i < spaziDaAggiungere; i++) {
+            spaziBuilder.append(" ");
+        }
+        String spazi = spaziBuilder.toString();
+
+        StringBuilder nuovaStringa = new StringBuilder(stringa);
+        nuovaStringa.insert(indiceSottostringa + lunghezzaSottostringa, spazi);
+
+        return nuovaStringa.toString();
+    }
 }
