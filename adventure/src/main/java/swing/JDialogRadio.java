@@ -16,6 +16,8 @@ import javax.swing.*;
 import di.uniba.map.b.adventure.Utils;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+
+import di.uniba.map.b.adventure.messaggi.MessaggiConversazione;
 import thread.Client;
 import thread.Server;
 
@@ -292,7 +294,8 @@ public class JDialogRadio extends javax.swing.JDialog {
     }
     
     public static void avviaClient(){
-        Client client = new Client("localhost",1234,jTextArea1);
+        Client client = new Client("localhost",1234);
+        client.setTextArea(jTextArea1);
         Thread t2 = new Thread(client);
         t2.start();
         threadC = t2;
@@ -305,13 +308,13 @@ public class JDialogRadio extends javax.swing.JDialog {
     public void setNuoveDomande(){
         if(numDomanda==2){
             jRadioButton1.setText("Mi chiamo "+nomeUtente);
-            jRadioButton2.setText("Non ho accettato i diritti sulla privacy");
+            jRadioButton2.setText(MessaggiConversazione.MSG_UTENTE_2_OPZ_1);
         }else if(numDomanda==3){
-            jRadioButton1.setText("Mi trovo su un'isola deserta");
-            jRadioButton2.setText("Mi trovo in vacanza");            
+            jRadioButton1.setText(MessaggiConversazione.MSG_UTENTE_3_OPZ_1);
+            jRadioButton2.setText(MessaggiConversazione.MSG_UTENTE_3_OPZ_2);
         }else if(numDomanda==4){
-            jRadioButton1.setText("Si era 2538");
-            jRadioButton2.setText("Non lo ricordo adesso ma era presente");           
+            jRadioButton1.setText(MessaggiConversazione.MSG_UTENTE_4_OPZ_1);
+            jRadioButton2.setText(MessaggiConversazione.MSG_UTENTE_4_OPZ_2);
         }else if(numDomanda==5){
             jRadioButton1.setVisible(false);
             jRadioButton2.setVisible(false);

@@ -27,11 +27,9 @@ public class Client implements Runnable{
     private static BufferedReader reader;
     private static JTextArea textArea;
 
-    public Client(String indirizzo, int portaServer,JTextArea textArea) {
+    public Client(String indirizzo, int portaServer) {
         indirizzoServer = indirizzo;
         porta = portaServer;
-        Client.textArea=textArea;
-        Client.textArea.setEditable(false);
     }
    
     /*  connessione al Socket Server */
@@ -96,5 +94,10 @@ public class Client implements Runnable{
         } else {
             return input;
         }
+    }
+
+    public void setTextArea(JTextArea textArea){
+        Client.textArea=textArea;
+        Client.textArea.setEditable(false);
     }
 }
