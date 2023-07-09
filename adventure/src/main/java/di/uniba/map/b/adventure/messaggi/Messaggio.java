@@ -52,6 +52,16 @@ public final class Messaggio {
     private static final String NO_TAGLIA = "Non puoi tagliare questo oggetto.";
     private static final String LISTA_COMANDI = "Ecco a te tutta la lista dei comandi disponibili:";
     private static final String OGGETTI_LASCIATI = "In questa stanza hai lasciato:";
+    private static final String NO_ACCENDI_RADIO = "Impossibile accendere radio. Ti mancano le batterie.";
+    private static final String VITTORIA = "Hai utilizzato il legno, le corde e la vela per costruire la zattera.\n\n"+
+            "===============HAI VINTO===============\n\n"+
+            "Complimenti sei riuscito a vincere questo gioco molto difficile.";
+    private static final String NO_LUOGO_ZATTERA = "Ma pensi veramente di poter costruire una zattera qui.";
+    private static final String NO_TUTTI_OGGETTI = "Non hai ancora tutti gli oggetti a disposizione.";
+    private static final String NO_COSTRUISCI = "Non è possibile costruire questo oggetto.";
+    private static final String APRI_TELECOMANDO = "Apri il telecomando e cade a terra... solo pezzi di plastica, tasti in gomma e due batterie.";
+    private static final String NO_APRI = "Nulla da aprire."+
+            "Non puoi aprire questo oggetto";
 
 
     public static String getHelp() {
@@ -144,4 +154,27 @@ public final class Messaggio {
     public static String getOggettiLasciati() {
         return Messaggio.OGGETTI_LASCIATI;
     }
+    public static String getNoAccendiRadio() {
+        return Messaggio.NO_ACCENDI_RADIO;
+    }
+    public static String getVittoria() {
+        return Messaggio.VITTORIA;}
+
+    public static String getNoLuogoZattera() {
+        return Messaggio.NO_LUOGO_ZATTERA;
+    }
+
+    public static String getNoTuttiOggetti() {
+        return Messaggio.NO_TUTTI_OGGETTI;}
+
+    public static String getNoCostruisci() {
+        return Messaggio.NO_COSTRUISCI;
+    }
+
+    public static String getApriTelecomando() {
+        return Messaggio.APRI_TELECOMANDO;
+    }
+
+    public static String getNoApri() {
+        return Messaggio.NO_APRI;
 }

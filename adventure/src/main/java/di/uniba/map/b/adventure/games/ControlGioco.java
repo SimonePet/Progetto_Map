@@ -27,6 +27,7 @@ public final class ControlGioco {
     }
 
     private static final Set<Comando> comandi = new HashSet<>();
+    private static final Comando[] comandiArray = new Comando[25];
 
 
     /**
@@ -295,14 +296,14 @@ public final class ControlGioco {
                 if (gni.getInventario().contains(gni.getOggettoGioco("acciarino"))) {
                     frame.scrviSuEditor(Messaggio.getAccendiLampada());
                     gni.getOggettoGioco("lastra").setVisibile(true);
-                    gni.getStanza("grotta").setVisibile(true);
-                    gni.getStanza("grotta").setDescrizioneCortaStanza(MessaggioGrotta.getDescCortaLuce());
-                    gni.getStanza("grotta").setDescrizioneCompletaStanza(MessaggioGrotta.getDescCompletaLuce());
-                    gni.getStanza("grotta").setOsserva(MessaggioGrotta.getOsservaLuce());
-                    gni.getStanza("grotta").setMessaggioNord(MessaggioGrotta.getNoNordLuce());
-                    gni.getStanza("grotta").setMessaggioSud(MessaggioGrotta.getNoSudLuce());
-                    gni.getStanza("grotta").setMessaggioOvest(MessaggioGrotta.getNoOvestLuce());
-                    gni.getStanza("grotta").setOsserva(MessaggioGrotta.getOsservaLuce());
+                    gni.getStanza(MessaggioGrotta.getGrottaNome()).setVisibile(true);
+                    gni.getStanza(MessaggioGrotta.getGrottaNome()).setDescrizioneCortaStanza(MessaggioGrotta.getDescCortaLuce());
+                    gni.getStanza(MessaggioGrotta.getGrottaNome()).setDescrizioneCompletaStanza(MessaggioGrotta.getDescCompletaLuce());
+                    gni.getStanza(MessaggioGrotta.getGrottaNome()).setOsserva(MessaggioGrotta.getOsservaLuce());
+                    gni.getStanza(MessaggioGrotta.getGrottaNome()).setMessaggioNord(MessaggioGrotta.getNoNordLuce());
+                    gni.getStanza(MessaggioGrotta.getGrottaNome()).setMessaggioSud(MessaggioGrotta.getNoSudLuce());
+                    gni.getStanza(MessaggioGrotta.getGrottaNome()).setMessaggioOvest(MessaggioGrotta.getNoOvestLuce());
+                    gni.getStanza(MessaggioGrotta.getGrottaNome()).setOsserva(MessaggioGrotta.getOsservaLuce());
                 } else {
                     frame.scrviSuEditor(Messaggio.getNoAccendiLampada());
                 }
@@ -314,7 +315,7 @@ public final class ControlGioco {
                     Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + gni.getStanzaCorrente().getNomeStanza(), true);
                     gni.getComandi().add(gni.getComando("sposta"));
                 } else {
-                    frame.scrviSuEditor("Impossibile accendere radio. Ti mancano le batterie");
+                    frame.scrviSuEditor(Messaggio.getNoAccendiRadio());
                 }
             } else {
                 frame.scrviSuEditor(Messaggio.getNoAccendi());
@@ -391,20 +392,18 @@ public final class ControlGioco {
                         && gni.getInventario().contains(gni.getOggettoGioco("legno"))) {
                     if (gni.getStanzaCorrente().getNomeStanza().equalsIgnoreCase(MessaggioApprodo.getNome())
                             || gni.getStanzaCorrente().getNomeStanza().equalsIgnoreCase(MessaggioCosta.getNome())) {
-                        frame.scrviSuEditor("Hai utilizzato il legno, le corde e la vela per costruire la zattera.\n\n");
-                        frame.scrviSuEditor("===============HAI VINTO===============\n\n");
-                        frame.scrviSuEditor("Complimenti sei riuscito a vincere questo gioco molto difficile.");
+                        frame.scrviSuEditor(Messaggio.getVittoria());
                         Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "vittoria", true);
                         frame.finePartita();
                         gni.setFinita(true);
                     } else {
-                        frame.scrviSuEditor("Ma pensi veramente di poter costruire una zattera qui.");
+                        frame.scrviSuEditor(Messaggio.getNoLuogoZattera());
                     }
                 } else {
-                    frame.scrviSuEditor("Non hai ancora tutti gli oggetti a disposizione.");
+                    frame.scrviSuEditor(Messaggio.getNoTuttiOggetti());
                 }
             } else {
-                frame.scrviSuEditor("Non è possibile costruire questo oggetto.");
+                frame.scrviSuEditor(Messaggio.getNoCostruisci());
             }
         } else {
             frame.scrviSuEditor(Messaggio.getNoPresente());
@@ -418,16 +417,22 @@ public final class ControlGioco {
      * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
      */
     public static void comandoAiuto(final GiocoNaufragioIsola gni, final JFrameApp frame) {
-        setComandi(gni);
+        if(comandi.isEmpty()){
+            setComandi(gni);
+        }
+        if(comandiArray[0] == null){
+            inizializzaOrdineComandi(gni);
+        }
         Oggetto prossimo;
         for (Oggetto oggetto : gni.getInventario()) {
             prossimo = oggetto;
             comandi.addAll(prossimo.getComandiConsentiti());
         }
-        Iterator<Comando> iteratore1 = comandi.iterator();
         frame.scrviSuEditor(Messaggio.getListaComandi() + "\n");
-        while (iteratore1.hasNext()) {
-            frame.scrviSuEditor(iteratore1.next().getDescrizione() + "\n");
+        for(int i=0; i<25; i++) {
+            if(comandi.contains(comandiArray[i])){
+                frame.scrviSuEditor(comandiArray[i].getDescrizione() + "\n");
+            }
         }
     }
 
@@ -447,7 +452,6 @@ public final class ControlGioco {
             comandi.add(gni.getComando("raccogli"));
             comandi.add(gni.getComando("narra"));
             comandi.add(gni.getComando("salva"));
-            comandi.add(gni.getComando("localizzazione"));
         }
     }
 
@@ -461,11 +465,11 @@ public final class ControlGioco {
     public static void comandoApri(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto invOgg) {
         if (invOgg != null) {
             if (invOgg.equals(gni.getOggettoGioco("telecomando"))) {
-                frame.scrviSuEditor("Apri il telecomando e cade a terra... solo pezzi di plastica, tasti in gomma e due batterie.");
+                frame.scrviSuEditor(Messaggio.getApriTelecomando());
                 gni.getOggettoGioco("batteria").setVisibile(true);
             } else {
-                frame.scrviSuEditor("Nulla da aprire.");
-                frame.scrviSuEditor("Non puoi aprire questo oggetto");
+                frame.scrviSuEditor(Messaggio.getNoApri());
+
             }
         } else {
             frame.scrviSuEditor(Messaggio.getOggettoNonInventario());
@@ -500,43 +504,47 @@ public final class ControlGioco {
      * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
      */
     public static void comandoLocalizzazione(final GiocoNaufragioIsola gni, final JFrameApp frame) {
-        frame.scrviSuEditor("La tua posizione è: " + gni.getStanzaCorrente().getNomeStanza());
-        frame.scrviSuEditor(Messaggio.getInvio());
+        if(gni.getInventario().contains(gni.getOggettoGioco("mappa"))) {
+            frame.scrviSuEditor("La tua posizione è: " + gni.getStanzaCorrente().getNomeStanza());
+            frame.scrviSuEditor(Messaggio.getInvio());
 
-        // Localizzazione delle stanze adiacenti
-        if (gni.getStanzaCorrente().getNord() == null) {
-            frame.scrviSuEditor("Nord: Inaccessibile.");
-        } else if (gni.getStanzaCorrente().getNord().getVisitata()) {
-            frame.scrviSuEditor("Nord: stanza " + gni.getStanzaCorrente().getNord().getNomeStanza());
-        } else {
-            frame.scrviSuEditor("Nord: stanza sconosciuta.");
-        }
-        frame.scrviSuEditor(Messaggio.getInvio());
+            // Localizzazione delle stanze adiacenti
+            if (gni.getStanzaCorrente().getNord() == null) {
+                frame.scrviSuEditor("Nord: Inaccessibile.");
+            } else if (gni.getStanzaCorrente().getNord().getVisitata()) {
+                frame.scrviSuEditor("Nord: stanza " + gni.getStanzaCorrente().getNord().getNomeStanza());
+            } else {
+                frame.scrviSuEditor("Nord: stanza sconosciuta.");
+            }
+            frame.scrviSuEditor(Messaggio.getInvio());
 
-        if (gni.getStanzaCorrente().getSud() == null) {
-            frame.scrviSuEditor("Sud: Inaccessibile.");
-        } else if (gni.getStanzaCorrente().getSud().getVisitata()) {
-            frame.scrviSuEditor("Sud: la stanza " + gni.getStanzaCorrente().getSud().getNomeStanza());
-        } else {
-            frame.scrviSuEditor("Sud: stanza sconosciuta.");
-        }
-        frame.scrviSuEditor(Messaggio.getInvio());
+            if (gni.getStanzaCorrente().getSud() == null) {
+                frame.scrviSuEditor("Sud: Inaccessibile.");
+            } else if (gni.getStanzaCorrente().getSud().getVisitata()) {
+                frame.scrviSuEditor("Sud: la stanza " + gni.getStanzaCorrente().getSud().getNomeStanza());
+            } else {
+                frame.scrviSuEditor("Sud: stanza sconosciuta.");
+            }
+            frame.scrviSuEditor(Messaggio.getInvio());
 
-        if (gni.getStanzaCorrente().getEst() == null) {
-            frame.scrviSuEditor("Est: Inaccessibile.");
-        } else if (gni.getStanzaCorrente().getEst().getVisitata()) {
-            frame.scrviSuEditor("Est: la stanza " + gni.getStanzaCorrente().getEst().getNomeStanza());
-        } else {
-            frame.scrviSuEditor("Est: stanza sconosciuta.");
-        }
-        frame.scrviSuEditor(Messaggio.getInvio());
+            if (gni.getStanzaCorrente().getEst() == null) {
+                frame.scrviSuEditor("Est: Inaccessibile.");
+            } else if (gni.getStanzaCorrente().getEst().getVisitata()) {
+                frame.scrviSuEditor("Est: la stanza " + gni.getStanzaCorrente().getEst().getNomeStanza());
+            } else {
+                frame.scrviSuEditor("Est: stanza sconosciuta.");
+            }
+            frame.scrviSuEditor(Messaggio.getInvio());
 
-        if (gni.getStanzaCorrente().getOvest() == null) {
-            frame.scrviSuEditor("Ovest: Inaccessibile.");
-        } else if (gni.getStanzaCorrente().getOvest().getVisitata()) {
-            frame.scrviSuEditor("Ovest: la stanza " + gni.getStanzaCorrente().getOvest().getNomeStanza());
+            if (gni.getStanzaCorrente().getOvest() == null) {
+                frame.scrviSuEditor("Ovest: Inaccessibile.");
+            } else if (gni.getStanzaCorrente().getOvest().getVisitata()) {
+                frame.scrviSuEditor("Ovest: la stanza " + gni.getStanzaCorrente().getOvest().getNomeStanza());
+            } else {
+                frame.scrviSuEditor("Ovest: stanza sconosciuta.");
+            }
         } else {
-            frame.scrviSuEditor("Ovest: stanza sconosciuta.");
+            frame.scrviSuEditor("Ti servirebbe qualcosa per orientarti.");
         }
     }
 
@@ -580,5 +588,28 @@ public final class ControlGioco {
      */
     public static void comandoNonRiconosciuto(final JFrameApp frame) {
         frame.scrviSuEditor("Non capisco quello che mi vuoi dire.\n");
+    }
+
+    public static void inizializzaOrdineComandi(final GiocoNaufragioIsola GNI){
+        comandiArray[0] = GNI.getComando("nord");
+        comandiArray[1] = GNI.getComando("sud");
+        comandiArray[2] = GNI.getComando("est");
+        comandiArray[3] = GNI.getComando("ovest");
+        comandiArray[4] = GNI.getComando("raccogli");
+        comandiArray[5] = GNI.getComando("lascia");
+        comandiArray[6] = GNI.getComando("inventario");
+        comandiArray[7] = GNI.getComando("osserva");
+        comandiArray[8] = GNI.getComando("apri");
+        comandiArray[9] = GNI.getComando("accendi");
+        comandiArray[10] = GNI.getComando("utilizza");
+        comandiArray[11] = GNI.getComando("narra");
+        comandiArray[12] = GNI.getComando("localizzazione");
+        comandiArray[13] = GNI.getComando("ripara");
+        comandiArray[14] = GNI.getComando("leggere");
+        comandiArray[15] = GNI.getComando("costruisci");
+        comandiArray[16] = GNI.getComando("sposta");
+        comandiArray[17] = GNI.getComando("taglia");
+        comandiArray[18] = GNI.getComando("salva");
+        comandiArray[19] = GNI.getComando("fine");
     }
 }
