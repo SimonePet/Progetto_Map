@@ -177,7 +177,7 @@ public class Partita {
     public static int calcoloPunteggio(int numMosse, int numMinuti, boolean terminata){
         int punteggio = 100;
         double penalizzazioneMosse = 0.25 * numMosse;
-        int penalizzazioneMin = 5 * numMinuti;
+        int penalizzazioneMin = numMinuti;
         int bonusPartitaVinta = 50;
         punteggio = punteggio - (int) penalizzazioneMosse - penalizzazioneMin;
         if (terminata){
