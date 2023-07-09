@@ -129,7 +129,7 @@ Quando la partita termina oppure quando l'utente vince la partita il thread per 
 
 L'app permette anche il caricamento di una partita salvata, la classe ThreadTempo gestisce anche questo caso, riprendendo il timer dal tempo di partita del suo salvataggio e continuando normalmente l'esecuzione del timer. Ogni secondo il thread aggiorna il frame dinamicamente stampando nell'interfaccia utente il numero di ore, minuti e secondi trascorsi durante la partita.
 
-Altrettanto fondamentale è l'utilizzo dei thread per la musica e i suoni presenti all'interno del gioco. La classe Suono tra gli attributi ha un oggetto della classe Thread che viene avviato ogni qual volta viene chiamato il metodo riproduciTraccia. Ogni stanza della mappa del gioco ha una musica di sottofondo differente e ad ogni spostamento nella mappa viene chiamato il metodo riproduciTraccia che avvia il thread che si occupa di eseguire il corretto suono di sottofondo per la stanza corrente. Sono previste musiche differenti anche in altre situazioni come per esempio i suoni di digitazione del codice per l'accesso all'edificio abbandonato. Oppure la musica in caso di vittoria.
+Altrettanto fondamentale è l'utilizzo dei thread per la musica e i suoni presenti all'interno del gioco. La classe Suono tra gli attributi ha un oggetto della classe Thread che viene avviato ogni qual volta viene chiamato il metodo riproduciTraccia. Ogni stanza della mappa del gioco ha una musica di sottofondo differente e ad ogni spostamento nella mappa viene chiamato il metodo riproduciTraccia che avvia il thread che si occupa di eseguire il corretto suono di sottofondo per la stanza corrente. Sono previste musiche differenti anche in altre situazioni come per esempio i suoni di digitazione del codice per l'accesso all'edificio abbandonato. Oppure la musica in caso di vittoria.  Oppure ancora nel dialogo via radio tra l'utente e i militari.
 
 I suoni delle diverse stanze non si vanno mai a sovrapporre poichè ogni volta che ci si sposta nella mappa viene ucciso il thread per la musica della stanza precedente e viene avviato un nuovo thread per la musica della stanza corrente. Quando l'utente abbandona la partita viene interrotto il thread della classe Suono.
 
@@ -140,8 +140,42 @@ Inoltre, i thread vengono utilizzati per la comunicazione Client-Server con i so
 Quando l'utente accende la radio, l'applicazione apre una finestra per il dialogo via radio tra il giocatore disorientato nell'isola e i militari.
 Per la comunicazione tra l'utente e i militari abbiamo utilizzato una comunicazione Client-Server utilizzando i Socket.
 
-La classe Client all'interno del package thread implementa l'interfaccia Runnable e quando il thread del C
+Al momento della generazione della finestra per il dialogo vengono avviati sia il client che il server
 
+![avvioClientServer](client_server_avvio.png)
+
+come possiamo notare sia la classe Client che la classe Server implementano l'interfaccia Runnable poichè i due oggetti vengono passati al costruttore Thread per avviare due thread che si occupano di eseguire rispettivamente le funzionalità del server e del client.
+All'avvio dei due thread, il server rimane in attesa di una connessione su una porta, nel frattempo il client si connette al server pronto per lo scambio dei messaggi.
+
+#### Client:
+![Client](/Client.png)
+
+Il client rappresenta l'utente nella conversazione via radio.
+Il metodo leggiRispostaServer legge il messaggio inviato dal server e lo scrive nella TextArea dell'interfaccia per rendere visibile al client (l'utente) la risposta del server. 
+
+
+#### Server:
+![Server](/Server.png)
+
+Il server rappresenta i militari nella conversazione via radio. 
+Il metodo elaboraMessaggio legge il messaggio inviato dal client e in base al messaggio ricevuto restituisce la risposta idonea al proseguio della conversazione.
+
+Il dialogo via radio offre all'utente un importante indizio per la risoluzione del gioco.
+
+
+
+#### Comunicazione client-server:
+<img src="radio.png" alt="radio" width="800" height="520">
+
+
+Ogni volta che il client conferma un opzione invia un messaggio al server. Il server legge la risposta del client, elabora il messaggio e restituisce una risposta al client. La risposta del server viene visualizzata in tempo reale nell'interfaccia utente dando vita a un vero e proprio dialogo dinamico tra i due attori dove la risposta del server dipende dal messaggio inviato del client.
+La risposta del server non è solo testuale, infatti restituisce anche una risposta audio dei militari con interferenze radio per rendere il gioco il più realistico possibile.
+
+
+Il messaggio inviato dal client è l'opzione selezionata.
+Nel momento in cui l'utente seleziona la risposta viene invocato il metodo statico inviaMessaggio della classe Client, e vengono settate le nuove opzioni nell'interfaccia per permettere all'utente (client) di inviare nuovi messaggi ai militari (server).
+
+Quando l'utente spegne la radio oppure chiude la finestra vengono chiusi il server socket e il socket client per liberare le risorse, ma soprattutto vengono interrotti i due thread che eseguivano il Client e il Server.
 
 ---
 ### Lambda expressions<a name="lambda-expressions"></a>
