@@ -69,7 +69,7 @@ Le liste vengono utilizzate all'interno del caso di studio nelle seguenti situaz
 * La classe Stanza ha come attributo una lista di elementi di tipo Oggetto
 * La classe OggettoContenitore ha come attributo una lista di elementi di tipo Oggetto contenente gli oggetti contenuti dal contenitore
 * Il metodo parseString della classe Utils utilizza una lista di token, nonchè una lista di elementi di tipo String
-* la classe generica 'stampaListe' utilizza come attributo una lista di elementi di tipo generico.
+* la classe generica 'StampaListe' utilizza come attributo una lista di elementi di tipo generico.
 * Il metodo getPartite della classe FileMatchController restituisce una lista di elementi di tipo GiocoNaufragioIsola, nonchè una lista di partite salvate su file.
 #### Set
 * Set 'stopwords' utilizzato per contenere tutte le stopwords recuperate dal file senza contenere duplicati 
@@ -117,8 +117,23 @@ Si occupa delle seguenti funzionalità:
 * verificare l'esistenza di una partita nel DB utilizzando il nome della partita
 * restituire tutte le partite salvate su DB come lista di elementi di tipo Partita
 
+Le seguenti funzionalità sono state utilizzate per permettere all'utente di visualizzare statistiche in forma tabellare. E' possibile visualizzare sia statistiche generali che statistiche specifiche all'utente in gioco.
+
 ---
 ### Thread<a name="thread"></a>
+L'utilizzo dei thread all'interno del progetto è fondamentale per la visualizzazione del timer in tempo reale, il quale viene visualizzato nel frame principale dell'app durante la partita.
+
+Per la creazione di un thread in grado di gestire e visualizzare il timer della partita abbiamo creato una classe ThreadTempo (che tiene traccia delle ore, minuti e secondi passati durante la partita), la quale implementa l'interfaccia Runnable. Ogni volta che viene avviata una nuova partita viene avviato il thread per il tempo, il quale incrementa il numero di secondi, minuti e ore in tempo reale, aggiorna costantemente gli attributi relativi al tempo della classe GameDescription per tenere traccia del tempo passato all'interno della partita. 
+
+Quando la partita termina oppure quando l'utente vince la partita il thread per il tempo viene interrotto attraverso la chiamata del metodo interrupt(), perciò il tempo della partita si ferma e non verrà più aggiornato.
+
+L'app permette anche il caricamento di una partita salvata, la classe ThreadTempo gestisce anche questo caso, riprendendo il timer dal tempo di partita del suo salvataggio e continuando normalmente l'esecuzione del timer. Ogni secondo il thread aggiorna il frame dinamicamente stampando nell'interfaccia utente il numero di ore, minuti e secondi trascorsi durante la partita.
+
+Altrettanto fondamentale è l'utilizzo dei thread per la musica e i suoni presenti all'interno del gioco. La classe Suono tra gli attributi ha un oggetto della classe Thread che viene avviato ogni qual volta viene chiamato il metodo riproduciTraccia. Ogni stanza della mappa del gioco ha una musica di sottofondo differente e ad ogni spostamento nella mappa viene chiamato il metodo riproduciTraccia che avvia il thread che si occupa di eseguire il corretto suono di sottofondo per la stanza corrente. Sono previste musiche differenti anche in altre situazioni come per esempio i suoni di digitazione del codice per l'accesso all'edificio abbandonato. Oppure la musica in caso di vittoria.
+
+I suoni delle diverse stanze non si vanno mai a sovrapporre poichè ogni volta che ci si sposta nella mappa viene ucciso il thread per la musica della stanza precedente e viene avviato un nuovo thread per la musica della stanza corrente. Quando l'utente abbandona la partita viene interrotto il thread della classe Suono.
+
+Inoltre, i thread vengono utilizzati per la comunicazione Client-Server con i socket. Approfondiamo il loro utilizzo nel prossimo paragrafo relativo ai Socket.
 
 ---
 ### Socket<a name="socket"></a>
