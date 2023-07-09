@@ -67,6 +67,7 @@ public class InizializzaOggetti {
         cartina.setAlias(new String[]{"cartine", "carta", "cartina", "mappe", "carte"});
         cartina.setVisibile(true);
         set.add(GNI.getComando("lascia"));
+        set.add(GNI.getComando("localizzazione"));
         cartina.setComandiConsentiti(set);
         GNI.getStanza(MessaggioCosta.getNome()).getObjects().add(cartina);
         GNI.getOggettiGioco().add(cartina);

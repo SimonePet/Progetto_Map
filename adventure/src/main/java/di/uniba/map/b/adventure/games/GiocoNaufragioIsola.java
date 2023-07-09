@@ -212,4 +212,5 @@ public class GiocoNaufragioIsola extends GameDescription {
         }
         frame.scriviSuLabelStanza(frame.getEngine().getGame().getStanzaCorrente().getNomeStanza());
     }
+
 }

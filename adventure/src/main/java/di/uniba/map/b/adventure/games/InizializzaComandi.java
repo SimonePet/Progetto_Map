@@ -27,7 +27,6 @@ public final class InizializzaComandi {
         InizializzaComandi.initApri(gni);
         InizializzaComandi.initSposta(gni);
         InizializzaComandi.initUtilizza(gni);
-        InizializzaComandi.initEnd(gni);
         InizializzaComandi.initLascia(gni);
         InizializzaComandi.initNarra(gni);
         InizializzaComandi.initSalva(gni);
@@ -117,13 +116,6 @@ public final class InizializzaComandi {
         utilizza.setAlias(new String[]{"usa"});
         utilizza.setDescrizione("Utilizza [oggetto] : Comando che non so ancora cosa faccia;");
         gni.getComandi().add(utilizza);
-    }
-
-    private static void initEnd(final GiocoNaufragioIsola gni) {
-        Comando end = new Comando(TipoComando.FINE, "end");
-        end.setAlias(new String[]{"end", "fine", "esci", "muori", "ammazzati", "ucciditi", "suicidati", "exit"});
-        end.setDescrizione("End : Comando che ti permette di abbandonare il gioco;");
-        gni.getComandi().add(end);
     }
 
     private static void initLascia(final GiocoNaufragioIsola gni) {
