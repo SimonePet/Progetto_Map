@@ -174,4 +174,21 @@ public class Partita {
         System.out.println("Terminata: "+this.terminata);
     }
     
+    public static int calcoloPunteggio(int numMosse, int numMinuti, boolean terminata){
+        int punteggio = 100;
+        double penalizzazioneMosse = 0.25 * numMosse;
+        int penalizzazioneMin = 5 * numMinuti;
+        int bonusPartitaVinta = 50;
+        punteggio = punteggio - (int) penalizzazioneMosse - penalizzazioneMin;
+        if (terminata){
+            punteggio += bonusPartitaVinta;
+        }
+        if (punteggio > 100) {
+            punteggio = 100;
+        } else if (punteggio < 0) {
+            punteggio = 0;
+        }
+        return punteggio;
+    }
+    
 }

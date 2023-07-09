@@ -46,8 +46,7 @@ public class Client implements Runnable{
             System.out.println("Errore durante la connessione al server: " + e.getMessage());
         }
     }
-    
-    
+        
     public static void inviaMessaggio(String messaggio){
         writer.println(messaggio);
     }

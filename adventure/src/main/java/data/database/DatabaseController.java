@@ -56,32 +56,19 @@ public class DatabaseController extends Database {
     @Override
     public boolean salvaPartita(final GameDescription partita) {
         //calcola punteggio con formula
-        int punteggio = 100;
-        int penalizzazioneMosse = 1 * partita.getNumMosse();
-        int penalizzazioneMin = 5 * partita.getNumMinuti();
-        int bonusPartitaVinta = 100;
-        punteggio = punteggio - penalizzazioneMosse - penalizzazioneMin;
-        if (partita.getFinita()) {
-            punteggio += bonusPartitaVinta;
-        }
-        if (punteggio > 100) {
-            punteggio = 100;
-        } else if (punteggio < 0) {
-            punteggio = 0;
-        }
+        int punteggio;
+        punteggio = Partita.calcoloPunteggio(partita.getNumMosse(),partita.getNumMinuti(),partita.getFinita());
         try {
-            try ( 
-                //inserimento completo con punteggio
-                PreparedStatement pstm = conn.prepareStatement(INSERISCI_PARTITA)) {
-                pstm.setString(1, partita.getNomePartita());
-                pstm.setString(2, partita.getUsername());
-                pstm.setInt(3, punteggio);
-                pstm.setInt(4, partita.getNumMinuti());
-                pstm.setInt(5, partita.getNumSecondi());
-                pstm.setBoolean(6, partita.getFinita());
-                pstm.setInt(7, partita.getNumMosse());
-                pstm.executeUpdate();
-            }
+            //inserimento completo con punteggio
+            PreparedStatement pstm = conn.prepareStatement(INSERISCI_PARTITA);
+            pstm.setString(1, partita.getNomePartita());
+            pstm.setString(2, partita.getUsername());
+            pstm.setInt(3, punteggio);
+            pstm.setInt(4, partita.getNumMinuti());
+            pstm.setInt(5, partita.getNumSecondi());
+            pstm.setBoolean(6, partita.getFinita());
+            pstm.setInt(7, partita.getNumMosse());
+            pstm.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("PARTITA NON SALVATA SU DB");
             System.err.println(ex.getMessage());

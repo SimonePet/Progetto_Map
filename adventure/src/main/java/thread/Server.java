@@ -21,7 +21,6 @@ public class Server implements Runnable {
     private static ServerSocket serverSocket;
     private static PrintWriter writer;
     private static Socket clientSocket;
-    private static String nomeUtente;
     private static boolean attivo = false;
 
     /**
@@ -117,6 +116,5 @@ public class Server implements Runnable {
         }
     }
     public static void setNomeUtente(final String username) {
-        nomeUtente = username;
     }
 }
