@@ -182,27 +182,35 @@ Quando l'utente spegne la radio oppure chiude la finestra vengono chiusi il serv
 ---
 ### Lambda expressions<a name="lambda-expressions"></a>
 Abbiamo creato due interfacce funzionali: SalvaPartita e EsistenzaPartita.
-Queste ultime sono delle interfacce funzionali poichè hanno un solo metodo astratto.
+Queste ultime sono delle interfacce funzionali che hanno un solo metodo astratto.
 
+#### Interfaccia funzionale SalvaPartita
 ![SalvaPartita](/salvaPartita.png)
 
-- Il metodo esegui dell'interfaccia funzionale SalvaPartita prende in input un oggetto GameDescription  e salva una partita su Database.
-Utilizziamo l'interfaccia funzionale per salvare la partita su DB:
+Il metodo esegui dell'interfaccia funzionale SalvaPartita prende in input un oggetto GameDescription e restituisce un booleano. Il metodo non ha un implementazione perciò è necessario fornirgliela per poter chiamare il metodo. 
 
-![EsistenzaPartita](/esistenzaPartita.png)
-
-- Il metodo test dell'interfaccia funzionale EsistenzaPartita prende in input il nome di una partita e restituisce true se le la partita esiste nel database.
 
 ![Lambda1](/espressioneLambda1.png)
 
+creiamo un'istanza dell'interfaccia funzionale SalvaPartita utilizzando un'espressione lambda. L'espressione lambda definisce l'implementazione del metodo astratto dell'interfaccia funzionale SalvaPartita.
+Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo esegui, che come definito dall'espressione lambda (p) -> db.salvaPartita(p) prende in input una partita e la passa al metoto salvaPartita della classe DatabaseController che salva la partita su DB.
 
-Utilizziamo l'espressione lambda per dare l'implementazione del metodo dell'interfaccia funzionale SalvaPartita, una volta data l'implementazione chiamiamo il metodo esegui dell'interfaccia funzionale che si comporterà come definito dalla lambda expression.
+#### Interfaccia funzionale esistenzaPartita
+![EsistenzaPartita](/esistenzaPartita.png)
+
+L'interfaccia funzionale EsistenzaPartita ha un metodo astratto 'test' che prende in input una stringa (il nome della partita) e restituisce un booleano. Essendo un metodo astratto di una interfaccia funzionale esso non ha una implementazione.
 
 
 ![Lambda2](/espressioneLambda2.png)
 
+creiamo un'istanza dell'interfaccia funzionale EsistenzaPartita utilizzando un'espressione lambda. L'espressione lambda definisce l'implementazione del metodo astratto dell'interfaccia funzionale EsistenzaPartita.
+Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo test, che come definito dall'espressione lambda (nome) -> db.partitaEsistente(nome)
+passa il nome della partita al metodo partitaEsistente della classe DatabaseController che verifica l'esistenza della partita nel DB, se la trova restituisce true, altrimenti false.
 
 
+![partiteTerm1](/partiteTerminate1.png)
+
+![partiteTerm2](/partiteTerminate2.png)
 
 
 ---
