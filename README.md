@@ -117,6 +117,7 @@ Si occupa delle seguenti funzionalità:
 * recuperare tutte le partite salvate su DB di uno specifico utente
 * recuperare il punteggio medio di tutte le partite su DB
 * recuperare il punteggio medio di tutte le partite di uno specifico utente su DB
+* recuperare il punteggio medio delle partite terminate
 * verificare l'esistenza di una partita nel DB utilizzando il nome della partita
 * restituire tutte le partite salvate su DB come lista di elementi di tipo Partita
 
