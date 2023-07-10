@@ -164,12 +164,6 @@ public class GiocoNaufragioIsola extends GameDescription {
                     case NARRA:
                         frame.scrviSuEditor(getStanzaCorrente().getDescrizioneLungaStanza());
                         break;
-                    case SALVA:
-                        String workingDirectory = System.getProperty("user.dir");
-                        String relativePath = "adventure/resources";
-                        String fullPath = workingDirectory + File.separator + relativePath;
-                        FileMatchController fmc = new FileMatchController("/salvataggioPartita", fullPath);
-                        break;
                     case LOCALIZZAZIONE:
                         ControlGioco.comandoLocalizzazione(this, frame);
                         break;
