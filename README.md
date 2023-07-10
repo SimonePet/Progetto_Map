@@ -195,7 +195,7 @@ Il metodo esegui dell'interfaccia funzionale SalvaPartita prende in input un ogg
 creiamo un'istanza dell'interfaccia funzionale SalvaPartita utilizzando un'espressione lambda. L'espressione lambda definisce l'implementazione del metodo astratto dell'interfaccia funzionale SalvaPartita.
 Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo esegui, che come definito dall'espressione lambda (p) -> db.salvaPartita(p) prende in input una partita e la passa al metoto salvaPartita della classe DatabaseController che salva la partita su DB.
 
-#### Interfaccia funzionale esistenzaPartita
+#### Interfaccia funzionale EsistenzaPartita
 ![EsistenzaPartita](/esistenzaPartita.png)
 
 L'interfaccia funzionale EsistenzaPartita ha un metodo astratto 'test' che prende in input una stringa (il nome della partita) e restituisce un booleano. Essendo un metodo astratto di una interfaccia funzionale esso non ha una implementazione.
