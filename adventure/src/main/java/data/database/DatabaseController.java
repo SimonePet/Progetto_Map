@@ -64,10 +64,11 @@ public class DatabaseController extends Database {
             pstm.setString(1, partita.getNomePartita());
             pstm.setString(2, partita.getUsername());
             pstm.setInt(3, punteggio);
-            pstm.setInt(4, partita.getNumMinuti());
-            pstm.setInt(5, partita.getNumSecondi());
-            pstm.setBoolean(6, partita.getFinita());
-            pstm.setInt(7, partita.getNumMosse());
+            pstm.setInt(4, partita.getNumOre());
+            pstm.setInt(5, partita.getNumMinuti());
+            pstm.setInt(6, partita.getNumSecondi());
+            pstm.setBoolean(7, partita.getFinita());
+            pstm.setInt(8, partita.getNumMosse());
             pstm.executeUpdate();
         } catch (SQLException ex) {
             System.out.println("PARTITA NON SALVATA SU DB");
@@ -124,9 +125,9 @@ public class DatabaseController extends Database {
                 System.out.println("\nnome partita: " + rs.getString(2));
                 System.out.println("\nusername: " + rs.getString(3));
                 System.out.println("\npunteggio: " + rs.getInt(4));
-                System.out.println("\nDurata partita: " + rs.getInt(5) + " minuti e " + rs.getInt(6) + " secondi");
-                System.out.println("\nTerminata: " + rs.getBoolean(7));
-                System.out.println("\nNumero mosse: " + rs.getInt(8));
+                System.out.println("\nDurata partita: " + rs.getInt(5) + " ore e " + rs.getInt(6) + " minuti e " + rs.getInt(7) + " secondi");
+                System.out.println("\nTerminata: " + rs.getBoolean(8));
+                System.out.println("\nNumero mosse: " + rs.getInt(9));
                 System.out.println("-------------------------------------------------------");
             }
         } catch (SQLException ex) {
@@ -208,11 +209,12 @@ public class DatabaseController extends Database {
                 String nome = rs.getString(2);
                 String nomeUtente = rs.getString(3);
                 int punteggio = rs.getInt(4);
-                int numMinuti = rs.getInt(5);
-                int numSecondi = rs.getInt(6);
-                boolean terminata = rs.getBoolean(7);
-                int numMosse = rs.getInt(8);
-                Partita partita = new Partita(id, nome, nomeUtente, punteggio, numMinuti, numSecondi, terminata, numMosse);
+                int numOre = rs.getInt(5);
+                int numMinuti = rs.getInt(6);
+                int numSecondi = rs.getInt(7);
+                boolean terminata = rs.getBoolean(8);
+                int numMosse = rs.getInt(9);
+                Partita partita = new Partita(id, nome, nomeUtente, punteggio, numOre, numMinuti, numSecondi, terminata, numMosse);
                 partite.add(partita);
             }
         } catch (SQLException ex) {

@@ -13,6 +13,7 @@ public class Partita {
     private String nome;
     private String nomeUtente;
     private int punteggio;
+    private int numOre;
     private int numMinuti;
     private int numSecondi;
     private boolean terminata;
@@ -24,6 +25,7 @@ public class Partita {
     public Partita() {
         this.id = 0;
         this.nome = "";
+        this.numOre=0;
         this.numSecondi = 0;
         this.numMinuti = 0;
         this.numMosse = 0;
@@ -41,9 +43,10 @@ public class Partita {
      * @param terminataCprr
      * @param numMosse
      */
-    public Partita(final int id, final String nome, final String nomeUtente, final int punteggio, final int numMinuti, final int numSecondi, final boolean terminata, final int numMosse) {
+    public Partita(final int id, final String nome, final String nomeUtente, final int punteggio, final int numOre, final int numMinuti, final int numSecondi, final boolean terminata, final int numMosse) {
         this.id = id;
         this.nome = nome;
+        this.numOre=numOre;
         this.numSecondi = numSecondi;
         this.numMinuti = numMinuti;
         this.nomeUtente = nomeUtente;
@@ -167,6 +170,7 @@ public class Partita {
     public void stampaPartita(){
         System.out.println("Id: "+this.id);
         System.out.println("Nome partita: "+this.nome);
+        System.out.println("Numero Ore: "+this.numOre);
         System.out.println("Numero minuti: "+this.numMinuti);
         System.out.println("Numero secondi: "+this.numSecondi);
         System.out.println("Numero mosse: "+this.numMosse);
