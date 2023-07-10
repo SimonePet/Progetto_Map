@@ -17,6 +17,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import multimediali.Immagini;
 
 /**
  *
@@ -148,6 +149,7 @@ public class JDialogCaricaPartite extends JDialog {
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE +"iconaGioco.png");
+        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU,"sfondo frame start",jPanel1);
         this.setIconImage(icon.getImage());
         FileMatchController f = new FileMatchController("salvataggioPartita.txt","resources");
         try {
