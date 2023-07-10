@@ -61,16 +61,16 @@ public class ThreadTempo implements Runnable {
                 }
             }
             if(this.numSecondi<10 && this.numMinuti<10) {
-                printTime(this.numOre + ":0" + this.numMinuti + ":0" + this.numSecondi);
+                printTime("0"+this.numOre + ":0" + this.numMinuti + ":0" + this.numSecondi);
             }
             else if(this.numSecondi<10){
-                printTime(this.numOre + ":" + this.numMinuti + ":0" + this.numSecondi);
+                printTime("0"+this.numOre + ":" + this.numMinuti + ":0" + this.numSecondi);
             }
             else if(this.numMinuti<10){
-                printTime(this.numOre + ":0" + this.numMinuti + ":" + this.numSecondi);
+                printTime("0"+this.numOre + ":0" + this.numMinuti + ":" + this.numSecondi);
             }
             else{
-                printTime(this.numOre + ":" + this.numMinuti + ":" + this.numSecondi);
+                printTime(+this.numOre + ":" + this.numMinuti + ":" + this.numSecondi);
             }
             try {
                 Thread.sleep(1000);
