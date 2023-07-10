@@ -6,6 +6,8 @@ package swing;
 
 import data.database.DatabaseController;
 import di.uniba.map.b.adventure.Utils;
+import java.awt.event.ActionEvent;
+import java.awt.event.KeyEvent;
 import multimediali.Immagini;
 
 import java.sql.ResultSet;
@@ -49,7 +51,12 @@ public class JDialogStats extends javax.swing.JDialog {
         jScrollPane1 = new javax.swing.JScrollPane();
         txtPunteggioMedio = new javax.swing.JTextPane();
         jLabel1 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        btnPartitaSpecifica = new javax.swing.JButton();
+        lblNomePartita = new javax.swing.JLabel();
+        txtNomePartita = new javax.swing.JTextField();
+        lblPunteggio = new javax.swing.JLabel();
+        txtPunteggio = new javax.swing.JTextField();
+        lblErrore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -78,62 +85,98 @@ public class JDialogStats extends javax.swing.JDialog {
 
         jLabel1.setText("Punteggio medio:");
 
-        jButton1.setText("jButton1");
+        btnPartitaSpecifica.setText("VISUALIZZA PUNTEGGIO PARTITA SPECIFICA");
+        btnPartitaSpecifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPartitaSpecificaActionPerformed(evt);
+            }
+        });
+
+        lblNomePartita.setText("Nome partita:");
+
+        txtNomePartita.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtNomePartitaKeyPressed(evt);
+            }
+        });
+
+        lblPunteggio.setText("Punteggio:");
+
+        lblErrore.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(lblSaluto, javax.swing.GroupLayout.PREFERRED_SIZE, 333, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButton1))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblSaluto, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addContainerGap(25, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(231, 231, 231)
+                                .addComponent(jbtnPartite)
+                                .addGap(18, 18, 18)
                                 .addComponent(jbtnPartiteUtente))
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(243, 243, 243)
-                                .addComponent(jbtnPartite)))
-                        .addGap(58, 58, 58)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGap(114, 114, 114)
+                                .addComponent(lblNomePartita)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(lblErrore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(txtNomePartita, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE))))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(txtPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(111, 111, 111))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnPartitaSpecifica)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(79, 79, 79))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(0, 45, Short.MAX_VALUE)
-                .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 647, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(43, 43, 43))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 680, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(59, 59, 59))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblSaluto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jButton1)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jbtnPartite)
-                        .addGap(18, 18, 18))
+                        .addComponent(lblSaluto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1)
-                        .addGap(4, 4, 4)))
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jbtnPartiteUtente)
-                        .addGap(18, 18, 18)
-                        .addComponent(scrollPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(24, 24, 24)))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnPartiteUtente)
+                    .addComponent(jbtnPartite)
+                    .addComponent(btnPartitaSpecifica))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(lblNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(txtNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lblPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(3, 3, 3)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(54, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -144,14 +187,21 @@ public class JDialogStats extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        // TODO add your handling code here:
+        txtPunteggioMedio.setEditable(false);
+        lblNomePartita.setVisible(false);
+        txtNomePartita.setVisible(false);
+        lblPunteggio.setVisible(false);
+        txtPunteggio.setVisible(false);
+        lblErrore.setVisible(false);
         this.setResizable(false);
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
@@ -162,6 +212,13 @@ public class JDialogStats extends javax.swing.JDialog {
 
     private void jbtnPartiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPartiteActionPerformed
         // TODO add your handling code here:
+        lblNomePartita.setVisible(false);
+        txtNomePartita.setVisible(false);
+        lblPunteggio.setVisible(false);
+        txtPunteggio.setVisible(false);
+        txtPunteggio.setText("");
+        lblErrore.setVisible(false);
+        this.setResizable(false);
         try {
             // TODO add your handling code here:
             DatabaseController db = new DatabaseController();
@@ -197,6 +254,15 @@ public class JDialogStats extends javax.swing.JDialog {
     }//GEN-LAST:event_jbtnPartiteActionPerformed
 
     private void jbtnPartiteUtenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPartiteUtenteActionPerformed
+        lblNomePartita.setVisible(false);
+        txtNomePartita.setVisible(false);
+        lblPunteggio.setVisible(false);
+        txtPunteggio.setVisible(false);
+        txtPunteggio.setText("");
+        lblErrore.setText("");
+        txtNomePartita.setText("");
+        lblErrore.setVisible(false);
+        this.setResizable(false);
         try {
             // TODO add your handling code here:
             DatabaseController db = new DatabaseController();
@@ -229,6 +295,35 @@ public class JDialogStats extends javax.swing.JDialog {
             System.err.println(ex.getMessage());
         }      
     }//GEN-LAST:event_jbtnPartiteUtenteActionPerformed
+
+    private void btnPartitaSpecificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartitaSpecificaActionPerformed
+        lblNomePartita.setVisible(true);
+        txtNomePartita.setVisible(true);
+        lblPunteggio.setVisible(true);
+        txtPunteggio.setVisible(true); 
+        lblErrore.setText("");
+        txtNomePartita.setText("");
+        lblErrore.setVisible(true);
+    }//GEN-LAST:event_btnPartitaSpecificaActionPerformed
+
+    private void txtNomePartitaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomePartitaKeyPressed
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            ActionEvent e = new ActionEvent(this,1,"");
+            DatabaseController db = new DatabaseController();
+            //verifica esistenza partita
+            String nomePartita = txtNomePartita.getText();
+            int punteggio=0;
+            boolean partitaEsiste = db.partitaEsistente(nomePartita);
+            if(partitaEsiste){
+                punteggio = db.getPunteggio(txtNomePartita.getText());
+                txtPunteggio.setText(""+punteggio);
+                lblErrore.setText("");
+            }else{
+                txtPunteggio.setText("");
+                lblErrore.setText("Partita non esistente!");
+            }    
+        }
+    }//GEN-LAST:event_txtNomePartitaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -273,14 +368,19 @@ public class JDialogStats extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btnPartitaSpecifica;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton jbtnPartite;
     private javax.swing.JButton jbtnPartiteUtente;
+    private javax.swing.JLabel lblErrore;
+    private javax.swing.JLabel lblNomePartita;
+    private javax.swing.JLabel lblPunteggio;
     private javax.swing.JLabel lblSaluto;
     private javax.swing.JScrollPane scrollPanel;
+    private javax.swing.JTextField txtNomePartita;
+    private javax.swing.JTextField txtPunteggio;
     private javax.swing.JTextPane txtPunteggioMedio;
     // End of variables declaration//GEN-END:variables
     static String username;

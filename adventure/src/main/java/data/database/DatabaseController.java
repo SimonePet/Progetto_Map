@@ -93,17 +93,18 @@ public class DatabaseController extends Database {
     /* recupera punteggio della partita con nome della partita */
     @Override
     public int getPunteggio(final String nomePartita) {
+        int punteggio=0;
         try {
             PreparedStatement pstm = conn.prepareStatement(RECUPERA_PUNTEGGIO_CON_NOME_PARTITA);
             pstm.setString(1, nomePartita);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
-                System.out.println("\npunteggio:" + rs.getInt(1));
+                punteggio = rs.getInt(1);
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-        return 0;
+        return punteggio;
     }
 
     public void chiudiConnessione(){

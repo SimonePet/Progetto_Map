@@ -24,6 +24,7 @@ swing\JDialogPorta$1.class
 swing\JDialogRadio$2.class
 swing\JDialogRadio.class
 swing\JDialogAbbandona$1.class
+swing\JDialogStats$6.class
 data\FileInterface.class
 swing\JDialogStats$3.class
 swing\JDialogPorta$14.class
@@ -48,6 +49,7 @@ di\uniba\map\b\adventure\parser\Parser.class
 di\uniba\map\b\adventure\type\Inventario.class
 di\uniba\map\b\adventure\games\ControlGioco.class
 multimediali\Suono.class
+swing\JDialogStats$6$1.class
 di\uniba\map\b\adventure\messaggi\Messaggio.class
 di\uniba\map\b\adventure\Utils.class
 di\uniba\map\b\adventure\messaggi\MessaggioSentiero.class
@@ -57,6 +59,7 @@ swing\JDialogPorta$8.class
 thread\Client.class
 swing\JDialogClassificaUtenti$2$1.class
 swing\JDialogPorta$5.class
+swing\JDialogStats$5.class
 swing\JFrameApp.class
 swing\JDialogRadio$6.class
 swing\JDialogAbbandona$5.class
@@ -108,7 +111,6 @@ swing\JDialogAbbandona$6.class
 di\uniba\map\b\adventure\messaggi\MessaggioCovo.class
 data\EsistenzaPartita.class
 swing\JDialogPorta.class
-swing\JDialogStats$4$1.class
 di\uniba\map\b\adventure\messaggi\MessaggiConversazione.class
 swing\JDialogStats$1.class
 thread\ThreadTempo.class
