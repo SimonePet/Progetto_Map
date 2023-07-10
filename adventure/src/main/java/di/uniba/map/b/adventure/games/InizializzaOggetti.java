@@ -43,7 +43,7 @@ public class InizializzaOggetti {
         Oggetto radio = new Oggetto(0, "radio", MessaggioOggetti.getDescrzioneRadio());
         radio.setAlias(new String[]{});
         radio.setVisibile(true);
-        set.add(GNI.getComando("utilizza"));
+        set.add(GNI.getComando("accendi"));
         set.add(GNI.getComando("lascia"));
         radio.setComandiConsentiti(set);
         GNI.getStanza(MessaggioCosta.getNome()).getObjects().add(radio);
@@ -54,7 +54,6 @@ public class InizializzaOggetti {
         Set<Comando> set = new HashSet<>();
         Oggetto batteria = new Oggetto(1, "batteria", MessaggioOggetti.getDescrizionePile());
         batteria.setAlias(new String[]{"batterie", "pile", "pila"});
-        set.add(GNI.getComando("utilizza"));
         set.add(GNI.getComando("lascia"));
         batteria.setComandiConsentiti(set);
         GNI.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(batteria);

@@ -21,16 +21,14 @@ public final class InizializzaComandi {
         InizializzaComandi.initEst(gni);
         InizializzaComandi.initOvest(gni);
         InizializzaComandi.initAcced(gni);
-        InizializzaComandi.initIventario(gni);
+        InizializzaComandi.initInventario(gni);
         InizializzaComandi.initOsserva(gni);
         InizializzaComandi.initRaccogli(gni);
         InizializzaComandi.initApri(gni);
         InizializzaComandi.initSposta(gni);
-        InizializzaComandi.initUtilizza(gni);
         InizializzaComandi.initLascia(gni);
         InizializzaComandi.initNarra(gni);
-        InizializzaComandi.initSalva(gni);
-        InizializzaComandi.initLeggere(gni);
+        InizializzaComandi.initLeggi(gni);
         InizializzaComandi.initTaglia(gni);
         InizializzaComandi.initCostruisci(gni);
         InizializzaComandi.initAiuto(gni);
@@ -67,7 +65,7 @@ public final class InizializzaComandi {
         gni.getComandi().add(ovest);
     }
 
-    private static void initIventario(final GiocoNaufragioIsola gni) {
+    private static void initInventario(final GiocoNaufragioIsola gni) {
         Comando inventario = new Comando(TipoComando.INVENTARIO, "inventario");
         inventario.setAlias(new String[]{"inv"});
         inventario.setDescrizione("Inventario :\t\t Comando che ti permette di visualizzare gli oggetti nel tuo inventario;");
@@ -106,16 +104,9 @@ public final class InizializzaComandi {
 
     private static void initAcced(final GiocoNaufragioIsola gni) {
         Comando accendi = new Comando(TipoComando.ACCENDI, "accendi");
-        accendi.setAlias(new String[]{"illumina"});
+        accendi.setAlias(new String[]{"illumina","usa","utilizza"});
         accendi.setDescrizione("Accendi [oggetto_inv] :\t Comando che ti permette di accendere un oggetto del tuo inventario;");
         gni.getComandi().add(accendi);
-    }
-
-    private static void initUtilizza(final GiocoNaufragioIsola gni) {
-        Comando utilizza = new Comando(TipoComando.UTILIZZA, "utilizza");
-        utilizza.setAlias(new String[]{"usa"});
-        utilizza.setDescrizione("Utilizza [oggetto] :\t Comando che ti permette di utilizzare un oggetto???????;");
-        gni.getComandi().add(utilizza);
     }
 
     private static void initLascia(final GiocoNaufragioIsola gni) {
@@ -132,17 +123,10 @@ public final class InizializzaComandi {
         gni.getComandi().add(narra);
     }
 
-    private static void initSalva(final GiocoNaufragioIsola gni) {
-        Comando salva = new Comando(TipoComando.SALVA, "salva");
-        salva.setAlias(new String[]{});
-        salva.setDescrizione("Salva :\t\t Comando che ti permette di salvare la partita in corso;");
-        gni.getComandi().add(salva);
-    }
-
-    private static void initLeggere(final GiocoNaufragioIsola gni) {
+    private static void initLeggi(final GiocoNaufragioIsola gni) {
         Comando leggere = new Comando(TipoComando.LEGGI, "leggi");
         leggere.setAlias(new String[]{"leggere"});
-        leggere.setDescrizione("Leggere [oggettto] :\t\t Comando che ti permette di leggere un oggetto;");
+        leggere.setDescrizione("Leggere [oggettto] :\t Comando che ti permette di leggere un oggetto;");
         gni.getComandi().add(leggere);
     }
 
@@ -169,7 +153,7 @@ public final class InizializzaComandi {
     private static void initLocalizzazione(final GiocoNaufragioIsola gni) {
         Comando localizzazione = new Comando(TipoComando.LOCALIZZAZIONE, "localizzazione");
         localizzazione.setAlias(new String[]{"localizzazione", "posizione", "dove","ubicazione","posizione"});
-        localizzazione.setDescrizione("Localizzazione :\t Comando che ti permette di riconoscere la tua posizione all'interno della mappa.");
+        localizzazione.setDescrizione("Localizzazione :\t\t Comando che ti permette di riconoscere la tua posizione all'interno della mappa.");
         gni.getComandi().add(localizzazione);
     }
 

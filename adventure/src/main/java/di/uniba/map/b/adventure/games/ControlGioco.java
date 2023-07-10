@@ -429,9 +429,7 @@ public final class ControlGioco {
      * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
      */
     public static void comandoAiuto(final GiocoNaufragioIsola gni, final JFrameApp frame) {
-        if(comandi.isEmpty()){
             setComandi(gni);
-        }
         if(comandiArray[0] == null){
             inizializzaOrdineComandi(gni);
         }
@@ -441,7 +439,7 @@ public final class ControlGioco {
             comandi.addAll(prossimo.getComandiConsentiti());
         }
         frame.scrviSuEditor(Messaggio.getListaComandi() + "\n");
-        for(int i=0; i<25; i++) {
+        for(int i=0; i<19; i++) {
             if(comandi.contains(comandiArray[i])){
                 frame.scrviSuEditor(comandiArray[i].getDescrizione() + "\n");
             }
@@ -454,17 +452,16 @@ public final class ControlGioco {
      * @param gni    Il riferimento all'istanza del gioco del naufragio sull'isola.
      */
     public static void setComandi(final GiocoNaufragioIsola gni) {
-        if (comandi.isEmpty()) {
-            comandi.add(gni.getComando("nord"));
-            comandi.add(gni.getComando("sud"));
-            comandi.add(gni.getComando("est"));
-            comandi.add(gni.getComando("ovest"));
-            comandi.add(gni.getComando("inventario"));
-            comandi.add(gni.getComando("osserva"));
-            comandi.add(gni.getComando("raccogli"));
-            comandi.add(gni.getComando("narra"));
-            comandi.add(gni.getComando("salva"));
-        }
+        comandi.clear();
+        comandi.add(gni.getComando("nord"));
+        comandi.add(gni.getComando("sud"));
+        comandi.add(gni.getComando("est"));
+        comandi.add(gni.getComando("ovest"));
+        comandi.add(gni.getComando("inventario"));
+        comandi.add(gni.getComando("osserva"));
+        comandi.add(gni.getComando("raccogli"));
+        comandi.add(gni.getComando("narra"));
+        comandi.add(gni.getComando("fine"));
     }
 
     /**
@@ -628,11 +625,10 @@ public final class ControlGioco {
         comandiArray[11] = GNI.getComando("narra");
         comandiArray[12] = GNI.getComando("localizzazione");
         comandiArray[13] = GNI.getComando("ripara");
-        comandiArray[14] = GNI.getComando("leggere");
+        comandiArray[14] = GNI.getComando("leggi");
         comandiArray[15] = GNI.getComando("costruisci");
         comandiArray[16] = GNI.getComando("sposta");
         comandiArray[17] = GNI.getComando("taglia");
-        comandiArray[18] = GNI.getComando("salva");
-        comandiArray[19] = GNI.getComando("fine");
+        comandiArray[18] = GNI.getComando("fine");
     }
 }
