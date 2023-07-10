@@ -40,8 +40,7 @@ public class ThreadTempo implements Runnable {
     @Override
     public void run() {
         Engine e = frame.getEngine();
-        int ore = 0;
-        for (int i = this.numSecondi; i != -1; i++) {
+        for (int i = this.numSecondi+60*this.numMinuti+3600*this.numOre; i != -1; i++) {
             if (i % 3600 == 0 && i != 0) {
                 this.numOre++;
                 this.numMinuti = 0;
@@ -60,20 +59,30 @@ public class ThreadTempo implements Runnable {
                     e.getGame().setNumSecondi(numSecondi);
                 }
             }
-            if(this.numSecondi<10 && this.numMinuti<10) {
-                printTime("0"+this.numOre + ":0" + this.numMinuti + ":0" + this.numSecondi);
+
+            String ore;
+            String minuti;
+            String secondi;
+
+            if (this.numOre < 10) {
+                ore = "0" + this.numOre;
+            } else {
+                ore = "" + this.numOre;
             }
-            else if(this.numSecondi<10){
-                printTime("0"+this.numOre + ":" + this.numMinuti + ":0" + this.numSecondi);
+            if (this.numMinuti < 10) {
+                minuti = "0" + this.numMinuti;
+            } else {
+                minuti = "" + this.numMinuti;
             }
-            else if(this.numMinuti<10){
-                printTime("0"+this.numOre + ":0" + this.numMinuti + ":" + this.numSecondi);
+            if (this.numSecondi < 10) {
+                secondi = "0" + this.numSecondi;
+            } else {
+                secondi = "" + this.numSecondi;
             }
-            else{
-                printTime(+this.numOre + ":" + this.numMinuti + ":" + this.numSecondi);
-            }
+            printTime(ore + ":" + minuti + ":" + secondi);
+
             try {
-                Thread.sleep(1000);
+                Thread.sleep(1);
             } catch (InterruptedException ex) {
                 return;
             }

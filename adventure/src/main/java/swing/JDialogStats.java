@@ -232,9 +232,9 @@ public class JDialogStats extends javax.swing.JDialog {
                 dati[i][1] = rs.getString(2);
                 dati[i][2] = rs.getString(3);
                 dati[i][3] = Integer.toString(rs.getInt(4));
-                dati[i][4] = ""+rs.getInt(5)+" min e "+rs.getInt(6)+" sec";
-                dati[i][5] = ""+rs.getBoolean(7);
-                dati[i][6] = Integer.toString(rs.getInt(8));    
+                dati[i][4] = ""+rs.getInt(5)+" : "+""+rs.getInt(6)+" : "+rs.getInt(7);
+                dati[i][5] = ""+rs.getBoolean(8);
+                dati[i][6] = Integer.toString(rs.getInt(9));
                 i++;
             }
             JTable tabella = new JTable(dati, nomiColonne);
@@ -276,9 +276,9 @@ public class JDialogStats extends javax.swing.JDialog {
                 dati[i][1] = rs.getString(2);
                 dati[i][2] = rs.getString(3);
                 dati[i][3] = Integer.toString(rs.getInt(4));
-                dati[i][4] = ""+rs.getInt(5)+" min e "+rs.getInt(6)+" sec";
-                dati[i][5] = ""+rs.getBoolean(7);
-                dati[i][6] = Integer.toString(rs.getInt(8));    
+                dati[i][4] = ""+rs.getInt(5)+" : "+""+rs.getInt(6)+" : "+rs.getInt(7);
+                dati[i][5] = ""+rs.getBoolean(8);
+                dati[i][6] = Integer.toString(rs.getInt(9));
                 i++;
             }
             JTable tabella = new JTable(dati, nomiColonne);
