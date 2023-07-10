@@ -322,7 +322,8 @@ public class JDialogStats extends javax.swing.JDialog {
             }else{
                 txtPunteggio.setText("");
                 lblErrore.setText("Partita non esistente!");
-            }    
+            } 
+            db.chiudiConnessione();
         }
     }//GEN-LAST:event_txtNomePartitaKeyPressed
 
