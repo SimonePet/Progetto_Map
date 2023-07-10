@@ -82,7 +82,7 @@ public class ThreadTempo implements Runnable {
             printTime(ore + ":" + minuti + ":" + secondi);
 
             try {
-                Thread.sleep(1);
+                Thread.sleep(1000);
             } catch (InterruptedException ex) {
                 return;
             }

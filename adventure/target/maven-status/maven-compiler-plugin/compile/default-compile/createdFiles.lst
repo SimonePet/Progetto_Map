@@ -12,6 +12,7 @@ di\uniba\map\b\adventure\games\GiocoNaufragioIsola.class
 multimediali\Immagini.class
 swing\JFrameApp$4.class
 swing\FrameStart$4.class
+swing\JDialogStats$7$1.class
 di\uniba\map\b\adventure\Engine.class
 swing\FrameStart$1.class
 swing\JDialogPorta$4.class
@@ -49,7 +50,6 @@ di\uniba\map\b\adventure\parser\Parser.class
 di\uniba\map\b\adventure\type\Inventario.class
 di\uniba\map\b\adventure\games\ControlGioco.class
 multimediali\Suono.class
-swing\JDialogStats$6$1.class
 di\uniba\map\b\adventure\messaggi\Messaggio.class
 di\uniba\map\b\adventure\Utils.class
 di\uniba\map\b\adventure\messaggi\MessaggioSentiero.class
@@ -108,6 +108,7 @@ swing\JDialogPorta$9.class
 swing\JDialogPunteggio$2$1.class
 swing\JDialogRadio$1.class
 swing\JDialogAbbandona$6.class
+swing\JDialogStats$7.class
 di\uniba\map\b\adventure\messaggi\MessaggioCovo.class
 data\EsistenzaPartita.class
 swing\JDialogPorta.class
