@@ -28,6 +28,7 @@ public abstract class GameDescription implements Serializable {
     private String nomePartita;
     private String username;
     private boolean finita = false;
+    private int numOre = 0;
     private int numMinuti = 0;
     private int numSecondi = 0;
     private int numMosse = 0;
@@ -98,6 +99,14 @@ public abstract class GameDescription implements Serializable {
 
     public void setNumSecondi(final int secCor) {
         this.numSecondi = secCor;
+    }
+
+    public int getNumOre() {
+        return numOre;
+    }
+
+    public void setNumOre(final int oreCorr) {
+        this.numOre = oreCorr;
     }
 
     public void setUsername(final String usernameCorr) {

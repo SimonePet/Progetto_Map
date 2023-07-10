@@ -11,6 +11,7 @@ import swing.JFrameApp;
  * @author Giannantonio
  */
 public class ThreadTempo implements Runnable {
+    private int numOre;
     private int numMinuti;
     private int numSecondi;
     private final JFrameApp frame;
@@ -22,7 +23,8 @@ public class ThreadTempo implements Runnable {
      * @param numMinutiInizialiCorr il numero di minuti iniziali
      * @param numSecondiInizialiCorr il numero di secondi iniziali
      */
-    public ThreadTempo(final JFrameApp frameCorr, final int numMinutiInizialiCorr, final int numSecondiInizialiCorr) {
+    public ThreadTempo(final JFrameApp frameCorr, final int numMinutiInizialiCorr, final int numSecondiInizialiCorr, final int numOreCorr) {
+        this.numOre = numOreCorr;
         this.numMinuti = numMinutiInizialiCorr;
         this.numSecondi = numSecondiInizialiCorr;
         this.frame = frameCorr;
@@ -41,7 +43,10 @@ public class ThreadTempo implements Runnable {
         int ore = 0;
         for (int i = this.numSecondi; i != -1; i++) {
             if (i % 3600 == 0 && i != 0) {
-                ore++;
+                this.numOre++;
+                this.numMinuti = 0;
+                this.numSecondi = 0;
+                e.getGame().setNumOre(numOre);
                 e.getGame().setNumSecondi(numSecondi);
                 e.getGame().setNumMinuti(numMinuti);
             } else {
@@ -55,9 +60,20 @@ public class ThreadTempo implements Runnable {
                     e.getGame().setNumSecondi(numSecondi);
                 }
             }
-            printTime(ore + ":" + this.numMinuti + ":" + this.numSecondi);
+            if(this.numSecondi<10 && this.numMinuti<10) {
+                printTime(this.numOre + ":0" + this.numMinuti + ":0" + this.numSecondi);
+            }
+            else if(this.numSecondi<10){
+                printTime(this.numOre + ":" + this.numMinuti + ":0" + this.numSecondi);
+            }
+            else if(this.numMinuti<10){
+                printTime(this.numOre + ":0" + this.numMinuti + ":" + this.numSecondi);
+            }
+            else{
+                printTime(this.numOre + ":" + this.numMinuti + ":" + this.numSecondi);
+            }
             try {
-                Thread.sleep(1000);
+                Thread.sleep(10);
             } catch (InterruptedException ex) {
                 return;
             }

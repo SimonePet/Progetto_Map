@@ -322,14 +322,14 @@ public class JFrameApp extends javax.swing.JFrame {
             //se è una partita nuova avvia thread per tempo con tempo iniziale a 0 minuti e 0 secondi
             if(!partitaCaricata){
                 //avvia Thread          
-                this.thread = new Thread(new ThreadTempo(this,0,0));
+                this.thread = new Thread(new ThreadTempo(this,0,0,0));
                 thread.start();
             }else{
                 /* altrimenti se è una partita caricata fai ripartire il thread per il tempo
                    dal tempo salvato della partita
                 */
                 timeLabel.setText(""+partita.getNumMinuti()+":"+""+partita.getNumSecondi());
-                this.thread = new Thread(new ThreadTempo(this, partita.getNumMinuti(), partita.getNumSecondi()));
+                this.thread = new Thread(new ThreadTempo(this, partita.getNumMinuti(), partita.getNumSecondi(), partita.getNumOre()));
                 thread.start();
             }                        
         }catch(BadLocationException ex){
