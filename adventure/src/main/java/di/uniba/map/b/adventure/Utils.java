@@ -28,6 +28,7 @@ public final class Utils {
     
     public static final String PERCORSO_ASSOLUTO = calcolaPercorsoAssoluto();
     public static final String ESTENSIONE_WAV = ".wav";
+    public static final String PERCORSO_IMMAGINI_MENU = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "menu" + File.separator;
     public static final String PERCORSO_IMMAGINI_ICONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "icone" + File.separator;
     public static final String PERCORSO_SUONI_STANZE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "stanze" + File.separator;
     public static final String PERCORSO_SUONI_OGGETTI = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "oggetti" + File.separator;

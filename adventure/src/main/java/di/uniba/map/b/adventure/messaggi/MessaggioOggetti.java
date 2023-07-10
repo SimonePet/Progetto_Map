@@ -22,7 +22,7 @@ public final class MessaggioOggetti {
     private static final String RACCOGLI_LASTRA = "Ma cosa pensi di essere....Il campione di bodybuilding.";
     private static final String DESCRIZIONE_LAMPADA = "Una lampada a petrolio, potrebbe essere utile per illuminare qualcosa.";
     private static final String DESCRIZIONE_CIFRARIO = "Un libricino che spiega come decifrare delle strane scritture.";
-    private static final String DESCRIZIONE_VELA = "Una vela...";
+    private static final String DESCRIZIONE_VELA = "Una vela...veniva usata dai militari per costruire zattere di fortuna.";
     private static final String DESCRIZIONE_ACCETTA = "Un accetta, potrebbe essere utile per tagliare qualcosa.";
     private static final String DESCRIZIONE_CORDA = "Una corda, potrebbe essere utile per legare qualcosa.";
     private static final String DESCRIZIONE_FUCILE = "Un fucile, potrebbe essere utile per sparare a qualcosa.";

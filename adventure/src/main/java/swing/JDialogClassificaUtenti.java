@@ -9,6 +9,7 @@ import data.database.DatabaseController;
 import data.Partita;
 import data.StampaListe;
 import di.uniba.map.b.adventure.Utils;
+import multimediali.Immagini;
 
 import java.util.HashMap;
 import java.util.List;

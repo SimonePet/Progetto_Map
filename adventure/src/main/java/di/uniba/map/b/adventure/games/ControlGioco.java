@@ -347,11 +347,16 @@ public final class ControlGioco {
                     frame.scrviSuEditor(Messaggio.getNoLeggi());
                 }
             } else {
-                if (ogg.getNomeOggetto().equals("lastra")) {
-                    frame.scrviSuEditor(MessaggioGrotta.getDescLastra());
-                } else {
-                    frame.scrviSuEditor(Messaggio.getNoLeggi());
-                }
+                    if (ogg.isVisibile()) {
+                        if (ogg.getNomeOggetto().equals("lastra")) {
+                            frame.scrviSuEditor(MessaggioGrotta.getDescLastra());
+                        } else {
+                            frame.scrviSuEditor(Messaggio.getNoLeggi());
+                        }
+                    } else {
+                        frame.scrviSuEditor(MessaggioGrotta.getNoSudBuio());
+                    }
+
             }
         } else {
             frame.scrviSuEditor(Messaggio.getNoPresente());

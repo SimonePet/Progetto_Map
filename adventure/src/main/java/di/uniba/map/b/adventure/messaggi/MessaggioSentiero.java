@@ -13,7 +13,7 @@ public final class MessaggioSentiero {
     }
     private static final String NOME = "Sentiero";
     private static final String DESCRIZIONE_CORTA = "Ti trovi in un sentiero sperduto.";
-    private static final String DESCRIZIONE_COMPLETA = "Ti imbatti in un sentiero, troppo strano... sembra che "
+    private static final String DESCRIZIONE_COMPLETA = "Ti imbatti in un sentiero, troppo strano...\nSembra che "
             + "qualche essere umano lo abbia creato.";
     private static final String OSSERVA = "Tra un albero ed un altro noti un cartello di legno, del resto "
             + "rimani affascinato da una enorme ferula, sembra\ndi essere sulla Murgia.";

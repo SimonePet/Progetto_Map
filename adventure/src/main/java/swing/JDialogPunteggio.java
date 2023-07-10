@@ -7,6 +7,14 @@ package swing;
 import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import multimediali.Immagini;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import javax.swing.Timer;
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.concurrent.CompletableFuture;
+import java.util.concurrent.TimeUnit;
 
 /**
  *
@@ -95,12 +103,29 @@ public class JDialogPunteggio extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        lblCongratulazioni.setText("Congratulazioni "+gni.getUsername()+"!");
+
+
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {
+        lblCongratulazioni.setText("Congratulazioni "+gni.getUsername()+"!\nNON CHIUDERE ATTENDI!");
         txtPunteggio.setText(""+gni.getPunteggio());
         txtPunteggio.setEditable(false);
-        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_EXTRA, "balena", jPanel1);
-    }//GEN-LAST:event_formWindowOpened
+        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "sfondo frame vittoria", jPanel1);
+    }
+
+
+
+
+
+
+
+    public static void sleep(long milliseconds) {
+        try {
+            Thread.sleep(milliseconds);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 
     /**
      * @param args the command line arguments
@@ -151,5 +176,6 @@ public class JDialogPunteggio extends javax.swing.JDialog {
     private javax.swing.JTextField txtPunteggio;
     // End of variables declaration//GEN-END:variables
     private GiocoNaufragioIsola gni;
+    private static boolean timerFinito=false;
 }
 

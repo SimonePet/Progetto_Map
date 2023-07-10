@@ -5,6 +5,8 @@
 package swing;
 
 import di.uniba.map.b.adventure.Utils;
+import multimediali.Immagini;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
@@ -168,6 +170,7 @@ public class FrameStart extends javax.swing.JFrame {
         this.setResizable(false);
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE+"iconaGioco.png");
         this.setIconImage(icon.getImage());
+        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU,"sfondo frame start",jPanel1);
     }//GEN-LAST:event_formWindowOpened
 
     private void usernameFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed

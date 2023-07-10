@@ -73,7 +73,7 @@ public class ThreadTempo implements Runnable {
                 printTime(this.numOre + ":" + this.numMinuti + ":" + this.numSecondi);
             }
             try {
-                Thread.sleep(10);
+                Thread.sleep(1000);
             } catch (InterruptedException ex) {
                 return;
             }

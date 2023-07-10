@@ -4,6 +4,7 @@
  */
 package swing;
 
+import multimediali.Immagini;
 import multimediali.Suono;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
@@ -291,6 +292,7 @@ public class JFrameApp extends javax.swing.JFrame {
             engine = e;
         }
         String stanzaCorrente = engine.getGame().getStanzaCorrente().getNomeStanza();
+        //Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_STANZE,stanzaCorrente,jPanel1);
         try{
             BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_STANZE + stanzaCorrente+".png"));
             Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
@@ -307,6 +309,7 @@ public class JFrameApp extends javax.swing.JFrame {
         }catch(IOException e){
             System.out.println(e.getMessage());
         }
+
         lblStanzaCorrente.setText(stanzaCorrente);
         engine.getGame().setUsername(username);
         labelNumMosse.setText(""+engine.getGame().getNumMosse());

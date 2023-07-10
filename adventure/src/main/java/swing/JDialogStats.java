@@ -6,6 +6,7 @@ package swing;
 
 import data.database.DatabaseController;
 import di.uniba.map.b.adventure.Utils;
+import multimediali.Immagini;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -151,6 +152,8 @@ public class JDialogStats extends javax.swing.JDialog {
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
         lblSaluto.setText("CIAO "+username.toUpperCase());
+        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU,"sfondo frame stats",jPanel1);
+
     }//GEN-LAST:event_formWindowOpened
 
     private void jbtnPartiteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPartiteActionPerformed
