@@ -63,7 +63,7 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
         jPanel1.setLayout(new java.awt.BorderLayout());
         jScrollPane.setViewportView(jPanel1);
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
         jLabel2.setText("RANKING UTENTI");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
