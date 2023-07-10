@@ -1,5 +1,3 @@
-# Progetto_Map
-
 ## Indice
 
 - [Caso di studio](#caso-di-studio)
@@ -183,6 +181,29 @@ Quando l'utente spegne la radio oppure chiude la finestra vengono chiusi il serv
 
 ---
 ### Lambda expressions<a name="lambda-expressions"></a>
+Abbiamo creato due interfacce funzionali: SalvaPartita e EsistenzaPartita.
+Queste ultime sono delle interfacce funzionali poichè hanno un solo metodo astratto.
+
+![SalvaPartita](/salvaPartita.png)
+
+- Il metodo esegui dell'interfaccia funzionale SalvaPartita prende in input un oggetto GameDescription  e salva una partita su Database.
+Utilizziamo l'interfaccia funzionale per salvare la partita su DB:
+
+![EsistenzaPartita](/esistenzaPartita.png)
+
+- Il metodo test dell'interfaccia funzionale EsistenzaPartita prende in input il nome di una partita e restituisce true se le la partita esiste nel database.
+
+![Lambda1](/espressioneLambda1.png)
+
+
+Utilizziamo l'espressione lambda per dare l'implementazione del metodo dell'interfaccia funzionale SalvaPartita, una volta data l'implementazione chiamiamo il metodo esegui dell'interfaccia funzionale che si comporterà come definito dalla lambda expression.
+
+
+![Lambda2](/espressioneLambda2.png)
+
+
+
+
 
 ---
 ### Swing<a name="swing"></a>
