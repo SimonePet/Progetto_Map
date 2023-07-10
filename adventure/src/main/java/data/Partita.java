@@ -119,8 +119,17 @@ public class Partita {
     }
     /**
      *
-     * @return
+     * @param ore
      */
+    
+    public void setNumOre(int ore){
+        this.numOre = ore;
+    }
+    
+    public int getNumOre(){
+        return this.numOre;
+    }
+    
     public int getNumSecondi() {
         return this.numSecondi;
     }
@@ -176,5 +185,5 @@ public class Partita {
         System.out.println("Numero mosse: "+this.numMosse);
         System.out.println("Punteggio: "+this.punteggio);
         System.out.println("Terminata: "+this.terminata);
-    }   
+    }       
 }

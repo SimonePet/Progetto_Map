@@ -26,7 +26,8 @@ public abstract class Database {
     protected static final String STAMPA_PUNTEGGIO_MEDIO = "SELECT avg(punteggio) FROM partita";
     protected static final String STAMPA_PUNTEGGIO_MEDIO_UTENTE = "SELECT avg(punteggio) FROM partita WHERE username=?";
     protected static final String STAMPA_PARTITA_SPECIFICA = "SELECT nomePartita FROM partita WHERE nomePartita=?";
-
+    protected static final String STAMPA_PUNTEGGIO_MEDIO_TERMINATE = "SELECT avg(punteggio) FROM partita WHERE terminata=true";
+    
     /**
      *
      * @return
