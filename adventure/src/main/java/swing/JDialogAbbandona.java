@@ -25,6 +25,9 @@ public class JDialogAbbandona extends javax.swing.JDialog {
 
     /**
      * Creates new form JDialogAbbandona
+     * @param parent
+     * @param modal
+     * @param engine
      */
     public JDialogAbbandona(java.awt.Frame parent, boolean modal, Engine engine) {
         super(parent, modal);
@@ -37,39 +40,51 @@ public class JDialogAbbandona extends javax.swing.JDialog {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        YesButton = new javax.swing.JButton();
-        NoButton = new javax.swing.JButton();
-        jNomePartita = new javax.swing.JTextField();
-        labelNomePartita = new javax.swing.JLabel();
-        jLabelErrore = new javax.swing.JLabel();
+        jPanel = new javax.swing.JPanel();
+        lblMessaggioSalva = new javax.swing.JLabel();
+        btnSi = new javax.swing.JButton();
+        btnNo = new javax.swing.JButton();
+        txtNomePartita = new javax.swing.JTextField();
+        lblNomePartita = new javax.swing.JLabel();
+        lblErroreNome = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened();
+                formWindowOpened(evt);
             }
         });
 
-        jPanel1.setLayout(new java.awt.BorderLayout());
+        jPanel.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setText("Vuoi salvare la partita?");
+        lblMessaggioSalva.setText("Vuoi salvare la partita?");
 
-        YesButton.setText("SI");
-        YesButton.addActionListener(this::YesButtonActionPerformed);
+        btnSi.setText("SI");
+        btnSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSiActionPerformed(evt);
+            }
+        });
 
-        NoButton.setText("NO");
-        NoButton.addActionListener(this::NoButtonActionPerformed);
+        btnNo.setText("NO");
+        btnNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnNoActionPerformed(evt);
+            }
+        });
 
-        jNomePartita.addActionListener(this::jNomePartitaActionPerformed);
-        jNomePartita.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtNomePartita.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomePartitaActionPerformed(evt);
+            }
+        });
+        txtNomePartita.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
-                jNomePartitaKeyPressed(evt);
+                txtNomePartitaKeyPressed(evt);
             }
         });
 
-        labelNomePartita.setText("Nome partita:");
+        lblNomePartita.setText("Nome partita:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -79,52 +94,53 @@ public class JDialogAbbandona extends javax.swing.JDialog {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(82, 82, 82)
-                        .addComponent(labelNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(lblNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(69, 69, 69)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(YesButton)
+                                .addComponent(btnSi)
                                 .addGap(43, 43, 43)
-                                .addComponent(NoButton))
-                            .addComponent(jLabelErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(btnNo))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(26, 26, 26)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addComponent(lblMessaggioSalva, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addComponent(lblErroreNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(txtNomePartita, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 179, Short.MAX_VALUE))))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(21, 21, 21)
-                .addComponent(jLabel1)
+                .addComponent(lblMessaggioSalva)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(YesButton)
-                    .addComponent(NoButton))
+                    .addComponent(btnSi)
+                    .addComponent(btnNo))
                 .addGap(36, 36, 36)
-                .addComponent(labelNomePartita)
+                .addComponent(lblNomePartita)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabelErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblErroreNome, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void YesButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_YesButtonActionPerformed
+    private void btnSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSiActionPerformed
         DatabaseController db;
         boolean partitaEsistente;
         //recupera nome partita
-        String nomePartita = jNomePartita.getText();   
+        String nomePartita = txtNomePartita.getText();   
         db = new DatabaseController();
         /* controlla esistenza partita con espressione lambda che fornisce 
         l'implementazione dell metodo test dell'interfaccia funzionale EsistenzaPartita */       
@@ -132,9 +148,9 @@ public class JDialogAbbandona extends javax.swing.JDialog {
         partitaEsistente = esistenzaPartita.test(nomePartita);   
         
         if(nomePartita.equalsIgnoreCase("")){
-            jLabelErrore.setText("inserire nome partita!!");
+            lblErroreNome.setText("inserire nome partita!!");
         }else if(partitaEsistente){
-            jLabelErrore.setText("nome partita già esistente");
+            lblErroreNome.setText("nome partita già esistente");
         }else{
             engine.getGame().setNomePartita(nomePartita);
             //crea la tabella match solo se non esiste
@@ -156,27 +172,27 @@ public class JDialogAbbandona extends javax.swing.JDialog {
             db.chiudiConnessione();
             this.dispose();
         }
-    }//GEN-LAST:event_YesButtonActionPerformed
+    }//GEN-LAST:event_btnSiActionPerformed
 
-    private void jNomePartitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jNomePartitaActionPerformed
-    }//GEN-LAST:event_jNomePartitaActionPerformed
+    private void txtNomePartitaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomePartitaActionPerformed
+    }//GEN-LAST:event_txtNomePartitaActionPerformed
 
-    private void NoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_NoButtonActionPerformed
+    private void btnNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNoActionPerformed
         this.dispose();
-    }//GEN-LAST:event_NoButtonActionPerformed
+    }//GEN-LAST:event_btnNoActionPerformed
 
-    private void formWindowOpened() {//GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         this.setResizable(false);
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE +"iconaGioco.png");
         this.setIconImage(icon.getImage());
     }//GEN-LAST:event_formWindowOpened
 
-    private void jNomePartitaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jNomePartitaKeyPressed
+    private void txtNomePartitaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomePartitaKeyPressed
         if(evt.getKeyCode()==KeyEvent.VK_ENTER){
             ActionEvent e = new ActionEvent(this,1,"");
-            YesButtonActionPerformed(e);
+            btnSiActionPerformed(e);
         }       
-    }//GEN-LAST:event_jNomePartitaKeyPressed
+    }//GEN-LAST:event_txtNomePartitaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -195,13 +211,13 @@ public class JDialogAbbandona extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton NoButton;
-    private javax.swing.JButton YesButton;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabelErrore;
-    private javax.swing.JTextField jNomePartita;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel labelNomePartita;
+    private javax.swing.JButton btnNo;
+    private javax.swing.JButton btnSi;
+    private javax.swing.JPanel jPanel;
+    private javax.swing.JLabel lblErroreNome;
+    private javax.swing.JLabel lblMessaggioSalva;
+    private javax.swing.JLabel lblNomePartita;
+    private javax.swing.JTextField txtNomePartita;
     // End of variables declaration//GEN-END:variables
     private static Engine engine;
 }

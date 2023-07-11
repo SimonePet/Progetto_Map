@@ -53,134 +53,141 @@ public class JDialogStats extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(final java.awt.event.WindowEvent evt) {
-                formWindowOpened();
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
         jbtnPartite.setText("VISUALIZZA TUTTE LE PARTITE");
-        jbtnPartite.addActionListener(this::jbtnPartiteActionPerformed);
+        jbtnPartite.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPartiteActionPerformed(evt);
+            }
+        });
 
-        lblSaluto.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 18)); // NOI18N
+        lblSaluto.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
 
         jbtnPartiteUtente.setText("VISUALIZZA TUTTE LE TUE PARTITE");
-        jbtnPartiteUtente.addActionListener(this::jbtnPartiteUtenteActionPerformed);
+        jbtnPartiteUtente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnPartiteUtenteActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Punteggio medio:");
 
-        btnPartitaSpecifica.setText("VISUALIZZA PUNTEGGIO PARTITA SPECIFICA");
-        btnPartitaSpecifica.addActionListener(this::btnPartitaSpecificaActionPerformed);
+        btnPartitaSpecifica.setText("CERCA PARTITA");
+        btnPartitaSpecifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPartitaSpecificaActionPerformed(evt);
+            }
+        });
 
         lblNomePartita.setText("Nome partita:");
 
         txtNomePartita.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(final java.awt.event.KeyEvent evt) {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtNomePartitaKeyPressed(evt);
             }
         });
 
         lblPunteggio.setText("Punteggio:");
 
-        lblErrore.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 14)); // NOI18N
+        lblErrore.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
 
         btnPartiteTerminate.setText("VISUALIZZA PARTITE TERMINATE");
-        btnPartiteTerminate.addActionListener(this::btnPartiteTerminateActionPerformed);
+        btnPartiteTerminate.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnPartiteTerminateActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(284, 284, 284)
-                                .addComponent(btnPartiteTerminate, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(17, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(lblSaluto, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addGap(0, 0, Short.MAX_VALUE))
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jbtnPartite, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                                                .addComponent(jbtnPartiteUtente))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                                .addGap(0, 0, Short.MAX_VALUE)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                                                .addComponent(lblNomePartita)
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                                                .addComponent(txtNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                        .addComponent(lblErrore, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addGap(25, 25, 25)
-                                                                .addComponent(btnPartitaSpecifica))
-                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                                .addGap(64, 64, 64)
-                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                                                        .addComponent(txtPunteggioMedio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                                                .addGap(79, 79, 79))
-                                                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                                                                .addComponent(lblPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                                .addComponent(txtPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                                .addGap(12, 12, 12))))))
-                                        .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 764, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(45, 45, 45))
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jbtnPartite, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(53, 53, 53)
+                        .addComponent(jbtnPartiteUtente, javax.swing.GroupLayout.PREFERRED_SIZE, 265, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(58, 58, 58)
+                        .addComponent(btnPartiteTerminate, javax.swing.GroupLayout.PREFERRED_SIZE, 212, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(39, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblSaluto, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(221, 221, 221)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPunteggioMedio, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 121, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(72, 72, 72)
+                        .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 745, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(121, 121, 121)
+                        .addComponent(lblNomePartita)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(41, 41, 41)
+                        .addComponent(lblPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(330, 330, 330)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnPartitaSpecifica, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblSaluto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addContainerGap()
-                                                .addComponent(jLabel1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtPunteggioMedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(34, 34, 34)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jbtnPartiteUtente)
-                                        .addComponent(jbtnPartite)
-                                        .addComponent(btnPartitaSpecifica))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(1, 1, 1)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(txtPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(txtNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(lblNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(20, 20, 20)
-                                .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnPartiteTerminate)
-                                .addContainerGap(19, Short.MAX_VALUE))
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblSaluto, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtPunteggioMedio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(35, 35, 35)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jbtnPartite)
+                    .addComponent(jbtnPartiteUtente)
+                    .addComponent(btnPartiteTerminate))
+                .addGap(29, 29, 29)
+                .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(34, 34, 34)
+                .addComponent(btnPartitaSpecifica)
+                .addGap(3, 3, 3)
+                .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
-    } // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void formWindowOpened() { //GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         txtPunteggioMedio.setEditable(false);
         lblNomePartita.setVisible(false);
         txtNomePartita.setVisible(false);
@@ -193,9 +200,9 @@ public class JDialogStats extends javax.swing.JDialog {
         lblSaluto.setText("CIAO " + username.toUpperCase());
         Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "sfondo frame stats", jPanel1);
 
-    } //GEN-LAST:event_formWindowOpened
+    }//GEN-LAST:event_formWindowOpened
 
-    private void jbtnPartiteActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jbtnPartiteActionPerformed
+    private void jbtnPartiteActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPartiteActionPerformed
         lblNomePartita.setVisible(false);
         txtNomePartita.setVisible(false);
         lblPunteggio.setVisible(false);
@@ -227,9 +234,9 @@ public class JDialogStats extends javax.swing.JDialog {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-    } //GEN-LAST:event_jbtnPartiteActionPerformed
+    }//GEN-LAST:event_jbtnPartiteActionPerformed
 
-    private void jbtnPartiteUtenteActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jbtnPartiteUtenteActionPerformed
+    private void jbtnPartiteUtenteActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPartiteUtenteActionPerformed
         lblNomePartita.setVisible(false);
         txtNomePartita.setVisible(false);
         lblPunteggio.setVisible(false);
@@ -263,9 +270,9 @@ public class JDialogStats extends javax.swing.JDialog {
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
-    } //GEN-LAST:event_jbtnPartiteUtenteActionPerformed
+    }//GEN-LAST:event_jbtnPartiteUtenteActionPerformed
 
-    private void btnPartitaSpecificaActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_btnPartitaSpecificaActionPerformed
+    private void btnPartitaSpecificaActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartitaSpecificaActionPerformed
         lblNomePartita.setVisible(true);
         txtNomePartita.setVisible(true);
         lblPunteggio.setVisible(true);
@@ -273,9 +280,9 @@ public class JDialogStats extends javax.swing.JDialog {
         lblErrore.setText("");
         txtNomePartita.setText("");
         lblErrore.setVisible(true);
-    } //GEN-LAST:event_btnPartitaSpecificaActionPerformed
+    }//GEN-LAST:event_btnPartitaSpecificaActionPerformed
 
-    private void txtNomePartitaKeyPressed(final java.awt.event.KeyEvent evt) { //GEN-FIRST:event_txtNomePartitaKeyPressed
+    private void txtNomePartitaKeyPressed(final java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNomePartitaKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             new ActionEvent(this, 1, "");
             DatabaseController db = new DatabaseController();
@@ -289,20 +296,20 @@ public class JDialogStats extends javax.swing.JDialog {
                 lblErrore.setText("");
             } else {
                 txtPunteggio.setText("");
-                lblErrore.setText("Partita non esistente!");
+                lblErrore.setText("PARTITA NON ESISTENTE!");
             }
             db.chiudiConnessione();
         }
-    } //GEN-LAST:event_txtNomePartitaKeyPressed
+    }//GEN-LAST:event_txtNomePartitaKeyPressed
 
-    private void btnPartiteTerminateActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_btnPartiteTerminateActionPerformed
+    private void btnPartiteTerminateActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartiteTerminateActionPerformed
         DatabaseController db = new DatabaseController();
         List<Partita> partite = db.ottieniListaPartite();
         // implementazione del metodo test dell'interfaccia funzionale Predicate<Partita> con espressione lambda
         visualizzaPartiteTerminate(partite,
                 p -> p.terminata()
         );
-    } //GEN-LAST:event_btnPartiteTerminateActionPerformed
+    }//GEN-LAST:event_btnPartiteTerminateActionPerformed
 
     // Predicate<T> è un'interfaccia funzionale
     public void visualizzaPartiteTerminate(final List<Partita> partite, final Predicate<Partita> tester) {
