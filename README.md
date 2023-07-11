@@ -360,6 +360,11 @@ class ThreadTempo{
     + run():void
 }
 
+class Classifica{
+    + Classifica(List<Partita>)
+    + ottieniClassificaUtenti():List<Entry<String,Integer>>
+}
+
 ```
 ## Specifica algebrica
 
