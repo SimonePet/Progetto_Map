@@ -104,6 +104,7 @@ class GameDescription{
     - List<Oggetto> inventario
     - List<Oggetto> oggettiGioco
     - Stanza stanzaCorrente
+    + GameDescription ()
     + int calcoloPunteggio(int, int, boolean)
     + void setAbbandonata(boolean b)
     + int getPunteggio()
