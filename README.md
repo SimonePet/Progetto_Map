@@ -252,6 +252,31 @@ class GiocoNaufragioIsola{
     + void init()
     + void nextMove(ParserOutput,PrintStream,JPanel,JLabel)
 }
+class FileInterface{
+    + boolean create()
+}
+
+class FileController{
+    - String nomeFile
+    - String percorso
+    - File file
+    + FileController(String,String)
+    + boolean create()
+    + void setFile()
+    + File getFile()
+    + String getPercorso()
+    + String getNomeFile()
+    + void setNomeFile(String)
+
+    
+}
+
+class FileMatchController{
+    + FileMatchController(String,String)
+    + GiocoNaufragioIsola getMatch(String)
+    + boolean addMatch(GiocoNaufragioIsola)
+    + List<GiocoNaufragioIsola> getMatch()
+}
 ```
 ## Specifica algebrica
 
