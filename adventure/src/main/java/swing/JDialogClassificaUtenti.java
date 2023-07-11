@@ -56,7 +56,7 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
         });
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Gli utenti nel ranking sono esclusivamente quelli ad aver vinto almeno una partita");
+        jLabel1.setText("Gli utenti nel ranking sono esclusivamente quelli ad aver terminato almeno una partita");
 
         jScrollPane.setMinimumSize(new java.awt.Dimension(116, 116));
 
