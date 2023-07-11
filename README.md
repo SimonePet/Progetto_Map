@@ -133,6 +133,55 @@ class GameDescription{
     + boolean getFinita()
     
 }
+class Stanza{
+    - int idStanza;
+    - String nomeStanza
+    - String descrizioneLungaStanza
+    - String descrizioneCortaStanza
+    - String osserva
+    - boolean raggiungibile
+    - boolean visibile
+    - boolean visitata
+    - Stanza sud
+    - Stanza nord
+    - Stanza est
+    - Stanza ovest
+    - String messaggioNord
+    - String messaggioSud
+    - String messaggioEst
+    - String messaggioOvest
+    - List<Oggetto> objects
+    - Stanza (int)
+    - Stanza (int,String)
+    + String getNomeStanza()
+    + void setNome(String)
+    + String getDescrizioneLungaStanza()
+    +  String getDescrizioneCortaStanza()
+    + void setDescription(String)
+    + boolean getRaggiungibile()
+    + void setRaggiungibile(boolean)
+    + Stanza getSud()
+    + void setSud(Stanza)
+    + Stanza getNord()
+    + void setNord(Stanza)
+    + Stanza getEst()
+    + void setEst(Stanza)
+    + Stanza getOvest()
+    + void setOvest(Stanza)
+    + void setDescrizioneCortaStanza(String)
+    + void setDescrizioneCompletaStanza(String)
+    + String getMessaggioNord()
+    + String getMessaggioSud()
+    + String getMessaggioEst()
+    + String getMessaggioOvest()
+    + void setMessaggioNord(String)
+    + void setMessaggioSud(String)
+    + void setMessaggioEst(String)
+    + void setMessaggioOvest(String)
+    + boolean getVisitata()
+    + void setVisitata(boolean)
+    + List<Oggetto> getObjects()
+}
 ```
 ## Specifica algebrica
 
