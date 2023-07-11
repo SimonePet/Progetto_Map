@@ -326,6 +326,27 @@ class Client{
     - ottieniStringaDopo(String, String):String
     + setTextArea(JTextarea):void
 }
+
+class Server{
+    - PORTA_SERVER:int
+    - serveSocket:ServeSocket
+    - writer:PrintWriter
+    - clientSocket:Socket
+    - attivo:boolean
+    + run():void
+    + elaboraMessaggio():void
+    + leggiMessaggioClient():String
+    + inviaRispostaClient(String):void
+    + stop():void
+}
+
+class Inventario{
+    - listaOggetti:List<Oggetto>
+    + getList():List<Oggetto>
+    + setList(List<Oggetto>):void
+    + aggiungi(Oggetto):void
+    + rimuovi(Oggetto):void
+}
 ```
 ## Specifica algebrica
 
