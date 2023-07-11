@@ -400,6 +400,25 @@ DatabaseController <.. JDialogClassificaUtenti : create
 DatabaseController <.. Engine : create
 DatabaseController <.. JDialogAbbandona : create
 
+JDialogRadio <.. ControlGioco : create
+Comando <.. ControlGioco : create
+ControlGioco *-- Comando
+
+GiocoNaufragioIsola <.. JFrameApp : create
+JdialogPorta *-- GiocoNaufragioIsola
+JdialogPunteggio *-- GiocoNaufragioIsola
+
+
+FileController <.. Engine : create
+
+FileMatchController <.. JDialogCaricaPartite : create
+FileMatchController <.. JDialogAbbandona : create
+
+ParserOutput *-- Comando
+
+Parser <.. ParserOutput : create
+
+
 ```
 ## Specifica algebrica
 
