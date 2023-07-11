@@ -83,8 +83,7 @@ public class Server implements Runnable {
      */
     public static String leggiMessaggioClient() throws IOException {
         BufferedReader reader = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
-        String messaggioClient = reader.readLine();
-        return messaggioClient;
+        return reader.readLine();
     }
 
     /**
@@ -114,7 +113,5 @@ public class Server implements Runnable {
         } catch (IOException e) {
             System.out.println("Errore durante la chiusura del server: " + e.getMessage());
         }
-    }
-    public static void setNomeUtente(final String username) {
     }
 }
