@@ -284,18 +284,6 @@ class FileMatchController{
     + getMatch():List<GiocoNaufragioIsola> 
 }
 
-class JFrameApp{
-
-}
-
-class JDialogRadio{
-
-}
-
-class JDialogPorta{
-
-}
-
 class Comando{
     - tipoComando:TipoComando 
     - nomeComando:String 
