@@ -143,7 +143,7 @@ public class JDialogAbbandona extends javax.swing.JDialog {
         //recupera nome partita 
         String nomePartita = jNomePartita.getText();   
         db = new DatabaseController();
-        /* controlla esistenza partita conespressione lambda che fornisce 
+        /* controlla esistenza partita con espressione lambda che fornisce 
         l'implementazione dell metodo test dell'interfaccia funzionale EsistenzaPartita */       
         EsistenzaPartita esistenzaPartita = (nome) -> db.partitaEsistente(nome);
         partitaEsistente = esistenzaPartita.test(nomePartita);   
@@ -161,7 +161,7 @@ public class JDialogAbbandona extends javax.swing.JDialog {
             // salva partita utilizzando interfaccia funzionale SalvaPartita
             // l'espressione lambda fornisce l'implementazione del metodo dell'interfaccia funzionale
             SalvaPartita salvaPartita = (p) -> db.salvaPartita(p);
-            partitaSalvata = salvaPartita.esegui(partita);
+            partitaSalvata = salvaPartita.esegui(partita);          
             db.stampaPartite();
             //salva partita su file
             FileMatchController f = new FileMatchController("salvataggioPartita.txt","resources");
