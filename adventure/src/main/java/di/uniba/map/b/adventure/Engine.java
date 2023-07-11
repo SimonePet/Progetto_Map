@@ -89,7 +89,7 @@ public class Engine {
         FileController f = new FileController("salvataggioPartita.txt", "resources");
         f.create();
         // Avvio del frame di inizio
-        FrameStart.main();
+        FrameStart.avvia();
         /*
         Il metodo main() è il punto di ingresso dell'applicazione.
         Inizialmente, viene creato un oggetto DatabaseController per gestire l'accesso al database e viene chiamato il
