@@ -338,13 +338,11 @@ public class JDialogStats extends javax.swing.JDialog {
 
     private void btnPartiteTerminateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPartiteTerminateActionPerformed
         DatabaseController db = new DatabaseController();
-        List<Partita> partite = db.ottieniListaPartite();
-            
+        List<Partita> partite = db.ottieniListaPartite();           
         //  implementazione del metodo test dell'interfaccia funzionale Predicate<Partita> con espressione lambda        
         visualizzaPartiteTerminate(partite,
                 p -> p.terminata() 
-        );
-        
+        );       
     }//GEN-LAST:event_btnPartiteTerminateActionPerformed
 
     // Predicate<T> è un'interfaccia funzionale
