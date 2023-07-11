@@ -45,237 +45,267 @@ class FrameStart{
     - nuovaPartitaActionPerformed (ActioEvent)
 }
 class Oggetto{
-    - int idOggetto
-    - String nomeOggetto
-    - String descrizioneOggetto
-    - String descrizioneRaccogli
-    - Set <String> aliasOggetto
-    - Set <Comando> comandiConsentiti
-    - boolean apribile
-    - boolean raccogglibile
-    - boolean premibile
-    - boolean aperto
-    - boolean premuto
-    - boolean visibile
-    - boolean lasciato
-    + Oggetto (int)
+    - idOggetto:int 
+    - nomeOggetto:String 
+    - descrizioneOggetto:String 
+    - descrizioneRaccogli:String 
+    - aliasOggetto:Set <String> 
+    - comandiConsentiti:Set <Comando> 
+    - apribile:boolean 
+    - raccogglibile:boolean 
+    - premibile:boolean 
+    - aperto:boolean 
+    - premuto:boolean 
+    - visibile:boolean 
+    - lasciato:boolean 
+    + Oggetto(int)
     + Oggetto(int,String)
     + Oggetto(int,String,String)
-    + Oggetto(int,String,String,Set<String>) 
-    + String getNomeOggetto()
-    + void setNome(String)
-    + String getDescrizioneOggetto()
-    + void setDescrizioneOggetto(String)
-    + boolean isApribile()
-    + void setApribile(boolean)
-    + boolean isRaccogglibile()
-    + void setRaccogglibile(boolean)
-    + boolean isPremibile()
-    + void setPremibile(boolean)
-    + boolean isAperto()
-    + void setAperto(boolean)
-    + boolean isPremuto()
-    + void setPremuto(boolean)
-    + Set<String> getAliasOggetto()
-    + void setAlias(Set<String>)
-    + void setAlias(String[])
-    + int getIdOggetto()
-    + boolean isVisibile()
-    + void setVisibile(boolean)
-    + boolean isLasciato()
-    + void setLasciato(boolean)
-    + void setDescrizioneRaccogli(String)
-    + String getDescrizioneRaccogli()
-    + Set<Comando> getComandiConsentiti()
-    + void setComandiConsentiti(Set<Comando>)
+    + Oggetto(int,String,String,Set<String>)
+    + getNomeOggetto():String 
+    + setNome(String):void 
+    + getDescrizioneOggetto():String 
+    + setDescrizioneOggetto(String):void 
+    + isApribile():boolean 
+    + setApribile(boolean):void 
+    + isRaccogglibile():boolean 
+    + setRaccogglibile(boolean):void 
+    + isPremibile():boolean 
+    + setPremibile(boolean):void 
+    + isAperto():boolean 
+    + setAperto(boolean):void 
+    + isPremuto():boolean 
+    + setPremuto(boolean):void 
+    + getAliasOggetto():Set<String> 
+    + setAlias(Set<String>):void 
+    + setAlias(String[]):void 
+    + getIdOggetto():int 
+    + isVisibile():boolean 
+    + setVisibile(boolean):void 
+    + isLasciato():boolean 
+    + setLasciato(boolean):void 
+    + setDescrizioneRaccogli(String):void 
+    + getDescrizioneRaccogli():String 
+    + getComandiConsentiti():Set<Comando> 
+    + setComandiConsentiti(Set<Comando>):void 
 }
+
 class GameDescription{
-    - String nomePartita;
-    - String username;
-    - boolean finita
-    - int numOre
-    - int numMinuti
-    - int numSecondi
-    - int numMosse
-    - int punteggio
-    - boolean abbandonata
-    - List<Stanza> stanze
-    - List<Comando> comandi
-    - List<Oggetto> inventario
-    - List<Oggetto> oggettiGioco
-    - Stanza stanzaCorrente
+    - nomePartita:String 
+    - username:String 
+    - finita:boolean 
+    - numOre:int 
+    - numMinuti:int 
+    - numSecondi:int 
+    - numMosse:int 
+    - punteggio:int 
+    - abbandonata:boolean 
+    - stanze:List<Stanza> 
+    - comandi:List<Comando> 
+    - inventario:List<Oggetto>
+    - oggettiGioco:List<Oggetto> 
+    - stanzaCorrente:Stanza 
     + GameDescription ()
-    + int calcoloPunteggio(int, int, boolean)
-    + void setAbbandonata(boolean b)
-    + int getPunteggio()
-    + String getNomePartita()
-    + void setNomePartita(String)
-    + int getNumMosse()
-    + void setNumMosse(int)
-    + int getNumMinuti()
-    + void setNumMinuti(minCorr)
-    + int getNumSecondi()
-    + void setNumSecondi(int)
-    + int getNumOre()
-    +  void setNumOre(oreCorr)
-    + void setUsername(String)
-    + String getUsername()
-    + List<Stanza> getStanze()
-    + List<Comando> getComandi()
-    + Stanza getStanzaCorrente()
-    + void setStanzaCorrente(Stanza)
-    + List<Oggetto> getInventario()
-    +  List<Oggetto> getOggettiGioco()
-    + Oggetto getOggettoGioco(String)
-    + Stanza getStanza(String)
-    + Comando getComando(String)
-    + void setFinita(boolean)
-    + boolean getFinita()
-    
+    + calcoloPunteggio(int, int, boolean):int 
+    + setAbbandonata(boolean b):void 
+    + getPunteggio():int 
+    + getNomePartita():String 
+    + setNomePartita(String):void 
+    + getNumMosse():int 
+    + setNumMosse(int):void 
+    + getNumMinuti():int 
+    + setNumMinuti(minCorr):void 
+    + getNumSecondi():int 
+    + setNumSecondi(int):void 
+    + getNumOre():int 
+    + setNumOre(oreCorr): void 
+    + setUsername(String):void 
+    + getUsername():String 
+    + getStanze():List<Stanza>
+    + getComandi():List<Comando> 
+    + getStanzaCorrente():Stanza 
+    + setStanzaCorrente(Stanza):void 
+    + getInventario():List<Oggetto> 
+    + getOggettiGioco():List<Oggetto> 
+    + getOggettoGioco(String):Oggetto 
+    + getStanza(String):Stanza 
+    + getComando(String):Comando 
+    + setFinita(boolean):void 
+    + getFinita():boolean 
+
 }
+
 class Stanza{
-    - int idStanza;
-    - String nomeStanza
-    - String descrizioneLungaStanza
-    - String descrizioneCortaStanza
-    - String osserva
-    - boolean raggiungibile
-    - boolean visibile
-    - boolean visitata
-    - Stanza sud
-    - Stanza nord
-    - Stanza est
-    - Stanza ovest
-    - String messaggioNord
-    - String messaggioSud
-    - String messaggioEst
-    - String messaggioOvest
-    - List<Oggetto> objects
+    - idStanza:int 
+    - nomeStanza:String 
+    - descrizioneLungaStanza:String 
+    - descrizioneCortaStanza:String 
+    - osserva:String 
+    - raggiungibile:boolean 
+    - visibile:boolean 
+    - visitata:boolean 
+    - sud:Stanza 
+    - nord:Stanza 
+    - est:Stanza 
+    - ovest:Stanza 
+    - messaggioNord:String 
+    - messaggioSud:String 
+    - messaggioEst:String 
+    - messaggioOvest:String 
+    - objects:List<Oggetto> 
     - Stanza (int)
     - Stanza (int,String)
-    + String getNomeStanza()
-    + void setNome(String)
-    + String getDescrizioneLungaStanza()
-    +  String getDescrizioneCortaStanza()
-    + void setDescription(String)
-    + boolean getRaggiungibile()
-    + void setRaggiungibile(boolean)
-    + Stanza getSud()
-    + void setSud(Stanza)
-    + Stanza getNord()
-    + void setNord(Stanza)
-    + Stanza getEst()
-    + void setEst(Stanza)
-    + Stanza getOvest()
-    + void setOvest(Stanza)
-    + void setDescrizioneCortaStanza(String)
-    + void setDescrizioneCompletaStanza(String)
-    + String getMessaggioNord()
-    + String getMessaggioSud()
-    + String getMessaggioEst()
-    + String getMessaggioOvest()
-    + void setMessaggioNord(String)
-    + void setMessaggioSud(String)
-    + void setMessaggioEst(String)
-    + void setMessaggioOvest(String)
-    + boolean getVisitata()
-    + void setVisitata(boolean)
-    + List<Oggetto> getObjects()
+    + getNomeStanza(): String
+    + setNome(String):void 
+    + getDescrizioneLungaStanza():String 
+    + getDescrizioneCortaStanza(): String 
+    + setDescription(String):void 
+    + getRaggiungibile():boolean 
+    + setRaggiungibile(boolean):void 
+    + getSud():Stanza 
+    + setSud(Stanza):void 
+    + getNord():Stanza 
+    + setNord(Stanza):void 
+    + getEst():Stanza 
+    + setEst(Stanza):void 
+    + getOvest():Stanza 
+    + setOvest(Stanza):void 
+    + setDescrizioneCortaStanza(String):void 
+    + setDescrizioneCompletaStanza(String):void 
+    + getMessaggioNord():String 
+    + getMessaggioSud():String 
+    + getMessaggioEst():String 
+    + getMessaggioOvest():String 
+    + setMessaggioNord(String):void 
+    + setMessaggioSud(String):void 
+    + setMessaggioEst(String):void 
+    + setMessaggioOvest(String):void 
+    + getVisitata():boolean 
+    + setVisitata(boolean):void 
+    + getObjects():List<Oggetto> 
 }
+
 class Database{
     + Database()
-    +  Connection connect()
-    + boolean creaTabellaPartita()
-    + boolean salvaPartita(GameDescription)
-    + int getPunteggio(int)
-    + int getPunteggio(String)
-    + void stampaPartite()
+    + connect(): Connection 
+    + creaTabellaPartita():boolean 
+    + salvaPartita(GameDescription):boolean 
+    + getPunteggio(int):int 
+    + getPunteggio(String):int 
+    + stampaPartite():void 
 }
 
 class DatabaseController{
     - Connection
     + DatabaseController()
-    + void chiudiConnessione()
-    + boolean creaTabellaPartita()
-    + boolean salvaPartita(GameDescription)
-    + int getPunteggio(int)
-    + int getPunteggio(String)
-    + void stampaPartite()
-    + ResultSet getPartite()
-    + ResultSet getPartiteUtente(String)
-    + double getPunteggioMedio()
-    + double getPunteggioMedioUtente(String)
-    + double getPunteggioTerminate()
-    + boolean partitaEsistente(String)
-    + List<Partita> ottieniListaPartite()
+    + chiudiConnessione():void 
+    + creaTabellaPartita():boolean 
+    + salvaPartita(GameDescription):boolean 
+    + getPunteggio(int):int 
+    + getPunteggio(String):int 
+    + stampaPartite():void 
+    + getPartite():ResultSet 
+    + getPartiteUtente(String):ResultSet 
+    + getPunteggioMedio():double 
+    + getPunteggioMedioUtente(String):double 
+    + getPunteggioTerminate():double 
+    + boolean partitaEsistente(String):
+    + ottieniListaPartite():List<Partita> 
 }
+
 class ControlGioco{
-    - Set<Comando> comandi
-    - Comando[] comandiArray
+    - comandi:Set<Comando> 
+    - comandiArray:Comando[] 
     - ControlGioco()
-    - void comandoNord(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel)
-    - void comandoSud(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel)
-    - void comandoEst(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel)
-    - void comandoOvest(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel)
-    - void comandoInventario(GiocoNaufragioIsola,JFrameApp)
-    - void comandoRaccogli(GiocoNaufragioIsola,JFrameApp,Oggetto,Oggetto)
-    - void comandoOsserva(GiocoNaufragioIsola,JFrameApp,Oggetto,Oggetto)
-    - void comandoLascia(GiocoNaufragioIsola,JFrameApp,Oggetto)
-    - void comandoAccendi(GiocoNaufragioIsola,JFrameApp,Oggetto)
-    - void comandoLeggi(JFrameApp,Oggetto,Oggetto)
-    - void comandoTaglia(GiocoNaufragioIsola,JFrameApp,Oggetto)
-    - void comandoCostruisci(GiocoNaufragioIsola,JFrameApp,Oggetto)
-    - void comandoAiuto(GiocoNaufragioIsola,JFrameApp)
-    - void setComandi(GiocoNaufragioIsola)
-    - void comandoApri(GiocoNaufragioIsola,JFrameApp,Oggetto)
-    - void comandoSposta(GiocoNaufragioIsola,JFrameApp,Oggetto)
-    - void comandoLocalizzazione(GiocoNaufragioIsola,JFrameApp)
-    - void comandoRipara(GiocoNaufragioIsola,JFrameApp,Oggetto)
-    - void comandoFine(GiocoNaufragioIsola,JFrameApp)
-    - void comandoNonRiconosciuto(JFrameApp)
-    - void inizializzaOrdineComandi(GiocoNaufragioIsola)
+    - comandoNord(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel):void 
+    - comandoSud(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel):void
+    - comandoEst(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel):void 
+    - comandoOvest(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel):void 
+    - comandoInventario(GiocoNaufragioIsola,JFrameApp):void 
+    - comandoRaccogli(GiocoNaufragioIsola,JFrameApp,Oggetto,Oggetto):void 
+    - comandoOsserva(GiocoNaufragioIsola,JFrameApp,Oggetto,Oggetto):void 
+    - comandoLascia(GiocoNaufragioIsola,JFrameApp,Oggetto):void 
+    - comandoAccendi(GiocoNaufragioIsola,JFrameApp,Oggetto):void 
+    - comandoLeggi(JFrameApp,Oggetto,Oggetto):void 
+    - comandoTaglia(GiocoNaufragioIsola,JFrameApp,Oggetto):void 
+    - comandoCostruisci(GiocoNaufragioIsola,JFrameApp,Oggetto):void 
+    - comandoAiuto(GiocoNaufragioIsola,JFrameApp):void 
+    - setComandi(GiocoNaufragioIsola):void 
+    - comandoApri(GiocoNaufragioIsola,JFrameApp,Oggetto):void 
+    - comandoSposta(GiocoNaufragioIsola,JFrameApp,Oggetto):void 
+    - comandoLocalizzazione(GiocoNaufragioIsola,JFrameApp):void 
+    - comandoRipara(GiocoNaufragioIsola,JFrameApp,Oggetto):void 
+    - comandoFine(GiocoNaufragioIsola,JFrameApp):void 
+    - comandoNonRiconosciuto(JFrameApp):void 
+    - inizializzaOrdineComandi(GiocoNaufragioIsola):void 
 }
+
 class OggettoContenitore{
-    - List<Oggetto> list
+    - list:List<Oggetto> 
     + OggettoContenitore(int)
     + OggettoContenitore(int,String)
     + OggettoContenitore(int,String,String)
     + OggettoContenitore(int,String,String,Set<String>)
-    + List<Oggetto> getList()
-    + void setList(List<Oggetto>)
-    + void add(Oggetto)
-    + void remove(Oggetto)
+    + getList():List<Oggetto> 
+    + setList(List<Oggetto>):void 
+    + add(Oggetto):void 
+    + remove(Oggetto):void 
 }
 
 class GiocoNaufragioIsola{
     + GiocoNaufragioIsola()
-    + void init()
-    + void nextMove(ParserOutput,PrintStream,JPanel,JLabel)
+    + init():void 
+    + nextMove(ParserOutput,PrintStream,JPanel,JLabel):void 
 }
+
 class FileInterface{
-    + boolean create()
+    + create():boolean 
 }
 
 class FileController{
-    - String nomeFile
-    - String percorso
-    - File file
+    - nomeFile:String 
+    - percorso:String 
+    - file:File 
     + FileController(String,String)
-    + boolean create()
-    + void setFile()
-    + File getFile()
-    + String getPercorso()
-    + String getNomeFile()
-    + void setNomeFile(String)
+    + create():boolean 
+    + setFile():void 
+    + getFile():File 
+    + getPercorso():String 
+    + getNomeFile():String 
+    + setNomeFile(String):void 
 
     
 }
 
 class FileMatchController{
     + FileMatchController(String,String)
-    + GiocoNaufragioIsola getMatch(String)
-    + boolean addMatch(GiocoNaufragioIsola)
-    + List<GiocoNaufragioIsola> getMatch()
+    + getMatch(String):GiocoNaufragioIsola 
+    + addMatch(GiocoNaufragioIsola):boolean 
+    + getMatch():List<GiocoNaufragioIsola> 
+}
+
+class JFrameApp{
+
+}
+
+class JDialogRadio{
+
+}
+
+class JDialogPorta{
+
+}
+
+class Comando{
+    - tipoComando:TipoComando 
+    - nomeComando:String 
+    - aliasComando:Set<String> 
+    - descrizione:String 
+    - Comando(TipoComando,String)
+    - Comando(TipoComando,String,Set<String>)
+    + getNomeComando():String 
+    + getAliasComando():Set<String> 
+
 }
 ```
 ## Specifica algebrica
