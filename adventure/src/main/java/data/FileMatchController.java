@@ -21,28 +21,32 @@ import java.util.List;
  *  Classe per la gestione dei file per memorizzare gli engine (partite).
  */
 public class FileMatchController extends FileController implements Serializable {
+
     /**
-     * Costruttore della Classe FileController.
-     * @param nomeFileCorrente nome del file.
-     * @param directoryCorrente percorso della cartella del file.
+     * Costruttore della classe FileMatchController.
+     *
+     * @param nomeFileCorrente  Nome del file corrente.
+     * @param directoryCorrente Directory corrente del file.
      */
     public FileMatchController(final String nomeFileCorrente, final String directoryCorrente) {
         super(nomeFileCorrente, directoryCorrente);
     }
+
     /**
+     * Aggiunge un oggetto GiocoNaufragioIsola al file.
      *
-     * @param game
-     * @return Vero se salva l'engine sul file, Falso altrimenti.
-     * @throws java.io.IOException
-     * @throws java.lang.ClassNotFoundException
+     * @param game Oggetto GiocoNaufragioIsola da aggiungere.
+     * @return true se l'oggetto è stato aggiunto con successo, false in caso contrario.
+     * @throws IOException              se si verifica un errore di I/O durante l'operazione di scrittura.
+     * @throws ClassNotFoundException se la classe dell'oggetto GiocoNaufragioIsola non viene trovata.
      */
     public boolean addMatch(final GiocoNaufragioIsola game) throws IOException, ClassNotFoundException {
         try {
             ObjectOutputStream out = null;
-            if (file.exists() && file.length() == 0) {
-                out = new ObjectOutputStream(Files.newOutputStream(file.toPath()));
+            if (this.getFile().exists() && this.getFile().length() == 0) {
+                out = new ObjectOutputStream(Files.newOutputStream(this.getFile().toPath()));
             } else {
-                out = new ObjectOutputStream(new FileOutputStream(this.percorso, true)) {
+                out = new ObjectOutputStream(new FileOutputStream(this.getPercorso(), true)) {
                     @Override
                     protected void writeStreamHeader() throws IOException {
                         reset();
@@ -56,51 +60,27 @@ public class FileMatchController extends FileController implements Serializable 
             System.out.println(e);
         }
         return false;
+        /*
+        Il metodo addMatch permette di aggiungere un oggetto GiocoNaufragioIsola al file.
+        Prende in input un oggetto GiocoNaufragioIsola da aggiungere.
+        Restituisce true se l'oggetto è stato aggiunto con successo, altrimenti restituisce false.
+        Può lanciare un'eccezione IOException se si verifica un errore di I/O durante l'operazione di scrittura,
+        oppure un'eccezione ClassNotFoundException se la classe dell'oggetto GiocoNaufragioIsola non viene trovata.
+         */
     }
-
-   /* public File removeMatch(final int id) throws IOException {
-        File outputFile = new File(nomeFile);
-        Engine en;
-        FileInputStream fileInput = new FileInputStream(this.file);
-        ObjectInputStream objectInput = new ObjectInputStream(fileInput);
-        FileOutputStream fileOutput = new FileOutputStream(outputFile);
-        ObjectOutputStream objectOutput = new ObjectOutputStream(fileOutput);
-        try {
-            while (true) {
-                en = (Engine) objectInput.readObject();
-                if (en.getIdEngine() != id) {
-                    objectOutput.writeObject(en);
-                }
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ClassNotFoundException e) {
-            throw new RuntimeException(e);
-        } finally {
-            try {
-                objectInput.close();
-                fileInput.close();
-                objectOutput.close();
-                fileOutput.close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
-        return outputFile;
-    }
-    */
 
     /**
+     * Ottiene un oggetto GiocoNaufragioIsola corrispondente al nome della partita specificato.
      *
-     * @param nomePart
-     * @return
-     * @throws IOException
-     * @throws ClassNotFoundException
+     * @param nomePart Nome della partita per la quale si desidera ottenere l'oggetto GiocoNaufragioIsola.
+     * @return Oggetto GiocoNaufragioIsola corrispondente al nome della partita, o null se non trovato.
+     * @throws IOException              se si verifica un errore di I/O durante l'operazione di lettura.
+     * @throws ClassNotFoundException se la classe dell'oggetto GiocoNaufragioIsola non viene trovata.
      */
     public GiocoNaufragioIsola getMatch(final String nomePart) throws IOException, ClassNotFoundException {
         GiocoNaufragioIsola game;
-        ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(this.percorso));
-        if(this.file.exists()){
+        ObjectInputStream objectIn = new ObjectInputStream(new FileInputStream(this.getPercorso()));
+        if (this.getFile().exists()) {
             try {
                 while (true) {
                     game = (GiocoNaufragioIsola) objectIn.readObject();
@@ -115,32 +95,39 @@ public class FileMatchController extends FileController implements Serializable 
             } finally {
                 try {
                     objectIn.close();
-                    //fileIn.close();
                 } catch (IOException e) {
                     System.err.println(e.getMessage());
                 }
             }
         }
         return null;
+        /*
+        Il metodo getMatch restituisce un oggetto GiocoNaufragioIsola corrispondente al nome della partita specificato.
+        Prende in input il nome della partita per la quale si desidera ottenere l'oggetto GiocoNaufragioIsola.
+        Restituisce l'oggetto GiocoNaufragioIsola corrispondente al nome della partita, oppure null se non viene trovato.
+        Può lanciare un'eccezione IOException se si verifica un errore di I/O durante l'operazione di lettura,
+        oppure un'eccezione ClassNotFoundException se la classe dell'oggetto GiocoNaufragioIsola non viene trovata.
+         */
     }
 
     /**
+     * Ottiene una lista di oggetti GiocoNaufragioIsola delle partite non terminate.
      *
-     * @return
-     * @throws FileNotFoundException
-     * @throws IOException
+     * @return Lista di oggetti GiocoNaufragioIsola delle partite non terminate.
+     * @throws FileNotFoundException se il file non viene trovato.
+     * @throws IOException           se si verifica un errore di I/O durante l'operazione di lettura.
      */
-    public List<GiocoNaufragioIsola>  getMatch() throws FileNotFoundException, IOException {
+    public List<GiocoNaufragioIsola> getMatch() throws FileNotFoundException, IOException {
         List<GiocoNaufragioIsola> lista = new ArrayList<>();
         GiocoNaufragioIsola game;
-        FileInputStream fileIn = new FileInputStream(file);
+        FileInputStream fileIn = new FileInputStream(this.getFile());
         ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-        
-        if(file.exists() && file.length()>0){
+
+        if (this.getFile().exists() && this.getFile().length() > 0) {
             try {
                 while (true) {
                     game = (GiocoNaufragioIsola) objectIn.readObject();
-                    if(!game.getFinita()){
+                    if (!game.getFinita()) {
                         lista.add(game);
                     }
                 }
@@ -155,8 +142,14 @@ public class FileMatchController extends FileController implements Serializable 
                 } catch (IOException e) {
                     System.err.println(e.getMessage());
                 }
-            }        
+            }
         }
         return lista;
     }
+    /*
+    Il metodo getMatch restituisce una lista di oggetti GiocoNaufragioIsola delle partite non terminate.
+    Non prende alcun parametro in input. Restituisce una lista contenente gli oggetti GiocoNaufragioIsola delle partite non terminate.
+    Può lanciare un'eccezione FileNotFoundException se il file non viene trovato,
+    oppure un'eccezione IOException se si verifica un errore di I/O durante l'operazione di lettura
+     */
 }

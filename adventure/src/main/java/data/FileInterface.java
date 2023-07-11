@@ -6,7 +6,7 @@ package data;
 
 /**
  *
- * 
+ *
  */
 public interface FileInterface {
     boolean create();

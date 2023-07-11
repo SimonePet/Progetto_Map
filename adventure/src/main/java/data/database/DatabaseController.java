@@ -16,35 +16,38 @@ import java.util.List;
 import java.sql.ResultSet;
 
 /**
- *  CLASSE CHE ESTENDE LA CLASSE ASTRATTA DATABASE.
- *  QUANDO ABBANDONIAMO LA PARTITA SALVA PARTITA SU DATABASE CON PUNTEGGIO.
- *  SALVA PARTITA CON PUNTEGGIO.
- *  RECUPERA PUNTEGGIO DELLA PARTITA.
- *
+ * La classe DatabaseController estende la classe astratta Database e fornisce un'implementazione dei metodi astratti per gestire le operazioni
+ * di accesso al database e manipolazione dei dati delle partite.
+ * Utilizza una connessione al database per eseguire le operazioni richieste.
  */
 public class DatabaseController extends Database {
     private Connection conn;
 
     /**
-     *
+     * Crea un'istanza di DatabaseController e stabilisce una connessione al database.
+     * Se la connessione non può essere stabilita, viene visualizzato un messaggio di errore.
      */
-    public DatabaseController(){
-        Connection connessione=null;
+    public DatabaseController() {
+        Connection connessione = null;
         try {
             connessione = super.connect();
         } catch (SQLException ex) {
-            System.out.println("errore di connessione al DB");
+            System.out.println("Errore di connessione al database.");
         }
         this.conn = connessione;
     }
-    
-    
+
+
+    /**
+     * Crea la tabella "partita" nel database se non esiste già.
+     *
+     * @return true se la tabella è stata creata con successo o se esiste già, altrimenti false.
+     */
     @Override
     public boolean creaTabellaPartita() {
         try {
-            //crea tabella solo se non esiste
+            // Crea la tabella solo se non esiste
             try (Statement stm = conn.createStatement()) {
-                //crea tabella solo se non esiste
                 stm.executeUpdate(CREA_TABELLA_PARTITA);
             }
         } catch (SQLException ex) {
@@ -52,14 +55,20 @@ public class DatabaseController extends Database {
         }
         return true;
     }
-    /* salva nuova partita alla tabella */
+
+    /**
+     * Salva i dati della partita nel sistema, inclusi il nome della partita, l'username del giocatore,
+     * il punteggio calcolato, il tempo di gioco e il numero di mosse.
+     *
+     * @param partita Oggetto GameDescription che contiene i dati della partita da salvare.
+     * @return true se i dati della partita sono stati salvati con successo, altrimenti false.
+     */
     @Override
     public boolean salvaPartita(final GameDescription partita) {
-        //calcola punteggio con formula
-        int punteggio;
-        punteggio = partita.calcoloPunteggio(partita.getNumMosse(),partita.getNumMinuti(),partita.getFinita());
+        // Calcola il punteggio utilizzando la formula specifica
+        int punteggio = partita.calcoloPunteggio(partita.getNumMosse(), partita.getNumMinuti(), partita.getFinita());
         try {
-            //inserimento completo con punteggio
+            // Inserimento completo con punteggio
             PreparedStatement pstm = conn.prepareStatement(INSERISCI_PARTITA);
             pstm.setString(1, partita.getNomePartita());
             pstm.setString(2, partita.getUsername());
@@ -76,7 +85,13 @@ public class DatabaseController extends Database {
         }
         return true;
     }
-    /* recupera punteggio della partita con id*/
+
+    /**
+     * Ottiene il punteggio associato all'identificatore specificato dalla tabella "partita" nel database.
+     *
+     * @param id Identificatore della registrazione del punteggio.
+     * @return Punteggio corrispondente all'identificatore specificato.
+     */
     @Override
     public int getPunteggio(final int id) {
         try {
@@ -84,17 +99,22 @@ public class DatabaseController extends Database {
             pstm.setInt(1, id);
             ResultSet rs = pstm.executeQuery();
             while (rs.next()) {
-                System.out.println("\npunteggio:" + rs.getInt(1));
+                System.out.println("\nPunteggio: " + rs.getInt(1));
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
         return 0;
     }
-    /* recupera punteggio della partita con nome della partita */
-    @Override
+
+    /**
+     * Ottiene il punteggio associato al nome specificato della partita dalla tabella "partita" nel database.
+     *
+     * @param nomePartita Nome della partita per la quale si desidera ottenere il punteggio.
+     * @return Punteggio corrispondente al nome specificato della partita.
+     */
     public int getPunteggio(final String nomePartita) {
-        int punteggio=0;
+        int punteggio = 0;
         try {
             PreparedStatement pstm = conn.prepareStatement(RECUPERA_PUNTEGGIO_CON_NOME_PARTITA);
             pstm.setString(1, nomePartita);
@@ -107,21 +127,30 @@ public class DatabaseController extends Database {
         }
         return punteggio;
     }
-    
-    public void chiudiConnessione(){
+
+    /**
+     * Chiude la connessione al database corrente.
+     * Se si verifica un'eccezione durante la chiusura della connessione, viene visualizzato un messaggio di errore.
+     */
+    public void chiudiConnessione() {
         try {
             this.conn.close();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
     }
+
+    /**
+     * Stampa le informazioni delle partite registrate dalla tabella "partita" nel database.
+     * Questo metodo non restituisce alcun valore, ma visualizza le informazioni delle partite nel modo desiderato (ad esempio, su console o su un file di output).
+     */
     @Override
     public void stampaPartite() {
         try {
             Statement stm = conn.createStatement();
             ResultSet rs = stm.executeQuery(STAMPA_PARTITE);
             while (rs.next()) {
-                System.out.println("\nid: " + rs .getInt(1));
+                System.out.println("\nid: " + rs.getInt(1));
                 System.out.println("\nnome partita: " + rs.getString(2));
                 System.out.println("\nusername: " + rs.getString(3));
                 System.out.println("\npunteggio: " + rs.getInt(4));
@@ -134,29 +163,44 @@ public class DatabaseController extends Database {
             System.err.println(ex.getMessage());
         }
     }
-    
+
+    /**
+     * Ottiene un oggetto ResultSet contenente le informazioni delle partite registrate dalla tabella "partita" nel database.
+     *
+     * @return Oggetto ResultSet contenente le informazioni delle partite registrate, oppure null se si verifica un'eccezione.
+     */
     public ResultSet getPartite() {
         try {
             Statement stm = conn.createStatement();
-            ResultSet rs = stm.executeQuery(STAMPA_PARTITE);
-            return rs;
+            return stm.executeQuery(STAMPA_PARTITE);
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
         return null;
     }
-    
+
+    /**
+     * Ottiene un oggetto ResultSet contenente le informazioni delle partite associate a un determinato utente dalla tabella "partita" nel database.
+     *
+     * @param username Username dell'utente per il quale si desidera ottenere le partite.
+     * @return Oggetto ResultSet contenente le informazioni delle partite dell'utente, oppure null se si verifica un'eccezione.
+     */
     public ResultSet getPartiteUtente(final String username) {
         try {
             PreparedStatement pstm = conn.prepareStatement(STAMPA_PARTITE_UTENTE);
             pstm.setString(1, username);
-            ResultSet rs = pstm.executeQuery();
-            return rs;
+            return pstm.executeQuery();
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
         }
         return null;
     }
+
+    /**
+     * Ottiene il punteggio medio di tutte le partite registrate nella tabella "partita" nel database.
+     *
+     * @return Punteggio medio di tutte le partite registrate, oppure 0 se si verifica un'eccezione.
+     */
     public double getPunteggioMedio() {
         double punteggioMedio = 0;
         try {
@@ -169,7 +213,13 @@ public class DatabaseController extends Database {
         }
         return punteggioMedio;
     }
-    
+
+    /**
+     * Ottiene il punteggio medio delle partite associate a un determinato utente dalla tabella "partita" nel database.
+     *
+     * @param username Username dell'utente per il quale si desidera ottenere il punteggio medio delle partite.
+     * @return Punteggio medio delle partite dell'utente, oppure 0 se si verifica un'eccezione.
+     */
     public double getPunteggioMedioUtente(final String username) {
         double punteggioMedio = 0;
         try {
@@ -183,7 +233,12 @@ public class DatabaseController extends Database {
         }
         return punteggioMedio;
     }
-   
+
+    /**
+     * Ottiene il punteggio medio delle partite terminate dalla tabella "partita" nel database.
+     *
+     * @return Punteggio medio delle partite terminate, oppure 0 se si verifica un'eccezione.
+     */
     public double getPunteggioTerminate() {
         double punteggioMedio = 0;
         try {
@@ -196,7 +251,13 @@ public class DatabaseController extends Database {
         }
         return punteggioMedio;
     }
-    
+
+    /**
+     * Verifica se esiste una partita con il nome specificato nella tabella "partita" nel database.
+     *
+     * @param nomePartita Nome della partita da verificare.
+     * @return true se esiste una partita con il nome specificato, altrimenti false.
+     */
     public boolean partitaEsistente(final String nomePartita) {
         boolean partitaEsistente = false;
         try {
@@ -211,8 +272,13 @@ public class DatabaseController extends Database {
         }
         return partitaEsistente;
     }
-    /* prende tutte le partite dal DB, crea oggetto Partita, lo aggiunge alla lista e la restituisce*/
-    
+
+    /**
+     * Ottiene una lista di oggetti Partita contenenti le informazioni delle partite registrate dalla tabella "partita" nel database.
+     * Prende tutte le partite dal Database, crea un oggetto Partita e lo aggiunge alla lista da restituire.
+     *
+     * @return Lista di oggetti Partita contenente le informazioni delle partite registrate.
+     */
     public List<Partita> ottieniListaPartite() {
         List<Partita> partite = new ArrayList<>();
         ResultSet rs = this.getPartite();
@@ -232,11 +298,12 @@ public class DatabaseController extends Database {
             }
         } catch (SQLException ex) {
             System.err.println(ex.getMessage());
-        }   
+        }
         System.out.println("LISTA PARTITE:");
         StampaListe<Partita> stampaLista = new StampaListe<>(partite);
         stampaLista.stampa();
-        
+
         return partite;
     }
+
 }
