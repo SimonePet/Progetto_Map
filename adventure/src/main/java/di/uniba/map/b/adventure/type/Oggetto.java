@@ -19,7 +19,7 @@ public class Oggetto implements Serializable {
     private final int idOggetto;
     private String nomeOggetto;
     private String descrizioneOggetto;
-    private String descrizioneRaccogli=null;
+    private String descrizioneRaccogli = null;
     private Set<String> aliasOggetto;
     private Set<Comando> comandiConsentiti;
     private boolean apribile = false;
@@ -28,10 +28,11 @@ public class Oggetto implements Serializable {
     private boolean aperto = false;
     private boolean premuto = false;
     private boolean visibile = false;
-    private boolean lasciato=false;
+    private boolean lasciato = false;
 
     /**
      * Costruttore classe Oggetto.
+     *
      * @param id id univoco dell'oggetto.
      */
     public Oggetto(final int id) {
@@ -40,7 +41,8 @@ public class Oggetto implements Serializable {
 
     /**
      * Costruttore classe Oggetto.
-     * @param id id univoco dell'oggetto.
+     *
+     * @param id   id univoco dell'oggetto.
      * @param nome nome dell'oggetto
      */
     public Oggetto(final int id, final String nome) {
@@ -50,8 +52,9 @@ public class Oggetto implements Serializable {
 
     /**
      * Costruttore classe Oggetto.
-     * @param id id univoco dell'oggetto.
-     * @param nome nome dell'oggetto.
+     *
+     * @param id          id univoco dell'oggetto.
+     * @param nome        nome dell'oggetto.
      * @param descrizione descrizione dell'oggetto.
      */
     public Oggetto(final int id, final String nome, final String descrizione) {
@@ -62,10 +65,11 @@ public class Oggetto implements Serializable {
 
     /**
      * Costruttore classe Oggetto.
-     * @param id id univoco dell'oggetto.
-     * @param nome nome dell'oggetto.
+     *
+     * @param id          id univoco dell'oggetto.
+     * @param nome        nome dell'oggetto.
      * @param descrizione descrizione dell'oggetto.
-     * @param alias alias dell'oggetto.
+     * @param alias       alias dell'oggetto.
      */
     public Oggetto(final int id, final String nome, final String descrizione, final Set<String> alias) {
         this.idOggetto = id;
@@ -76,6 +80,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo get per il nome dell'oggetto.
+     *
      * @return nome dell'oggetto.
      */
     public String getNomeOggetto() {
@@ -84,6 +89,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo set per impostare il nome dell'oggetto.
+     *
      * @param nome nome da impostare
      */
     public void setNome(final String nome) {
@@ -92,6 +98,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo get per la descrizione dell'oggetto.
+     *
      * @return descrizione dell'oggetto.
      */
     public String getDescrizioneOggetto() {
@@ -100,6 +107,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo set per impostare la descrizione dell'oggetto.
+     *
      * @param descrizione descrizione dell'oggetto.
      */
     public void setDescrizioneOggetto(final String descrizione) {
@@ -108,6 +116,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo per verificare se un oggetto può essere aperto.
+     *
      * @return Vero se un oggetto puo' essere aperto, Falso altrimenti
      */
     public boolean isApribile() {
@@ -116,6 +125,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo set per dare la possibilita' ad un oggetto di essere aperto.
+     *
      * @param openable variabile booleana che indica se l'oggetto può essere aperto.
      */
     public void setApribile(final boolean openable) {
@@ -124,6 +134,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo per verificare se un oggetto può essere raccolto.
+     *
      * @return Vero se un oggetto puo' essere raccolto, Falso altrimenti
      */
     public boolean isRaccogglibile() {
@@ -132,6 +143,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo set per dare la possibilita' ad un oggetto di essere raccolto.
+     *
      * @param raccogglibileCorr variabile booleana che indica se l'oggetto può essere raccolto.
      */
     public void setRaccogglibile(final boolean raccogglibileCorr) {
@@ -140,6 +152,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo per verificare se un oggetto può essere premuto.
+     *
      * @return Vero se un oggetto puo' essere premuto, Falso altrimenti
      */
     public boolean isPremibile() {
@@ -148,14 +161,16 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo set per dare la possibilita' ad un oggetto di essere aperto.
+     *
      * @param premibileCorr variabile booleana che indica se l'oggetto può essere premuto.
      */
     public void setPremibile(final boolean premibileCorr) {
-        this.premibile = premibile;
+        this.premibile = premibileCorr;
     }
 
     /**
      * Metodo booleano per verificare se l'oggetto è aperto.
+     *
      * @return Vero se l'oggetto è aperto, Falso altrimenti.
      */
     public boolean isAperto() {
@@ -164,6 +179,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo set per rendere un oggetto aperto.
+     *
      * @param apertoCorr variabile booleana che indica se l'oggetto deve essere aperto o chiuso.
      */
     public void setAperto(final boolean apertoCorr) {
@@ -172,6 +188,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo booleano per verificare se l'oggetto è premuto.
+     *
      * @return Vero se l'oggetto è premuto, Falso altrimenti.
      */
     public boolean isPremuto() {
@@ -180,6 +197,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo set per rendere un oggetto premuto.
+     *
      * @param premutoCorr variabile booleana che indica se l'oggetto deve essere premuto o depremuto.
      */
     public void setPremuto(final boolean premutoCorr) {
@@ -188,20 +206,25 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo che restituisce l'alias dell'oggetto.
+     *
      * @return alias del comando.
      */
     public Set<String> getAliasOggetto() {
         return this.aliasOggetto;
     }
+
     /**
      * Metodo set per impostare un insieme di alias di un comando.
+     *
      * @param aliasOgg set di alias di comandi.
      */
     public void setAlias(final Set<String> aliasOgg) {
         this.aliasOggetto = aliasOgg;
     }
+
     /**
      * Metodo set per impostare un vettore alias di un oggetto.
+     *
      * @param alias vettori di alias.
      */
     public void setAlias(final String[] alias) {
@@ -210,6 +233,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo get che restituisce l'id dell'oggetto.
+     *
      * @return id dell'oggetto.
      */
     public int getIdOggetto() {
@@ -218,6 +242,7 @@ public class Oggetto implements Serializable {
 
     /**
      * Metodo che calcola un id univoco all'oggetto.
+     *
      * @return id univoco.
      */
     @Override
@@ -246,35 +271,76 @@ public class Oggetto implements Serializable {
         return this.idOggetto == other.idOggetto;
     }
 
+    /**
+     * Restituisce true se l'oggetto è visibile, false altrimenti.
+     *
+     * @return True se l'oggetto è visibile, false altrimenti.
+     */
     public boolean isVisibile() {
         return this.visibile;
     }
 
-    public void setVisibile(boolean visibileCorr) {
+    /**
+     * Imposta la visibilità dell'oggetto.
+     *
+     * @param visibileCorr True se l'oggetto deve essere visibile, false altrimenti.
+     */
+    public void setVisibile(final boolean visibileCorr) {
         this.visibile = visibileCorr;
     }
 
+    /**
+     * Restituisce true se l'oggetto è lasciato, false altrimenti.
+     *
+     * @return True se l'oggetto è lasciato, false altrimenti.
+     */
     public boolean isLasciato() {
         return lasciato;
     }
 
-    public void setLasciato(boolean lasciato) {
-        this.lasciato = lasciato;
+    /**
+     * Imposta lo stato di lasciato dell'oggetto.
+     *
+     * @param lasciatoCorr True se l'oggetto è lasciato, false altrimenti.
+     */
+    public void setLasciato(final boolean lasciatoCorr) {
+        this.lasciato = lasciatoCorr;
     }
 
-    public void setDescrizioneRaccogli(String descrizioneRaccogli){
-        this.descrizioneRaccogli=descrizioneRaccogli;
+    /**
+     * Imposta la descrizione da mostrare quando l'oggetto viene raccolto.
+     *
+     * @param descrizioneRaccogliCorr Descrizione da impostare.
+     */
+    public void setDescrizioneRaccogli(final String descrizioneRaccogliCorr) {
+        this.descrizioneRaccogli = descrizioneRaccogliCorr;
     }
 
-    public String getDescrizioneRaccogli(){
+    /**
+     * Restituisce la descrizione da mostrare quando l'oggetto viene raccolto.
+     *
+     * @return Descrizione da mostrare quando l'oggetto viene raccolto.
+     */
+    public String getDescrizioneRaccogli() {
         return this.descrizioneRaccogli;
     }
 
+    /**
+     * Restituisce l'insieme di comandi consentiti per l'oggetto.
+     *
+     * @return Insieme di comandi consentiti per l'oggetto.
+     */
     public Set<Comando> getComandiConsentiti() {
         return this.comandiConsentiti;
     }
 
-    public void setComandiConsentiti(Set<Comando> comandiConsentiti) {
-        this.comandiConsentiti = comandiConsentiti;
+    /**
+     * Imposta l'insieme di comandi consentiti per l'oggetto.
+     *
+     * @param comandiConsentitiCorr Insieme di comandi consentiti da impostare.
+     */
+    public void setComandiConsentiti(final Set<Comando> comandiConsentitiCorr) {
+        this.comandiConsentiti = comandiConsentitiCorr;
     }
+
 }

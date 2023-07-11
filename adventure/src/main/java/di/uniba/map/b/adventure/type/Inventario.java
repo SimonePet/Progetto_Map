@@ -29,19 +29,4 @@ public class Inventario {
     public void setList(final List<Oggetto> listaOggettiCorr) {
         this.listaOggetti = listaOggettiCorr;
     }
-
-    /**
-     * Metodo per aggiungere un oggetto nell'inventario.
-     * @param oggetto oggetto da aggiungere.
-     */
-    public void aggiungi(final Oggetto oggetto) {
-        listaOggetti.add(oggetto);
-    }
-    /**
-     * Metodo per rimuovere un oggetto nell'inventario.
-     * @param oggetto oggetto da rimuovere.
-     */
-    public void rimuovi(final Oggetto oggetto) {
-        listaOggetti.remove(oggetto);
-    }
 }

@@ -17,7 +17,6 @@ import java.util.Set;
 public class Comando implements Serializable {
     private static final int HASH_1 = 3;
     private static final int HASH_2 = 97;
-    //Verificare che
     private final TipoComando tipoComando;
     private final String nomeComando;
     private Set<String> aliasComando;
@@ -112,17 +111,25 @@ public class Comando implements Serializable {
             return false;
         }
         final Comando other = (Comando) oggetto;
-        if (this.tipoComando != other.tipoComando) {
-            return false;
-        }
-        return true;
+        return this.tipoComando == other.tipoComando;
     }
 
+    /**
+     * Restituisce la descrizione dell'oggetto.
+     *
+     * @return La descrizione dell'oggetto.
+     */
     public String getDescrizione() {
         return this.descrizione;
     }
 
-    public void setDescrizione(final String descrizione) {
-        this.descrizione = descrizione;
+    /**
+     * Imposta la descrizione dell'oggetto.
+     *
+     * @param descrizioneCorr La descrizione da impostare.
+     */
+    public void setDescrizione(final String descrizioneCorr) {
+        this.descrizione = descrizioneCorr;
     }
+
 }
