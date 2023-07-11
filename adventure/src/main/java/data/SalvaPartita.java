@@ -6,11 +6,20 @@ package data;
 
 import di.uniba.map.b.adventure.GameDescription;
 
+
+
 /**
- *
- * @author Giannantonio
+ * Interfaccia funzionale per il salvataggio di una partita.
+ * Fornisce un metodo per eseguire il salvataggio di una partita, specificando un oggetto di tipo `GameDescription`.
  */
 @FunctionalInterface
 public interface SalvaPartita {
-    public boolean esegui(final GameDescription partita);
+    /**
+     * Esegue il salvataggio di una partita.
+     *
+     * @param partita Oggetto di tipo `GameDescription` che rappresenta la partita da salvare.
+     * @return `true` se il salvataggio è stato eseguito con successo, `false` altrimenti.
+     */
+    boolean esegui(GameDescription partita);
 }
+

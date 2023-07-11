@@ -5,10 +5,15 @@
 package data;
 
 /**
- *
- * @author Giannantonio
+ * L'interfaccia funzionale EsistenzaPartita definisce un metodo per verificare l'esistenza di una partita dato il nome della partita.
  */
 @FunctionalInterface
 public interface EsistenzaPartita {
-    public boolean test(String nomePartita);
+    /**
+     * Verifica l'esistenza di una partita dato il nome della partita.
+     *
+     * @param nomePartita Nome della partita da verificare.
+     * @return true se la partita esiste, altrimenti false.
+     */
+    boolean test(String nomePartita);
 }
