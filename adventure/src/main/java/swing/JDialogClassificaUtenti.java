@@ -118,13 +118,9 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
             dati[i][1] = ""+punteggioMax;
             i++;
         }
-        JTable tabella = new JTable(dati, nomiColonne);
-        tabella.setFillsViewportHeight(true);
-        //aggiunge tabella allo ScrollPane
-        jScrollPane.setViewportView(tabella);
-        jScrollPane.getViewport().add(tabella);
-        jScrollPane.revalidate();
-        jScrollPane.repaint();
+        
+        Utils.stampaTabella(dati, nomiColonne, jScrollPane);
+       
         db.chiudiConnessione();
     }//GEN-LAST:event_formWindowOpened
 

@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 
 import swing.JDialogPorta;
 import swing.JDialogPunteggio;
@@ -142,4 +144,15 @@ public final class Utils {
     public static void calcolaPercorsoFile(final String nome, final String cartella) {
         PERCORSO_FILES = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + cartella + File.separator + nome;
     }
+    
+    public static void stampaTabella(final String[][] dati, final String[] colonne, final JScrollPane panel){
+        JTable tabella = new JTable(dati, colonne);
+        tabella.setFillsViewportHeight(true);
+        //aggiunge tabella allo ScrollPane
+        panel.setViewportView(tabella);
+        panel.getViewport().add(tabella);
+        panel.revalidate();
+        panel.repaint();
+    }
+    
 }
