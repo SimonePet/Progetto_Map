@@ -24,8 +24,72 @@
 ---
 
 ## Diagramma delle classi
----
-
+```mermaid
+classDiagram
+FrameStart -- JDialogClassificaUtenti : create
+FrameStart -- JDialogCaricaPartite : create
+FrameStart *-- JDialogCaricaPartite : frameStart
+FrameStart *-- JFrameApp : frameStart
+FrameStart -- JFrameApp : create
+class FrameStart{
+    + FrameStart()
+    - jPanel1MouseEntered(MouseEvent)
+    + main()
+    - formWindowClosing(MouseEvent)
+    - formMousEntered (MouseEvent)
+    - loadMatchActionPerformed (ActioEvent)
+    - jButton1ActionPerformed (ActioEvent)
+    - initComponents()
+    - usernameFieldKeyPressed (KeyEvent)
+    - formWindowOpened (WindowEvent)
+    - nuovaPartitaActionPerformed (ActioEvent)
+}
+class Oggetto{
+    - int idOggetto
+    - String nomeOggetto
+    - String descrizioneOggetto
+    - String descrizioneRaccogli
+    - Set <String> aliasOggetto
+    - Set <Comando> comandiConsentiti
+    - boolean apribile
+    - boolean raccogglibile
+    - boolean premibile
+    - boolean aperto
+    - boolean premuto
+    - boolean visibile
+    - boolean lasciato
+    + Oggetto (int)
+    + Oggetto(int,String)
+    + Oggetto(int,String,String)
+    + Oggetto(int,String,String,Set<String>) 
+    + String getNomeOggetto()
+    + void setNome(String)
+    + String getDescrizioneOggetto()
+    + void setDescrizioneOggetto(String)
+    + boolean isApribile()
+    + void setApribile(boolean)
+    + boolean isRaccogglibile()
+    + void setRaccogglibile(boolean)
+    + boolean isPremibile()
+    + void setPremibile(boolean)
+    + boolean isAperto()
+    + void setAperto(boolean)
+    + boolean isPremuto()
+    + void setPremuto(boolean)
+    + Set<String> getAliasOggetto()
+    + void setAlias(Set<String>)
+    + void setAlias(String[])
+    + int getIdOggetto()
+    + boolean isVisibile()
+    + void setVisibile(boolean)
+    + boolean isLasciato()
+    + void setLasciato(boolean)
+    + void setDescrizioneRaccogli(String)
+    + String getDescrizioneRaccogli()
+    + Set<Comando> getComandiConsentiti()
+    + void setComandiConsentiti(Set<Comando>)
+}
+```
 ## Specifica algebrica
 
 ---
