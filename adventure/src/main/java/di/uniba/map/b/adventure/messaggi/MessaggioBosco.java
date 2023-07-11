@@ -7,10 +7,15 @@ package di.uniba.map.b.adventure.messaggi;
  */
 public final class MessaggioBosco {
     /**
-     * Costruttore privato della classe MessaggioBosco. Serve ad impedirne l'istanziazione.
+     * Costruttore privato della classe MessaggioBosco.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i membri della classe sono dichiarati come costanti statiche e la classe è progettata per essere utilizzata come classe di utilità.
+     * Non è necessario creare istanze di questa classe.
      */
     private MessaggioBosco() {
+
     }
+
     private static final String NOME = "Bosco";
     private static final String DESCRIZIONE_CORTA = "Ti trovi in un bosco fitto e cupo.";
     private static final String DESCRIZIONE_COMPLETA = "Sospinto dalla curiosità, ti addentri in un piccolo bosco, "
@@ -18,7 +23,7 @@ public final class MessaggioBosco {
             + "qualcuno sia passato di lì, ma chi e perché?";
     private static final String OSSERVA = "Avevi ragione! Qualcuno ci e' passato da qui prima di te, a terra"
             + "nel cespuglio c'e una di quelle vecchie lampade\nad olio di cui ti parlava tuo nonno Geppetto.";
-    private static final String RITORNATO = "Sei tornato nel bosco.";
+
     private static final String NORD = "Ti sei spostato al nord del bosco.";
     private static final String NO_SUD = "Ci sono degli scogli appuntiti e poi l'oceano...";
     private static final String EST = "Ti sei spostato a est del bosco.";
@@ -32,9 +37,6 @@ public final class MessaggioBosco {
     }
     public static String getOsserva() {
         return MessaggioBosco.OSSERVA;
-    }
-    public static String getRitornato() {
-        return MessaggioBosco.RITORNATO;
     }
     public static String getNord() {
         return MessaggioBosco.NORD;

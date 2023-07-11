@@ -7,9 +7,13 @@ package di.uniba.map.b.adventure.messaggi;
  */
 public final class MessaggioGrotta {
     /**
-     * Costruttore privato della classe MessaggioGrotta. Serve ad impedirne l'istanziazione.
+     * Costruttore privato della classe MessaggioGrotta.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i membri della classe sono dichiarati come costanti statiche e la classe è progettata per essere utilizzata come classe di utilità.
+     * Non è necessario creare istanze di questa classe.
      */
     private MessaggioGrotta() {
+
     }
     private static final String NOME = "Grotta";
     private static final String DESCRIZIONE_CORTA = "Ti trovi in una grotta buia, non si vede assolutamente nulla";
@@ -24,11 +28,8 @@ public final class MessaggioGrotta {
     private static final String OSSERVA_LUCE = "Grazie alla lampada ad olio riesci a esplorare la grotta"
             + " evitando di imbatterti in possibili pericoli.\nProcedendo all’interno della grotta durante"
             + " l’esplorazione noti una lastra di pietra con su delle incisioni.";
-    private static final String RITORNATO = "Sei tornato nella grotta.";
-    private static final String NO_NORD_BUIO = "Potreti inciampare nel buio.";
     private static final String NO_SUD_BUIO = "E' cosi buio che non leggi neanche la bussola.";
     private static final String EST = "Ti sei spostato ad est della grotta.";
-    private static final String NO_OVEST_BUIO = "La grotta e' buia meglio non muoversi.";
     private static final String NO_NORD_LUCE = "Nulla da vedere...";
     private static final String NO_SUD_LUCE = "Hai battuto la testa al muro... alza la testa quando cammini...";
     private static final String NO_OVEST_LUCE = "Guarda! Il paese dei pinguini volanti! (non c'e nulla)";
@@ -50,20 +51,11 @@ public final class MessaggioGrotta {
     public static String getOsservaLuce() {
         return MessaggioGrotta.OSSERVA_LUCE;
     }
-    public static String getRitornato() {
-        return MessaggioGrotta.RITORNATO;
-    }
-    public static String getNoNordBuio() {
-        return MessaggioGrotta.NO_NORD_BUIO;
-    }
     public static String getNoSudBuio() {
         return MessaggioGrotta.NO_SUD_BUIO;
     }
     public static String getEst() {
         return MessaggioGrotta.EST;
-    }
-    public static String getNoOvestBuio() {
-        return MessaggioGrotta.NO_OVEST_BUIO;
     }
     public static String getNoNordLuce() {
         return MessaggioGrotta.NO_NORD_LUCE;

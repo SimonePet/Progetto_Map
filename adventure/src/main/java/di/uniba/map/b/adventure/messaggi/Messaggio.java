@@ -11,32 +11,23 @@ package di.uniba.map.b.adventure.messaggi;
  */
 public final class Messaggio {
     /**
-     * Costruttore privato della classe Messaggio. Serve ad impedirne l'istanziazione.
+     * Costruttore privato della classe Messaggio.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i membri della classe sono dichiarati come costanti statiche e la classe è progettata per essere utilizzata come classe di utilità.
+     * Non è necessario creare istanze di questa classe.
      */
     private Messaggio() {
+
     }
 
-    private static final String HELP = "Per muoverti all'interno della mappa digita: Nord/Sud/Est/Ovest\n"
-            + "Per osservare un luogo/oggetto digita: osserva [nome luogo/nome oggetto]\n"
-            + "Per raccogliere/lasciare un oggetto digita: raccogli/lascia [nome oggetto]\n"
-            + "Per visualizzare inventario digita: inventario/inv\n"
-            + "Per alcuni verbi sono accettati anche dei sinonimi\n"
-            + "Durante il gioco potrebbero essere necessarie delle azioni su degli oggetti. Per esempio: \n"
-            + "'Mangia banana' oppure 'Leggi libro'\n"
-            + "Se sei in difficolta' digita: aiuto [nome stanza]";
-    private static final String SEI_TORNATO = "Sei tornato ";
-    private static final String TI_TROVI = "Ti trovi ";
     private static final String HAI_RACCOLTO = "Hai raccolto: ";
     private static final String HAI_LASCIATO = "Hai lasciato: ";
-    private static final String INVENTARIO_PIENO = "Inventario pieno!";
     private static final String INVENTARIO_VUOTO = "Il tuo inventario e' vuoto.";
-    private static final String NO_RACCOGLI = "Non puoi raccogliere questo oggetto.";
     private static final String GIA_RACCOLTO = "Hai gia raccolto questo oggetto. E' presente nel tuo inventario.";
     private static final String NORD = "Nord :";
     private static final String SUD = "Sud :";
     private static final String EST = "Est :";
     private static final String OVEST = "Ovest :";
-    private static final String TI_SEI_SPOSTATO_A = "Ti sei spostato a ";
     private static final String INVENTARIO = "Nel tuo inventario ci sono:";
     private static final String INVIO = "\n";
     private static final String NON_VEDO_OGGETTI = "Non c'è luce. Non vedo nulla da raccogliere.";
@@ -78,201 +69,397 @@ public final class Messaggio {
     private static final String ARMADIO_SPOSTATO = "Hai gia spostato l'armadio";
     private static final String COMANDO_NON_RICONOSCIUTO = "Non capisco quello che mi vuoi dire.";
 
-    public static String getHelp() {
-        return Messaggio.HELP;
-    }
-
-    public static String getSeiTornato() {
-        return Messaggio.SEI_TORNATO;
-    }
-
-    public static String getTiTrovi() {
-        return Messaggio.TI_TROVI;
-    }
-
+    /**
+     * Restituisce il messaggio "Hai raccolto l'oggetto".
+     *
+     * @return Messaggio "Hai raccolto l'oggetto".
+     */
     public static String getHaiRaccolto() {
         return Messaggio.HAI_RACCOLTO;
     }
 
+    /**
+     * Restituisce il messaggio "Hai lasciato l'oggetto".
+     *
+     * @return Messaggio "Hai lasciato l'oggetto".
+     */
     public static String getHaiLasciato() {
         return Messaggio.HAI_LASCIATO;
     }
 
-    public static String getInventarioPieno() {
-        return Messaggio.INVENTARIO_PIENO;
-    }
-
+    /**
+     * Restituisce il messaggio per spostarsi verso Nord.
+     *
+     * @return Messaggio per spostarsi verso Nord.
+     */
     public static String getNord() {
         return Messaggio.NORD;
     }
 
+    /**
+     * Restituisce il messaggio per spostarsi verso Sud.
+     *
+     * @return Messaggio per spostarsi verso Sud.
+     */
     public static String getSud() {
         return Messaggio.SUD;
     }
 
+    /**
+     * Restituisce il messaggio per spostarsi verso Est.
+     *
+     * @return Messaggio per spostarsi verso Est.
+     */
     public static String getEst() {
         return Messaggio.EST;
     }
 
+    /**
+     * Restituisce il messaggio per spostarsi verso Ovest.
+     *
+     * @return Messaggio per spostarsi verso Ovest.
+     */
     public static String getOvest() {
         return Messaggio.OVEST;
     }
 
-    public static String getTiSeiSpostatoA() {
-        return Messaggio.TI_SEI_SPOSTATO_A;
-    }
-
+    /**
+     * Restituisce il messaggio per visualizzare l'inventario.
+     *
+     * @return Messaggio per visualizzare l'inventario.
+     */
     public static String getInventario() {
         return Messaggio.INVENTARIO;
     }
 
+    /**
+     * Restituisce il messaggio per l'invio di un oggetto.
+     *
+     * @return Messaggio per l'invio di un oggetto.
+     */
     public static String getInvio() {
         return Messaggio.INVIO;
     }
 
+    /**
+     * Restituisce il messaggio "L'inventario è vuoto".
+     *
+     * @return Messaggio "L'inventario è vuoto".
+     */
     public static String getInvVuoto() {
         return Messaggio.INVENTARIO_VUOTO;
     }
 
-    public static String getNoRaccogli() {
-        return Messaggio.NO_RACCOGLI;
-    }
-
+    /**
+     * Restituisce il messaggio "Hai già raccolto questo oggetto".
+     *
+     * @return Messaggio "Hai già raccolto questo oggetto".
+     */
     public static String getGiaRaccolto() {
         return Messaggio.GIA_RACCOLTO;
     }
 
+    /**
+     * Restituisce il messaggio "Non vedo nessun oggetto qui".
+     *
+     * @return Messaggio "Non vedo nessun oggetto qui".
+     */
     public static String getNonVedoOggetti() {
         return Messaggio.NON_VEDO_OGGETTI;
     }
 
+    /**
+     * Restituisce il messaggio "L'oggetto non è presente qui".
+     *
+     * @return Messaggio "L'oggetto non è presente qui".
+     */
     public static String getOggettoNonPresente() {
         return Messaggio.OGGETTO_NON_PRESENTE;
     }
 
+    /**
+     * Restituisce il messaggio "Non possiedi questo oggetto".
+     *
+     * @return Messaggio "Non possiedi questo oggetto".
+     */
     public static String getOggettoNonPosseduto() {
         return Messaggio.OGGETTO_NON_POSSEDUTO;
     }
 
+    /**
+     * Restituisce il messaggio "L'oggetto non è nell'inventario".
+     *
+     * @return Messaggio "L'oggetto non è nell'inventario".
+     */
     public static String getOggettoNonInventario() {
         return Messaggio.OGGETTO_NON_INVENTARIO;
     }
 
+    /**
+     * Restituisce il messaggio "Accendi la lampada".
+     *
+     * @return Messaggio "Accendi la lampada".
+     */
     public static String getAccendiLampada() {
         return Messaggio.ACCENDI_LAMPADA;
     }
 
+    /**
+     * Restituisce il messaggio "Non puoi accendere la lampada qui".
+     *
+     * @return Messaggio "Non puoi accendere la lampada qui".
+     */
     public static String getNoAccendiLampada() {
         return Messaggio.NO_ACCENDI_LAMPADA;
     }
 
+    /**
+     * Restituisce il messaggio "Non puoi accendere l'oggetto".
+     *
+     * @return Messaggio "Non puoi accendere l'oggetto".
+     */
     public static String getNoAccendi() {
         return Messaggio.NO_ACCENDI;
     }
 
+    /**
+     * Restituisce il messaggio "Non puoi leggere l'oggetto".
+     *
+     * @return Messaggio "Non puoi leggere l'oggetto".
+     */
     public static String getNoLeggi() {
         return Messaggio.NO_LEGGI;
     }
 
+    /**
+     * Restituisce il messaggio "L'oggetto non è presente nella stanza".
+     *
+     * @return Messaggio "L'oggetto non è presente nella stanza".
+     */
     public static String getNoPresente() {
         return Messaggio.NO_PRESENTE;
     }
 
+    /**
+     * Restituisce il messaggio "Stai tagliando legna".
+     *
+     * @return Messaggio "Stai tagliando legna".
+     */
     public static String getTagliaLegna() {
         return Messaggio.TAGLIA_LEGNA;
     }
 
+    /**
+     * Restituisce il messaggio "Non puoi tagliare la legna".
+     *
+     * @return Messaggio "Non puoi tagliare la legna".
+     */
     public static String getNoTagliaLegna() {
         return Messaggio.NO_TAGLIA_LEGNA;
     }
 
+    /**
+     * Restituisce il messaggio "Non puoi tagliare l'oggetto".
+     *
+     * @return Messaggio "Non puoi tagliare l'oggetto".
+     */
     public static String getNoTaglia() {
         return Messaggio.NO_TAGLIA;
     }
 
+    /**
+     * Restituisce il messaggio con la lista dei comandi disponibili.
+     *
+     * @return Messaggio con la lista dei comandi disponibili.
+     */
     public static String getListaComandi() {
         return Messaggio.LISTA_COMANDI;
     }
 
+    /**
+     * Restituisce il messaggio con l'elenco degli oggetti lasciati nella stanza.
+     *
+     * @return Messaggio con l'elenco degli oggetti lasciati nella stanza.
+     */
     public static String getOggettiLasciati() {
         return Messaggio.OGGETTI_LASCIATI;
     }
 
+    /**
+     * Restituisce il messaggio "Non puoi accendere la radio".
+     *
+     * @return Messaggio "Non puoi accendere la radio".
+     */
     public static String getNoAccendiRadio() {
         return Messaggio.NO_ACCENDI_RADIO;
     }
 
+    /**
+     * Restituisce il messaggio di vittoria.
+     *
+     * @return Messaggio di vittoria.
+     */
     public static String getVittoria() {
         return Messaggio.VITTORIA;
     }
 
+    /**
+     * Restituisce il messaggio "Non c'è un luogo per la zattera".
+     *
+     * @return Messaggio "Non c'è un luogo per la zattera".
+     */
     public static String getNoLuogoZattera() {
         return Messaggio.NO_LUOGO_ZATTERA;
     }
 
+    /**
+     * Restituisce il messaggio "Non hai tutti gli oggetti necessari".
+     *
+     * @return Messaggio "Non hai tutti gli oggetti necessari".
+     */
     public static String getNoTuttiOggetti() {
         return Messaggio.NO_TUTTI_OGGETTI;
     }
 
+    /**
+     * Restituisce il messaggio "Non puoi costruire".
+     *
+     * @return Messaggio "Non puoi costruire".
+     */
     public static String getNoCostruisci() {
         return Messaggio.NO_COSTRUISCI;
     }
 
+    /**
+     * Restituisce il messaggio "Apri il telecomando".
+     *
+     * @return Messaggio "Apri il telecomando".
+     */
     public static String getApriTelecomando() {
         return Messaggio.APRI_TELECOMANDO;
     }
 
+    /**
+     * Restituisce il messaggio "Non puoi aprire l'oggetto".
+     *
+     * @return Messaggio "Non puoi aprire l'oggetto".
+     */
     public static String getNoApri() {
         return Messaggio.NO_APRI;
     }
 
+    /**
+     * Restituisce il messaggio "Sposta l'armadio".
+     *
+     * @return Messaggio "Sposta l'armadio".
+     */
     public static String getSpostaArmadio() {
         return Messaggio.SPOSTA_ARMADIO;
     }
 
+    /**
+     * Restituisce il messaggio "Non puoi spostare l'oggetto".
+     *
+     * @return Messaggio "Non puoi spostare l'oggetto".
+     */
     public static String getNoSposta() {
         return Messaggio.NO_SPOSTA;
     }
 
+    /**
+     * Restituisce il messaggio "Ti trovi nella stanza".
+     *
+     * @return Messaggio "Ti trovi nella stanza".
+     */
     public static String getStanza() {
         return Messaggio.STANZA;
     }
 
+    /**
+     * Restituisce il messaggio "Stanza sconosciuta".
+     *
+     * @return Messaggio "Stanza sconosciuta".
+     */
     public static String getStanzaSconosciuta() {
         return Messaggio.STANZA_SCONOSCIUTA;
     }
 
+    /**
+     * Restituisce il messaggio "Stanza inaccessibile".
+     *
+     * @return Messaggio "Stanza inaccessibile".
+     */
     public static String getStanzaInaccessibile() {
         return Messaggio.STANZA_INACCESSIBILE;
     }
 
+    /**
+     * Restituisce il messaggio "Non puoi usare la barca".
+     *
+     * @return Messaggio "Non puoi usare la barca".
+     */
     public static String getNoBarca() {
         return Messaggio.NO_BARCA;
     }
 
+    /**
+     * Restituisce il messaggio "Non puoi riparare l'oggetto".
+     *
+     * @return Messaggio "Non puoi riparare l'oggetto".
+     */
     public static String getNoRipara() {
         return Messaggio.NO_RIPARA;
     }
-
+    /**
+     * Restituisce il messaggio di sconfitta.
+     *
+     * @return Messaggio di sconfitta.
+     */
     public static String getSconfitta() {
         return Messaggio.SCONFITTA;
     }
 
+    /**
+     * Restituisce il messaggio "Orientati nella stanza".
+     *
+     * @return Messaggio "Orientati nella stanza".
+     */
     public static String getOrientati() {
         return Messaggio.ORIENTARTI;
     }
 
+    /**
+     * Restituisce il messaggio "La lampada è accesa".
+     *
+     * @return Messaggio "La lampada è accesa".
+     */
     public static String getLampadaAccesa() {
         return Messaggio.LAMPADA_ACCESA;
     }
 
+    /**
+     * Restituisce il messaggio "Il telecomando è aperto".
+     *
+     * @return Messaggio "Il telecomando è aperto".
+     */
     public static String getTelecomandoAperto() {
         return Messaggio.TELECOMANDO_APERTO;
     }
 
+    /**
+     * Restituisce il messaggio "L'armadio è stato spostato".
+     *
+     * @return Messaggio "L'armadio è stato spostato".
+     */
     public static String getArmadioSpostato() {
         return Messaggio.ARMADIO_SPOSTATO;
     }
+
+    /**
+     * Restituisce il messaggio "Comando non riconosciuto".
+     *
+     * @return Messaggio "Comando non riconosciuto".
+     */
     public static String getComandoNonRiconosciuto() {
         return Messaggio.COMANDO_NON_RICONOSCIUTO;
     }

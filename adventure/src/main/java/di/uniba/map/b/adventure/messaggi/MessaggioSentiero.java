@@ -7,9 +7,13 @@ package di.uniba.map.b.adventure.messaggi;
  */
 public final class MessaggioSentiero {
     /**
-     * Costruttore privato della classe MessaggioSentiero. Serve ad impedirne l'istanziazione.
+     * Costruttore privato della classe MessaggioSentiero.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i membri della classe sono dichiarati come costanti statiche e la classe è progettata per essere utilizzata come classe di utilità.
+     * Non è necessario creare istanze di questa classe.
      */
     private MessaggioSentiero() {
+
     }
     private static final String NOME = "Sentiero";
     private static final String DESCRIZIONE_CORTA = "Ti trovi in un sentiero sperduto.";
@@ -17,7 +21,6 @@ public final class MessaggioSentiero {
             + "qualche essere umano lo abbia creato.";
     private static final String OSSERVA = "Tra un albero ed un altro noti un cartello di legno, del resto "
             + "rimani affascinato da una enorme ferula, sembra\ndi essere sulla Murgia.";
-    private static final String RITORNATO = "Sei tornato nel sentiero.";
     private static final String NORD = "Ti sei spostato a nord del sentiero.";
     private static final String SUD = "Ti sei spostato a sud del sentiero.";
     private static final String EST = "Ti sei spostato a est del sentiero.";
@@ -42,9 +45,6 @@ public final class MessaggioSentiero {
     }
     public static String getOsserva() {
         return MessaggioSentiero.OSSERVA;
-    }
-    public static String getRiornato() {
-        return MessaggioSentiero.RITORNATO;
     }
     public static String getNord() {
         return MessaggioSentiero.NORD;

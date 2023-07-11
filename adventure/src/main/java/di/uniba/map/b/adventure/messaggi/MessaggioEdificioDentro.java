@@ -7,10 +7,15 @@ package di.uniba.map.b.adventure.messaggi;
  */
 public final class MessaggioEdificioDentro {
     /**
-     *Costruttore privato della classe MessaggioEdificioDentro. Serve ad impedirne l'istanziazione.
+     * Costruttore privato della classe MessaggioEdificioDentro.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i membri della classe sono dichiarati come costanti statiche e la classe è progettata per essere utilizzata come classe di utilità.
+     * Non è necessario creare istanze di questa classe.
      */
     private MessaggioEdificioDentro() {
+
     }
+
     private static final String NOME = "Edificio interno";
     private static final String DESCRIZIONE_CORTA = "Ti trovi all'interno di un vecchio edificio "
             + "abbandonato.";
@@ -18,7 +23,6 @@ public final class MessaggioEdificioDentro {
             + "normalissimo antico riparo.";
     private static final String OSSERVA = "L’interno sembra assomigliare ad una normale casa, "
             + "c’è un armadio, una tv, un divano...";
-    private static final String RITORNATO = "Sei tornato all'interno dell'edificio";
     private static final String NO_NORD = "Sembra una botola... nulla di interessante.";
     private static final String NORD = "Ti sei spostato a nord dell'edificio.";
     private static final String SUD = "Ti sei spostato a sud dell'edificio";
@@ -34,9 +38,6 @@ public final class MessaggioEdificioDentro {
     }
     public static String getOsserva() {
         return MessaggioEdificioDentro.OSSERVA;
-    }
-    public static String getRitornato() {
-        return MessaggioEdificioDentro.RITORNATO;
     }
     public static String getNoNord() {
         return MessaggioEdificioDentro.NO_NORD;
