@@ -559,7 +559,7 @@ Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'i
 (nome) -> db.partitaEsistente(nome), passa il nome della partita al metodo partitaEsistente della classe DatabaseController che verifica l'esistenza della partita nel DB, se la trova restituisce true, altrimenti false.
 
 
-#### visualizzazione partite terminate con espressione lambda:
+#### Visualizzazione partite terminate con espressione lambda:
 ![partiteTerm2](/partiteTerminate2.png)
 Quando l'utente clicca il bottone per visualizzare tutte le partite terminate parte il metodo btnPartiteTerminateActionPerformed che salva in 'partite' la lista di tutte le partite, e chiama il metodo visualizzaPartiteTerminate.
 
@@ -573,7 +573,30 @@ Per fornire un'implementazione del metodo test dell'interfaccia funzionale passi
 
 utilizzando la lista degli oggetti di classe Partita, cicliamo su tutte le partite e per ognuna di esse chiamiamo il metodo test dell'interfaccia funzionale  Predicate &lt;Partita&gt; che utilizzando l'implementazione data dall'espressione lambda chiama il metodo terminata() della classe Partita che restituisce true se la partita è terminata, false altrimenti. Se la partita è terminata aggiunge una nuova riga nella tabella con la rispettiva partita terminata.  
 
-![stream](/stream.png)
+#### Pipeline e stream:
+
+![classifica](/classifica.png)
+
+
+Una delle funzionalità disponibili nel programma è quella di visualizzare in forma tabellare il ranking degli utenti, nonchè una classifica che include tutti gli utenti che hanno terminato almeno una partita. A ogni utente è associato il suo massimo punteggio raggiunto. La classifica è ordinata in ordine decrescente per punteggio.
+Il costruttore della classe Classifica prende in input una lista di oggetti Partita e salva la lista utilizzando l'attributo private 'partite'.
+
+
+![pipeline](/pipeline.png)
+
+
+A occuparsi della costruzione della classifica è il metodo ottieniClassificaUtenti della classe Classifica che dopo aver effettuato le operazioni necessarie restituisce una lista di coppie <chiave,valore> con chiave di tipo String che rappresenta il nome dell'utente e valore di tipo Integer che rappresenta il massimo punteggio associato all'utente.
+
+Entrando nei dettagli dell'implementazione del metodo ottieniClassificaUtenti:
+
+Utilizziamo la lista di partite salvate su DB passata al costruttore al momento dell'istanziazione dell'oggetto della classe Classifica per costruire il ranking.
+Per la costruzione del ranking creiamo uno stream di oggetti della classe Partita. Uno stream è una sequenza di elementi che preleva valori da una sorgente attraverso una pipeline. Solitamente la sorgente è una Collection, in questo caso una lista. Invece, una pipeline è una sequenza di operazioni aggregate(es: filter, map, foreach) applicate ad uno stream, dove spesso i parametri di queste operazioni sono espressioni lambda.
+L'operazione filter filtra gli oggetti selezionando solo le partite terminate, con il metodo groupingBy raggruppiamo gli elementi per nome utente e punteggio massimo. Il Collector mapping che utilizziamo come downstream collector seleziona il punteggio massimo. Il primo metodo collect restituisce una Map. Successivamente prendiamo tutte le coppie <chiave, valore> con il metodo entrySet applicato alla Map restituita da collect, creiamo un nuovo stream di elementi con il metodo stream() e applichiamo allo stream ottenuto ancora una volta il metodo collect che prende come parametro supplier il metodo toMap della classe Collectors. Infine la pipeline ci restituisce una Map<String, Integer> con nome dell'utente e punteggio massimo associato.
+
+Applichiamo alla Map restituita dalla pipeline il metodo entrySet che ci restituisce una lista di elementi di tipo Map.Entry<String,Integer>, nonchè una lista di coppie chiave-valore. Ci salviamo questa lista per andare successivamente a ordinarla in base al punteggio in ordine decrescente. 
+
+La lista finale ordinata restituita dal metodo ottieniClassificaUtenti viene utilizzata dalla classe swing JDialogClassificaUtenti per stampare nell'interfaccia utente la tabella del ranking.
+
 
 
 ---
