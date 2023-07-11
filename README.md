@@ -375,6 +375,31 @@ class Engine{
     + main(String[]):void
 }
 
+FileController <|-- FileMatchController
+Database <|-- DatabaseController
+GameDescription <|-- GiocoNaufragioIsola
+Oggetto <|-- OggettoContenitore
+FileInterface <|.. FileController
+
+
+GameDescription *-- Oggetto
+Stanza *-- Oggetto
+OggettoContenitore *-- Oggetto
+Inventario *-- Oggetto
+ParserOutput *-- Oggetto
+Oggetto *-- Comando
+
+
+GameDescription *-- Comando
+GameDescription *-- Stanza
+Engine *-- GameDescription
+
+
+DatabaseController <.. JDialogStats : create
+DatabaseController <.. JDialogClassificaUtenti : create
+DatabaseController <.. Engine : create
+DatabaseController <.. JDialogAbbandona : create
+
 ```
 ## Specifica algebrica
 
