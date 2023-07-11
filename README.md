@@ -182,6 +182,33 @@ class Stanza{
     + void setVisitata(boolean)
     + List<Oggetto> getObjects()
 }
+class Database{
+    + Database()
+    +  Connection connect()
+    + boolean creaTabellaPartita()
+    + boolean salvaPartita(GameDescription)
+    + int getPunteggio(int)
+    + int getPunteggio(String)
+    + void stampaPartite()
+}
+
+class DatabaseController{
+    - Connection
+    + DatabaseController()
+    + void chiudiConnessione()
+    + boolean creaTabellaPartita()
+    + boolean salvaPartita(GameDescription)
+    + int getPunteggio(int)
+    + int getPunteggio(String)
+    + void stampaPartite()
+    + ResultSet getPartite()
+    + ResultSet getPartiteUtente(String)
+    + double getPunteggioMedio()
+    + double getPunteggioMedioUtente(String)
+    + double getPunteggioTerminate()
+    + boolean partitaEsistente(String)
+    + List<Partita> ottieniListaPartite()
+}
 ```
 ## Specifica algebrica
 
