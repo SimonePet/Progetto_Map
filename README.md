@@ -365,6 +365,16 @@ class Classifica{
     + ottieniClassificaUtenti():List<Entry<String,Integer>>
 }
 
+class Engine{
+    - game:GameDescription
+    - parser:Parser
+    + Engine(GameDescription,boolean)
+    + getCurrentRoomName():String
+    + getGame():GameDescription
+    + getParser():Parser
+    + main(String[]):void
+}
+
 ```
 ## Specifica algebrica
 
