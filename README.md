@@ -89,6 +89,49 @@ class Oggetto{
     + Set<Comando> getComandiConsentiti()
     + void setComandiConsentiti(Set<Comando>)
 }
+class GameDescription{
+    - String nomePartita;
+    - String username;
+    - boolean finita
+    - int numOre
+    - int numMinuti
+    - int numSecondi
+    - int numMosse
+    - int punteggio
+    - boolean abbandonata
+    - List<Stanza> stanze
+    - List<Comando> comandi
+    - List<Oggetto> inventario
+    - List<Oggetto> oggettiGioco
+    - Stanza stanzaCorrente
+    + int calcoloPunteggio(int, int, boolean)
+    + void setAbbandonata(boolean b)
+    + int getPunteggio()
+    + String getNomePartita()
+    + void setNomePartita(String)
+    + int getNumMosse()
+    + void setNumMosse(int)
+    + int getNumMinuti()
+    + void setNumMinuti(minCorr)
+    + int getNumSecondi()
+    + void setNumSecondi(int)
+    + int getNumOre()
+    +  void setNumOre(oreCorr)
+    + void setUsername(String)
+    + String getUsername()
+    + List<Stanza> getStanze()
+    + List<Comando> getComandi()
+    + Stanza getStanzaCorrente()
+    + void setStanzaCorrente(Stanza)
+    + List<Oggetto> getInventario()
+    +  List<Oggetto> getOggettiGioco()
+    + Oggetto getOggettoGioco(String)
+    + Stanza getStanza(String)
+    + Comando getComando(String)
+    + void setFinita(boolean)
+    + boolean getFinita()
+    
+}
 ```
 ## Specifica algebrica
 
