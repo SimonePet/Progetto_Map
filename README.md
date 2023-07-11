@@ -573,7 +573,7 @@ Per fornire un'implementazione del metodo test dell'interfaccia funzionale passi
 
 utilizzando la lista degli oggetti di classe Partita, cicliamo su tutte le partite e per ognuna di esse chiamiamo il metodo test dell'interfaccia funzionale  Predicate &lt;Partita&gt; che utilizzando l'implementazione data dall'espressione lambda chiama il metodo terminata() della classe Partita che restituisce true se la partita è terminata, false altrimenti. Se la partita è terminata aggiunge una nuova riga nella tabella con la rispettiva partita terminata.  
 
-
+![stream](/stream.png)
 
 
 ---
