@@ -295,6 +295,37 @@ class Comando{
     + getAliasComando():Set<String> 
 
 }
+class ParserOutput{
+    + object:Oggetto
+    + genericObject:Oggetto
+    + invObject:Oggetto
+    + command:Comando
+    + ParserOutput(Comando,Oggetto)
+    + ParserOutput(Comando,Oggetto,Oggetto)
+    + ParserOutput(Comando,Oggetto,Oggetto)
+    + getCommand():Comando
+    + getObject():Oggetto
+    + getInvObject():Oggetto
+    + getGenericObject():Oggetto
+}
+
+class Client{
+    - indirizzoServer:String
+    - porta:int
+    - socket:socket
+    - writer:PrintWriter
+    - reader:BufferReader
+    - textArea:JTextarea
+    + Client(String,int)
+    + run():void
+    + inviaMessaggio(String):void
+    + leggiRispostaServer():void
+    + scriviRispostaTextArea(String):void
+    - correggiStringa(String):String
+    - troncaStringa(String,String):String
+    - ottieniStringaDopo(String, String):String
+    + setTextArea(JTextarea):void
+}
 ```
 ## Specifica algebrica
 
