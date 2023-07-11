@@ -76,6 +76,7 @@ public final class Messaggio {
 
     private static final String TELECOMANDO_APERTO = "Hai gia aperto il telecomando.";
     private static final String ARMADIO_SPOSTATO = "Hai gia spostato l'armadio";
+    private static final String COMANDO_NON_RICONOSCIUTO = "Non capisco quello che mi vuoi dire.";
 
     public static String getHelp() {
         return Messaggio.HELP;
@@ -271,6 +272,9 @@ public final class Messaggio {
 
     public static String getArmadioSpostato() {
         return Messaggio.ARMADIO_SPOSTATO;
+    }
+    public static String getComandoNonRiconosciuto() {
+        return Messaggio.COMANDO_NON_RICONOSCIUTO;
     }
 
 }

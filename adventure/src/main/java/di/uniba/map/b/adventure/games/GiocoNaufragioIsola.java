@@ -5,41 +5,31 @@
  */
 package di.uniba.map.b.adventure.games;
 
-import data.FileMatchController;
-//Import dei messaggi
+
 
 import di.uniba.map.b.adventure.GameDescription;
+import di.uniba.map.b.adventure.messaggi.Messaggio;
 import di.uniba.map.b.adventure.parser.ParserOutput;
 import di.uniba.map.b.adventure.type.TipoComando;
 import di.uniba.map.b.adventure.type.Stanza;
 import swing.JFrameApp;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
-import javax.swing.text.BadLocationException;
-import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-
 /**
- * ATTENZIONE: La descrizione del gioco è fatta in modo che qualsiasi gioco
- * debba estendere la classe GameDescription. L'Engine è fatto in modo che possa
- * eseguire qualsiasi gioco che estende GameDescription, in questo modo si
- * possono creare più gioci utilizzando lo stesso Engine.
- * <p>
- * Diverse migliorie possono essere applicate: - la descrizione del gioco
- * potrebbe essere caricate da file o da DBMS in modo da non modificare il
- * codice sorgente - l'utilizzo di file e DBMS non è semplice poiché all'interno
- * del file o del DBMS dovrebbe anche essere codificata la logica del gioco
- * (nextMove) oltre alla descrizione di stanze, oggetti, ecc...
- *
- * @author pierpaolo
+ * Classe che rappresenta il gioco "Naufragio sull'Isola".
+ * Estende la classe astratta GameDescription e definisce il comportamento del gioco.
  */
+
 public class GiocoNaufragioIsola extends GameDescription {
+
     /**
-     *
+     * Inizializza l'ambiente di gioco configurando comandi, stanze e le loro connessioni.
+     * Inizializza anche gli oggetti di gioco.
      */
     @Override
     public void init() {
@@ -106,36 +96,36 @@ public class GiocoNaufragioIsola extends GameDescription {
         sentiero.setEst(costa);
         sentiero.setOvest(null);
 
-        // TODO Creare classi per i messaggi e le stringhe degli oggetti
         InizializzaOggetti.initOggetti(this);
 
         setStanzaCorrente(approdo);
     }
 
-
-
-
-    /* nextMove per scrivere su editor del frame */
-
     /**
-     * @param p
-     * @param out
-     * @param frame
-     * @param panel
-     * @param label
+     * Esegue la prossima mossa del gioco in base all'output del parser.
+     * Aggiorna l'interfaccia grafica e l'output di testo del gioco.
+     *
+     * @param p       Output del parser che contiene le informazioni sulla mossa
+     * @param out     Oggetto PrintStream per l'output del gioco
+     * @param frame   Oggetto JFrameApp per l'interfaccia grafica del gioco
+     * @param panel   Pannello JPanel per l'interfaccia grafica del gioco
+     * @param label   Etichetta JLabel per l'interfaccia grafica del gioco
      */
     @Override
-    public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame, final JPanel panel, final JLabel label) throws BadLocationException {
-        //frame.writeTextOnEditor("\n"+getCurrentRoom().getNomeStanza()+"\n");
+    public void nextMove(final ParserOutput p, final PrintStream out, final JFrameApp frame, final JPanel panel, final JLabel label) {
+        // Aggiunge una riga vuota all'editor
         frame.scrviSuEditor("\n\n");
-        if(p == null) {
-            frame.scrviSuEditor("Non capisco quello che mi vuoi dire.");
+
+        if (p == null) {
+            // L'output del parser è nullo
+            frame.scrviSuEditor(Messaggio.getComandoNonRiconosciuto());
         } else {
             if (p.getCommand() == null) {
-                frame.scrviSuEditor("Non ho capito cosa devo fare! Prova con un altro comando.");
+                // Il comando riconosciuto dall'output del parser è nullo
+                frame.scrviSuEditor(Messaggio.getComandoNonRiconosciuto());
             } else {
                 TipoComando comandoRiconosciuto = p.getCommand().getTipoComando();
-                //move
+                // Esegue il comando corrispondente
                 switch (comandoRiconosciuto) {
                     case NORD:
                         ControlGioco.comandoNord(this, frame, panel, label);
@@ -162,19 +152,19 @@ public class GiocoNaufragioIsola extends GameDescription {
                         ControlGioco.comandoLascia(this, frame, p.getInvObject());
                         break;
                     case NARRA:
+                        // Mostra la descrizione lunga della stanza corrente nell'editor
                         frame.scrviSuEditor(getStanzaCorrente().getDescrizioneLungaStanza());
                         break;
                     case LOCALIZZAZIONE:
                         ControlGioco.comandoLocalizzazione(this, frame);
                         break;
-                    case ACCENDI: {
+                    case ACCENDI:
                         try {
                             ControlGioco.comandoAccendi(this, frame, p.getInvObject());
                         } catch (IOException | InterruptedException ex) {
                             Logger.getLogger(GiocoNaufragioIsola.class.getName()).log(Level.SEVERE, null, ex);
                         }
-                    }
-                    break;
+                        break;
                     case APRI:
                         ControlGioco.comandoApri(this, frame, p.getInvObject());
                         break;
@@ -197,14 +187,15 @@ public class GiocoNaufragioIsola extends GameDescription {
                         ControlGioco.comandoRipara(this, frame, p.getObject());
                         break;
                     case FINE:
-                        ControlGioco.comandoFine(this,frame);
+                        ControlGioco.comandoFine(this, frame);
                         break;
-                    case COMANDO_NON_RICONOSCIUTO :
+                    case COMANDO_NON_RICONOSCIUTO:
                         ControlGioco.comandoNonRiconosciuto(frame);
+                        break;
                 }
             }
         }
+        // Aggiorna l'etichetta con il nome della stanza corrente
         frame.scriviSuLabelStanza(frame.getEngine().getGame().getStanzaCorrente().getNomeStanza());
     }
-
 }

@@ -1,14 +1,40 @@
 package di.uniba.map.b.adventure.games;
 
-import di.uniba.map.b.adventure.messaggi.*;
+
+import di.uniba.map.b.adventure.messaggi.MessaggioCovo;
+import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
+import di.uniba.map.b.adventure.messaggi.MessaggioEdificioFuori;
+import di.uniba.map.b.adventure.messaggi.MessaggioEdificioDentro;
+import di.uniba.map.b.adventure.messaggi.MessaggioApprodo;
+import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
+import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
+import di.uniba.map.b.adventure.messaggi.MessaggioBosco;
+
 import di.uniba.map.b.adventure.type.Stanza;
 
-public class InizializzaStanze {
+/**
+ * Classe di utilità per l'inizializzazione delle stanze del gioco "Naufragio sull'Isola".
+ * Fornisce metodi statici per inizializzare le diverse stanze del gioco.
+ * La classe non può essere istanziata o estesa.
+ */
+public final class InizializzaStanze {
 
+    /**
+     * Costruttore privato della classe InizializzaStanze.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i metodi in questa classe sono statici e la classe è progettata per essere utilizzata come classe di utilità.
+     * Fornisce metodi di inizializzazione per le stanze del gioco "Naufragio sull'Isola".
+     * La classe non può essere istanziata o estesa.
+     */
     private InizializzaStanze() {
     }
 
-    public static Stanza inizializzaApprodo(GiocoNaufragioIsola GNI) {
+    /**
+     * Metodo statico per inizializzare la stanza "Approdo" del gioco "Naufragio sull'Isola".
+     * @param gni Oggetto GiocoNaufragioIsola che contiene le informazioni di gioco.
+     * @return Stanza "Approdo" inizializzata.
+     */
+    public static Stanza inizializzaApprodo(final GiocoNaufragioIsola gni) {
         //Istanziazione stanza approdo
         Stanza approdo = new Stanza(0, MessaggioApprodo.getNome());
         //Imposto la descrizione corta della stanza
@@ -30,11 +56,16 @@ public class InizializzaStanze {
         //Imposto il messaggio per Ovest
         approdo.setMessaggioOvest(MessaggioApprodo.getOvest());
         //Aggiungo la stanza
-        GNI.getStanze().add(approdo);
+        gni.getStanze().add(approdo);
         return approdo;
     }
 
-    public static Stanza inizializzaCosta(GiocoNaufragioIsola GNI) {
+    /**
+     * Metodo statico per inizializzare la stanza "Costa" del gioco "Naufragio sull'Isola".
+     * @param gni Oggetto GiocoNaufragioIsola che contiene le informazioni di gioco.
+     * @return Stanza "Costa" inizializzata.
+     */
+    public static Stanza inizializzaCosta(final GiocoNaufragioIsola gni) {
         //Istanziazione stanza costa
         Stanza costa = new Stanza(1, MessaggioCosta.getNome());
         //Imposto la descrizione corta della stanza
@@ -54,11 +85,16 @@ public class InizializzaStanze {
         //Imposto il messaggio per Ovest
         costa.setMessaggioOvest(MessaggioCosta.getOvest());
         //Aggiungo la stanza
-        GNI.getStanze().add(costa);
+        gni.getStanze().add(costa);
         return costa;
     }
 
-    public static Stanza inizializzaBosco(GiocoNaufragioIsola GNI) {
+    /**
+     * Metodo statico per inizializzare la stanza "Bosco" del gioco "Naufragio sull'Isola".
+     * @param gni Oggetto GiocoNaufragioIsola che contiene le informazioni di gioco.
+     * @return Stanza "Bosco" inizializzata.
+     */
+    public static Stanza inizializzaBosco(final GiocoNaufragioIsola gni) {
         //Istanziazione stanza bosco
         Stanza bosco = new Stanza(2, MessaggioBosco.getNome());
         //Imposto la descrizione corta della stanza
@@ -78,11 +114,16 @@ public class InizializzaStanze {
         //Imposto il messaggio per Ovest
         bosco.setMessaggioOvest(MessaggioBosco.getOvest());
         //Aggiungo la stanza
-        GNI.getStanze().add(bosco);
+        gni.getStanze().add(bosco);
         return bosco;
     }
 
-    public static Stanza inizializzaSentiero(GiocoNaufragioIsola GNI){
+    /**
+     * Metodo statico per inizializzare la stanza "Sentiero" del gioco "Naufragio sull'Isola".
+     * @param gni Oggetto GiocoNaufragioIsola che contiene le informazioni di gioco.
+     * @return Stanza "Sentiero" inizializzata.
+     */
+    public static Stanza inizializzaSentiero(final GiocoNaufragioIsola gni) {
         //Istanziazione stanza sentiero
         Stanza sentiero = new Stanza(7, MessaggioSentiero.getNome());
         ///Imposto la descrizione corta della stanza
@@ -100,11 +141,16 @@ public class InizializzaStanze {
         //Imposto il messaggio per Ovest
         sentiero.setMessaggioOvest(MessaggioSentiero.getNoOvest());
         //Aggiungo la stanza
-        GNI.getStanze().add(sentiero);
+        gni.getStanze().add(sentiero);
         return sentiero;
     }
 
-    public static Stanza inizializzaCovo(GiocoNaufragioIsola GNI) {
+    /**
+     * Metodo statico per inizializzare la stanza "Covo" del gioco "Naufragio sull'Isola".
+     * @param gni Oggetto GiocoNaufragioIsola che contiene le informazioni di gioco.
+     * @return Stanza "Covo" inizializzata.
+     */
+    public static Stanza inizializzaCovo(final GiocoNaufragioIsola gni) {
         //Istanziazione stanza covo
         Stanza covo = new Stanza(3, MessaggioCovo.getNome());
         ///Imposto la descrizione corta della stanza
@@ -124,11 +170,16 @@ public class InizializzaStanze {
         //Imposto il messaggio per Ovest
         covo.setMessaggioOvest(MessaggioCovo.getNoOvest());
         //Aggiungo la stanza
-        GNI.getStanze().add(covo);
+        gni.getStanze().add(covo);
         return covo;
     }
 
-    public static Stanza inizializzaEdificioDentro(GiocoNaufragioIsola GNI){
+    /**
+     * Metodo statico per inizializzare la stanza "Edificio Dentro" del gioco "Naufragio sull'Isola".
+     * @param gni Oggetto GiocoNaufragioIsola che contiene le informazioni di gioco.
+     * @return Stanza "Edificio Dentro" inizializzata.
+     */
+    public static Stanza inizializzaEdificioDentro(final GiocoNaufragioIsola gni) {
         //Istanziazione stanza edificioDentro
         Stanza edificioDentro = new Stanza(4, MessaggioEdificioDentro.getNome());
         ///Imposto la descrizione corta della stanza
@@ -148,11 +199,16 @@ public class InizializzaStanze {
         //Imposto il messaggio per Ovest
         edificioDentro.setMessaggioOvest(MessaggioEdificioDentro.getNoOvest());
         //Aggiungo la stanza
-        GNI.getStanze().add(edificioDentro);
+        gni.getStanze().add(edificioDentro);
         return edificioDentro;
     }
 
-    public static Stanza inizializzaEdificioFuori(GiocoNaufragioIsola GNI){
+    /**
+     * Metodo statico per inizializzare la stanza "Edificio Fuori" del gioco "Naufragio sull'Isola".
+     * @param gni Oggetto GiocoNaufragioIsola che contiene le informazioni di gioco.
+     * @return Stanza "Edificio Fuori" inizializzata.
+     */
+    public static Stanza inizializzaEdificioFuori(final GiocoNaufragioIsola gni) {
         //Istanziazione stanza edificioFuori
         Stanza edificioFuori = new Stanza(5, MessaggioEdificioFuori.getNome());
         ///Imposto la descrizione corta della stanza
@@ -172,11 +228,15 @@ public class InizializzaStanze {
         //Imposto il messaggio per Ovest
         edificioFuori.setMessaggioOvest(MessaggioEdificioFuori.getNoOvest());
         //Aggiungo la stanza
-        GNI.getStanze().add(edificioFuori);
+        gni.getStanze().add(edificioFuori);
         return edificioFuori;
     }
-
-    public static Stanza inizializzaGrotta(GiocoNaufragioIsola GNI){
+    /**
+     * Metodo statico per inizializzare la stanza "Grotta" del gioco "Naufragio sull'Isola".
+     * @param gni Oggetto GiocoNaufragioIsola che contiene le informazioni di gioco.
+     * @return Stanza "Grotta" inizializzata.
+     */
+    public static Stanza inizializzaGrotta(final GiocoNaufragioIsola gni) {
         //Istanziazione stanza grotta
         Stanza grotta = new Stanza(6, MessaggioGrotta.getGrottaNome());
         ///Imposto la descrizione corta della stanza
@@ -198,9 +258,7 @@ public class InizializzaStanze {
         //Imposto il messaggio per Ovest
         grotta.setMessaggioOvest(MessaggioGrotta.getNoOvestLuce());
         //Aggiungo la stanza
-        GNI.getStanze().add(grotta);
+        gni.getStanze().add(grotta);
         return grotta;
     }
-
-
 }

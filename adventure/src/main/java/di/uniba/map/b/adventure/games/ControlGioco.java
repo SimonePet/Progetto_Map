@@ -1,29 +1,42 @@
 package di.uniba.map.b.adventure.games;
 
-import di.uniba.map.b.adventure.type.TipoComando;
+
 import multimediali.Immagini;
 import multimediali.Suono;
 import di.uniba.map.b.adventure.Utils;
-import di.uniba.map.b.adventure.messaggi.*;
+
+import di.uniba.map.b.adventure.messaggi.Messaggio;
+import di.uniba.map.b.adventure.messaggi.MessaggioCovo;
+import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
+import di.uniba.map.b.adventure.messaggi.MessaggioEdificioFuori;
+import di.uniba.map.b.adventure.messaggi.MessaggioEdificioDentro;
+import di.uniba.map.b.adventure.messaggi.MessaggioApprodo;
+import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
+import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
+
 import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.Oggetto;
 import swing.JFrameApp;
+
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import java.io.IOException;
 import java.util.HashSet;
-import java.util.Iterator;
 import java.util.Set;
-import swing.JDialogPunteggio;
+
 
 import swing.JDialogRadio;
 
 /**
- *
+ * ControlGioco è una classe che gestisce il flusso di controllo principale del gioco.
+ * Controlla il ciclo di gioco, la logica di gioco e la gestione degli eventi.
  */
 public final class ControlGioco {
     /**
-     *
+     * Costruttore privato senza parametri della classe ControlGioco.
+     * <p>
+     * Questo costruttore è privato per impedire l'istanziazione di oggetti di tipo ControlGioco al di fuori della classe stessa.
+     * Può essere utilizzato per implementare un pattern di progettazione come il Singleton, in cui si desidera che esista una sola istanza della classe.
      */
     private ControlGioco() {
     }
@@ -181,10 +194,10 @@ public final class ControlGioco {
     /**
      * Esegue il comando "raccogli" nel gioco del naufragio sull'isola.
      *
-     * @param gni     Riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame   Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
-     * @param ogg     Oggetto da raccogliere nella stanza corrente.
-     * @param oggInv  Oggetto da raccogliere già presente nell'inventario.
+     * @param gni    Riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param ogg    Oggetto da raccogliere nella stanza corrente.
+     * @param oggInv Oggetto da raccogliere già presente nell'inventario.
      */
     public static void comandoRaccogli(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto ogg, final Oggetto oggInv) {
         // Verifica se la stanza corrente è visibile
@@ -222,10 +235,10 @@ public final class ControlGioco {
     /**
      * Esegue il comando "osserva" nel gioco del naufragio sull'isola.
      *
-     * @param gni     Riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame   Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
-     * @param ogg     Oggetto da osservare nella stanza corrente.
-     * @param oggInv  Oggetto da osservare già presente nell'inventario.
+     * @param gni    Riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param ogg    Oggetto da osservare nella stanza corrente.
+     * @param oggInv Oggetto da osservare già presente nell'inventario.
      */
     public static void comandoOsserva(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto ogg, final Oggetto oggInv) {
         if (ogg == null && oggInv == null) {
@@ -262,9 +275,9 @@ public final class ControlGioco {
     /**
      * Esegue il comando "lascia" nel gioco del naufragio sull'isola.
      *
-     * @param gni     Riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame   Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
-     * @param oggInv  Oggetto da lasciare nell'inventario.
+     * @param gni    Riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param oggInv Oggetto da lasciare nell'inventario.
      */
     public static void comandoLascia(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto oggInv) {
         if (oggInv != null) {
@@ -285,17 +298,17 @@ public final class ControlGioco {
     /**
      * Esegue il comando "accendi" nel gioco del naufragio sull'isola.
      *
-     * @param gni     Riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame   Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
-     * @param oggInv  Oggetto da accendere presente nell'inventario.
-     * @throws IOException            Se si verifica un errore di input/output durante la riproduzione audio.
-     * @throws InterruptedException   Se il thread viene interrotto durante l'esecuzione.
+     * @param gni    Riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param oggInv Oggetto da accendere presente nell'inventario.
+     * @throws IOException          Se si verifica un errore di input/output durante la riproduzione audio.
+     * @throws InterruptedException Se il thread viene interrotto durante l'esecuzione.
      */
     public static void comandoAccendi(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto oggInv) throws IOException, InterruptedException {
         if (oggInv != null) {
             if (oggInv.getNomeOggetto().equalsIgnoreCase("lampada")) {
                 if (gni.getInventario().contains(gni.getOggettoGioco("acciarino"))) {
-                    if(!gni.getStanza(MessaggioGrotta.getGrottaNome()).getVisibile()) {
+                    if (!gni.getStanza(MessaggioGrotta.getGrottaNome()).getVisibile()) {
                         frame.scrviSuEditor(Messaggio.getAccendiLampada());
                         gni.getOggettoGioco("lastra").setVisibile(true);
                         gni.getStanza(MessaggioGrotta.getGrottaNome()).setVisibile(true);
@@ -306,8 +319,7 @@ public final class ControlGioco {
                         gni.getStanza(MessaggioGrotta.getGrottaNome()).setMessaggioSud(MessaggioGrotta.getNoSudLuce());
                         gni.getStanza(MessaggioGrotta.getGrottaNome()).setMessaggioOvest(MessaggioGrotta.getNoOvestLuce());
                         gni.getStanza(MessaggioGrotta.getGrottaNome()).setOsserva(MessaggioGrotta.getOsservaLuce());
-                    }
-                    else{
+                    } else {
                         frame.scrviSuEditor(Messaggio.getLampadaAccesa());
                     }
                 } else {
@@ -334,9 +346,9 @@ public final class ControlGioco {
     /**
      * Esegue il comando "leggi" nel gioco del naufragio sull'isola.
      *
-     * @param frame   Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
-     * @param oggInv  Oggetto presente nell'inventario da leggere.
-     * @param ogg     Oggetto presente nella stanza da leggere.
+     * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param oggInv Oggetto presente nell'inventario da leggere.
+     * @param ogg    Oggetto presente nella stanza da leggere.
      */
     public static void comandoLeggi(final JFrameApp frame, final Oggetto oggInv, final Oggetto ogg) {
         if (oggInv != null || ogg != null) {
@@ -347,15 +359,15 @@ public final class ControlGioco {
                     frame.scrviSuEditor(Messaggio.getNoLeggi());
                 }
             } else {
-                    if (ogg.isVisibile()) {
-                        if (ogg.getNomeOggetto().equals("lastra")) {
-                            frame.scrviSuEditor(MessaggioGrotta.getDescLastra());
-                        } else {
-                            frame.scrviSuEditor(Messaggio.getNoLeggi());
-                        }
+                if (ogg.isVisibile()) {
+                    if (ogg.getNomeOggetto().equals("lastra")) {
+                        frame.scrviSuEditor(MessaggioGrotta.getDescLastra());
                     } else {
-                        frame.scrviSuEditor(MessaggioGrotta.getNoSudBuio());
+                        frame.scrviSuEditor(Messaggio.getNoLeggi());
                     }
+                } else {
+                    frame.scrviSuEditor(MessaggioGrotta.getNoSudBuio());
+                }
 
             }
         } else {
@@ -367,9 +379,9 @@ public final class ControlGioco {
     /**
      * Esegue il comando "taglia" nel gioco del naufragio sull'isola.
      *
-     * @param gni    Riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
-     * @param ogg    Oggetto da tagliare presente nella stanza.
+     * @param gni   Riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param ogg   Oggetto da tagliare presente nella stanza.
      */
     public static void comandoTaglia(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto ogg) {
         if (ogg != null) {
@@ -391,11 +403,11 @@ public final class ControlGioco {
     /**
      * Esegue il comando "costruisci" nel gioco del naufragio sull'isola.
      *
-     * @param gni    Riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
-     * @param ogg    Oggetto da costruire presente nella stanza.
+     * @param gni   Riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param ogg   Oggetto da costruire presente nella stanza.
      */
-    public static void comandoCostruisci(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto ogg){
+    public static void comandoCostruisci(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto ogg) {
         if (ogg != null) {
             if (ogg.getNomeOggetto().equals("zattera")) {
                 if (gni.getInventario().contains(gni.getOggettoGioco("vela"))
@@ -425,12 +437,12 @@ public final class ControlGioco {
     /**
      * Esegue il comando "aiuto" nel gioco del naufragio sull'isola.
      *
-     * @param gni    Riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param gni   Riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
      */
     public static void comandoAiuto(final GiocoNaufragioIsola gni, final JFrameApp frame) {
-            setComandi(gni);
-        if(comandiArray[0] == null){
+        setComandi(gni);
+        if (comandiArray[0] == null) {
             inizializzaOrdineComandi(gni);
         }
         Oggetto prossimo;
@@ -439,8 +451,8 @@ public final class ControlGioco {
             comandi.addAll(prossimo.getComandiConsentiti());
         }
         frame.scrviSuEditor(Messaggio.getListaComandi() + "\n");
-        for(int i=0; i<19; i++) {
-            if(comandi.contains(comandiArray[i])){
+        for (int i = 0; i < 19; i++) {
+            if (comandi.contains(comandiArray[i])) {
                 frame.scrviSuEditor(comandiArray[i].getDescrizione() + "\n");
             }
         }
@@ -449,7 +461,7 @@ public final class ControlGioco {
     /**
      * Imposta i comandi disponibili nel gioco del naufragio sull'isola.
      *
-     * @param gni    Il riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param gni Il riferimento all'istanza del gioco del naufragio sull'isola.
      */
     public static void setComandi(final GiocoNaufragioIsola gni) {
         comandi.clear();
@@ -467,18 +479,17 @@ public final class ControlGioco {
     /**
      * Esegue il comando "apri" nel gioco del naufragio sull'isola.
      *
-     * @param gni     Il riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame   Il riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
-     * @param invOgg  L'oggetto da aprire, preso dall'inventario del giocatore.
+     * @param gni    Il riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame  Il riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param invOgg L'oggetto da aprire, preso dall'inventario del giocatore.
      */
     public static void comandoApri(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto invOgg) {
         if (invOgg != null) {
             if (invOgg.equals(gni.getOggettoGioco("telecomando"))) {
-                if(!gni.getOggettoGioco("batteria").isVisibile()) {
+                if (!gni.getOggettoGioco("batteria").isVisibile()) {
                     frame.scrviSuEditor(Messaggio.getApriTelecomando());
                     gni.getOggettoGioco("batteria").setVisibile(true);
-                }
-                else{
+                } else {
                     frame.scrviSuEditor(Messaggio.getTelecomandoAperto());
                 }
             } else {
@@ -493,19 +504,18 @@ public final class ControlGioco {
     /**
      * Esegue il comando "sposta" nel gioco del naufragio sull'isola.
      *
-     * @param gni     Riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame   Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
-     * @param ogg     Oggetto da spostare nella stanza corrente.
+     * @param gni   Riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param ogg   Oggetto da spostare nella stanza corrente.
      */
     public static void comandoSposta(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto ogg) {
         if (ogg != null) {
             if (ogg.equals(gni.getOggettoGioco("armadio"))) {
-                if(!gni.getStanza(MessaggioCovo.getNome()).getRaggiungibile()) {
+                if (!gni.getStanza(MessaggioCovo.getNome()).getRaggiungibile()) {
                     frame.scrviSuEditor(Messaggio.getSpostaArmadio());
                     gni.getStanzaCorrente().setMessaggioNord(MessaggioEdificioDentro.getNord());
                     gni.getStanza(MessaggioCovo.getNome()).setRaggiungibile(true);
-                }
-                else {
+                } else {
                     frame.scrviSuEditor(Messaggio.getArmadioSpostato());
                 }
             } else {
@@ -519,30 +529,30 @@ public final class ControlGioco {
     /**
      * Esegue il comando "localizzazione" nel gioco del naufragio sull'isola.
      *
-     * @param gni    Riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param gni   Riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
      */
     public static void comandoLocalizzazione(final GiocoNaufragioIsola gni, final JFrameApp frame) {
-        if(gni.getInventario().contains(gni.getOggettoGioco("mappa"))) {
+        if (gni.getInventario().contains(gni.getOggettoGioco("mappa"))) {
             frame.scrviSuEditor("La tua posizione è: " + gni.getStanzaCorrente().getNomeStanza());
             frame.scrviSuEditor(Messaggio.getInvio());
 
             // Localizzazione delle stanze adiacenti
             if (gni.getStanzaCorrente().getNord() == null) {
-                frame.scrviSuEditor(Messaggio.getNord()+ Messaggio.getStanzaInaccessibile());
+                frame.scrviSuEditor(Messaggio.getNord() + Messaggio.getStanzaInaccessibile());
             } else if (gni.getStanzaCorrente().getNord().getVisitata()) {
                 frame.scrviSuEditor(Messaggio.getNord() + Messaggio.getStanza() + gni.getStanzaCorrente().getNord().getNomeStanza());
             } else {
-                frame.scrviSuEditor(Messaggio.getNord()+ Messaggio.getStanzaSconosciuta());
+                frame.scrviSuEditor(Messaggio.getNord() + Messaggio.getStanzaSconosciuta());
             }
             frame.scrviSuEditor(Messaggio.getInvio());
 
             if (gni.getStanzaCorrente().getSud() == null) {
-                frame.scrviSuEditor(Messaggio.getSud()+ Messaggio.getStanzaInaccessibile());
+                frame.scrviSuEditor(Messaggio.getSud() + Messaggio.getStanzaInaccessibile());
             } else if (gni.getStanzaCorrente().getSud().getVisitata()) {
-                frame.scrviSuEditor(Messaggio.getSud()+Messaggio.getStanza() + gni.getStanzaCorrente().getSud().getNomeStanza());
+                frame.scrviSuEditor(Messaggio.getSud() + Messaggio.getStanza() + gni.getStanzaCorrente().getSud().getNomeStanza());
             } else {
-                frame.scrviSuEditor(Messaggio.getSud()+Messaggio.getStanzaSconosciuta());
+                frame.scrviSuEditor(Messaggio.getSud() + Messaggio.getStanzaSconosciuta());
             }
             frame.scrviSuEditor(Messaggio.getInvio());
 
@@ -556,9 +566,9 @@ public final class ControlGioco {
             frame.scrviSuEditor(Messaggio.getInvio());
 
             if (gni.getStanzaCorrente().getOvest() == null) {
-                frame.scrviSuEditor(Messaggio.getOvest()+ Messaggio.getStanzaInaccessibile());
+                frame.scrviSuEditor(Messaggio.getOvest() + Messaggio.getStanzaInaccessibile());
             } else if (gni.getStanzaCorrente().getOvest().getVisitata()) {
-                frame.scrviSuEditor(Messaggio.getOvest()+ Messaggio.getStanza() + gni.getStanzaCorrente().getOvest().getNomeStanza());
+                frame.scrviSuEditor(Messaggio.getOvest() + Messaggio.getStanza() + gni.getStanzaCorrente().getOvest().getNomeStanza());
             } else {
                 frame.scrviSuEditor(Messaggio.getOvest() + Messaggio.getStanzaSconosciuta());
             }
@@ -570,9 +580,9 @@ public final class ControlGioco {
     /**
      * Esegue il comando "ripara" nel gioco del naufragio sull'isola.
      *
-     * @param gni    Riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
-     * @param ogg    Oggetto da riparare.
+     * @param gni   Riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param ogg   Oggetto da riparare.
      */
     public static void comandoRipara(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto ogg) {
         if (ogg != null) {
@@ -589,8 +599,8 @@ public final class ControlGioco {
     /**
      * Esegue il comando "fine" nel gioco del naufragio sull'isola.
      *
-     * @param gni    Riferimento all'istanza del gioco del naufragio sull'isola.
-     * @param frame  Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
+     * @param gni   Riferimento all'istanza del gioco del naufragio sull'isola.
+     * @param frame Riferimento all'oggetto JFrameApp per la gestione dell'interfaccia grafica.
      */
     public static void comandoFine(final GiocoNaufragioIsola gni, final JFrameApp frame) {
         frame.scrviSuEditor(Messaggio.getSconfitta());
@@ -610,25 +620,31 @@ public final class ControlGioco {
         frame.scrviSuEditor("Non capisco quello che mi vuoi dire.\n");
     }
 
-    public static void inizializzaOrdineComandi(final GiocoNaufragioIsola GNI){
-        comandiArray[0] = GNI.getComando("nord");
-        comandiArray[1] = GNI.getComando("sud");
-        comandiArray[2] = GNI.getComando("est");
-        comandiArray[3] = GNI.getComando("ovest");
-        comandiArray[4] = GNI.getComando("raccogli");
-        comandiArray[5] = GNI.getComando("lascia");
-        comandiArray[6] = GNI.getComando("inventario");
-        comandiArray[7] = GNI.getComando("osserva");
-        comandiArray[8] = GNI.getComando("apri");
-        comandiArray[9] = GNI.getComando("accendi");
-        comandiArray[10] = GNI.getComando("utilizza");
-        comandiArray[11] = GNI.getComando("narra");
-        comandiArray[12] = GNI.getComando("localizzazione");
-        comandiArray[13] = GNI.getComando("ripara");
-        comandiArray[14] = GNI.getComando("leggi");
-        comandiArray[15] = GNI.getComando("costruisci");
-        comandiArray[16] = GNI.getComando("sposta");
-        comandiArray[17] = GNI.getComando("taglia");
-        comandiArray[18] = GNI.getComando("fine");
+    /**
+     * Inizializza l'array degli ordini dei comandi per il gioco di naufragio sull'isola.
+     *
+     * @param gni Oggetto GiocoNaufragioIsola che fornisce i comandi disponibili
+     */
+    public static void inizializzaOrdineComandi(final GiocoNaufragioIsola gni) {
+        comandiArray[0] = gni.getComando("nord");
+        comandiArray[1] = gni.getComando("sud");
+        comandiArray[2] = gni.getComando("est");
+        comandiArray[3] = gni.getComando("ovest");
+        comandiArray[4] = gni.getComando("raccogli");
+        comandiArray[5] = gni.getComando("lascia");
+        comandiArray[6] = gni.getComando("inventario");
+        comandiArray[7] = gni.getComando("osserva");
+        comandiArray[8] = gni.getComando("apri");
+        comandiArray[9] = gni.getComando("accendi");
+        comandiArray[10] = gni.getComando("utilizza");
+        comandiArray[11] = gni.getComando("narra");
+        comandiArray[12] = gni.getComando("localizzazione");
+        comandiArray[13] = gni.getComando("ripara");
+        comandiArray[14] = gni.getComando("leggi");
+        comandiArray[15] = gni.getComando("costruisci");
+        comandiArray[16] = gni.getComando("sposta");
+        comandiArray[17] = gni.getComando("taglia");
+        comandiArray[18] = gni.getComando("fine");
     }
+
 }

@@ -1,6 +1,13 @@
 package di.uniba.map.b.adventure.games;
 
-import di.uniba.map.b.adventure.messaggi.*;
+import di.uniba.map.b.adventure.messaggi.MessaggioCovo;
+import di.uniba.map.b.adventure.messaggi.MessaggioCosta;
+import di.uniba.map.b.adventure.messaggi.MessaggioEdificioDentro;
+import di.uniba.map.b.adventure.messaggi.MessaggioSentiero;
+import di.uniba.map.b.adventure.messaggi.MessaggioGrotta;
+import di.uniba.map.b.adventure.messaggi.MessaggioBosco;
+import di.uniba.map.b.adventure.messaggi.MessaggioOggetti;
+
 import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.Oggetto;
 import di.uniba.map.b.adventure.type.OggettoContenitore;
@@ -8,71 +15,106 @@ import di.uniba.map.b.adventure.type.OggettoContenitore;
 import java.util.HashSet;
 import java.util.Set;
 
-public class InizializzaOggetti {
+/**
+ * Classe di inizializzazione degli oggetti del gioco "Naufragio sull'Isola".
+ * Questa classe contiene metodi statici per inizializzare gli oggetti del gioco,
+ * specificando le loro caratteristiche e aggiungendoli alla lista degli oggetti del gioco.
+ */
+public final class InizializzaOggetti {
 
+    /**
+     * Costruttore privato della classe InizializzaOggetti.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i metodi in questa classe sono statici e la classe è progettata per essere utilizzata come classe di utilità.
+     * Fornisce metodi di inizializzazione per gli oggetti del gioco "Naufragio sull'Isola".
+     * La classe non può essere istanziata o estesa.
+     */
     private InizializzaOggetti() {
     }
 
-    public static void initOggetti(GiocoNaufragioIsola GNI){
-        InizializzaOggetti.initRadio(GNI);
-        InizializzaOggetti.initBatteria(GNI);
-        InizializzaOggetti.initCartina(GNI);
-        InizializzaOggetti.initTelecomando(GNI);
-        InizializzaOggetti.initAcciarino(GNI);
-        InizializzaOggetti.initCifrario(GNI);
-        InizializzaOggetti.initLampada(GNI);
-        InizializzaOggetti.initLastra(GNI);
-        InizializzaOggetti.initVela(GNI);
-        InizializzaOggetti.initAccetta(GNI);
-        InizializzaOggetti.initCorde(GNI);
-        InizializzaOggetti.initFucile(GNI);
-        InizializzaOggetti.initBarca(GNI);
-        InizializzaOggetti.initCartello(GNI);
-        InizializzaOggetti.initArmadio(GNI);
-        InizializzaOggetti.initTv(GNI);
-        InizializzaOggetti.initDivano(GNI);
-        InizializzaOggetti.initAlbero(GNI);
-        InizializzaOggetti.initLegno(GNI);
-        InizializzaOggetti.initZattera(GNI);
-        InizializzaOggetti.initBotola(GNI);
-
+    /**
+     * Inizializza gli oggetti del gioco "Naufragio sull'Isola" specificando le caratteristiche di ciascun oggetto
+     * e li aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere gli oggetti
+     */
+    public static void initOggetti(final GiocoNaufragioIsola gni) {
+        InizializzaOggetti.initRadio(gni);
+        InizializzaOggetti.initBatteria(gni);
+        InizializzaOggetti.initCartina(gni);
+        InizializzaOggetti.initTelecomando(gni);
+        InizializzaOggetti.initAcciarino(gni);
+        InizializzaOggetti.initCifrario(gni);
+        InizializzaOggetti.initLampada(gni);
+        InizializzaOggetti.initLastra(gni);
+        InizializzaOggetti.initVela(gni);
+        InizializzaOggetti.initAccetta(gni);
+        InizializzaOggetti.initCorde(gni);
+        InizializzaOggetti.initFucile(gni);
+        InizializzaOggetti.initBarca(gni);
+        InizializzaOggetti.initCartello(gni);
+        InizializzaOggetti.initArmadio(gni);
+        InizializzaOggetti.initTv(gni);
+        InizializzaOggetti.initDivano(gni);
+        InizializzaOggetti.initAlbero(gni);
+        InizializzaOggetti.initLegno(gni);
+        InizializzaOggetti.initZattera(gni);
+        InizializzaOggetti.initBotola(gni);
     }
 
-    private static void initRadio(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "radio" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initRadio(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto radio = new Oggetto(0, "radio", MessaggioOggetti.getDescrzioneRadio());
         radio.setAlias(new String[]{});
         radio.setVisibile(true);
-        set.add(GNI.getComando("accendi"));
-        set.add(GNI.getComando("lascia"));
+        set.add(gni.getComando("accendi"));
+        set.add(gni.getComando("lascia"));
         radio.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioCosta.getNome()).getObjects().add(radio);
-        GNI.getOggettiGioco().add(radio);
+        gni.getStanza(MessaggioCosta.getNome()).getObjects().add(radio);
+        gni.getOggettiGioco().add(radio);
     }
-
-    private static void initBatteria(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "batteria" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initBatteria(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto batteria = new Oggetto(1, "batteria", MessaggioOggetti.getDescrizionePile());
         batteria.setAlias(new String[]{"batterie", "pile", "pila"});
-        set.add(GNI.getComando("lascia"));
+        set.add(gni.getComando("lascia"));
         batteria.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(batteria);
-        GNI.getOggettiGioco().add(batteria);
+        gni.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(batteria);
+        gni.getOggettiGioco().add(batteria);
     }
-
-    private static void initCartina(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "cartina" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initCartina(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto cartina = new Oggetto(2, "mappa", MessaggioOggetti.getDescrizioneMappa());
         cartina.setAlias(new String[]{"cartine", "carta", "cartina", "mappe", "carte"});
         cartina.setVisibile(true);
-        set.add(GNI.getComando("lascia"));
-        set.add(GNI.getComando("localizzazione"));
+        set.add(gni.getComando("lascia"));
+        set.add(gni.getComando("localizzazione"));
         cartina.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioCosta.getNome()).getObjects().add(cartina);
-        GNI.getOggettiGioco().add(cartina);
+        gni.getStanza(MessaggioCosta.getNome()).getObjects().add(cartina);
+        gni.getOggettiGioco().add(cartina);
     }
 
-    private static void initTelecomando(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "telecomando" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initTelecomando(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         OggettoContenitore telecomando = new OggettoContenitore(3, "telecomando", MessaggioOggetti.getDescrizioneTelecomando());
         telecomando.setAlias(new String[]{"telecomandi"});
@@ -80,111 +122,155 @@ public class InizializzaOggetti {
         telecomando.setRaccogglibile(true);
         telecomando.setAperto(false);
         telecomando.setVisibile(true);
-        set.add(GNI.getComando("apri"));
-        set.add(GNI.getComando("lascia"));
+        set.add(gni.getComando("apri"));
+        set.add(gni.getComando("lascia"));
         telecomando.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(telecomando);
-        GNI.getOggettiGioco().add(telecomando);
+        gni.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(telecomando);
+        gni.getOggettiGioco().add(telecomando);
     }
 
-    private static void initAcciarino(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "acciarino" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initAcciarino(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto acciarino = new Oggetto(4, "acciarino", MessaggioOggetti.getDescrizioneAcciarino());
         acciarino.setAlias(new String[]{"accendino"});
         acciarino.setVisibile(true);
-        set.add(GNI.getComando("accendi"));
-        set.add(GNI.getComando("lascia"));
+        set.add(gni.getComando("accendi"));
+        set.add(gni.getComando("lascia"));
         acciarino.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioCosta.getNome()).getObjects().add(acciarino);
-        GNI.getOggettiGioco().add(acciarino);
+        gni.getStanza(MessaggioCosta.getNome()).getObjects().add(acciarino);
+        gni.getOggettiGioco().add(acciarino);
     }
 
-    private static void initLastra(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "lastra" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initLastra(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto lastra = new Oggetto(5, "lastra", MessaggioOggetti.getDescrizioneLastra());
         lastra.setAlias(new String[]{"pietra", "lastre", "pietre", "lastra pietra", "incisioni", "incisione"});
         lastra.setVisibile(false);
         lastra.setRaccogglibile(false);
         lastra.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliLastra());
-        set.add(GNI.getComando("leggi"));
+        set.add(gni.getComando("leggi"));
         lastra.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioGrotta.getGrottaNome()).getObjects().add(lastra);
-        GNI.getOggettiGioco().add(lastra);
+        gni.getStanza(MessaggioGrotta.getGrottaNome()).getObjects().add(lastra);
+        gni.getOggettiGioco().add(lastra);
     }
 
-    private static void initLampada(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "lampada" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initLampada(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto lampada = new Oggetto(6, "lampada", MessaggioOggetti.getDescrizioneLampada());
         lampada.setAlias(new String[]{"lampade", "lampadario", "lampadina", "lampadine", "luce", "luci"});
         lampada.setVisibile(true);
-        set.add(GNI.getComando("accendi"));
-        set.add(GNI.getComando("lascia"));
+        set.add(gni.getComando("accendi"));
+        set.add(gni.getComando("lascia"));
         lampada.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioBosco.getNome()).getObjects().add(lampada);
-        GNI.getOggettiGioco().add(lampada);
+        gni.getStanza(MessaggioBosco.getNome()).getObjects().add(lampada);
+        gni.getOggettiGioco().add(lampada);
 
     }
 
-    private static void initCifrario(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "cifrario" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initCifrario(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto cifrario = new Oggetto(7, "cifrario", MessaggioOggetti.getDescrizioneCifrario());
         cifrario.setAlias(new String[]{"libro", "libri", "cifrari"});
         cifrario.setVisibile(true);
-        set.add(GNI.getComando("leggi"));
-        set.add(GNI.getComando("lascia"));
+        set.add(gni.getComando("leggi"));
+        set.add(gni.getComando("lascia"));
         cifrario.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioCosta.getNome()).getObjects().add(cifrario);
-        GNI.getOggettiGioco().add(cifrario);
+        gni.getStanza(MessaggioCosta.getNome()).getObjects().add(cifrario);
+        gni.getOggettiGioco().add(cifrario);
     }
 
-    private static void initVela(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "vela" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initVela(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto vela = new Oggetto(8, "vela", MessaggioOggetti.getDescrizioneVela());
         vela.setAlias(new String[]{});
         vela.setVisibile(true);
-        set.add(GNI.getComando("costruisci"));
-        set.add(GNI.getComando("lascia"));
+        set.add(gni.getComando("costruisci"));
+        set.add(gni.getComando("lascia"));
         vela.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioCovo.getNome()).getObjects().add(vela);
-        GNI.getOggettiGioco().add(vela);
+        gni.getStanza(MessaggioCovo.getNome()).getObjects().add(vela);
+        gni.getOggettiGioco().add(vela);
     }
 
-    private static void initAccetta(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "accetta" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initAccetta(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto accetta = new Oggetto(9, "accetta", MessaggioOggetti.getDescrizioneAccetta());
         accetta.setAlias(new String[]{"ascia"});
         accetta.setVisibile(true);
-        set.add(GNI.getComando("taglia"));
-        set.add(GNI.getComando("lascia"));
+        set.add(gni.getComando("taglia"));
+        set.add(gni.getComando("lascia"));
         accetta.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioCovo.getNome()).getObjects().add(accetta);
-        GNI.getOggettiGioco().add(accetta);
+        gni.getStanza(MessaggioCovo.getNome()).getObjects().add(accetta);
+        gni.getOggettiGioco().add(accetta);
     }
-
-    private static void initCorde(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "corde" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initCorde(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto corda = new Oggetto(10, "corda", MessaggioOggetti.getDescrizioneCorda());
         corda.setAlias(new String[]{"corde"});
         corda.setVisibile(true);
-        set.add(GNI.getComando("costruisci"));
-        set.add(GNI.getComando("lascia"));
+        set.add(gni.getComando("costruisci"));
+        set.add(gni.getComando("lascia"));
         corda.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioCovo.getNome()).getObjects().add(corda);
-        GNI.getOggettiGioco().add(corda);
+        gni.getStanza(MessaggioCovo.getNome()).getObjects().add(corda);
+        gni.getOggettiGioco().add(corda);
     }
 
-    private static void initFucile(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "fucile" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initFucile(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto fucile = new Oggetto(11, "fucile", MessaggioOggetti.getDescrizioneFucile());
         fucile.setAlias(new String[]{"arma"});
         fucile.setVisibile(true);
-        set.add(GNI.getComando("lascia"));
+        set.add(gni.getComando("lascia"));
         fucile.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioCovo.getNome()).getObjects().add(fucile);
-        GNI.getOggettiGioco().add(fucile);
+        gni.getStanza(MessaggioCovo.getNome()).getObjects().add(fucile);
+        gni.getOggettiGioco().add(fucile);
     }
 
-    private static void initBarca(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "barca" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initBarca(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto barca = new Oggetto(12, "barca", MessaggioOggetti.getDescrizioneBarca());
         barca.setAlias(new String[]{"barchetta", "nave", "relitto", "carcassa", "imbarcazione"});
@@ -192,12 +278,17 @@ public class InizializzaOggetti {
         barca.setRaccogglibile(false);
         barca.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliBarca());
         barca.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioCosta.getNome()).getObjects().add(barca);
-        GNI.getOggettiGioco().add(barca);
+        gni.getStanza(MessaggioCosta.getNome()).getObjects().add(barca);
+        gni.getOggettiGioco().add(barca);
 
     }
 
-    private static void initCartello(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "cartello" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initCartello(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto cartello = new Oggetto(13, "cartello", MessaggioOggetti.getDescrizioneCartello());
         cartello.setAlias(new String[]{"insegna", "scritta"});
@@ -205,24 +296,34 @@ public class InizializzaOggetti {
         cartello.setVisibile(true);
         cartello.setRaccogglibile(false);
         cartello.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioSentiero.getNome()).getObjects().add(cartello);
-        GNI.getOggettiGioco().add(cartello);
+        gni.getStanza(MessaggioSentiero.getNome()).getObjects().add(cartello);
+        gni.getOggettiGioco().add(cartello);
     }
 
-    private static void initArmadio(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "armadio" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initArmadio(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto armadio = new Oggetto(14, "armadio", MessaggioOggetti.getDescrizioneArmadio());
         armadio.setAlias(new String[]{});
         armadio.setRaccogglibile(false);
         armadio.setVisibile(true);
         armadio.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliArmadio());
-        set.add(GNI.getComando("sposta"));
+        set.add(gni.getComando("sposta"));
         armadio.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(armadio);
-        GNI.getOggettiGioco().add(armadio);
+        gni.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(armadio);
+        gni.getOggettiGioco().add(armadio);
     }
 
-    private static void initTv(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "tv" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initTv(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto tv = new Oggetto(15, "tv", MessaggioOggetti.getDescrizioneTv());
         tv.setAlias(new String[]{"televisione", "tivvu", "televisore"});
@@ -230,12 +331,16 @@ public class InizializzaOggetti {
         tv.setVisibile(true);
         tv.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliTv());
         tv.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(tv);
-        GNI.getOggettiGioco().add(tv);
+        gni.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(tv);
+        gni.getOggettiGioco().add(tv);
     }
 
-
-    private static void initDivano(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "divano" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initDivano(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto divano = new Oggetto(16, "divano", MessaggioOggetti.getDescrizioneDivano());
         divano.setAlias(new String[]{"poltrona", "sofa"});
@@ -243,57 +348,75 @@ public class InizializzaOggetti {
         divano.setVisibile(true);
         divano.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliDivano());
         divano.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(divano);
-        GNI.getOggettiGioco().add(divano);
+        gni.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(divano);
+        gni.getOggettiGioco().add(divano);
     }
 
-    private static void initAlbero(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "albero" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initAlbero(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto albero = new Oggetto(17, "albero", MessaggioOggetti.getDescrizioneAlbero());
         albero.setAlias(new String[]{"alberi", "legna", "tronco", "rami", "legname"});
         albero.setRaccogglibile(false);
         albero.setVisibile(true);
         albero.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliAlbero());
-        set.add(GNI.getComando("taglia"));
+        set.add(gni.getComando("taglia"));
         albero.setComandiConsentiti(set);
-       GNI.getStanza(MessaggioBosco.getNome()).getObjects().add(albero);
-        GNI.getOggettiGioco().add(albero);
+        gni.getStanza(MessaggioBosco.getNome()).getObjects().add(albero);
+        gni.getOggettiGioco().add(albero);
 
     }
 
-    private static void initLegno(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "legno" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initLegno(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto legno = new Oggetto(18, "legno", MessaggioOggetti.getDescrizioneLegno());
         legno.setAlias(new String[]{"legname", "legna"});
         legno.setRaccogglibile(true);
         legno.setVisibile(false);
-        set.add(GNI.getComando("costruisci"));
+        set.add(gni.getComando("costruisci"));
         legno.setComandiConsentiti(set);
-        GNI.getStanza(MessaggioBosco.getNome()).getObjects().add(legno);
-        GNI.getOggettiGioco().add(legno);
+        gni.getStanza(MessaggioBosco.getNome()).getObjects().add(legno);
+        gni.getOggettiGioco().add(legno);
 
     }
 
-    private static void initZattera(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "zattera" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initZattera(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto zattera = new Oggetto(19, "zattera", MessaggioOggetti.getDescrizioneZattera());
         zattera.setAlias(new String[]{});
         zattera.setVisibile(false);
         zattera.setRaccogglibile(false);
         zattera.setComandiConsentiti(set);
-        GNI.getOggettiGioco().add(zattera);
+        gni.getOggettiGioco().add(zattera);
     }
 
-    private static void initBotola(GiocoNaufragioIsola GNI){
+    /**
+     * Inizializza l'oggetto "botola" e lo aggiunge alla lista degli oggetti del gioco.
+     *
+     * @param gni Gioco "Naufragio sull'Isola" a cui aggiungere l'oggetto
+     */
+    private static void initBotola(final GiocoNaufragioIsola gni) {
         Set<Comando> set = new HashSet<>();
         Oggetto botola = new Oggetto(19, "botola", MessaggioOggetti.getDescrizioneBotola());
         botola.setAlias(new String[]{"botole", "buco", "buchi"});
         botola.setRaccogglibile(false);
         botola.setComandiConsentiti(set);
         botola.setDescrizioneRaccogli(MessaggioOggetti.getRaccogliBotola());
-        GNI.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(botola);
-        GNI.getOggettiGioco().add(botola);
+        gni.getStanza(MessaggioEdificioDentro.getNome()).getObjects().add(botola);
+        gni.getOggettiGioco().add(botola);
     }
-
-
 }
