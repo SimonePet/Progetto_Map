@@ -209,6 +209,32 @@ class DatabaseController{
     + boolean partitaEsistente(String)
     + List<Partita> ottieniListaPartite()
 }
+class ControlGioco{
+    - Set<Comando> comandi
+    - Comando[] comandiArray
+    - ControlGioco()
+    - void comandoNord(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel)
+    - void comandoSud(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel)
+    - void comandoEst(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel)
+    - void comandoOvest(GiocoNaufragioIsola,JFrameApp,JPanel,JLabel)
+    - void comandoInventario(GiocoNaufragioIsola,JFrameApp)
+    - void comandoRaccogli(GiocoNaufragioIsola,JFrameApp,Oggetto,Oggetto)
+    - void comandoOsserva(GiocoNaufragioIsola,JFrameApp,Oggetto,Oggetto)
+    - void comandoLascia(GiocoNaufragioIsola,JFrameApp,Oggetto)
+    - void comandoAccendi(GiocoNaufragioIsola,JFrameApp,Oggetto)
+    - void comandoLeggi(JFrameApp,Oggetto,Oggetto)
+    - void comandoTaglia(GiocoNaufragioIsola,JFrameApp,Oggetto)
+    - void comandoCostruisci(GiocoNaufragioIsola,JFrameApp,Oggetto)
+    - void comandoAiuto(GiocoNaufragioIsola,JFrameApp)
+    - void setComandi(GiocoNaufragioIsola)
+    - void comandoApri(GiocoNaufragioIsola,JFrameApp,Oggetto)
+    - void comandoSposta(GiocoNaufragioIsola,JFrameApp,Oggetto)
+    - void comandoLocalizzazione(GiocoNaufragioIsola,JFrameApp)
+    - void comandoRipara(GiocoNaufragioIsola,JFrameApp,Oggetto)
+    - void comandoFine(GiocoNaufragioIsola,JFrameApp)
+    - void comandoNonRiconosciuto(JFrameApp)
+    - void inizializzaOrdineComandi(GiocoNaufragioIsola)
+}
 ```
 ## Specifica algebrica
 
