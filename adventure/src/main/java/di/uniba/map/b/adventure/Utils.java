@@ -15,32 +15,43 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
 import swing.JDialogPorta;
 import swing.JDialogPunteggio;
 import swing.JFrameApp;
 
 /**
- * @author pierpaolo
+ * Classe di utilità che fornisce metodi statici per operazioni comuni.
+ * La classe è stata dichiarata finale e con un costruttore privato per impedire l'istanziazione di oggetti.
  */
 public final class Utils {
+    /**
+     * Classe di utilità che fornisce metodi statici per operazioni comuni.
+     * La classe è stata dichiarata con un costruttore privato per impedire l'istanziazione di oggetti.
+     */
     private Utils() {
     }
-    
+
     public static final String PERCORSO_ASSOLUTO = calcolaPercorsoAssoluto();
-    public static final String ESTENSIONE_WAV = ".wav";
     public static final String PERCORSO_IMMAGINI_MENU = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "menu" + File.separator;
     public static final String PERCORSO_IMMAGINI_ICONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "icone" + File.separator;
     public static final String PERCORSO_SUONI_STANZE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "stanze" + File.separator;
-    public static final String PERCORSO_SUONI_OGGETTI = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "oggetti" + File.separator;
     public static final String PERCORSO_IMMAGINI_STANZE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "stanze" + File.separator;
-    public static final String PERCORSO_IMMAGINI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "conversazione" + File.separator+"conversazione";
-    public static final String PERCORSO_IMMAGINI_EXTRA = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "extra" + File.separator;
+    public static final String PERCORSO_IMMAGINI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "immagini" + File.separator + "conversazione" + File.separator + "conversazione";
     public static final String PERCORSO_SUONI_CONVERSAZIONE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "conversazione" + File.separator;
     public static final String PERCORSO_DATABASE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "db";
     public static String PERCORSO_FILES;
-    public static final String PERCORSO_STOPWORDS =PERCORSO_ASSOLUTO + File.separator +"adventure" + File.separator + "resources" + File.separator + "stopwords";
-    public static final String PERCORSO_SUONO_FINALE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "finale" + File.separator;    
-    
+    public static final String PERCORSO_STOPWORDS = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "stopwords";
+    public static final String PERCORSO_SUONO_FINALE = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + "resources" + File.separator + "suoni" + File.separator + "finale" + File.separator;
+
+
+    /**
+     * Carica il contenuto di un file in un insieme di stringhe.
+     *
+     * @param file Il file da caricare.
+     * @return Un insieme di stringhe contenente il contenuto del file.
+     * @throws IOException Se si verifica un errore durante la lettura del file.
+     */
     public static Set<String> loadFileListInSet(final File file) throws IOException {
         Set<String> set = new HashSet<>();
         BufferedReader reader = new BufferedReader(new FileReader(file));
@@ -51,6 +62,13 @@ public final class Utils {
         return set;
     }
 
+    /**
+     * Analizza una stringa in token utilizzando un insieme di stopwords per filtrare i token.
+     *
+     * @param string    La stringa da analizzare.
+     * @param stopwords L'insieme di stopwords.
+     * @return Una lista di token filtrati.
+     */
     public static List<String> parseString(final String string, final Set<String> stopwords) {
         List<String> tokens = new ArrayList<>();
         String[] split = string.toLowerCase().split("\\s+");
@@ -62,6 +80,11 @@ public final class Utils {
         return tokens;
     }
 
+    /**
+     * Calcola il percorso assoluto della directory di lavoro.
+     *
+     * @return Il percorso assoluto della directory di lavoro.
+     */
     private static String calcolaPercorsoAssoluto() {
         String percorsoAss = System.getProperty("user.dir");
         String sostituzione = "Progetto_Map";
@@ -69,21 +92,39 @@ public final class Utils {
         if (indiceInizio != -1) {
             percorsoAss = percorsoAss.substring(0, indiceInizio) + sostituzione;
         } else {
-            percorsoAss= percorsoAss + File.separator + sostituzione;
+            percorsoAss = percorsoAss + File.separator + sostituzione;
         }
         return percorsoAss;
     }
 
+    /**
+     * Genera una finestra di dialogo per la porta.
+     *
+     * @param frame L'istanza del frame principale.
+     * @param gni   L'istanza di GiocoNaufragioIsola.
+     */
     public static void generaFinestraPorta(final JFrameApp frame, final GiocoNaufragioIsola gni) {
         JDialogPorta d = new JDialogPorta(frame, true, gni);
         d.setVisible(true);
     }
-    
-    public static void generaFinestraPunteggio(final JFrameApp frame, GiocoNaufragioIsola gni){
+
+    /**
+     * Genera una finestra di dialogo per il punteggio.
+     *
+     * @param frame L'istanza del frame principale.
+     * @param gni   L'istanza di GiocoNaufragioIsola.
+     */
+    public static void generaFinestraPunteggio(final JFrameApp frame, final GiocoNaufragioIsola gni) {
         JDialogPunteggio d = new JDialogPunteggio(frame, true, gni);
         d.setVisible(true);
     }
 
+    /**
+     * Sostituisce il primo carattere di una stringa con la sua versione maiuscola.
+     *
+     * @param input La stringa da elaborare.
+     * @return La stringa con il primo carattere maiuscolo.
+     */
     public static String sostituisciPrimoCarattereMaiuscolo(final String input) {
         if (input == null || input.isEmpty()) {
             return input; // Restituisci l'input originale se la stringa è nulla o vuota
@@ -91,30 +132,14 @@ public final class Utils {
         char primoCarattere = Character.toUpperCase(input.charAt(0));
         return primoCarattere + input.substring(1);
     }
-    
-    
-    public static void calcolaPercorsoFile(String nome, String cartella){
+
+    /**
+     * Calcola il percorso del file specificato nella cartella specificata.
+     *
+     * @param nome     Il nome del file.
+     * @param cartella La cartella in cui si trova il file.
+     */
+    public static void calcolaPercorsoFile(final String nome, final String cartella) {
         PERCORSO_FILES = PERCORSO_ASSOLUTO + File.separator + "adventure" + File.separator + cartella + File.separator + nome;
-    }
-
-    public static String formattaStringa(String stringa, String sottostringa, int valoreMassimo) {
-        int indiceSottostringa = stringa.indexOf(sottostringa);
-        if (indiceSottostringa == -1) {
-            return stringa; // La sottostringa non è presente nella stringa originale
-        }
-
-        int lunghezzaSottostringa = sottostringa.length();
-        int spaziDaAggiungere = Math.min(valoreMassimo, lunghezzaSottostringa);
-
-        StringBuilder spaziBuilder = new StringBuilder();
-        for (int i = 0; i < spaziDaAggiungere; i++) {
-            spaziBuilder.append(" ");
-        }
-        String spazi = spaziBuilder.toString();
-
-        StringBuilder nuovaStringa = new StringBuilder(stringa);
-        nuovaStringa.insert(indiceSottostringa + lunghezzaSottostringa, spazi);
-
-        return nuovaStringa.toString();
     }
 }

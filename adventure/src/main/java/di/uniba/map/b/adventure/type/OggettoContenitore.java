@@ -9,44 +9,83 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
+
 /**
- *
- * @author pierpaolo
+ * Classe che rappresenta un oggetto contenitore.
+ * Un oggetto contenitore è un tipo di oggetto che può contenere altri oggetti.
+ * Estende la classe Oggetto e aggiunge la funzionalità di gestione degli oggetti contenuti.
  */
 public class OggettoContenitore extends Oggetto {
 
     private List<Oggetto> list = new ArrayList<>();
 
-    public OggettoContenitore(int id) {
+    /**
+     * Costruttore per la creazione di un oggetto contenitore con l'ID specificato.
+     *
+     * @param id ID dell'oggetto contenitore.
+     */
+    public OggettoContenitore(final int id) {
         super(id);
     }
 
-    public OggettoContenitore(int id, String name) {
+    /**
+     * Costruttore per la creazione di un oggetto contenitore con l'ID e il nome specificati.
+     *
+     * @param id   ID dell'oggetto contenitore.
+     * @param name Nome dell'oggetto contenitore.
+     */
+    public OggettoContenitore(final int id, final String name) {
         super(id, name);
     }
 
-    public OggettoContenitore(int id, String name, String description) {
+    /**
+     * Costruttore per la creazione di un oggetto contenitore con l'ID, il nome e la descrizione specificati.
+     *
+     * @param id          ID dell'oggetto contenitore.
+     * @param name        Nome dell'oggetto contenitore.
+     * @param description Descrizione dell'oggetto contenitore.
+     */
+    public OggettoContenitore(final int id, final String name, final String description) {
         super(id, name, description);
     }
 
-    public OggettoContenitore(int id, String name, String description, Set<String> alias) {
+    /**
+     * Costruttore per la creazione di un oggetto contenitore con l'ID, il nome, la descrizione e gli alias specificati.
+     *
+     * @param id          ID dell'oggetto contenitore.
+     * @param name        Nome dell'oggetto contenitore.
+     * @param description Descrizione dell'oggetto contenitore.
+     * @param alias       Alias dell'oggetto contenitore.
+     */
+    public OggettoContenitore(final int id, final String name, final String description, final Set<String> alias) {
         super(id, name, description, alias);
     }
 
+    /**
+     * Restituisce la lista degli oggetti contenuti nell'oggetto contenitore.
+     *
+     * @return Lista degli oggetti contenuti.
+     */
     public List<Oggetto> getList() {
         return list;
     }
 
-    public void setList(List<Oggetto> list) {
-        this.list = list;
+    /**
+     * Imposta la lista degli oggetti contenuti nell'oggetto contenitore.
+     *
+     * @param listCorr Lista degli oggetti contenuti da impostare.
+     */
+    public void setList(final List<Oggetto> listCorr) {
+        this.list = listCorr;
     }
 
-    public void add(Oggetto o) {
+    /**
+     * Aggiunge un oggetto alla lista degli oggetti contenuti nell'oggetto contenitore.
+     *
+     * @param o Oggetto da aggiungere.
+     */
+    public void add(final Oggetto o) {
         list.add(o);
-    }
-
-    public void remove(Oggetto o) {
-        list.remove(o);
     }
 
 }
