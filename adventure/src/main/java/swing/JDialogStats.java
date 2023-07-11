@@ -124,19 +124,21 @@ public class JDialogStats extends javax.swing.JDialog {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(lblNomePartita)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(lblErrore, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(txtNomePartita, javax.swing.GroupLayout.DEFAULT_SIZE, 219, Short.MAX_VALUE)))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(lblSaluto, javax.swing.GroupLayout.PREFERRED_SIZE, 352, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addComponent(jbtnPartite, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jbtnPartiteUtente)))
+                                .addComponent(jbtnPartiteUtente))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                        .addComponent(lblNomePartita)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txtNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(lblErrore, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(25, 25, 25)
@@ -172,18 +174,15 @@ public class JDialogStats extends javax.swing.JDialog {
                     .addComponent(jbtnPartiteUtente)
                     .addComponent(jbtnPartite)
                     .addComponent(btnPartitaSpecifica))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(lblNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lblPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(3, 3, 3)))
-                .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(1, 1, 1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblNomePartita, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(20, 20, 20)
                 .addComponent(scrollPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 404, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnPartiteTerminate)
@@ -200,7 +199,7 @@ public class JDialogStats extends javax.swing.JDialog {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 2, Short.MAX_VALUE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
@@ -247,13 +246,7 @@ public class JDialogStats extends javax.swing.JDialog {
                 dati[i][6] = Integer.toString(rs.getInt(9));
                 i++;
             }
-            JTable tabella = new JTable(dati, nomiColonne);
-            tabella.setFillsViewportHeight(true);
-            // aggiunge tabella allo ScrollPane
-            scrollPanel.setViewportView(tabella);
-            scrollPanel.getViewport().add(tabella);
-            scrollPanel.revalidate();
-            scrollPanel.repaint();        
+            Utils.stampaTabella(dati, nomiColonne, scrollPanel);
             double punteggioMedio = db.getPunteggioMedio();
             String punteggio = df.format(punteggioMedio);
             txtPunteggioMedio.setText(""+punteggio);
@@ -290,13 +283,7 @@ public class JDialogStats extends javax.swing.JDialog {
                 dati[i][6] = Integer.toString(rs.getInt(9));
                 i++;
             }
-            JTable tabella = new JTable(dati, nomiColonne);
-            tabella.setFillsViewportHeight(true);
-
-            scrollPanel.setViewportView(tabella);
-            scrollPanel.getViewport().add(tabella);
-            scrollPanel.revalidate();
-            scrollPanel.repaint();
+            Utils.stampaTabella(dati, nomiColonne, scrollPanel);
             double punteggioMedio = db.getPunteggioMedioUtente(username);
             String punteggio = df.format(punteggioMedio);
             txtPunteggioMedio.setText(""+punteggio);
@@ -367,14 +354,7 @@ public class JDialogStats extends javax.swing.JDialog {
                 }
             }
            
-            JTable tabella = new JTable(dati, nomiColonne);
-            tabella.setFillsViewportHeight(true);
-
-            // aggiunge tabella allo ScrollPane
-            scrollPanel.setViewportView(tabella);
-            scrollPanel.getViewport().add(tabella);
-            scrollPanel.revalidate();
-            scrollPanel.repaint();        
+            Utils.stampaTabella(dati, nomiColonne, scrollPanel);       
             double punteggioMedio = db.getPunteggioTerminate();
             String punteggio = df.format(punteggioMedio);
             txtPunteggioMedio.setText(""+punteggio);
