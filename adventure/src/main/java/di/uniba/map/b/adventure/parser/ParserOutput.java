@@ -9,63 +9,119 @@ import di.uniba.map.b.adventure.type.Oggetto;
 import di.uniba.map.b.adventure.type.Comando;
 
 /**
- *
- * @author pierpaolo
+ * La classe ParserOutput rappresenta l'output generato dal parser durante l'analisi di un comando.
+ * Contiene informazioni sul comando e gli oggetti associati all'input.
  */
 public class ParserOutput {
 
-    private Comando command;
+    private Comando comando;
 
-    private Oggetto object;
+    private Oggetto oggetto;
 
-    private Oggetto invObject;
+    private Oggetto invOggetto;
 
-    private Oggetto genericObject;
+    private Oggetto genericoOggetto;
 
-    public ParserOutput(Comando command, Oggetto object) {
-        this.command = command;
-        this.object = object;
+    /**
+     * Crea un nuovo oggetto ParserOutput con il comando e l'oggetto specificati.
+     *
+     * @param comandoCorr Comando associato all'output.
+     * @param oggettoCorr  Oggetto associato all'output.
+     */
+    public ParserOutput(final Comando comandoCorr, final Oggetto oggettoCorr) {
+        this.comando = comandoCorr;
+        this.oggetto = oggettoCorr;
     }
 
-    public ParserOutput(Comando command, Oggetto object, Oggetto invObejct) {
-        this.command = command;
-        this.object = object;
-        this.invObject = invObejct;
+    /**
+     * Crea un nuovo oggetto ParserOutput con il comando, l'oggetto e l'oggetto inventario specificati.
+     *
+     * @param comandoCorr     Comando associato all'output.
+     * @param oggettoCorr      Oggetto associato all'output.
+     * @param invoggettoCorr   Oggetto inventario associato all'output.
+     */
+    public ParserOutput(final Comando comandoCorr, final Oggetto oggettoCorr, final Oggetto invoggettoCorr) {
+        this.comando = comandoCorr;
+        this.oggetto = oggettoCorr;
+        this.invOggetto = invoggettoCorr;
     }
 
-    public ParserOutput(Comando command, Oggetto object, Oggetto invObejct, Oggetto genericObject) {
-        this.command = command;
-        this.object = object;
-        this.invObject = invObejct;
-        this.genericObject = genericObject;
+    /**
+     * Crea un nuovo oggetto ParserOutput con il comando, l'oggetto, l'oggetto inventario e l'oggetto generico specificati.
+     *
+     * @param comandoCorr       Comando associato all'output.
+     * @param oggettoCorr        Oggetto associato all'output.
+     * @param invoggettoCorr     Oggetto inventario associato all'output.
+     * @param genericoggettoCorr Oggetto generico associato all'output.
+     */
+    public ParserOutput(final Comando comandoCorr, final Oggetto oggettoCorr, final  Oggetto invoggettoCorr, final Oggetto genericoggettoCorr) {
+        this.comando = comandoCorr;
+        this.oggetto = oggettoCorr;
+        this.invOggetto = invoggettoCorr;
+        this.genericoOggetto = genericoggettoCorr;
     }
 
-    public Comando getCommand() {
-        return command;
+    /**
+     * Restituisce il comando associato a questo oggetto ParserOutput.
+     *
+     * @return Comando associato.
+     */
+    public Comando getComando() {
+        return comando;
     }
 
-    public void setCommand(Comando command) {
-        this.command = command;
+    /**
+     * Imposta il comando associato a questo oggetto ParserOutput.
+     *
+     * @param comandoCorr Comando da impostare.
+     */
+    public void setComando(final Comando comandoCorr) {
+        this.comando = comandoCorr;
     }
 
-    public Oggetto getObject() {
-        return object;
+    /**
+     * Restituisce l'oggetto associato a questo oggetto ParserOutput.
+     *
+     * @return Oggetto associato.
+     */
+    public Oggetto getOggetto() {
+        return oggetto;
     }
 
-    public void setObject(Oggetto object) {
-        this.object = object;
+    /**
+     * Imposta l'oggetto associato a questo oggetto ParserOutput.
+     *
+     * @param oggettoCorr Oggetto da impostare.
+     */
+    public void setOggetto(final Oggetto oggettoCorr) {
+        this.oggetto = oggettoCorr;
     }
 
-    public Oggetto getInvObject() {
-        return invObject;
+    /**
+     * Restituisce l'oggetto inventario associato a questo oggetto ParserOutput.
+     *
+         * @return Oggetto inventario associato.
+     */
+    public Oggetto getInvOggetto() {
+        return invOggetto;
     }
 
-    public void setInvObject(Oggetto invObject) {
-        this.invObject = invObject;
+    /**
+     * Imposta l'oggetto inventario associato a questo oggetto ParserOutput.
+     *
+     * @param invoggettoCorr Oggetto inventario da impostare.
+     */
+    public void setInvOggetto(final Oggetto invoggettoCorr) {
+        this.invOggetto = invoggettoCorr;
     }
 
-    public Oggetto getGenericObject() {
-        return genericObject;
+    /**
+     * Restituisce l'oggetto generico associato a questo oggetto ParserOutput.
+     *
+     * @return Oggetto generico associato.
+     */
+    public Oggetto getGenericoOggetto() {
+        return genericoOggetto;
     }
 
 }

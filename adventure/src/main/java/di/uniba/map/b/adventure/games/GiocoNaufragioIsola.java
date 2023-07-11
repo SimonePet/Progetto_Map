@@ -120,11 +120,11 @@ public class GiocoNaufragioIsola extends GameDescription {
             // L'output del parser è nullo
             frame.scrviSuEditor(Messaggio.getComandoNonRiconosciuto());
         } else {
-            if (p.getCommand() == null) {
+            if (p.getComando() == null) {
                 // Il comando riconosciuto dall'output del parser è nullo
                 frame.scrviSuEditor(Messaggio.getComandoNonRiconosciuto());
             } else {
-                TipoComando comandoRiconosciuto = p.getCommand().getTipoComando();
+                TipoComando comandoRiconosciuto = p.getComando().getTipoComando();
                 // Esegue il comando corrispondente
                 switch (comandoRiconosciuto) {
                     case NORD:
@@ -140,16 +140,16 @@ public class GiocoNaufragioIsola extends GameDescription {
                         ControlGioco.comandoOvest(this, frame, panel, label);
                         break;
                     case OSSERVA:
-                        ControlGioco.comandoOsserva(this, frame, p.getObject(), p.getInvObject());
+                        ControlGioco.comandoOsserva(this, frame, p.getOggetto(), p.getInvOggetto());
                         break;
                     case INVENTARIO:
                         ControlGioco.comandoInventario(this, frame);
                         break;
                     case RACCOGLI:
-                        ControlGioco.comandoRaccogli(this, frame, p.getObject(), p.getInvObject());
+                        ControlGioco.comandoRaccogli(this, frame, p.getOggetto(), p.getInvOggetto());
                         break;
                     case LASCIA:
-                        ControlGioco.comandoLascia(this, frame, p.getInvObject());
+                        ControlGioco.comandoLascia(this, frame, p.getInvOggetto());
                         break;
                     case NARRA:
                         // Mostra la descrizione lunga della stanza corrente nell'editor
@@ -160,31 +160,31 @@ public class GiocoNaufragioIsola extends GameDescription {
                         break;
                     case ACCENDI:
                         try {
-                            ControlGioco.comandoAccendi(this, frame, p.getInvObject());
+                            ControlGioco.comandoAccendi(this, frame, p.getInvOggetto());
                         } catch (IOException | InterruptedException ex) {
                             Logger.getLogger(GiocoNaufragioIsola.class.getName()).log(Level.SEVERE, null, ex);
                         }
                         break;
                     case APRI:
-                        ControlGioco.comandoApri(this, frame, p.getInvObject());
+                        ControlGioco.comandoApri(this, frame, p.getInvOggetto());
                         break;
                     case LEGGI:
-                        ControlGioco.comandoLeggi(frame, p.getInvObject(), p.getObject());
+                        ControlGioco.comandoLeggi(frame, p.getInvOggetto(), p.getOggetto());
                         break;
                     case TAGLIA:
-                        ControlGioco.comandoTaglia(this, frame, p.getObject());
+                        ControlGioco.comandoTaglia(this, frame, p.getOggetto());
                         break;
                     case COSTRUISCI:
-                        ControlGioco.comandoCostruisci(this, frame, p.getGenericObject());
+                        ControlGioco.comandoCostruisci(this, frame, p.getGenericoOggetto());
                         break;
                     case SPOSTA:
-                        ControlGioco.comandoSposta(this, frame, p.getObject());
+                        ControlGioco.comandoSposta(this, frame, p.getOggetto());
                         break;
                     case AIUTO:
                         ControlGioco.comandoAiuto(this, frame);
                         break;
                     case RIPARA:
-                        ControlGioco.comandoRipara(this, frame, p.getObject());
+                        ControlGioco.comandoRipara(this, frame, p.getOggetto());
                         break;
                     case FINE:
                         ControlGioco.comandoFine(this, frame);

@@ -4,7 +4,6 @@
  */
 package swing;
 
-import multimediali.Immagini;
 import multimediali.Suono;
 import di.uniba.map.b.adventure.Engine;
 import di.uniba.map.b.adventure.GameDescription;
@@ -230,7 +229,7 @@ public class JFrameApp extends javax.swing.JFrame {
         GameDescription partita = engine.getGame();
         Parser parser = engine.getParser();
         try{
-            ParserOutput p = parser.parse(comando, partita.getComandi(), partita.getStanzaCorrente().getObjects(), partita.getInventario(),partita.getOggettiGioco());
+            ParserOutput p = parser.analizza(comando, partita.getComandi(), partita.getStanzaCorrente().getObjects(), partita.getInventario(),partita.getOggettiGioco());
             partita.setNumMosse(partita.getNumMosse()+1);
             labelNumMosse.setText(""+partita.getNumMosse());
             partita.nextMove(p, System.out, this,jPanel1,background);
