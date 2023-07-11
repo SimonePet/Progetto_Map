@@ -1,6 +1,22 @@
 package di.uniba.map.b.adventure.messaggi;
 
-public class MessaggiConversazione {
+/**
+ * Stringhe relative a messaggi della conversazione.
+ * La classe è dichiarata final perchè non può essere estesa da altre classi.
+ * La classe è utilizzata come classe di utilità con metodi e costanti accessibili in modo statico.
+ */
+public final  class MessaggiConversazione {
+
+    /**
+     * Costruttore privato della classe MessaggiConversazione.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i membri della classe sono dichiarati come costanti statiche e la classe è progettata per essere utilizzata come classe di utilità.
+     * Non è necessario creare istanze di questa classe.
+     */
+    private MessaggiConversazione() {
+
+    }
+
     public static final String MSG_UTENTE_1_OPZ_1 = "Aiuto venitemi a salvare";
     public static final String MSG_UTENTE_1_OPZ_2 = "Perfavore portatemi una birra";
     public static final String MSG_RADIO_1_OPZ_1 = "Al momento siamo impegnati in altre missioni più urgenti. Teniamoci in contatto, tra 5/6 giorni forse passeremo.$Ma come ti chiami?::audio1";

@@ -7,16 +7,19 @@ package di.uniba.map.b.adventure.messaggi;
  */
 public final class MessaggioCovo {
     /**
-     * Costruttore privato della classe MessaggioCovo. Serve ad impedirne l'istanziazione.
+     * Costruttore privato della classe MessaggioCovo.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i membri della classe sono dichiarati come costanti statiche e la classe è progettata per essere utilizzata come classe di utilità.
+     * Non è necessario creare istanze di questa classe.
      */
     private MessaggioCovo() {
+
     }
     private static final String NOME = "Covo";
     private static final String DESCRIZIONE_CORTA = "Ti trovi nel covo militare.";
     private static final String DESCRIZIONE_COMPLETA = "Improvvisamente si apre un passaggio segreto dando accesso al covo "
             + "militare.";
     private static final String OSSERVA = "All’interno del covo trovi: una vela,un fucile, un’accetta e delle corde.";
-    private static final String RITORNATO = "Sei tornato nel covo.";
     private static final String NO_NORD = "Hai sbloccato un superpotere: puoi oltrepassare i muri...";
     private static final String SUD = "Ti sei spostato a sud del covo.";
     private static final String NO_EST = "Non c'e' nulla da vedere qui...";
@@ -29,9 +32,6 @@ public final class MessaggioCovo {
     }
     public static String getOsserva() {
         return MessaggioCovo.OSSERVA;
-    }
-    public static String getRitornato() {
-        return MessaggioCovo.RITORNATO;
     }
     public static String getNoNord() {
         return MessaggioCovo.NO_NORD;

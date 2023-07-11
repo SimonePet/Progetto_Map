@@ -7,10 +7,15 @@ package di.uniba.map.b.adventure.messaggi;
  */
 public final class MessaggioApprodo {
     /**
-     *Costruttore privato della classe MessaggioApprodo. Serve ad impedirne l'istanziazione.
+     * Costruttore privato della classe MessaggioApprodo.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i membri della classe sono dichiarati come costanti statiche e la classe è progettata per essere utilizzata come classe di utilità.
+     * Non è necessario creare istanze di questa classe.
      */
-    private  MessaggioApprodo() {
+    private MessaggioApprodo() {
+
     }
+
     private static final String NOME = "Approdo";
     private static final String DESCRIZIONE_COMPLETA = "Lentamente riapri gli occhi e ti ritrovi spiaggiato su una costa "
             + "sconosciuta, il mare agitato che si infrange sulle rocce\ncircostanti è l'unico suono che senti.\n"
@@ -19,7 +24,6 @@ public final class MessaggioApprodo {
             + "Questo è il tuo alter ego che ti parla e ti accompagnerà durante tutta la tua avventura.";
     private static final String DESCRIZIONE_CORTA = "Ti trovi sulla costa nella quale ti sei risvegliato!";
     private static final String OSSERVA = "Sulla sabbia c'e' solo sabbia.";
-    private static final String RITORNATO = "Sei tornato sulla costa nella quale ti sei risvegliato!";
     private static final String NORD = "Ti sei spostato a nord dell'approdo.";
     private static final String OVEST = "Ti sei spostato a ovest dell'approdo.";
     private static final String NO_SUD = "Se fossi Federica Pellegrini ai suoi tempi d'oro potresti nuotare...";
@@ -33,9 +37,6 @@ public final class MessaggioApprodo {
     }
     public static String getOsserva() {
         return MessaggioApprodo.OSSERVA;
-    }
-    public static String getRitornato() {
-        return MessaggioApprodo.RITORNATO;
     }
     public static String getNord() {
         return MessaggioApprodo.NORD;

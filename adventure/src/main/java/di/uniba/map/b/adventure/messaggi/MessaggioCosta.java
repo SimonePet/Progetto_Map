@@ -7,10 +7,15 @@ package di.uniba.map.b.adventure.messaggi;
  */
 public final class MessaggioCosta {
     /**
-     * Costruttore privato della classe MessaggioCosta. Serve ad impedirne l'istanziazione.
+     * Costruttore privato della classe MessaggioCosta.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i membri della classe sono dichiarati come costanti statiche e la classe è progettata per essere utilizzata come classe di utilità.
+     * Non è necessario creare istanze di questa classe.
      */
     private MessaggioCosta() {
+
     }
+
     private static final String NOME = "Costa";
     private static final String DESCRIZIONE_CORTA = "Ti trovi su una costa rocciosa e frastagliata.";
     private static final String DESCRIZIONE_COMPLETA = "La camminata sembra non avere fine e il tuo corpo è stanco "
@@ -18,7 +23,6 @@ public final class MessaggioCosta {
             + "frastagliata.";
     private static final String OSSERVA = "Roccia, pietre, sassolini! Ma non solo... sembra esserci la carcassa "
             + "di una imbarcazione.";
-    private static final String RITORNATO = "Sei tornato sulla costa rocciosa e frastagliata.";
     private static final String NO_NORD = "Provi a scalare la montagna, ma tu sei un uomo di mare potresti mai "
             + "diventare improvvisamente un alpino.";
     private static final String SUD = "Ti sei spostato a sud della costa.";
@@ -48,9 +52,6 @@ public final class MessaggioCosta {
     }
     public static String getOsserva() {
         return MessaggioCosta.OSSERVA;
-    }
-    public static String getRitornato() {
-        return MessaggioCosta.RITORNATO;
     }
     public static String getNoNord() {
         return MessaggioCosta.NO_NORD;

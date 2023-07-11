@@ -5,9 +5,13 @@ package di.uniba.map.b.adventure.messaggi;
  */
 public final class MessaggioOggetti {
     /**
-     * Costruttore privato della classe Messaggio. Serve ad impedirne l'istanziazione.
+     * Costruttore privato della classe MessaggioOggetti.
+     * Questo costruttore è dichiarato come privato per impedire l'istanziazione della classe.
+     * Tutti i membri della classe sono dichiarati come costanti statiche e la classe è progettata per essere utilizzata come classe di utilità.
+     * Non è necessario creare istanze di questa classe.
      */
     private MessaggioOggetti() {
+
     }
 
     private static final String DESCRZIONE_RADIO = "E' una vecchia radio a pile..."
