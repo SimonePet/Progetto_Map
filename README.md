@@ -14,7 +14,7 @@
   - [JDBC](#jdbc)
   - [Thread](#thread)
   - [Socket](#socket)
-  - [Lambda expressions](#lambda-expressions)
+  - [Lambda expressions & pipeline e stream](#lambda-expressions)
   - [Swing](#swing)
 
 ---
@@ -180,7 +180,7 @@ Nel momento in cui l'utente seleziona la risposta viene invocato il metodo stati
 Quando l'utente spegne la radio oppure chiude la finestra vengono chiusi il server socket e il socket client per liberare le risorse, ma soprattutto vengono interrotti i due thread che eseguivano il Client e il Server.
 
 ---
-### Lambda expressions<a name="lambda-expressions"></a>
+### Lambda expressions & pipeline e stream<a name="lambda-expressions"></a>
 Abbiamo creato due interfacce funzionali: SalvaPartita e EsistenzaPartita.
 Queste ultime sono delle interfacce funzionali che hanno un solo metodo astratto.
 
@@ -204,13 +204,26 @@ L'interfaccia funzionale EsistenzaPartita ha un metodo astratto 'test' che prend
 ![Lambda2](/espressioneLambda2.png)
 
 creiamo un'istanza dell'interfaccia funzionale EsistenzaPartita utilizzando un'espressione lambda. L'espressione lambda definisce l'implementazione del metodo astratto dell'interfaccia funzionale EsistenzaPartita.
-Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo test, che come definito dall'espressione lambda (nome) -> db.partitaEsistente(nome)
-passa il nome della partita al metodo partitaEsistente della classe DatabaseController che verifica l'esistenza della partita nel DB, se la trova restituisce true, altrimenti false.
+Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo test, che come definito dall'espressione lambda 
+
+(nome) -> db.partitaEsistente(nome), passa il nome della partita al metodo partitaEsistente della classe DatabaseController che verifica l'esistenza della partita nel DB, se la trova restituisce true, altrimenti false.
+
+
+#### visualizzazione partite terminate con espressione lambda:
+![partiteTerm2](/partiteTerminate2.png)
+Quando l'utente clicca il bottone per visualizzare tutte le partite terminate parte il metodo btnPartiteTerminateActionPerformed che salva in 'partite' la lista di tutte le partite, e chiama il metodo visualizzaPartiteTerminate.
+
+'visualizzaPartiteTerminate' si aspetta come parametri una lista di elementi di tipo Partita e un'istanza dell'interfaccia funzionale Predicate&lt;Partita&gt;.
+L'interfaccia funzionale Predicate&lt;T&gt; ha un solo metodo astratto: boolean test(T t).
+Per fornire un'implementazione del metodo test dell'interfaccia funzionale passiamo come argomento alla funzione visualizzaPartiteTerminate l'espressione lambda p -> p.terminata(), la quale rappresenta l'implementazione del metodo 'test'.
 
 
 ![partiteTerm1](/partiteTerminate1.png)
 
-![partiteTerm2](/partiteTerminate2.png)
+
+utilizzando la lista degli oggetti di classe Partita, cicliamo su tutte le partite e per ognuna di esse chiamiamo il metodo test dell'interfaccia funzionale  Predicate &lt;Partita&gt; che utilizzando l'implementazione data dall'espressione lambda chiama il metodo terminata() della classe Partita che restituisce true se la partita è terminata, false altrimenti. Se la partita è terminata aggiunge una nuova riga nella tabella con la rispettiva partita terminata.  
+
+
 
 
 ---
