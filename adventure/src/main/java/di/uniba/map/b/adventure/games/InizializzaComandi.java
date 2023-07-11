@@ -262,7 +262,7 @@ public final class InizializzaComandi {
     private static void initLocalizzazione(final GiocoNaufragioIsola gni) {
         Comando localizzazione = new Comando(TipoComando.LOCALIZZAZIONE, "localizzazione");
         localizzazione.setAlias(new String[]{"localizzazione", "posizione", "dove", "ubicazione", "posizione"});
-        localizzazione.setDescrizione("Localizzazione :\t\t Comando che ti permette di riconoscere la tua posizione all'interno della mappa.");
+        localizzazione.setDescrizione("Localizzazione :\t Comando che ti permette di riconoscere la tua posizione all'interno della mappa.");
         gni.getComandi().add(localizzazione);
     }
 

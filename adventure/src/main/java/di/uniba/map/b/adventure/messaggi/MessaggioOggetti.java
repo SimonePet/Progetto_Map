@@ -22,7 +22,7 @@ public final class MessaggioOggetti {
             + " disegnata a mano...";
     private static final String DESCRIZIONE_TELECOMANDO = "Un semplice telecomando.";
     private static final String DESCRIZIONE_ACCIARINO = "Un acciarino, potresti riscaldarti o darti fuoco.";
-    private static final String DESCRIZIONE_LASTRA = "Una lastra incisa.";
+    private static final String DESCRIZIONE_LASTRA = "Una lastra incisa, dovrei leggerla.";
     private static final String RACCOGLI_LASTRA = "Ma cosa pensi di essere....Il campione di bodybuilding.";
     private static final String DESCRIZIONE_LAMPADA = "Una lampada a petrolio, potrebbe essere utile per illuminare qualcosa.";
     private static final String DESCRIZIONE_CIFRARIO = "Un libricino che spiega come decifrare delle strane scritture.";
