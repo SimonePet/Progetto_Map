@@ -418,7 +418,20 @@ ParserOutput *-- Comando
 
 Parser <.. ParserOutput : create
 
+Client <.. JDialogRadio : create
+Server <.. JDialogRadio : create
 
+Parser <.. Engine : create
+Engine *-- Parser
+
+ThreadTempo <.. JFrameApp : create
+JFrameApp *-- ThreadTempo
+
+Classifica <.. JDialogClassificaUtenti : create
+
+Engine <.. JFrameApp : create
+JFrameApp *-- Engine
+JDialogAbbandona *-- Engine
 ```
 ## Specifica algebrica
 
