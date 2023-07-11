@@ -347,6 +347,19 @@ class Inventario{
     + aggiungi(Oggetto):void
     + rimuovi(Oggetto):void
 }
+class Parser{
+    + Parser(Set<String>)
+    + parse(String,List<Comando>,List<Oggetto,List<Oggetto,List<Oggetto):ParserOutput
+    - cercaComando(String,List<Comando>):int
+    - cercaOggetto(String,List<Oggetto>):int
+}
+
+class ThreadTempo{
+    + ThreadTempo(JFrameApp,int,int,int)
+    + printTime(String):void
+    + run():void
+}
+
 ```
 ## Specifica algebrica
 
