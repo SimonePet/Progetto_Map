@@ -235,6 +235,23 @@ class ControlGioco{
     - void comandoNonRiconosciuto(JFrameApp)
     - void inizializzaOrdineComandi(GiocoNaufragioIsola)
 }
+class OggettoContenitore{
+    - List<Oggetto> list
+    + OggettoContenitore(int)
+    + OggettoContenitore(int,String)
+    + OggettoContenitore(int,String,String)
+    + OggettoContenitore(int,String,String,Set<String>)
+    + List<Oggetto> getList()
+    + void setList(List<Oggetto>)
+    + void add(Oggetto)
+    + void remove(Oggetto)
+}
+
+class GiocoNaufragioIsola{
+    + GiocoNaufragioIsola()
+    + void init()
+    + void nextMove(ParserOutput,PrintStream,JPanel,JLabel)
+}
 ```
 ## Specifica algebrica
 
