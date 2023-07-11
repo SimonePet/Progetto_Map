@@ -19,9 +19,9 @@ public class ThreadTempo implements Runnable {
     /**
      * Costruisce un nuovo oggetto ThreadTempo con i valori iniziali dei minuti e dei secondi.
      *
-     * @param frameCorr il frame corrente
-     * @param numMinutiInizialiCorr il numero di minuti iniziali
-     * @param numSecondiInizialiCorr il numero di secondi iniziali
+     * @param frameCorr              Frame corrente
+     * @param numMinutiInizialiCorr  Numero di minuti iniziali
+     * @param numSecondiInizialiCorr Numero di secondi iniziali
      */
     public ThreadTempo(final JFrameApp frameCorr, final int numMinutiInizialiCorr, final int numSecondiInizialiCorr, final int numOreCorr) {
         this.numOre = numOreCorr;
@@ -40,7 +40,7 @@ public class ThreadTempo implements Runnable {
     @Override
     public void run() {
         Engine e = frame.getEngine();
-        for (int i = this.numSecondi+60*this.numMinuti+3600*this.numOre; i != -1; i++) {
+        for (int i = this.numSecondi + 60 * this.numMinuti + 3600 * this.numOre; i != -1; i++) {
             if (i % 3600 == 0 && i != 0) {
                 this.numOre++;
                 this.numMinuti = 0;
@@ -92,10 +92,10 @@ public class ThreadTempo implements Runnable {
     /**
      * Stampa il tempo sulla label del frame.
      *
-     * @param time il tempo da stampare
+     * @param tempo il tempo da stampare
      */
-    public void printTime(final String time) {
-        frame.writeOnLabelTime(time);
+    public void printTime(final String tempo) {
+        frame.writeOnLabelTime(tempo);
     }
 
 }
