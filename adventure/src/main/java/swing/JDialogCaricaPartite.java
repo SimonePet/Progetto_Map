@@ -38,87 +38,91 @@ public class JDialogCaricaPartite extends JDialog {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        tastoConferma = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jLabel1 = new javax.swing.JLabel();
-        lblErrore = new javax.swing.JLabel();
+        btnConferma = new javax.swing.JButton();
+        jComboBoxPartite = new javax.swing.JComboBox<>();
+        lblMessaggioCarica = new javax.swing.JLabel();
+        lblPartitaNonSelezionata = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setAlwaysOnTop(true);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(final java.awt.event.WindowEvent evt) {
-                formWindowOpened();
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
-        tastoConferma.setText("CONFERMA");
-        tastoConferma.addActionListener(this::tastoConfermaActionPerformed);
-
-        jComboBox1.setPreferredSize(new java.awt.Dimension(10, 24));
-        jComboBox1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(final java.awt.event.KeyEvent evt) {
-                jComboBox1KeyPressed(evt);
+        btnConferma.setText("CONFERMA");
+        btnConferma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfermaActionPerformed(evt);
             }
         });
 
-        jLabel1.setText("Quale partita vuoi riprendere?");
+        jComboBoxPartite.setPreferredSize(new java.awt.Dimension(10, 24));
+        jComboBoxPartite.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jComboBoxPartiteKeyPressed(evt);
+            }
+        });
 
-        lblErrore.setForeground(new java.awt.Color(255, 51, 51));
+        lblMessaggioCarica.setText("Quale partita vuoi riprendere?");
+
+        lblPartitaNonSelezionata.setForeground(new java.awt.Color(255, 51, 51));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(105, 105, 105)
-                                .addComponent(tastoConferma)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addContainerGap(76, Short.MAX_VALUE)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(34, 34, 34))
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(btnConferma)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(76, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblPartitaNonSelezionata, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBoxPartite, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblMessaggioCarica, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(34, 34, 34))
         );
         jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(28, 28, 28)
-                                .addComponent(jLabel1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(tastoConferma)
-                                .addGap(18, 18, 18)
-                                .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(42, Short.MAX_VALUE))
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(lblMessaggioCarica)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jComboBoxPartite, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnConferma)
+                .addGap(18, 18, 18)
+                .addComponent(lblPartitaNonSelezionata, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(42, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 6, Short.MAX_VALUE)
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 6, Short.MAX_VALUE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         getAccessibleContext().setAccessibleParent(null);
 
         pack();
-    } // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void tastoConfermaActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_tastoConfermaActionPerformed
-        String nomePartitaSelezionata = (String) jComboBox1.getSelectedItem();
+    private void btnConfermaActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfermaActionPerformed
+        String nomePartitaSelezionata = (String) jComboBoxPartite.getSelectedItem();
         if (nomePartitaSelezionata == null) {
-            lblErrore.setText("Nessuna partita selezionata");
+            lblPartitaNonSelezionata.setText("Nessuna partita selezionata");
             return;
         }
         FileMatchController f = new FileMatchController("salvataggioPartita.txt", "resources");
@@ -132,9 +136,9 @@ public class JDialogCaricaPartite extends JDialog {
             System.err.println(ex.getMessage());
         }
         this.dispose();
-    } //GEN-LAST:event_tastoConfermaActionPerformed
+    }//GEN-LAST:event_btnConfermaActionPerformed
 
-    private void formWindowOpened() { //GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "sfondo frame start", jPanel1);
         this.setIconImage(icon.getImage());
@@ -150,18 +154,18 @@ public class JDialogCaricaPartite extends JDialog {
                 i++;
             }
             model[0] = new DefaultComboBoxModel(comboBox);
-            jComboBox1.setModel(model[0]);
+            jComboBoxPartite.setModel(model[0]);
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
-    } //GEN-LAST:event_formWindowOpened
+    }//GEN-LAST:event_formWindowOpened
 
-    private void jComboBox1KeyPressed(final java.awt.event.KeyEvent evt) { //GEN-FIRST:event_jComboBox1KeyPressed
+    private void jComboBoxPartiteKeyPressed(final java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jComboBoxPartiteKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             ActionEvent e = new ActionEvent(this, 1, "");
-            tastoConfermaActionPerformed(e);
+            btnConfermaActionPerformed(e);
         }
-    } //GEN-LAST:event_jComboBox1KeyPressed
+    }//GEN-LAST:event_jComboBoxPartiteKeyPressed
 
 
     public void avvia() {
@@ -197,11 +201,11 @@ public class JDialogCaricaPartite extends JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton btnConferma;
+    private javax.swing.JComboBox<String> jComboBoxPartite;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JLabel lblErrore;
-    private javax.swing.JButton tastoConferma;
+    private javax.swing.JLabel lblMessaggioCarica;
+    private javax.swing.JLabel lblPartitaNonSelezionata;
     // End of variables declaration//GEN-END:variables
     private ComboBoxModel[] model = new ComboBoxModel[1];
     private FrameStart frameStart;

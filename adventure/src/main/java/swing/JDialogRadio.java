@@ -42,19 +42,16 @@ public class JDialogRadio extends javax.swing.JDialog {
     }
 
     private void initComponents() {
-
-        jButton1 = new javax.swing.JButton();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel = new javax.swing.JPanel();
+        jScrollPane = new javax.swing.JScrollPane();
+        jTextArea = new javax.swing.JTextArea();
+        jPanelOpzioni = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
         jRadioButton2 = new javax.swing.JRadioButton();
         btnConferma = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        lblTitolo = new javax.swing.JLabel();
+        btnSpegniRadio = new javax.swing.JButton();
 
-        jButton1.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -67,9 +64,9 @@ public class JDialogRadio extends javax.swing.JDialog {
             }
         });
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane1.setViewportView(jTextArea1);
+        jTextArea.setColumns(20);
+        jTextArea.setRows(5);
+        jScrollPane.setViewportView(jTextArea);
 
         jRadioButton1.setFont(new java.awt.Font("Segoe UI", Font.PLAIN, 14)); // NOI18N
         jRadioButton1.setText("Aiuto venitemi a salvare");
@@ -100,8 +97,8 @@ public class JDialogRadio extends javax.swing.JDialog {
         btnConferma.setText("CONFERMA");
         btnConferma.addActionListener(this::btnConfermaActionPerformed);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanelOpzioni);
+        jPanelOpzioni.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
                 jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
@@ -124,43 +121,43 @@ public class JDialogRadio extends javax.swing.JDialog {
                                 .addContainerGap(21, Short.MAX_VALUE))
         );
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 18)); // NOI18N
-        jLabel2.setText("CONVERSAZIONE RADIO CON MILITARI");
+        lblTitolo.setFont(new java.awt.Font("Segoe UI", Font.BOLD, 18)); // NOI18N
+        lblTitolo.setText("CONVERSAZIONE RADIO CON MILITARI");
 
-        jButton2.setText("SPEGNI RADIO");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
+        btnSpegniRadio.setText("SPEGNI RADIO");
+        btnSpegniRadio.addActionListener(this::jButton2ActionPerformed);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel);
+        jPanel.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addContainerGap()
-                                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addComponent(lblTitolo, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addGap(0, 0, Short.MAX_VALUE))
-                                        .addComponent(jPanel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addComponent(jPanelOpzioni, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addContainerGap())
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(50, 50, 50)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                        .addComponent(jButton2)
-                                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(btnSpegniRadio)
+                                        .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 707, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addContainerGap(55, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel2)
+                                        .addComponent(lblTitolo)
                                         .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addGap(14, 14, 14)
-                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(btnSpegniRadio, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 256, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jPanelOpzioni, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(63, 63, 63))
         );
 
@@ -168,50 +165,48 @@ public class JDialogRadio extends javax.swing.JDialog {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 516, Short.MAX_VALUE)
+                        .addComponent(jPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 516, Short.MAX_VALUE)
         );
 
         pack();
-    } // </editor-fold>//GEN-END:initComponents
+    } // </editor-fold>                        
 
-    private void jRadioButton1ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void jRadioButton1ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         jRadioButton2.setSelected(false);
-    } //GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_jRadioButton1ActionPerformed
 
-    private void formWindowOpened() { //GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened() {//GEN-FIRST:event_formWindowOpened
         this.setResizable(false);
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
         Color c = new Color(255, 255, 255, 150);
-        jScrollPane1.getViewport().setOpaque(false);
-        jTextArea1.setBackground(c);
-        jTextArea1.setOpaque(false);
-        jScrollPane1.setOpaque(false);
-        jScrollPane1.setBackground(c);
-        jPanel2.setOpaque(false);
-        jPanel2.setBackground(c);
-        jButton1.setBackground(c);
-        jButton1.setOpaque(false);
-        jButton2.setOpaque(false);
-        jPanel2.setBackground(c);
+        jScrollPane.getViewport().setOpaque(false);
+        jTextArea.setBackground(c);
+        jTextArea.setOpaque(false);
+        jScrollPane.setOpaque(false);
+        jScrollPane.setBackground(c);
+        jPanelOpzioni.setOpaque(false);
+        jPanelOpzioni.setBackground(c);
+        btnSpegniRadio.setOpaque(false);
+        jPanelOpzioni.setBackground(c);
         try {
-            //Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_CONVERSAZIONE,"conversazione", jPanel1);
+            //Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_CONVERSAZIONE,"conversazione", jPanel);
             BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_CONVERSAZIONE + ".png"));
-            Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
+            Image dimg = img.getScaledInstance(jPanel.getWidth(), jPanel.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
-            jPanel1.setBackground(new Color(0, 0, 0, 0));
-            jPanel1.setOpaque(false);
-            jPanel1.setBorder(BorderFactory.createEmptyBorder());
-            jPanel1.setLayout(new BorderLayout());
+            jPanel.setBackground(new Color(0, 0, 0, 0));
+            jPanel.setOpaque(false);
+            jPanel.setBorder(BorderFactory.createEmptyBorder());
+            jPanel.setLayout(new BorderLayout());
             JLabel background = new JLabel(imageIcon);
-            jPanel1.add(background);
+            jPanel.add(background);
             background.setLayout(new FlowLayout());
-            jPanel1.revalidate();
-            jPanel1.repaint();
+            jPanel.revalidate();
+            jPanel.repaint();
             // avvia server socket
             avviaServer();
             // avvia connessione client socket al server socket
@@ -219,9 +214,9 @@ public class JDialogRadio extends javax.swing.JDialog {
         } catch (IOException ex) {
             System.err.println(ex.getMessage());
         }
-    } //GEN-LAST:event_formWindowOpened
+    }//GEN-LAST:event_formWindowOpened
 
-    private void btnConfermaActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_btnConfermaActionPerformed
+    private void btnConfermaActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfermaActionPerformed
         String messaggio;
         if (jRadioButton1.isSelected()) {
             messaggio = jRadioButton1.getText();
@@ -232,46 +227,46 @@ public class JDialogRadio extends javax.swing.JDialog {
         numDomanda++;
         Client.inviaMessaggio(messaggio);
         setNuoveDomande();
-    } //GEN-LAST:event_btnConfermaActionPerformed
+    }//GEN-LAST:event_btnConfermaActionPerformed
 
-    private void jRadioButton1KeyReleased() { //GEN-FIRST:event_jRadioButton1KeyReleased
+    private void jRadioButton1KeyReleased() {//GEN-FIRST:event_jRadioButton1KeyReleased
 
-    } //GEN-LAST:event_jRadioButton1KeyReleased
+    }//GEN-LAST:event_jRadioButton1KeyReleased
 
-    private void jRadioButton2KeyReleased() { //GEN-FIRST:event_jRadioButton2KeyReleased
+    private void jRadioButton2KeyReleased() {//GEN-FIRST:event_jRadioButton2KeyReleased
 
-    } //GEN-LAST:event_jRadioButton2KeyReleased
+    }//GEN-LAST:event_jRadioButton2KeyReleased
 
-    private void jRadioButton2ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jRadioButton2ActionPerformed
+    private void jRadioButton2ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         jRadioButton1.setSelected(false);
-    } //GEN-LAST:event_jRadioButton2ActionPerformed
+    }//GEN-LAST:event_jRadioButton2ActionPerformed
 
-    private void jButton2ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton2ActionPerformed
+    private void jButton2ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         numDomanda = 1;
         Server.stop();
         threadS.interrupt();
         threadC.interrupt();
         this.dispose();
-    } //GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton2ActionPerformed
 
-    private void jRadioButton1KeyPressed(final java.awt.event.KeyEvent evt) { //GEN-FIRST:event_jRadioButton1KeyPressed
+    private void jRadioButton1KeyPressed(final java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jRadioButton1KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             ActionEvent e = new ActionEvent(this, 1, "");
             btnConfermaActionPerformed(e);
         }
-    } //GEN-LAST:event_jRadioButton1KeyPressed
+    }//GEN-LAST:event_jRadioButton1KeyPressed
 
-    private void jRadioButton2KeyPressed(final java.awt.event.KeyEvent evt) { //GEN-FIRST:event_jRadioButton2KeyPressed
+    private void jRadioButton2KeyPressed(final java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jRadioButton2KeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             ActionEvent e = new ActionEvent(this, 1, "");
             btnConfermaActionPerformed(e);
         }
-    } //GEN-LAST:event_jRadioButton2KeyPressed
+    }//GEN-LAST:event_jRadioButton2KeyPressed
 
-    private void formWindowClosed() { //GEN-FIRST:event_formWindowClosed
+    private void formWindowClosed() {//GEN-FIRST:event_formWindowClosed
         numDomanda = 1;
         Server.stop();
-    } //GEN-LAST:event_formWindowClosed
+    }//GEN-LAST:event_formWindowClosed
 
     public static void avviaServer() throws IOException {
         Server threadServer = new Server();
@@ -282,14 +277,14 @@ public class JDialogRadio extends javax.swing.JDialog {
 
     public static void avviaClient() {
         Client client = new Client("localhost", 1234);
-        client.setTextArea(jTextArea1);
+        client.setTextArea(jTextArea);
         Thread t2 = new Thread(client);
         t2.start();
         threadC = t2;
     }
 
     public JTextArea getTextArea() {
-        return jTextArea1;
+        return jTextArea;
     }
 
     public void setNuoveDomande() {
@@ -331,15 +326,14 @@ public class JDialogRadio extends javax.swing.JDialog {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnConferma;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JButton btnSpegniRadio;
+    private javax.swing.JLabel lblTitolo;
+    private javax.swing.JPanel jPanel;
+    private javax.swing.JPanel jPanelOpzioni;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private static javax.swing.JTextArea jTextArea1;
+    private javax.swing.JScrollPane jScrollPane;
+    private static javax.swing.JTextArea jTextArea;
     // End of variables declaration//GEN-END:variables
     private static int numDomanda = 1;
     private static String nomeUtente;

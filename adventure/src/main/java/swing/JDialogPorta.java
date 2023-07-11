@@ -42,67 +42,118 @@ public class JDialogPorta extends javax.swing.JDialog {
 
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jPanel1 = new javax.swing.JPanel();
+
+        jPanel = new javax.swing.JPanel();
         txtCodice = new javax.swing.JTextField();
-        jButton6 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
+        btn6 = new javax.swing.JButton();
+        btn5 = new javax.swing.JButton();
+        btn3 = new javax.swing.JButton();
+        btn2 = new javax.swing.JButton();
+        btn1 = new javax.swing.JButton();
+        btn7 = new javax.swing.JButton();
+        btn9 = new javax.swing.JButton();
+        btn8 = new javax.swing.JButton();
         btnConferma = new javax.swing.JButton();
         btnCancella = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btn4 = new javax.swing.JButton();
         panelErrore = new javax.swing.JPanel();
         lblErrore = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(final java.awt.event.WindowEvent evt) {
-                formWindowOpened();
+            public void windowOpened(java.awt.event.WindowEvent evt) {
+                formWindowOpened(evt);
             }
         });
 
         txtCodice.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(final java.awt.event.KeyEvent evt) {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
                 txtCodiceKeyPressed(evt);
             }
-
-            public void keyReleased(final java.awt.event.KeyEvent evt) {
-                txtCodiceKeyReleased();
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtCodiceKeyReleased(evt);
             }
         });
-        jButton1.setText("1");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
-        jButton2.setText("2");
-        jButton2.addActionListener(this::jButton2ActionPerformed);
-        jButton3.setText("3");
-        jButton3.addActionListener(this::jButton3ActionPerformed);
-        jButton4.setText("4");
-        jButton4.addActionListener(this::jButton4ActionPerformed);
-        jButton5.setText("5");
-        jButton5.addActionListener(this::jButton5ActionPerformed);
-        jButton6.setText("6");
-        jButton6.addActionListener(this::jButton6ActionPerformed);
-        jButton7.setText("8");
-        jButton7.addActionListener(this::jButton7ActionPerformed);
-        jButton8.setText("7");
-        jButton8.addActionListener(this::jButton8ActionPerformed);
-        jButton9.setText("9");
-        jButton9.addActionListener(this::jButton9ActionPerformed);
 
+        btn6.setText("6");
+        btn6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn6ActionPerformed(evt);
+            }
+        });
 
+        btn5.setText("5");
+        btn5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn5ActionPerformed(evt);
+            }
+        });
+
+        btn3.setText("3");
+        btn3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn3ActionPerformed(evt);
+            }
+        });
+
+        btn2.setText("2");
+        btn2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn2ActionPerformed(evt);
+            }
+        });
+
+        btn1.setText("1");
+        btn1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn1ActionPerformed(evt);
+            }
+        });
+
+        btn7.setText("7");
+        btn7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn7ActionPerformed(evt);
+            }
+        });
+
+        btn9.setText("9");
+        btn9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn9ActionPerformed(evt);
+            }
+        });
+
+        btn8.setText("8");
+        btn8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn8ActionPerformed(evt);
+            }
+        });
 
         btnConferma.setBackground(new java.awt.Color(153, 255, 153));
         btnConferma.setText("CONFERMA");
-        btnConferma.addActionListener(this::btnConfermaActionPerformed);
+        btnConferma.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnConfermaActionPerformed(evt);
+            }
+        });
 
         btnCancella.setBackground(new java.awt.Color(255, 102, 102));
         btnCancella.setText("CANCELLA");
-        btnCancella.addActionListener(this::btnCancellaActionPerformed);
+        btnCancella.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCancellaActionPerformed(evt);
+            }
+        });
+
+        btn4.setText("4");
+        btn4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn4ActionPerformed(evt);
+            }
+        });
 
         panelErrore.setBackground(new java.awt.Color(255, 102, 102));
         panelErrore.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -113,115 +164,113 @@ public class JDialogPorta extends javax.swing.JDialog {
         javax.swing.GroupLayout panelErroreLayout = new javax.swing.GroupLayout(panelErrore);
         panelErrore.setLayout(panelErroreLayout);
         panelErroreLayout.setHorizontalGroup(
-                panelErroreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelErroreLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(lblErrore, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
-                                .addContainerGap())
+            panelErroreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelErroreLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addComponent(lblErrore, javax.swing.GroupLayout.DEFAULT_SIZE, 135, Short.MAX_VALUE)
+                .addContainerGap())
         );
         panelErroreLayout.setVerticalGroup(
-                panelErroreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(panelErroreLayout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            panelErroreLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelErroreLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(lblErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(158, 158, 158)
-                                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addComponent(txtCodice, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jButton5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                                .addComponent(jButton8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                                .addComponent(jButton9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(113, 113, 113)
-                                                .addComponent(btnConferma)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(btnCancella))
-                                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                                .addGap(139, 139, 139)
-                                                .addComponent(panelErrore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addContainerGap(147, Short.MAX_VALUE))
+        javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
+        jPanel.setLayout(jPanelLayout);
+        jPanelLayout.setHorizontalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLayout.createSequentialGroup()
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelLayout.createSequentialGroup()
+                        .addGap(158, 158, 158)
+                        .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanelLayout.createSequentialGroup()
+                                .addComponent(btn1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn3, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(txtCodice, javax.swing.GroupLayout.PREFERRED_SIZE, 123, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelLayout.createSequentialGroup()
+                                .addComponent(btn4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn5, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jPanelLayout.createSequentialGroup()
+                                .addComponent(btn7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn8, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btn9, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jPanelLayout.createSequentialGroup()
+                        .addGap(113, 113, 113)
+                        .addComponent(btnConferma)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnCancella))
+                    .addGroup(jPanelLayout.createSequentialGroup()
+                        .addGap(139, 139, 139)
+                        .addComponent(panelErrore, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(153, Short.MAX_VALUE))
         );
-        jPanel1Layout.setVerticalGroup(
-                jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(54, 54, 54)
-                                .addComponent(txtCodice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton1)
-                                        .addComponent(jButton2)
-                                        .addComponent(jButton3))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton4)
-                                        .addComponent(jButton5)
-                                        .addComponent(jButton6))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(jButton8)
-                                        .addComponent(jButton7)
-                                        .addComponent(jButton9))
-                                .addGap(18, 18, 18)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                        .addComponent(btnConferma)
-                                        .addComponent(btnCancella))
-                                .addGap(56, 56, 56)
-                                .addComponent(panelErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(89, Short.MAX_VALUE))
+        jPanelLayout.setVerticalGroup(
+            jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelLayout.createSequentialGroup()
+                .addGap(54, 54, 54)
+                .addComponent(txtCodice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn1)
+                    .addComponent(btn2)
+                    .addComponent(btn3))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn4)
+                    .addComponent(btn5)
+                    .addComponent(btn6))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btn7)
+                    .addComponent(btn8)
+                    .addComponent(btn9))
+                .addGap(18, 18, 18)
+                .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(btnConferma)
+                    .addComponent(btnCancella))
+                .addGap(56, 56, 56)
+                .addComponent(panelErrore, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addContainerGap())
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
-    } // </editor-fold>//GEN-END:initComponents
+    }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton8ActionPerformed
+    private void btn7ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
         txtCodice.setText(txtCodice.getText() + "7");
         Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
 
-    } //GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btn7ActionPerformed
 
-    private void jButton9ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton9ActionPerformed
+    private void btn9ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
         txtCodice.setText(txtCodice.getText() + "9");
         Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
-    } //GEN-LAST:event_jButton9ActionPerformed
+    }//GEN-LAST:event_btn9ActionPerformed
 
-    private void btnConfermaActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_btnConfermaActionPerformed
+    private void btnConfermaActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConfermaActionPerformed
         String codice = txtCodice.getText();
         if (codice.equalsIgnoreCase("2538")) {
             lblErrore.setText("CODICE CORRETTO");
@@ -237,81 +286,81 @@ public class JDialogPorta extends javax.swing.JDialog {
             panelErrore.setVisible(true);
             lblErrore.setText("CODICE ERRATO");
         }
-    } //GEN-LAST:event_btnConfermaActionPerformed
+    }//GEN-LAST:event_btnConfermaActionPerformed
 
-    private void btnCancellaActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_btnCancellaActionPerformed
+    private void btnCancellaActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancellaActionPerformed
         txtCodice.setText("");
-    } //GEN-LAST:event_btnCancellaActionPerformed
+    }//GEN-LAST:event_btnCancellaActionPerformed
 
-    private void jButton1ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton1ActionPerformed
+    private void btn1ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
         txtCodice.setText(txtCodice.getText() + "1");
         Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
-    } //GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btn1ActionPerformed
 
-    private void jButton2ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton2ActionPerformed
+    private void btn2ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
         txtCodice.setText(txtCodice.getText() + "2");
         Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
-    } //GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_btn2ActionPerformed
 
-    private void jButton3ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton3ActionPerformed
+    private void btn3ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
         txtCodice.setText(txtCodice.getText() + "3");
         Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
-    } //GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_btn3ActionPerformed
 
-    private void jButton4ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton4ActionPerformed
+    private void btn4ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
         txtCodice.setText(txtCodice.getText() + "4");
         Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
-    } //GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btn4ActionPerformed
 
-    private void jButton5ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton5ActionPerformed
+    private void btn5ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
         txtCodice.setText(txtCodice.getText() + "5");
         Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
-    } //GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btn5ActionPerformed
 
-    private void jButton6ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton6ActionPerformed
+    private void btn6ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
         txtCodice.setText(txtCodice.getText() + "6");
         Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
-    } //GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btn6ActionPerformed
 
-    private void jButton7ActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton7ActionPerformed
+    private void btn8ActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
         txtCodice.setText(txtCodice.getText() + "8");
         Suono.riproduciTraccia(Utils.PERCORSO_SUONI_STANZE + "bip", false);
-    } //GEN-LAST:event_jButton7ActionPerformed
+    }//GEN-LAST:event_btn8ActionPerformed
 
-    private void formWindowOpened() { //GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
         try {
             panelErrore.setVisible(false);
             String percorso;
             percorso = Utils.PERCORSO_IMMAGINI_STANZE + "porta.png";
             BufferedImage img = ImageIO.read(new File(percorso));
-            Image dimg = img.getScaledInstance(jPanel1.getWidth(), jPanel1.getHeight(), Image.SCALE_SMOOTH);
+            Image dimg = img.getScaledInstance(jPanel.getWidth(), jPanel.getHeight(), Image.SCALE_SMOOTH);
             ImageIcon imageIcon = new ImageIcon(dimg);
-            jPanel1.setBackground(new Color(0, 0, 0, 0));
-            jPanel1.setOpaque(false);
-            jPanel1.setBorder(BorderFactory.createEmptyBorder());
-            jPanel1.setLayout(new BorderLayout());
+            jPanel.setBackground(new Color(0, 0, 0, 0));
+            jPanel.setOpaque(false);
+            jPanel.setBorder(BorderFactory.createEmptyBorder());
+            jPanel.setLayout(new BorderLayout());
             JLabel background;
             background = new JLabel(imageIcon);
-            jPanel1.add(background);
+            jPanel.add(background);
             background.setLayout(new FlowLayout());
-            jPanel1.revalidate();
-            jPanel1.repaint();
+            jPanel.revalidate();
+            jPanel.repaint();
             txtCodice.setEditable(false);
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
-    } //GEN-LAST:event_formWindowOpened
+    }//GEN-LAST:event_formWindowOpened
 
-    private void txtCodiceKeyReleased() { //GEN-FIRST:event_txtCodiceKeyReleased
+    private void txtCodiceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodiceKeyReleased
 
-    } //GEN-LAST:event_txtCodiceKeyReleased
+    }//GEN-LAST:event_txtCodiceKeyReleased
 
-    private void txtCodiceKeyPressed(final java.awt.event.KeyEvent evt) { //GEN-FIRST:event_txtCodiceKeyPressed
+    private void txtCodiceKeyPressed(final java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodiceKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             ActionEvent e = new ActionEvent(this, 1, "");
             btnConfermaActionPerformed(e);
         }
-    } //GEN-LAST:event_txtCodiceKeyPressed
+    }//GEN-LAST:event_txtCodiceKeyPressed
 
 
     public void avvia() {
@@ -347,18 +396,18 @@ public class JDialogPorta extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn1;
+    private javax.swing.JButton btn2;
+    private javax.swing.JButton btn3;
+    private javax.swing.JButton btn4;
+    private javax.swing.JButton btn5;
+    private javax.swing.JButton btn6;
+    private javax.swing.JButton btn7;
+    private javax.swing.JButton btn8;
+    private javax.swing.JButton btn9;
     private javax.swing.JButton btnCancella;
     private javax.swing.JButton btnConferma;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel;
     private javax.swing.JLabel lblErrore;
     private javax.swing.JPanel panelErrore;
     private javax.swing.JTextField txtCodice;

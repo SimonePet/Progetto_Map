@@ -29,9 +29,10 @@ public class FrameStart extends javax.swing.JFrame {
     /**
      * Inizializza tutti i componenti del Frame.
      */
+     @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
-
-        jPanelPrincipale = new javax.swing.JPanel();
+        jPanel = new javax.swing.JPanel();
         lblNomeUtente = new javax.swing.JLabel();
         txtNomeUtente = new javax.swing.JTextField();
         btnNuovaPartita = new javax.swing.JButton();
@@ -74,7 +75,7 @@ public class FrameStart extends javax.swing.JFrame {
             }
         });
 
-        jPanelPrincipale.addMouseListener(new java.awt.event.MouseAdapter() {
+        jPanel.addMouseListener(new java.awt.event.MouseAdapter() {
             /**
              * Invocato quando il cursore del mouse entra nell'area del pannello.
              *
@@ -106,8 +107,8 @@ public class FrameStart extends javax.swing.JFrame {
         btnRanking.setText("RANKING UTENTI");
         btnRanking.addActionListener(this::btnRankingActionPerformed);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanelPrincipale);
-        jPanelPrincipale.setLayout(jPanel1Layout);
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel);
+        jPanel.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
                 jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addGroup(jPanel1Layout.createSequentialGroup()
@@ -144,15 +145,15 @@ public class FrameStart extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanelPrincipale, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
                 layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(jPanelPrincipale, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
-    }
+    }// </editor-fold>                        
 
     /**
      * Gestisce l'evento scatenato dall'azione del pulsante "NUOVA PARTITA".
@@ -161,7 +162,7 @@ public class FrameStart extends javax.swing.JFrame {
      *
      * @param evt Evento di azione scatenato dal pulsante "NUOVA PARTITA".
      */
-    private void nuovaPartitaActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_nuovaPartitaActionPerformed
+    private void nuovaPartitaActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuovaPartitaActionPerformed
         String username = txtNomeUtente.getText();
         if (!username.equalsIgnoreCase("")) {
             JFrameApp frame = new JFrameApp(username, this);
@@ -170,7 +171,8 @@ public class FrameStart extends javax.swing.JFrame {
         } else {
             lblNomeInesistente.setText("Username mancante!");
         }
-    } //GEN-LAST:event_nuovaPartitaActionPerformed
+    }//GEN-LAST:event_nuovaPartitaActionPerformed
+
 
     /**
      * Gestisce l'azione eseguita quando viene cliccato il pulsante "carica partita".
@@ -178,10 +180,10 @@ public class FrameStart extends javax.swing.JFrame {
      *
      * @param evt Evento di azione generato dal clic del pulsante
      */
-    private void btnCaricaPartitaActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_loadMatchActionPerformed
+    private void btnCaricaPartitaActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loadMatchActionPerformed
         JDialogCaricaPartite d = new JDialogCaricaPartite(this, true, this);
         d.setVisible(true);
-    } //GEN-LAST:event_loadMatchActionPerformed
+    }//GEN-LAST:event_loadMatchActionPerformed
 
 
     /**
@@ -190,22 +192,22 @@ public class FrameStart extends javax.swing.JFrame {
      *
      * @param evt Evento di azione generato dal clic del pulsante
      */
-    private void btnRankingActionPerformed(final java.awt.event.ActionEvent evt) { //GEN-FIRST:event_jButton1ActionPerformed
+    private void btnRankingActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         JDialogClassificaUtenti d = new JDialogClassificaUtenti(this, true);
         d.setVisible(true);
-    } //GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * Gestisce l'evento generato quando la finestra viene aperta.
      * Imposta la finestra come non ridimensionabile, imposta l'icona della finestra
      * e carica un'immagine di sfondo nel pannello principale.
      */
-    private void formWindowOpened() { //GEN-FIRST:event_formWindowOpened
+    private void formWindowOpened() {//GEN-FIRST:event_formWindowOpened
         this.setResizable(false);
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
-        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "sfondo frame start", jPanelPrincipale);
-    } //GEN-LAST:event_formWindowOpened
+        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "sfondo frame start", jPanel);
+    }//GEN-LAST:event_formWindowOpened
 
     /**
      * Gestisce l'evento generato quando viene premuto un tasto nel pulsante "btnNuovaPartita".
@@ -214,24 +216,24 @@ public class FrameStart extends javax.swing.JFrame {
      *
      * @param evt Evento generato dal tasto premuto
      */
-    private void btnNuovaPartitaKeyPressed(final java.awt.event.KeyEvent evt) { //GEN-FIRST:event_usernameFieldKeyPressed
+    private void btnNuovaPartitaKeyPressed(final java.awt.event.KeyEvent evt) {//GEN-FIRST:event_usernameFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             ActionEvent e = new ActionEvent(this, 1, "");
             nuovaPartitaActionPerformed(e);
         }
-    } //GEN-LAST:event_usernameFieldKeyPressed
+    }//GEN-LAST:event_usernameFieldKeyPressed
 
-    private void formMouseEntered() { //GEN-FIRST:event_formMouseEntered
+    private void formMouseEntered() {//GEN-FIRST:event_formMouseEntered
 
-    } //GEN-LAST:event_formMouseEntered
+    }//GEN-LAST:event_formMouseEntered
 
-    private void jPanel1MouseEntered() { //GEN-FIRST:event_jPanel1MouseEntered
+    private void jPanel1MouseEntered() {//GEN-FIRST:event_jPanel1MouseEntered
 
-    } //GEN-LAST:event_jPanel1MouseEntered
+    }//GEN-LAST:event_jPanel1MouseEntered
 
-    private void formWindowClosing() { //GEN-FIRST:event_formWindowClosing
+    private void formWindowClosing() {//GEN-FIRST:event_formWindowClosing
         System.exit(0);
-    } //GEN-LAST:event_formWindowClosing
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * Avvia l'applicazione Swing.
@@ -239,6 +241,11 @@ public class FrameStart extends javax.swing.JFrame {
      * Crea e visualizza un'istanza di FrameStart.
      */
     public static void avvia() {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -255,7 +262,7 @@ public class FrameStart extends javax.swing.JFrame {
 
     private javax.swing.JLabel lblNomeInesistente;
     private javax.swing.JButton btnRanking;
-    private javax.swing.JPanel jPanelPrincipale;
+    private javax.swing.JPanel jPanel;
     private javax.swing.JLabel lblNomeUtente;
     private javax.swing.JButton btnCaricaPartita;
     private javax.swing.JButton btnNuovaPartita;
