@@ -37,12 +37,12 @@ public class Classifica {
         // Calcola il punteggio massimo per ogni utente delle partite terminate
         Map<String, Integer> punteggioMassimoperUtente =
                 partite.stream()
-                        .filter(Partita::terminata) // filtra solo le partite con attributo "terminata" a true
+                        .filter(p -> p.terminata()) // filtra solo le partite con attributo "terminata" a true
                         .collect(Collectors.groupingBy(Partita::getNomeUtente, // raggruppa per nome utente
                                 Collectors.mapping(Partita::getPunteggio, Collectors.maxBy(Integer::compare)))) // calcola il punteggio massimo per ogni utente
                         .entrySet()
                         .stream()
-                        .collect(Collectors.toMap(Map.Entry::getKey, e -> e.getValue().orElse(0))); 
+                        .collect(Collectors.toMap(e -> e.getKey(), e -> e.getValue().orElse(0))); 
         // Lista di coppie chiave-valore
         List<Map.Entry<String, Integer>> entryList = new ArrayList<>(punteggioMassimoperUtente.entrySet());
         // Ordina la lista di Map.Entry in base al valore (punteggio) in ordine decrescente
