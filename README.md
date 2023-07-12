@@ -907,11 +907,21 @@ La lista finale ordinata restituita dal metodo `ottieniClassificaUtenti()`viene 
 
 Per la realizzazione delle interfacce grafiche abbiamo utilizzato swing, nonchè una libreria grafica per la creazione di UI (User interface) in java.
 Poichè l'applicazione è realizzata interamente con interfacce grafiche tutti i file relativi alle interfacce swing sono inseriti all'interno del package `swing`.
+Sono riportati a seguire i diversi frame utilizzati:
+
+![frame1](/imgDocumentazione/frame1.png)
+
 * `FrameStart` è il frame iniziale dove l'utente inserisce il proprio username per poter iniziare una nuova partita. In alternativa l'utente può decidere di caricare una partita salvata cliccando il bottone `carica partita` oppure visualizzare il ranking degli utenti cliccando il bottone `ranking utenti`.
 * `JDialogCaricaPartite` è una finestra di dialogo con una `JComboBox` che viene creata dinamicamente prendendo tutte le partite salvate su file e inserendo i nomi delle partite negli elementi della `JComboBox`.
 Una volta selezionata la partita, si apre `JFrameApp` che permette di continuare la partita selezionata.
+
+![frame2](/imgDocumentazione/frame2.png)
+
 *  `JFrameApp` è il frame principale dove l'utente gioca la propria partita inserendo i comandi nella `JTextField`, all'interno della `JTextArea` vengono visualizzate tutte le risposte ai comandi inseriti dall'utente in gioco. L'utente conferma l'invio dei comandi attraverso l'invio da tastiera o, in alternativa, cliccando sul `JButton` "INVIA". All'interno del frame vengono mostrati e aggiornati dinamicamente numero di mosse e tempo trascorso all'interno di due JLabel. Inoltre abbiamo un `JButton` per visualizzare le statistiche.
 *  `JDialogAbbandona` è la finestra di dialogo che si apre nel momento in cui si chiude il frame `JFrameApp`, nonchè il momento nel quale si abbandona la partita. Qui la finestra chiede attraverso la visualizzazione di una `JLabel` se si vuole salvare la partita o meno. La conferma della scelta da parte dell'utente avviene selezionando l'opportuno `JButton` "SI" o "NO". Per poter salvare la partita è necessario inserire il nome della partita, il quale viene inserito all'interno di una `JTextField`.
+
+![frame3](/imgDocumentazione/frame3.png)
+
 *  `JDialogStas` è la finestra di dialogo che si apre nel momento in cui l'utente chiede di visualizzare le statistiche. Questa finestra permette di visualizzare dinamicamente in forma tabellare:
   * Tutte le partite
   * Tutte le partite dell'utente in gioco
