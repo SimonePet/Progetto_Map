@@ -25,6 +25,7 @@ import javax.swing.JLabel;
 import javax.swing.JFrame;
 import javax.swing.ImageIcon;
 import javax.swing.UnsupportedLookAndFeelException;
+import multimediali.Immagini;
 
 /**
  * @author Giannantonio
@@ -328,27 +329,11 @@ public class JDialogPorta extends javax.swing.JDialog {
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        try {
-            panelErrore.setVisible(false);
-            String percorso;
-            percorso = Utils.PERCORSO_IMMAGINI_STANZE + "porta.png";
-            BufferedImage img = ImageIO.read(new File(percorso));
-            Image dimg = img.getScaledInstance(jPanel.getWidth(), jPanel.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon imageIcon = new ImageIcon(dimg);
-            jPanel.setBackground(new Color(0, 0, 0, 0));
-            jPanel.setOpaque(false);
-            jPanel.setBorder(BorderFactory.createEmptyBorder());
-            jPanel.setLayout(new BorderLayout());
-            JLabel background;
-            background = new JLabel(imageIcon);
-            jPanel.add(background);
-            background.setLayout(new FlowLayout());
-            jPanel.revalidate();
-            jPanel.repaint();
-            txtCodice.setEditable(false);
-        } catch (IOException e) {
-            System.out.println(e.getMessage());
-        }
+        ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
+        this.setIconImage(icon.getImage());
+        panelErrore.setVisible(false);
+        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_STANZE, "porta", jPanel);
+        txtCodice.setEditable(false);
     }//GEN-LAST:event_formWindowOpened
 
     private void txtCodiceKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtCodiceKeyReleased

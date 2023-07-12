@@ -9,6 +9,7 @@ import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import multimediali.Immagini;
 
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 
 /**
@@ -90,6 +91,8 @@ public class JDialogPunteggio extends javax.swing.JDialog {
 
 
     private void formWindowOpened() {
+        ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
+        this.setIconImage(icon.getImage());
         lblCongratulazioni.setText("Congratulazioni " + gni.getUsername() + "!\nNON CHIUDERE ATTENDI!");
         txtPunteggio.setText(Integer.toString(gni.getPunteggio()));
         txtPunteggio.setEditable(false);

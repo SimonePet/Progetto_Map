@@ -28,6 +28,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 import di.uniba.map.b.adventure.messaggi.MessaggiConversazione;
+import multimediali.Immagini;
 import thread.Client;
 import thread.Server;
 
@@ -55,10 +56,12 @@ public class JDialogRadio extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            @Override
             public void windowClosed(final java.awt.event.WindowEvent evt) {
                 formWindowClosed();
             }
 
+            @Override
             public void windowOpened(final java.awt.event.WindowEvent evt) {
                 formWindowOpened();
             }
@@ -194,19 +197,7 @@ public class JDialogRadio extends javax.swing.JDialog {
         btnSpegniRadio.setOpaque(false);
         jPanelOpzioni.setBackground(c);
         try {
-            //Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_CONVERSAZIONE,"conversazione", jPanel);
-            BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_CONVERSAZIONE + ".png"));
-            Image dimg = img.getScaledInstance(jPanel.getWidth(), jPanel.getHeight(), Image.SCALE_SMOOTH);
-            ImageIcon imageIcon = new ImageIcon(dimg);
-            jPanel.setBackground(new Color(0, 0, 0, 0));
-            jPanel.setOpaque(false);
-            jPanel.setBorder(BorderFactory.createEmptyBorder());
-            jPanel.setLayout(new BorderLayout());
-            JLabel background = new JLabel(imageIcon);
-            jPanel.add(background);
-            background.setLayout(new FlowLayout());
-            jPanel.revalidate();
-            jPanel.repaint();
+            Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_CONVERSAZIONE,"conversazione", jPanel);
             // avvia server socket
             avviaServer();
             // avvia connessione client socket al server socket

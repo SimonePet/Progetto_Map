@@ -204,8 +204,6 @@ public class FrameStart extends javax.swing.JFrame {
      */
     private void formWindowOpened() {//GEN-FIRST:event_formWindowOpened
         this.setResizable(false);
-        ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
-        this.setIconImage(icon.getImage());
         Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "sfondo frame start", jPanel);
     }//GEN-LAST:event_formWindowOpened
 
