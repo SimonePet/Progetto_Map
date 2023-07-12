@@ -12,8 +12,11 @@ import javax.swing.JDialog;
 import javax.swing.JOptionPane;
 
 import di.uniba.map.b.adventure.Utils;
+import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
+import java.awt.Frame;
 import multimediali.Suono;
 import swing.JDialogPunteggio;
+import swing.JFrameApp;
 import swing.JFrameFinale;
 
 /**
@@ -22,15 +25,18 @@ import swing.JFrameFinale;
  */
 public class ThreadFinale implements Runnable{
     private JDialogPunteggio dialog;
-            
-    public ThreadFinale(JDialogPunteggio dialog){
+    private JFrameApp frame;
+    private GiocoNaufragioIsola gni;        
+    
+    public ThreadFinale(JDialogPunteggio dialog, JFrameApp frame){
+       this.frame = frame;
        this.dialog = dialog; 
     }
     
     @Override
     public void run() {
         try {
-            Thread.sleep(15000);
+            Thread.sleep(5000);
             JOptionPane optionPane = new JOptionPane("Attenzione sembra sia successo quacosa! "
                     + "clicca OK per scoprire cosa è successo e ASPETTA!!", JOptionPane.WARNING_MESSAGE);
             JDialog d = optionPane.createDialog("AVVISO");
@@ -44,6 +50,7 @@ public class ThreadFinale implements Runnable{
                 // Quando l'utente ha premuto il pulsante "OK"
                 Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "finale sequel",true);
                 dialog.dispose();
+                frame.dispose();
                 JFrameFinale frame = new JFrameFinale();
                 frame.setDefaultCloseOperation(JFrameFinale.DISPOSE_ON_CLOSE);
                 frame.setLocationRelativeTo(null);
