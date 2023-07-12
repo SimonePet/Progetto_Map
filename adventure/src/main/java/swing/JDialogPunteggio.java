@@ -8,12 +8,14 @@ import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import javax.swing.ImageIcon;
 import multimediali.Immagini;
+import thread.ThreadFinale;
+import java.awt.Frame;
+import multimediali.Suono;
 /**
  *
  * @author Giannantonio
  */
 public class JDialogPunteggio extends javax.swing.JDialog {
-
     /**
      * Creates new form JDialogPunteggio
      */
@@ -40,6 +42,9 @@ public class JDialogPunteggio extends javax.swing.JDialog {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosed(java.awt.event.WindowEvent evt) {
+                formWindowClosed(evt);
+            }
             public void windowOpened(java.awt.event.WindowEvent evt) {
                 formWindowOpened(evt);
             }
@@ -76,7 +81,7 @@ public class JDialogPunteggio extends javax.swing.JDialog {
                 .addComponent(lblPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(txtPunteggio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(73, Short.MAX_VALUE))
+                .addContainerGap(103, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -87,7 +92,7 @@ public class JDialogPunteggio extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
@@ -95,22 +100,23 @@ public class JDialogPunteggio extends javax.swing.JDialog {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
+    }//GEN-LAST:event_formWindowClosed
+
 
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
-        lblCongratulazioni.setText("Congratulazioni " + gni.getUsername() + "!\nNON CHIUDERE ATTENDI!");
+        lblCongratulazioni.setText("Congratulazioni " + gni.getUsername() + "!\n");
+        ThreadFinale threadF = new ThreadFinale(this);
+        Thread thread = new Thread(threadF);
+        this.threadFinale = thread;
+        threadFinale.start();
         txtPunteggio.setText(Integer.toString(gni.getPunteggio()));
         txtPunteggio.setEditable(false);
-        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "sfondo frame vittoria", jPanel);
+        //Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "sfondo frame vittoria", jPanel);
     }
-
-
-
-
-
-
 
     public static void sleep(long milliseconds) {
         try {
@@ -171,5 +177,6 @@ public class JDialogPunteggio extends javax.swing.JDialog {
     // End of variables declaration//GEN-END:variables
     private GiocoNaufragioIsola gni;
     private static boolean timerFinito=false;
+    private Thread threadFinale;
 }
 
