@@ -667,7 +667,7 @@ Inoltre, si è fatto utilizzo del polimorfismo universale, la cui idea è quella
 All'interno del caso di studio sono state utilizzate le seguenti collection:
 #### List
 Le liste vengono utilizzate all'interno del caso di studio nelle seguenti situazioni:
-* La classe `Classifica` ha come attributo una lista di elmenti di tipo Partita, la lista di partite viene utilizzata dal metodo 'ottieniClassificaUtenti' per filtrare le partite degli utenti e costruire il ranking degli utenti che hanno vinto almeno una partita con il punteggio massimo.
+* La classe `Classifica` ha come attributo una lista di elmenti di tipo `Partita`, la lista di partite viene utilizzata dal metodo 'ottieniClassificaUtenti()' per filtrare le partite degli utenti e costruire il ranking degli utenti che hanno vinto almeno una partita con il punteggio massimo.
 * Il metodo `ottieniClassificaUtenti()` restitutuisce una lista di elementi di tipo `Map.Entry<String,Integer>`, nonchè una lista di coppie <chiave,valore> dove la chiave è il nome dell'utente e il valore il punteggio massimo associato a quell'utente.
 * La classe `DatabaseController` ha un metodo `ottieniListaPartite()` che salva tutte le partite salvate su DB all'interno di una lista, per poi successivamente restituirla.
 * La classe GameDescription ha come attributi:
@@ -678,7 +678,7 @@ Le liste vengono utilizzate all'interno del caso di studio nelle seguenti situaz
 * La classe `Inventario` ha come attributo una lista di elementi di tipo `Oggetto` utilizzata dai metodi della classe per aggiungere e rimuovere elementi nell'inventario
 * La classe `Stanza` ha come attributo una lista di elementi di tipo `Oggetto`
 * La classe `OggettoContenitore` ha come attributo una lista di elementi di tipo `Oggetto` contenente gli oggetti contenuti dal contenitore
-* Il metodo `parseString()` della classe `Utils` utilizza una lista di token, nonchè una lista di elementi di tipo `String`
+* Il  `parseString()` della classe `Utils` utilizza una lista di token, nonchè una lista di elementi di tipo `String`
 * la classe generica `StampaListe` utilizza come attributo una lista di elementi di tipo generico.
 * Il metodo `getPartite()` della classe `FileMatchController` restituisce una lista di elementi di tipo `GiocoNaufragioIsola`, nonchè una lista di partite salvate su file.
 #### Set
@@ -715,12 +715,12 @@ Il metodo mostrato in figura è quello per ottenere il punteggio della partita c
 Il programma offre la possibilità di salvare una partita una volta che essa è terminata. Il salvataggio delle partite avviene anche su file.
 Per la gestione dei file sono state usate le classi `FileController`, `FileMatchController` e l'interfaccia `FileInterface`.
 
-- La classe FileController implementa l'interfaccia FileInterface, la quale contiene il solo metodo create(). 
+- La classe FileController implementa l'interfaccia FileInterface, la quale contiene il solo metodo `create()`. 
 La classe `FileController` si occupa di creare un nuovo file (se non è già esistente) e ha i seguenti attributi protected: nomeFile, directory, file e percorso. 
 directory rappresenta la cartella in cui verrà memorizzato il file all'interno del progetto, nomeFile come intuibile dal nome è il nome del file che verrà creato.
 Il percorso del file viene costruito dinamicamente da un metodo della classe Utils che riceve in input gli attributi nomeFile e directory.
 
-- La classe `FileMatchController` estende la classe `FileController` ereditanto gli attributi/metodi public/protected e aggiungendo nuove funzionalità (metodi), nonchè l'aggiunta di una nuova partita all'interno del file, il recupero di una specifica partita salvata su file utilizzando il nome della partita (utile per il caricamento di una partita salvata), il recupero di tutte le partite salvate su file (utile per la costruzione dinamica della JComboBox dalla quale l'utente può scegliere quale partita continuare/caricare).
+- La classe `FileMatchController` estende la classe `FileController` ereditanto gli attributi/metodi public/protected e aggiungendo nuove funzionalità (metodi), nonchè l'aggiunta di una nuova partita all'interno del file, il recupero di una specifica partita salvata su file utilizzando il nome della partita (utile per il caricamento di una partita salvata), il recupero di tutte le partite salvate su file (utile per la costruzione dinamica della `JComboBox` dalla quale l'utente può scegliere quale partita continuare/caricare).
 
 ---
 ### JDBC<a name="jdbc"></a>
@@ -818,7 +818,7 @@ Il metodo esegui dell'interfaccia funzionale `SalvaPartita()` prende in input un
 ![Lambda1](/imgDocumentazione/espressioneLambda1.png)
 
 Creiamo un'istanza dell'interfaccia funzionale `SalvaPartita` utilizzando un'espressione lambda. L'espressione lambda definisce l'implementazione del metodo astratto dell'interfaccia funzionale `SalvaPartita`.
-Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo esegui, che come definito dall'espressione lambda `p -> db.salvaPartita(p)` prende in input una partita e la passa al metoto `salvaPartita()` della classe `DatabaseController` che salva la partita su DB.
+Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo `esegui()`, che come definito dall'espressione lambda `p -> db.salvaPartita(p)` prende in input una partita e la passa al metoto `salvaPartita()` della classe `DatabaseController` che salva la partita su DB.
 
 #### Interfaccia funzionale EsistenzaPartita
 ![EsistenzaPartita](/imgDocumentazione/esistenzaPartita.png)
@@ -829,7 +829,7 @@ L'interfaccia funzionale `EsistenzaPartita` ha un metodo astratto 'test' che pre
 ![Lambda2](/imgDocumentazione/espressioneLambda2.png)
 
 Creiamo un'istanza dell'interfaccia funzionale `EsistenzaPartita` utilizzando un'espressione lambda. L'espressione lambda definisce l'implementazione del metodo astratto dell'interfaccia funzionale `EsistenzaPartita`.
-Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo test, che come definito dall'espressione lambda 
+Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo `test()`, che come definito dall'espressione lambda 
 
 `(nome) -> db.partitaEsistente(nome)`, passa il nome della partita al metodo partitaEsistente della classe DatabaseController che verifica l'esistenza della partita nel DB, se la trova restituisce true, altrimenti false.
 
@@ -846,7 +846,7 @@ Per fornire un'implementazione del metodo test dell'interfaccia funzionale passi
 ![partiteTerm1](/imgDocumentazione/partiteTerminate1.png)
 
 
-Utilizzando la lista degli oggetti di classe `Partita`, cicliamo su tutte le partite e per ognuna di esse chiamiamo il metodo test dell'interfaccia funzionale  `Predicate &lt;Partita&gt;` che utilizzando l'implementazione data dall'espressione lambda chiama il metodo `terminata()` della classe `Partita` che restituisce true se la partita è terminata, false altrimenti. Se la partita è terminata aggiunge una nuova riga nella tabella con la rispettiva partita terminata.  
+Utilizzando la lista degli oggetti di classe `Partita`, cicliamo su tutte le partite e per ognuna di esse chiamiamo il metodo `test()` dell'interfaccia funzionale  `Predicate &lt;Partita&gt;` che utilizzando l'implementazione data dall'espressione lambda chiama il metodo `terminata()` della classe `Partita` che restituisce true se la partita è terminata, false altrimenti. Se la partita è terminata aggiunge una nuova riga nella tabella con la rispettiva partita terminata.  
 
 #### Pipeline e stream:
 
@@ -866,7 +866,7 @@ Entrando nei dettagli dell'implementazione del metodo `ottieniClassificaUtenti()
 
 Utilizziamo la lista di partite salvate su DB passata al costruttore al momento dell'istanziazione dell'oggetto della classe `Classifica` per costruire il ranking.
 Per la costruzione del ranking creiamo uno stream di oggetti della classe `Partita`. Uno stream è una sequenza di elementi che preleva valori da una sorgente attraverso una pipeline. Solitamente la sorgente è una `Collection`, in questo caso una lista. Invece, una pipeline è una sequenza di operazioni `aggregate(es: filter, map, foreach)` applicate ad uno stream, dove spesso i parametri di queste operazioni sono espressioni lambda.
-L'operazione filter filtra gli oggetti selezionando solo le partite terminate, con il metodo `groupingBy()` raggruppiamo gli elementi per nome utente e punteggio massimo. Il `Collector mapping` che utilizziamo come downstream collector seleziona il punteggio massimo. Il primo metodo collect restituisce una `Map`. Successivamente prendiamo tutte le coppie <chiave, valore> con il metodo `entrySet()` applicato alla `Map` restituita da collect, creiamo un nuovo stream di elementi con il metodo stream() e applichiamo allo stream ottenuto ancora una volta il metodo `collect()` che prende come parametro supplier il metodo `toMap()`della classe `Collectors`. Infine la pipeline ci restituisce una `Map<String, Integer>` con nome dell'utente e punteggio massimo associato.
+L'operazione filter filtra gli oggetti selezionando solo le partite terminate, con il metodo `groupingBy()` raggruppiamo gli elementi per nome utente e punteggio massimo. Il `Collector mapping` che utilizziamo come downstream collector seleziona il punteggio massimo. Il primo metodo `collect()` restituisce una `Map`. Successivamente prendiamo tutte le coppie <chiave, valore> con il metodo `entrySet()` applicato alla `Map` restituita da collect, creiamo un nuovo stream di elementi con il metodo stream() e applichiamo allo stream ottenuto ancora una volta il metodo `collect()` che prende come parametro supplier il metodo `toMap()`della classe `Collectors`. Infine la pipeline ci restituisce una `Map<String, Integer>` con nome dell'utente e punteggio massimo associato.
 
 Applichiamo alla Map restituita dalla pipeline il metodo `entrySet()` che ci restituisce una lista di elementi di tipo `Map.Entry<String,Integer>`, nonchè una lista di coppie chiave-valore. Ci salviamo questa lista per andare successivamente a ordinarla in base al punteggio in ordine decrescente. 
 
