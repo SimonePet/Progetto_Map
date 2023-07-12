@@ -671,23 +671,23 @@ Le liste vengono utilizzate all'interno del caso di studio nelle seguenti situaz
 * Il metodo `ottieniClassificaUtenti()` restitutuisce una lista di elementi di tipo `Map.Entry<String,Integer>`, nonchè una lista di coppie <chiave,valore> dove la chiave è il nome dell'utente e il valore il punteggio massimo associato a quell'utente.
 * La classe `DatabaseController` ha un metodo `ottieniListaPartite()` che salva tutte le partite salvate su DB all'interno di una lista, per poi successivamente restituirla.
 * La classe GameDescription ha come attributi:
-  - una lista di elementi di tipo `Stanza`
-  - una lista di elementi di tipo `Comando`
-  - una lista di elementi di tipo `Oggetto` per l'inventario
-  - una lista di elementi di tipo `Oggetto` per gli oggetti del gioco
+  - una lista di elementi di tipo `Stanza`;
+  - una lista di elementi di tipo `Comando`;
+  - una lista di elementi di tipo `Oggetto` per l'inventario;
+  - una lista di elementi di tipo `Oggetto` per gli oggetti del gioco.
 * La classe `Inventario` ha come attributo una lista di elementi di tipo `Oggetto` utilizzata dai metodi della classe per aggiungere e rimuovere elementi nell'inventario
 * La classe `Stanza` ha come attributo una lista di elementi di tipo `Oggetto`
-* La classe `OggettoContenitore` ha come attributo una lista di elementi di tipo `Oggetto` contenente gli oggetti contenuti dal contenitore
-* Il  `parseString()` della classe `Utils` utilizza una lista di token, nonchè una lista di elementi di tipo `String`
-* la classe generica `StampaListe` utilizza come attributo una lista di elementi di tipo generico.
+* La classe `OggettoContenitore` ha come attributo una lista di elementi di tipo `Oggetto` contenente gli oggetti contenuti dal contenitore;
+* Il  `parseString()` della classe `Utils` utilizza una lista di token, nonchè una lista di elementi di tipo `String`;
+* la classe generica `StampaListe` utilizza come attributo una lista di elementi di tipo generico;
 * Il metodo `getPartite()` della classe `FileMatchController` restituisce una lista di elementi di tipo `GiocoNaufragioIsola`, nonchè una lista di partite salvate su file.
 #### Set
-* `Set stopwords` utilizzato per contenere tutte le stopwords recuperate dal file senza contenere duplicati 
-* La classe `ControlGioco` utilizza un `set comandi`, nonchè un set di elementi di tipo `Comando`
-* La classe `Oggetto` utilizza un set `aliasOggetto` per contenere tutti i possibili alias del nome di un oggetto e un `set comandiConsentiti` per contenere tutti i comandi consentiti su un determinato oggetto
-* La classe `Comando` utilizza un set `aliasComando` per contenere tutti gli alias del nome di un comando
+* `Set stopwords` utilizzato per contenere tutte le stopwords recuperate dal file senza contenere duplicati;
+* La classe `ControlGioco` utilizza un `set comandi`, nonchè un set di elementi di tipo `Comando`;
+* La classe `Oggetto` utilizza un set `aliasOggetto` per contenere tutti i possibili alias del nome di un oggetto e un `set comandiConsentiti` per contenere tutti i comandi consentiti su un determinato oggetto;
+* La classe `Comando` utilizza un set `aliasComando` per contenere tutti gli alias del nome di un comando.
 #### Map
-* Il metodo `ottieniClassificaUtenti()` della classe `Classifica` salva in una `Map` con chiave di tipo `String` e valore di tipo `Integer` tutti gli utenti che hanno vinto almeno una partita con il loro corrispettivo punteggio massimo, la chiave è il nome dell'utente, il valore il punteggio massimo.
+* Il metodo `ottieniClassificaUtenti()` della classe `Classifica` salva in una `Map` con chiave di tipo `String` e valore di tipo `Integer` tutti gli utenti che hanno vinto almeno una partita con il loro corrispettivo punteggio massimo, la chiave è il nome dell'utente, il valore il punteggio massimo;
 * Lista di elementi di tipo `Map.Entry<String,Integer>` per contenere le coppie chiave-valore (nome utente-punteggio massimo) per la stampa del ranking.
 
 ---
@@ -702,8 +702,8 @@ Il metodo mostrato in figura è quello per caricare un immagine su un `JFrame` e
 ![Eccezione2](/imgDocumentazione/eccezione2.png)
 
 Il blocco 'try-catch' mostrato qui invece è stato estrapolato dal metodo `riproduciTraccia()` della classe `Suono`. In questo caso vengono catturate tre tipologie di eccezioni:
-* `IOException`: Questa eccezione viene sollevata quando si verificano errori di input/output durante la lettura o la scrittura di dati. Nel contesto del codice fornito, l'eccezione viene catturata quando si verificano errori di lettura del file audio o chiusura dell' `AudioInputStream`.
-* `LineUnavailableException`: Questa eccezione viene sollevata quando una linea audio richiesta non è disponibile o non può essere aperta. Nel contesto del codice fornito, l'eccezione viene catturata se non è possibile aprire la linea di riproduzione audio.
+* `IOException`: Questa eccezione viene sollevata quando si verificano errori di input/output durante la lettura o la scrittura di dati. Nel contesto del codice fornito, l'eccezione viene catturata quando si verificano errori di lettura del file audio o chiusura dell' `AudioInputStream`;
+* `LineUnavailableException`: Questa eccezione viene sollevata quando una linea audio richiesta non è disponibile o non può essere aperta. Nel contesto del codice fornito, l'eccezione viene catturata se non è possibile aprire la linea di riproduzione audio
 * `UnsupportedAudioFileException`: Questa eccezione viene sollevata quando viene tentato di leggere un tipo di file audio non supportato. Nel contesto del codice fornito, l'eccezione viene catturata se il formato audio del file non è supportato.
 
 ![Eccezione3](/imgDocumentazione/eccezione3.png)
@@ -730,19 +730,19 @@ Per la gestione dei DB utilizziamo una classe astratta `Database` che memorizza 
 
 La classe `DatabaseController` estende la classe astratta `Database` e utilizzando gli attributi ereditati contenenti le stringhe delle query implementa i metodi astratti della superclasse e aggiunge nuovi metodi.
 Si occupa delle seguenti funzionalità:
-* chiudere la connessione al DB
-* creare la tabella della partita (solamente se non è già esistente)
-* salvare una nuova partita nel DB
-* recuperare dal DB il punteggio di una specifica partita utilizzando l'id della partita
-* recuperare dal DB il punteggio di una specifica partita utilizzando il nome della partita
-* stampare tutte le partite salvate su DB
-* recuperare tutte le partite salvate su DB
-* recuperare tutte le partite salvate su DB di uno specifico utente
-* recuperare il punteggio medio di tutte le partite su DB
-* recuperare il punteggio medio di tutte le partite di uno specifico utente su DB
-* recuperare il punteggio medio delle partite terminate
-* verificare l'esistenza di una partita nel DB utilizzando il nome della partita
-* restituire tutte le partite salvate su DB come lista di elementi di tipo Partita
+* chiudere la connessione al DB;
+* creare la tabella della partita (solamente se non è già esistente);
+* salvare una nuova partita nel DB;
+* recuperare dal DB il punteggio di una specifica partita utilizzando l'id della partita;
+* recuperare dal DB il punteggio di una specifica partita utilizzando il nome della partita;
+* stampare tutte le partite salvate su DB;
+* recuperare tutte le partite salvate su DB;
+* recuperare tutte le partite salvate su DB di uno specifico utente;
+* recuperare il punteggio medio di tutte le partite su DB;
+* recuperare il punteggio medio di tutte le partite di uno specifico utente su DB;
+* recuperare il punteggio medio delle partite terminate;
+* verificare l'esistenza di una partita nel DB utilizzando il nome della partita;
+* restituire tutte le partite salvate su DB come lista di elementi di tipo Partita.
 
 Le seguenti funzionalità sono state utilizzate per permettere all'utente di visualizzare statistiche in forma tabellare. E' possibile visualizzare sia statistiche generali che statistiche specifiche all'utente in gioco.
 
