@@ -695,18 +695,18 @@ Le liste vengono utilizzate all'interno del caso di studio nelle seguenti situaz
 Sono state utilizzate molto frequentemente le eccezioni. Molti metodi nel programma possono generare eccezioni, ognuna di esse è catturata e gestita utilizzando l'appropriata tipologia di eccezione. 
 A seguire sono riporati diversi esempi.
 
-![Eccezione1](/eccezione1.png)
+![Eccezione1](/imgDocumentazione/eccezione1.png)
 
 Il metodo mostrato in figura è quello per caricare un immagine su un `JFrame` e visualizzarla come background. Soffermandoci sul blocco `try-catch` viene catturata un eccezione di tipo `IOException`. Questa eccezione viene sollevata quando si verificano errori di input/output durante la lettura o la scrittura di dati. Nel contesto del codice fornito, l'eccezione viene catturata se si verificano errori durante la lettura dell'immagine dal file specificato.
 
-![Eccezione2](/eccezione2.png)
+![Eccezione2](/imgDocumentazione/eccezione2.png)
 
 Il blocco 'try-catch' mostrato qui invece è stato estrapolato dal metodo `riproduciTraccia()` della classe `Suono`. In questo caso vengono catturate tre tipologie di eccezioni:
 * `IOException`: Questa eccezione viene sollevata quando si verificano errori di input/output durante la lettura o la scrittura di dati. Nel contesto del codice fornito, l'eccezione viene catturata quando si verificano errori di lettura del file audio o chiusura dell' `AudioInputStream`.
 * `LineUnavailableException`: Questa eccezione viene sollevata quando una linea audio richiesta non è disponibile o non può essere aperta. Nel contesto del codice fornito, l'eccezione viene catturata se non è possibile aprire la linea di riproduzione audio.
 * `UnsupportedAudioFileException`: Questa eccezione viene sollevata quando viene tentato di leggere un tipo di file audio non supportato. Nel contesto del codice fornito, l'eccezione viene catturata se il formato audio del file non è supportato.
 
-![Eccezione3](/eccezione3.png)
+![Eccezione3](/imgDocumentazione/eccezione3.png)
 
 Il metodo mostrato in figura è quello per ottenere il punteggio della partita con uno specifico identificatore. Nel blocco `try-catch` viene catturata una eccezzione di tipo `SQLException`. Questa eccezione viene sollevata quando si verificano errori durante l'interazione con un database tramite `JDBC` (`Java Database Connectivity`). 
 
@@ -769,20 +769,20 @@ Per la comunicazione tra l'utente e i militari abbiamo utilizzato una comunicazi
 
 Al momento della generazione della finestra per il dialogo vengono avviati sia il client che il server
 
-![avvioClientServer](client_server_avvio.png)
+![avvioClientServer](/imgDocumentazione/client_server_avvio.png)
 
 Come possiamo notare sia la classe `Client` che la classe `Server` implementano l'interfaccia `Runnable` poichè i due oggetti vengono passati al costruttore Thread per avviare due thread che si occupano di eseguire rispettivamente le funzionalità del server e del client.
 All'avvio dei due thread, il server rimane in attesa di una connessione su una porta, nel frattempo il client si connette al server pronto per lo scambio dei messaggi.
 
 #### Client:
-![Client](/Client.png)
+![Client](/imgDocumentazione/Client.png)
 
 Il client rappresenta l'utente nella conversazione via radio.
 Il metodo `leggiRispostaServer()` legge il messaggio inviato dal server e lo scrive nella `TextArea` dell'interfaccia per rendere visibile al client (l'utente) la risposta del server. 
 
 
 #### Server:
-![Server](/Server.png)
+![Server](/imgDocumentazione/Server.png)
 
 Il server rappresenta i militari nella conversazione via radio. 
 Il metodo `elaboraMessaggio()` legge il messaggio inviato dal client e in base al messaggio ricevuto restituisce la risposta idonea al proseguio della conversazione.
@@ -792,7 +792,7 @@ Il dialogo via radio offre all'utente un importante indizio per la risoluzione d
 
 
 #### Comunicazione client-server:
-<img src="radio.png" alt="radio" width="800" height="520">
+<img src="/imgDocumentazione/radio.png" alt="radio" width="800" height="520">
 
 
 Ogni volta che il client conferma un opzione invia un messaggio al server. Il server legge la risposta del client, elabora il messaggio e restituisce una risposta al client. La risposta del server viene visualizzata in tempo reale nell'interfaccia utente dando vita a un vero e proprio dialogo dinamico tra i due attori dove la risposta del server dipende dal messaggio inviato del client.
@@ -810,23 +810,23 @@ Abbiamo creato due interfacce funzionali: `SalvaPartita` e `EsistenzaPartita`.
 Queste ultime sono delle interfacce funzionali che hanno un solo metodo astratto.
 
 #### Interfaccia funzionale SalvaPartita
-![SalvaPartita](/salvaPartita.png)
+![SalvaPartita](/imgDocumentazione/salvaPartita.png)
 
 Il metodo esegui dell'interfaccia funzionale `SalvaPartita()` prende in input un oggetto `GameDescription` e restituisce un `boolean`. Il metodo non ha un implementazione perciò è necessario fornirgliela per poter chiamare il metodo. 
 
 
-![Lambda1](/espressioneLambda1.png)
+![Lambda1](/imgDocumentazione/espressioneLambda1.png)
 
 Creiamo un'istanza dell'interfaccia funzionale `SalvaPartita` utilizzando un'espressione lambda. L'espressione lambda definisce l'implementazione del metodo astratto dell'interfaccia funzionale `SalvaPartita`.
 Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo esegui, che come definito dall'espressione lambda `p -> db.salvaPartita(p)` prende in input una partita e la passa al metoto `salvaPartita()` della classe `DatabaseController` che salva la partita su DB.
 
 #### Interfaccia funzionale EsistenzaPartita
-![EsistenzaPartita](/esistenzaPartita.png)
+![EsistenzaPartita](/imgDocumentazione/esistenzaPartita.png)
 
 L'interfaccia funzionale `EsistenzaPartita` ha un metodo astratto 'test' che prende in input una stringa (il nome della partita) e restituisce un `boolean`. Essendo un metodo astratto di una interfaccia funzionale esso non ha una implementazione.
 
 
-![Lambda2](/espressioneLambda2.png)
+![Lambda2](/imgDocumentazione/espressioneLambda2.png)
 
 Creiamo un'istanza dell'interfaccia funzionale `EsistenzaPartita` utilizzando un'espressione lambda. L'espressione lambda definisce l'implementazione del metodo astratto dell'interfaccia funzionale `EsistenzaPartita`.
 Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo test, che come definito dall'espressione lambda 
@@ -835,7 +835,7 @@ Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'i
 
 
 #### Visualizzazione partite terminate con espressione lambda:
-![partiteTerm2](/partiteTerminate2.png)
+![partiteTerm2](/imgDocumentazione/partiteTerminate2.png)
 Quando l'utente clicca il bottone per visualizzare tutte le partite terminate parte il metodo `btnPartiteTerminateActionPerformed()` che salva in 'partite' la lista di tutte le partite, e chiama il metodo `visualizzaPartiteTerminate()`.
 
 Il metodo `visualizzaPartiteTerminate` si aspetta come parametri una lista di elementi di tipo `Partita` e un'istanza dell'interfaccia funzionale `Predicate&lt;Partita&gt;`.
@@ -843,21 +843,21 @@ L'interfaccia funzionale `Predicate&lt;T&gt;` ha un solo metodo astratto: `boole
 Per fornire un'implementazione del metodo test dell'interfaccia funzionale passiamo come argomento alla funzione `visualizzaPartiteTerminate()` l'espressione lambda `p -> p.terminata()`, la quale rappresenta l'implementazione del metodo `test()`.
 
 
-![partiteTerm1](/partiteTerminate1.png)
+![partiteTerm1](/imgDocumentazione/partiteTerminate1.png)
 
 
 Utilizzando la lista degli oggetti di classe `Partita`, cicliamo su tutte le partite e per ognuna di esse chiamiamo il metodo test dell'interfaccia funzionale  `Predicate &lt;Partita&gt;` che utilizzando l'implementazione data dall'espressione lambda chiama il metodo `terminata()` della classe `Partita` che restituisce true se la partita è terminata, false altrimenti. Se la partita è terminata aggiunge una nuova riga nella tabella con la rispettiva partita terminata.  
 
 #### Pipeline e stream:
 
-![classifica](/classifica.png)
+![classifica](/imgDocumentazione/classifica.png)
 
 
 Una delle funzionalità disponibili nel programma è quella di visualizzare in forma tabellare il ranking degli utenti, nonchè una classifica che include tutti gli utenti che hanno terminato almeno una partita. A ogni utente è associato il suo massimo punteggio raggiunto. La classifica è ordinata in ordine decrescente per punteggio.
 Il costruttore della classe `Classifica` prende in input una lista di oggetti `Partita` e salva la lista utilizzando l'attributo private 'partite'.
 
 
-![pipeline](/pipeline.png)
+![pipeline](/imgDocumentazione/pipeline.png)
 
 
 A occuparsi della costruzione della classifica è il metodo `ottieniClassificaUtenti()` della classe `Classifica` che dopo aver effettuato le operazioni necessarie restituisce una lista di coppie <chiave,valore> con chiave di tipo `String` che rappresenta il nome dell'utente e valore di tipo `Integer` che rappresenta il massimo punteggio associato all'utente.
