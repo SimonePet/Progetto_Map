@@ -6,11 +6,9 @@ package swing;
 
 import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
-import javax.swing.ImageIcon;
-import multimediali.Immagini;
-import thread.ThreadFinale;
 import java.awt.Frame;
-import multimediali.Suono;
+import javax.swing.ImageIcon;
+import thread.ThreadFinale;
 /**
  *
  * @author Giannantonio
@@ -18,10 +16,16 @@ import multimediali.Suono;
 public class JDialogPunteggio extends javax.swing.JDialog {
     /**
      * Creates new form JDialogPunteggio
+     * @param parent
+     * @param modal
+     * @param gni
      */
+    private Frame frameApp;
+    
     public JDialogPunteggio(java.awt.Frame parent, boolean modal, GiocoNaufragioIsola gni) {
         super(parent, modal);
         this.gni = gni;
+        this.frameApp = parent;
         initComponents();
     }
 
@@ -109,7 +113,7 @@ public class JDialogPunteggio extends javax.swing.JDialog {
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
         lblCongratulazioni.setText("Congratulazioni " + gni.getUsername() + "!\n");
-        ThreadFinale threadF = new ThreadFinale(this);
+        ThreadFinale threadF = new ThreadFinale(this, (JFrameApp)this.frameApp);
         Thread thread = new Thread(threadF);
         this.threadFinale = thread;
         threadFinale.start();
@@ -176,7 +180,6 @@ public class JDialogPunteggio extends javax.swing.JDialog {
     private javax.swing.JTextField txtPunteggio;
     // End of variables declaration//GEN-END:variables
     private GiocoNaufragioIsola gni;
-    private static boolean timerFinito=false;
     private Thread threadFinale;
 }
 

@@ -622,7 +622,7 @@ public final class ControlGioco {
 
     /**
      * Inizializza l'array degli ordini dei comandi per il gioco di naufragio sull'isola.
-     *
+     * 
      * @param gni Oggetto GiocoNaufragioIsola che fornisce i comandi disponibili
      */
     public static void inizializzaOrdineComandi(final GiocoNaufragioIsola gni) {
