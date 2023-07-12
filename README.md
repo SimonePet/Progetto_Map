@@ -553,7 +553,7 @@ class Parser{
 
 class ThreadTempo{
     + ThreadTempo(JFrameApp,int,int,int)
-    + printTime(String):void
+    + stampaTempo(String):void
     + run():void
 }
 
