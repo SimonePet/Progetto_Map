@@ -26,11 +26,6 @@
 ## Diagramma delle classi
 ```mermaid
 classDiagram
-FrameStart -- JDialogClassificaUtenti : create
-FrameStart -- JDialogCaricaPartite : create
-FrameStart *-- JDialogCaricaPartite : frameStart
-FrameStart *-- JFrameApp : frameStart
-FrameStart -- JFrameApp : create
 class FrameStart{
     - lblNomeUtente:JLabel
     - txtNomeUtente:JTextField
@@ -634,6 +629,15 @@ Classifica <.. JDialogClassificaUtenti : create
 Engine <.. JFrameApp : create
 JFrameApp *-- Engine
 JDialogAbbandona *-- Engine
+
+FrameStart .. JDialogClassificaUtenti : create
+FrameStart .. JDialogCaricaPartite : create
+JDialogCaricaPartite *--  FrameStart: frameStart
+JFrameApp *-- FrameStart : frameStart
+FrameStart .. JFrameApp : create
+JDialogStats <.. JFrameApp : create
+JDialogAbbandona <.. JFrameApp : create
+JFrameApp <.. JDialogCaricaPartite : create
 ```
 ## Specifica algebrica
 
@@ -659,7 +663,7 @@ Ovviamente questo non è l'unico utilizzo di ereditarietà all'interno del caso 
 
 #### Polimorfismo<a name="polimorfismo"></a>
 E' stato fatto utilizzo del polimorfismo. Con questo termine si intende la possibilità di associare a una operazione diverse realizzazioni. 
-Per esempio si è fatto uso del polimorfismo ad hoc, ottenuto quando un metodo lavora su tipi differenti e potrebbe comportarsi in maniera totalmente differente per ciascuno di essi. Un esempio di utilizzo lampante di polimorfismo per overloading (che rientra nel polimorfismo ad hoc) nel caso di studio è osservabile nell'implementazione del metodo `getPunteggio()` della classe `DatabaseController` dove il metodo restituisce il punteggio di una partita sia passando il nome della partita (parametro di tipo String), sia passando l'id della partita (parametro di tipo int). La classe DatabaseController ha due diverse implementazioni del metodo `getPunteggio()` in base al tipo del parametro ricevuto.
+Per esempio si è fatto uso del polimorfismo ad hoc, ottenuto quando un metodo lavora su tipi differenti e potrebbe comportarsi in maniera totalmente differente per ciascuno di essi. Un esempio di utilizzo lampante di polimorfismo per overloading (che rientra nel polimorfismo ad hoc) nel caso di studio è osservabile nell'implementazione del metodo `getPunteggio()` della classe `DatabaseController` dove il metodo restituisce il punteggio di una partita sia passando il nome della partita (parametro di tipo String), sia passando l'id della partita (parametro di tipo int). La classe `DatabaseController` ha due diverse implementazioni del metodo `getPunteggio()` in base al tipo del parametro ricevuto.
 Inoltre, si è fatto utilizzo del polimorfismo universale, la cui idea è quella di operare su un numero infinito di tipi. Infatti nel caso di studio è stata creata una classe generica `StampaListe` che opera su un tipo generico `<T>`, permette di stampare attraverso il metodo `stampa()` la lista ricevuta in input dal costruttore indipendentemente dal tipo degli elementi della lista.
 
 ---
@@ -667,27 +671,27 @@ Inoltre, si è fatto utilizzo del polimorfismo universale, la cui idea è quella
 All'interno del caso di studio sono state utilizzate le seguenti collection:
 #### List
 Le liste vengono utilizzate all'interno del caso di studio nelle seguenti situazioni:
-* La classe `Classifica` ha come attributo una lista di elmenti di tipo Partita, la lista di partite viene utilizzata dal metodo 'ottieniClassificaUtenti' per filtrare le partite degli utenti e costruire il ranking degli utenti che hanno vinto almeno una partita con il punteggio massimo.
+* La classe `Classifica` ha come attributo una lista di elmenti di tipo `Partita`, la lista di partite viene utilizzata dal metodo 'ottieniClassificaUtenti()' per filtrare le partite degli utenti e costruire il ranking degli utenti che hanno vinto almeno una partita con il punteggio massimo.
 * Il metodo `ottieniClassificaUtenti()` restitutuisce una lista di elementi di tipo `Map.Entry<String,Integer>`, nonchè una lista di coppie <chiave,valore> dove la chiave è il nome dell'utente e il valore il punteggio massimo associato a quell'utente.
 * La classe `DatabaseController` ha un metodo `ottieniListaPartite()` che salva tutte le partite salvate su DB all'interno di una lista, per poi successivamente restituirla.
 * La classe GameDescription ha come attributi:
-  - una lista di elementi di tipo `Stanza`
-  - una lista di elementi di tipo `Comando`
-  - una lista di elementi di tipo `Oggetto` per l'inventario
-  - una lista di elementi di tipo `Oggetto` per gli oggetti del gioco
+  - una lista di elementi di tipo `Stanza`;
+  - una lista di elementi di tipo `Comando`;
+  - una lista di elementi di tipo `Oggetto` per l'inventario;
+  - una lista di elementi di tipo `Oggetto` per gli oggetti del gioco.
 * La classe `Inventario` ha come attributo una lista di elementi di tipo `Oggetto` utilizzata dai metodi della classe per aggiungere e rimuovere elementi nell'inventario
 * La classe `Stanza` ha come attributo una lista di elementi di tipo `Oggetto`
-* La classe `OggettoContenitore` ha come attributo una lista di elementi di tipo `Oggetto` contenente gli oggetti contenuti dal contenitore
-* Il metodo `parseString()` della classe `Utils` utilizza una lista di token, nonchè una lista di elementi di tipo `String`
-* la classe generica `StampaListe` utilizza come attributo una lista di elementi di tipo generico.
+* La classe `OggettoContenitore` ha come attributo una lista di elementi di tipo `Oggetto` contenente gli oggetti contenuti dal contenitore;
+* Il  `parseString()` della classe `Utils` utilizza una lista di token, nonchè una lista di elementi di tipo `String`;
+* la classe generica `StampaListe` utilizza come attributo una lista di elementi di tipo generico;
 * Il metodo `getPartite()` della classe `FileMatchController` restituisce una lista di elementi di tipo `GiocoNaufragioIsola`, nonchè una lista di partite salvate su file.
 #### Set
-* `Set stopwords` utilizzato per contenere tutte le stopwords recuperate dal file senza contenere duplicati 
-* La classe `ControlGioco` utilizza un `set comandi`, nonchè un set di elementi di tipo `Comando`
-* La classe `Oggetto` utilizza un set `aliasOggetto` per contenere tutti i possibili alias del nome di un oggetto e un `set comandiConsentiti` per contenere tutti i comandi consentiti su un determinato oggetto
-* La classe `Comando` utilizza un set `aliasComando` per contenere tutti gli alias del nome di un comando
+* `Set stopwords` utilizzato per contenere tutte le stopwords recuperate dal file senza contenere duplicati;
+* La classe `ControlGioco` utilizza un `set comandi`, nonchè un set di elementi di tipo `Comando`;
+* La classe `Oggetto` utilizza un set `aliasOggetto` per contenere tutti i possibili alias del nome di un oggetto e un `set comandiConsentiti` per contenere tutti i comandi consentiti su un determinato oggetto;
+* La classe `Comando` utilizza un set `aliasComando` per contenere tutti gli alias del nome di un comando.
 #### Map
-* Il metodo `ottieniClassificaUtenti()` della classe `Classifica` salva in una `Map` con chiave di tipo `String` e valore di tipo `Integer` tutti gli utenti che hanno vinto almeno una partita con il loro corrispettivo punteggio massimo, la chiave è il nome dell'utente, il valore il punteggio massimo.
+* Il metodo `ottieniClassificaUtenti()` della classe `Classifica` salva in una `Map` con chiave di tipo `String` e valore di tipo `Integer` tutti gli utenti che hanno vinto almeno una partita con il loro corrispettivo punteggio massimo, la chiave è il nome dell'utente, il valore il punteggio massimo;
 * Lista di elementi di tipo `Map.Entry<String,Integer>` per contenere le coppie chiave-valore (nome utente-punteggio massimo) per la stampa del ranking.
 
 ---
@@ -695,32 +699,32 @@ Le liste vengono utilizzate all'interno del caso di studio nelle seguenti situaz
 Sono state utilizzate molto frequentemente le eccezioni. Molti metodi nel programma possono generare eccezioni, ognuna di esse è catturata e gestita utilizzando l'appropriata tipologia di eccezione. 
 A seguire sono riporati diversi esempi.
 
-![Eccezione1](/eccezione1.png)
+![Eccezione1](/imgDocumentazione/eccezione1.png)
 
 Il metodo mostrato in figura è quello per caricare un immagine su un `JFrame` e visualizzarla come background. Soffermandoci sul blocco `try-catch` viene catturata un eccezione di tipo `IOException`. Questa eccezione viene sollevata quando si verificano errori di input/output durante la lettura o la scrittura di dati. Nel contesto del codice fornito, l'eccezione viene catturata se si verificano errori durante la lettura dell'immagine dal file specificato.
 
-![Eccezione2](/eccezione2.png)
+![Eccezione2](/imgDocumentazione/eccezione2.png)
 
 Il blocco 'try-catch' mostrato qui invece è stato estrapolato dal metodo `riproduciTraccia()` della classe `Suono`. In questo caso vengono catturate tre tipologie di eccezioni:
-* `IOException`: Questa eccezione viene sollevata quando si verificano errori di input/output durante la lettura o la scrittura di dati. Nel contesto del codice fornito, l'eccezione viene catturata quando si verificano errori di lettura del file audio o chiusura dell' `AudioInputStream`.
-* `LineUnavailableException`: Questa eccezione viene sollevata quando una linea audio richiesta non è disponibile o non può essere aperta. Nel contesto del codice fornito, l'eccezione viene catturata se non è possibile aprire la linea di riproduzione audio.
+* `IOException`: Questa eccezione viene sollevata quando si verificano errori di input/output durante la lettura o la scrittura di dati. Nel contesto del codice fornito, l'eccezione viene catturata quando si verificano errori di lettura del file audio o chiusura dell' `AudioInputStream`;
+* `LineUnavailableException`: Questa eccezione viene sollevata quando una linea audio richiesta non è disponibile o non può essere aperta. Nel contesto del codice fornito, l'eccezione viene catturata se non è possibile aprire la linea di riproduzione audio
 * `UnsupportedAudioFileException`: Questa eccezione viene sollevata quando viene tentato di leggere un tipo di file audio non supportato. Nel contesto del codice fornito, l'eccezione viene catturata se il formato audio del file non è supportato.
 
-![Eccezione3](/eccezione3.png)
+![Eccezione3](/imgDocumentazione/eccezione3.png)
 
 Il metodo mostrato in figura è quello per ottenere il punteggio della partita con uno specifico identificatore. Nel blocco `try-catch` viene catturata una eccezzione di tipo `SQLException`. Questa eccezione viene sollevata quando si verificano errori durante l'interazione con un database tramite `JDBC` (`Java Database Connectivity`). 
 
 ---
 ### File<a name="file"></a>
-Il programma offre la possibilità di salvare una partita una volta che essa è terminata. Il salvataggio delle partite avviene anche su file.
+Il programma implementa la possibilità di salvare una partita ogni qual volta viene catturato l'evento della chiusura della finestra di gioco. Il salvataggio delle partite avviene su un file denominato: 'salvataggioPartita'.
 Per la gestione dei file sono state usate le classi `FileController`, `FileMatchController` e l'interfaccia `FileInterface`.
 
-- La classe FileController implementa l'interfaccia FileInterface, la quale contiene il solo metodo create(). 
+- La classe `FileController` implementa l'interfaccia `FileInterface`, la quale contiene il solo metodo `create()`. 
 La classe `FileController` si occupa di creare un nuovo file (se non è già esistente) e ha i seguenti attributi protected: nomeFile, directory, file e percorso. 
 directory rappresenta la cartella in cui verrà memorizzato il file all'interno del progetto, nomeFile come intuibile dal nome è il nome del file che verrà creato.
-Il percorso del file viene costruito dinamicamente da un metodo della classe Utils che riceve in input gli attributi nomeFile e directory.
+Il percorso del file viene costruito dinamicamente da un metodo della classe `Utils` che riceve in input gli attributi nomeFile e directory.
 
-- La classe `FileMatchController` estende la classe `FileController` ereditanto gli attributi/metodi public/protected e aggiungendo nuove funzionalità (metodi), nonchè l'aggiunta di una nuova partita all'interno del file, il recupero di una specifica partita salvata su file utilizzando il nome della partita (utile per il caricamento di una partita salvata), il recupero di tutte le partite salvate su file (utile per la costruzione dinamica della JComboBox dalla quale l'utente può scegliere quale partita continuare/caricare).
+- La classe `FileMatchController` estende la classe `FileController` ereditanto gli attributi/metodi public/protected e aggiungendo nuove funzionalità (metodi), nonchè l'aggiunta di una nuova partita all'interno del file, il recupero di una specifica partita salvata su file utilizzando il nome della partita (utile per il caricamento di una partita salvata), il recupero di tutte le partite salvate su file (utile per la costruzione dinamica della `JComboBox` dalla quale l'utente può scegliere quale partita continuare/caricare).
 
 ---
 ### JDBC<a name="jdbc"></a>
@@ -730,19 +734,19 @@ Per la gestione dei DB utilizziamo una classe astratta `Database` che memorizza 
 
 La classe `DatabaseController` estende la classe astratta `Database` e utilizzando gli attributi ereditati contenenti le stringhe delle query implementa i metodi astratti della superclasse e aggiunge nuovi metodi.
 Si occupa delle seguenti funzionalità:
-* chiudere la connessione al DB
-* creare la tabella della partita (solamente se non è già esistente)
-* salvare una nuova partita nel DB
-* recuperare dal DB il punteggio di una specifica partita utilizzando l'id della partita
-* recuperare dal DB il punteggio di una specifica partita utilizzando il nome della partita
-* stampare tutte le partite salvate su DB
-* recuperare tutte le partite salvate su DB
-* recuperare tutte le partite salvate su DB di uno specifico utente
-* recuperare il punteggio medio di tutte le partite su DB
-* recuperare il punteggio medio di tutte le partite di uno specifico utente su DB
-* recuperare il punteggio medio delle partite terminate
-* verificare l'esistenza di una partita nel DB utilizzando il nome della partita
-* restituire tutte le partite salvate su DB come lista di elementi di tipo Partita
+* chiudere la connessione al DB;
+* creare la tabella della partita (solamente se non è già esistente);
+* salvare una nuova partita nel DB;
+* recuperare dal DB il punteggio di una specifica partita utilizzando l'id della partita;
+* recuperare dal DB il punteggio di una specifica partita utilizzando il nome della partita;
+* stampare tutte le partite salvate su DB;
+* recuperare tutte le partite salvate su DB;
+* recuperare tutte le partite salvate su DB di uno specifico utente;
+* recuperare il punteggio medio di tutte le partite su DB;
+* recuperare il punteggio medio di tutte le partite di uno specifico utente su DB;
+* recuperare il punteggio medio delle partite terminate;
+* verificare l'esistenza di una partita nel DB utilizzando il nome della partita;
+* restituire tutte le partite salvate su DB come lista di elementi di tipo Partita.
 
 Le seguenti funzionalità sono state utilizzate per permettere all'utente di visualizzare statistiche in forma tabellare. E' possibile visualizzare sia statistiche generali che statistiche specifiche all'utente in gioco.
 
@@ -769,20 +773,20 @@ Per la comunicazione tra l'utente e i militari abbiamo utilizzato una comunicazi
 
 Al momento della generazione della finestra per il dialogo vengono avviati sia il client che il server
 
-![avvioClientServer](client_server_avvio.png)
+![avvioClientServer](/imgDocumentazione/client_server_avvio.png)
 
-Come possiamo notare sia la classe `Client` che la classe `Server` implementano l'interfaccia `Runnable` poichè i due oggetti vengono passati al costruttore Thread per avviare due thread che si occupano di eseguire rispettivamente le funzionalità del server e del client.
+Come possiamo notare sia la classe `Client` che la classe `Server` implementano l'interfaccia `Runnable` poichè i due oggetti vengono passati al costruttore `Thread` per avviare due thread che si occupano di eseguire rispettivamente le funzionalità del server e del client.
 All'avvio dei due thread, il server rimane in attesa di una connessione su una porta, nel frattempo il client si connette al server pronto per lo scambio dei messaggi.
 
 #### Client:
-![Client](/Client.png)
+![Client](/imgDocumentazione/Client.png)
 
 Il client rappresenta l'utente nella conversazione via radio.
 Il metodo `leggiRispostaServer()` legge il messaggio inviato dal server e lo scrive nella `TextArea` dell'interfaccia per rendere visibile al client (l'utente) la risposta del server. 
 
 
 #### Server:
-![Server](/Server.png)
+![Server](/imgDocumentazione/Server.png)
 
 Il server rappresenta i militari nella conversazione via radio. 
 Il metodo `elaboraMessaggio()` legge il messaggio inviato dal client e in base al messaggio ricevuto restituisce la risposta idonea al proseguio della conversazione.
@@ -792,7 +796,7 @@ Il dialogo via radio offre all'utente un importante indizio per la risoluzione d
 
 
 #### Comunicazione client-server:
-<img src="radio.png" alt="radio" width="800" height="520">
+<img src="/imgDocumentazione/radio.png" alt="radio" width="800" height="520">
 
 
 Ogni volta che il client conferma un opzione invia un messaggio al server. Il server legge la risposta del client, elabora il messaggio e restituisce una risposta al client. La risposta del server viene visualizzata in tempo reale nell'interfaccia utente dando vita a un vero e proprio dialogo dinamico tra i due attori dove la risposta del server dipende dal messaggio inviato del client.
@@ -802,7 +806,7 @@ La risposta del server non è solo testuale, infatti restituisce anche una rispo
 Il messaggio inviato dal client è l'opzione selezionata.
 Nel momento in cui l'utente seleziona la risposta viene invocato il metodo statico `inviaMessaggio()` della classe `Client`, e vengono settate le nuove opzioni nell'interfaccia per permettere all'utente (client) di inviare nuovi messaggi ai militari (server).
 
-Quando l'utente spegne la radio oppure chiude la finestra vengono chiusi il server socket e il socket client per liberare le risorse, ma soprattutto vengono interrotti i due thread che eseguivano il `Client` e il `Server`.
+Quando l'utente spegne la radio oppure chiude la finestra vengono chiusi il `server socket` e il `client socket` per liberare le risorse, ma soprattutto vengono interrotti i due thread che eseguivano il `Client` e il `Server`.
 
 ---
 ### Lambda expressions & pipeline e stream<a name="lambda-expressions"></a>
@@ -810,54 +814,54 @@ Abbiamo creato due interfacce funzionali: `SalvaPartita` e `EsistenzaPartita`.
 Queste ultime sono delle interfacce funzionali che hanno un solo metodo astratto.
 
 #### Interfaccia funzionale SalvaPartita
-![SalvaPartita](/salvaPartita.png)
+![SalvaPartita](/imgDocumentazione/salvaPartita.png)
 
 Il metodo esegui dell'interfaccia funzionale `SalvaPartita()` prende in input un oggetto `GameDescription` e restituisce un `boolean`. Il metodo non ha un implementazione perciò è necessario fornirgliela per poter chiamare il metodo. 
 
 
-![Lambda1](/espressioneLambda1.png)
+![Lambda1](/imgDocumentazione/espressioneLambda1.png)
 
 Creiamo un'istanza dell'interfaccia funzionale `SalvaPartita` utilizzando un'espressione lambda. L'espressione lambda definisce l'implementazione del metodo astratto dell'interfaccia funzionale `SalvaPartita`.
-Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo esegui, che come definito dall'espressione lambda `p -> db.salvaPartita(p)` prende in input una partita e la passa al metoto `salvaPartita()` della classe `DatabaseController` che salva la partita su DB.
+Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo `esegui()`, che come definito dall'espressione lambda `p -> db.salvaPartita(p)` prende in input una partita e la passa al metoto `salvaPartita()` della classe `DatabaseController` che salva la partita su DB.
 
 #### Interfaccia funzionale EsistenzaPartita
-![EsistenzaPartita](/esistenzaPartita.png)
+![EsistenzaPartita](/imgDocumentazione/esistenzaPartita.png)
 
 L'interfaccia funzionale `EsistenzaPartita` ha un metodo astratto 'test' che prende in input una stringa (il nome della partita) e restituisce un `boolean`. Essendo un metodo astratto di una interfaccia funzionale esso non ha una implementazione.
 
 
-![Lambda2](/espressioneLambda2.png)
+![Lambda2](/imgDocumentazione/espressioneLambda2.png)
 
 Creiamo un'istanza dell'interfaccia funzionale `EsistenzaPartita` utilizzando un'espressione lambda. L'espressione lambda definisce l'implementazione del metodo astratto dell'interfaccia funzionale `EsistenzaPartita`.
-Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo test, che come definito dall'espressione lambda 
+Adesso che il metodo astratto ha un'implementazione utilizziamo l'istanza dell'interfaccia funzionale per chiamare il metodo `test()`, che come definito dall'espressione lambda 
 
 `(nome) -> db.partitaEsistente(nome)`, passa il nome della partita al metodo partitaEsistente della classe DatabaseController che verifica l'esistenza della partita nel DB, se la trova restituisce true, altrimenti false.
 
 
 #### Visualizzazione partite terminate con espressione lambda:
-![partiteTerm2](/partiteTerminate2.png)
+![partiteTerm2](/imgDocumentazione/partiteTerminate2.png)
 Quando l'utente clicca il bottone per visualizzare tutte le partite terminate parte il metodo `btnPartiteTerminateActionPerformed()` che salva in 'partite' la lista di tutte le partite, e chiama il metodo `visualizzaPartiteTerminate()`.
 
-Il metodo `visualizzaPartiteTerminate` si aspetta come parametri una lista di elementi di tipo `Partita` e un'istanza dell'interfaccia funzionale `Predicate&lt;Partita&gt;`.
-L'interfaccia funzionale `Predicate&lt;T&gt;` ha un solo metodo astratto: `boolean test(T t)`.
+Il metodo `visualizzaPartiteTerminate` si aspetta come parametri una lista di elementi di tipo `Partita` e un'istanza dell'interfaccia funzionale 
+```Predicate<Partita>;```. L'interfaccia funzionale ```Predicate<T>``` ha un solo metodo astratto: `boolean test(T t)`.
 Per fornire un'implementazione del metodo test dell'interfaccia funzionale passiamo come argomento alla funzione `visualizzaPartiteTerminate()` l'espressione lambda `p -> p.terminata()`, la quale rappresenta l'implementazione del metodo `test()`.
 
 
-![partiteTerm1](/partiteTerminate1.png)
+![partiteTerm1](/imgDocumentazione/partiteTerminate1.png)
 
 
-Utilizzando la lista degli oggetti di classe `Partita`, cicliamo su tutte le partite e per ognuna di esse chiamiamo il metodo test dell'interfaccia funzionale  `Predicate &lt;Partita&gt;` che utilizzando l'implementazione data dall'espressione lambda chiama il metodo `terminata()` della classe `Partita` che restituisce true se la partita è terminata, false altrimenti. Se la partita è terminata aggiunge una nuova riga nella tabella con la rispettiva partita terminata.  
+Utilizzando la lista degli oggetti di classe `Partita`, cicliamo su tutte le partite e per ognuna di esse chiamiamo il metodo `test()` dell'interfaccia funzionale  ```Predicate<Partita>``` che utilizzando l'implementazione data dall'espressione lambda chiama il metodo `terminata()` della classe `Partita` che restituisce true se la partita è terminata, false altrimenti. Se la partita è terminata aggiunge una nuova riga nella tabella con la rispettiva partita terminata.  
 
 #### Pipeline e stream:
 
-![classifica](/classifica.png)
+![classifica](/imgDocumentazione/classifica.png)
 
 
 Una delle funzionalità disponibili nel programma è quella di visualizzare in forma tabellare il ranking degli utenti, nonchè una classifica che include tutti gli utenti che hanno terminato almeno una partita. A ogni utente è associato il suo massimo punteggio raggiunto. La classifica è ordinata in ordine decrescente per punteggio.
 Il costruttore della classe `Classifica` prende in input una lista di oggetti `Partita` e salva la lista utilizzando l'attributo private 'partite'.
 
 
-![pipeline](/pipeline.png)
+![pipeline](/imgDocumentazione/pipeline.png)
 
 
 A occuparsi della costruzione della classifica è il metodo `ottieniClassificaUtenti()` della classe `Classifica` che dopo aver effettuato le operazioni necessarie restituisce una lista di coppie <chiave,valore> con chiave di tipo `String` che rappresenta il nome dell'utente e valore di tipo `Integer` che rappresenta il massimo punteggio associato all'utente.
@@ -865,8 +869,8 @@ A occuparsi della costruzione della classifica è il metodo `ottieniClassificaUt
 Entrando nei dettagli dell'implementazione del metodo `ottieniClassificaUtenti()`:
 
 Utilizziamo la lista di partite salvate su DB passata al costruttore al momento dell'istanziazione dell'oggetto della classe `Classifica` per costruire il ranking.
-Per la costruzione del ranking creiamo uno stream di oggetti della classe `Partita`. Uno stream è una sequenza di elementi che preleva valori da una sorgente attraverso una pipeline. Solitamente la sorgente è una `Collection`, in questo caso una lista. Invece, una pipeline è una sequenza di operazioni `aggregate(es: filter, map, foreach)` applicate ad uno stream, dove spesso i parametri di queste operazioni sono espressioni lambda.
-L'operazione filter filtra gli oggetti selezionando solo le partite terminate, con il metodo `groupingBy()` raggruppiamo gli elementi per nome utente e punteggio massimo. Il `Collector mapping` che utilizziamo come downstream collector seleziona il punteggio massimo. Il primo metodo collect restituisce una `Map`. Successivamente prendiamo tutte le coppie <chiave, valore> con il metodo `entrySet()` applicato alla `Map` restituita da collect, creiamo un nuovo stream di elementi con il metodo stream() e applichiamo allo stream ottenuto ancora una volta il metodo `collect()` che prende come parametro supplier il metodo `toMap()`della classe `Collectors`. Infine la pipeline ci restituisce una `Map<String, Integer>` con nome dell'utente e punteggio massimo associato.
+Per la costruzione del ranking creiamo uno stream di oggetti della classe `Partita`. Uno stream è una sequenza di elementi che preleva valori da una sorgente attraverso una pipeline. Solitamente la sorgente è una `Collection`, in questo caso una lista. Invece, una pipeline è una sequenza di operazioni aggregate`(es: filter, map, foreach)` applicate ad uno stream, dove spesso i parametri di queste operazioni sono espressioni lambda.
+L'operazione filter filtra gli oggetti selezionando solo le partite terminate, con il metodo `groupingBy()` raggruppiamo gli elementi per nome utente e punteggio massimo. Il `Collector mapping` che utilizziamo come downstream collector seleziona il punteggio massimo. Il primo metodo `collect()` restituisce una `Map`. Successivamente prendiamo tutte le coppie <chiave, valore> con il metodo `entrySet()` applicato alla `Map` restituita da collect, creiamo un nuovo stream di elementi con il metodo stream() e applichiamo allo stream ottenuto ancora una volta il metodo `collect()` che prende come parametro supplier il metodo `toMap()`della classe `Collectors`. Infine la pipeline ci restituisce una `Map<String, Integer>` con nome dell'utente e punteggio massimo associato.
 
 Applichiamo alla Map restituita dalla pipeline il metodo `entrySet()` che ci restituisce una lista di elementi di tipo `Map.Entry<String,Integer>`, nonchè una lista di coppie chiave-valore. Ci salviamo questa lista per andare successivamente a ordinarla in base al punteggio in ordine decrescente. 
 
