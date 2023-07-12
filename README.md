@@ -764,6 +764,8 @@ Altrettanto fondamentale è l'utilizzo dei thread per la musica e i suoni presen
 
 I suoni delle diverse stanze non si vanno mai a sovrapporre poichè ogni volta che ci si sposta nella mappa viene ucciso il thread per la musica della stanza precedente e viene avviato un nuovo thread per la musica della stanza corrente. Quando l'utente abbandona la partita viene interrotto il thread della classe `Suono`.
 
+Quando viene generata la finestra per il punteggio finale una volta vinta la partita, parte il thread della classe `ThreadFinale` che attraverso il metodo `sleep()` rimane in attesa 4 secondi per poi generare una finestra di dialogo di avviso che una volta chiusa genera il `JFrame` del finale, nonchè `JFrameFinale`.
+
 Inoltre, i thread vengono utilizzati per la comunicazione `Client-Server` con i socket. Approfondiamo il loro utilizzo nel prossimo paragrafo relativo ai Socket.
 
 ---
@@ -900,6 +902,7 @@ I dati delle partite vengono inseriti all'interno di una `JTable`, la quale è a
 * `JDialogPorta` è la finestra di dialogo che si apre nel momento in cui l'utente prova ad entrare all'interno dell'edificio abbandonato. La finestra di dialogo chiede l'inserimento del codice della porta che l'utente deve inserire cliccando sui `JButton` opportuni, ogni numero ha un `JButton`, man mano che l'utente inserisce un numero per il codice il `JTextField` si aggiorna visualizzando dinamicamente il codice inserito dall'utente fino a quel momento. E' possibile confermare o cancellare il codice inserito attraverso due `JButton` differenti.
 * `JDialogRadio` è la finestra di dialogo che viene mostrata all'utente nel momento in cui egli accende la radio. La finestra di dialogo permette all'utente di selezionare un `JRadioButton` per scegliere il messaggio da comunicare ai militari via radio. La conferma della scelta avviene attraverso il `JButton` opportuno, oppure attraverso il comado invio da tastiera. Dopo ogni risposta la finestra di dialogo si aggiorna dinamicamente  inserendo i nuovi `JRadioButton` per il prosieguo della conversazione. Le risposte dei militari sono mostarte all'interno di una `JTextArea` che come nelle altre finestre è inserita all'interno di un `JScrollPane`. Lo spegnimento della radio avviene cliccando sul `JButton` opportuno.
 * `JDialogPunteggio` è la finestra di dialogo per la visualizzazione del punteggio finale una volta vinta la partita.
+* `JFrameFinale` è il frame finale della partita che svela il finale a sorpresa dopo la vittoria.
 
 
 Ogni `JFrame`,`JDialog` ha uno sfondo opaco che permette di non andare in contrasto con il testo, o con i componenti  visualizzati all'interno della finestra.
