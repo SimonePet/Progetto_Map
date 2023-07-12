@@ -716,13 +716,13 @@ Il metodo mostrato in figura è quello per ottenere il punteggio della partita c
 
 ---
 ### File<a name="file"></a>
-Il programma offre la possibilità di salvare una partita una volta che essa è terminata. Il salvataggio delle partite avviene anche su file.
+Il programma implementa la possibilità di salvare una partita ogni qual volta viene catturato l'evento della chiusura della finestra di gioco. Il salvataggio delle partite avviene su un file denominato: 'salvataggioPartita'.
 Per la gestione dei file sono state usate le classi `FileController`, `FileMatchController` e l'interfaccia `FileInterface`.
 
-- La classe FileController implementa l'interfaccia FileInterface, la quale contiene il solo metodo `create()`. 
+- La classe `FileController` implementa l'interfaccia `FileInterface`, la quale contiene il solo metodo `create()`. 
 La classe `FileController` si occupa di creare un nuovo file (se non è già esistente) e ha i seguenti attributi protected: nomeFile, directory, file e percorso. 
 directory rappresenta la cartella in cui verrà memorizzato il file all'interno del progetto, nomeFile come intuibile dal nome è il nome del file che verrà creato.
-Il percorso del file viene costruito dinamicamente da un metodo della classe Utils che riceve in input gli attributi nomeFile e directory.
+Il percorso del file viene costruito dinamicamente da un metodo della classe `Utils` che riceve in input gli attributi nomeFile e directory.
 
 - La classe `FileMatchController` estende la classe `FileController` ereditanto gli attributi/metodi public/protected e aggiungendo nuove funzionalità (metodi), nonchè l'aggiunta di una nuova partita all'interno del file, il recupero di una specifica partita salvata su file utilizzando il nome della partita (utile per il caricamento di una partita salvata), il recupero di tutte le partite salvate su file (utile per la costruzione dinamica della `JComboBox` dalla quale l'utente può scegliere quale partita continuare/caricare).
 
@@ -775,7 +775,7 @@ Al momento della generazione della finestra per il dialogo vengono avviati sia i
 
 ![avvioClientServer](/imgDocumentazione/client_server_avvio.png)
 
-Come possiamo notare sia la classe `Client` che la classe `Server` implementano l'interfaccia `Runnable` poichè i due oggetti vengono passati al costruttore Thread per avviare due thread che si occupano di eseguire rispettivamente le funzionalità del server e del client.
+Come possiamo notare sia la classe `Client` che la classe `Server` implementano l'interfaccia `Runnable` poichè i due oggetti vengono passati al costruttore `Thread` per avviare due thread che si occupano di eseguire rispettivamente le funzionalità del server e del client.
 All'avvio dei due thread, il server rimane in attesa di una connessione su una porta, nel frattempo il client si connette al server pronto per lo scambio dei messaggi.
 
 #### Client:
@@ -806,7 +806,7 @@ La risposta del server non è solo testuale, infatti restituisce anche una rispo
 Il messaggio inviato dal client è l'opzione selezionata.
 Nel momento in cui l'utente seleziona la risposta viene invocato il metodo statico `inviaMessaggio()` della classe `Client`, e vengono settate le nuove opzioni nell'interfaccia per permettere all'utente (client) di inviare nuovi messaggi ai militari (server).
 
-Quando l'utente spegne la radio oppure chiude la finestra vengono chiusi il server socket e il socket client per liberare le risorse, ma soprattutto vengono interrotti i due thread che eseguivano il `Client` e il `Server`.
+Quando l'utente spegne la radio oppure chiude la finestra vengono chiusi il `server socket` e il `client socket` per liberare le risorse, ma soprattutto vengono interrotti i due thread che eseguivano il `Client` e il `Server`.
 
 ---
 ### Lambda expressions & pipeline e stream<a name="lambda-expressions"></a>
