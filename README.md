@@ -123,10 +123,10 @@ class JDialogPorta{
 class JDialogStats{
    - btnPartitaSpecifica: JButton
    - btnPartiteTerminate: JButton
-   - jLabel1: JLabel
-   - jPanel1: JPanel
-   - jbtnPartite: JButton
-   - jbtnPartiteUtente: JButton
+   - lblPunteggioMedio: JLabel
+   - jPanel: JPanel
+   - btnPartite: JButton
+   - btnPartiteUtente: JButton
    - lblErrore: JLabel
    - lblNomePartita: JLabel
    - lblPunteggio: JLabel
@@ -142,8 +142,8 @@ class JDialogStats{
    + JDialogStats(Frame, boolean, String) 
    - initComponents(): void              
    - formWindowOpened(WindowEvent): void  
-   - jbtnPartiteActionPerformed(ActionEvent): void 
-   - jbtnPartiteUtenteActionPerformed(ActionEvent): void 
+   - btnPartiteActionPerformed(ActionEvent): void 
+   - btnPartiteUtenteActionPerformed(ActionEvent): void 
    - btnPartitaSpecificaActionPerformed(ActionEvent): void 
    - txtNomePartitaKeyPressed(KeyEvent): void 
    - btnPartiteTerminateActionPerformed(ActionEvent): void 
