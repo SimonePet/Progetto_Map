@@ -6,10 +6,8 @@ package swing;
 
 import di.uniba.map.b.adventure.Utils;
 import multimediali.Immagini;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
-import javax.swing.ImageIcon;
 import javax.swing.UnsupportedLookAndFeelException;
 
 /**
