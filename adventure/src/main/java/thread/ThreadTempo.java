@@ -79,7 +79,7 @@ public class ThreadTempo implements Runnable {
             } else {
                 secondi = "" + this.numSecondi;
             }
-            printTime(ore + ":" + minuti + ":" + secondi);
+            stampaTempo(ore + ":" + minuti + ":" + secondi);
 
             try {
                 Thread.sleep(1000);
@@ -94,8 +94,8 @@ public class ThreadTempo implements Runnable {
      *
      * @param tempo il tempo da stampare
      */
-    public void printTime(final String tempo) {
-        frame.writeOnLabelTime(tempo);
+    public void stampaTempo(final String tempo) {
+        frame.scrivisuLabelTempo(tempo);
     }
 
 }

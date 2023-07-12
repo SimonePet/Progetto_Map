@@ -11,11 +11,9 @@ import data.StampaListe;
 import di.uniba.map.b.adventure.Utils;
 import java.awt.Color;
 import multimediali.Immagini;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import javax.swing.ImageIcon;
-import javax.swing.JTable;
 
 /**
  *
@@ -41,9 +39,9 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
     private void initComponents() {
 
         jPanel = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
+        lblTitolo = new javax.swing.JLabel();
         jScrollPane = new javax.swing.JScrollPane();
-        lblRanking = new javax.swing.JLabel();
+        lblMessaggioRanking = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -55,15 +53,15 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        jLabel2.setText("RANKING UTENTI");
+        lblTitolo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
+        lblTitolo.setText("RANKING UTENTI");
 
         jScrollPane.setMinimumSize(new java.awt.Dimension(116, 116));
 
-        lblRanking.setBackground(new java.awt.Color(204, 204, 204));
-        lblRanking.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        lblRanking.setText("Gli utenti nel ranking sono esclusivamente quelli ad aver terminato almeno una partita");
-        lblRanking.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        lblMessaggioRanking.setBackground(new java.awt.Color(204, 204, 204));
+        lblMessaggioRanking.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblMessaggioRanking.setText("Gli utenti nel ranking sono esclusivamente quelli ad aver terminato almeno una partita");
+        lblMessaggioRanking.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
         javax.swing.GroupLayout jPanelLayout = new javax.swing.GroupLayout(jPanel);
         jPanel.setLayout(jPanelLayout);
@@ -75,21 +73,21 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
                         .addGap(60, 60, 60)
                         .addGroup(jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(lblRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(lblMessaggioRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 621, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanelLayout.createSequentialGroup()
                         .addGap(22, 22, 22)
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(lblTitolo, javax.swing.GroupLayout.PREFERRED_SIZE, 227, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(60, Short.MAX_VALUE))
         );
         jPanelLayout.setVerticalGroup(
             jPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblTitolo, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(24, 24, 24)
                 .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 378, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(lblRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(lblMessaggioRanking, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(101, Short.MAX_VALUE))
         );
 
@@ -108,7 +106,7 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void formWindowOpened(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowOpened
-        lblRanking.setOpaque(true);
+        lblMessaggioRanking.setOpaque(true);
         this.setResizable(false);
         Color colore = new Color(255, 255, 255, 150);
         jScrollPane.setBackground(colore);
@@ -190,9 +188,9 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel;
     private javax.swing.JScrollPane jScrollPane;
-    private javax.swing.JLabel lblRanking;
+    private javax.swing.JLabel lblMessaggioRanking;
+    private javax.swing.JLabel lblTitolo;
     // End of variables declaration//GEN-END:variables
 }
