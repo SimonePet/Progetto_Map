@@ -416,7 +416,7 @@ public final class ControlGioco {
                     if (gni.getStanzaCorrente().getNomeStanza().equalsIgnoreCase(MessaggioApprodo.getNome())
                             || gni.getStanzaCorrente().getNomeStanza().equalsIgnoreCase(MessaggioCosta.getNome())) {
                         frame.scrviSuEditor(Messaggio.getVittoria());
-                        Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "vittoria", true);
+                        Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "vittoria", false);
                         frame.finePartita();
                         gni.setFinita(true);
                         Utils.generaFinestraPunteggio(frame, gni);

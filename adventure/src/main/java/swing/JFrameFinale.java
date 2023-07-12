@@ -99,6 +99,13 @@ public class JFrameFinale extends javax.swing.JFrame {
         textArea.setEditable(false);
         textArea.setBackground(c);
         textArea.setOpaque(false);
+        lblTitolo.setText("Balena");
+        textArea.setText("Lentamente riapri gli occhi e ti ritrovi in un luogo strano e "
+                + "sconosciuto, percepisci il mare agitato\n"
+                + "Ricordi solo di essere scappato con una zattera da un'isola deserta, l'acqua che invadeva la tua barca e il vento che urlava intorno a te.\n"
+                + "Ad un tratto capisci di essere finito nella grande bocca di una balena...\n"
+                + "Ti guardi intorno e incontri tuo nonno Geppetto!!!\n"
+                + "Rimboccati le mani la tua avventura ha inizio!");
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
         Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "squalo", jPanel);
@@ -108,9 +115,7 @@ public class JFrameFinale extends javax.swing.JFrame {
         Suono.stopRiproduzione();
     }//GEN-LAST:event_formWindowClosed
 
-    /**
-     * @param args the command line arguments
-     */
+
     public static void main() {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">

@@ -47,7 +47,8 @@ public final class Messaggio {
     private static final String NO_ACCENDI_RADIO = "Impossibile accendere radio. Ti mancano le batterie.";
     private static final String VITTORIA = "Hai utilizzato il legno, le corde e la vela per costruire la zattera.\n\n"
             + "===============HAI VINTO===============\n\n"
-            + "Complimenti sei riuscito a vincere questo gioco molto difficile.";
+            + "Complimenti sei riuscito a vincere questo gioco molto difficile.\n"
+            + "===NON CHIUDERE LA FINESTRA ATTENDI!!===";
     private static final String NO_LUOGO_ZATTERA = "Ma pensi veramente di poter costruire una zattera qui.";
     private static final String NO_TUTTI_OGGETTI = "Non hai ancora tutti gli oggetti a disposizione.";
     private static final String NO_COSTRUISCI = "Non è possibile costruire questo oggetto.";

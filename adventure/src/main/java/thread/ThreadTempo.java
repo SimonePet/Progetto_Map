@@ -92,7 +92,7 @@ public class ThreadTempo implements Runnable {
     /**
      * Stampa il tempo sulla label del frame.
      *
-     * @param tempo il tempo da stampare
+     * @param tempo T tempo da stampare
      */
     public void stampaTempo(final String tempo) {
         frame.scrivisuLabelTempo(tempo);

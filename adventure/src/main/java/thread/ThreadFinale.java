@@ -10,6 +10,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JDialog;
 import javax.swing.JOptionPane;
+
+import di.uniba.map.b.adventure.Utils;
+import multimediali.Suono;
 import swing.JDialogPunteggio;
 import swing.JFrameFinale;
 
@@ -27,9 +30,9 @@ public class ThreadFinale implements Runnable{
     @Override
     public void run() {
         try {
-            Thread.sleep(4000);
+            Thread.sleep(15000);
             JOptionPane optionPane = new JOptionPane("Attenzione sembra sia successo quacosa! "
-                    + "clicca OK per scoprire cosa è successo", JOptionPane.WARNING_MESSAGE);
+                    + "clicca OK per scoprire cosa è successo e ASPETTA!!", JOptionPane.WARNING_MESSAGE);
             JDialog d = optionPane.createDialog("AVVISO");
             d.setAlwaysOnTop(true);
             d.setVisible(true);
@@ -39,6 +42,7 @@ public class ThreadFinale implements Runnable{
             // Verifica se il valore è "OK" (valore predefinito per il pulsante "OK")
             if (valore != null && valore.equals(JOptionPane.OK_OPTION)) {
                 // Quando l'utente ha premuto il pulsante "OK"
+                Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "finale sequel",true);
                 dialog.dispose();
                 JFrameFinale frame = new JFrameFinale();
                 frame.setDefaultCloseOperation(JFrameFinale.DISPOSE_ON_CLOSE);
