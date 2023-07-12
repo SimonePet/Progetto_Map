@@ -81,7 +81,7 @@ class JFrameApp{
     + finePartita():void
     + getTextArea():JTextArea
     - btnInviaActionPerformed(ActionEvent):void
-    + avvio():void
+    + main():void
 }
 
 class JDialogPorta{
