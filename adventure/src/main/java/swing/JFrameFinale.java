@@ -49,7 +49,7 @@ public class JFrameFinale extends javax.swing.JFrame {
         });
 
         lblTitolo.setFont(new java.awt.Font("Segoe UI", 1, 16)); // NOI18N
-        lblTitolo.setText("SQUALO");
+        lblTitolo.setText("BALENA");
 
         textArea.setColumns(20);
         textArea.setRows(5);
@@ -105,12 +105,12 @@ public class JFrameFinale extends javax.swing.JFrame {
         textArea.setText("Lentamente riapri gli occhi e ti ritrovi in un luogo strano e "
                 + "sconosciuto, percepisci il mare agitato\n"
                 + "Ricordi solo di essere scappato con una zattera da un'isola deserta, l'acqua che invadeva la tua barca e il vento che urlava intorno a te.\n"
-                + "Ad un tratto capisci di essere finito nella grande bocca di uno squalo...\n"
+                + "Ad un tratto capisci di essere finito nella grande bocca di una balena...\n"
                 + "Ti guardi intorno e incontri tuo nonno Geppetto!!!\n"
                 + "Rimboccati le mani la tua avventura ha inizio!");
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
-        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "squalo", jPanel);
+        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "", jPanel);
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
