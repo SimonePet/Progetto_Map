@@ -661,7 +661,7 @@ ThreadFinale *-- JDialogPunteggio
 ```
 ### Esempi Diagramma Classi
 ![DiagrammaClassi1](/imgDocumentazione/DiagrammaClassi1.PNG)
-![DiagrammaClassi](/imgDocumentazione/DiagrammaClassi2.PNG)
+![DiagrammaClassi2](/imgDocumentazione/DiagrammiClassi2.PNG)
 ## Specifica algebrica
 
 ---
