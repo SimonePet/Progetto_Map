@@ -607,8 +607,8 @@ Comando <.. ControlGioco : create
 ControlGioco *-- Comando
 
 GiocoNaufragioIsola <.. JFrameApp : create
-JdialogPorta *-- GiocoNaufragioIsola
-JdialogPunteggio *-- GiocoNaufragioIsola
+JDialogPorta *-- GiocoNaufragioIsola
+JDialogPunteggio *-- GiocoNaufragioIsola
 
 
 FileController <.. Engine : create
