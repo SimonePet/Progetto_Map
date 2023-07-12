@@ -83,6 +83,22 @@ class JFrameApp{
     - btnInviaActionPerformed(ActionEvent):void
     + main():void
 }
+class ThreadFinale{
+- dialog:JDialogPunteggio
++ run():void
+}
+
+class JFrameFinale{
+- lblTitolo:JLabel
+- scrollPanel:JScrollPane
+- textArea:JTextArea
+- jPanel:JPanel
++ JFrameFinale
+- formWindowOpened(WindowEvent):void
+- formWindowClosing(WindowEvent):void
+- initComponents():void
++ main():void
+}
 
 class JDialogPorta{
     - btn1:JButton
@@ -638,6 +654,10 @@ FrameStart .. JFrameApp : create
 JDialogStats <.. JFrameApp : create
 JDialogAbbandona <.. JFrameApp : create
 JFrameApp <.. JDialogCaricaPartite : create
+
+ThreadFinale <.. JDialogPunteggio : create
+JFrameFinale <.. ThreadFinale : create
+ThreadFinale *-- JDialogPunteggio
 ```
 ## Specifica algebrica
 
