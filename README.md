@@ -26,11 +26,6 @@
 ## Diagramma delle classi
 ```mermaid
 classDiagram
-FrameStart -- JDialogClassificaUtenti : create
-FrameStart -- JDialogCaricaPartite : create
-FrameStart *-- JDialogCaricaPartite : frameStart
-FrameStart *-- JFrameApp : frameStart
-FrameStart -- JFrameApp : create
 class FrameStart{
     - lblNomeUtente:JLabel
     - txtNomeUtente:JTextField
@@ -634,6 +629,15 @@ Classifica <.. JDialogClassificaUtenti : create
 Engine <.. JFrameApp : create
 JFrameApp *-- Engine
 JDialogAbbandona *-- Engine
+
+FrameStart .. JDialogClassificaUtenti : create
+FrameStart .. JDialogCaricaPartite : create
+JDialogCaricaPartite *--  FrameStart: frameStart
+JFrameApp *-- FrameStart : frameStart
+FrameStart .. JFrameApp : create
+JDialogStats <.. JFrameApp : create
+JDialogAbbandona <.. JFrameApp : create
+JFrameApp <.. JDialogCaricaPartite : create
 ```
 ## Specifica algebrica
 
