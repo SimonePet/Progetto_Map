@@ -881,7 +881,7 @@ La lista finale ordinata restituita dal metodo `ottieniClassificaUtenti()`viene 
 ---
 ### Swing<a name="swing"></a>
 
-Per la realizzazione delle interfacce grafiche abbiamo utilizzato swing, nonchè una libreria grafica per la creazione di UI(User interface) in java.
+Per la realizzazione delle interfacce grafiche abbiamo utilizzato swing, nonchè una libreria grafica per la creazione di UI (User interface) in java.
 Poichè l'applicazione è realizzata interamente con interfacce grafiche tutti i file relativi alle interfacce swing sono inseriti all'interno del package `swing`.
 * `FrameStart` è il frame iniziale dove l'utente inserisce il proprio username per poter iniziare una nuova partita. In alternativa l'utente può decidere di caricare una partita salvata cliccando il bottone `carica partita` oppure visualizzare il ranking degli utenti cliccando il bottone `ranking utenti`.
 * `JDialogCaricaPartite` è una finestra di dialogo con una `JComboBox` che viene creata dinamicamente prendendo tutte le partite salvate su file e inserendo i nomi delle partite negli elementi della `JComboBox`.
