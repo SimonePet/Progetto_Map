@@ -43,14 +43,12 @@
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace min="-2" pref="129" max="-2" attributes="0"/>
-                  <Component id="scrollPanel" min="-2" pref="345" max="-2" attributes="0"/>
-                  <EmptySpace max="32767" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="1" attributes="0">
-                  <EmptySpace max="32767" attributes="0"/>
-                  <Component id="lblTitolo" min="-2" pref="617" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="74" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="lblTitolo" min="-2" pref="173" max="-2" attributes="0"/>
+                      <Component id="scrollPanel" min="-2" pref="497" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="74" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -60,8 +58,8 @@
                   <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
                   <Component id="lblTitolo" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="scrollPanel" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="127" max="32767" attributes="0"/>
+                  <Component id="scrollPanel" min="-2" pref="170" max="-2" attributes="0"/>
+                  <EmptySpace pref="53" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -72,7 +70,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="16" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="OH NO! UNO SQUALO ROVESCIA L&apos;IMBARCAZIONE E TI BUTTA IN MARE"/>
+            <Property name="text" type="java.lang.String" value="SQUALO"/>
           </Properties>
         </Component>
         <Container class="javax.swing.JScrollPane" name="scrollPanel">
@@ -86,7 +84,6 @@
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="Forse sarebbe stato meglio rimanere nell&apos;isola...&#xa;Ora sei 1 vs 1 contro uno squalo.&#xa;Buona fortuna!"/>
               </Properties>
             </Component>
           </SubComponents>
