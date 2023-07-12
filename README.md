@@ -660,7 +660,7 @@ JFrameFinale <.. ThreadFinale : create
 ThreadFinale *-- JDialogPunteggio
 ```
 ### Esempi Diagramma Classi
-![DiagrammaClassi1](/imgDocumentazione/DiagrammaClassi1.png)
+![DiagrammaClassi1](/imgDocumentazione/DiagrammaClassi1.PNG)
 ## Specifica algebrica
 
 ---
