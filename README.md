@@ -909,18 +909,24 @@ Per la realizzazione delle interfacce grafiche abbiamo utilizzato swing, nonchè
 Poichè l'applicazione è realizzata interamente con interfacce grafiche tutti i file relativi alle interfacce swing sono inseriti all'interno del package `swing`.
 Sono riportati a seguire i diversi frame utilizzati:
 
-![frame1](/imgDocumentazione/frame1.png)
+![framestart](/imgDocumentazione/framestart.png)
 
 * `FrameStart` è il frame iniziale dove l'utente inserisce il proprio username per poter iniziare una nuova partita. In alternativa l'utente può decidere di caricare una partita salvata cliccando il bottone `carica partita` oppure visualizzare il ranking degli utenti cliccando il bottone `ranking utenti`.
+
+![framecaricapartite](/imgDocumentazione/framecaricapartite.png)
+
 * `JDialogCaricaPartite` è una finestra di dialogo con una `JComboBox` che viene creata dinamicamente prendendo tutte le partite salvate su file e inserendo i nomi delle partite negli elementi della `JComboBox`.
 Una volta selezionata la partita, si apre `JFrameApp` che permette di continuare la partita selezionata.
 
-![frame2](/imgDocumentazione/frame2.png)
+![frameapp](/imgDocumentazione/frameapp.png)
 
 *  `JFrameApp` è il frame principale dove l'utente gioca la propria partita inserendo i comandi nella `JTextField`, all'interno della `JTextArea` vengono visualizzate tutte le risposte ai comandi inseriti dall'utente in gioco. L'utente conferma l'invio dei comandi attraverso l'invio da tastiera o, in alternativa, cliccando sul `JButton` "INVIA". All'interno del frame vengono mostrati e aggiornati dinamicamente numero di mosse e tempo trascorso all'interno di due JLabel. Inoltre abbiamo un `JButton` per visualizzare le statistiche.
+
+![frameabbandona](/imgDocumentazione/frameabbandona.png)
+
 *  `JDialogAbbandona` è la finestra di dialogo che si apre nel momento in cui si chiude il frame `JFrameApp`, nonchè il momento nel quale si abbandona la partita. Qui la finestra chiede attraverso la visualizzazione di una `JLabel` se si vuole salvare la partita o meno. La conferma della scelta da parte dell'utente avviene selezionando l'opportuno `JButton` "SI" o "NO". Per poter salvare la partita è necessario inserire il nome della partita, il quale viene inserito all'interno di una `JTextField`.
 
-![frame3](/imgDocumentazione/frame3.png)
+![framestats](/imgDocumentazione/framestats.png)
 
 *  `JDialogStas` è la finestra di dialogo che si apre nel momento in cui l'utente chiede di visualizzare le statistiche. Questa finestra permette di visualizzare dinamicamente in forma tabellare:
   * Tutte le partite
@@ -930,10 +936,24 @@ Una volta selezionata la partita, si apre `JFrameApp` che permette di continuare
 
 I dati delle partite vengono inseriti all'interno di una `JTable`, la quale è a sua volta inserita all'interno di un `JScrollPane` per la gestione della visualizzazione scorrevole delle righe della tabella.
 
+![frameclassifica](/imgDocumentazione/frameclassifica.png)
+
 * `JDialogClassificaUtenti` è la finestra di dialogo per la visualizzazione della classifica degli utenti che hanno terminato almeno una partita. Anche qui la `JTable` è visualizzata all'interno di un `JScrollPane` per la visualizzazione scorrevole. La tabella mostra nome utente e il punteggio massimo raggiunto associato all'utente.
+
+![frameporta](/imgDocumentazione/frameporta.png)
+
 * `JDialogPorta` è la finestra di dialogo che si apre nel momento in cui l'utente prova ad entrare all'interno dell'edificio abbandonato. La finestra di dialogo chiede l'inserimento del codice della porta che l'utente deve inserire cliccando sui `JButton` opportuni, ogni numero ha un `JButton`, man mano che l'utente inserisce un numero per il codice il `JTextField` si aggiorna visualizzando dinamicamente il codice inserito dall'utente fino a quel momento. E' possibile confermare o cancellare il codice inserito attraverso due `JButton` differenti.
+
+![frameradio](/imgDocumentazione/frameradio.png)
+
 * `JDialogRadio` è la finestra di dialogo che viene mostrata all'utente nel momento in cui egli accende la radio. La finestra di dialogo permette all'utente di selezionare un `JRadioButton` per scegliere il messaggio da comunicare ai militari via radio. La conferma della scelta avviene attraverso il `JButton` opportuno, oppure attraverso il comado invio da tastiera. Dopo ogni risposta la finestra di dialogo si aggiorna dinamicamente  inserendo i nuovi `JRadioButton` per il prosieguo della conversazione. Le risposte dei militari sono mostarte all'interno di una `JTextArea` che come nelle altre finestre è inserita all'interno di un `JScrollPane`. Lo spegnimento della radio avviene cliccando sul `JButton` opportuno.
+
+![framepunteggio](/imgDocumentazione/framepunteggio.png)
+
 * `JDialogPunteggio` è la finestra di dialogo per la visualizzazione del punteggio finale una volta vinta la partita.
+
+![framefinale](/imgDocumentazione/framefinale.png)
+
 * `JFrameFinale` è il frame finale della partita che svela il finale a sorpresa dopo la vittoria.
 
 
