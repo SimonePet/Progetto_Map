@@ -71,7 +71,7 @@ class JFrameApp{
     + scriviSuLabelStanza(String):void
     + getEngine():Engine
     - jPanel1PropertyChange(jPanel1PropertyChange):void
-    + writeOnLabelTime(String):void
+    + scriviSuLabelTempo(String):void
     + setEngine(GiocoNaufragioIsola):void
     - jButton1ActionPerformed(ActionEvent):void
     + scriviSuEditor(String):void
@@ -80,7 +80,7 @@ class JFrameApp{
     - textFieldKeyPressed(KeyEvent):void
     + finePartita():void
     + getTextArea():JTextArea
-    - buttSumbitActionPerformed(ActionEvent):void
+    - btnInviaActionPerformed(ActionEvent):void
     + avvio():void
 }
 
