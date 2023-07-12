@@ -32,17 +32,219 @@ FrameStart *-- JDialogCaricaPartite : frameStart
 FrameStart *-- JFrameApp : frameStart
 FrameStart -- JFrameApp : create
 class FrameStart{
+    - lblNomeUtente:JLabel
+    - txtNomeUtente:JTextField
+    - btnNuovaPartita:JButton
+    - btnCaricaPartita:JButton
+    - lblNomeInesistente:JLabel
+    - btnRanking:JButton
+    - jPanel:JPanel
     + FrameStart()
-    - jPanel1MouseEntered(MouseEvent)
-    + main()
-    - formWindowClosing(MouseEvent)
-    - formMousEntered (MouseEvent)
-    - loadMatchActionPerformed (ActioEvent)
-    - jButton1ActionPerformed (ActioEvent)
-    - initComponents()
-    - usernameFieldKeyPressed (KeyEvent)
-    - formWindowOpened (WindowEvent)
-    - nuovaPartitaActionPerformed (ActioEvent)
+    - formWindowOpened():void
+    - btnNuovaPartitaKeyPressed(KeyEvent):void
+    - nuovaPartitaActionPerformed(ActionEvent):void
+    - btnCaricaPartitaActionPerformed(ActionEvent):void
+    - btnRankingActionPerformed(ActionEvent):void
+    - formMouseEntered():void
+    - jPanel1MouseEntered():void
+    - formWindowClosing():void
+    + avvia():void
+}
+class JFrameApp{
+    - btnInvia:JButton
+    - btnStatistiche:JButton
+    - jPanel:JPanel
+    - labelNumMosse:JLabel
+    - lblComando:JLabel
+    - lblNumMosse:JLabel
+    - lblStanzaCorrente:JLabel
+    - lblTempo:JLabel
+    - panelStat:JPanel
+    - scrollPanel:JScrollPanel
+    - textArea:JTextArea
+    - txtComando:JTextField
+    - lblTimer:JLabel
+    - engine:Engine
+    - partitaCaricata:boolean
+    - thread:ThreadTempo
+    - username:String
+    - background:JLabel
+    - frameStart:FrameStart
+    + JFrameApp(String,FrameStart)
+    - formWindowOpened():void
+    - formWindowClosing():void
+    + scriviSuLabelStanza(String):void
+    + getEngine():Engine
+    - jPanel1PropertyChange(jPanel1PropertyChange):void
+    + writeOnLabelTime(String):void
+    + setEngine(GiocoNaufragioIsola):void
+    - jButton1ActionPerformed(ActionEvent):void
+    + scriviSuEditor(String):void
+    - initComponents():void
+    - textFieldActionPerformed(ActionEvent):void
+    - textFieldKeyPressed(KeyEvent):void
+    + finePartita():void
+    + getTextArea():JTextArea
+    - buttSumbitActionPerformed(ActionEvent):void
+    + avvio():void
+}
+
+class JDialogPorta{
+    - btn1:JButton
+    - btn2:JButton
+    - btn3:JButton
+    - btn4:JButton
+    - btn5:JButton
+    - btn6:JButton
+    - btn7:JButton
+    - btn8:JButton
+    - btn9:JButton
+    - btnCancella:JButton
+    - btnConferma:JButton
+    - txtCodice:JTextField
+    - jpanel:JPanel
+    - lblErrore:JLabel
+    - GNI:GiocoNaufragioIsola
+    - panelErrore:JPanel
+    + JDialogPorta(Frame,boolean,GiocoNaufragioIsola)
+    - btn1ActionPerformed(ActionEvent):void
+    - btn2ActionPerformed(ActionEvent):void
+    - btn3ActionPerformed(ActionEvent):void
+    - btn4ActionPerformed(ActionEvent):void
+    - btn5ActionPerformed(ActionEvent):void
+    - btn6ActionPerformed(ActionEvent):void
+    - btn7ActionPerformed(ActionEvent):void
+    - btn8ActionPerformed(ActionEvent):void
+    - btn9ActionPerformed(ActionEvent):void
+    - txtCodiceKeyReleased(KeyEvent):void
+    - txtCodiceKeyPressed(KeyEvent):void
+    - initComponents():void
+    - btnCancellaActionPerformed(ActionEvent):void
+    - btnConfermaActionPerformed(ActionEvent):void
+    - formWindowOpened(WindowEvent):void
+    + avvia():void
+}
+
+class JDialogStats{
+   - btnPartitaSpecifica: JButton
+   - btnPartiteTerminate: JButton
+   - jLabel1: JLabel
+   - jPanel1: JPanel
+   - jbtnPartite: JButton
+   - jbtnPartiteUtente: JButton
+   - lblErrore: JLabel
+   - lblNomePartita: JLabel
+   - lblPunteggio: JLabel
+   - lblSaluto: JLabel
+   - scrollPanel: JScrollPane
+   - txtNomePartita: JTextField
+   - txtPunteggio: JTextField
+   - txtPunteggioMedio: JTextPane
+   - username:String
+   - df:DecimalFormat
+   - RIGHE_TABELLA_PARTITE:Int
+   - COLONNE_TABELLA_PARTITE:int
+   + JDialogStats(Frame, boolean, String) 
+   - initComponents(): void              
+   - formWindowOpened(WindowEvent): void  
+   - jbtnPartiteActionPerformed(ActionEvent): void 
+   - jbtnPartiteUtenteActionPerformed(ActionEvent): void 
+   - btnPartitaSpecificaActionPerformed(ActionEvent): void 
+   - txtNomePartitaKeyPressed(KeyEvent): void 
+   - btnPartiteTerminateActionPerformed(ActionEvent): void 
+   + visualizzaPartiteTerminate(List<Partita>, Predicate<Partita>): void 
+   + avvia(): void
+}
+
+class JDialogCaricaPartite{
+- model: ComboBoxModel[]
+- frameStart: FrameStart
+- jPanel1: JPanel
+- btnConferma: JButton
+- jComboBoxPartite: JComboBox<String>
+- lblMessaggioCarica: JLabel
+- lblPartitaNonSelezionata: JLabel
++ JDialogCaricaPartite(JFrame, boolean, FrameStart)
+- initComponents(): void
+- btnConfermaActionPerformed(ActionEvent): void
+- formWindowOpened(WindowEvent): void
+- jComboBoxPartiteKeyPressed(KeyEvent): void
++ avvia(): void
+}
+
+class JDialogClassificaUtenti{
+- lblMessaggioRanking: JLabel
+- jScrollPane: JScrollPane
+- jPanel: JPanel
+- lblTitolo: JLabel
++ JDialogClassificaUtenti(Frame, boolean)
+- initComponents(): void
+- formWindowOpened(): void
+- formWindowClosed(): void
++ avvio(): void
+}
+
+class JDialogPunteggio{
+- jPanel: JPanel
+- lblPunteggio: JLabel
+- txtPunteggio: JTextField
+- lblCongratulazioni: JLabel
+- gni: GiocoNaufragioIsola
++ JDialogPunteggio(Frame, boolean, GiocoNaufragioIsola)
+- initComponents(): void
+- formWindowOpened(): void
++ avvio(): void
+}
+
+class JDialogAbbandona{
+- jPanel: JPanel
+- lblMessaggioSalva: JLabel
+- btnSi: JButton
+- btnNo: JButton
+- txtNomePartita: JTextField
+- lblNomePartita: JLabel
+- lblErroreNome: JLabel
+- engine: Engine
++ JDialogAbbandona(Frame, boolean, Engine)
+- initComponents(): void
+- btnSiActionPerformed(ActionEvent): void
+- txtNomePartitaActionPerformed(ActionEvent): void
+- btnNoActionPerformed(ActionEvent): void
+- formWindowOpened(WindowEvent): void
+- txtNomePartitaKeyPressed(KeyEvent): void
++ main(String[]):void
+}
+
+class JDialogRadio{
+- jPanel: JPanel
+- jScrollPane: JScrollPane
+- jTextArea: JTextArea
+- jPanelOpzioni: JPanel
+- jRadioButton1: JRadioButton
+- jRadioButton2: JRadioButton
+- btnConferma: JButton
+- lblTitolo: JLabel
+- btnSpegniRadio: JButton
+- numDomanda: int
+- nomeUtente: String
+- threadS: Thread
+- threadC: Thread
++ JDialogRadio(Frame, boolean, String)
+- initComponents(): void
+- formWindowOpened(): void
+- btnConfermaActionPerformed(ActionEvent): void
+- jRadioButton1KeyReleased(): void
+- jRadioButton2KeyReleased(): void
+- jRadioButton1ActionPerformed(ActionEvent): void
+- jButton2ActionPerformed(ActionEvent): void
+- jRadioButton1KeyPressed(KeyEvent): void
+- jRadioButton2KeyPressed(KeyEvent): void
+- formWindowClosed(): void
++ avviaServer(): void throws IOException
++ avviaClient(): void
++ getTextArea(): JTextArea
++ setNuoveDomande(): void
++ avvia(): void
 }
 class Oggetto{
     - idOggetto:int 
