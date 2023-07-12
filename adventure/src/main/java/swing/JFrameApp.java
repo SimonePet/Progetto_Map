@@ -33,6 +33,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JTextArea;
 import javax.swing.JScrollBar;
 import javax.swing.ScrollPaneConstants;
+import multimediali.Immagini;
 
 
 
@@ -82,7 +83,7 @@ public class JFrameApp extends javax.swing.JFrame {
         });
 
         btnInvia.setText("INVIA");
-        btnInvia.addActionListener(this::buttSumbitActionPerformed);
+        btnInvia.addActionListener(this::btnInviaActionPerformed);
 
         lblComando.setText("Comando");
 
@@ -188,7 +189,7 @@ public class JFrameApp extends javax.swing.JFrame {
     private void textFieldActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_textFieldActionPerformed
     }//GEN-LAST:event_textFieldActionPerformed
 
-    private void buttSumbitActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttSumbitActionPerformed
+    private void btnInviaActionPerformed(final java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttSumbitActionPerformed
         JScrollBar verticalScrollBar = scrollPanel.getVerticalScrollBar();
         verticalScrollBar.setValue(verticalScrollBar.getMaximum());
         String comando = txtComando.getText();
@@ -256,7 +257,6 @@ public class JFrameApp extends javax.swing.JFrame {
             engine = new Engine(new GiocoNaufragioIsola(), false);
         }
         String stanzaCorrente = engine.getGame().getStanzaCorrente().getNomeStanza();
-        //Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_STANZE,stanzaCorrente,jPanel1);
         try {
             BufferedImage img = ImageIO.read(new File(Utils.PERCORSO_IMMAGINI_STANZE + stanzaCorrente + ".png"));
             Image dimg = img.getScaledInstance(jPanel.getWidth(), jPanel.getHeight(), Image.SCALE_SMOOTH);
@@ -312,7 +312,7 @@ public class JFrameApp extends javax.swing.JFrame {
     private void textFieldKeyPressed(final java.awt.event.KeyEvent evt) {//GEN-FIRST:event_textFieldKeyPressed
         if (evt.getKeyCode() == KeyEvent.VK_ENTER) {
             ActionEvent e = new ActionEvent(this, 1, "");
-            buttSumbitActionPerformed(e);
+            btnInviaActionPerformed(e);
         }
     }//GEN-LAST:event_textFieldKeyPressed
 

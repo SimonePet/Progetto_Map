@@ -335,7 +335,7 @@ public abstract class GameDescription implements Serializable {
      * @param label Etichetta di stato del gioco.
      * @throws BadLocationException Se si verifica un errore nella gestione delle posizioni del testo.
      */
-    public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame, JPanel panel, JLabel label) throws BadLocationException;
+    public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame, JPanel panel, JLabel jlabel) throws BadLocationException;
 
 
 }

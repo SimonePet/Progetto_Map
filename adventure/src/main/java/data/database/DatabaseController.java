@@ -113,6 +113,7 @@ public class DatabaseController extends Database {
      * @param nomePartita Nome della partita per la quale si desidera ottenere il punteggio.
      * @return Punteggio corrispondente al nome specificato della partita.
      */
+    @Override
     public int getPunteggio(final String nomePartita) {
         int punteggio = 0;
         try {
