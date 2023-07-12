@@ -110,7 +110,7 @@ public class JFrameFinale extends javax.swing.JFrame {
                 + "Rimboccati le mani la tua avventura ha inizio!");
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
-        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "squalo", jPanel);
+        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "", jPanel);
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
