@@ -686,13 +686,9 @@ remove(set,Comando)->set
 clear(set)->set
 ### Specifica Semantica
 `declare:`
-
-set1,set:set
-
-c:Comando
-
+set1,set:set, 
+c:Comando, 
 b:boolean
-
 
 Remove(Add(set,c),c) = set
 
