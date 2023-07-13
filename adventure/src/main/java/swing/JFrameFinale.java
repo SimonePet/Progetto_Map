@@ -114,6 +114,7 @@ public class JFrameFinale extends javax.swing.JFrame {
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
         Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "balena", jPanel);
+        Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE+"finale sequel", true);
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
