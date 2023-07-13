@@ -6,6 +6,9 @@
 package di.uniba.map.b.adventure.type;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Enumerazione dei tipi di comando disponibili nel gioco.
  * Ogni tipo di comando corrisponde a un'azione che il giocatore può compiere.
  * I tipi di comando includono le direzioni di movimento (nord, sud, est, ovest), comandi di interazione (apri, raccogli, lascia, osserva, aiuto),

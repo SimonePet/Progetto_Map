@@ -16,6 +16,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Classe di inizializzazione degli oggetti del gioco "Naufragio sull'Isola".
  * Questa classe contiene metodi statici per inizializzare gli oggetti del gioco,
  * specificando le loro caratteristiche e aggiungendoli alla lista degli oggetti del gioco.

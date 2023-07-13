@@ -19,7 +19,9 @@ import javax.swing.ImageIcon;
 
 
 /**
- * @author Giannantonio
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  */
 public class JDialogStats extends javax.swing.JDialog {
 

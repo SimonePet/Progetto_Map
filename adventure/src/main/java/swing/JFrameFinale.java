@@ -12,8 +12,9 @@ import multimediali.Immagini;
 import multimediali.Suono;
 
 /**
- *
- * @author Giannantonio
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  */
 public class JFrameFinale extends javax.swing.JFrame {
 

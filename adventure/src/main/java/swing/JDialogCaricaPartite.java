@@ -22,7 +22,9 @@ import javax.swing.UnsupportedLookAndFeelException;
 import multimediali.Immagini;
 
 /**
- * @author Giannantonio
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  */
 public class JDialogCaricaPartite extends JDialog {
 

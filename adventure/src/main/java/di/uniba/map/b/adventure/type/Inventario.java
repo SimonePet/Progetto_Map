@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Classe per la gestione dell'inventario.
  */
 public class Inventario {

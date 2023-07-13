@@ -12,9 +12,11 @@ import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author Giannantonio
- */
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
+*/
+
 public class FrameStart extends javax.swing.JFrame {
 
     /**

@@ -13,7 +13,12 @@ import java.util.List;
 import java.util.Set;
 
 /**
- * @author pierpaolo
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
+ * La classe Parser analizza un comando specifico e estrae le informazioni
+ * necessarie per l'esecuzione del gioco. Utilizza un insieme di stopwords
+ * per ignorare le parole comuni durante l'analisi del comando.
  */
 public class Parser {
 

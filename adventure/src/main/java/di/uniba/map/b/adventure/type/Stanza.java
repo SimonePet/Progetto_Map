@@ -10,6 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * La classe Stanza rappresenta una stanza all'interno di un gioco.
  * Ogni stanza ha un ID univoco, un nome, una descrizione lunga e una descrizione corta.
  * La stanza può contenere oggetti e può essere collegata ad altre stanze tramite le direzioni Nord, Sud, Est e Ovest.

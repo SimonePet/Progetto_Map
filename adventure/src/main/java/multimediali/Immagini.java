@@ -14,6 +14,9 @@ import java.io.File;
 import java.io.IOException;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Classe di utilità per la gestione delle immagini.
  * Questa classe fornisce metodi per caricare e manipolare immagini.
  * Il costruttore è dichiarato privato per evitare l'istanziazione di oggetti Immagini.

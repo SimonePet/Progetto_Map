@@ -19,8 +19,9 @@ import javax.swing.ImageIcon;
 import multimediali.Immagini;
 
 /**
- *
- * @author Giannantonio
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  */
 public class JDialogAbbandona extends javax.swing.JDialog {
 

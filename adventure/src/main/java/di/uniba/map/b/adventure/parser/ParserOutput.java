@@ -9,6 +9,9 @@ import di.uniba.map.b.adventure.type.Oggetto;
 import di.uniba.map.b.adventure.type.Comando;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * La classe ParserOutput rappresenta l'output generato dal parser durante l'analisi di un comando.
  * Contiene informazioni sul comando e gli oggetti associati all'input.
  */

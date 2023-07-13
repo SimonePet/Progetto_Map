@@ -13,6 +13,9 @@ import di.uniba.map.b.adventure.messaggi.MessaggioBosco;
 import di.uniba.map.b.adventure.type.Stanza;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Classe di utilità per l'inizializzazione delle stanze del gioco "Naufragio sull'Isola".
  * Fornisce metodi statici per inizializzare le diverse stanze del gioco.
  * La classe non può essere istanziata o estesa.
