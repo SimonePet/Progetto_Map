@@ -668,39 +668,62 @@ ThreadFinale *-- JDialogPunteggio
 Specifica algebrica della struttura dati set, la quale viene utilizzata all’interno del nostro progetto per la creazione del messaggio di aiuto fornito nel gioco.
 ### Specifica Sintattica
 Tipi: set ,boolean,Comando
+
 Operazioni:
+
 newSet()->set
+
 add(set,Comando)->set
+
 addAll(set,set1)->set
+
 isEmpty(set)->boolean
+
 contains(set,Comando)->boolean
+
 remove(set,Comando)->set
+
 clear(set)->set
 ### Specifica Semantica
 declare 
+
 set1,set:set
+
 c:Comando
+
 b:boolean
 
 Remove(newSet(),c) = error
+
 Remove(Add(set,c),c) = set
+
 Remove(addAll(set,set1),c) = 
+
 Remove(Clear(set),c) = error
 
 Contains(newSet(),c) = false
+
 Contains(Add(set,c),c) = true
+
 Contains(addAll(set,set1),c) = If(contains(set,c) || contains(set1,c)) then true else false
+
 Contains(Clear(set),c) = false 
 
 isEmpty(newSet()) = true
+
 isEmpty(Add(set,c)) = false
+
 isEmpty(addAll(set,set1)) = If(isEmpty(set) && isEmpty(set1)) then true else false
+
 isEmpty(Clear(set)) = true
 
 ### Specifica di restrizione
 Remove(newSet(),c) = error
+
 Remove(Clear(set),c) = error
+
 Remove(addAll(set,set1),c) = If(isEmpty(set) && isEmpty(set1)) then error 
+
 ### Costruttori e Osservazioni
 
 
