@@ -696,13 +696,16 @@ All'interno del `JFrameApp` principale, che costituisce l'ambiente di gioco per 
 Infine, va notato che la classe `FileMatchController` estende la classe `FileController`, che a sua volta implementa tutti i metodi dell'interfaccia `FileInterface`. 
 Inoltre, la classe `DatabaseController` estende la classe `Database`, fornendo funzionalità aggiuntive per la gestione del database.
 
-
-
-
-
-
-
 ![DiagrammaClassi3](/imgDocumentazione/DiagrammiClassi3.PNG)
+
+Nella porzione di modello UML che è stata presentata, possiamo osservare come venga gestito il finale del gioco. Nel contesto di `JDialogPunteggio`, viene utilizzata una variabile di tipo GiocoNaufragioIsola per recuperare l'username del giocatore da mostrare nel pannello. Successivamente, viene creato un oggetto chiamato `ThreadFinale`, che implementa l'interfaccia `Runnable`. Questo oggetto viene quindi passato come argomento al costruttore di un oggetto di tipo `Thread`.
+
+L'obiettivo di questa struttura è quello di generare suspense: il nuovo thread appena avviato rimane in attesa per un numero predefinito di secondi, sfruttando il metodo `Thread.sleep()`. Durante questa fase di attesa, il giocatore viene lasciato in trepidazione, aspettando di scoprire cosa accadrà successivamente.
+
+Dopo il periodo di suspence, viene mostrata una finestra di dialogo di avviso, che segnala al giocatore che qualcosa di significativo è accaduto nel gioco.
+
+Infine, quando il giocatore clicca sul pulsante "OK" nella finestra di dialogo, viene creato un oggetto di tipo `JFrameFinale`. Questo oggetto rappresenta la schermata conclusiva del gioco, che offre un'esperienza conclusiva al giocatore, presentando i risultati finali o eventuali elementi di conclusione del gioco.
+
 ## Specifica algebrica
 
 Specifica algebrica della struttura dati set, la quale viene utilizzata all’interno del nostro progetto per la creazione del messaggio di aiuto fornito nel gioco.
