@@ -690,9 +690,13 @@ set1,set:set,
 c:Comando, 
 b:boolean
 
+Remove(newSet(),c) = false
+
 Remove(Add(set,c),c) = true
 
-Remove(addAll(set,set1),c) = 
+Remove(addAll(set,set1),c) = if(contains(set,c) || contains(set1,c) then true else false
+
+Remove(Clear(set),c) = false
 
 Contains(newSet(),c) = false
 
@@ -711,11 +715,7 @@ isEmpty(addAll(set,set1)) = If(isEmpty(set) && isEmpty(set1)) then true else fal
 isEmpty(Clear(set)) = true
 
 ### Specifica di restrizione
-Remove(newSet(),c) = error
 
-Remove(Clear(set),c) = error
-
-Remove(addAll(set,set1),c) = If(isEmpty(set) && isEmpty(set1)) then error 
 
 ### Costruttori e Osservazioni
 
