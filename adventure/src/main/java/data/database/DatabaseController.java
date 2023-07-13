@@ -64,7 +64,7 @@ public class DatabaseController extends Database {
      * @return true se i dati della partita sono stati salvati con successo, altrimenti false.
      */
     @Override
-    public boolean salvaPartita(final GameDescription partita) {
+    public boolean salvaPartita(GameDescription partita) {
         // Calcola il punteggio utilizzando la formula specifica
         int punteggio = partita.calcoloPunteggio(partita.getNumMosse(), partita.getNumMinuti(), partita.getFinita());
         try {
