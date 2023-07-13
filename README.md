@@ -845,12 +845,18 @@ Il metodo mostrato in figura è quello per ottenere il punteggio della partita c
 Il programma implementa la possibilità di salvare una partita ogni qual volta viene catturato l'evento della chiusura della finestra di gioco. Il salvataggio delle partite avviene su un file denominato: 'salvataggioPartita'.
 Per la gestione dei file sono state usate le classi `FileController`, `FileMatchController` e l'interfaccia `FileInterface`.
 
+![FileController](/imgDocumentazione/FileController.png)
 - La classe `FileController` implementa l'interfaccia `FileInterface`, la quale contiene il solo metodo `create()`. 
 La classe `FileController` si occupa di creare un nuovo file (se non è già esistente) e ha i seguenti attributi protected: nomeFile, directory, file e percorso. 
 directory rappresenta la cartella in cui verrà memorizzato il file all'interno del progetto, nomeFile come intuibile dal nome è il nome del file che verrà creato.
 Il percorso del file viene costruito dinamicamente da un metodo della classe `Utils` che riceve in input gli attributi nomeFile e directory.
 
 - La classe `FileMatchController` estende la classe `FileController` ereditanto gli attributi/metodi public/protected e aggiungendo nuove funzionalità (metodi), nonchè l'aggiunta di una nuova partita all'interno del file, il recupero di una specifica partita salvata su file utilizzando il nome della partita (utile per il caricamento di una partita salvata), il recupero di tutte le partite salvate su file (utile per la costruzione dinamica della `JComboBox` dalla quale l'utente può scegliere quale partita continuare/caricare).
+
+![aggiungiPartita](/imgDocumentazione/aggiungiPartita.png)
+
+il metodo `aggiungiPartita` sopra riportato della classe FileMatchController aggiunge una nuova partita su file utilizzando le classi `FileInputStream` e `ObjectInputStream`.
+
 
 ---
 ### JDBC<a name="jdbc"></a>
