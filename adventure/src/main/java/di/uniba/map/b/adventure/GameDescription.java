@@ -53,8 +53,8 @@ public abstract class GameDescription implements Serializable {
         if (this.abbandonata) {
             punteggioCorr = 0;
         } else {
-            double penalizzazioneMosse = 0.25 * numMosseCorr;
-            int bonusPartitaVinta = 50;
+            double penalizzazioneMosse = 0.3 * numMosseCorr;
+            int bonusPartitaVinta = 30;
             punteggioCorr = punteggioCorr - (int) penalizzazioneMosse - numMinutiCorr;
             if (terminataCorr) {
                 punteggioCorr += bonusPartitaVinta;
@@ -65,6 +65,7 @@ public abstract class GameDescription implements Serializable {
                 punteggioCorr = 0;
             }
         }
+        this.punteggio = punteggioCorr;
         return punteggioCorr;
     }
 

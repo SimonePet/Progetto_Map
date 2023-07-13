@@ -119,7 +119,7 @@ public class JDialogPunteggio extends javax.swing.JDialog {
         Thread thread = new Thread(threadF);
         this.threadFinale = thread;
         threadFinale.start();
-        txtPunteggio.setText(Integer.toString(gni.getPunteggio()));
+        txtPunteggio.setText(Integer.toString(gni.calcoloPunteggio(gni.getNumMosse(), gni.getNumMinuti(), gni.getFinita())));
         txtPunteggio.setEditable(false);
         Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "vittoria", jPanel);
     }

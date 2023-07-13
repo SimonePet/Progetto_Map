@@ -604,7 +604,6 @@ public final class ControlGioco {
      */
     public static void comandoFine(final GiocoNaufragioIsola gni, final JFrameApp frame) {
         frame.scrviSuEditor(Messaggio.getSconfitta());
-        // Setta il textField non editabile
         Suono.riproduciTraccia(Utils.PERCORSO_SUONO_FINALE + "sconfitta", true);
         frame.finePartita();
         gni.setAbbandonata(true);
