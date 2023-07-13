@@ -681,7 +681,7 @@ isEmpty(set)->boolean
 
 contains(set,Comando)->boolean
 
-remove(set,Comando)->set
+remove(set,Comando)->boolean
 
 clear(set)->set
 ### Specifica Semantica
@@ -690,7 +690,7 @@ set1,set:set,
 c:Comando, 
 b:boolean
 
-Remove(Add(set,c),c) = set
+Remove(Add(set,c),c) = true
 
 Remove(addAll(set,set1),c) = 
 
