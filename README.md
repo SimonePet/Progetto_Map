@@ -906,7 +906,7 @@ Altrettanto fondamentale è l'utilizzo dei thread per la musica e i suoni presen
 
 I suoni delle diverse stanze non si vanno mai a sovrapporre poichè ogni volta che ci si sposta nella mappa viene ucciso il thread per la musica della stanza precedente e viene avviato un nuovo thread per la musica della stanza corrente. Quando l'utente abbandona la partita viene interrotto il thread della classe `Suono`.
 
-Quando viene generata la finestra per il punteggio finale una volta vinta la partita, parte il thread della classe `ThreadFinale` che attraverso il metodo `sleep()` rimane in attesa 4 secondi per poi generare una finestra di dialogo di avviso che una volta chiusa genera il `JFrame` del finale, nonchè `JFrameFinale`.
+Quando viene generata la finestra per il punteggio finale una volta vinta la partita, parte il thread della classe `ThreadFinale` che attraverso il metodo `sleep()` rimane in attesa un numero prefissato di secondi per poi generare una finestra di dialogo di avviso che una volta chiusa genera il `JFrame` del finale, nonchè `JFrameFinale`.
 
 Inoltre, i thread vengono utilizzati per la comunicazione `Client-Server` con i socket. Approfondiamo il loro utilizzo nel prossimo paragrafo relativo ai Socket.
 
