@@ -22,6 +22,11 @@
 
 ## Caso di studio<a name="caso-di-studio"></a>
 
+### IL CASO DI STUDIO E' STATO REALIZZATO DA:
+* GIANNANTONIO SANROCCO
+* MICHELE MATTEUCCI
+* SIMONE PETRUZZELLA
+
 Il progetto che abbiamo sviluppato è un'avventura testuale chiamata "Fuga dall'isola". In questa coinvolgente avventura, il giocatore si trova su un'isola misteriosa da cui deve cercare di fuggire. Per muoversi all'interno della mappa, il giocatore può digitare i comandi `nord`, `sud`, `est` e `ovest`. Per rendere l'esperienza di gioco più user-friendly e coinvolgente, ogni stanza è accompagnata da suoni e immagini di sfondo, creando un'atmosfera immersiva che trascina il giocatore nella storia.
 
 Il giocatore ha a disposizione vari comandi per interagire con l'ambiente di gioco. Il comando `osserva` fornisce una descrizione dettagliata della stanza in cui si trova il giocatore, mentre il comando `osserva [oggetto]` permette di esaminare nel dettaglio gli oggetti presenti nella stanza. Inoltre, il giocatore può utilizzare il comando `narra` per ripercorrere gli eventi precedenti e riascoltare la storia quando torna in luoghi già visitati.
