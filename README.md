@@ -675,7 +675,7 @@ ThreadFinale *-- JDialogPunteggio
 ```
 ### Analisi di piccole porzioni di UML.
 
-Nella porzione del diagramma UML riportata di seguito si analizza la gestione della conversazione tra un naufrago e i militari nel contesto del gioco. All'interno della classe `ControlGioco`, quando viene chiamato il metodo `comandoAccendi()` associato all'oggetto radio viene creata un'istanza di JDialogRadio, che si occupa dell'interfaccia con l'utente per la conversazione. Questa classe simula un'architettura Client-Server in locale, infatti viene istanziato un oggetto `Client` che invia le richieste al server tramite l'invio di comandi, mentre un oggetto di tipo `Server` elabora tali richieste e invia le risposte al client. La rete che si crea tra client e server viene approfondita nel paragrafo [Socket](#socket) dove viene analizzato l'uso di socket.
+Nella porzione del diagramma UML riportata di seguito si analizza la gestione della conversazione tra un naufrago e i militari nel contesto del gioco. All'interno della classe `ControlGioco`, quando viene chiamato il metodo `comandoAccendi()` associato all'oggetto radio viene creata un'istanza di `JDialogRadio`, che si occupa dell'interfaccia con l'utente per la conversazione. Questa classe simula un'architettura Client-Server in locale, infatti viene istanziato un oggetto `Client` che invia le richieste al server tramite l'invio di comandi, mentre un oggetto di tipo `Server` elabora tali richieste e invia le risposte al client. La rete che si crea tra client e server viene approfondita nel paragrafo [Socket](#socket) dove viene analizzato l'uso di socket.
 
 ![DiagrammaClassi1](/imgDocumentazione/DiagrammaClassi1.PNG)
 
