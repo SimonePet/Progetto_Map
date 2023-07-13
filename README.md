@@ -910,6 +910,11 @@ Quando viene generata la finestra per il punteggio finale una volta vinta la par
 
 Inoltre, i thread vengono utilizzati per la comunicazione `Client-Server` con i socket. Approfondiamo il loro utilizzo nel prossimo paragrafo relativo ai Socket.
 
+![ThreadTempo](/imgDocumentazione/threadTempo.png)
+All'avvio del frame principale `JFrameApp` viene avviato il thread utilizzando l'oggetto Runnable della classe ThreadTempo, il cui costruttore prende in input il frame, il numero di secondi iniziali, il numero di minuti iniziali, il numero di ore iniziali. Se si tratta di una nuova partita il tempo iniziale è impostato tutto a 0, altrimenti se si stratta di una partita caricata viene passato al costruttore il numero di secondi/minuti/ore del tempo di partita al momento del salvataggio in modo tale che il thread riparta da quel tempo.
+La logica del timer si trova all'interno del metodo `run()`.
+Il motivo per cui viene passato il frame al costruttore della classe `ThreadTempo` è quello di andare ad aggiornare dinamicamente il timer nel frame utilizzando il metodo `stampaTempo` della classe `ThreadTempo`, il quale utilizza il metodo `scriviSuLabelTempo` della classe `JFrameApp`.
+
 ---
 ### Socket<a name="socket"></a>
 Quando l'utente accende la radio, l'applicazione apre una finestra per il dialogo via radio tra il giocatore disorientato nell'isola e i militari.
