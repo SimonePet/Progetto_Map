@@ -667,9 +667,9 @@ ThreadFinale *-- JDialogPunteggio
 
 Specifica algebrica della struttura dati set, la quale viene utilizzata all’interno del nostro progetto per la creazione del messaggio di aiuto fornito nel gioco.
 ### Specifica Sintattica
-Tipi: set ,boolean,Comando
+`Tipi:` set ,boolean,Comando
 
-Operazioni:
+`Operazioni:`
 
 newSet()->set
 
@@ -685,7 +685,7 @@ remove(set,Comando)->set
 
 clear(set)->set
 ### Specifica Semantica
-declare 
+`declare:`
 
 set1,set:set
 
@@ -693,13 +693,10 @@ c:Comando
 
 b:boolean
 
-Remove(newSet(),c) = error
 
 Remove(Add(set,c),c) = set
 
 Remove(addAll(set,set1),c) = 
-
-Remove(Clear(set),c) = error
 
 Contains(newSet(),c) = false
 
@@ -726,8 +723,7 @@ Remove(addAll(set,set1),c) = If(isEmpty(set) && isEmpty(set1)) then error
 
 ### Costruttori e Osservazioni
 
-
-
+![Costruttori_Osservazioni](/imgDocumentazione/CostruttoriOsservazioni.PNG)
 
 ---
 
