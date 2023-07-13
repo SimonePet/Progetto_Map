@@ -181,7 +181,7 @@ public class JDialogAbbandona extends javax.swing.JDialog {
             //salva partita su file
             FileMatchController f = new FileMatchController("salvataggioPartita.txt","resources");
             try {
-                f.addMatch((GiocoNaufragioIsola) engine.getGame());
+                f.aggiungiPartita((GiocoNaufragioIsola) engine.getGame());
             } catch (IOException | ClassNotFoundException ex) {
                 System.err.println(ex.getMessage());
             }

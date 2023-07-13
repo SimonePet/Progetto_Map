@@ -40,7 +40,7 @@ public class FileMatchController extends FileController implements Serializable 
      * @throws IOException              se si verifica un errore di I/O durante l'operazione di scrittura.
      * @throws ClassNotFoundException se la classe dell'oggetto GiocoNaufragioIsola non viene trovata.
      */
-    public boolean addMatch(final GiocoNaufragioIsola game) throws IOException, ClassNotFoundException {
+    public boolean aggiungiPartita(final GiocoNaufragioIsola game) throws IOException, ClassNotFoundException {
         try {
             ObjectOutputStream out = null;
             if (this.getFile().exists() && this.getFile().length() == 0) {
