@@ -21,6 +21,20 @@
 
 ## Caso di studio<a name="caso-di-studio"></a>
 
+Il progetto che abbiamo sviluppato è un'avventura testuale chiamata Fuga dall'isola. In questa coinvolgente avventura, il giocatore si trova su un'isola misteriosa e deve cercare di fuggire. Per muoversi all'interno della mappa, il giocatore può digitare i comandi `nord`, `sud`, `est` e `ovest`. Per rendere l'esperienza di gioco più user-friendly e coinvolgente, ogni stanza è accompagnata da suoni e immagini di sfondo, creando un'atmosfera immersiva che trascina il giocatore nella storia.
+
+Il giocatore ha a disposizione vari comandi per interagire con l'ambiente di gioco. Il comando `osserva` fornisce una descrizione dettagliata della stanza in cui si trova il giocatore, mentre il comando `osserva [oggetto]` permette di esaminare nel dettaglio gli oggetti presenti nella stanza. Inoltre, il giocatore può utilizzare il comando `narra` per ripercorrere gli eventi precedenti e riascoltare la storia quando torna in luoghi già visitati.
+
+Durante l'avventura, il giocatore può raccogliere oggetti e inserirli nel proprio inventario, che è stato progettato senza limiti di dimensione per offrire una maggiore libertà al giocatore e rendere il gioco più semplice e meno intricato. Gli oggetti hanno caratteristiche diverse: alcuni possono essere accesi, come ad esempio una lampada, mentre altri possono essere tagliati, come gli alberi, quindi si utilizza in questi casi il comando `accendi[oggetto]` e `taglia[oggetto]` dove gli oggetti sono rispettivamente 'lampada' e 'albero'. Alcuni oggetti possono essere raccolti, mentre altri sono fissi e legati alla stanza in cui si trovano.
+
+Per aiutare il giocatore, è disponibile il comando `aiuto`, che fornisce una lista dinamica dei comandi disponibili man mano che si progredisce nell'avventura. Inoltre, sono presenti piccoli enigmi, come ad esempio trovare il codice per aprire la porta di un misterioso edificio abbandonato.
+
+Il giocatore ha la possibilità di salvare la partita associandola a un nome e riprenderla in seguito. I dati di gioco vengono conservati su file e su un database. Inoltre, il giocatore può accedere alle proprie statistiche di gioco utilizzando specifiche funzioni fornite nel gioco.
+
+Infine, nel caso in cui il giocatore decida di interrompere la partita, è disponibile il comando `fine` che chiude il gioco e salva la partita come non terminata.
+
+Al fine di migliorare la fluidità del gioco, i comandi inseriti dagli utenti vengono analizzati con tolleranza, consentendo l'uso frequente di sinonimi e l'impiego misto di articoli, il programma risponde sempre allo stesso modo.
+
 ---
 
 ## Diagramma delle classi
