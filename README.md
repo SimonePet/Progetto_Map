@@ -721,6 +721,9 @@ isEmpty(Clear(set)) = true
 
 ![Costruttori_Osservazioni](/imgDocumentazione/CostruttoriOsservazioni.PNG)
 
+### Osservazione binaria: equal(l, m)
+
+![Osservazioni_Binarie](/imgDocumentazione/OsservazioniBinarie.PNG)
 ---
 
 ## Argomenti inseriti nel caso di studio<a name="argomenti-inseriti-nel-caso-di-studio"></a>
