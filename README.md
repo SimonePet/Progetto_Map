@@ -675,12 +675,13 @@ ThreadFinale *-- JDialogPunteggio
 ```
 ### Analisi di piccole porzioni di UML.
 
-Nella porzione del diagramma UML riportata di seguito si analizza la gestione della conversazione tra un naufrago e i militari nel contesto del gioco. All'interno della classe `ControlGioco`, quando viene chiamato il metodo `comandoAccendi()` associato all'oggetto radio viene creata un'istanza di `JDialogRadio`, che si occupa dell'interfaccia con l'utente per la conversazione. Questa classe simula un'architettura Client-Server in locale, infatti viene istanziato un oggetto `Client` che invia le richieste al server tramite l'invio di comandi, mentre un oggetto di tipo `Server` elabora tali richieste e invia le risposte al client. La rete che si crea tra client e server viene approfondita nel paragrafo [Socket](#socket) dove viene analizzato l'uso di socket.
-
 ![DiagrammaClassi1](/imgDocumentazione/DiagrammaClassi1.PNG)
 
+Nella porzione del diagramma UML appena riportata  si analizza la gestione della conversazione tra un naufrago e i militari nel contesto del gioco. All'interno della classe `ControlGioco`, quando viene chiamato il metodo `comandoAccendi()` associato all'oggetto radio viene creata un'istanza di `JDialogRadio`, che si occupa dell'interfaccia con l'utente per la conversazione. Questa classe simula un'architettura Client-Server in locale, infatti viene istanziato un oggetto `Client` che invia le richieste al server tramite l'invio di comandi, mentre un oggetto di tipo `Server` elabora tali richieste e invia le risposte al client. La rete che si crea tra client e server viene approfondita nel paragrafo [Socket](#socket) dove viene analizzato l'uso di socket.
 
-Nella porzione di diagramma UML riportata di seguito, ci concentriamo sull'avvio del gioco e sulle diverse modalità per iniziare una partita e le operazioni ad essa associate. (Tutte le finestre grafiche che vengono aperte durante il gioco sono gestite mediante il modulo Swing approfondito nel paragrafo [Swing](#swing) )
+![DiagrammaClassi2](/imgDocumentazione/DiagrammiClassi2.PNG)
+
+In questa porzione di diagramma UML ci concentriamo sull'avvio del gioco e sulle diverse modalità per iniziare una partita e le operazioni ad essa associate. (Tutte le finestre grafiche che vengono aperte durante il gioco sono gestite mediante il modulo Swing approfondito nel paragrafo [Swing](#swing) )
 
 All'avvio del programma, la prima schermata che viene mostrata all'utente è generata dalla classe `FrameStart`. Da questa schermata, si presentano tre scenari possibili, ciascuno con le proprie azioni e conseguenze:
 
@@ -695,7 +696,7 @@ All'interno del `JFrameApp` principale, che costituisce l'ambiente di gioco per 
 Infine, va notato che la classe `FileMatchController` estende la classe `FileController`, che a sua volta implementa tutti i metodi dell'interfaccia `FileInterface`. 
 Inoltre, la classe `DatabaseController` estende la classe `Database`, fornendo funzionalità aggiuntive per la gestione del database.
 
-![DiagrammaClassi2](/imgDocumentazione/DiagrammiClassi2.PNG)
+
 
 
 
