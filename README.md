@@ -680,19 +680,20 @@ Nella porzione del diagramma UML riportata di seguito si analizza la gestione de
 ![DiagrammaClassi1](/imgDocumentazione/DiagrammaClassi1.PNG)
 
 
-Nella porzione di diagramma UML riportata di seguito, ci concentriamo sull'avvio del gioco e sulle diverse modalità per iniziare una partita e le operazioni ad essa associate.
+Nella porzione di diagramma UML riportata di seguito, ci concentriamo sull'avvio del gioco e sulle diverse modalità per iniziare una partita e le operazioni ad essa associate. (Tutte le finestre grafiche che vengono aperte durante il gioco sono gestite mediante il modulo Swing approfondito nel paragrafo [Swing](#swing) )
 
 All'avvio del programma, la prima schermata che viene mostrata all'utente è generata dalla classe `FrameStart`. Da questa schermata, si presentano tre scenari possibili, ciascuno con le proprie azioni e conseguenze:
 
-1. Nel primo scenario, l'utente può scegliere di iniziare una nuova partita. Questo comporta l'istanziazione di un nuovo oggetto di tipo `JFrameApp` e l'avvio del suo metodo `main`. In questo modo, viene creato un nuovo ambiente di gioco in cui l'avventura testuale prende vita.
+1. Nel primo scenario, l'utente può scegliere di iniziare una nuova partita. Questo comporta l'istanziazione di un nuovo oggetto di tipo `JFrameApp` e l'avvio del suo metodo `main()`. In questo modo, viene creato l'ambiente di gioco in cui l'avventura testuale prende vita.
 
-2. Nel secondo scenario, l'utente può optare per il caricamento di una partita esistente. Questo processo avviene attraverso l'istanziazione di un oggetto di tipo `JDialogCaricaPartite`, che mostra all'utente un menu di caricamento. Per gestire l'accesso alle partite salvate su file, viene creato un oggetto di tipo `FileMatchController`. Grazie a questa configurazione, l'utente ha la possibilità di riprendere da dove aveva interrotto la partita precedente.
+2. Nel secondo scenario, l'utente può optare per il caricamento di una partita esistente. Questo processo avviene attraverso l'istanziazione di un oggetto di tipo `JDialogCaricaPartite`, che mostra all'utente un menu di caricamento di partite salvate. Per gestire l'accesso alle partite salvate su file, viene creato un oggetto di tipo `FileMatchController`. Grazie a questa configurazione, l'utente ha la possibilità di riprendere da dove aveva interrotto la partita precedente. `JDialogCaricaPartite` quindi a suo volta crea un oggetto di tipo `JFrameApp` e viene avviato il metodo `main()`. In questo modo, viene creato l'ambiente di gioco per proseguire l'avventura.
 
-3. Nel terzo scenario, l'utente può scegliere di visualizzare la classifica degli utenti. Questo viene realizzato attraverso l'istanziazione di un oggetto di tipo `JDialogClassificaUtenti`, che mostra una schermata con l'interfaccia Swing contenente i risultati. Per ottenere tali risultati, viene istanziato un oggetto di tipo `DatabaseController`, che offre l'accesso al database contenente le informazioni sulla classifica.
+3. Nel terzo scenario, l'utente può scegliere di visualizzare la classifica degli utenti. Questo viene realizzato attraverso l'istanziazione di un oggetto di tipo `JDialogClassificaUtenti`, che mostra una schermata contenente la classifica delle partite giocate con i risultati. Per ottenere la classifica, viene istanziato un oggetto di tipo `DatabaseController`, che offre l'accesso al database contenente le informazioni sulla classifica.
 
-All'interno del `JFrameApp` principale, che costituisce l'ambiente di gioco per l'avventura testuale, vengono creati un oggetto di tipo `Engine` e un oggetto di tipo `ThreadTempo`. L'oggetto `Engine` rappresenta il nucleo del gioco, gestendo la logica e l'interazione con l'utente. L'oggetto `ThreadTempo`, invece, ha il compito di monitorare dinamicamente la durata della partita. Inoltre, è possibile accedere alle statistiche di altre partite attraverso l'istanziazione di un oggetto di tipo `JDialogStats`, che utilizza un oggetto di tipo `DatabaseController` per recuperare e visualizzare tali statistiche dal database.
+All'interno del `JFrameApp` principale, che costituisce l'ambiente di gioco per l'avventura testuale, vengono creati un oggetto di tipo `Engine` e un oggetto di tipo `ThreadTempo`. L'oggetto `Engine` rappresenta il nucleo del gioco, gestendo la logica e l'interazione con l'utente. L'oggetto `ThreadTempo`, invece, ha il compito di monitorare dinamicamente la durata della partita. Inoltre, è possibile accedere alle statistiche di altre partite attraverso l'istanziazione di un oggetto di tipo `JDialogStats`, che utilizza un oggetto di tipo `DatabaseController` per recuperare e visualizzare le statistiche dal database.
 
-Infine, va notato che la classe `FileMatchController` estende la classe `FileController`, che a sua volta implementa tutti i metodi dell'interfaccia `FileInterface`. Inoltre, la classe `DatabaseController` estende la classe `Database`, fornendo funzionalità aggiuntive per la gestione del database.
+Infine, va notato che la classe `FileMatchController` estende la classe `FileController`, che a sua volta implementa tutti i metodi dell'interfaccia `FileInterface`. 
+Inoltre, la classe `DatabaseController` estende la classe `Database`, fornendo funzionalità aggiuntive per la gestione del database.
 
 ![DiagrammaClassi2](/imgDocumentazione/DiagrammiClassi2.PNG)
 
