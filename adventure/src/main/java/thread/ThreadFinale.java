@@ -14,6 +14,8 @@ import javax.swing.JOptionPane;
 import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import java.awt.Frame;
+
+import multimediali.Immagini;
 import multimediali.Suono;
 import swing.JDialogPunteggio;
 import swing.JFrameApp;

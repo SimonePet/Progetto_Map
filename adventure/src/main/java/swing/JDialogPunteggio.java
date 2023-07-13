@@ -8,6 +8,8 @@ import di.uniba.map.b.adventure.Utils;
 import di.uniba.map.b.adventure.games.GiocoNaufragioIsola;
 import java.awt.Frame;
 import javax.swing.ImageIcon;
+
+import multimediali.Immagini;
 import thread.ThreadFinale;
 /**
  *
@@ -119,7 +121,7 @@ public class JDialogPunteggio extends javax.swing.JDialog {
         threadFinale.start();
         txtPunteggio.setText(Integer.toString(gni.getPunteggio()));
         txtPunteggio.setEditable(false);
-        //Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "sfondo frame vittoria", jPanel);
+        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "vittoria", jPanel);
     }
 
     public static void sleep(long milliseconds) {

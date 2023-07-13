@@ -111,6 +111,8 @@ public class JDialogClassificaUtenti extends javax.swing.JDialog {
         Color colore = new Color(255, 255, 255, 150);
         jScrollPane.setBackground(colore);
         jScrollPane.setOpaque(false);
+        lblMessaggioRanking.setOpaque(false);
+        lblMessaggioRanking.setBackground(colore);
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE +"iconaGioco.png");
         this.setIconImage(icon.getImage());
         Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "sfondo frame ranking", jPanel);
