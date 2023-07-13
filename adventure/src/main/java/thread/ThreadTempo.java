@@ -21,10 +21,11 @@ public class ThreadTempo implements Runnable {
      *
      * @param frameCorr              Frame corrente
      * @param numMinutiInizialiCorr  Numero di minuti iniziali
-     * @param numSecondiInizialiCorr Numero di secondi iniziali
+     * @param numSecondiInizialiCorr Numero di secondi iniziali 
+     * @param numOreInizialiCorr 
      */
-    public ThreadTempo(final JFrameApp frameCorr, final int numMinutiInizialiCorr, final int numSecondiInizialiCorr, final int numOreCorr) {
-        this.numOre = numOreCorr;
+    public ThreadTempo(final JFrameApp frameCorr, final int numMinutiInizialiCorr, final int numSecondiInizialiCorr, final int numOreInizialiCorr) {
+        this.numOre = numOreInizialiCorr;
         this.numMinuti = numMinutiInizialiCorr;
         this.numSecondi = numSecondiInizialiCorr;
         this.frame = frameCorr;
