@@ -16,7 +16,7 @@
   - [Socket](#socket)
   - [Lambda expressions & pipeline e stream](#lambda-expressions)
   - [Swing](#swing)
-  - [CheckStyke](#CheckStyle)
+  - [CheckStyle](#CheckStyle)
 
 ---
 
