@@ -539,38 +539,38 @@ public final class ControlGioco {
 
             // Localizzazione delle stanze adiacenti
             if (gni.getStanzaCorrente().getNord() == null) {
-                frame.scrviSuEditor(Messaggio.getNord() + Messaggio.getStanzaInaccessibile());
+                frame.scrviSuEditor(Messaggio.getNord() + "\t" + Messaggio.getStanzaInaccessibile());
             } else if (gni.getStanzaCorrente().getNord().getVisitata()) {
-                frame.scrviSuEditor(Messaggio.getNord() + Messaggio.getStanza() + gni.getStanzaCorrente().getNord().getNomeStanza());
+                frame.scrviSuEditor(Messaggio.getNord()+ "\t" + Messaggio.getStanza() + gni.getStanzaCorrente().getNord().getNomeStanza());
             } else {
-                frame.scrviSuEditor(Messaggio.getNord() + Messaggio.getStanzaSconosciuta());
+                frame.scrviSuEditor(Messaggio.getNord()+ "\t" + Messaggio.getStanzaSconosciuta());
             }
             frame.scrviSuEditor(Messaggio.getInvio());
 
             if (gni.getStanzaCorrente().getSud() == null) {
-                frame.scrviSuEditor(Messaggio.getSud() + Messaggio.getStanzaInaccessibile());
+                frame.scrviSuEditor(Messaggio.getSud()+ "\t" + Messaggio.getStanzaInaccessibile());
             } else if (gni.getStanzaCorrente().getSud().getVisitata()) {
-                frame.scrviSuEditor(Messaggio.getSud() + Messaggio.getStanza() + gni.getStanzaCorrente().getSud().getNomeStanza());
+                frame.scrviSuEditor(Messaggio.getSud()+ "\t" + Messaggio.getStanza() + gni.getStanzaCorrente().getSud().getNomeStanza());
             } else {
-                frame.scrviSuEditor(Messaggio.getSud() + Messaggio.getStanzaSconosciuta());
+                frame.scrviSuEditor(Messaggio.getSud()+ "\t" + Messaggio.getStanzaSconosciuta());
             }
             frame.scrviSuEditor(Messaggio.getInvio());
 
             if (gni.getStanzaCorrente().getEst() == null) {
-                frame.scrviSuEditor(Messaggio.getEst() + Messaggio.getStanzaInaccessibile());
+                frame.scrviSuEditor(Messaggio.getEst()+ "\t"+ Messaggio.getStanzaInaccessibile());
             } else if (gni.getStanzaCorrente().getEst().getVisitata()) {
-                frame.scrviSuEditor(Messaggio.getEst() + Messaggio.getStanza() + gni.getStanzaCorrente().getEst().getNomeStanza());
+                frame.scrviSuEditor(Messaggio.getEst()+ "\t" + Messaggio.getStanza() + gni.getStanzaCorrente().getEst().getNomeStanza());
             } else {
-                frame.scrviSuEditor(Messaggio.getEst() + Messaggio.getStanzaSconosciuta());
+                frame.scrviSuEditor(Messaggio.getEst()+ "\t" + Messaggio.getStanzaSconosciuta());
             }
             frame.scrviSuEditor(Messaggio.getInvio());
 
             if (gni.getStanzaCorrente().getOvest() == null) {
-                frame.scrviSuEditor(Messaggio.getOvest() + Messaggio.getStanzaInaccessibile());
+                frame.scrviSuEditor(Messaggio.getOvest()+ "\t" + Messaggio.getStanzaInaccessibile());
             } else if (gni.getStanzaCorrente().getOvest().getVisitata()) {
-                frame.scrviSuEditor(Messaggio.getOvest() + Messaggio.getStanza() + gni.getStanzaCorrente().getOvest().getNomeStanza());
+                frame.scrviSuEditor(Messaggio.getOvest()+ "\t" + Messaggio.getStanza() + gni.getStanzaCorrente().getOvest().getNomeStanza());
             } else {
-                frame.scrviSuEditor(Messaggio.getOvest() + Messaggio.getStanzaSconosciuta());
+                frame.scrviSuEditor(Messaggio.getOvest()+ "\t" + Messaggio.getStanzaSconosciuta());
             }
         } else {
             frame.scrviSuEditor(Messaggio.getOrientati());
