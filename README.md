@@ -508,7 +508,7 @@ class FileController{
 class FileMatchController{
     + FileMatchController(String,String)
     + getMatch(String):GiocoNaufragioIsola 
-    + addMatch(GiocoNaufragioIsola):boolean 
+    + AggiungiPartita(GiocoNaufragioIsola):boolean 
     + getMatch():List<GiocoNaufragioIsola> 
 }
 
