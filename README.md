@@ -1096,7 +1096,7 @@ Tutte le finestre hanno una musica di sottofondo.
 
 ## CheckStyle<a name="Cheskstyle"></a>
 
-Per rendere uniforme la scrittura del codice abbiamo deciso come team di usare ChecksStyle.
+Per rendere uniforme la scrittura del codice abbiamo deciso come team di usare CheckStyle.
 
 Checkstyle di Google è uno strumento di analisi statica del codice sorgente utilizzato per applicare le linee guida di stile di codifica definite da Google. Esso esamina il codice Java alla ricerca di violazioni delle regole di formattazione, nomenclatura, convenzioni e altre raccomandazioni stilistiche stabilite da Google. Il suo obiettivo principale è migliorare la leggibilità, la manutenibilità e la coerenza del codice, promuovendo buone pratiche di programmazione.
 
