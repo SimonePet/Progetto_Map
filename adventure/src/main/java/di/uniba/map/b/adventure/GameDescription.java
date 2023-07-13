@@ -21,7 +21,31 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * @author pierpaolo
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
+ *
+ * La classe astratta GameDescription rappresenta la descrizione di un gioco.
+ * Fornisce metodi e attributi per gestire le informazioni relative alla partita,
+ * come il nome, lo stato di avanzamento, il punteggio e altri dettagli correlati.
+ * Questa classe definisce anche metodi astratti per l'inizializzazione del gioco
+ * e l'esecuzione della prossima mossa.
+ *
+ * <p>
+ * &Egrave; possibile estendere questa classe per creare una descrizione specifica di un gioco
+ * implementando i metodi astratti e personalizzando il comportamento.
+ * </p>
+ *
+ * <p>
+ * Per utilizzare questa classe, &egrave; necessario fornire l'implementazione dei metodi astratti
+ * {@link #init()} e {@link #nextMove(ParserOutput, PrintStream, JFrameApp, JPanel, JLabel)},
+ * che verranno chiamati rispettivamente per inizializzare il gioco e gestire le mosse successive.
+ * </p>
+ *
+ * <p>
+ * La classe GameDescription implementa l'interfaccia Serializable, consentendo la
+ * serializzazione degli oggetti derivati per il salvataggio o la trasmissione.
+ * </p>
  */
 public abstract class GameDescription implements Serializable {
     private String nomePartita;
@@ -333,7 +357,6 @@ public abstract class GameDescription implements Serializable {
      * @param out   Stream di output per la visualizzazione del risultato della mossa.
      * @param frame Frame principale dell'applicazione.
      * @param panel Pannello di gioco.
-     * @param label Etichetta di stato del gioco.
      * @throws BadLocationException Se si verifica un errore nella gestione delle posizioni del testo.
      */
     public abstract void nextMove(ParserOutput p, PrintStream out, JFrameApp frame, JPanel panel, JLabel jlabel) throws BadLocationException;

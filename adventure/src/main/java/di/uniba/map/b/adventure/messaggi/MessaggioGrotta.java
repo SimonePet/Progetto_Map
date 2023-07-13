@@ -1,6 +1,9 @@
 package di.uniba.map.b.adventure.messaggi;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Stringhe relative a messaggi della grotta.
  * La classe è dichiarata final perchè non può essere estesa da altre classi.
  * La classe è utilizzata come classe di utilità con metodi e costanti accessibili in modo statico.

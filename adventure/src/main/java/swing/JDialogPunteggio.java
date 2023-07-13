@@ -12,8 +12,9 @@ import javax.swing.ImageIcon;
 import multimediali.Immagini;
 import thread.ThreadFinale;
 /**
- *
- * @author Giannantonio
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  */
 public class JDialogPunteggio extends javax.swing.JDialog {
     /**

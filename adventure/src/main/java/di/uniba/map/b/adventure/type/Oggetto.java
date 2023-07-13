@@ -11,6 +11,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Classe che serve per rappresentare un oggetto nel gioco.
  */
 public class Oggetto implements Serializable {

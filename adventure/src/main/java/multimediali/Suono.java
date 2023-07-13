@@ -12,6 +12,9 @@ import java.io.IOException;
 import java.util.Optional;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Classe di utilità per la gestione del suono.
  * Questa classe fornisce metodi per la riproduzione e l'interruzione del suono.
  */

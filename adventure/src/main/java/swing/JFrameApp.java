@@ -25,8 +25,9 @@ import javax.swing.text.Document;
 import javax.swing.text.SimpleAttributeSet;
 
 /**
- *
- * @author Giannantonio
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  */
 public class JFrameApp extends javax.swing.JFrame {
 

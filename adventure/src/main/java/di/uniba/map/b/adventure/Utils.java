@@ -23,6 +23,9 @@ import swing.JDialogPunteggio;
 import swing.JFrameApp;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Classe di utilità che fornisce metodi statici per operazioni comuni.
  * La classe è stata dichiarata finale e con un costruttore privato per impedire l'istanziazione di oggetti.
  */

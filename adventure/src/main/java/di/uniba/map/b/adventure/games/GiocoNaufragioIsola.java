@@ -5,8 +5,6 @@
  */
 package di.uniba.map.b.adventure.games;
 
-
-
 import di.uniba.map.b.adventure.GameDescription;
 import di.uniba.map.b.adventure.messaggi.Messaggio;
 import di.uniba.map.b.adventure.parser.ParserOutput;
@@ -21,6 +19,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Classe che rappresenta il gioco "Naufragio sull'Isola".
  * Estende la classe astratta GameDescription e definisce il comportamento del gioco.
  */

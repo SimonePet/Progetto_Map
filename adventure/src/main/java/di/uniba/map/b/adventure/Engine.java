@@ -16,6 +16,9 @@ import java.sql.SQLException;
 import java.util.Set;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Classe Engine che rappresenta il motore principale del gioco.
  * Gestisce la logica di gioco, l'interazione con il giocatore e le operazioni di inizializzazione.
  */

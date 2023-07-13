@@ -21,8 +21,9 @@ import thread.Client;
 import thread.Server;
 
 /**
- *
- * @author Giannantonio
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  */
 public class JDialogRadio extends javax.swing.JDialog {
 

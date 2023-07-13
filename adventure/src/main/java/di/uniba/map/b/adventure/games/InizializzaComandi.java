@@ -4,6 +4,9 @@ import di.uniba.map.b.adventure.type.Comando;
 import di.uniba.map.b.adventure.type.TipoComando;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * La classe InizializzaComandi fornisce metodi statici per inizializzare i comandi del gioco "Naufragio sull'Isola".
  * Ogni metodo inizializza un singolo comando specificando le azioni associate a esso e lo aggiunge alla lista dei comandi del gioco.
  */

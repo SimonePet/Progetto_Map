@@ -11,6 +11,9 @@ import java.util.Set;
 
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Classe che rappresenta un oggetto contenitore.
  * Un oggetto contenitore è un tipo di oggetto che può contenere altri oggetti.
  * Estende la classe Oggetto e aggiunge la funzionalità di gestione degli oggetti contenuti.

@@ -16,8 +16,9 @@ import java.util.Map;
 import javax.swing.ImageIcon;
 
 /**
- *
- * @author Giannantonio
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  */
 public class JDialogClassificaUtenti extends javax.swing.JDialog {
 

@@ -12,6 +12,9 @@ import java.util.Objects;
 import java.util.Set;
 
 /**
+ * @author Michele Matteucci
+ * @author Giannantonio Sanrocco
+ * @author Simone Petruzzella
  * Classe per la gestione dei comandi.
  */
 public class Comando implements Serializable {

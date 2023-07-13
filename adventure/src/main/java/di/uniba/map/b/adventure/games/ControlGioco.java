@@ -28,6 +28,9 @@ import java.util.Set;
 import swing.JDialogRadio;
 
 /**
+ *  @author Michele Matteucci
+ *  @author Giannantonio Sanrocco
+ *  @author Simone Petruzzella
  * ControlGioco è una classe che gestisce il flusso di controllo principale del gioco.
  * Controlla il ciclo di gioco, la logica di gioco e la gestione degli eventi.
  */
@@ -281,15 +284,20 @@ public final class ControlGioco {
      */
     public static void comandoLascia(final GiocoNaufragioIsola gni, final JFrameApp frame, final Oggetto oggInv) {
         if (oggInv != null) {
-            // Se possiedo l'oggetto
-            if (gni.getInventario().contains(oggInv)) {
-                gni.getInventario().remove(oggInv);
-                oggInv.setLasciato(true);
-                gni.getStanzaCorrente().getObjects().add(oggInv);
-                frame.scrviSuEditor(Messaggio.getHaiLasciato() + oggInv.getNomeOggetto());
+            if(gni.getStanzaCorrente().getVisibile()){
+                // Se possiedo l'oggetto
+                if (gni.getInventario().contains(oggInv)) {
+                    gni.getInventario().remove(oggInv);
+                    oggInv.setLasciato(true);
+                    gni.getStanzaCorrente().getObjects().add(oggInv);
+                    frame.scrviSuEditor(Messaggio.getHaiLasciato() + oggInv.getNomeOggetto());
+                } else {
+                    frame.scrviSuEditor(Messaggio.getOggettoNonPosseduto());
+                }
             } else {
-                frame.scrviSuEditor(Messaggio.getOggettoNonPosseduto());
+                frame.scrviSuEditor(Messaggio.getOggettoNoLasciabile());
             }
+
         } else {
             frame.scrviSuEditor(Messaggio.getOggettoNonInventario());
         }
