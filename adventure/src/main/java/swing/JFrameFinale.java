@@ -107,13 +107,13 @@ public class JFrameFinale extends javax.swing.JFrame {
         lblTitolo.setText("Balena");
         textArea.setText("Lentamente riapri gli occhi e ti ritrovi in un luogo strano e "
                 + "sconosciuto, percepisci il mare agitato\n"
-                + "Ricordi solo di essere scappato con una zattera da un'isola deserta, l'acqua che invadeva la tua barca e il vento che urlava intorno a te.\n"
+                + "Ricordi solo di essere scappato con una zattera da un'isola deserta.\n L'acqua che invadeva la tua barca e il vento che urlava intorno a te.\n"
                 + "Ad un tratto capisci di essere finito nella grande bocca di una balena...\n"
                 + "Ti guardi intorno e incontri tuo nonno Geppetto!!!\n"
                 + "Rimboccati le mani la tua avventura ha inizio!");
         ImageIcon icon = new ImageIcon(Utils.PERCORSO_IMMAGINI_ICONE + "iconaGioco.png");
         this.setIconImage(icon.getImage());
-        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "", jPanel);
+        Immagini.caricaImmagine(Utils.PERCORSO_IMMAGINI_MENU, "balena", jPanel);
     }//GEN-LAST:event_formWindowOpened
 
     private void formWindowClosed(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosed
