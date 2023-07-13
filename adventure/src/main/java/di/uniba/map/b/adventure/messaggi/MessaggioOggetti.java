@@ -20,7 +20,7 @@ public final class MessaggioOggetti {
             + " essere scariche...";
     private static final String DESCRIZIONE_MAPPA = "E' una mappa del luogo, sembra essere"
             + " disegnata a mano...";
-    private static final String DESCRIZIONE_TELECOMANDO = "Un semplice telecomando.";
+    private static final String DESCRIZIONE_TELECOMANDO = "Un semplice telecomando, sembra contenere delle batterie.";
     private static final String DESCRIZIONE_ACCIARINO = "Un acciarino, potresti riscaldarti o darti fuoco.";
     private static final String DESCRIZIONE_LASTRA = "Una lastra incisa, dovrei leggerla.";
     private static final String RACCOGLI_LASTRA = "Ma cosa pensi di essere....Il campione di bodybuilding.";

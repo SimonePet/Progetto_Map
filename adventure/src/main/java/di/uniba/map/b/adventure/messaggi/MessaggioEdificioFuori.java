@@ -21,8 +21,8 @@ public final class MessaggioEdificioFuori {
             + "contro il cielo del crepuscolo.\nAvvicinandoti, scopri che si tratta di un vecchio edificio abbandonato, "
             + "un tempo maestoso e possente, ora fatiscente\ne coperto di piante rampicanti che sembrano aver preso il "
             + "sopravvento.";
-    private static final String OSSERVA = "Intorno all’edificio sembra non esserci nulla se "
-            + "non un binocolo. Si osserva della luce uscire da una finestra.";
+    private static final String OSSERVA = "Intorno all’edificio sembra non esserci nulla. "
+            + "C'è soltanto una vecchia porta che sembra blindata.";
     private static final String NO_NORD = "Sei davanti all'ingresso adesso. La porta e' chiusa...";
     private static final String NORD = "Ti sei spostato a nord dell'edificio abbandonato.";
     private static final String SUD = "Ti sei spostato a sud del'edificio abbandonato";

@@ -145,7 +145,7 @@ public final class InizializzaComandi {
      */
     private static void initApri(final GiocoNaufragioIsola gni) {
         Comando apri = new Comando(TipoComando.APRI, "apri");
-        apri.setAlias(new String[]{});
+        apri.setAlias(new String[]{"smonta"});
         apri.setDescrizione("Apri [oggetto_inv] :\t Comando che ti permette di aprire un oggetto;");
         gni.getComandi().add(apri);
     }
