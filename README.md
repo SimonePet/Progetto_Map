@@ -873,6 +873,22 @@ Si occupa delle seguenti funzionalità:
 
 Le seguenti funzionalità sono state utilizzate per permettere all'utente di visualizzare statistiche in forma tabellare. E' possibile visualizzare sia statistiche generali che statistiche specifiche all'utente in gioco.
 
+![metodiAstrattiDb](/imgDocumentazione/metodiAstrattiDB.png)
+
+Dall'immagine qui sopra riportata possiamo vedere come la classe astratta Database abbia metodi astratti, nonchè metodi privi di una implementazione. La classe Database contiene solamente i metodi delle funzionalità più generiche e principali. I metodi astratti vengono implementati dalla sottoclasse DatabaseController che effettua l'overriding dei metodi.
+
+
+![query_DB](/imgDocumentazione/query_DB.png)
+
+La classe astratta Database ha come attributi le stringhe delle query utili all'implementazione delle funzionalità richieste al database. Gli attributi contenenti le query sono protected, in questo modo gli attributi vengono ereditati dalla classe DatabaseController (sottoclasse di Database). La classe DatabaseController utilizza gli attributi ereditati per eseguire le query su DB, inserendo e recuperando dati dal database.
+
+![salvaPartitaDb](/imgDocumentazione/salvaPartitaDB.png)
+
+Dall'immagine qui sopra riportata possiamo osservare un esempio di Override di un metodo della superclasse, dove la classe DatabaseController fornisce un'implementazione del metodo astratto della classe astratta Database.
+Il metodo in questione `salvaPartita` utilizza l'attributo `INSERISCI_PARTITA`, il quale è un attributo ereditato dalla superclasse che contiene la stringa della query per l'inserimento di una nuova tupla all'interno della tabella partita.
+
+
+
 ---
 ### Thread<a name="thread"></a>
 L'utilizzo dei thread all'interno del progetto è fondamentale per la visualizzazione del timer in tempo reale, il quale viene visualizzato nel frame principale dell'app durante la partita.
